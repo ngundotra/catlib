@@ -1,0 +1,344 @@
+/* Catlib — Love Letter Microsite
+   Design: warm, scholarly, respectful. Like a beautiful academic paper.
+   Cycle 2: Applied persona feedback — cut jargon, shortened page,
+   collapsed code, removed tier badges, de-emphasized paragraph refs. */
+
+:root {
+  --text: #2c2c2c;
+  --text-light: #5a5a5a;
+  --bg: #faf8f5;
+  --bg-warm: #f5f0e8;
+  --accent: #8b4513;
+  --accent-light: #a0522d;
+  --border: #d4c5a9;
+  --code-bg: #2d2a2e;
+  --code-text: #f8f8f2;
+  --callout-bg: #fff8e7;
+  --callout-border: #d4a017;
+  --summary-bg: #f0ede6;
+  --max-width: 680px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 18px;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.7;
+}
+
+main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 3rem 1.5rem 4rem;
+}
+
+/* Hero */
+.hero {
+  padding: 2rem 0 2.5rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 2rem;
+}
+
+.hero h1 {
+  font-size: 1.8rem;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.2rem;
+  color: var(--text);
+}
+
+.subtitle {
+  font-size: 1.05rem;
+  color: var(--text-light);
+  margin-bottom: 0.8rem;
+}
+
+/* Spirit / intent section — now near the top */
+.spirit {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.spirit p {
+  font-size: 0.95rem;
+}
+
+.spirit p em {
+  color: var(--accent);
+}
+
+/* Sections */
+section {
+  margin-bottom: 2.5rem;
+}
+
+h2 {
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  letter-spacing: 0.02em;
+}
+
+h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+  color: var(--text);
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+/* Worked example */
+.worked-example {
+  padding-bottom: 2rem;
+}
+
+.step {
+  display: flex;
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.step-number {
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--accent);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: 0.2rem;
+}
+
+.step-content h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+  color: var(--text);
+}
+
+blockquote {
+  border-left: 3px solid var(--accent);
+  padding: 1rem 1.2rem;
+  background: var(--bg-warm);
+  margin: 0.5rem 0 1rem;
+  font-style: italic;
+  font-size: 0.95rem;
+}
+
+blockquote cite {
+  display: block;
+  margin-top: 0.6rem;
+  font-size: 0.85rem;
+  color: var(--text-light);
+  font-style: normal;
+}
+
+/* Assumption callout */
+.assumption-callout {
+  background: var(--callout-bg);
+  border-left: 4px solid var(--callout-border);
+  padding: 1rem 1.2rem;
+  margin: 1rem 0;
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+/* Code toggle (collapsed by default) */
+.code-toggle {
+  margin-top: 0.5rem;
+}
+
+.code-toggle summary {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.85rem;
+  color: var(--accent);
+  cursor: pointer;
+  padding: 0.5rem 0;
+  user-select: none;
+}
+
+.code-toggle summary:hover {
+  color: var(--accent-light);
+}
+
+/* Lean code block */
+.lean-hint {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.85rem;
+  color: var(--text-light);
+  margin: 0.8rem 0;
+}
+
+.lean-code {
+  background: var(--code-bg);
+  color: var(--code-text);
+  padding: 1.5rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
+.lean-code .comment {
+  color: #88846f;
+}
+
+.lean-code .keyword {
+  color: #ff6188;
+}
+
+.lean-code .type {
+  color: #a9dc76;
+}
+
+/* Summary box */
+.summary-box {
+  background: var(--summary-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+}
+
+.summary-box h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+  color: var(--accent);
+}
+
+.summary-box p {
+  margin-bottom: 0;
+  font-size: 0.95rem;
+}
+
+/* Finding cards */
+.finding-card {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1.5rem;
+  background: white;
+}
+
+.finding-card.compact {
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.finding-card.compact h3 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.finding-card.compact p {
+  font-size: 0.9rem;
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+
+.finding-claim {
+  margin-bottom: 1rem;
+}
+
+/* More findings section */
+.more-findings {
+  border-top: 1px solid var(--border);
+  padding-top: 2rem;
+}
+
+.more-findings-intro {
+  font-size: 0.95rem;
+  color: var(--text-light);
+  margin-bottom: 1.5rem;
+}
+
+/* CTAs */
+.cta-section {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.cta-group {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta-button {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.9rem;
+  text-decoration: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.cta-button.primary {
+  background: var(--accent);
+  color: white;
+}
+
+.cta-button.primary:hover {
+  background: var(--accent-light);
+}
+
+.cta-button.secondary {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+}
+
+.cta-button.secondary:hover {
+  background: var(--bg-warm);
+}
+
+/* Footer */
+footer {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+
+footer p {
+  font-size: 0.85rem;
+  color: var(--text-light);
+}
+
+footer a {
+  color: var(--accent);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  html { font-size: 16px; }
+  .hero h1 { font-size: 1.5rem; }
+  .step { flex-direction: column; gap: 0.6rem; }
+  .cta-group { flex-direction: column; align-items: center; }
+}

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catlib — A Love Letter in Lean</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <h1>We took the Catechism's arguments<br>as seriously as it does.</h1>
+      <p class="subtitle">
+        A proof assistant is a tool that checks reasoning the way a
+        calculator checks arithmetic. It won't let you skip steps — it
+        forces you to say out loud what you were assuming in silence.
+      </p>
+      <p class="subtitle">
+        We pointed one at the Catholic Catechism — not to attack it,
+        but to see what it assumes. The findings surprised us.
+      </p>
+    </section>
+
+    <!-- What this is — moved up per persona feedback -->
+    <section class="spirit">
+      <p>
+        This is a love letter to the Catholic intellectual tradition.
+        The Church has 2,000 years of rigorous philosophical reasoning —
+        Aquinas, Augustine, the Scholastics (medieval Catholic
+        philosophers who systematized the faith). We are doing what they
+        did — examining premises — with a tool they didn't have.
+      </p>
+      <p>
+        We are not debunking. We are not attacking. The tone is:
+        <em>"We took your arguments as seriously as you do. Here is what
+        we found when we tried to write them down with total precision."</em>
+      </p>
+    </section>
+
+    <!-- Worked example -->
+    <section class="worked-example">
+      <h2>A worked example</h2>
+
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>The claim</h3>
+          <blockquote>
+            "There are acts which, in and of themselves, independently of
+            circumstances and intentions, are always gravely illicit by
+            reason of their object; such as blasphemy and perjury, murder
+            and adultery."
+            <cite>— Catechism of the Catholic Church</cite>
+          </blockquote>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>We tried to formalize it</h3>
+          <p>
+            The Catechism says morality depends on three things: what you
+            do (the "object" — what the action fundamentally is), why you
+            do it (the intention), and the circumstances. An act is good
+            when all three are good. An act is evil when any one is bad.
+          </p>
+          <p>
+            So far, so clear. But then it claims some acts are <em>always</em>
+            evil — no matter the intention, no matter the circumstances.
+          </p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h3>The assumption we were forced to state</h3>
+          <p>
+            Before the proof assistant would let us write the theorem, it
+            asked a question the text doesn't answer in this passage:
+          </p>
+          <div class="assumption-callout">
+            Can the moral character of what an action fundamentally is
+            be evaluated independently of its circumstances?
+          </div>
+          <p>
+            This three-part test doesn't require that. It says all
+            three matter — but it's compatible with a world where what
+            an action <em>is</em> depends on context. To get
+            "intrinsically evil," you need an extra rule: the action has
+            a fixed moral nature, regardless of anything else.
+          </p>
+          <p>
+            This is the core of Catholic moral philosophy — the idea that
+            some acts are wrong in themselves, regardless of consequences.
+            The broader tradition argues for it at length, but this passage
+            assumes it without stating it. The proof assistant wouldn't
+            let us do the same.
+          </p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h3>What the computer checked</h3>
+          <details class="code-toggle">
+            <summary>Show the Lean code</summary>
+            <p class="lean-hint">
+              Just read the comments — they tell the whole story.
+            </p>
+            <pre class="lean-code"><code><span class="comment">-- The Catechism's three-part test:</span>
+<span class="comment">-- An act is good when object, intention, AND circumstances are all good.</span>
+<span class="keyword">def</span> MoralEvaluation.isGood (eval : MoralEvaluation) : <span class="type">Prop</span> :=
+  eval.objectIsGood ∧ eval.intentionIsGood ∧ eval.circumstancesAppropriate
+
+<span class="comment">-- "Intrinsically evil" means the object is NEVER good.</span>
+<span class="comment">-- This is an ADDITIONAL assumption — not derivable from the framework.</span>
+<span class="keyword">def</span> IntrinsicallyEvil (objectPredicate : <span class="type">Prop</span>) : <span class="type">Prop</span> := ¬objectPredicate
+
+<span class="comment">-- Given that assumption, the conclusion follows easily.</span>
+<span class="comment">-- The proof is trivial. The FINDING is that we needed the assumption.</span>
+<span class="keyword">theorem</span> intrinsically_evil_always_evil
+    (eval : MoralEvaluation)
+    (h_intrinsic : IntrinsicallyEvil eval.objectIsGood) :
+    ¬eval.isGood := <span class="keyword">by</span>
+  intro ⟨ho, _, _⟩
+  exact h_intrinsic ho</code></pre>
+          </details>
+        </div>
+      </div>
+
+      <div class="summary-box">
+        <h3>You can stop here</h3>
+        <p>
+          The Catechism's claim about intrinsically evil acts works —
+          but only if you accept an unstated assumption: that what an
+          action <em>is</em> has a fixed moral character,
+          independent of everything else. That's not a flaw. It's a
+          philosophical commitment. The proof assistant just made it visible.
+        </p>
+      </div>
+    </section>
+
+    <!-- Grace bootstrapping — promoted as the strongest finding -->
+    <section class="finding">
+      <h2>You need grace to prepare for grace</h2>
+      <div class="finding-card">
+        <p class="finding-claim">
+          <strong>The claim:</strong> "The preparation of man for the
+          reception of grace is already a work of grace."
+        </p>
+        <div class="assumption-callout">
+          <strong>The circularity:</strong> You need grace to prepare for
+          grace. The proof assistant won't let you write a definition that
+          requires itself.
+        </div>
+        <p>
+          This is a genuine bootstrapping problem — like needing a
+          password to get the password. The resolution requires at least
+          two distinct <em>kinds</em> of grace: one that God gives without
+          any prior human action (theologians call it "prevenient grace"),
+          and one that this first grace prepares you to receive
+          (sanctifying grace). The Catechism uses "grace" as if it were
+          one thing, but the formal structure demands two.
+        </p>
+        <p>
+          Two paragraphs compress an entire theological debate — whether
+          humans can do good without God's help — that has been running
+          since the 5th century. The proof assistant forced it all back open.
+        </p>
+      </div>
+    </section>
+
+    <!-- Browse more -->
+    <section class="more-findings" id="findings">
+      <h2>More findings</h2>
+      <p class="more-findings-intro">
+        We've formalized eleven passages so far. Every one revealed
+        assumptions the text didn't state.
+      </p>
+
+      <div class="finding-card compact">
+        <h3>The mortal sin system only works in binary</h3>
+        <p>
+          Mortal sin requires grave matter, full knowledge, and complete
+          consent. But to make the mortal/venial distinction work, every
+          property must be yes-or-no — no spectrum allowed. Knowledge is
+          "full" or not. Consent is "complete" or not. A graded model
+          would break the system. The Catechism relies on this binary
+          structure without spelling it out.
+        </p>
+      </div>
+
+      <div class="finding-card compact">
+        <h3>Hell requires a specific model of free will</h3>
+        <p>
+          The Catechism calls hell "definitive self-exclusion from God."
+          But "self-exclusion" only carries its full moral weight if you
+          could genuinely have chosen otherwise — not just that you were
+          uncoerced, but that real alternatives existed. This is a specific
+          philosophical position on freedom that the text assumes without
+          announcing. And the proof assistant asked a question the
+          Catechism never answers: <em>why does love require freedom?</em>
+        </p>
+      </div>
+
+      <div class="finding-card compact">
+        <h3>The Trinity requires distinguishing two kinds of "same"</h3>
+        <p>
+          If Father = God and Son = God, then by normal logic, Father = Son.
+          But the Catechism says they're distinct. The proof assistant
+          refused to let us have it both ways. The resolution: sharing the
+          same <em>nature</em> is not the same as being the same
+          <em>person</em>. "Same God" and "same person" are two different
+          claims. The Trinity requires keeping them separate — something
+          standard logic doesn't do by default.
+        </p>
+      </div>
+
+      <div class="finding-card compact">
+        <h3>If people disagree about morality, someone is reasoning badly</h3>
+        <p>
+          The Catechism says natural law is universal, immutable, and
+          accessible to reason. But if it's truly universal AND accessible
+          to reason, then persistent moral disagreement must always be a
+          failure of reason — never a genuine feature of moral complexity.
+          That's an extraordinarily strong claim hidden in the word
+          "universal." The text also creates a tension: natural law is
+          discoverable by reason alone, but only has binding force because
+          it comes from God.
+        </p>
+      </div>
+
+      <div class="finding-card compact">
+        <h3>You're wrong either way: the erring conscience paradox</h3>
+        <p>
+          The Catechism says you must always obey your conscience — but
+          your conscience can be wrong. If it tells you to do something
+          evil, you're wrong if you follow it (the act is evil) and wrong
+          if you don't (you disobeyed conscience). The resolution creates
+          a hidden asymmetry: acting <em>against</em> conscience is
+          categorically worse than following an erring one. This is the
+          unstated decision rule of Catholic moral thought.
+        </p>
+      </div>
+
+      <div class="finding-card compact">
+        <h3>God causes good but only permits evil</h3>
+        <p>
+          The Catechism says God "operates in and through" all creature
+          actions — but is "in no way" the cause of moral evil. God's
+          relationship to causation changes depending on whether the
+          outcome is good or evil. This asymmetry requires evil to be
+          an absence of good rather than a thing in itself — otherwise
+          God would need to cause it. Six axioms in ten paragraphs,
+          none stated.
+        </p>
+      </div>
+
+      <div class="finding-card compact">
+        <h3>Your soul is not what you think it is</h3>
+        <p>
+          Most people think the soul is a separate thing living inside
+          the body — a ghost in a machine. The Catechism says something
+          more radical: the soul is what <em>makes</em> your body a body.
+          Without it, the matter isn't a corpse — it's not a body at all.
+          This is a specific philosophical model (Aristotelian hylomorphism)
+          that the Catechism adopts without naming as a philosophical
+          commitment. It's incompatible with the mind-body dualism most
+          modern people assume.
+        </p>
+      </div>
+
+      <div class="finding-card compact">
+        <h3>The freest being cannot sin</h3>
+        <p>
+          The Catechism says "the more one does what is good, the freer
+          one becomes." Choosing evil is an "abuse of freedom" that leads
+          to slavery. Taken to its conclusion: a being that can
+          <em>only</em> choose good is the freest of all. God, who cannot
+          sin, is perfectly free — not despite being unable to sin, but
+          <em>because</em> of it. This directly contradicts what most
+          people mean by "freedom."
+        </p>
+      </div>
+    </section>
+
+    <!-- CTAs -->
+    <section class="cta-section">
+      <div class="cta-group">
+        <a href="https://github.com/ngundotra/catlib" class="cta-button primary">
+          Read the source
+        </a>
+        <a href="https://github.com/ngundotra/catlib/tree/main/Catlib" class="cta-button secondary">
+          Browse all findings
+        </a>
+        <a href="https://github.com/ngundotra/catlib/issues" class="cta-button secondary">
+          Check our work
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      Built with <a href="https://lean-lang.org">Lean 4</a>.
+      The Catechism text is from the
+      <a href="https://www.vatican.va/archive/ENG0015/_INDEX.HTM">Vatican's official English translation</a>.
+    </p>
+  </footer>
+</body>
+</html>
