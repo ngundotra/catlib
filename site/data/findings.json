@@ -141,5 +141,18 @@
     "provenanceType": "tradition",
     "provenanceSource": "CCC §2263-2267; Aquinas ST II-II q.64 a.7",
     "category": "Moral Theology"
+  },
+  {
+    "id": "justification-axiom-sets",
+    "title": "The Axiom Set IS the Denomination",
+    "paragraph": "§1987–1993",
+    "claim": "Grace justifies by transforming the person internally. Justification involves human cooperation enabled by grace. It is conferred in Baptism.",
+    "hiddenAssumption": "Four hidden premises: (1) Grace is transformative, not just forensic — it actually changes you, not just your legal status. (2) Human cooperation in justification is real but grace-enabled (same bootstrapping as §2001). (3) Baptism is causally connected to justification — a sacramental axiom linking salvation to the Church. (4) Justification is a process, not a single event.",
+    "surprise": "The Catholic-Protestant disagreement on justification can be formalized as a difference in axiom sets. The Protestant position is obtained by replacing all four Catholic axioms: transformative → forensic, cooperation → reception, baptism → faith alone, process → event. The denominational difference IS the axiom-set difference. This confirms the project's central thesis: the axiom set is the theological tradition.",
+    "leanFile": "Catlib/MoralTheology/Justification.lean",
+    "tier": 3,
+    "provenanceType": "tradition",
+    "provenanceSource": "CCC §1987-1993; Council of Trent Session 6 (1547); Rom 3:22",
+    "category": "Moral Theology"
   }
 ]

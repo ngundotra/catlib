@@ -4,3 +4,4 @@ import Catlib.MoralTheology.NaturalLaw
 import Catlib.MoralTheology.Conscience
 import Catlib.MoralTheology.Freedom
 import Catlib.MoralTheology.LegitimateDefense
+import Catlib.MoralTheology.Justification

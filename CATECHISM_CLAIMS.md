@@ -19,6 +19,7 @@ the outcome. Best targets are at the top.
 | §355–365 | Soul as form of body | Productively resists | 3 | Hylomorphism incompatible with common-sense dualism |
 | §1730–1738 | Freedom and responsibility | Hidden structure | 3 | Perfect freedom = inability to sin; teleological freedom |
 | §2263–2267 | Legitimate defense | Hidden structure | 3 | Epistemic gap in proportionality + unstated double effect conditions |
+| §1987–1993 | Justification by grace | Hidden structure + stronger premises | 3 | Axiom-set-as-denomination: Catholic vs Protestant = axiom difference |
 
 ## High uncertainty (best targets — next up)
 
@@ -39,7 +40,7 @@ the outcome. Best targets are at the top.
 |---|-------|------------|---------------|
 | §198–231 | Attributes of God (omnipotence, etc.) | Confirms with hidden structure | Classical divine attributes — well-studied but may need novel axioms for "simplicity" |
 | ~~§2258–2269~~ | ~~Legitimate defense~~ | ~~Done~~ | ~~Formalized~~ | ~~See MoralTheology/LegitimateDefense.lean~~ |
-| §1987–1995 | Justification by grace | Requires stronger premises? | The grace-works relationship is precisely where Catholic-Protestant divergence lives |
+| ~~§1987–1995~~ | ~~Justification~~ | ~~Done~~ | ~~Formalized~~ | ~~See MoralTheology/Justification.lean~~ |
 
 ## Low uncertainty (likely straightforward)
 
