@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Culpability as a Partially Ordered Space &mdash; Catlib</title>
+  <meta name="description" content="The Catechism's reasoning about culpability implies a specific mathematical structure: partial ordering, multiple dimensions, diminishers, thresholds. We extract what we can prove and identify what remains open.">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Culpability as a Partially Ordered Space">
+  <meta property="og:description" content="The mathematics hiding inside the Catechism's moral theology. Partial orders, threshold surfaces, and an open question about how diminishers compose.">
+  <meta property="og:site_name" content="Catlib">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Culpability as a Partially Ordered Space">
+  <meta name="twitter:description" content="Extracting the mathematical structure of culpability from the Catholic Catechism. What we can prove, and what remains genuinely unresolved.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel+Decorative:wght@400;700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="articles.css">
+  <style>
+    /* Open-question callout — amber/red border to signal "unsolved" */
+    .open-question {
+      background: rgba(180, 100, 20, 0.07);
+      border: 2px solid rgba(180, 80, 20, 0.4);
+      border-left: 5px solid #b45014;
+      padding: 1.5rem 1.8rem;
+      margin: 1.8rem 0;
+      border-radius: 0 4px 4px 0;
+      position: relative;
+    }
+
+    .open-question::before {
+      content: 'OPEN QUESTION';
+      display: block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #b45014;
+      margin-bottom: 0.8rem;
+    }
+
+    .open-question h4 {
+      font-family: 'Cinzel', serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #8a3a0a;
+      margin-bottom: 0.6rem;
+      letter-spacing: 0.03em;
+    }
+
+    .open-question p {
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .open-question ul {
+      padding-left: 1.3rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .open-question li {
+      margin-bottom: 0.3rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* Model options within the open question */
+    .model-option {
+      background: rgba(180, 100, 20, 0.05);
+      border: 1px solid rgba(180, 100, 20, 0.15);
+      padding: 0.8rem 1.2rem;
+      margin: 0.6rem 0;
+      border-radius: 3px;
+    }
+
+    .model-option strong {
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      color: #8a3a0a;
+      letter-spacing: 0.03em;
+    }
+
+    .model-option .model-problem {
+      font-size: 0.88rem;
+      color: var(--text-light);
+      font-style: italic;
+      margin-top: 0.3rem;
+      margin-bottom: 0;
+    }
+
+    /* Structure table — the visual centerpiece */
+    .structure-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      font-size: 0.92rem;
+      border: 2px solid var(--border-dark);
+    }
+
+    .structure-table th {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--bg);
+      background: var(--accent);
+      padding: 0.7rem 0.8rem;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    .structure-table td {
+      padding: 0.65rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      line-height: 1.55;
+    }
+
+    .structure-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .structure-table tr:nth-child(even) {
+      background: rgba(122, 46, 14, 0.03);
+    }
+
+    .structure-table .status-proven {
+      color: #3a6e3a;
+      font-weight: 600;
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+    }
+
+    .structure-table .status-implied {
+      color: var(--accent-gold);
+      font-weight: 600;
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+    }
+
+    .structure-table .status-open {
+      color: #b45014;
+      font-weight: 700;
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+    }
+
+    .structure-table code {
+      font-family: 'JetBrains Mono', 'Fira Code', monospace;
+      font-size: 0.78rem;
+      background: var(--bg-vellum);
+      padding: 0.1rem 0.35rem;
+      border-radius: 2px;
+    }
+
+    /* Theoretical code block label */
+    .code-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #b45014;
+      background: rgba(180, 100, 20, 0.1);
+      border: 1px solid rgba(180, 100, 20, 0.25);
+      display: inline-block;
+      padding: 0.2rem 0.7rem;
+      border-radius: 2px 2px 0 0;
+      margin-bottom: -1px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Property cards */
+    .property-card {
+      border: 1px solid var(--border);
+      padding: 1rem 1.4rem;
+      margin: 0.8rem 0;
+      border-radius: 2px;
+      background: var(--bg-parchment);
+    }
+
+    .property-card h4 {
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.03em;
+    }
+
+    .property-card p {
+      font-size: 0.98rem;
+      margin-bottom: 0;
+      line-height: 1.65;
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <a href="../index.html" class="back-link">Back to Catlib</a>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="ornament">&#10053;</div>
+      <h1>Culpability as a Partially Ordered Space</h1>
+      <p class="subtitle">The mathematics hiding inside the Catechism</p>
+      <p class="subtitle">
+        The CCC&rsquo;s reasoning about culpability implies a specific mathematical
+        structure that has never been made explicit. We extract what we can prove
+        and identify what remains genuinely open.
+      </p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Section 1: Opening -->
+    <section class="article-body">
+      <p>
+        <span class="versal">C</span>ulpability is not just a theological concept.
+        It has mathematical structure. When the Catechism of the Catholic Church
+        reasons about mortal and venial sin, about diminished consent and incomplete
+        knowledge, about the effects of fear, habit, and psychological pressure on
+        moral responsibility, it is implicitly constructing a mathematical
+        object&nbsp;&mdash; one with partial ordering, multiple dimensions,
+        diminishers, and thresholds.
+      </p>
+      <p>
+        The Catlib project formalized the Catechism&rsquo;s moral theology in
+        Lean 4 and found something surprising: the binary structures in the
+        formalization&nbsp;&mdash; <code>MoralKnowledge</code> as
+        <code>full | notFull</code>, <code>MoralConsent</code> as
+        <code>complete | incomplete</code>&nbsp;&mdash; are a
+        <em>coarsening</em> of what the Catechism actually implies. The text
+        uses binary language for the mortal/venial threshold, but continuous
+        language for pastoral application. &sect;2352 speaks of factors that
+        &ldquo;lessen, if even to a minimum&rdquo; culpability. You do not
+        &ldquo;lessen to a minimum&rdquo; something that admits of only two
+        values.
+      </p>
+      <p>
+        This article extracts the full mathematical structure implied by the
+        CCC&rsquo;s reasoning across multiple passages. Some properties are
+        established. One critical question is genuinely unresolved&nbsp;&mdash;
+        not a gap in our formalization, but a gap in the source material itself.
+      </p>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Section 2: The Three Dimensions -->
+    <section class="article-body">
+      <h2>The Three Dimensions</h2>
+
+      <p>
+        <span class="versal">F</span>rom the Catechism&rsquo;s treatment of mortal
+        sin (&sect;1857&ndash;1862), culpability lives in at least three independent
+        axes. The formalization in <code>Sin.lean</code> models these as binary
+        inductive types:
+      </p>
+
+      <div class="property-card">
+        <h4>Knowledge</h4>
+        <p>
+          Formalized as <code>MoralKnowledge</code> with values
+          <code>full</code> and <code>notFull</code>. But &sect;2352 implies a
+          spectrum: factors can diminish knowledge by degrees, suggesting a
+          continuous range from total ignorance to full awareness. The binary
+          model is a coarsening of an underlying interval&nbsp;[0,&thinsp;1].
+        </p>
+      </div>
+
+      <div class="property-card">
+        <h4>Consent</h4>
+        <p>
+          Formalized as <code>MoralConsent</code> with values
+          <code>complete</code> and <code>incomplete</code>. But the Catechism
+          lists multiple factors that <em>diminish</em> consent&nbsp;&mdash;
+          fear, habit, psychological pressure, affective immaturity. The word
+          &ldquo;diminish&rdquo; is graded language. Complete consent and no
+          consent are the endpoints of a spectrum, not the only two points on it.
+        </p>
+      </div>
+
+      <div class="property-card">
+        <h4>Matter</h4>
+        <p>
+          Formalized as <code>MatterGravity</code> with values
+          <code>grave</code> and <code>lesSerious</code>. This axis is different
+          from the other two: it is a property of the <em>act</em>, not of the
+          <em>agent</em>. A lie and a murder differ in the gravity of their matter
+          regardless of who commits them. This asymmetry between axes is itself a
+          structural feature&nbsp;&mdash; matter is objective; knowledge and
+          consent are subjective.
+        </p>
+      </div>
+
+      <p>
+        The Catechism uses binary language precisely where it draws the
+        mortal/venial threshold (&sect;1857: &ldquo;full knowledge and deliberate
+        consent&rdquo;) and continuous language precisely where it discusses
+        pastoral application and diminished responsibility (&sect;2352, &sect;1860).
+        This is not a contradiction. The binary classification is a <em>threshold
+        applied to continuous axes</em>&nbsp;&mdash; like the distinction between
+        water and ice, which is a discrete classification imposed on the continuous
+        variable of temperature.
+      </p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Section 3: Proven Properties -->
+    <section class="article-body">
+      <h2>What We Can Establish</h2>
+
+      <p>
+        <span class="versal">T</span>he following properties are implied or
+        directly stated by the Catechism&rsquo;s reasoning across
+        &sect;1857&ndash;1862, &sect;2352, &sect;1734, and &sect;1776&ndash;1791.
+        Each follows from taking the CCC&rsquo;s own logic seriously as
+        mathematics.
+      </p>
+
+      <div class="property-card">
+        <h4>a) Partially ordered, not totally ordered</h4>
+        <p>
+          Consider two persons. Person A commits a grave act with high knowledge
+          but under extreme duress (diminished consent). Person B commits the same
+          act with low knowledge but full consent. Who is more culpable? The
+          Catechism provides no answer, because it provides no <em>weighting</em>
+          between axes. These two points in culpability space are
+          <em>incomparable</em>&nbsp;&mdash; neither is greater than the other.
+          This is the signature of a partial order, not a total order. You cannot
+          always rank two people&rsquo;s culpability on a single number line.
+        </p>
+      </div>
+
+      <div class="property-card">
+        <h4>b) Has a top element</h4>
+        <p>
+          &sect;1857 defines this explicitly: full knowledge, complete consent,
+          grave matter. The point (1,&thinsp;1,&thinsp;1) in culpability space is
+          mortal sin&nbsp;&mdash; maximum culpability. Every other point is below
+          or incomparable to it.
+        </p>
+      </div>
+
+      <div class="property-card">
+        <h4>c) Has an infimum it approaches but may not reach</h4>
+        <p>
+          Zero culpability requires zero freedom, but the Catechism&rsquo;s model
+          of freedom (&sect;1731&ndash;1734) treats it as a property of rational
+          agents. A rock is not culpable because a rock is not free. A human agent
+          always has <em>some</em> freedom, some knowledge, some residual consent.
+          The origin point (0,&thinsp;0,&thinsp;0) is a mathematical limit that a
+          free agent approaches asymptotically but may never occupy.
+        </p>
+      </div>
+
+      <div class="property-card">
+        <h4>d) Monotone in each axis</h4>
+        <p>
+          More knowledge, holding everything else fixed, means more culpability.
+          More consent, holding everything else fixed, means more culpability.
+          Graver matter, holding everything else fixed, means more culpability.
+          The Catechism never suggests that increasing any axis could
+          <em>decrease</em> culpability. Each axis is monotone.
+        </p>
+      </div>
+
+      <div class="property-card">
+        <h4>e) Has a threshold surface</h4>
+        <p>
+          The mortal/venial boundary is not a point&nbsp;&mdash; it is a
+          <em>surface</em> in the three-dimensional space. Above it: mortal sin.
+          Below it: venial sin. The Catechism defines this surface implicitly by
+          requiring all three axes to be at their maximum for mortal sin. On
+          binary axes, this is the single point (full, complete, grave). On
+          continuous axes, the surface becomes a genuine boundary&nbsp;&mdash;
+          like a phase transition in physics, separating two qualitatively
+          different regimes.
+        </p>
+      </div>
+
+      <div class="property-card">
+        <h4>f) The axes are not symmetric</h4>
+        <p>
+          Matter is a property of the act. Knowledge and consent are properties
+          of the agent. This asymmetry connects directly to the
+          <code>TwoLevelEvaluation</code> structure from
+          <code>Conscience.lean</code>&nbsp;&mdash; the Catechism consistently
+          distinguishes objective moral evaluation (is the act good?) from
+          subjective culpability assessment (is the agent blameworthy?). Matter
+          belongs to the first level; knowledge and consent belong to the second.
+        </p>
+      </div>
+
+      <div class="property-card">
+        <h4>g) Conscience creates a lexicographic override</h4>
+        <p>
+          The culpability asymmetry proved in <code>Conscience.lean</code>
+          reveals a fourth structural feature: acting <em>against</em> conscience
+          is categorically worse than following an erring one. This behaves like
+          a lexicographic ordering&nbsp;&mdash; a separate dimension that is
+          checked <em>first</em>, before the three-axis assessment even begins.
+          No amount of diminished knowledge or consent excuses deliberately
+          violating conscience. The conscience dimension overrides.
+        </p>
+      </div>
+
+      <div class="property-card">
+        <h4>h) Diminishers exist and are listed</h4>
+        <p>
+          The Catechism explicitly names factors that reduce culpability along
+          specific axes: fear, habit and addiction, ignorance, psychological
+          factors and disorders, affective immaturity, social pressure and duress
+          (&sect;2352, &sect;1860, &sect;1735). Each diminisher operates on a
+          specific axis&nbsp;&mdash; ignorance reduces knowledge; fear, habit,
+          and duress reduce consent. The <code>responsibility_proportional_to_freedom</code>
+          axiom in <code>Freedom.lean</code> formalizes the link: less freedom
+          means less responsibility means less culpability.
+        </p>
+      </div>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Section 4: THE OPEN QUESTION -->
+    <section class="article-body">
+      <h2>The Open Question</h2>
+
+      <p>
+        <span class="versal">E</span>verything above is established&nbsp;&mdash;
+        directly stated or logically implied by the Catechism&rsquo;s reasoning.
+        What follows is not. It is a genuine gap in the source material, and
+        identifying it precisely is one of the contributions of formal analysis.
+      </p>
+
+      <div class="open-question">
+        <h4>How do diminishers compose?</h4>
+
+        <p>
+          The Catechism lists multiple diminishers&nbsp;&mdash; fear, habit,
+          ignorance, psychological factors, affective immaturity, social
+          pressure&nbsp;&mdash; but <em>never specifies how they combine</em>.
+          If a person acts out of fear <em>and</em> habit <em>and</em> under
+          psychological duress, how do these factors interact? The CCC asserts
+          that each factor &ldquo;lessens&rdquo; culpability but provides no
+          operator for composing multiple diminishers.
+        </p>
+
+        <p>At least four models are conceivable:</p>
+
+        <div class="model-option">
+          <strong>a) Multiplicative</strong>
+          <p>effective_consent = consent &times; (1 &minus; fear) &times; (1 &minus; habit) &times; (1 &minus; anxiety)</p>
+          <p class="model-problem">Problem: This is a modeling choice, not something implied by the CCC. It also means diminishers always compound, which may or may not match the intended theology.</p>
+        </div>
+
+        <div class="model-option">
+          <strong>b) Additive</strong>
+          <p>effective_consent = consent &minus; fear &minus; habit &minus; anxiety</p>
+          <p class="model-problem">Problem: Could go negative, which is incoherent. Requires an artificial floor at zero.</p>
+        </div>
+
+        <div class="model-option">
+          <strong>c) Maximum diminisher wins</strong>
+          <p>effective_consent = consent &times; (1 &minus; max(fear, habit, anxiety))</p>
+          <p class="model-problem">Problem: Ignores compounding effects entirely. A person under extreme fear AND extreme addiction is treated the same as someone under only one of those pressures.</p>
+        </div>
+
+        <div class="model-option">
+          <strong>d) Unspecified</strong>
+          <p>The CCC genuinely does not tell us.</p>
+          <p class="model-problem">This is not a gap in the formalization. It is a gap in the source material.</p>
+        </div>
+
+        <p>The Catechism leaves all of the following genuinely unresolved:</p>
+
+        <ul>
+          <li>Whether diminishers compose additively, multiplicatively, or by some other operator</li>
+          <li>Whether multiple diminishers compound or cap at some maximum reduction</li>
+          <li>Whether there is a minimum floor below which culpability cannot drop for a free agent</li>
+          <li>Whether diminishers on different axes interact&nbsp;&mdash; does fear combined with ignorance compound differently than fear alone?</li>
+        </ul>
+
+        <p>
+          <strong>We do not know the composition operator.</strong> This is not a
+          failure of our formalization. It is a genuine open question in moral
+          theology. The Catechism asserts that diminishers exist, lists them, and
+          says they reduce culpability. It does not specify the algebra.
+        </p>
+      </div>
+
+      <p>
+        This matters pastorally, not just mathematically. A confessor assessing
+        the culpability of someone who acted out of addiction, psychological
+        disturbance, <em>and</em> social pressure simultaneously is implicitly
+        choosing a composition model&nbsp;&mdash; without knowing they are doing
+        so, and without the Catechism giving them one.
+      </p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Section 5: The Structure Summary -->
+    <section class="article-body">
+      <h2>The Full Structure</h2>
+
+      <p>
+        <span class="versal">H</span>ere is the complete mathematical picture,
+        as far as the Catechism&rsquo;s reasoning determines it. This table is
+        the summary of what formal analysis extracted from the CCC&rsquo;s
+        text&nbsp;&mdash; what is established, what is implied, and what is left
+        open.
+      </p>
+
+      <table class="structure-table">
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>What the CCC Implies</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Carrier set</strong></td>
+            <td>[0,&thinsp;1]&sup3; (knowledge &times; consent &times; matter)</td>
+            <td><span class="status-implied">Implied</span> by continuous language</td>
+          </tr>
+          <tr>
+            <td><strong>Order</strong></td>
+            <td>Product order (partial, not total)</td>
+            <td><span class="status-proven">Proven</span> &mdash; incomparable pairs exist</td>
+          </tr>
+          <tr>
+            <td><strong>Top element</strong></td>
+            <td>(1, 1, 1) = mortal sin</td>
+            <td><span class="status-proven">Proven</span> &mdash; explicitly stated (&sect;1857)</td>
+          </tr>
+          <tr>
+            <td><strong>Bottom</strong></td>
+            <td>Approached but not reached by free agents</td>
+            <td><span class="status-implied">Implied</span> by freedom model</td>
+          </tr>
+          <tr>
+            <td><strong>Threshold</strong></td>
+            <td>Mortal/venial boundary is a surface</td>
+            <td><span class="status-implied">Implied</span> by binary classification on continuous axes</td>
+          </tr>
+          <tr>
+            <td><strong>Diminishers</strong></td>
+            <td>Exist, listed, reduce individual axes</td>
+            <td><span class="status-proven">Proven</span> &mdash; explicitly stated (&sect;2352, &sect;1860)</td>
+          </tr>
+          <tr>
+            <td><strong>Composition of diminishers</strong></td>
+            <td>UNKNOWN</td>
+            <td><span class="status-open">Open question</span></td>
+          </tr>
+          <tr>
+            <td><strong>Conscience dimension</strong></td>
+            <td>Lexicographic override</td>
+            <td><span class="status-implied">Implied</span> by culpability asymmetry</td>
+          </tr>
+          <tr>
+            <td><strong>Symmetry of axes</strong></td>
+            <td>NOT symmetric &mdash; matter is objective, others subjective</td>
+            <td><span class="status-implied">Implied</span> by two-level evaluation</td>
+          </tr>
+          <tr>
+            <td><strong>Monotonicity</strong></td>
+            <td>Yes, in each axis independently</td>
+            <td><span class="status-implied">Implied</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        The pattern is striking. Most of the structure is recoverable from
+        careful reading. But the composition question&nbsp;&mdash; how multiple
+        diminishers interact&nbsp;&mdash; is not merely unrecovered. It is
+        unspecified in the source material. The Catechism leaves it as a free
+        parameter.
+      </p>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Section 6: Sketch of Formalization -->
+    <section class="article-body">
+      <h2>Toward a Formalization</h2>
+
+      <p>
+        <span class="versal">W</span>hat would this look like if we tried to
+        formalize it? The current Lean code in <code>Sin.lean</code> uses
+        binary inductive types. A fuller formalization would require real-valued
+        types from Mathlib. Here is a sketch&nbsp;&mdash; theoretical, not
+        machine-checked&nbsp;&mdash; of what the continuous model would entail.
+      </p>
+
+      <div class="code-label">Theoretical &mdash; not machine-checked</div>
+      <div class="lean-code"><span class="keyword">structure</span> <span class="type">Culpability</span> <span class="keyword">where</span>
+  knowledge : <span class="type">Real</span>  <span class="comment">-- [0,1]</span>
+  consent   : <span class="type">Real</span>  <span class="comment">-- [0,1]</span>
+  matter    : <span class="type">Real</span>  <span class="comment">-- [0,1]</span>
+
+<span class="comment">-- Partial order (product order on the cube)</span>
+<span class="keyword">instance</span> : <span class="type">LE</span> <span class="type">Culpability</span> <span class="keyword">where</span>
+  le a b := a.knowledge &le; b.knowledge
+         &and; a.consent &le; b.consent
+         &and; a.matter &le; b.matter
+
+<span class="comment">-- The mortal sin threshold (the coarsened version)</span>
+<span class="keyword">def</span> isMortalSin (c : <span class="type">Culpability</span>) : <span class="type">Prop</span> :=
+  c.knowledge = 1 &and; c.consent = 1 &and; c.matter = 1
+
+<span class="comment">-- Diminisher application — BUT WHICH OPERATOR?</span>
+<span class="comment">-- This is the open question. All of the following type-check.</span>
+<span class="comment">-- None of them are derivable from the CCC.</span>
+
+<span class="comment">-- Option A: multiplicative</span>
+<span class="keyword">def</span> applyDiminisher_mult (c : <span class="type">Culpability</span>) (d : <span class="type">Real</span>) : <span class="type">Culpability</span> :=
+  { c <span class="keyword">with</span> consent := c.consent * (1 - d) }
+
+<span class="comment">-- Option B: additive (with floor)</span>
+<span class="keyword">def</span> applyDiminisher_add (c : <span class="type">Culpability</span>) (d : <span class="type">Real</span>) : <span class="type">Culpability</span> :=
+  { c <span class="keyword">with</span> consent := max 0 (c.consent - d) }
+
+<span class="comment">-- Option C: max-diminisher</span>
+<span class="keyword">def</span> applyDiminishers_max (c : <span class="type">Culpability</span>) (ds : <span class="type">List Real</span>) : <span class="type">Culpability</span> :=
+  { c <span class="keyword">with</span> consent := c.consent * (1 - ds.maximum) }
+
+<span class="comment">-- All three are well-typed. All three are monotone.</span>
+<span class="comment">-- The CCC does not determine which one is correct.</span></div>
+
+      <p>
+        The pseudocode makes the gap visible in a way that prose does not.
+        Three different functions, each consistent with every statement the
+        Catechism makes, each producing different results when multiple
+        diminishers are present. The type system accepts all of them. The
+        theology does not choose among them.
+      </p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Section 7: Closing -->
+    <section class="article-body">
+      <h2>What Formalization Found</h2>
+
+      <p>
+        <span class="versal">T</span>his is what happens when you take
+        theological reasoning seriously as mathematics. The Catechism has
+        <em>more</em> structure than most people realize&nbsp;&mdash; a partial
+        order, monotone axes, a threshold surface, a lexicographic conscience
+        dimension&nbsp;&mdash; and <em>more open questions</em> than most
+        theologians acknowledge.
+      </p>
+      <p>
+        The binary formalization in <code>Sin.lean</code> is not wrong. It
+        captures the mortal/venial threshold accurately. But it is a coarsening
+        of a richer structure that the Catechism implies without stating.
+        Moving from the binary model to the continuous model would require
+        Mathlib&rsquo;s real number library, a proper treatment of bounded
+        intervals, and&nbsp;&mdash; crucially&nbsp;&mdash; a decision about
+        the composition of diminishers that the CCC does not make.
+      </p>
+      <p>
+        That last point is the one worth sitting with. Formal verification did
+        not just confirm what the Catechism says. It identified a question the
+        Catechism does not answer. The diminisher composition problem is not
+        obscure&nbsp;&mdash; it is encountered every time a confessor evaluates
+        the culpability of someone acting under multiple mitigating factors
+        simultaneously. Every such evaluation implicitly assumes a composition
+        model. The Catechism does not provide one.
+      </p>
+      <p>
+        The proof assistant found both the structure and the silence. Both matter.
+      </p>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Sources -->
+    <section class="article-body">
+      <div class="summary-box">
+        <h3>Source Formalizations</h3>
+        <p>
+          This article draws on three Lean 4 files in the Catlib project:
+          <code>Sin.lean</code> (mortal/venial distinction, &sect;1849&ndash;1864),
+          <code>Freedom.lean</code> (graded freedom, proportional responsibility,
+          &sect;1730&ndash;1738), and <code>Conscience.lean</code> (erring
+          conscience, culpability asymmetry, &sect;1776&ndash;1791). All
+          Catechism references are to the English translation of the
+          <em>Catechismus Catholicae Ecclesiae</em>, editio typica 1997.
+        </p>
+      </div>
+    </section>
+
+    <div class="ornament">&#10053;</div>
+
+    <section class="cta-section">
+      <div class="cta-group">
+        <a href="https://github.com/ngundotra/catlib" class="cta-button primary">View on GitHub</a>
+        <a href="../index.html" class="cta-button secondary">Back to Catlib</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="ornament">&#10053;</div>
+    <p>
+      <a href="https://github.com/ngundotra/catlib">Catlib</a>&nbsp;&mdash;
+      formalizing the Catholic Catechism in Lean 4.
+      A love letter to the Catholic intellectual tradition, written with precision.
+    </p>
+  </footer>
+
+</body>
+</html>
