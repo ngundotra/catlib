@@ -6,9 +6,21 @@ import Catlib.Foundations.Basic
 Every axiom in the 12 formalization files (44 total) traces back to one of these
 15 foundational assumptions, organized into three groups by source:
 
-- **P1-P5**: Philosophical commitments (Aristotle / Aquinas / natural reason)
-- **S1-S5**: Scriptural axioms (specific Bible passages under Catholic reading)
-- **T1-T5**: Sacred Tradition (Church Fathers, Councils, Magisterium)
+- **P1-P3**: Philosophical commitments (Aristotle / Aquinas / natural reason)
+- **S1-S9**: Scriptural axioms (specific Bible passages under Catholic reading)
+- **T1-T3**: Sacred Tradition (Church Fathers, Councils, Magisterium)
+
+**Note on the 5/5/5 → 3/9/3 reclassification.** An earlier draft split the 15
+axioms evenly across Philosophy, Scripture, and Tradition. Closer analysis
+showed that several axioms originally classified as Philosophical or Traditional
+actually have strong *direct* scriptural grounding: Paul explicitly teaches
+moral realism (Rom 1:20; 2:14-15), Jesus explicitly teaches teleological freedom
+(Jn 8:34-36; Gal 5:1), multiple New-Testament passages assert the necessity and
+transformative power of grace (Jn 15:5; 2 Cor 5:17; Ezek 36:26), and Paul
+explicitly grounds the binding force of conscience (Rom 14:23; Acts 24:16).
+Most of the system's assumptions therefore trace to Scripture; only three
+irreducibly philosophical models and three distinctively conciliar formulations
+remain outside the scriptural core.
 
 This mirrors the Catechism's own epistemology: Scripture, Tradition, and natural
 reason are the three pillars on which Catholic doctrine rests.
@@ -135,12 +147,16 @@ opaque isEvil : Prop → Prop
 opaque isDueGoodAbsent : Prop → Prop
 
 -- ============================================================================
--- P1-P5: PHILOSOPHICAL AXIOMS (Aristotle / Aquinas / Natural Reason)
+-- P1-P3: PHILOSOPHICAL AXIOMS — the irreducible non-scriptural residue (3)
 -- ============================================================================
 
 /-- **P1. HYLOMORPHISM**: Every material substance is a composite of form and matter.
 
     *Source*: Aristotle, Metaphysics VII-IX; Aquinas, ST I q.75-76
+
+    Gen 2:7 ("the Lord God formed man of dust… and breathed into his nostrils
+    the breath of life") is an inspiration but not a derivation of the formal
+    hylomorphic model.
 
     *Grounds*: soul-as-form-of-body (Soul.lean axioms 5-7), the unity of the
     human person, anti-Cartesian dualism. The Catechism presupposes this in
@@ -152,78 +168,48 @@ axiom p1_hylomorphism :
 /-- Provenance tag for P1. -/
 def p1_provenance : Provenance := Provenance.naturalLaw
 
-/-- **P2. MORAL_REALISM**: Moral facts exist independently of opinion and are
-    accessible to unaided human reason.
-
-    *Source*: Aristotle, Nicomachean Ethics I; Aquinas, ST I-II q.94
-
-    *Grounds*: natural law theory (NaturalLaw.lean axioms 1-3), the claim that
-    moral truths are objective and knowable. CCC §1954: "The natural law…
-    is nothing other than the light of understanding placed in us by God." -/
-axiom p2_moral_realism :
-  ∀ (mp : MoralProposition), moralTruthValue mp → accessibleToReason mp
-
-/-- Provenance tag for P2. -/
-def p2_provenance : Provenance := Provenance.naturalLaw
-
--- Helpers for P3
-/-- Whether an agent is directed toward the good. -/
-axiom directedTowardGood : Agent → Prop
-
-/-- The freedom degree an agent possesses. -/
-axiom agentFreedom : Agent → FreedomDegree
-
-/-- **P3. TELEOLOGICAL_FREEDOM**: Freedom is ordered toward the good; choosing
-    evil is a defect that diminishes freedom rather than expressing it.
-
-    *Source*: Aquinas, ST I-II q.1-5 (final causality), q.109 a.2
-
-    *Grounds*: Freedom.lean axioms 10-13 (good increases freedom, evil diminishes
-    it, evil possible only in imperfect freedom, responsibility proportional to
-    freedom). CCC §1733: "The more one does what is good, the freer one becomes." -/
-axiom p3_teleological_freedom :
-  ∀ (a1 a2 : Agent),
-    directedTowardGood a1 → ¬ directedTowardGood a2 →
-    freedomLt (agentFreedom a2) (agentFreedom a1)
-
-/-- Provenance tag for P3. -/
-def p3_provenance : Provenance := Provenance.naturalLaw
-
-/-- **P4. LIBERTARIAN_FREE_WILL**: Agents can genuinely choose otherwise;
-    freedom is not merely the absence of external coercion.
-
-    *Source*: Aquinas, ST I q.83; the Catholic tradition's rejection of hard
-    determinism and strict compatibilism.
-
-    *Grounds*: Hell.lean axiom 4 (freedom_is_libertarian), moral responsibility,
-    the possibility of self-exclusion from God. CCC §1730: "God created man a
-    rational being, conferring on him the dignity of a person who can initiate
-    and control his own actions." -/
-axiom p4_libertarian_free_will :
-  ∀ (a : Agent), couldChooseOtherwise a
-
-/-- Provenance tag for P4. -/
-def p4_provenance : Provenance := Provenance.naturalLaw
-
-/-- **P5. TWO_TIER_CAUSATION**: Primary (divine) and secondary (creaturely)
+/-- **P2. TWO_TIER_CAUSATION**: Primary (divine) and secondary (creaturely)
     causes operate on different levels and do not compete — more divine action
     does not mean less creaturely action, and vice versa.
 
     *Source*: Aquinas, ST I q.105 a.5; the principle of non-contrastive
     transcendence.
 
+    Phil 2:13 ("it is God who works in you, both to will and to work") describes
+    the phenomenon, but the two-tier causal *model* is a philosophical
+    contribution by Aquinas.
+
     *Grounds*: Providence.lean axiom 8 (primary_secondary_non_competing),
     creaturely causation is genuine (Providence.lean axiom 42). CCC §306:
     "God grants his creatures not only their existence, but also the dignity
     of acting on their own." -/
-axiom p5_two_tier_causation :
+axiom p2_two_tier_causation :
   ∀ (p : PrimaryCause) (s : SecondaryCause), ¬ causesCompete p s
 
-/-- Provenance tag for P5. -/
-def p5_provenance : Provenance := Provenance.naturalLaw
+/-- Provenance tag for P2. -/
+def p2_provenance : Provenance := Provenance.naturalLaw
+
+/-- **P3. EVIL_IS_PRIVATION**: Evil is not a positive reality but the absence
+    of a due good — a privation, not a substance.
+
+    *Source*: Augustine, Confessions VII.12 ("Evil has no existence except as
+    a privation of good"); Aquinas, ST I q.48 a.1 and q.49.
+
+    Gen 1:31 ("God saw all that he had made, and it was very good") is a seed,
+    but the formal privation theory is a philosophical contribution by
+    Augustine and Aquinas.
+
+    *Grounds*: Providence.lean axiom 29 (causation_asymmetry), axiom 40
+    (god_not_cause_of_evil). CCC §311: "God is in no way, directly or
+    indirectly, the cause of moral evil." -/
+axiom p3_evil_is_privation :
+  ∀ (e : Prop), isEvil e → isDueGoodAbsent e
+
+/-- Provenance tag for P3. -/
+def p3_provenance : Provenance := Provenance.naturalLaw
 
 -- ============================================================================
--- S1-S5: SCRIPTURAL AXIOMS (Bible passages under Catholic reading)
+-- S1-S9: SCRIPTURAL AXIOMS — with full verse references (9)
 -- ============================================================================
 
 /-- **S1. GOD_IS_LOVE**: God's very nature is love, and genuine love requires
@@ -303,37 +289,121 @@ axiom s5_sin_separates :
 /-- Provenance tag for S5. -/
 def s5_provenance : Provenance := Provenance.scripture "1 Jn 3:14-15; Rom 6:23"
 
--- ============================================================================
--- T1-T5: SACRED TRADITION AXIOMS (Councils, Church Fathers, Magisterium)
--- ============================================================================
+/-- **S6. MORAL_REALISM**: Moral facts exist independently of opinion and are
+    accessible to unaided human reason.
 
-/-- **T1. GRACE_NECESSARY_AND_TRANSFORMATIVE**: Without grace, humans cannot
+    *Source*: Romans 1:20 ("So that they are without excuse"); Romans 2:14-15
+    ("the requirements of the law are written on their hearts, their
+    consciences also bearing witness"). Paul explicitly says moral knowledge
+    is accessible without special revelation.
+
+    *Grounds*: natural law theory (NaturalLaw.lean axioms 1-3), the claim that
+    moral truths are objective and knowable. CCC §1954: "The natural law…
+    is nothing other than the light of understanding placed in us by God." -/
+axiom s6_moral_realism :
+  ∀ (mp : MoralProposition), moralTruthValue mp → accessibleToReason mp
+
+/-- Provenance tag for S6. -/
+def s6_provenance : Provenance := Provenance.scripture "Rom 1:20; Rom 2:14-15"
+
+-- Helpers for S7
+/-- Whether an agent is directed toward the good. -/
+axiom directedTowardGood : Agent → Prop
+
+/-- The freedom degree an agent possesses. -/
+axiom agentFreedom : Agent → FreedomDegree
+
+/-- **S7. TELEOLOGICAL_FREEDOM**: Freedom is ordered toward the good; choosing
+    evil is a defect that diminishes freedom rather than expressing it.
+
+    *Source*: John 8:34 ("everyone who sins is a slave to sin"); John 8:36
+    ("if the Son sets you free, you will be free indeed"); Galatians 5:1
+    ("for freedom Christ has set us free"). Jesus explicitly teaches that
+    freedom is directed toward the good and that sin is bondage, not freedom.
+
+    *Grounds*: Freedom.lean axioms 10-13 (good increases freedom, evil diminishes
+    it, evil possible only in imperfect freedom, responsibility proportional to
+    freedom). CCC §1733: "The more one does what is good, the freer one becomes." -/
+axiom s7_teleological_freedom :
+  ∀ (a1 a2 : Agent),
+    directedTowardGood a1 → ¬ directedTowardGood a2 →
+    freedomLt (agentFreedom a2) (agentFreedom a1)
+
+/-- Provenance tag for S7. -/
+def s7_provenance : Provenance := Provenance.scripture "Jn 8:34-36; Gal 5:1"
+
+/-- **S8. GRACE_NECESSARY_AND_TRANSFORMATIVE**: Without grace, humans cannot
     perform saving good; and grace actually transforms the person (it does not
     merely declare them righteous extrinsically).
 
-    *Source*: Second Council of Orange (529 AD), Canon 7: "If anyone affirms
-    that we can… do anything good pertaining to salvation… without the
-    illumination and inspiration of the Holy Spirit… he is deceived."
-    Council of Trent, Session 6, Canon 11: anathema on forensic-only
-    justification.
+    *Source*: John 15:5 ("without me you can do nothing"); 2 Corinthians 5:17
+    ("if anyone is in Christ, he is a new creation"); Ezekiel 36:26 ("I will
+    give you a new heart and put a new spirit in you"). Multiple passages
+    explicitly assert both the necessity of grace and its transformative
+    (not merely forensic) character.
 
     *Grounds*: Grace.lean axioms 20-21 (preparation_requires_prevenient,
     prevenient_grace_unconditioned), Justification.lean axiom 23
     (grace_is_transformative). CCC §1999: "Grace… is a participation in
     the life of God." -/
-axiom t1_grace_necessary_and_transformative :
+axiom s8_grace_necessary_and_transformative :
   ∀ (p : Person) (g : Grace),
     graceGiven p g → graceTransforms g p
 
+/-- Provenance tag for S8. -/
+def s8_provenance : Provenance := Provenance.scripture "Jn 15:5; 2 Cor 5:17; Ezek 36:26"
+
+/-- **S9. CONSCIENCE_BINDS**: The certain judgment of practical reason about
+    the good obliges the agent to follow it; acting against conscience is
+    always wrong.
+
+    *Source*: Romans 14:23 ("whatever does not proceed from faith is sin");
+    Acts 24:16 ("I strive always to keep my conscience clear before God and
+    man"). Paul explicitly grounds the binding force of conscience in the
+    obligation to act from conviction.
+
+    *Grounds*: Conscience.lean axioms 15-19 (conscience_always_binds,
+    acting_against_conscience_wrong, culpable/innocent ignorance, duty to form
+    conscience). CCC §1790: "A human being must always obey the certain judgment
+    of his conscience." -/
+axiom s9_conscience_binds :
+  ∀ (p : Person) (a : Action), conscienceJudges p a → obligated p a
+
+/-- Provenance tag for S9. -/
+def s9_provenance : Provenance := Provenance.scripture "Rom 14:23; Acts 24:16"
+
+-- ============================================================================
+-- T1-T3: SACRED TRADITION AXIOMS — with Council references (3)
+-- ============================================================================
+
+/-- **T1. LIBERTARIAN_FREE_WILL**: Agents can genuinely choose otherwise;
+    freedom is not merely the absence of external coercion.
+
+    *Source*: Council of Trent, Session 6, Canon 4: anathema on the claim that
+    free will "does nothing whatever and is merely passive." Sirach 15:14-17
+    ("It was he who created man in the beginning, and he left him in the power
+    of his own inclination") provides scriptural basis, but the distinctively
+    *libertarian* (as opposed to compatibilist) reading is a theological
+    inference crystallized at Trent.
+
+    *Grounds*: Hell.lean axiom 4 (freedom_is_libertarian), moral responsibility,
+    the possibility of self-exclusion from God. CCC §1730: "God created man a
+    rational being, conferring on him the dignity of a person who can initiate
+    and control his own actions." -/
+axiom t1_libertarian_free_will :
+  ∀ (a : Agent), couldChooseOtherwise a
+
 /-- Provenance tag for T1. -/
-def t1_provenance : Provenance := Provenance.tradition "Orange 529 AD, Canon 7; Trent Session 6, Canon 11"
+def t1_provenance : Provenance := Provenance.tradition "Sir 15:14; Trent Session 6"
 
 /-- **T2. GRACE_PRESERVES_FREEDOM**: Divine initiative and human freedom are
     compatible; grace enables but does not coerce cooperation.
 
     *Source*: Council of Trent, Session 6, Chapter 5: "Free will, moved and
     excited by God… can reject [grace]." Canon 4: anathema on the claim that
-    free will "does nothing whatever and is merely passive."
+    free will "does nothing whatever and is merely passive." Phil 2:12-13
+    ("work out your own salvation with fear and trembling, for it is God who
+    works in you") provides the scriptural basis.
 
     *Grounds*: Grace.lean axiom 22 (divine_initiative_preserves_freedom),
     Justification.lean axiom 24 (human_cooperation_in_justification).
@@ -343,7 +413,7 @@ axiom t2_grace_preserves_freedom :
     graceGiven p g → (cooperatesWithGrace p g ∨ ¬ cooperatesWithGrace p g)
 
 /-- Provenance tag for T2. -/
-def t2_provenance : Provenance := Provenance.tradition "Trent Session 6, Chapter 5 & Canon 4"
+def t2_provenance : Provenance := Provenance.tradition "Phil 2:12-13; Trent Session 6"
 
 /-- **T3. SACRAMENTAL_EFFICACY**: Sacraments are effective signs — they confer
     the grace they signify (ex opere operato).
@@ -351,6 +421,8 @@ def t2_provenance : Provenance := Provenance.tradition "Trent Session 6, Chapter
     *Source*: Council of Trent, Session 7, Canon 8: "If anyone says that by
     the said sacraments… grace is not conferred… but that faith alone in the
     divine promise suffices for the obtaining of grace: let him be anathema."
+    John 3:5 ("unless one is born of water and the Spirit") and Acts 2:38
+    ("be baptized… for the forgiveness of your sins") provide scriptural basis.
 
     *Grounds*: Justification.lean axiom 25 (baptism_confers_justification).
     CCC §1127: "Celebrated worthily in faith, the sacraments confer the grace
@@ -359,61 +431,31 @@ axiom t3_sacramental_efficacy :
   ∀ (s : Sacrament), signifies s → confers s
 
 /-- Provenance tag for T3. -/
-def t3_provenance : Provenance := Provenance.tradition "Trent Session 7, Canon 8"
-
-/-- **T4. CONSCIENCE_BINDS**: The certain judgment of practical reason about
-    the good obliges the agent to follow it; acting against conscience is
-    always wrong.
-
-    *Source*: Aquinas, De Veritate q.17 a.3; ST I-II q.19 a.5 ("Every will
-    at variance with reason… is always evil"). Vatican II, Dignitatis Humanae §3.
-
-    *Grounds*: Conscience.lean axioms 15-19 (conscience_always_binds,
-    acting_against_conscience_wrong, culpable/innocent ignorance, duty to form
-    conscience). CCC §1790: "A human being must always obey the certain judgment
-    of his conscience." -/
-axiom t4_conscience_binds :
-  ∀ (p : Person) (a : Action), conscienceJudges p a → obligated p a
-
-/-- Provenance tag for T4. -/
-def t4_provenance : Provenance := Provenance.tradition "Aquinas ST I-II q.19 a.5; Vatican II DH §3"
-
-/-- **T5. EVIL_IS_PRIVATION**: Evil is not a positive reality but the absence
-    of a due good — a privation, not a substance.
-
-    *Source*: Augustine, Confessions VII.12 ("Evil has no existence except as
-    a privation of good"); Aquinas, ST I q.48 a.1 and q.49.
-
-    *Grounds*: Providence.lean axiom 29 (causation_asymmetry), axiom 40
-    (god_not_cause_of_evil). CCC §311: "God is in no way, directly or
-    indirectly, the cause of moral evil." -/
-axiom t5_evil_is_privation :
-  ∀ (e : Prop), isEvil e → isDueGoodAbsent e
-
-/-- Provenance tag for T5. -/
-def t5_provenance : Provenance := Provenance.tradition "Augustine Confessions VII.12; Aquinas ST I q.48-49"
+def t3_provenance : Provenance := Provenance.tradition "Jn 3:5; Acts 2:38; Trent Session 7"
 
 -- ============================================================================
 -- Summary: the complete axiom set with provenance
 -- ============================================================================
 
-/-- The 15 base axioms with their provenance tags, for programmatic access. -/
+/-- The 15 base axioms with their provenance tags, for programmatic access.
+    Organized 3 Philosophical / 9 Scriptural / 3 Tradition (reclassified from
+    the original 5/5/5 split — most assumptions trace to Scripture). -/
 def baseAxiomProvenance : List (String × Provenance) :=
   [ ("P1_HYLOMORPHISM",                     p1_provenance)
-  , ("P2_MORAL_REALISM",                    p2_provenance)
-  , ("P3_TELEOLOGICAL_FREEDOM",             p3_provenance)
-  , ("P4_LIBERTARIAN_FREE_WILL",            p4_provenance)
-  , ("P5_TWO_TIER_CAUSATION",               p5_provenance)
+  , ("P2_TWO_TIER_CAUSATION",               p2_provenance)
+  , ("P3_EVIL_IS_PRIVATION",                p3_provenance)
   , ("S1_GOD_IS_LOVE",                      s1_provenance)
   , ("S2_UNIVERSAL_SALVIFIC_WILL",          s2_provenance)
   , ("S3_LAW_ON_HEARTS",                    s3_provenance)
   , ("S4_UNIVERSAL_PROVIDENCE",             s4_provenance)
   , ("S5_SIN_SEPARATES",                    s5_provenance)
-  , ("T1_GRACE_NECESSARY_TRANSFORMATIVE",   t1_provenance)
+  , ("S6_MORAL_REALISM",                    s6_provenance)
+  , ("S7_TELEOLOGICAL_FREEDOM",             s7_provenance)
+  , ("S8_GRACE_NECESSARY_TRANSFORMATIVE",   s8_provenance)
+  , ("S9_CONSCIENCE_BINDS",                 s9_provenance)
+  , ("T1_LIBERTARIAN_FREE_WILL",            t1_provenance)
   , ("T2_GRACE_PRESERVES_FREEDOM",          t2_provenance)
   , ("T3_SACRAMENTAL_EFFICACY",             t3_provenance)
-  , ("T4_CONSCIENCE_BINDS",                 t4_provenance)
-  , ("T5_EVIL_IS_PRIVATION",               t5_provenance)
   ]
 
 end Catlib
