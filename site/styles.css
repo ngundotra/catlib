@@ -42,22 +42,7 @@ html::-webkit-scrollbar {
 body {
   font-family: 'Cormorant Garamond', 'Georgia', serif;
   color: var(--text);
-  background-color: var(--bg);
-  background-image:
-    repeating-linear-gradient(
-      120deg,
-      transparent,
-      transparent 80px,
-      rgba(139, 115, 85, 0.03) 80px,
-      rgba(139, 115, 85, 0.03) 160px
-    ),
-    repeating-linear-gradient(
-      60deg,
-      transparent,
-      transparent 100px,
-      rgba(160, 137, 104, 0.02) 100px,
-      rgba(160, 137, 104, 0.02) 200px
-    );
+  background: var(--bg);
   line-height: 1.8;
   font-weight: 400;
 }
