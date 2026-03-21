@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conjugal Ethics &mdash; Catlib</title>
+  <meta name="description" content="How should faithful Catholics think about family size, contraception, and the mother's health? A formal verification approach to the most practically contested Catholic teaching.">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Conjugal Ethics: The Inseparability Principle and Its Breakdown">
+  <meta property="og:description" content="Every Christian denomination agreed on contraception until 1930. Then a single axiom swap changed everything. Formal verification maps what actually happened.">
+  <meta property="og:site_name" content="Catlib">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Conjugal Ethics: The Inseparability Principle and Its Breakdown">
+  <meta name="twitter:description" content="The history and logic of the Catholic teaching on contraception, formalized in Lean 4.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel+Decorative:wght@400;700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="articles.css">
+</head>
+<body>
+
+  <!-- Sidebar toggle for viewing Lean theorems -->
+  <input type="checkbox" id="sidebar-toggle" class="sidebar-toggle">
+  <label for="sidebar-toggle" class="sidebar-label">Lean Code</label>
+  <div class="sidebar-panel">
+    <h3>Theorem Reference</h3>
+
+    <div class="sidebar-section">
+      <h4>ConjugalAct</h4>
+<pre>structure ConjugalAct where
+  spouse1 : Person
+  spouse2 : Person
+  unitiveIntact : Prop
+  procreativeIntact : Prop</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>inseparability_principle</h4>
+<pre>axiom inseparability_principle :
+  &forall; (act : ConjugalAct),
+    act.unitiveIntact &rarr;
+    act.procreativeIntact &rarr;
+    act.bothMeaningsIntact</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>contraception_violates_inseparability</h4>
+<pre>theorem
+  contraception_violates_inseparability
+  (act : ConjugalAct)
+  (_h_unitive : act.unitiveIntact)
+  (h_not_proc : &not;act.procreativeIntact)
+  : &not;act.bothMeaningsIntact := by
+  intro &langle;_, h_proc&rangle;
+  exact h_not_proc h_proc</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>contraception_intrinsically_evil</h4>
+<pre>theorem contraception_intrinsically_evil
+  (act : ConjugalAct)
+  (h_contra : ContraceptionObject act)
+  : IntrinsicallyEvil
+      act.bothMeaningsIntact := by
+  intro &langle;_, h_proc&rangle;
+  exact h_contra.2 h_proc</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>nfp_is_permissible</h4>
+<pre>theorem nfp_is_permissible
+  (eval : MoralEvaluation)
+  (h_obj : eval.objectIsGood)
+  (h_int : eval.intentionIsGood)
+  (h_circ :
+    eval.circumstancesAppropriate)
+  : eval.isGood := by
+  exact &langle;h_obj, h_int, h_circ&rangle;</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>medical_treatment_permissible</h4>
+<pre>theorem medical_treatment_permissible
+  (dec : DoubleEffectConditions)
+  (h1 : dec.actNotIntrinsicallyEvil)
+  (h2 : dec.goodIntended)
+  (h3 : dec.badNotMeansToGood)
+  (h4 : dec.proportionate)
+  : dec.isPermissible := by
+  exact &langle;h1, h2, h3, h4&rangle;</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>A1_SEPARABILITY (Protestant)</h4>
+<pre>-- NOT Catholic teaching.
+-- The axiom Lambeth 1930 introduced.
+def A1_SEPARABILITY
+  (act : ConjugalAct)
+  (justReason : Prop) : Prop :=
+  justReason &rarr;
+    (act.unitiveIntact &and;
+     &not;act.procreativeIntact &rarr; True)</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>Source Files</h4>
+<pre><a href="https://github.com/ngundotra/catlib/blob/main/Catlib/MoralTheology/ConjugalEthics.lean" style="color: var(--accent-gold);">ConjugalEthics.lean</a>
+<a href="https://github.com/ngundotra/catlib/blob/main/Catlib/MoralTheology/SourcesOfMorality.lean" style="color: var(--accent-gold);">SourcesOfMorality.lean</a>
+<a href="https://github.com/ngundotra/catlib/blob/main/Catlib/MoralTheology/LegitimateDefense.lean" style="color: var(--accent-gold);">LegitimateDefense.lean</a></pre>
+    </div>
+
+    <p class="close-hint">Click the tab again to close</p>
+  </div>
+
+  <main>
+    <a href="../index.html" class="back-link">Back to Catlib</a>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="ornament">&#10053;</div>
+      <h1>Conjugal Ethics</h1>
+      <p class="subtitle">The inseparability principle and its breakdown</p>
+      <p class="subtitle">
+        How should faithful Catholics think about family size,
+        contraception, and the mother&rsquo;s health?
+      </p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Introduction -->
+    <section class="article-body">
+      <p>
+        <span class="versal">T</span>his is probably the most practically
+        contested teaching in the Catholic Catechism. Not the Trinity, not the
+        Eucharist, not purgatory&nbsp;&mdash; contraception. Surveys consistently
+        show that the majority of self-identified Catholics in the West disagree
+        with their Church on this point. And yet the teaching has never changed.
+      </p>
+      <p>
+        Why? Because the teaching rests on a single axiom&nbsp;&mdash; the
+        <em>inseparability principle</em>&nbsp;&mdash; that the Catholic Church
+        considers non-negotiable. And that axiom has a history that most
+        Catholics (and most Protestants) have never heard: every Christian
+        denomination on earth agreed with it until 1930. Then one conference
+        changed one axiom, and the entire Christian consensus on contraception
+        collapsed within a generation.
+      </p>
+      <p>
+        This article traces what happened, formalizes the reasoning in
+        <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/MoralTheology/ConjugalEthics.lean">Lean 4</a>,
+        and lays out the Catholic position with its hidden assumptions exposed.
+        The goal is not to argue that the teaching is easy. The goal is to show
+        that it is <em>coherent</em>&nbsp;&mdash; and to make visible the
+        precise point where other Christians diverge.
+      </p>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Section 1: Historical Consensus -->
+    <section class="article-body">
+      <h2>Every Christian Denomination Agreed &mdash; Until 1930</h2>
+
+      <p>
+        <span class="versal">F</span>or nineteen centuries, the Christian
+        position on contraception was unanimous. Catholic, Orthodox, Anglican,
+        Lutheran, Reformed&nbsp;&mdash; every tradition that had anything to say
+        on the subject said the same thing: deliberately frustrating the
+        procreative purpose of the conjugal act is morally wrong.
+      </p>
+      <p>
+        This was not a Catholic invention. The earliest Christian text outside
+        the New Testament, the <em>Didache</em> (c. 100 AD), condemned
+        abortifacients. Clement of Alexandria, John Chrysostom, Augustine, and
+        Jerome all taught that contraception violated the natural order of
+        marriage. The Reformers agreed: Luther called contraception
+        &ldquo;far more atrocious than incest and adultery&rdquo;
+        (<em>Commentary on Genesis</em>, 38:10). Calvin was equally direct.
+        John Wesley preached against it. Every major Protestant confession
+        either condemned it or assumed its wrongness as obvious.
+      </p>
+      <p>
+        This consensus held through the twentieth century. As late as 1920,
+        the Anglican Lambeth Conference <em>reaffirmed</em> the traditional
+        teaching. Resolution 68 of 1920 stated that the Conference
+        &ldquo;utters an emphatic warning against the use of unnatural means
+        for the avoidance of conception.&rdquo;
+      </p>
+
+      <div class="assumption-callout">
+        <strong>The 1920 position was ecumenical.</strong> Catholic, Anglican,
+        Lutheran, Reformed, Orthodox, Methodist, Baptist&nbsp;&mdash; all held
+        the inseparability principle. This was not a denominational distinctive.
+        It was the universal Christian teaching.
+      </div>
+
+      <p>
+        Then came 1930. The seventh Lambeth Conference, under pressure from
+        the growing birth control movement (Margaret Sanger&rsquo;s American
+        Birth Control League, Marie Stopes in Britain) and pastoral concern
+        for couples in genuine economic hardship during the Great Depression,
+        passed Resolution 15. It read:
+      </p>
+
+      <blockquote style="border-left: 3px solid var(--accent-gold); padding: 0.8rem 1.2rem; margin: 1.2rem 0; font-style: italic; color: var(--text-light);">
+        &ldquo;Where there is a clearly felt moral obligation to limit or
+        avoid parenthood, the method must be decided on Christian principles.
+        The primary and obvious method is complete abstinence from intercourse
+        (as far as may be necessary) in a life of discipline and self-control
+        lived in the power of the Holy Spirit. Nevertheless in those cases
+        where there is such a clearly felt moral obligation to limit or avoid
+        parenthood, and where there is a morally sound reason for avoiding
+        complete abstinence, the Conference agrees that other methods may be
+        used, provided that this is done in the light of the same Christian
+        principles.&rdquo;
+        <br><span style="font-style: normal; font-size: 0.85rem;">&mdash; Lambeth Conference, Resolution 15 (1930)</span>
+      </blockquote>
+
+      <p>
+        The language was cautious, hedged, and pastoral. But the axiom change
+        was absolute. For the first time in Christian history, a major
+        Christian body had officially declared that the unitive and procreative
+        meanings of the conjugal act <em>could</em> be deliberately separated
+        when there was &ldquo;morally sound reason.&rdquo;
+      </p>
+
+      <p>
+        The Catholic Church responded almost immediately. On December 31, 1930,
+        Pope Pius XI issued <em>Casti Connubii</em>, which reaffirmed the
+        inseparability principle in the strongest possible terms. Thirty-eight
+        years later, Pope Paul VI repeated it in <em>Humanae Vitae</em> (1968),
+        the most controversial encyclical of the twentieth century.
+      </p>
+
+      <p>
+        Meanwhile, every other Protestant denomination followed the Anglican
+        lead. The Federal Council of Churches (a major American Protestant
+        body) accepted contraception in 1931. By the 1960s, the consensus
+        had completely reversed: Protestantism now overwhelmingly accepted
+        contraception within marriage. The change happened so fast, and so
+        thoroughly, that most Protestants today are unaware there was ever
+        a different position.
+      </p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Section 2: The Inseparability Principle Formalized -->
+    <section class="article-body">
+      <h2>The Inseparability Principle, Formalized</h2>
+
+      <p>
+        <span class="versal">T</span>he Catholic teaching on contraception
+        rests on one axiom, declared in <em>Humanae Vitae</em> &sect;12:
+      </p>
+
+      <blockquote style="border-left: 3px solid var(--accent); padding: 0.8rem 1.2rem; margin: 1.2rem 0; font-style: italic; color: var(--text-light);">
+        &ldquo;The Church&hellip; teaches that each and every marital act
+        must of necessity retain its intrinsic relationship to the
+        procreation of human life. This particular doctrine&hellip; is based
+        on the inseparable connection, established by God, which man on his
+        own initiative may not break, between the unitive significance and
+        the procreative significance which are both inherent to the marriage
+        act.&rdquo;
+        <br><span style="font-style: normal; font-size: 0.85rem;">&mdash; <em>Humanae Vitae</em> &sect;12</span>
+      </blockquote>
+
+      <p>
+        In the
+        <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/MoralTheology/ConjugalEthics.lean">Lean formalization</a>,
+        this becomes:
+      </p>
+
+      <pre style="background: var(--code-bg); color: var(--code-text); padding: 1.2rem 1.5rem; border-radius: 4px; font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.78rem; line-height: 1.7; overflow-x: auto; margin: 1rem 0;">
+<span style="color: #7a9ec2;">structure</span> ConjugalAct <span style="color: #7a9ec2;">where</span>
+  spouse1 : Person
+  spouse2 : Person
+  unitiveIntact : Prop      <span style="color: #6a5a4a;">-- expresses spousal love</span>
+  procreativeIntact : Prop  <span style="color: #6a5a4a;">-- open to life</span>
+
+<span style="color: #7a9ec2;">axiom</span> inseparability_principle :
+  <span style="color: #c8a070;">&forall;</span> (act : ConjugalAct),
+    act.unitiveIntact &rarr; act.procreativeIntact &rarr;
+    act.bothMeaningsIntact</pre>
+
+      <div class="assumption-callout">
+        <strong>Hidden assumption: the inseparability principle is asserted,
+        not derived.</strong> <em>Humanae Vitae</em> says this connection is
+        &ldquo;established by God&rdquo; and grounded in natural law, but
+        never provides a formal derivation of <em>why</em> the two meanings
+        are inseparable. Aquinas grounded it in natural teleology&nbsp;&mdash;
+        the procreative end of sex is evident from biology. But whether
+        teleological facts (what sex is <em>for</em>) generate moral
+        obligations (what we <em>must</em> do with sex) is itself a
+        philosophical question&nbsp;&mdash; the is-ought gap. The Catechism
+        treats the inseparability principle as a starting point, not a
+        conclusion.
+      </div>
+
+      <p>
+        Once you accept this axiom, the Catholic position on contraception
+        follows with logical necessity. Contraception&rsquo;s moral object is
+        to retain the unitive meaning while deliberately frustrating the
+        procreative meaning. The inseparability principle says you cannot do
+        this. Therefore contraception is intrinsically evil.
+      </p>
+
+      <p>
+        And once you <em>reject</em> this axiom, the Catholic position does
+        not follow. That is exactly what happened after 1930.
+      </p>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Section 3: NFP vs Contraception -->
+    <section class="article-body">
+      <h2>NFP vs. Contraception &mdash; Same Outcome, Different Object</h2>
+
+      <p>
+        <span class="versal">T</span>his is the most contested distinction in
+        Catholic sexual ethics. Critics have called it &ldquo;moral hair-splitting&rdquo;
+        and &ldquo;a distinction without a difference.&rdquo; The objection is
+        simple: if a couple uses NFP to avoid pregnancy, and another couple
+        uses a condom to avoid pregnancy, the outcome is the same&nbsp;&mdash;
+        no baby. How can one be moral and the other immoral?
+      </p>
+
+      <p>
+        The answer depends on an axiom we already formalized in
+        <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/MoralTheology/SourcesOfMorality.lean">SourcesOfMorality.lean</a>:
+        the <strong>object-independence axiom</strong>&nbsp;&mdash; the moral
+        character of an act&rsquo;s object is independent of its consequences.
+        This is the deontological core of Catholic moral theology.
+      </p>
+
+      <p>
+        Under this framework, the two acts have <em>different moral objects</em>:
+      </p>
+
+      <div class="axis-card">
+        <div class="axis-label">The Object Distinction</div>
+        <div class="axis-side">
+          <strong><span class="tag tag-catholic">NFP</span></strong>
+          <em>Object: not having sex during the fertile period.</em>
+          Abstaining from sex is never intrinsically evil. You cannot
+          sin by choosing <em>not</em> to do something that is not
+          obligatory. When the couple does have relations (during the
+          infertile period), both meanings are intact: the act is
+          unitive and naturally (not artificially) infertile.
+        </div>
+        <div class="axis-side">
+          <strong><span class="tag tag-catholic">Contraception</span></strong>
+          <em>Object: having sex while rendering procreation impossible.</em>
+          The conjugal act is performed, but its procreative meaning is
+          deliberately frustrated. Under the inseparability principle,
+          this separates what cannot be separated. The object itself is
+          disordered.
+        </div>
+      </div>
+
+      <p>
+        In the Lean formalization, this distinction is captured precisely:
+      </p>
+
+      <pre style="background: var(--code-bg); color: var(--code-text); padding: 1.2rem 1.5rem; border-radius: 4px; font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.78rem; line-height: 1.7; overflow-x: auto; margin: 1rem 0;">
+<span style="color: #6a5a4a;">-- NFP: the object is abstinence (not evil)</span>
+<span style="color: #7a9ec2;">def</span> NFPObject : Prop := True
+
+<span style="color: #6a5a4a;">-- Contraception: the object separates the meanings</span>
+<span style="color: #7a9ec2;">def</span> ContraceptionObject (act : ConjugalAct) : Prop :=
+  act.unitiveIntact <span style="color: #c8a070;">&and;</span> <span style="color: #c8a070;">&not;</span>act.procreativeIntact</pre>
+
+      <p>
+        The theorem <code>contraception_intrinsically_evil</code> then shows
+        that contraception&rsquo;s object is never compatible with the
+        inseparability principle, making it intrinsically evil under the
+        <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/MoralTheology/SourcesOfMorality.lean"><code>IntrinsicallyEvil</code></a>
+        definition from the three-source framework.
+      </p>
+
+      <div class="assumption-callout">
+        <strong>Hidden assumption: the act/object distinction does real work
+        here.</strong> The Catholic argument requires that two acts with the
+        same consequence (no child) can have different moral objects. This
+        is the object-independence axiom in action. A consequentialist
+        rejects this axiom: if the outcome is the same, the morality is
+        the same. Under consequentialism, NFP and contraception are morally
+        equivalent. The entire Catholic distinction depends on a
+        non-consequentialist framework.
+      </div>
+
+      <p>
+        This is worth sitting with. If you find the NFP/contraception
+        distinction persuasive, you implicitly accept the object-independence
+        axiom. If you find it absurd, you are likely operating from
+        consequentialist premises. Neither position is stupid. They are
+        different axiom sets.
+      </p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Section 4: Mother's Health -->
+    <section class="article-body">
+      <h2>The Mother&rsquo;s Health &mdash; Double Effect</h2>
+
+      <p>
+        <span class="versal">O</span>ne of the most pastorally urgent
+        questions is: what about a woman who needs hormonal treatment for
+        a medical condition (endometriosis, polycystic ovary syndrome,
+        severe menstrual disorders) and that treatment has a contraceptive
+        side effect?
+      </p>
+
+      <p>
+        The Catholic answer uses the principle of double effect, the same
+        principle formalized in
+        <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/MoralTheology/LegitimateDefense.lean">LegitimateDefense.lean</a>
+        for self-defense. A medical treatment with a contraceptive side
+        effect is permissible when all four conditions are met:
+      </p>
+
+      <ol>
+        <li>
+          <strong>The act itself is not intrinsically evil.</strong>
+          Taking medicine for a medical condition is not evil. The act
+          is &ldquo;treating an illness,&rdquo; not &ldquo;contracepting.&rdquo;
+        </li>
+        <li>
+          <strong>The good effect is intended; the bad effect is not.</strong>
+          The woman intends to treat her endometriosis. The temporary
+          infertility is foreseen but not desired.
+        </li>
+        <li>
+          <strong>The bad effect is not the means to the good.</strong>
+          The infertility is not the mechanism by which the medicine heals.
+          The medicine works on the underlying condition; the infertility
+          is a separate pharmacological side effect.
+        </li>
+        <li>
+          <strong>Proportionality.</strong>
+          The medical benefit outweighs the side effect of temporary
+          infertility.
+        </li>
+      </ol>
+
+      <p>
+        The Lean theorem <code>medical_treatment_permissible</code>
+        formalizes this directly:
+      </p>
+
+      <pre style="background: var(--code-bg); color: var(--code-text); padding: 1.2rem 1.5rem; border-radius: 4px; font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.78rem; line-height: 1.7; overflow-x: auto; margin: 1rem 0;">
+<span style="color: #7a9ec2;">theorem</span> medical_treatment_permissible
+    (dec : DoubleEffectConditions)
+    (h_not_evil : dec.actNotIntrinsicallyEvil)
+    (h_intended : dec.goodIntended)
+    (h_not_means : dec.badNotMeansToGood)
+    (h_proportionate : dec.proportionate) :
+    dec.isPermissible := by
+  exact &langle;h_not_evil, h_intended, h_not_means, h_proportionate&rangle;</pre>
+
+      <p>
+        This is not a loophole. It is the principle working exactly as
+        designed. The moral object of the act is &ldquo;treating an
+        illness&rdquo;&nbsp;&mdash; a good object. The contraceptive
+        effect is a side effect, not the purpose. Double effect permits
+        tolerating a bad side effect when the act itself is good, the
+        intention is good, the bad effect is not the means to the good,
+        and the good outweighs the bad.
+      </p>
+
+      <div class="assumption-callout">
+        <strong>Practical note.</strong> This means a Catholic woman on
+        hormonal medication for a genuine medical condition is not
+        contracepting, even though the medication prevents conception.
+        The moral object is different. Her confessor, spiritual director,
+        and physician should all be involved in discerning the situation,
+        but the principle is clear: medical treatment with a contraceptive
+        side effect is morally permissible under double effect.
+      </div>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Section 5: Denominational Table -->
+    <section class="article-body">
+      <h2>The Denominational Landscape</h2>
+
+      <p>
+        <span class="versal">H</span>ere is the full picture of how
+        Christian positions on conjugal ethics have shifted over time.
+        The pre-1930 column represents the <em>universal Christian
+        consensus</em> that held for nineteen centuries.
+      </p>
+
+      <table class="axiom-table">
+        <thead>
+          <tr>
+            <th>Position</th>
+            <th>Pre-1930 <span class="tag tag-shared" style="font-size: 0.55rem;">All</span></th>
+            <th>Catholic Today <span class="tag tag-catholic" style="font-size: 0.55rem;">Catholic</span></th>
+            <th>Protestant Today <span class="tag tag-lutheran" style="font-size: 0.55rem;">Protestant</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Inseparability principle</strong></td>
+            <td>All accepted</td>
+            <td>Still accepted (HV &sect;12)</td>
+            <td>Dropped (Lambeth 1930)</td>
+          </tr>
+          <tr>
+            <td><strong>Contraception</strong></td>
+            <td>All rejected</td>
+            <td>Still rejected (CCC &sect;2370)</td>
+            <td>Permitted in marriage</td>
+          </tr>
+          <tr>
+            <td><strong>NFP</strong></td>
+            <td>Not yet developed</td>
+            <td>Permitted for just reasons (HV &sect;16)</td>
+            <td>Unnecessary (contraception OK)</td>
+          </tr>
+          <tr>
+            <td><strong>Family size</strong></td>
+            <td>&ldquo;Be fruitful and multiply&rdquo;</td>
+            <td>Responsible parenthood (CCC &sect;2368)</td>
+            <td>Personal decision</td>
+          </tr>
+          <tr>
+            <td><strong>Medical double effect</strong></td>
+            <td>Not yet articulated for this case</td>
+            <td>Permitted (four conditions)</td>
+            <td>Unnecessary (contraception OK)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        The pattern is striking. The Catholic column is essentially unchanged
+        from the pre-1930 consensus, with the addition of NFP as a permitted
+        method for spacing (a development, not a reversal). The Protestant
+        column represents a complete inversion&nbsp;&mdash; made possible by
+        one axiom swap.
+      </p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Section 6: The Anglican Axiom Swap -->
+    <section class="article-body">
+      <h2>The Anglican Axiom Swap</h2>
+
+      <p>
+        <span class="versal">W</span>hat did the 1930 Lambeth Conference
+        actually change? In the language of the Catlib project, it
+        performed an axiom swap. Here is the precise mapping:
+      </p>
+
+      <div class="finding-card">
+        <h3><span class="tag" style="background: rgba(180, 60, 60, 0.1); color: #a03030; border: 1px solid rgba(180, 60, 60, 0.25);">Dropped</span> The Inseparability Principle</h3>
+        <p>
+          The unitive and procreative meanings of the conjugal act are
+          inseparable; man may not break this connection on his own
+          initiative.
+        </p>
+        <p>
+          This had been the universal Christian axiom for nineteen
+          centuries. Lambeth 1930 did not explicitly say &ldquo;we reject
+          inseparability.&rdquo; But by permitting contraception &ldquo;where
+          there is a morally sound reason,&rdquo; it implicitly adopted the
+          negation.
+        </p>
+      </div>
+
+      <div class="finding-card">
+        <h3><span class="tag" style="background: rgba(40, 120, 40, 0.1); color: #287828; border: 1px solid rgba(40, 120, 40, 0.25);">Added</span> A1_SEPARABILITY</h3>
+        <p>
+          The unitive and procreative meanings <em>can</em> be deliberately
+          separated when there is a morally sound reason. In the Lean
+          formalization:
+        </p>
+        <pre style="background: var(--code-bg); color: var(--code-text); padding: 0.8rem 1rem; border-radius: 4px; font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.75rem; line-height: 1.6; margin: 0.8rem 0;">
+<span style="color: #7a9ec2;">def</span> A1_SEPARABILITY
+    (act : ConjugalAct)
+    (justReason : Prop) : Prop :=
+  justReason &rarr;
+    (act.unitiveIntact &and; &not;act.procreativeIntact &rarr; True)</pre>
+      </div>
+
+      <div class="finding-card">
+        <h3><span class="tag tag-shared">Kept</span> Other Moral Constraints</h3>
+        <p>
+          Resolution 15 preserved several constraints: sex should be within
+          marriage, contraception should be by mutual consent, the decision
+          should be made &ldquo;in the light of Christian principles.&rdquo;
+          Lambeth did not endorse a free-for-all. It endorsed a <em>principled
+          exception</em>&nbsp;&mdash; but the exception swallowed the rule
+          within a generation.
+        </p>
+      </div>
+
+      <div class="assumption-callout">
+        <strong>Once you accept A1_SEPARABILITY, the Catholic position on
+        contraception does not follow.</strong> And that is exactly what
+        happened across Protestantism. If the two meanings <em>can</em> be
+        separated for good reasons, then there is no principled objection to
+        contraception within marriage. The only remaining questions are
+        practical: which methods? under what circumstances? with what
+        safeguards? These are important questions, but they are questions
+        of prudence, not of principle. The principled objection died with
+        the inseparability axiom.
+      </div>
+
+      <p>
+        The speed of the collapse is itself evidence of how much weight the
+        inseparability principle was bearing. Once it was removed, the entire
+        structure that depended on it fell. Within thirty years, virtually
+        every major Protestant denomination had accepted contraception.
+        Within fifty years, it was so thoroughly accepted that most
+        Protestants were unaware it had ever been controversial.
+      </p>
+
+      <p>
+        The Catholic Church saw this coming. <em>Casti Connubii</em> (1930)
+        explicitly warned that weakening the inseparability principle would
+        lead to the acceptance of contraception, then sterilization, then
+        abortion. Whether or not that slippery slope fully materialized
+        is debatable. What is not debatable is that the Catholic Church
+        identified the axiom swap correctly and refused to make it.
+      </p>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Section 7: What the Catechism Says About Family Size -->
+    <section class="article-body">
+      <h2>What the Catechism Actually Says About Family Size</h2>
+
+      <p>
+        <span class="versal">C</span>ontrary to popular caricature, the
+        Catholic Church does not teach that couples must have as many children
+        as biologically possible. The Catechism teaches <em>responsible
+        parenthood</em>&nbsp;&mdash; a concept that includes both generosity
+        toward life and prudent consideration of the family&rsquo;s
+        circumstances.
+      </p>
+
+      <p>
+        Here is what the Catechism actually says:
+      </p>
+
+      <ul>
+        <li>
+          <strong>No specific number is required.</strong> The Church has
+          never taught that couples must have a certain number of children.
+          &ldquo;Responsible parenthood&rdquo; is the standard.
+        </li>
+        <li>
+          <strong>Just reasons for spacing are permitted.</strong>
+          CCC &sect;2368: &ldquo;For just reasons, spouses may wish to space
+          the births of their children.&rdquo; Just reasons include the
+          mother&rsquo;s health, economic hardship, and the welfare of
+          existing children.
+        </li>
+        <li>
+          <strong>The method matters.</strong> Spacing must use methods that
+          respect the inseparability principle (i.e., NFP, not
+          contraception).
+        </li>
+        <li>
+          <strong>Selfishness is the wrong motive.</strong> CCC &sect;2368
+          continues: &ldquo;It is their duty to make certain that their
+          desire is not motivated by selfishness.&rdquo;
+        </li>
+        <li>
+          <strong>Conscience binds.</strong> The couple must follow their
+          informed conscience (S9 from our axiom set). This means the
+          final decision about family size rests with the couple, not
+          with their pastor, bishop, or anyone else&nbsp;&mdash; provided
+          their conscience is properly formed.
+        </li>
+      </ul>
+
+      <div class="assumption-callout">
+        <strong>Hidden assumption: &ldquo;just reasons&rdquo; is
+        undefined.</strong> In the Lean formalization, <code>JustReasons</code>
+        is an <em>opaque Prop</em>&nbsp;&mdash; deliberately left undefined
+        because the Catechism itself provides no decision procedure. The
+        Catechism gives examples (health, economics, existing children) but
+        never says exactly where the line is. Who decides what counts as
+        &ldquo;just&rdquo;? The answer is: the couple&rsquo;s informed
+        conscience. This is a genuine gap in the formal system&nbsp;&mdash;
+        and it is a gap the Catechism intentionally leaves open, trusting
+        couples to exercise prudence.
+      </div>
+
+      <p>
+        The tension is real. On one hand, the Church holds that
+        &ldquo;sacred Scripture and the Church&rsquo;s traditional practice
+        see in large families a sign of God&rsquo;s blessing and the
+        parents&rsquo; generosity&rdquo; (CCC &sect;2373). On the other hand,
+        the Church explicitly permits spacing for just reasons. The
+        resolution lies in the word <em>responsible</em>: generous but not
+        reckless, open to life but not blind to circumstances.
+      </p>
+
+      <p>
+        A Catholic couple with two children who are spacing for the
+        mother&rsquo;s health is doing nothing wrong. A Catholic couple with
+        eight children who are open to more is doing nothing wrong. The
+        Church trusts the conscience it demands be formed.
+      </p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Conclusion -->
+    <section class="article-body">
+      <h2>What the Formalization Reveals</h2>
+
+      <p>
+        <span class="versal">F</span>ormalizing CCC &sect;2366-2372 in
+        Lean 4 exposed several things the Catechism text alone does not
+        make visible:
+      </p>
+
+      <ol>
+        <li>
+          <strong>The inseparability principle is an axiom, not a theorem.</strong>
+          It is asserted, not derived. The Catechism says it is
+          &ldquo;established by God&rdquo; and grounded in natural law,
+          but never provides a formal argument for <em>why</em> the two
+          meanings are inseparable. Accepting or rejecting this axiom is
+          the single decision that generates the Catholic or Protestant
+          position on contraception.
+        </li>
+        <li>
+          <strong>The NFP/contraception distinction is coherent but
+          axiom-dependent.</strong> It depends on the object-independence
+          axiom from SourcesOfMorality.lean. If you accept that the moral
+          object of an act can be evaluated independently of consequences,
+          the distinction makes sense. If you reject that axiom
+          (consequentialism), the distinction collapses.
+        </li>
+        <li>
+          <strong>The medical double effect case is the clearest application.</strong>
+          Medical treatment with a contraceptive side effect is permitted
+          under exactly the same framework that permits lethal self-defense.
+          The four conditions of double effect map perfectly.
+        </li>
+        <li>
+          <strong>The denominational fracture is a single axiom swap.</strong>
+          Dropping the inseparability principle and adopting
+          A1_SEPARABILITY is the one change that generates the entire
+          Protestant position on contraception. Everything else follows.
+        </li>
+        <li>
+          <strong>&ldquo;Just reasons&rdquo; is a free parameter.</strong>
+          The Catechism provides examples but no formal definition. This is
+          intentional: it delegates the decision to the couple&rsquo;s
+          conscience. But it means the formal system has an undefined term
+          at a load-bearing position.
+        </li>
+      </ol>
+
+      <p>
+        This teaching is difficult. It is the most practically contested
+        point of Catholic moral theology, and no amount of formalization
+        makes it pastorally easy. What formalization does is make the
+        reasoning transparent: here are the axioms, here are the theorems,
+        here is where the denominations diverge, and here are the hidden
+        assumptions doing invisible work.
+      </p>
+
+      <p>
+        A person who rejects the inseparability principle is not being
+        stupid. They are making a different axiom choice&nbsp;&mdash; the
+        same choice the Anglican bishops made in 1930. A person who accepts
+        it is not being rigid. They are holding an axiom that was universal
+        in Christianity for nineteen centuries. Seeing this clearly is more
+        honest than pretending either side has a knock-down argument.
+      </p>
+
+      <p>
+        The axiom set is the denomination. And the axiom that divides
+        Christians on contraception is the inseparability principle&nbsp;&mdash;
+        one axiom, with nineteen centuries of consensus behind it, and
+        ninety-six years of fracture ahead.
+      </p>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Source references -->
+    <section class="article-body">
+      <div class="summary-box">
+        <h3>Source Code</h3>
+        <p>
+          The formalizations referenced in this article are machine-checked
+          in Lean 4. See
+          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/MoralTheology/ConjugalEthics.lean"><code>ConjugalEthics.lean</code></a>
+          for the inseparability principle, NFP/contraception distinction,
+          and medical double effect. See
+          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/MoralTheology/SourcesOfMorality.lean"><code>SourcesOfMorality.lean</code></a>
+          for the three-source framework and object-independence axiom, and
+          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/MoralTheology/LegitimateDefense.lean"><code>LegitimateDefense.lean</code></a>
+          for the double effect conditions. Open the <strong>Lean Code</strong>
+          sidebar to preview the key definitions.
+        </p>
+      </div>
+    </section>
+
+    <div class="ornament">&#10053;</div>
+
+    <section class="cta-section">
+      <div class="cta-group">
+        <a href="https://github.com/ngundotra/catlib" class="cta-button primary">View on GitHub</a>
+        <a href="../index.html" class="cta-button secondary">Back to Catlib</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="ornament">&#10053;</div>
+    <p>
+      <a href="https://github.com/ngundotra/catlib">Catlib</a>&nbsp;&mdash;
+      formalizing the Catholic Catechism in Lean 4.
+      A love letter to the Catholic intellectual tradition, written with precision.
+    </p>
+  </footer>
+
+</body>
+</html>
