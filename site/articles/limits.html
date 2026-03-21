@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Where Formalization Stops &mdash; Catlib</title>
+  <meta name="description" content="Formal verification can trace 1,900 years of consensus to one axiom swap. It cannot tell you what happened in the real world after. Knowing the limits is as important as knowing the strengths.">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Where Formalization Stops: The Limits of Proof">
+  <meta property="og:description" content="A case study in intellectual honesty: what formal verification can and cannot tell us about the contraception question and human self-control.">
+  <meta property="og:site_name" content="Catlib">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Where Formalization Stops: The Limits of Proof">
+  <meta name="twitter:description" content="Formal verification answers a specific, valuable class of questions with unprecedented precision. Knowing where it stops is as important as knowing where it starts.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel+Decorative:wght@400;700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="articles.css">
+</head>
+<body>
+
+  <main>
+    <a href="../index.html" class="back-link">Back to Catlib</a>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="ornament">&#10053;</div>
+      <h1>Where Formalization Stops</h1>
+      <p class="subtitle">The limits of proof</p>
+      <p class="subtitle">
+        A proof assistant can tell you what follows from your axioms.
+        It cannot tell you what happened in the world after you changed them.
+      </p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Section 1: What Formal Verification Can't Do -->
+    <section class="article-body">
+      <p>
+        <span class="versal">T</span>he <a href="conjugal-ethics.html">previous
+        article</a> traced 1,900 years of Christian consensus on contraception
+        to a single axiom&nbsp;&mdash; the inseparability principle&nbsp;&mdash;
+        and showed that every denomination agreed until 1930, when the Anglican
+        Lambeth Conference performed the axiom swap that shattered unanimity.
+        The Catlib project can model this with mathematical precision: here is
+        the axiom, here is the swap (<code>A1_SEPARABILITY</code>), here are the
+        theorems that follow from each side.
+      </p>
+      <p>
+        But a reader might reasonably ask the next question: <em>what happened
+        after the swap?</em> If the inseparability principle required couples
+        to practice sexual self-control, and removing it removed that
+        requirement, did people actually become less self-controlled?
+      </p>
+      <p>
+        This is exactly the kind of question formal verification cannot answer.
+        And being honest about that matters. A project that claims precision
+        must be precise about where its precision ends. Catlib can tell you
+        which axioms produce which conclusions. It can compare axiom sets
+        across denominations. It can expose hidden assumptions doing invisible
+        work. What it cannot do is answer empirical questions about human
+        behavior. That requires data, not proofs.
+      </p>
+      <p>
+        This article is about that boundary. It takes the contraception/self-control
+        hypothesis as a case study&nbsp;&mdash; not to settle it, but to show
+        what honest intellectual inquiry looks like when you reach the edge
+        of your method.
+      </p>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Section 2: The Hypothesis -->
+    <section class="article-body">
+      <h2>The Hypothesis</h2>
+
+      <p>
+        <span class="versal">T</span>he argument has a clear logical structure,
+        grounded in the Aristotelian virtue ethics framework that the Catechism
+        itself adopts. It runs as follows:
+      </p>
+
+      <ol>
+        <li>
+          The <strong>inseparability principle</strong> requires that every
+          conjugal act remain open to life.
+        </li>
+        <li>
+          Therefore couples must either <strong>accept children</strong> or
+          <strong>practice periodic abstinence</strong> (what is now called NFP).
+        </li>
+        <li>
+          Regular practice of abstinence builds the virtue of
+          <strong>temperance</strong>. Aristotle&rsquo;s insight: virtues are
+          habits. You become temperate by practicing temperance, just as you
+          become a musician by playing music (<em>Nicomachean Ethics</em> II.1).
+        </li>
+        <li>
+          <code>A1_SEPARABILITY</code> (Lambeth 1930) permits contraception,
+          which allows sex without procreative consequence.
+        </li>
+        <li>
+          With contraception available, there is <strong>less need to practice
+          abstinence</strong>.
+        </li>
+        <li>
+          Less practice means the <strong>temperance &ldquo;muscle&rdquo;
+          atrophies</strong>.
+        </li>
+      </ol>
+
+      <div class="assumption-callout">
+        <strong>This argument is logically valid within the virtue ethics
+        framework.</strong> If virtues are habits, and you remove occasions
+        for practicing a specific virtue, the framework predicts that virtue
+        will weaken. The chain from premise to conclusion holds. But logical
+        validity is not the same as empirical truth. A valid argument can have
+        false premises, and even true premises can be overwhelmed by
+        confounding factors in the real world. The hypothesis needs data,
+        not more logic.
+      </div>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Section 3: What the Data Shows -->
+    <section class="article-body">
+      <h2>What the Data Actually Shows</h2>
+
+      <p>
+        <span class="versal">I</span>f the hypothesis were simply &ldquo;humans
+        became less self-controlled after 1930,&rdquo; the evidence would
+        refute it. But the picture is more complicated than that.
+      </p>
+
+      <h3>Against the hypothesis: general self-control has not declined</h3>
+
+      <p>
+        The most direct test of &ldquo;are humans losing self-control?&rdquo;
+        comes from delay-of-gratification research. The famous marshmallow
+        test&nbsp;&mdash; in which children must resist eating a treat in order
+        to receive a larger reward later&nbsp;&mdash; has been replicated over
+        fifty years. The finding is striking: children&rsquo;s ability to delay
+        gratification has <em>increased</em>, not decreased.
+      </p>
+
+      <p>
+        Watts, Duncan, and Quan (2020, published in <em>Intelligence</em>)
+        conducted a meta-analysis of marshmallow-type studies spanning five
+        decades and found a consistent upward trend in children&rsquo;s
+        delay-of-gratification scores. This aligns with the broader Flynn
+        effect&nbsp;&mdash; the well-documented increase in general cognitive
+        measures across the twentieth century. Humans are, by multiple
+        measures, <em>more</em> capable of executive self-regulation than
+        they were a century ago.
+      </p>
+
+      <p>
+        This is a serious challenge to any blanket claim that the axiom swap
+        eroded human self-control.
+      </p>
+
+      <h3>Partially supporting: sexual behavior changed dramatically</h3>
+
+      <p>
+        But there is another body of data that tells a different story. In the
+        specific domain of sexual behavior, the twentieth century saw changes
+        so large that they would have been unimaginable to the pre-1930 cohort.
+      </p>
+
+      <table class="axiom-table">
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Pre-1930 Cohort</th>
+            <th>Post-1960 Cohort</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Women who had premarital sex before age 20</strong></td>
+            <td>8% (born c. 1900)</td>
+            <td>76% (born 1978&ndash;88)</td>
+          </tr>
+          <tr>
+            <td><strong>Median age at first sexual intercourse</strong></td>
+            <td>~19&ndash;20 (1960 data)</td>
+            <td>~17 (1990), ~18 (recent)</td>
+          </tr>
+          <tr>
+            <td><strong>Median lifetime sexual partners</strong></td>
+            <td>1 (born 1910s&ndash;20s)</td>
+            <td>4 (born 1950s&ndash;60s)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p style="font-size: 0.85rem; color: var(--text-light); margin-top: 0.3rem;">
+        Sources: PMC studies on premarital sex trends across U.S. cohorts;
+        Institute for Family Studies, &ldquo;Nine Decades of Promiscuity&rdquo;;
+        Herbenick et al., <em>JAMA Network Open</em>, sexual behavior
+        2000&ndash;2018.
+      </p>
+
+      <p>
+        The magnitude of these shifts is not subtle. An eightfold increase
+        in premarital sexual activity, a halving of the median age at first
+        intercourse, a quadrupling of lifetime partners&nbsp;&mdash; these are
+        not statistical noise. They represent a fundamental transformation
+        in sexual norms and behavior across a single century.
+      </p>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Section 4: The Nuanced Interpretation -->
+    <section class="article-body">
+      <h2>The Nuanced Interpretation</h2>
+
+      <p>
+        <span class="versal">T</span>he data tells us something more
+        interesting than either &ldquo;the hypothesis is right&rdquo; or
+        &ldquo;the hypothesis is wrong.&rdquo; It tells us that the
+        <em>domain shifted</em>.
+      </p>
+      <p>
+        Modern humans exercise <em>more</em> delayed gratification than ever
+        before in career, education, and finance. The average years of
+        schooling, the age at first full-time employment, the complexity of
+        financial planning&nbsp;&mdash; all have increased enormously. People
+        defer income, defer career rewards, defer home ownership, defer
+        retirement gratification with a sophistication that earlier generations
+        never needed.
+      </p>
+      <p>
+        But in the sexual domain specifically, the removal of the
+        inseparability principle, the availability of reliable contraception,
+        and a cascade of cultural shifts reduced both the occasions for
+        and the perceived necessity of sexual self-control.
+      </p>
+      <p>
+        This is actually consistent with Aristotle in a subtle way that the
+        broad version of the hypothesis misses. Aristotle&rsquo;s claim is
+        that virtues are <em>domain-specific habits</em>. You become brave by
+        practicing bravery in situations that call for courage. You become
+        temperate by practicing temperance in situations that call for
+        self-restraint. The corollary, which Aristotle does not emphasize
+        but which follows from his framework, is this: stop practicing
+        temperance in domain X, and you lose it in domain X. Keep practicing
+        it in domain Y, and you keep it in domain Y.
+      </p>
+
+      <div class="assumption-callout">
+        <strong>The hypothesis is partially correct but too broad.</strong>
+        Humans did not lose self-control in general. They lost&nbsp;&mdash;
+        or more precisely, stopped exercising&nbsp;&mdash; a specific form
+        of temperance in a specific domain, while simultaneously developing
+        greater self-regulation in other domains. The virtue ethics framework
+        predicts exactly this, if you take seriously that virtues are
+        domain-specific habits rather than a single transferable capacity.
+      </div>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Section 5: Cause vs. Effect -->
+    <section class="article-body">
+      <h2>Cause or Effect? The Deepest Question</h2>
+
+      <p>
+        <span class="versal">E</span>ven granting that sexual behavior changed
+        dramatically, the causal question remains: was Lambeth 1930 a
+        <em>cause</em> of that change, or an <em>effect</em> of cultural
+        shifts already underway?
+      </p>
+      <p>
+        The case for &ldquo;effect&rdquo; is substantial. Declining religiosity,
+        urbanization, increased women&rsquo;s independence, the separation of
+        sex from economic consequences (women entering the workforce, reducing
+        economic dependence on marriage), the rise of romantic individualism
+        as the basis for marriage&nbsp;&mdash; all of these were already
+        reshaping sexual norms before 1930. Perhaps the Lambeth bishops were
+        not causing a revolution but ratifying one. Perhaps they saw the
+        direction of the culture and tried to meet it pastorally.
+      </p>
+      <p>
+        The Catholic counter-argument has its own force: ratifying a cultural
+        shift gives it moral legitimacy. When a church body with apostolic
+        authority declares that a previously universal moral norm admits of
+        exceptions, it does not merely observe change&nbsp;&mdash; it
+        accelerates it. The speed of the Protestant collapse after 1930
+        (from unanimous condemnation to near-unanimous acceptance within
+        thirty years) suggests that Lambeth did not just follow the
+        culture. It gave permission.
+      </p>
+      <p>
+        And there is the Catholic Church&rsquo;s deeper claim: the Church&rsquo;s
+        job is to hold the line on truth, not to follow culture. <em>Humanae
+        Vitae</em> (1968) was right <em>because</em> it was unpopular, not
+        despite it. Popularity is not a truth criterion. If it were, the early
+        Christians were wrong about everything, because they were massively
+        outnumbered by pagans who thought them absurd.
+      </p>
+
+      <div class="assumption-callout">
+        <strong>This is genuinely unresolvable by formal verification.</strong>
+        The question &ldquo;did A cause B, or did B cause A, or did C cause
+        both?&rdquo; is a causal question about history. It requires
+        counterfactual analysis (what would have happened if Lambeth 1930
+        had voted differently?), time-series data, and the kind of
+        methodological humility that recognizes that historical causation
+        is almost never monocausal. No proof assistant can settle this.
+        No axiom set can derive it.
+      </div>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Section 6: The Honest Table -->
+    <section class="article-body">
+      <h2>What Formal Verification Can and Cannot Do</h2>
+
+      <p>
+        <span class="versal">T</span>he case study above illustrates a broader
+        principle. Formal verification is powerful, but its power has sharp
+        boundaries. Here is an honest accounting:
+      </p>
+
+      <table class="axiom-table">
+        <thead>
+          <tr>
+            <th>Question Type</th>
+            <th style="text-align: center;">Can Formalization Help?</th>
+            <th>Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>&ldquo;What does the Catechism assume?&rdquo;</strong></td>
+            <td style="text-align: center;">
+              <span class="tag tag-shared" style="margin-right: 0;">Yes</span>
+            </td>
+            <td>
+              The object-independence axiom; the inseparability principle
+              is asserted, not derived
+            </td>
+          </tr>
+          <tr>
+            <td><strong>&ldquo;Is this logically consistent?&rdquo;</strong></td>
+            <td style="text-align: center;">
+              <span class="tag tag-shared" style="margin-right: 0;">Yes</span>
+            </td>
+            <td>
+              The Trinity requires relative identity; double effect is
+              internally coherent
+            </td>
+          </tr>
+          <tr>
+            <td><strong>&ldquo;Where do denominations disagree?&rdquo;</strong></td>
+            <td style="text-align: center;">
+              <span class="tag tag-shared" style="margin-right: 0;">Yes</span>
+            </td>
+            <td>
+              The Lutheran 4-axis swap on justification; the Anglican axiom
+              swap on inseparability
+            </td>
+          </tr>
+          <tr>
+            <td><strong>&ldquo;What follows from these axioms?&rdquo;</strong></td>
+            <td style="text-align: center;">
+              <span class="tag tag-shared" style="margin-right: 0;">Yes</span>
+            </td>
+            <td>
+              Contraception is intrinsically evil (given inseparability);
+              NFP is permissible (given object-independence)
+            </td>
+          </tr>
+          <tr style="background: rgba(180, 60, 60, 0.04);">
+            <td><strong>&ldquo;Did axiom X cause real-world effect Y?&rdquo;</strong></td>
+            <td style="text-align: center;">
+              <span class="tag" style="background: rgba(180, 60, 60, 0.1); color: #a03030; border: 1px solid rgba(180, 60, 60, 0.25); margin-right: 0;">No</span>
+            </td>
+            <td>
+              Did <code>A1_SEPARABILITY</code> cause declining sexual
+              temperance? This is empirical, not logical.
+            </td>
+          </tr>
+          <tr style="background: rgba(180, 60, 60, 0.04);">
+            <td><strong>&ldquo;Which axiom set is true?&rdquo;</strong></td>
+            <td style="text-align: center;">
+              <span class="tag" style="background: rgba(180, 60, 60, 0.1); color: #a03030; border: 1px solid rgba(180, 60, 60, 0.25); margin-right: 0;">No</span>
+            </td>
+            <td>
+              Is the inseparability principle true? That is a question of
+              faith, not logic.
+            </td>
+          </tr>
+          <tr style="background: rgba(180, 60, 60, 0.04);">
+            <td><strong>&ldquo;What would have happened if...?&rdquo;</strong></td>
+            <td style="text-align: center;">
+              <span class="tag" style="background: rgba(180, 60, 60, 0.1); color: #a03030; border: 1px solid rgba(180, 60, 60, 0.25); margin-right: 0;">No</span>
+            </td>
+            <td>
+              What if Lambeth 1930 had voted differently? Counterfactuals
+              need data, not derivations.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        The top four rows are Catlib&rsquo;s core competence. Every article
+        on this site operates in that zone: exposing axioms, checking
+        consistency, mapping denominational differences, deriving theorems.
+        This is what a proof assistant does, and it does it with a precision
+        that no amount of prose theology can match.
+      </p>
+      <p>
+        The bottom three rows are beyond the method. Not because the questions
+        are unimportant&nbsp;&mdash; they are among the most important questions
+        a person can ask&nbsp;&mdash; but because they require tools that
+        formal logic does not provide: empirical observation, historical
+        analysis, and faith.
+      </p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Section 7: Closing -->
+    <section class="article-body">
+      <h2>Why the Limits Matter</h2>
+
+      <p>
+        <span class="versal">B</span>eing honest about limits is part of the
+        love letter. The Catlib project is not claiming that formal verification
+        answers everything. It is claiming that formal verification answers a
+        specific, valuable class of questions with unprecedented precision. And
+        knowing where it stops is as important as knowing where it starts.
+      </p>
+      <p>
+        A project that overstates its reach loses credibility. If Catlib
+        claimed that a Lean proof could tell you whether the inseparability
+        principle is <em>true</em>, or whether Lambeth 1930 <em>caused</em>
+        the sexual revolution, it would deserve the skepticism of anyone with
+        methodological training. Those are not the claims.
+      </p>
+      <p>
+        The claims are more modest and more durable: we can make hidden
+        assumptions visible. We can show that reasoning is valid given its
+        premises. We can identify the precise axiom where two traditions
+        diverge, replacing centuries of mutual caricature with a clear diagram
+        of agreement and disagreement. We can distinguish what is asserted
+        from what is derived, and expose the free parameters that the
+        Catechism deliberately leaves open.
+      </p>
+      <p>
+        These are genuinely useful things. They are also genuinely limited
+        things. The self-control hypothesis is a reminder that the most
+        interesting questions often live at the boundary between what logic
+        can reach and what it cannot. Formal verification takes you to that
+        boundary with precision. What lies beyond it requires other
+        virtues&nbsp;&mdash; empirical humility, historical patience, and
+        the kind of faith that no proof assistant can verify or refute.
+      </p>
+      <p>
+        The axiom set is the denomination. But whether any axiom set is
+        <em>true</em>&nbsp;&mdash; that is between you and God.
+      </p>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Follow-up link -->
+    <section class="article-body">
+      <div class="summary-box">
+        <h3>This article follows up on</h3>
+        <p>
+          <a href="conjugal-ethics.html"><strong>Conjugal Ethics: The Inseparability
+          Principle and Its Breakdown</strong></a>&nbsp;&mdash; which traces the
+          1,900-year Christian consensus on contraception, formalizes the
+          inseparability principle in Lean 4, and maps the single axiom swap
+          that generated the modern denominational divide.
+        </p>
+      </div>
+    </section>
+
+    <div class="ornament">&#10053;</div>
+
+    <section class="cta-section">
+      <div class="cta-group">
+        <a href="https://github.com/ngundotra/catlib" class="cta-button primary">View on GitHub</a>
+        <a href="../index.html" class="cta-button secondary">Back to Catlib</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="ornament">&#10053;</div>
+    <p>
+      <a href="https://github.com/ngundotra/catlib">Catlib</a>&nbsp;&mdash;
+      formalizing the Catholic Catechism in Lean 4.
+      A love letter to the Catholic intellectual tradition, written with precision.
+    </p>
+  </footer>
+
+</body>
+</html>
