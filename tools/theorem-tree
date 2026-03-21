@@ -1,0 +1,513 @@
+#!/usr/bin/env python3
+"""
+theorem-tree: Generate tree-style breakdowns of Lean 4 theorems, axioms,
+and their connections.
+
+Usage:
+    ./tools/theorem-tree <path>                    # Tree of file or directory
+    ./tools/theorem-tree --connections <path>       # Cross-file connections only
+    ./tools/theorem-tree --axioms-only <path>       # Show just axioms
+    ./tools/theorem-tree --theorems-only <path>     # Show just theorems
+"""
+
+import os
+import re
+import sys
+from collections import defaultdict
+from pathlib import Path
+
+
+# ---------------------------------------------------------------------------
+# Parsing
+# ---------------------------------------------------------------------------
+
+# Top-level declaration keywords
+DECL_KEYWORDS = {"axiom", "theorem", "def", "structure", "inductive", "opaque"}
+
+# Matches a top-level declaration at the start of a line
+DECL_RE = re.compile(
+    r"^(axiom|theorem|def|structure|inductive|opaque)\s+(\S+)"
+)
+
+# Import and namespace
+IMPORT_RE = re.compile(r"^import\s+(\S+)")
+NAMESPACE_RE = re.compile(r"^namespace\s+(\S+)")
+
+# Foundational types that are too generic to count as meaningful references.
+# These show up everywhere and add noise rather than signal.
+NOISE_NAMES = {
+    "Person", "Action", "Grace", "Sin", "God", "Prop", "Type", "Bool",
+    "Denomination", "DenominationalTag", "Provenance", "AuthoritySource",
+    "Authority", "FreedomModel", "FreeChoice", "CommunionWithGod",
+    "MoralEvaluation", "ecumenical", "catholicOnly", "catholicAndLutheran",
+    "lutheranOnly", "True", "False", "String", "Nat", "List",
+    # Very short names that cause false matches
+    "Form", "Matter", "Agent",
+}
+
+
+class Declaration:
+    """A single Lean declaration (axiom, theorem, def, etc.)."""
+
+    def __init__(self, kind, name, description, line_no, file_path):
+        self.kind = kind
+        self.name = name
+        self.description = description
+        self.line_no = line_no
+        self.file_path = file_path
+        self.references = []
+        self.body_lines = []  # lines of the declaration body (type sig + proof)
+
+    def display_kind(self):
+        return self.kind
+
+    def __repr__(self):
+        return f"{self.kind} {self.name}"
+
+
+class LeanFile:
+    """Parsed contents of a single .lean file."""
+
+    def __init__(self, path):
+        self.path = path
+        self.declarations = []
+        self.imports = []
+        self.namespace = ""
+
+
+def parse_lean_file(filepath):
+    """Parse a .lean file and extract declarations, imports, docstrings."""
+    lf = LeanFile(filepath)
+    try:
+        with open(filepath, "r", encoding="utf-8") as f:
+            lines = f.readlines()
+    except (IOError, UnicodeDecodeError):
+        return lf
+
+    # First pass: identify all declaration start lines and docstrings
+    pending_docstring = ""
+    in_docstring = False
+    is_module_doc = False
+    docstring_lines = []
+    decl_starts = []  # (line_idx_0based, kind, name, description)
+
+    for i, raw_line in enumerate(lines):
+        line = raw_line.rstrip()
+        stripped = line.strip()
+
+        # Track imports
+        m = IMPORT_RE.match(line)
+        if m:
+            lf.imports.append(m.group(1))
+            continue
+
+        # Track namespace
+        m = NAMESPACE_RE.match(line)
+        if m and not lf.namespace:
+            lf.namespace = m.group(1)
+            continue
+
+        # Docstring handling
+        if not in_docstring:
+            if stripped.startswith("/-!"):
+                in_docstring = True
+                is_module_doc = True
+                docstring_lines = []
+                if "-/" in stripped[3:]:
+                    in_docstring = False
+                    is_module_doc = False
+                    pending_docstring = ""
+            elif stripped.startswith("/--"):
+                in_docstring = True
+                is_module_doc = False
+                docstring_lines = []
+                content = stripped[3:].strip()
+                if content.endswith("-/"):
+                    content = content[:-2].strip()
+                    in_docstring = False
+                    pending_docstring = _extract_first_line(content)
+                else:
+                    docstring_lines.append(content)
+            else:
+                # Check for declaration
+                m = DECL_RE.match(line)
+                if m:
+                    kind = m.group(1)
+                    name = m.group(2).rstrip(":").rstrip("(")
+                    desc = pending_docstring
+                    decl_starts.append((i, kind, name, desc))
+                    pending_docstring = ""
+                elif stripped and not stripped.startswith("--"):
+                    # Non-empty, non-comment line that's not a declaration
+                    # Don't clear pending_docstring -- it might be separated
+                    # by blank lines or comments
+                    pass
+        else:
+            if "-/" in line:
+                in_docstring = False
+                content = line.split("-/")[0].strip()
+                if content:
+                    docstring_lines.append(content)
+                if is_module_doc:
+                    pending_docstring = ""
+                    is_module_doc = False
+                else:
+                    full_doc = " ".join(docstring_lines)
+                    pending_docstring = _extract_first_line(full_doc)
+            else:
+                docstring_lines.append(stripped)
+
+    # Second pass: extract body text for each declaration.
+    # A declaration's body extends from its start line to the line before the
+    # next declaration's docstring (or the next declaration start, or a section
+    # comment, or end of file).
+    #
+    # We look for the start of the "preamble" of the next declaration, which
+    # is either its docstring start or its declaration line.
+    for idx, (start_line, kind, name, desc) in enumerate(decl_starts):
+        # Find the end of this declaration's body
+        if idx + 1 < len(decl_starts):
+            next_start = decl_starts[idx + 1][0]
+            # Walk backwards from next declaration to find where its
+            # preamble (docstring/comments) begins
+            preamble_start = next_start
+            j = next_start - 1
+            while j > start_line:
+                line_s = lines[j].strip() if j < len(lines) else ""
+                if (line_s.startswith("/--") or line_s.startswith("/-!")
+                        or line_s == "" or line_s.startswith("--")):
+                    preamble_start = j
+                    j -= 1
+                else:
+                    break
+            end_line = preamble_start
+        else:
+            end_line = len(lines)
+
+        body = "".join(lines[start_line:end_line])
+
+        decl = Declaration(kind, name, desc, start_line + 1, filepath)
+        decl.body_lines = body
+        lf.declarations.append(decl)
+
+    return lf
+
+
+def _extract_first_line(text):
+    """Extract a clean one-line description from docstring text."""
+    if not text:
+        return ""
+    # Remove ** bold markers
+    text = re.sub(r"\*\*", "", text)
+    # Remove AXIOM/THEOREM/GIVEN prefixes like "AXIOM (TOB 15:1): "
+    text = re.sub(r"^(?:AXIOM|THEOREM|GIVEN)\s*\([^)]*\)\s*[:.]?\s*", "", text)
+    # Remove leading labels like "P1. " or "S1. "
+    text = re.sub(r"^[A-Z]\d+\.\s*", "", text)
+    # Take first sentence
+    parts = text.split(". ")
+    first = parts[0].strip()
+    if not first:
+        parts = text.split("  ")
+        first = parts[0].strip()
+    # Truncate
+    if len(first) > 100:
+        first = first[:97] + "..."
+    return first
+
+
+def resolve_references(all_files):
+    """Scan declaration bodies for references to other known declarations."""
+    # Build index: name -> Declaration
+    all_names = {}
+    for lf in all_files:
+        for decl in lf.declarations:
+            all_names[decl.name] = decl
+
+    # Only consider names that are "interesting" -- axioms, theorems, and
+    # significant defs (not noise like type names or denomination tags).
+    interesting_names = {}
+    for name, decl in all_names.items():
+        if name in NOISE_NAMES:
+            continue
+        # Skip very short names (likely to cause false matches)
+        if len(name) < 4:
+            continue
+        # Skip denomination tag defs -- these are metadata, not logical deps
+        if name.endswith("_tag") or name.endswith("_provenance"):
+            continue
+        interesting_names[name] = decl
+
+    # For each declaration, scan its body for references
+    for lf in all_files:
+        for decl in lf.declarations:
+            # Skip tag/provenance defs from being sources too
+            if decl.name.endswith("_tag") or decl.name.endswith("_provenance"):
+                continue
+
+            body = decl.body_lines
+            refs = []
+            for name, target in interesting_names.items():
+                if name == decl.name:
+                    continue
+                # Match as whole word
+                if re.search(r'\b' + re.escape(name) + r'\b', body):
+                    refs.append(name)
+            decl.references = sorted(set(refs))
+
+
+# ---------------------------------------------------------------------------
+# Output formatting
+# ---------------------------------------------------------------------------
+
+def make_relative(filepath, root):
+    """Make a filepath relative to the project root."""
+    try:
+        return os.path.relpath(filepath, root)
+    except ValueError:
+        return filepath
+
+
+def print_tree(all_files, root, filter_kind=None, connections_only=False):
+    """Print the tree-style breakdown."""
+    if connections_only:
+        print_connections(all_files, root)
+        return
+
+    # Group files by directory
+    dir_files = defaultdict(list)
+    for lf in all_files:
+        rel = make_relative(lf.path, root)
+        dir_path = os.path.dirname(rel) or "."
+        dir_files[dir_path].append(lf)
+
+    sorted_dirs = sorted(dir_files.keys())
+
+    for di, dir_path in enumerate(sorted_dirs):
+        files = sorted(dir_files[dir_path], key=lambda x: x.path)
+        is_last_dir = (di == len(sorted_dirs) - 1)
+        dir_prefix = "└── " if is_last_dir else "├── "
+        dir_cont = "    " if is_last_dir else "│   "
+
+        print(f"{dir_prefix}{dir_path}/")
+
+        for fi, lf in enumerate(files):
+            rel = make_relative(lf.path, root)
+            filename = os.path.basename(rel)
+            is_last_file = (fi == len(files) - 1)
+            file_prefix = dir_cont + ("└── " if is_last_file else "├── ")
+            file_cont = dir_cont + ("    " if is_last_file else "│   ")
+
+            # Filter declarations
+            decls = lf.declarations
+            if filter_kind:
+                decls = [d for d in decls if d.kind in filter_kind]
+
+            # Also filter out tag/provenance defs in normal view for cleanliness
+            if not filter_kind:
+                decls = [d for d in decls
+                         if not d.name.endswith("_tag")
+                         and not d.name.endswith("_provenance")]
+
+            if not decls:
+                continue
+
+            print(f"{file_prefix}{filename}")
+
+            for deci, decl in enumerate(decls):
+                is_last_decl = (deci == len(decls) - 1)
+                decl_prefix = file_cont + ("└── " if is_last_decl else "├── ")
+                decl_cont = file_cont + ("    " if is_last_decl else "│   ")
+
+                tag = f"[{decl.display_kind()}]"
+                desc_part = f" -- {decl.description}" if decl.description else ""
+                print(f"{decl_prefix}{tag} {decl.name}{desc_part}")
+
+                # Print references
+                refs = decl.references
+                if refs:
+                    for ri, ref in enumerate(refs):
+                        is_last_ref = (ri == len(refs) - 1)
+                        ref_prefix = decl_cont + ("└── " if is_last_ref else "├── ")
+                        ref_decl = _find_decl(all_files, ref)
+                        if ref_decl and ref_decl.file_path != lf.path:
+                            ref_file = make_relative(ref_decl.file_path, root)
+                            print(f"{ref_prefix}<- uses: {ref} (from {ref_file})")
+                        else:
+                            print(f"{ref_prefix}<- uses: {ref}")
+
+
+def print_connections(all_files, root):
+    """Print only cross-file connections."""
+    print("Cross-file connections:")
+    print("=" * 60)
+
+    connections = []
+    for lf in all_files:
+        for decl in lf.declarations:
+            for ref_name in decl.references:
+                ref_decl = _find_decl(all_files, ref_name)
+                if ref_decl and ref_decl.file_path != lf.path:
+                    src_file = make_relative(lf.path, root)
+                    dst_file = make_relative(ref_decl.file_path, root)
+                    connections.append((
+                        src_file, decl.name, decl.kind,
+                        dst_file, ref_name, ref_decl.kind
+                    ))
+
+    if not connections:
+        print("  (no cross-file connections found)")
+        return
+
+    # Group by source file
+    by_src = defaultdict(list)
+    for conn in connections:
+        by_src[conn[0]].append(conn)
+
+    for src_file in sorted(by_src.keys()):
+        conns = by_src[src_file]
+        print(f"\n{src_file}:")
+        for i, (sf, sname, skind, df, dname, dkind) in enumerate(conns):
+            is_last = (i == len(conns) - 1)
+            prefix = "  └── " if is_last else "  ├── "
+            print(f"{prefix}[{skind}] {sname} -> [{dkind}] {dname} (in {df})")
+
+
+def _find_decl(all_files, name):
+    """Find a declaration by name across all files."""
+    for lf in all_files:
+        for decl in lf.declarations:
+            if decl.name == name:
+                return decl
+    return None
+
+
+# ---------------------------------------------------------------------------
+# File discovery
+# ---------------------------------------------------------------------------
+
+def find_lean_files(path):
+    """Find all .lean files under a path."""
+    path = Path(path)
+    if path.is_file():
+        if path.suffix == ".lean":
+            return [str(path)]
+        return []
+    elif path.is_dir():
+        files = []
+        for root_dir, dirs, filenames in os.walk(path):
+            dirs[:] = [d for d in dirs if not d.startswith(".") and d != ".lake"]
+            for fn in sorted(filenames):
+                if fn.endswith(".lean"):
+                    files.append(os.path.join(root_dir, fn))
+        return files
+    return []
+
+
+# ---------------------------------------------------------------------------
+# Main
+# ---------------------------------------------------------------------------
+
+def main():
+    args = sys.argv[1:]
+
+    if not args or "--help" in args or "-h" in args:
+        print(__doc__.strip())
+        print()
+        print("Options:")
+        print("  --connections     Show cross-file connections only")
+        print("  --axioms-only     Show only axiom declarations")
+        print("  --theorems-only   Show only theorem declarations")
+        print("  --defs-only       Show only def declarations")
+        print("  -h, --help        Show this help message")
+        sys.exit(0)
+
+    connections_only = False
+    filter_kind = None
+    target_path = None
+
+    for arg in args:
+        if arg == "--connections":
+            connections_only = True
+        elif arg == "--axioms-only":
+            filter_kind = {"axiom"}
+        elif arg == "--theorems-only":
+            filter_kind = {"theorem"}
+        elif arg == "--defs-only":
+            filter_kind = {"def"}
+        else:
+            target_path = arg
+
+    if not target_path:
+        print("Error: no path specified", file=sys.stderr)
+        sys.exit(1)
+
+    if not os.path.isabs(target_path):
+        target_path = os.path.join(os.getcwd(), target_path)
+
+    if not os.path.exists(target_path):
+        print(f"Error: path not found: {target_path}", file=sys.stderr)
+        sys.exit(1)
+
+    # Find project root
+    root = os.getcwd()
+    check = root
+    for _ in range(10):
+        if os.path.exists(os.path.join(check, "lakefile.lean")):
+            root = check
+            break
+        parent = os.path.dirname(check)
+        if parent == check:
+            break
+        check = parent
+
+    # Find target files
+    lean_files = find_lean_files(target_path)
+    if not lean_files:
+        print(f"No .lean files found under {target_path}", file=sys.stderr)
+        sys.exit(1)
+
+    # Parse the full project for cross-file reference resolution
+    all_project_files = find_lean_files(os.path.join(root, "Catlib"))
+    all_parsed = []
+    for fp in all_project_files:
+        all_parsed.append(parse_lean_file(fp))
+
+    resolve_references(all_parsed)
+
+    # Filter to target files for display
+    target_set = set(os.path.abspath(f) for f in lean_files)
+    target_parsed = [lf for lf in all_parsed if os.path.abspath(lf.path) in target_set]
+
+    if not target_parsed:
+        print(f"No declarations found in {target_path}", file=sys.stderr)
+        sys.exit(1)
+
+    rel_target = make_relative(target_path, root)
+    print(f"Theorem Tree: {rel_target}")
+    print("=" * 60)
+    print()
+
+    print_tree(target_parsed, root, filter_kind=filter_kind, connections_only=connections_only)
+
+    # Summary
+    if not connections_only:
+        print()
+        total = sum(len(lf.declarations) for lf in target_parsed)
+        by_kind = defaultdict(int)
+        for lf in target_parsed:
+            for d in lf.declarations:
+                if filter_kind and d.kind not in filter_kind:
+                    continue
+                by_kind[d.kind] += 1
+
+        parts = [f"{count} {kind}{'s' if count != 1 else ''}"
+                 for kind, count in sorted(by_kind.items())]
+        if filter_kind:
+            shown = sum(by_kind.values())
+            print(f"Summary: {shown} of {total} declarations shown ({', '.join(parts)})")
+        else:
+            print(f"Summary: {total} declarations ({', '.join(parts)})")
+
+
+if __name__ == "__main__":
+    main()
