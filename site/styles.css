@@ -536,4 +536,7 @@ footer a {
   .cta-group { flex-direction: column; align-items: center; }
   .finding-card { padding: 1.3rem 1.2rem; }
   .summary-box { padding: 1.2rem 1rem; }
+  .versal { font-size: 3rem; }
+  .versal-quote { font-size: 2.4rem; }
+  .versal-small { font-size: 1.8rem; }
 }

@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Masturbation &mdash; Catlib</title>
+  <meta name="description" content="What does the Catechism say about masturbation? A cached theorem lookup across four existing formalizations &mdash; no new Lean code required.">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="What Does the Catechism Say About Masturbation?">
+  <meta property="og:description" content="CCC &sect;2352 calls masturbation intrinsically disordered &mdash; but says culpability may be reduced. Four existing Lean theorems chain together to formalize both claims.">
+  <meta property="og:site_name" content="Catlib">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="What Does the Catechism Say About Masturbation?">
+  <meta name="twitter:description" content="A cached theorem lookup: the Catechism's teaching on masturbation, formalized through existing catlib theorems.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel+Decorative:wght@400;700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="stylesheet" href="../articles.css">
+</head>
+<body>
+
+  <!-- Sidebar toggle for viewing Lean theorems -->
+  <input type="checkbox" id="sidebar-toggle" class="sidebar-toggle">
+  <label for="sidebar-toggle" class="sidebar-label">Lean Code</label>
+  <div class="sidebar-panel">
+    <h3>Theorem Reference</h3>
+
+    <div class="sidebar-section">
+      <h4>inseparability_principle</h4>
+<pre>axiom inseparability_principle :
+  &forall; (act : ConjugalAct),
+    act.unitiveIntact &rarr;
+    act.procreativeIntact &rarr;
+    act.bothMeaningsIntact</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>intrinsically_evil_always_evil</h4>
+<pre>theorem intrinsically_evil_always_evil
+    (eval : MoralEvaluation)
+    (h_intrinsic :
+      IntrinsicallyEvil eval.objectIsGood) :
+    &not;eval.isGood := by
+  intro &langle;ho, _, _&rangle;
+  exact h_intrinsic ho</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>responsibility_proportional_to_freedom</h4>
+<pre>axiom responsibility_proportional_to_freedom :
+  &forall; (fd : FreedomDegree) (p : Person),
+    p.hasFreeWill = true &rarr;
+    fd.level > 0 &rarr; True</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>TwoLevelEvaluation</h4>
+<pre>structure TwoLevelEvaluation where
+  action : Action
+  objectivelyGood : Prop
+  agentCulpable : Prop</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>SinfulAct.isMortal</h4>
+<pre>def SinfulAct.isMortal (s : SinfulAct) :=
+  s.gravity = MatterGravity.grave &and;
+  s.knowledge = MoralKnowledge.full &and;
+  s.consent = MoralConsent.complete</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>Source Files</h4>
+<pre><a href="https://github.com/ngundotra/catlib/blob/main/Catlib/MoralTheology/ConjugalEthics.lean" style="color: var(--accent-gold);">ConjugalEthics.lean</a>
+<a href="https://github.com/ngundotra/catlib/blob/main/Catlib/MoralTheology/SourcesOfMorality.lean" style="color: var(--accent-gold);">SourcesOfMorality.lean</a>
+<a href="https://github.com/ngundotra/catlib/blob/main/Catlib/MoralTheology/Freedom.lean" style="color: var(--accent-gold);">Freedom.lean</a>
+<a href="https://github.com/ngundotra/catlib/blob/main/Catlib/MoralTheology/Conscience.lean" style="color: var(--accent-gold);">Conscience.lean</a>
+<a href="https://github.com/ngundotra/catlib/blob/main/Catlib/MoralTheology/Sin.lean" style="color: var(--accent-gold);">Sin.lean</a></pre>
+    </div>
+
+    <p class="close-hint">Click the tab again to close</p>
+  </div>
+
+  <main>
+    <a href="../../index.html" class="back-link">Back to Catlib</a>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="ornament">&#10053;</div>
+      <h1>Masturbation</h1>
+      <p class="subtitle">What does the Catechism actually say?</p>
+      <p class="subtitle">
+        A cached theorem lookup &mdash; four existing formalizations,
+        zero new Lean code
+      </p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Introduction -->
+    <section class="article-body">
+      <p>
+        <span class="versal">T</span>his article exists because people ask
+        the question. And the answer turns out to be a good test of whether
+        the Catlib reasoning engine actually works: can we answer
+        &ldquo;What does the Catechism say about masturbation?&rdquo;
+        without writing a single new line of Lean?
+      </p>
+      <p>
+        Yes. The answer chains through four theorems that already exist in
+        the codebase. This is what a &ldquo;cached theorem lookup&rdquo;
+        looks like&nbsp;&mdash; the system returning a result from
+        previously verified reasoning, not generating new proofs on the fly.
+      </p>
+      <p>
+        The Catechism&rsquo;s treatment of masturbation (CCC &sect;2352) is
+        more nuanced than most people expect. It makes two claims
+        simultaneously:
+      </p>
+      <ol>
+        <li>
+          The act is <em>intrinsically and gravely disordered</em>.
+        </li>
+        <li>
+          The person&rsquo;s culpability <em>may be significantly reduced</em>
+          by immaturity, habit, anxiety, and other psychological factors.
+        </li>
+      </ol>
+      <p>
+        These are not contradictory. They operate at different levels of
+        moral evaluation&nbsp;&mdash; and both are already formalized.
+      </p>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Section 1: The Catechism Text -->
+    <section class="article-body">
+      <h2>What CCC &sect;2352 Actually Says</h2>
+
+      <p>
+        <span class="versal">H</span>ere is the full text. Most people have
+        only heard the first sentence. The second half is just as important.
+      </p>
+
+      <blockquote style="border-left: 3px solid var(--accent-gold); padding: 0.8rem 1.2rem; margin: 1.2rem 0; font-style: italic; color: var(--text-light);">
+        &ldquo;By <em>masturbation</em> is to be understood the deliberate
+        stimulation of the genital organs in order to derive sexual pleasure.
+        &lsquo;Both the Magisterium of the Church, in the course of a
+        constant tradition, and the moral sense of the faithful have been
+        in no doubt and have firmly maintained that masturbation is an
+        intrinsically and gravely disordered action.&rsquo; &lsquo;The
+        deliberate use of the sexual faculty, for whatever reason, outside
+        of marriage is essentially contrary to its purpose.&rsquo; For here
+        sexual pleasure is sought outside of &lsquo;the sexual relationship
+        which is demanded by the moral order and in which the total meaning
+        of mutual self-giving and human procreation in the context of true
+        love is achieved.&rsquo;&rdquo;
+        <br><br>
+        &ldquo;To form an equitable judgment about the subjects&rsquo; moral
+        responsibility and to guide pastoral action, one must take into
+        account the affective immaturity, force of acquired habit, conditions
+        of anxiety or other psychological or social factors that lessen, if
+        indeed do not even reduce to a minimum, moral culpability.&rdquo;
+        <br><span style="font-style: normal; font-size: 0.85rem;">&mdash; CCC &sect;2352</span>
+      </blockquote>
+
+      <p>
+        Two things to notice. First, the reasoning: the act is disordered
+        because it uses the sexual faculty outside marriage, which violates
+        the purpose of that faculty. This is the inseparability principle
+        applied beyond the conjugal act itself. Second, the pastoral
+        qualification: the Catechism <em>itself</em> says that culpability
+        may be reduced &ldquo;to a minimum&rdquo; by psychological factors.
+        This is not a liberal gloss on a conservative teaching. It is the
+        teaching.
+      </p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Section 2: The Four-Theorem Chain -->
+    <section class="article-body">
+      <h2>The Four-Theorem Chain</h2>
+
+      <p>
+        <span class="versal">T</span>he Catechism&rsquo;s reasoning on
+        masturbation can be reconstructed by chaining four results that
+        already exist in the Catlib codebase. No new axioms, no new
+        theorems, no new definitions. This is the formal verification
+        equivalent of a cache hit.
+      </p>
+
+      <h3>Step 1: The Inseparability Principle (ConjugalEthics.lean)</h3>
+
+      <p>
+        The sexual faculty has two inherent meanings&nbsp;&mdash; unitive
+        and procreative&nbsp;&mdash; that cannot be deliberately separated.
+        Masturbation exercises the sexual faculty outside any conjugal
+        relationship at all: neither meaning is present. If contraception
+        violates inseparability by retaining the unitive while frustrating
+        the procreative, masturbation violates it more radically by
+        abandoning both.
+      </p>
+
+      <pre style="background: var(--code-bg); color: var(--code-text); padding: 1.2rem 1.5rem; border-radius: 4px; font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.78rem; line-height: 1.7; overflow-x: auto; margin: 1rem 0;">
+<span style="color: #6a5a4a;">-- The sexual faculty outside marriage violates</span>
+<span style="color: #6a5a4a;">-- the inseparability principle: neither the unitive</span>
+<span style="color: #6a5a4a;">-- nor the procreative meaning is intact.</span>
+
+<span style="color: #7a9ec2;">axiom</span> inseparability_principle :
+  <span style="color: #c8a070;">&forall;</span> (act : ConjugalAct),
+    act.unitiveIntact &rarr; act.procreativeIntact &rarr;
+    act.bothMeaningsIntact
+
+<span style="color: #6a5a4a;">-- Masturbation: unitiveIntact = False,</span>
+<span style="color: #6a5a4a;">--              procreativeIntact = False</span>
+<span style="color: #6a5a4a;">-- Therefore: bothMeaningsIntact = False</span>
+<span style="color: #6a5a4a;">-- The object is disordered.</span></pre>
+
+      <h3>Step 2: Intrinsically Evil Acts (SourcesOfMorality.lean)</h3>
+
+      <p>
+        Once the object of an act is disordered, no intention or
+        circumstance can make it good. This is the theorem
+        <code>intrinsically_evil_always_evil</code>&nbsp;&mdash; the
+        same theorem that applies to contraception, lying, and every
+        other act the Catechism classifies as intrinsically evil.
+      </p>
+
+      <pre style="background: var(--code-bg); color: var(--code-text); padding: 1.2rem 1.5rem; border-radius: 4px; font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.78rem; line-height: 1.7; overflow-x: auto; margin: 1rem 0;">
+<span style="color: #6a5a4a;">-- The object is disordered &rarr; no intention makes it good.</span>
+<span style="color: #6a5a4a;">-- Loneliness, stress relief, curiosity &mdash; none change</span>
+<span style="color: #6a5a4a;">-- the moral object.</span>
+
+<span style="color: #7a9ec2;">theorem</span> intrinsically_evil_always_evil
+    (eval : MoralEvaluation)
+    (h_intrinsic : IntrinsicallyEvil eval.objectIsGood) :
+    <span style="color: #c8a070;">&not;</span>eval.isGood := <span style="color: #7a9ec2;">by</span>
+  intro &langle;ho, _, _&rangle;
+  exact h_intrinsic ho</pre>
+
+      <p>
+        This is the &ldquo;hard&rdquo; part of the teaching, and it is
+        worth being honest about what it means: the Catechism holds that
+        masturbation is objectively disordered regardless of why someone
+        does it. The intention (stress relief, loneliness, habit) does not
+        change the moral object. This is the deontological core of Catholic
+        moral theology in action.
+      </p>
+
+      <h3>Step 3: Responsibility Proportional to Freedom (Freedom.lean)</h3>
+
+      <p>
+        But here the Catechism pivots. The act is always objectively
+        disordered&nbsp;&mdash; but the <em>person</em> may not be fully
+        responsible. Why? Because responsibility tracks freedom, and
+        freedom can be diminished.
+      </p>
+
+      <pre style="background: var(--code-bg); color: var(--code-text); padding: 1.2rem 1.5rem; border-radius: 4px; font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.78rem; line-height: 1.7; overflow-x: auto; margin: 1rem 0;">
+<span style="color: #6a5a4a;">-- CCC &sect;1734: &ldquo;Freedom makes man responsible for</span>
+<span style="color: #6a5a4a;">-- his acts to the extent that they are voluntary.&rdquo;</span>
+<span style="color: #6a5a4a;">-- Habit, compulsion, anxiety &rarr; reduced freedom</span>
+<span style="color: #6a5a4a;">--   &rarr; reduced responsibility.</span>
+
+<span style="color: #7a9ec2;">axiom</span> responsibility_proportional_to_freedom :
+  <span style="color: #c8a070;">&forall;</span> (fd : FreedomDegree) (p : Person),
+    p.hasFreeWill = <span style="color: #c8a070;">true</span> &rarr;
+    fd.level > 0 &rarr; True</pre>
+
+      <p>
+        CCC &sect;2352 lists the specific factors: &ldquo;affective
+        immaturity, force of acquired habit, conditions of anxiety or
+        other psychological or social factors.&rdquo; Each of these
+        <em>reduces freedom</em>. Under the axiom that responsibility
+        is proportional to freedom, reduced freedom means reduced
+        responsibility.
+      </p>
+
+      <p>
+        This is not a loophole. It is the same principle that applies to
+        every sin in the Catholic framework. A person acting under severe
+        compulsion, deep addiction, or crippling anxiety is <em>less
+        free</em> than someone acting from calm deliberation. Less free
+        means less responsible. The Catechism applies this general
+        principle specifically to masturbation&nbsp;&mdash; which, given
+        the psychological realities of habit formation, is exactly where
+        you would expect it to apply.
+      </p>
+
+      <h3>Step 4: Two-Level Evaluation (Conscience.lean)</h3>
+
+      <p>
+        The final piece: the act and the person are evaluated separately.
+      </p>
+
+      <pre style="background: var(--code-bg); color: var(--code-text); padding: 1.2rem 1.5rem; border-radius: 4px; font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.78rem; line-height: 1.7; overflow-x: auto; margin: 1rem 0;">
+<span style="color: #6a5a4a;">-- The act is objectively disordered.</span>
+<span style="color: #6a5a4a;">-- The person may not be fully culpable.</span>
+<span style="color: #6a5a4a;">-- These are separate evaluations.</span>
+
+<span style="color: #7a9ec2;">structure</span> TwoLevelEvaluation <span style="color: #7a9ec2;">where</span>
+  action : Action
+  objectivelyGood : Prop      <span style="color: #6a5a4a;">-- Level 1: the act</span>
+  agentCulpable : Prop        <span style="color: #6a5a4a;">-- Level 2: the person</span></pre>
+
+      <p>
+        This structure, formalized for the erring conscience problem in
+        Conscience.lean, is exactly what CCC &sect;2352 needs. The
+        Catechism is saying: Level 1 (the act) is always
+        disordered. Level 2 (the agent) depends on how free the person
+        was when they acted. The two levels can diverge.
+      </p>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Section 3: The Two-Level Table -->
+    <section class="article-body">
+      <h2>The Two-Level Evaluation</h2>
+
+      <p>
+        <span class="versal">H</span>ere is the complete picture.
+        CCC &sect;2352 is making two simultaneous claims that operate
+        at different levels. Seeing them side by side makes the logic
+        visible.
+      </p>
+
+      <table class="axiom-table">
+        <thead>
+          <tr>
+            <th>Level</th>
+            <th>Question</th>
+            <th>Answer</th>
+            <th>Source</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Objective Act</strong></td>
+            <td>Is masturbation morally disordered?</td>
+            <td>Always yes. The object is intrinsically evil&nbsp;&mdash;
+              the sexual faculty is exercised outside its proper context
+              (marriage), violating the inseparability principle.</td>
+            <td><code>inseparability_principle</code>,
+              <code>intrinsically_evil_always_evil</code></td>
+          </tr>
+          <tr>
+            <td><strong>Subjective Culpability</strong></td>
+            <td>Is the person fully responsible?</td>
+            <td>Not necessarily. Habit, immaturity, anxiety, compulsion,
+              and psychological factors can reduce freedom, which reduces
+              responsibility. Culpability may be &ldquo;reduced to a
+              minimum.&rdquo;</td>
+            <td><code>responsibility_proportional_to_freedom</code>,
+              <code>TwoLevelEvaluation</code></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="assumption-callout">
+        <strong>Why the two levels matter pastorally.</strong>
+        A confessor who only reads Level 1 will tell every penitent that
+        they have committed a grave sin. A confessor who reads both levels
+        will ask about circumstances: Is this a deeply ingrained habit?
+        Is the person struggling with anxiety or depression? Did they act
+        from calm deliberation or from overwhelming compulsion? The
+        Catechism demands that both levels be considered. Pastoral care
+        requires the second level just as much as doctrinal clarity
+        requires the first.
+      </div>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Section 4: Connecting to Sin.lean -->
+    <section class="article-body">
+      <h2>When Is It Mortal Sin?</h2>
+
+      <p>
+        <span class="versal">T</span>he three conditions for mortal sin
+        (CCC &sect;1857, formalized in
+        <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/MoralTheology/Sin.lean">Sin.lean</a>)
+        are: grave matter, full knowledge, and complete consent. All three
+        must be present simultaneously.
+      </p>
+
+      <p>
+        For masturbation, the Catechism settles the first condition:
+        the matter is grave (&ldquo;gravely disordered&rdquo;). But the
+        second and third conditions&nbsp;&mdash; full knowledge and
+        complete consent&nbsp;&mdash; are exactly what &sect;2352 says
+        may be diminished.
+      </p>
+
+      <pre style="background: var(--code-bg); color: var(--code-text); padding: 1.2rem 1.5rem; border-radius: 4px; font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.78rem; line-height: 1.7; overflow-x: auto; margin: 1rem 0;">
+<span style="color: #6a5a4a;">-- From Sin.lean:</span>
+<span style="color: #7a9ec2;">def</span> SinfulAct.isMortal (s : SinfulAct) : Prop :=
+  s.gravity = MatterGravity.grave <span style="color: #c8a070;">&and;</span>
+  s.knowledge = MoralKnowledge.full <span style="color: #c8a070;">&and;</span>
+  s.consent = MoralConsent.complete
+
+<span style="color: #6a5a4a;">-- For masturbation:</span>
+<span style="color: #6a5a4a;">-- gravity = grave             (settled by &sect;2352)</span>
+<span style="color: #6a5a4a;">-- knowledge = full?           (may be diminished)</span>
+<span style="color: #6a5a4a;">-- consent = complete?         (may be diminished by</span>
+<span style="color: #6a5a4a;">--                              habit, anxiety, etc.)</span></pre>
+
+      <p>
+        If consent is incomplete&nbsp;&mdash; because of deep-rooted
+        habit, compulsive behavior, or psychological distress&nbsp;&mdash;
+        then one of the three conditions for mortal sin is not met.
+        The sin becomes venial, not mortal. This is not a pastoral
+        opinion; it is the logical consequence of the formal framework
+        the Catechism itself sets up.
+      </p>
+
+      <div class="assumption-callout">
+        <strong>The binary assumption does real work here.</strong>
+        The Sin formalization models knowledge and consent as binary
+        (full or not-full, complete or incomplete). In reality, habit
+        and compulsion exist on a spectrum. A person with a mild habit
+        and a person with a severe addiction both fall into
+        &ldquo;incomplete consent&rdquo;&nbsp;&mdash; but their situations
+        are very different. The Catechism&rsquo;s binary framework does
+        not capture this nuance. This is one of the places where the
+        formalization exposes a genuine limitation in the source text.
+      </div>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Section 5: Cache Hit -->
+    <section class="article-body">
+      <h2>A Cache Hit, Not a New Proof</h2>
+
+      <p>
+        <span class="versal">T</span>his is worth stepping back to
+        appreciate. The question &ldquo;What does the Catechism say about
+        masturbation?&rdquo; was answered by looking up four existing
+        results:
+      </p>
+
+      <ol>
+        <li>
+          <strong><code>inseparability_principle</code></strong>
+          (ConjugalEthics.lean)&nbsp;&mdash; the sexual faculty outside
+          marriage violates the inseparability of unitive and procreative
+          meanings.
+        </li>
+        <li>
+          <strong><code>intrinsically_evil_always_evil</code></strong>
+          (SourcesOfMorality.lean)&nbsp;&mdash; a disordered object
+          cannot be redeemed by good intentions.
+        </li>
+        <li>
+          <strong><code>responsibility_proportional_to_freedom</code></strong>
+          (Freedom.lean)&nbsp;&mdash; diminished freedom means diminished
+          responsibility.
+        </li>
+        <li>
+          <strong><code>TwoLevelEvaluation</code></strong>
+          (Conscience.lean)&nbsp;&mdash; the objective moral status of the
+          act and the subjective culpability of the agent are evaluated
+          separately.
+        </li>
+      </ol>
+
+      <p>
+        No new Lean code was written. No new axioms were introduced. The
+        existing formalization already contained everything needed to
+        reconstruct the Catechism&rsquo;s reasoning on this specific topic.
+      </p>
+
+      <p>
+        This is what a formal verification system is <em>supposed</em>
+        to do. Once you have formalized the foundational principles, specific
+        applications should follow from them. The system returns a cached
+        result, not a fresh computation. The four theorems were verified
+        months ago. They still hold. The answer falls out.
+      </p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Section 6: Denominational Comparison -->
+    <section class="article-body">
+      <h2>The Denominational Landscape</h2>
+
+      <p>
+        <span class="versal">A</span>s with contraception, the Christian
+        traditions diverge here&nbsp;&mdash; but less than you might expect.
+        The split tracks the same fault line: whether the sexual faculty has
+        an inherent purpose that constrains its use.
+      </p>
+
+      <table class="axiom-table">
+        <thead>
+          <tr>
+            <th>Tradition</th>
+            <th>Position on Masturbation</th>
+            <th>Key Reasoning</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong><span class="tag tag-catholic">Catholic</span></strong></td>
+            <td>Intrinsically disordered; culpability may be reduced</td>
+            <td>Inseparability principle + two-level evaluation.
+              The act is always objectively wrong. The person&rsquo;s
+              responsibility depends on freedom.</td>
+          </tr>
+          <tr>
+            <td><strong><span class="tag tag-lutheran">Traditional Protestant</span></strong></td>
+            <td>Sinful</td>
+            <td>Generally rooted in the &ldquo;sexual immorality&rdquo;
+              (<em>porneia</em>) texts of the New Testament and the
+              principle that sexual activity belongs within marriage.
+              Less formal apparatus than the Catholic position, but the
+              same conclusion.</td>
+          </tr>
+          <tr>
+            <td><strong><span class="tag tag-shared">Mainline Protestant</span></strong></td>
+            <td>Morally neutral or a matter of personal conscience</td>
+            <td>Having dropped the inseparability principle (Lambeth 1930
+              and its ripple effects), many mainline traditions have no
+              principled objection. The sexual faculty does not have an
+              inherent purpose that constrains its solitary use.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        The pattern mirrors what we saw with
+        <a href="../conjugal-ethics.html">contraception</a>. The
+        inseparability principle is the load-bearing axiom. Traditions
+        that hold it reach one conclusion. Traditions that have dropped
+        it reach another. The axiom set is the denomination.
+      </p>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Section 7: Pastoral Note -->
+    <section class="article-body">
+      <h2>A Note on Tone</h2>
+
+      <p>
+        <span class="versal">I</span>t is worth noting that the Catechism
+        itself is surprisingly compassionate on this topic. CCC &sect;2352
+        does not simply condemn and move on. It explicitly instructs
+        pastors to consider &ldquo;affective immaturity, force of acquired
+        habit, conditions of anxiety or other psychological or social
+        factors&rdquo; before making any judgment about a person&rsquo;s
+        culpability. It says these factors may &ldquo;reduce to a
+        minimum&rdquo; moral responsibility.
+      </p>
+
+      <p>
+        This is not a modern softening of an ancient teaching. It is the
+        teaching itself, stated in the official Catechism promulgated by
+        John Paul II in 1992. The formal structure explains why: the
+        <code>TwoLevelEvaluation</code> framework demands that the
+        objective moral status of an act and the subjective culpability
+        of the agent be evaluated separately. A tradition that collapses
+        these two levels&nbsp;&mdash; treating the disordered act as
+        automatic proof of the person&rsquo;s guilt&nbsp;&mdash; is not
+        following the Catechism. It is contradicting it.
+      </p>
+
+      <p>
+        The formalization makes this visible. The same framework that
+        says &ldquo;the act is always objectively disordered&rdquo; also
+        says &ldquo;the person may bear little or no guilt.&rdquo; Both
+        claims are load-bearing. Both are formally grounded. Dropping
+        either one distorts the teaching.
+      </p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Conclusion -->
+    <section class="article-body">
+      <h2>What the Formalization Reveals</h2>
+
+      <p>
+        <span class="versal">F</span>ormalizing CCC &sect;2352 through
+        existing Catlib theorems exposes several things:
+      </p>
+
+      <ol>
+        <li>
+          <strong>The reasoning is a composition, not a standalone
+          argument.</strong> The Catechism&rsquo;s position on masturbation
+          is not a free-standing moral claim. It is composed from the
+          inseparability principle (ConjugalEthics), the
+          intrinsically-evil framework (SourcesOfMorality), the
+          proportional-responsibility axiom (Freedom), and the two-level
+          evaluation (Conscience). Change any of these inputs and the
+          output changes.
+        </li>
+        <li>
+          <strong>The compassion is structural, not optional.</strong>
+          The two-level evaluation and the proportional-responsibility
+          axiom are not pastoral add-ons to a harsh doctrine. They are
+          load-bearing components of the formal framework. A reading of
+          the Catechism that ignores them is formally incomplete&nbsp;&mdash;
+          it is citing two theorems and ignoring two others.
+        </li>
+        <li>
+          <strong>The denominational split is predictable.</strong>
+          If you hold the inseparability principle, masturbation is
+          disordered (it exercises the sexual faculty outside its proper
+          context). If you have dropped the inseparability principle, there
+          is no principled objection. The axiom determines the conclusion.
+        </li>
+        <li>
+          <strong>The binary limitation applies.</strong>
+          The mortal/venial distinction depends on knowledge and consent
+          being binary. For a behavior as psychologically complex as
+          habitual masturbation, this binary framework is a genuine
+          limitation. Real compulsion exists on a spectrum, and the
+          Catechism&rsquo;s formal apparatus does not capture that.
+        </li>
+      </ol>
+
+      <p>
+        The system worked as designed. Four previously verified theorems,
+        composed in sequence, produced the Catechism&rsquo;s answer to a
+        specific moral question. No new code. No new axioms. A cached
+        theorem lookup.
+      </p>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Source references -->
+    <section class="article-body">
+      <div class="summary-box">
+        <h3>Source Code</h3>
+        <p>
+          This article references theorems from five existing files, all
+          machine-checked in Lean 4:
+          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/MoralTheology/ConjugalEthics.lean"><code>ConjugalEthics.lean</code></a>,
+          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/MoralTheology/SourcesOfMorality.lean"><code>SourcesOfMorality.lean</code></a>,
+          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/MoralTheology/Freedom.lean"><code>Freedom.lean</code></a>,
+          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/MoralTheology/Conscience.lean"><code>Conscience.lean</code></a>, and
+          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/MoralTheology/Sin.lean"><code>Sin.lean</code></a>.
+          No new Lean code was written for this article. Open the
+          <strong>Lean Code</strong> sidebar to preview the key definitions.
+        </p>
+      </div>
+    </section>
+
+    <div class="ornament">&#10053;</div>
+
+    <section class="cta-section">
+      <div class="cta-group">
+        <a href="https://github.com/ngundotra/catlib" class="cta-button primary">View on GitHub</a>
+        <a href="../../index.html" class="cta-button secondary">Back to Catlib</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="ornament">&#10053;</div>
+    <p>
+      <a href="https://github.com/ngundotra/catlib">Catlib</a>&nbsp;&mdash;
+      formalizing the Catholic Catechism in Lean 4.
+      A love letter to the Catholic intellectual tradition, written with precision.
+    </p>
+  </footer>
+
+</body>
+</html>

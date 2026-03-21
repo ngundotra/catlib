@@ -103,7 +103,10 @@
    Sliding sidebar for theorem details (CSS-only, checkbox hack)
    ============================================================ */
 .sidebar-toggle {
-  display: none;
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
 
 .sidebar-label {
@@ -129,6 +132,11 @@
 
 .sidebar-label:hover {
   background: #8f3a1a;
+}
+
+.sidebar-toggle:focus + .sidebar-label {
+  outline: 2px solid var(--accent-gold, #b8860b);
+  outline-offset: 2px;
 }
 
 .sidebar-panel {
