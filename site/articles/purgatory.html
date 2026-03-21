@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How Do We Know Purgatory Exists? &mdash; Catlib</title>
+  <meta name="description" content="A Protestant asks: 'Purgatory isn't in the Bible.' A formal verification approach reveals: it depends on WHICH Bible &mdash; and exposes a hidden tension with the doctrine of hell.">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="How Do We Know Purgatory Exists?">
+  <meta property="og:description" content="The case for purgatory depends on which Bible you use, how you read 1 Corinthians 3, and a hidden tension with hell that the Catechism never addresses. Formal verification makes it visible.">
+  <meta property="og:site_name" content="Catlib">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="How Do We Know Purgatory Exists? &mdash; Catlib">
+  <meta name="twitter:description" content="Formal verification reveals that purgatory depends on the canon question &mdash; and creates a tension with hell that requires a hidden distinction.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel+Decorative:wght@400;700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="articles.css">
+</head>
+<body>
+
+  <!-- Sidebar toggle for viewing Lean theorems -->
+  <input type="checkbox" id="sidebar-toggle" class="sidebar-toggle">
+  <label for="sidebar-toggle" class="sidebar-label">Lean Code</label>
+  <div class="sidebar-panel">
+    <h3>Theorem Reference</h3>
+
+    <div class="sidebar-section">
+      <h4>purgatory_guarantees_vision</h4>
+<pre>theorem purgatory_guarantees_vision :
+  &forall; (p : Person),
+    inPurgatory p &rarr;
+    attainsBeatificVision p</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>purgatory_achieves_holiness</h4>
+<pre>theorem purgatory_achieves_holiness :
+  &forall; (p : Person),
+    inPurgatory p &rarr;
+    fullyPurified p</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>grace_at_death_guarantees_heaven</h4>
+<pre>theorem grace_at_death_guarantees_heaven :
+  &forall; (p : Person),
+    diedInGrace p &rarr;
+    attainsBeatificVision p</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>hell_purgatory_boundary</h4>
+<pre>theorem hell_purgatory_boundary :
+  &forall; (p : Person),
+    diedInMortalSin p &rarr;
+    &not;inPurgatory p</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>Key Axioms (7)</h4>
+<pre>-- 1. holiness_required_for_heaven
+--    (Rev 21:27) [Ecumenical]
+-- 2. imperfect_purification_exists
+--    (CCC &sect;1030) [Catholic]
+-- 3. post_mortem_purification
+--    (CCC &sect;1030) [Catholic]
+-- 4. purgatory_leads_to_heaven
+--    (CCC &sect;1030) [Catholic]
+-- 5. prayer_aids_dead
+--    (2 Macc 12:46) [Catholic]
+-- 6. mortal_sin_excludes_purgatory
+--    (CCC &sect;1033) [Catholic]
+-- 7. purified_in_grace_sees_god
+--    (CCC &sect;1023) [Ecumenical]</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>Source File</h4>
+<pre><a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/Purgatory.lean" style="color: var(--accent-gold);">Purgatory.lean</a></pre>
+    </div>
+
+    <p class="close-hint">Click the tab again to close</p>
+  </div>
+
+  <main>
+    <a href="../index.html" class="back-link">Back to Catlib</a>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="ornament">&#10053;</div>
+      <h1>How Do We Know Purgatory Exists?</h1>
+      <p class="subtitle">The canon question, the hell tension, and what a proof assistant found</p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Introduction -->
+    <section class="article-body">
+      <p>
+        <span class="versal">P</span>urgatory is not in the Bible.
+      </p>
+      <p>
+        That is the Protestant objection, and it deserves a serious answer.
+        Not a defensive one. Not a dismissive one. A precise one.
+      </p>
+      <p>
+        The Catlib project formalized
+        <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/Purgatory.lean">CCC &sect;1030&ndash;1032</a>
+        (the Catholic doctrine of purgatory) in the Lean 4 proof assistant,
+        alongside the
+        <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/Hell.lean">doctrine of hell</a>
+        (&sect;1033). The results were illuminating: the case for purgatory
+        depends on which Bible you use, creates a genuine tension with hell
+        that the Catechism never addresses, and rests on hidden assumptions
+        about holiness, time, and prayer that deserve to be seen clearly.
+      </p>
+      <p>
+        This article walks through what the proof assistant found.
+      </p>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Which Bible? -->
+    <section class="article-body">
+      <h2>It Depends on Which Bible</h2>
+
+      <p>
+        <span class="versal">T</span>he Protestant says &ldquo;purgatory is not
+        in the Bible,&rdquo; and under the 66-book Protestant canon, that claim
+        has real force. But the Catholic Bible has 73 books. And the strongest
+        verse for purgatory is in one of the seven books Luther removed.
+      </p>
+
+      <div class="finding-card">
+        <h3>2 Maccabees 12:46 &mdash; The Strongest Text</h3>
+        <p>
+          <span class="tag tag-catholic">Catholic canon</span>
+          &ldquo;It is a holy and wholesome thought to pray for the dead,
+          that they may be loosed from sins.&rdquo;
+        </p>
+        <p>
+          This verse explicitly endorses prayer for the dead and implies that
+          the dead can be &ldquo;loosed from sins&rdquo; after death. If this
+          is Scripture, purgatory has direct biblical support.
+        </p>
+        <p>
+          But 2 Maccabees is a Deuterocanonical book&nbsp;&mdash; one of the
+          seven that Luther excluded using the Hebrew Bible as his Old Testament
+          standard. Under Luther&rsquo;s <strong>L4</strong> axiom (the canon
+          is determinable without Church authority), this verse is not Scripture.
+          The strongest textual support vanishes.
+        </p>
+      </div>
+
+      <div class="assumption-callout">
+        This is one of the clearest examples in all of theology of how the
+        <strong>canon question</strong> (L4 from
+        <a href="luther.html">Luther&rsquo;s Axioms</a>) cascades into a
+        specific doctrine. Accept the 73-book canon, and purgatory has direct
+        scriptural support. Accept the 66-book canon, and the scriptural case
+        becomes contested interpretation.
+      </div>
+
+      <p>
+        Under the 66-book canon, the remaining scriptural evidence is:
+      </p>
+
+      <div class="finding-card">
+        <h3>1 Corinthians 3:13&ndash;15</h3>
+        <p>
+          <span class="tag tag-shared">Shared canon</span>
+          &ldquo;Each one&rsquo;s work will become manifest, for the Day will
+          disclose it, because it will be revealed by fire, and the fire will
+          test what sort of work each one has done&hellip; If anyone&rsquo;s
+          work is burned up, he will suffer loss, though he himself will be
+          saved, but only as through fire.&rdquo;
+        </p>
+        <p>
+          <span class="tag tag-catholic">Catholic reading</span>
+          The &ldquo;fire&rdquo; that purifies while the person is
+          &ldquo;saved&rdquo; is purgatorial fire&nbsp;&mdash; a purification
+          that results in salvation.
+        </p>
+        <p>
+          <span class="tag tag-lutheran">Protestant reading</span>
+          The &ldquo;fire&rdquo; is the fire of final judgment that tests
+          works, not a post-mortem purification. The person is saved despite
+          poor works, not purified through a process.
+        </p>
+      </div>
+
+      <div class="finding-card">
+        <h3>Matthew 12:32</h3>
+        <p>
+          <span class="tag tag-shared">Shared canon</span>
+          &ldquo;Whoever speaks against the Holy Spirit will not be forgiven,
+          either in this age or in the age to come.&rdquo;
+        </p>
+        <p>
+          <span class="tag tag-catholic">Catholic reading</span>
+          The phrase &ldquo;in the age to come&rdquo; implies that
+          <em>some</em> sins ARE forgiven in the age to come&nbsp;&mdash;
+          which requires a state of post-mortem purification.
+        </p>
+        <p>
+          <span class="tag tag-lutheran">Protestant reading</span>
+          The phrase is emphatic&nbsp;&mdash; &ldquo;not even in the next
+          age&rdquo;&nbsp;&mdash; not an implication that other sins are
+          forgiven after death.
+        </p>
+      </div>
+
+      <div class="finding-card">
+        <h3>Revelation 21:27</h3>
+        <p>
+          <span class="tag tag-shared">Shared</span>
+          &ldquo;Nothing unclean will enter it.&rdquo; Both traditions agree:
+          holiness is required for heaven. The question is HOW that holiness
+          is achieved&nbsp;&mdash; by a post-mortem purification (Catholic),
+          or by Christ&rsquo;s imputed righteousness at justification
+          (Protestant).
+        </p>
+      </div>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- The Tension with Hell -->
+    <section class="article-body">
+      <h2>The Tension with Hell</h2>
+
+      <p>
+        <span class="versal">T</span>he proof assistant found something the
+        Catechism does not address. In
+        <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/Hell.lean">Hell.lean</a>,
+        the formalization declares:
+      </p>
+
+      <div class="axis-card">
+        <div class="axis-label">Hell.lean, Axiom 3</div>
+        <div class="axis-side">
+          <code>death_is_final</code> &mdash; No post-mortem change of state.
+          Death is a hard boundary. The Catechism treats it as absolute.
+        </div>
+      </div>
+
+      <p>
+        But in
+        <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/Purgatory.lean">Purgatory.lean</a>,
+        we must declare:
+      </p>
+
+      <div class="axis-card">
+        <div class="axis-label">Purgatory.lean, Axiom 3</div>
+        <div class="axis-side">
+          <code>post_mortem_purification</code> &mdash; Those who die in grace
+          but imperfectly purified undergo purification AFTER death.
+        </div>
+      </div>
+
+      <p>
+        These appear to contradict each other. If death is final and no
+        post-mortem change is possible, how can post-mortem purification
+        occur?
+      </p>
+
+      <div class="assumption-callout">
+        The Catholic resolution requires a <strong>distinction that the
+        Catechism never makes explicit</strong>: death is final for
+        the <em>choice</em> (you cannot switch from rejecting God to
+        accepting Him), but not final for <em>purification</em> (you can
+        be cleaned up after choosing God). Purification is not a change
+        of will&nbsp;&mdash; it is the completion of a will already oriented
+        toward God.
+      </div>
+
+      <p>
+        This is formalized in Purgatory.lean as
+        <code>death_finalizes_choice_not_state</code>&nbsp;&mdash; a new
+        axiom required to make both doctrines coexist without contradiction.
+        The proof assistant forced this distinction to the surface. The
+        Catechism assumes it silently.
+      </p>
+
+      <p>
+        The structural consequence: the hell-purgatory boundary is absolute.
+        Theorem <code>hell_purgatory_boundary</code> proves that no one who
+        died in mortal sin can enter purgatory. And theorem
+        <code>grace_and_mortal_sin_exclusive</code> proves that dying in
+        grace and dying in mortal sin are mutually exclusive. The choice is
+        binary and final, even though holiness is a spectrum.
+      </p>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- What Catholics and Protestants Share -->
+    <section class="article-body">
+      <h2>Where They Agree</h2>
+
+      <p>
+        <span class="versal">B</span>efore the disagreement, the common ground.
+        It is more than most people on either side expect.
+      </p>
+
+      <div class="agreement-box">
+        <h4>Fully Shared</h4>
+        <ul>
+          <li><strong>Holiness is required for heaven.</strong> Rev 21:27 is in
+            both canons. Both traditions affirm that nothing impure can enter
+            God&rsquo;s presence. Axiom 1 (<code>holiness_required_for_heaven</code>)
+            is tagged <span class="tag tag-shared">Ecumenical</span>.</li>
+          <li><strong>Salvation is by grace.</strong> Neither side claims humans
+            earn their way to heaven. The person in purgatory is there because
+            of God&rsquo;s grace, not despite it.</li>
+          <li><strong>Hell is real and permanent.</strong> Both traditions hold
+            that those who finally reject God are permanently separated from Him.</li>
+          <li><strong>The saved are truly saved.</strong> Both traditions affirm
+            that those in God&rsquo;s grace will see Him. The Catholic adds a
+            purification step; the Protestant says Christ&rsquo;s righteousness
+            handles it at justification.</li>
+        </ul>
+      </div>
+
+      <div class="summary-box">
+        <h3>The disagreement, precisely stated</h3>
+        <p>
+          The disagreement is not about WHETHER holiness is needed for heaven
+          (both agree), or WHETHER salvation is by grace (both agree), or
+          WHETHER hell is real (both agree). The disagreement is about
+          <em>when and how</em> the holiness required for heaven is achieved:
+          at the moment of justification by imputed righteousness (Protestant),
+          or through a process that may continue after death (Catholic).
+        </p>
+      </div>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- The Hidden Assumptions -->
+    <section class="article-body">
+      <h2>The Hidden Assumptions</h2>
+
+      <p>
+        <span class="versal">T</span>he proof assistant identified five
+        assumptions that the Catechism treats as obvious but never argues for.
+      </p>
+
+      <table class="axiom-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Hidden Assumption</th>
+            <th>Why It Matters</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td><strong>Holiness is a spectrum</strong>, not binary</td>
+            <td>If holiness were binary (holy / not-holy), purgatory would be
+              unnecessary. You either have it or you don&rsquo;t. Purgatory
+              requires <em>degrees</em>.</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><strong>Post-mortem change is possible</strong></td>
+            <td>In tension with <code>death_is_final</code> from Hell.lean.
+              Resolved only by distinguishing choice-finality from
+              state-finality.</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td><strong>Temporal process after death</strong></td>
+            <td>Purification takes &ldquo;time&rdquo; in some sense. How does
+              time work for a disembodied soul? The Catechism never says.</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td><strong>Prayer crosses the death boundary</strong></td>
+            <td>The living can aid the dead. This is a strong metaphysical
+              claim, assumed without argument.</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td><strong>The 73-book canon</strong></td>
+            <td>The strongest scriptural support (2 Macc 12:46) requires the
+              Deuterocanonical books. Under the 66-book canon, the exegetical
+              case is significantly weaker.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="assumption-callout">
+        None of these assumptions are unreasonable. But they are assumptions.
+        A proof assistant does not judge them&nbsp;&mdash; it makes them
+        visible. And visibility is the first step toward honest conversation.
+      </div>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- The Axiom Dependencies -->
+    <section class="article-body">
+      <h2>The Axiom Dependencies</h2>
+
+      <p>
+        <span class="versal-small">H</span>ere is the complete dependency map
+        for the purgatory doctrine, showing which base axioms from
+        <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Foundations/Axioms.lean">Axioms.lean</a>
+        it requires:
+      </p>
+
+      <table class="axiom-table">
+        <thead>
+          <tr>
+            <th>Axiom</th>
+            <th>Role</th>
+            <th>Scope</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>S8</code></td>
+            <td>Grace is transformative&nbsp;&mdash; purification is a real
+              change in the person, not merely a legal declaration</td>
+            <td><span class="tag tag-catholic">Catholic</span></td>
+          </tr>
+          <tr>
+            <td><code>T3</code></td>
+            <td>Sacramental efficacy&nbsp;&mdash; the Eucharistic sacrifice
+              offered for the dead actually aids their purification</td>
+            <td><span class="tag tag-catholic">Catholic</span></td>
+          </tr>
+          <tr>
+            <td><code>L4</code></td>
+            <td>The canon question&nbsp;&mdash; 73 vs. 66 books determines
+              whether 2 Macc 12:46 counts as Scripture</td>
+            <td><span class="tag tag-lutheran">Disputed</span></td>
+          </tr>
+          <tr>
+            <td><code>S5</code></td>
+            <td>Sin separates from God&nbsp;&mdash; impurity must be removed
+              before communion is complete</td>
+            <td><span class="tag tag-shared">Shared</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        The load-bearing axioms are <code>S8</code> (transformative grace)
+        and <code>L4</code> (which Bible). If grace is merely forensic
+        (Lutheran L2), then Christ&rsquo;s righteousness covers the believer
+        completely at justification, and no further purification is needed.
+        If the canon excludes 2 Maccabees (Lutheran L4), the strongest
+        scriptural warrant disappears.
+      </p>
+
+      <p>
+        Purgatory, more than almost any other doctrine, shows how Luther&rsquo;s
+        axiom modifications cascade. Change L2 (forensic justification)
+        and L4 (66-book canon), and purgatory becomes both theologically
+        unnecessary and scripturally unsupported. Keep the Catholic axioms,
+        and purgatory follows with logical coherence.
+      </p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Conclusion -->
+    <section class="article-body">
+      <h2>The Honest Answer</h2>
+
+      <p>
+        <span class="versal">H</span>ow do we know purgatory exists? The honest
+        Catholic answer is: we know it the same way we know the canon of
+        Scripture&nbsp;&mdash; through the Church&rsquo;s teaching authority,
+        grounded in Scripture and Tradition together.
+      </p>
+
+      <p>
+        The Protestant who says &ldquo;purgatory is not in the Bible&rdquo;
+        is right&nbsp;&mdash; under the 66-book canon. The Catholic who says
+        &ldquo;yes it is&rdquo; is also right&nbsp;&mdash; under the 73-book
+        canon. The disagreement about purgatory is, at its root, a
+        disagreement about the canon. And the disagreement about the canon
+        is a disagreement about authority.
+      </p>
+
+      <p>
+        The proof assistant added one more insight: purgatory creates a
+        genuine tension with the doctrine of hell that requires a distinction
+        the Catechism never states. Death must be final for choices but not
+        for purification. That distinction is theologically defensible, but
+        it is a hidden assumption&nbsp;&mdash; and making hidden assumptions
+        visible is what formal verification does best.
+      </p>
+
+      <p>
+        Neither side is being foolish. The Protestant is guarding a real
+        principle: sufficiency of Christ&rsquo;s work. The Catholic is
+        guarding a different real principle: the holiness required to stand
+        in God&rsquo;s presence. Both are reading Scripture. They are reading
+        different Scriptures, under different axioms, and reaching different
+        conclusions&nbsp;&mdash; each with logical coherence.
+      </p>
+
+      <p>
+        Seeing that clearly is better than arguing past each other.
+      </p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Source references -->
+    <section class="article-body">
+      <div class="summary-box">
+        <h3>Source Code &amp; Further Reading</h3>
+        <p>
+          The purgatory formalization is in
+          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/Purgatory.lean"><code>Purgatory.lean</code></a>
+          (7 axioms, 5 theorems). The hell formalization that creates the
+          tension is in
+          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/Hell.lean"><code>Hell.lean</code></a>.
+          For the canon question and Luther&rsquo;s axiom modifications, see
+          <a href="luther.html">Luther&rsquo;s Axioms</a>.
+          The 15 base axioms are in
+          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Foundations/Axioms.lean"><code>Axioms.lean</code></a>.
+        </p>
+      </div>
+    </section>
+
+    <div class="ornament">&#10053;</div>
+
+    <section class="cta-section">
+      <div class="cta-group">
+        <a href="https://github.com/ngundotra/catlib" class="cta-button primary">View on GitHub</a>
+        <a href="../index.html" class="cta-button secondary">Back to Catlib</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="ornament">&#10053;</div>
+    <p>
+      <a href="https://github.com/ngundotra/catlib">Catlib</a>&nbsp;&mdash;
+      formalizing the Catholic Catechism in Lean 4.
+      A love letter to the Catholic intellectual tradition, written with precision.
+    </p>
+  </footer>
+
+</body>
+</html>
