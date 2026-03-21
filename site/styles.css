@@ -175,6 +175,15 @@ h2 {
   margin-bottom: 1.2rem;
   letter-spacing: 0.06em;
   text-align: center;
+  text-transform: uppercase;
+  font-variant: small-caps;
+}
+
+h2::before,
+h2::after {
+  content: ' \2014 ';
+  color: var(--accent-gold);
+  opacity: 0.5;
 }
 
 h3 {
@@ -191,16 +200,62 @@ p {
   font-size: 1.05rem;
 }
 
-/* Drop cap on first paragraph of key sections */
-.spirit p:first-child::first-letter,
-.finding-card > p:first-child::first-letter {
-  font-family: 'Cinzel Decorative', 'Cinzel', serif;
-  font-size: 3.2em;
+/* Illuminated versals — the big ornate monk letters */
+
+/* Large versal — opening sections, like chapter starts in a codex */
+.versal {
+  font-family: 'UnifrakturMaguntia', 'Cinzel Decorative', serif;
+  font-size: 4.5rem;
   float: left;
-  line-height: 0.8;
-  margin-right: 0.08em;
-  margin-top: 0.05em;
+  line-height: 0.72;
+  margin-right: 0.06em;
+  margin-top: 0.02em;
   color: var(--accent);
+  /* Gold-leaf shimmer effect */
+  text-shadow:
+    1px 1px 0 var(--accent-gold),
+    2px 2px 4px rgba(184, 134, 11, 0.3);
+  /* Subtle background "illumination" */
+  position: relative;
+}
+
+.versal::after {
+  content: '';
+  position: absolute;
+  top: 0.1em;
+  left: -0.05em;
+  right: -0.05em;
+  bottom: 0.05em;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(184, 134, 11, 0.08) 0%,
+    transparent 70%
+  );
+  z-index: -1;
+  border-radius: 50%;
+}
+
+/* Quote versal — inside blockquotes */
+.versal-quote {
+  font-family: 'UnifrakturMaguntia', 'Cinzel Decorative', serif;
+  font-size: 3.2rem;
+  float: left;
+  line-height: 0.75;
+  margin-right: 0.06em;
+  margin-top: 0.0em;
+  color: var(--accent);
+  text-shadow: 1px 1px 0 var(--accent-gold);
+}
+
+/* Small versal — body paragraphs, secondary sections */
+.versal-small {
+  font-family: 'UnifrakturMaguntia', 'Cinzel Decorative', serif;
+  font-size: 2.2rem;
+  float: left;
+  line-height: 0.78;
+  margin-right: 0.05em;
+  margin-top: 0.05em;
+  color: var(--accent-gold);
 }
 
 /* Worked example */
@@ -216,19 +271,20 @@ p {
 
 .step-number {
   flex-shrink: 0;
-  width: 2.2rem;
-  height: 2.2rem;
+  width: 2.4rem;
+  height: 2.4rem;
   border-radius: 50%;
-  background: transparent;
-  color: var(--accent-gold);
+  background: var(--accent);
+  color: var(--accent-gold-light);
   border: 2px solid var(--accent-gold);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Cinzel', serif;
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-family: 'UnifrakturMaguntia', 'Cinzel', serif;
+  font-size: 1.1rem;
+  font-weight: 400;
   margin-top: 0.15rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
 }
 
 .step-content h3 {
