@@ -6,6 +6,8 @@ A proof assistant won't let you skip steps. It forces you to say out loud what y
 
 This is a love letter to the Catholic intellectual tradition. The Church has 2,000 years of rigorous philosophical reasoning — Aquinas, Augustine, the Scholastics. We are doing what they did — examining premises — with a tool they didn't have.
 
+Formal verification doesn't tell you who's right. It tells you exactly which assumptions produce which conclusions — and when 1,900 years of consensus broke, it can show you the single axiom that changed.
+
 ## The vision
 
 Catlib is building toward a **formally verified theological reasoning engine** — ask a question in natural language, get a machine-checked answer grounded in Scripture and Tradition, with the axioms visible.
@@ -33,13 +35,24 @@ Catlib is building toward a **formally verified theological reasoning engine** �
     "We should not despair of the eternal salvation of persons who have taken
     their own lives." God's mercy (S2) extends beyond our understanding.
     [Denomination: Ecumenical ✓]
+
+"How should Catholics think about contraception?"
+  → The inseparability principle (Humanae Vitae §12): every conjugal act
+    must retain both unitive and procreative meaning.
+  → For 1,900 years, ALL Christians agreed. Then Lambeth 1930 made one
+    axiom swap — and every Protestant denomination followed within decades.
+  → Under Catholic axioms (inseparability): contraception is intrinsically evil.
+  → Under Protestant axioms (A1_SEPARABILITY, post-1930): contraception
+    is permitted in marriage.
+  → The entire debate is one axiom.
+    [See: site/articles/conjugal-ethics.html]
 ```
 
 Every answer shows its axiom dependencies and denominational scope. You can see exactly what you'd need to accept or reject to hold a different position.
 
 ## The axiom base: 3 / 9 / 3
 
-We traced 44 hidden assumptions across 13 formalizations back to **15 base axioms**:
+We traced 44 hidden assumptions across 17 formalizations back to **15 base axioms**:
 
 **9 Scriptural** — with full verse references:
 
@@ -75,23 +88,36 @@ We traced 44 hidden assumptions across 13 formalizations back to **15 base axiom
 
 ## What we found
 
-13 formalizations, all revealing hidden assumptions:
+17 formalizations, all revealing hidden assumptions:
 
 | Passage | Finding |
 |---------|---------|
-| **Sources of Morality** (§1750–1756) | "Intrinsically evil" requires an unstated axiom: an action's moral character is fixed regardless of context |
-| **Sin** (§1849–1864) | The mortal/venial system requires five binary assumptions the text never states |
+| **Sources of Morality** (§1750-1756) | "Intrinsically evil" requires an unstated axiom: an action's moral character is fixed regardless of context |
+| **Sin** (§1849-1864) | The mortal/venial system requires five binary assumptions the text never states |
 | **Hell** (§1033+1037) | "Self-exclusion" only works under libertarian free will — and the text never explains why love requires freedom |
-| **Grace** (§2001–2002) | "You need grace to prepare for grace" is a genuine circularity requiring a typed grace hierarchy |
-| **Trinity** (§253–255) | Cannot be modeled with standard equality — requires relative identity ("same God" ≠ "same person") |
-| **Natural Law** (§1954–1957) | If universal AND accessible to reason, then disagreement is always a failure of reason |
-| **Conscience** (§1776–1791) | The erring conscience paradox: acting against conscience is categorically worse than following an erring one |
-| **Providence** (§302–311) | God "operates through" good but only "permits" evil — requires evil to be a privation |
-| **Soul** (§355–365) | The Catechism adopts Aristotelian hylomorphism without naming it |
-| **Freedom** (§1730–1738) | Perfect freedom is the *inability* to sin |
-| **Legitimate Defense** (§2263–2267) | Proportionality assumes accurate threat assessment under crisis conditions |
-| **Justification** (§1987–1993) | Catholic vs. Protestant = difference in axiom sets; the axiom set IS the denomination |
-| **Exorcism** (§1673) | Authority chain Christ→Apostles→Bishops→Priests; demons are literal personal agents |
+| **Grace** (§2001-2002) | "You need grace to prepare for grace" is a genuine circularity requiring a typed grace hierarchy |
+| **Trinity** (§253-255) | Cannot be modeled with standard equality — requires relative identity ("same God" ≠ "same person") |
+| **Natural Law** (§1954-1957) | If universal AND accessible to reason, then disagreement is always a failure of reason |
+| **Conscience** (§1776-1791) | The erring conscience paradox: acting against conscience is categorically worse than following an erring one |
+| **Providence** (§302-311) | God "operates through" good but only "permits" evil — requires evil to be a privation |
+| **Soul** (§355-365) | The Catechism adopts Aristotelian hylomorphism without naming it |
+| **Freedom** (§1730-1738) | Perfect freedom is the *inability* to sin |
+| **Legitimate Defense** (§2263-2267) | Proportionality assumes accurate threat assessment under crisis conditions |
+| **Justification** (§1987-1993) | Catholic vs. Protestant = difference in axiom sets; the axiom set IS the denomination |
+| **Exorcism** (§1673) | Authority delegation chain Christ→Apostles→Bishops→Priests; demons are literal personal agents |
+| **Purgatory** (§1030-1032) | Post-mortem purification requires distinguishing "death finalizes choice" from "death finalizes state"; strongest proof text (2 Macc 12:46) depends on which canon you accept |
+| **Divine Modes** (§301 + §1033) | God relates to creation in two modes: sustaining (holds in being) and beatifying (offers communion). Hell is separation from beatifying mode only — the damned still exist because God sustains them. Unifies hell, purgatory, providence, and evil-as-privation into one framework |
+| **Conjugal Ethics** (§2366-2372) | The inseparability principle: 1,900 years of Christian consensus broken by one axiom swap at Lambeth 1930 |
+
+## Articles
+
+| Article | Question answered |
+|---------|------------------|
+| [Luther's Axioms](site/articles/luther.html) | Where do Catholics and Lutherans actually disagree? (4 axiom swaps) |
+| [Forgiveness](site/articles/forgiveness.html) | Why do Catholics believe priests can forgive sins? |
+| [Purgatory](site/articles/purgatory.html) | How do we know purgatory exists? (depends on which Bible) |
+| [Divine Modes](site/articles/divine-modes.html) | If God sustains everything, how can hell be "separation from God"? |
+| [Conjugal Ethics](site/articles/conjugal-ethics.html) | How should Catholics think about family size and contraception? |
 
 ## How we reason about questions
 
@@ -120,15 +146,16 @@ lake build
 Catlib/
 ├── Foundations/
 │   ├── Basic.lean         ← Core types + Denomination tags
-│   └── Axioms.lean        ← The 15 base axioms (3P/9S/3T)
-├── Creed/                 ← Part I: Hell, Grace, Trinity, Providence, Soul
-├── MoralTheology/         ← Part III: Sources, Sin, Natural Law, Conscience,
-│                            Freedom, Legitimate Defense, Justification
-└── Sacraments/            ← Part II: Exorcism (and more to come)
+│   ├── Axioms.lean        ← The 15 base axioms (3P/9S/3T)
+│   └── Authority.lean     ← General authority delegation chain
+├── Creed/                 ← Hell, Grace, Trinity, Providence, Soul, Purgatory, DivineModes
+├── MoralTheology/         ← Sources, Sin, Natural Law, Conscience, Freedom,
+│                            Legitimate Defense, Justification, ConjugalEthics
+└── Sacraments/            ← Exorcism (and more to come)
 site/
-├── index.html             ← Public microsite (illuminated manuscript aesthetic)
-├── styles.css             ← Cinzel + Cormorant Garamond + UnifrakturMaguntia
-└── articles/              ← Deep dives (Luther, etc.)
+├── index.html
+├── styles.css
+└── articles/              ← Luther, Forgiveness, Purgatory, Divine Modes, Conjugal Ethics
 ```
 
 ## Spirit
