@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luther's Axioms — Catlib</title>
+  <meta name="description" content="What if we could see exactly where Catholics and Lutherans agree and disagree — not in vague terms, but with mathematical precision? A formal verification approach to the Reformation's theological fault line.">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Luther's Axioms: The Reformation as Axiom Swap">
+  <meta property="og:description" content="Formal verification reveals that Catholic-Lutheran disagreements reduce to specific axiom changes. When you make the axioms explicit, you can see exactly what each side assumes — without caricature.">
+  <meta property="og:site_name" content="Catlib">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Luther's Axioms: The Reformation as Axiom Swap">
+  <meta name="twitter:description" content="Formal verification as a peace-making tool: seeing the Reformation's disagreements with mathematical precision.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel+Decorative:wght@400;700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="articles.css">
+</head>
+<body>
+
+  <!-- Sidebar toggle for viewing Lean theorems -->
+  <input type="checkbox" id="sidebar-toggle" class="sidebar-toggle">
+  <label for="sidebar-toggle" class="sidebar-label">Lean Code</label>
+  <div class="sidebar-panel">
+    <h3>Theorem Reference</h3>
+
+    <div class="sidebar-section">
+      <h4>JustificationModel</h4>
+<pre>structure JustificationModel where
+  justType : JustificationType
+  humanRole : HumanRole
+  instrument : JustificationInstrument
+  isProcess : Bool</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>catholicModel</h4>
+<pre>def catholicModel : JustificationModel :=
+  { justType := .transformative
+    humanRole := .cooperation
+    instrument := .baptism
+    isProcess := true }</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>protestantModel</h4>
+<pre>def protestantModel : JustificationModel :=
+  { justType := .forensic
+    humanRole := .receptionOnly
+    instrument := .faithAlone
+    isProcess := false }</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>models_differ_on_three_axes</h4>
+<pre>theorem models_differ_on_three_axes :
+  catholicModel.justType
+    ≠ protestantModel.justType ∧
+  catholicModel.humanRole
+    ≠ protestantModel.humanRole ∧
+  catholicModel.instrument
+    ≠ protestantModel.instrument :=
+  by refine ⟨?_, ?_, ?_⟩
+     &lt;;&gt; intro h
+     &lt;;&gt; simp [catholicModel,
+              protestantModel] at h</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>The 15 Base Axioms (P/S/T)</h4>
+<pre>-- Philosophical (3)
+P1. Hylomorphism
+P2. Two-tier causation
+P3. Evil is privation
+
+-- Scriptural (9)
+S1. God is love
+S2. Universal salvific will
+S3. Law on hearts
+S4. Universal providence
+S5. Sin separates
+S6. Moral realism
+S7. Teleological freedom
+S8. Grace necessary &amp; transformative
+S9. Conscience binds
+
+-- Tradition (3)
+T1. Libertarian free will
+T2. Grace preserves freedom
+T3. Sacramental efficacy</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>Source Files</h4>
+<pre><a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Foundations/Axioms.lean" style="color: var(--accent-gold);">Axioms.lean</a>
+<a href="https://github.com/ngundotra/catlib/blob/main/Catlib/MoralTheology/Justification.lean" style="color: var(--accent-gold);">Justification.lean</a></pre>
+    </div>
+
+    <p class="close-hint">Click the tab again to close</p>
+  </div>
+
+  <main>
+    <a href="../index.html" class="back-link">Back to Catlib</a>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="ornament">&#10053;</div>
+      <h1>Luther's Axioms</h1>
+      <p class="subtitle">The Reformation as axiom swap</p>
+      <p class="subtitle">
+        What if we could see exactly where Catholics and Lutherans agree
+        and disagree&nbsp;&mdash; not in vague terms, but with mathematical precision?
+      </p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Introduction -->
+    <section class="article-body">
+      <p>
+        <span class="versal">F</span>or five centuries, Catholics and Lutherans have
+        argued about justification, Scripture, grace, and the saints. The arguments
+        have been passionate, sometimes bitter, and often marked by mutual caricature.
+        Each side has, at times, reduced the other to a straw man.
+      </p>
+      <p>
+        But what if we could do something different? What if, instead of arguing about
+        who is right, we first agreed on exactly what each side <em>assumes</em>?
+      </p>
+      <p>
+        That is what a proof assistant does. It does not tell you whether an axiom is
+        true. It tells you: <em>if you accept these premises, this conclusion follows.</em>
+        It makes hidden assumptions visible. It replaces vagueness with precision.
+        And precision, it turns out, is more loving than polemics&nbsp;&mdash; because it
+        removes the possibility of caricature.
+      </p>
+      <p>
+        The <a href="https://github.com/ngundotra/catlib">Catlib project</a> formalized
+        twelve passages from the Catholic Catechism in the Lean 4 proof assistant. One
+        of the most striking findings was this: the Catholic-Protestant disagreement on
+        justification can be modeled as a difference in axiom sets. The axiom set
+        <em>is</em> the denomination.
+      </p>
+      <p>
+        This article applies that insight to Martin Luther's broader disagreements with
+        the Catholic faith. The goal is not to declare a winner. The goal is to see
+        clearly.
+      </p>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- The Five Solas as Axiom Modifications -->
+    <section class="article-body">
+      <h2>The Five Solas as Axiom Modifications</h2>
+
+      <p>
+        <span class="versal">L</span>uther's theology is often summarized in five
+        Latin slogans&nbsp;&mdash; the <em>five solas</em>. Each one corresponds to a
+        specific modification of the Catholic axiom set formalized in
+        <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Foundations/Axioms.lean">Axioms.lean</a>.
+        Here is the mapping:
+      </p>
+
+      <table class="axiom-table">
+        <thead>
+          <tr>
+            <th>Sola</th>
+            <th>Meaning</th>
+            <th>Axiom Change</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Sola Scriptura</strong></td>
+            <td>Scripture alone is the supreme authority</td>
+            <td>
+              <span class="tag tag-lutheran">Lutheran</span>
+              Rejects T1&ndash;T3's <em>authority basis</em>. Tradition and
+              Councils can inform but cannot bind. The axioms T1&ndash;T3 are
+              not necessarily rejected in content, but their <em>source of
+              authority</em> (Sacred Tradition, conciliar decree) is denied
+              independent weight.
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Sola Fide</strong></td>
+            <td>Justification by faith alone</td>
+            <td>
+              <span class="tag tag-lutheran">Lutheran</span>
+              Modifies <code>T2</code> (grace preserves freedom / human
+              cooperation). Luther does not deny that the justified person
+              does good works&nbsp;&mdash; he denies that those works are
+              <em>part of</em> justification. Cooperation follows justification;
+              it does not constitute it.
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Sola Gratia</strong></td>
+            <td>By grace alone</td>
+            <td>
+              <span class="tag tag-shared">Shared</span>
+              Both sides affirm <code>S8</code>: grace is necessary for
+              salvation. The disagreement is whether grace <em>transforms</em>
+              (Catholic) or <em>declares/covers</em> (Lutheran). Luther agrees
+              humans cannot save themselves; he disagrees about the mechanism.
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Solus Christus</strong></td>
+            <td>Through Christ alone</td>
+            <td>
+              <span class="tag tag-shared">Shared</span>
+              Both traditions confess Christ as sole mediator (1 Tim 2:5).
+              The implications differ: Catholics hold that saints participate
+              in Christ's mediation without competing with it (an application
+              of <code>P2</code>, two-tier causation); Lutherans see this as
+              risking the uniqueness of Christ's role.
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Soli Deo Gloria</strong></td>
+            <td>To the glory of God alone</td>
+            <td>
+              <span class="tag tag-shared">Shared</span>
+              Broadly affirmed by both. No axiom change required. Catholics
+              and Lutherans agree that all glory belongs to God. The
+              disagreement, if any, is downstream: whether honoring saints
+              detracts from God's glory or participates in it.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="assumption-callout">
+        Notice the pattern: three of the five solas are <em>largely shared</em>.
+        The deep disagreements are concentrated in sola scriptura (the question
+        of authority) and sola fide (the question of how justification works).
+        These are axiom-level disagreements. The rest are differences of
+        implication.
+      </div>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- The Justification Disagreement Formalized -->
+    <section class="article-body">
+      <h2>The Justification Disagreement, Formalized</h2>
+
+      <p>
+        <span class="versal">T</span>he Catlib project formalized the
+        Catholic doctrine of justification (CCC &sect;1987&ndash;1993) and
+        constructed both a <code>catholicModel</code> and a
+        <code>protestantModel</code> in
+        <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/MoralTheology/Justification.lean">Justification.lean</a>.
+        The theorem <code>models_differ_on_three_axes</code> proves they differ
+        on exactly three structural axes, with a fourth difference in temporal
+        character. Here is what each axis looks like:
+      </p>
+
+      <div class="axis-card">
+        <div class="axis-label">Axis 1: Nature of Justification</div>
+        <div class="axis-side">
+          <strong><span class="tag tag-catholic">Catholic</span></strong>
+          <em>Transformative.</em> Grace actually changes the person internally.
+          They become genuinely righteous. The soul is renewed.
+          (CCC &sect;1990: "purifies his heart of sin")
+        </div>
+        <div class="axis-side">
+          <strong><span class="tag tag-lutheran">Lutheran</span></strong>
+          <em>Forensic.</em> Grace declares the person righteous without changing
+          them internally. The sinner remains a sinner, covered by Christ's
+          righteousness. (<em>Simul justus et peccator</em>)
+        </div>
+      </div>
+
+      <div class="axis-card">
+        <div class="axis-label">Axis 2: Human Role</div>
+        <div class="axis-side">
+          <strong><span class="tag tag-catholic">Catholic</span></strong>
+          <em>Cooperation.</em> The person cooperates with grace through free acts
+          of faith, hope, and charity. This cooperation is itself enabled by grace.
+          (CCC &sect;1993)
+        </div>
+        <div class="axis-side">
+          <strong><span class="tag tag-lutheran">Lutheran</span></strong>
+          <em>Reception only.</em> The person receives grace through faith alone.
+          Good works follow justification but do not contribute to it.
+          (Monergism: God alone acts in justification)
+        </div>
+      </div>
+
+      <div class="axis-card">
+        <div class="axis-label">Axis 3: Instrument</div>
+        <div class="axis-side">
+          <strong><span class="tag tag-catholic">Catholic</span></strong>
+          <em>Baptism.</em> Justification is conferred through the sacrament of
+          baptism. (CCC &sect;1992; an application of <code>T3</code>,
+          sacramental efficacy)
+        </div>
+        <div class="axis-side">
+          <strong><span class="tag tag-lutheran">Lutheran</span></strong>
+          <em>Faith alone.</em> No sacramental requirement. Luther did value
+          baptism highly, but located justification in faith rather than in the
+          rite itself.
+        </div>
+      </div>
+
+      <div class="axis-card">
+        <div class="axis-label">Axis 4: Temporal Character</div>
+        <div class="axis-side">
+          <strong><span class="tag tag-catholic">Catholic</span></strong>
+          <em>Process.</em> Justification unfolds over time: conversion, then
+          forgiveness, then purification, then healing. One is "being justified."
+          (CCC &sect;1989&ndash;1990)
+        </div>
+        <div class="axis-side">
+          <strong><span class="tag tag-lutheran">Lutheran</span></strong>
+          <em>Event.</em> Justification is a single divine act of declaration.
+          Sanctification (growth in holiness) follows, but justification itself
+          is complete in a moment.
+        </div>
+      </div>
+
+      <div class="summary-box">
+        <h3>The structural finding</h3>
+        <p>
+          The Catholic and Lutheran models differ on exactly four binary axes.
+          Every axis is a specific axiom choice. Change the axiom, change the
+          model. The axiom set <em>is</em> the denomination.
+        </p>
+      </div>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Luther's Axioms Made Explicit -->
+    <section class="article-body">
+      <h2>Luther's Axioms Made Explicit</h2>
+
+      <p>
+        <span class="versal">I</span>f the Catholic position rests on 15 base axioms
+        (P1&ndash;P3, S1&ndash;S9, T1&ndash;T3, as formalized in
+        <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Foundations/Axioms.lean">Axioms.lean</a>),
+        what does the Lutheran position require? Here is a charitable reconstruction of
+        Luther's axiom set&nbsp;&mdash; the assumptions that make his positions
+        logically coherent.
+      </p>
+
+      <div class="finding-card">
+        <h3><span class="tag tag-lutheran">L1</span> Sola Scriptura: Scripture Alone
+        Is the Supreme Authority</h3>
+        <p>
+          No Church council, papal decree, or tradition has authority independent of
+          Scripture. Tradition may illuminate Scripture, but it cannot add to it or
+          override it. Where Tradition and Scripture conflict (as Luther believed they
+          did on indulgences, purgatory, and the treasury of merit), Scripture wins.
+        </p>
+        <p>
+          <em>Effect on the Catholic axiom set:</em> T1&ndash;T3 lose their
+          independent authority. They are accepted only insofar as Luther judges them
+          consistent with Scripture. The <em>content</em> of some Tradition axioms may
+          survive; their <em>binding force as Tradition</em> does not.
+        </p>
+      </div>
+
+      <div class="finding-card">
+        <h3><span class="tag tag-lutheran">L2</span> Forensic Justification:
+        Declared, Not Transformed</h3>
+        <p>
+          Justification is God's act of <em>declaring</em> the sinner righteous on
+          account of Christ's merits, not God's act of <em>making</em> the sinner
+          righteous internally. The believer remains a sinner in their nature
+          (<em>simul justus et peccator</em>&nbsp;&mdash; simultaneously righteous
+          and sinner). Sanctification (actual moral transformation) is real but is a
+          separate, subsequent process.
+        </p>
+        <p>
+          <em>Effect on the Catholic axiom set:</em> Replaces the "transformative"
+          reading of <code>S8</code>. Luther affirms grace is necessary (the
+          <em>sola gratia</em> agreement), but denies it transforms at the moment of
+          justification. This is not a denial of transformation altogether&nbsp;&mdash;
+          it is a claim that transformation belongs to sanctification, not
+          justification.
+        </p>
+      </div>
+
+      <div class="finding-card">
+        <h3><span class="tag tag-lutheran">L3</span> Monergism: God Alone Acts
+        in Justification</h3>
+        <p>
+          Human cooperation plays no role in justification. The human will, corrupted
+          by original sin, cannot cooperate with grace until it has already been
+          renewed by grace. Justification is entirely God's work; the human person
+          is the recipient, not a co-agent. Good works are the <em>fruit</em> of
+          justification, not its <em>cause</em> or <em>component</em>.
+        </p>
+        <p>
+          <em>Effect on the Catholic axiom set:</em> Drops <code>T2</code> (grace
+          preserves freedom / human cooperation in justification). Note that Luther
+          does not deny free will in daily life&nbsp;&mdash; he denies it specifically
+          in the act of justification. His <em>De Servo Arbitrio</em> (On the Bondage
+          of the Will) argues that the will is bound with respect to salvation, free
+          with respect to earthly matters.
+        </p>
+      </div>
+
+      <div class="finding-card">
+        <h3><span class="tag tag-lutheran">L4</span> Canon Without Church:
+        The Canon of Scripture Is Determinable Without Church Authority</h3>
+        <p>
+          The books of the Bible can be identified by internal criteria (apostolic
+          authorship, doctrinal consistency, self-authenticating quality) rather than
+          by Church decree. Luther used the Hebrew Bible's canon for the Old Testament,
+          which excludes seven books (Tobit, Judith, 1&ndash;2 Maccabees, Wisdom,
+          Sirach, Baruch) that the Catholic canon includes.
+        </p>
+        <p>
+          <em>Effect on the Catholic axiom set:</em> This is a meta-axiom&nbsp;&mdash;
+          it changes which texts count as authoritative input to the entire system.
+          Under L4, arguments that rely on the Deuterocanonical books (such as
+          2 Maccabees 12:46 for purgatory, or Sirach 15:14 as partial grounding
+          for <code>T1</code>) lose their scriptural status.
+        </p>
+      </div>
+
+      <div class="assumption-callout">
+        Luther's reasoning was coherent. Given L1&ndash;L4, his conclusions
+        follow with logical consistency. The question is not whether Luther
+        could reason&nbsp;&mdash; he obviously could. The question is whether
+        to accept L1&ndash;L4 as premises. That is a question of faith, not
+        logic.
+      </div>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Where They Actually Agree -->
+    <section class="article-body">
+      <h2>Where They Actually Agree</h2>
+
+      <p>
+        <span class="versal">B</span>efore the disagreements, the agreements. They
+        are vast, and seeing them clearly is as important as seeing the differences.
+      </p>
+
+      <div class="agreement-box">
+        <h4>The Scriptural Core (S1&ndash;S5): Fully Shared</h4>
+        <ul>
+          <li><strong>S1.</strong> God is love, and love requires freedom (1 Jn 4:8; Dt 30:19)</li>
+          <li><strong>S2.</strong> God desires all to be saved (1 Tim 2:4)</li>
+          <li><strong>S3.</strong> The moral law is inscribed on every heart (Rom 2:14&ndash;15)</li>
+          <li><strong>S4.</strong> God governs all things providentially (Mt 10:29)</li>
+          <li><strong>S5.</strong> Grave sin breaks communion with God (Rom 6:23)</li>
+        </ul>
+      </div>
+
+      <div class="agreement-box">
+        <h4>The Nicene Creed: Fully Shared</h4>
+        <ul>
+          <li>One God, Father Almighty, maker of heaven and earth</li>
+          <li>Jesus Christ, true God and true man, crucified, risen, ascended</li>
+          <li>The Holy Spirit, the Lord and giver of life</li>
+          <li>One, holy, catholic (universal), and apostolic Church</li>
+          <li>The resurrection of the dead and the life of the world to come</li>
+        </ul>
+      </div>
+
+      <div class="agreement-box">
+        <h4>Philosophical Commitments: Largely Shared</h4>
+        <ul>
+          <li><strong>S6.</strong> Moral realism&nbsp;&mdash; moral facts exist independently of opinion</li>
+          <li><strong>S7.</strong> Teleological freedom&nbsp;&mdash; sin is bondage, not liberty</li>
+          <li><strong>P3.</strong> Evil is a privation of good, not a positive substance</li>
+        </ul>
+      </div>
+
+      <div class="agreement-box">
+        <h4>Sola Gratia: The Deepest Agreement</h4>
+        <ul>
+          <li>Humans cannot save themselves</li>
+          <li>Grace is absolutely necessary</li>
+          <li>Pelagianism (salvation by human effort alone) is rejected by both</li>
+          <li>Both affirm <code>S8</code>: without God, humans can do no saving good</li>
+        </ul>
+      </div>
+
+      <div class="summary-box">
+        <h3>The ratio</h3>
+        <p>
+          Of the 15 base axioms in the Catholic system, Catholics and Lutherans
+          share at least 10 without significant dispute. The deep disagreements
+          live in approximately 4&ndash;5 axiom positions. The two traditions
+          are far more alike than different.
+        </p>
+      </div>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- The Deuterocanonical Books Question -->
+    <section class="article-body">
+      <h2>The Deuterocanonical Books Question</h2>
+
+      <p>
+        <span class="versal">L</span>uther excluded seven books from the Old
+        Testament that the Catholic Church includes: Tobit, Judith, 1&ndash;2
+        Maccabees, Wisdom, Sirach, and Baruch (plus additions to Esther and Daniel).
+        This is not an arbitrary decision. Under Luther's axioms, it follows logically.
+        Here is why.
+      </p>
+
+      <p>
+        The question of which books belong in the Bible is the question of
+        <em>the canon</em>. And determining the canon requires an <em>authority</em>.
+        This is where axiom L4 does its work:
+      </p>
+
+      <table class="axiom-table">
+        <thead>
+          <tr>
+            <th>If you accept...</th>
+            <th>Then the canon is determined by...</th>
+            <th>Result</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <span class="tag tag-catholic">Catholic</span>
+              The Church has authority to define the canon (an application of
+              Tradition's binding force)
+            </td>
+            <td>
+              The Councils of Hippo (393), Carthage (397), and Trent (1546),
+              which included the seven Deuterocanonical books
+            </td>
+            <td>
+              73 books (46 OT + 27 NT)
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span class="tag tag-lutheran">Lutheran</span>
+              The canon is determinable without Church authority (L4)
+            </td>
+            <td>
+              An independent criterion&nbsp;&mdash; Luther chose the Hebrew
+              Bible (Tanakh) as the standard for the Old Testament, since
+              these books were accepted by the Jewish community
+            </td>
+            <td>
+              66 books (39 OT + 27 NT)
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        The logic is tight on both sides. If the Church has canonical authority,
+        you keep the seven books&nbsp;&mdash; because the Church included them.
+        If the Church does not have that authority, you need another criterion.
+        Luther's criterion (the Hebrew canon) is not arbitrary; it has genuine
+        historical weight. The books in question were written in Greek (or their
+        Hebrew originals were lost) and were not part of the Pharisaic canon
+        that crystallized after the destruction of the Temple.
+      </p>
+
+      <p>
+        The Catholic counter-argument is equally precise: the early Church
+        <em>used</em> the Greek Septuagint (which included these books), the
+        Councils formally defined the canon, and Christians accepted these books
+        as Scripture for over a thousand years before Luther. Under the Catholic
+        axiom set, this history <em>is</em> authoritative.
+      </p>
+
+      <div class="assumption-callout">
+        The disagreement is not about the books themselves. It is about
+        <strong>who has the authority to define the canon</strong>. That is an
+        axiom-level question&nbsp;&mdash; and it is the same axiom (L1/L4 vs.
+        the authority of Tradition) that drives the other disagreements. The
+        Reformation is, at its root, an argument about authority.
+      </div>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- The Five Solas Mapped to Axiom Swaps (summary table) -->
+    <section class="article-body">
+      <h2>The Complete Axiom Map</h2>
+
+      <p>
+        <span class="versal-small">H</span>ere is the full picture: what a Lutheran
+        keeps, what a Lutheran modifies, and what a Lutheran drops from the Catholic
+        axiom set.
+      </p>
+
+      <table class="axiom-table">
+        <thead>
+          <tr>
+            <th>Axiom</th>
+            <th>Catholic</th>
+            <th>Lutheran</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>P1</code></td>
+            <td>Hylomorphism</td>
+            <td>Not central; neither affirmed nor denied in most Lutheran theology</td>
+            <td><span class="tag tag-shared">Neutral</span></td>
+          </tr>
+          <tr>
+            <td><code>P2</code></td>
+            <td>Two-tier causation</td>
+            <td>Generally accepted (God and creatures both genuinely act)</td>
+            <td><span class="tag tag-shared">Shared</span></td>
+          </tr>
+          <tr>
+            <td><code>P3</code></td>
+            <td>Evil is privation</td>
+            <td>Generally accepted</td>
+            <td><span class="tag tag-shared">Shared</span></td>
+          </tr>
+          <tr>
+            <td><code>S1&ndash;S7</code></td>
+            <td>The scriptural core</td>
+            <td>Fully accepted</td>
+            <td><span class="tag tag-shared">Shared</span></td>
+          </tr>
+          <tr>
+            <td><code>S8</code></td>
+            <td>Grace is necessary <em>and transformative</em></td>
+            <td>Grace is necessary; <em>forensic, not transformative</em> at justification</td>
+            <td><span class="tag tag-lutheran">Modified</span></td>
+          </tr>
+          <tr>
+            <td><code>S9</code></td>
+            <td>Conscience binds</td>
+            <td>Accepted (Luther at Worms: "to go against conscience is neither right nor safe")</td>
+            <td><span class="tag tag-shared">Shared</span></td>
+          </tr>
+          <tr>
+            <td><code>T1</code></td>
+            <td>Libertarian free will (Trent)</td>
+            <td>Denied in justification (<em>De Servo Arbitrio</em>); accepted in earthly matters</td>
+            <td><span class="tag tag-lutheran">Modified</span></td>
+          </tr>
+          <tr>
+            <td><code>T2</code></td>
+            <td>Grace preserves freedom / human cooperation</td>
+            <td>Dropped. Monergism: God alone acts in justification</td>
+            <td><span class="tag tag-lutheran">Dropped</span></td>
+          </tr>
+          <tr>
+            <td><code>T3</code></td>
+            <td>Sacramental efficacy (<em>ex opere operato</em>)</td>
+            <td>Modified. Sacraments are important but efficacy depends on faith of the recipient</td>
+            <td><span class="tag tag-lutheran">Modified</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        Count it up: of 15 axioms, approximately 10 are shared without significant
+        dispute, 3 are modified, 1 is dropped, and 1 is neutral. Luther did not
+        reject Catholicism wholesale. He modified a specific, identifiable subset of
+        its axioms.
+      </p>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Conclusion -->
+    <section class="article-body">
+      <h2>What Formal Verification Reveals</h2>
+
+      <p>
+        <span class="versal">F</span>ormal verification does not tell you who is
+        right. It tells you something more useful: <em>if you accept these axioms,
+        this follows.</em>
+      </p>
+
+      <p>
+        The Catholic position is coherent. Given the 15 axioms (P1&ndash;P3,
+        S1&ndash;S9, T1&ndash;T3), the Catechism's conclusions about justification,
+        grace, sacraments, and the canon follow with logical necessity. The reasoning
+        is valid.
+      </p>
+
+      <p>
+        The Lutheran position is equally coherent. Given the modified axiom set
+        (keeping most of P and S, replacing T2, modifying S8 and T1 and T3, adding
+        L1 and L4), Luther's conclusions about sola fide, sola scriptura, and the
+        canon follow with the same logical necessity. The reasoning is valid.
+      </p>
+
+      <p>
+        The disagreement is not about logic. Both sides reason correctly from their
+        premises. The disagreement is about <em>which axioms to accept</em>. And that
+        is a question of faith&nbsp;&mdash; specifically, a question about the nature
+        and scope of Church authority. Nearly every other disagreement is downstream
+        of that one.
+      </p>
+
+      <div class="assumption-callout">
+        The root axiom of the Reformation is not about justification. It is about
+        <strong>authority</strong>. Does the Church have binding teaching authority
+        independent of Scripture? If yes, you get Catholicism. If no, you get
+        Protestantism. Almost everything else follows.
+      </div>
+
+      <p>
+        Seeing this clearly is more loving than pretending the other side is foolish.
+        Luther was not stupid; he was working from different axioms. The Council of
+        Trent was not merely reactionary; it was articulating axioms that Luther had
+        rejected. Each side was doing exactly what rigorous thinkers do: drawing
+        conclusions from premises.
+      </p>
+
+      <p>
+        A proof assistant cannot tell you which axioms to accept. But it can show you,
+        with perfect precision, what you are accepting and what follows from it. It can
+        strip away five centuries of mutual caricature and replace them with a clear,
+        honest diagram of agreement and disagreement.
+      </p>
+
+      <p>
+        That is not a small thing. It might even be the beginning of something.
+      </p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Source references -->
+    <section class="article-body">
+      <div class="summary-box">
+        <h3>Source Code</h3>
+        <p>
+          The formalizations referenced in this article are machine-checked in Lean 4.
+          See <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/MoralTheology/Justification.lean"><code>catholicModel</code> vs. <code>protestantModel</code></a>
+          in Justification.lean, and the
+          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Foundations/Axioms.lean">15 base axioms</a>
+          in Axioms.lean. Open the <strong>Lean Code</strong> sidebar to preview
+          the key definitions.
+        </p>
+      </div>
+    </section>
+
+    <div class="ornament">&#10053;</div>
+
+    <section class="cta-section">
+      <div class="cta-group">
+        <a href="https://github.com/ngundotra/catlib" class="cta-button primary">View on GitHub</a>
+        <a href="../index.html" class="cta-button secondary">Back to Catlib</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="ornament">&#10053;</div>
+    <p>
+      <a href="https://github.com/ngundotra/catlib">Catlib</a>&nbsp;&mdash;
+      formalizing the Catholic Catechism in Lean 4.
+      A love letter to the Catholic intellectual tradition, written with precision.
+    </p>
+  </footer>
+
+</body>
+</html>

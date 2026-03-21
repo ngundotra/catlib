@@ -1,0 +1,357 @@
+/* Catlib Articles — supplemental styles for long-form essays
+   Extends the base styles.css with article-specific elements. */
+
+/* ============================================================
+   Back-to-main navigation
+   ============================================================ */
+.back-link {
+  display: inline-block;
+  font-family: 'Cinzel', serif;
+  font-size: 0.8rem;
+  color: var(--accent);
+  text-decoration: none;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.5rem 0;
+  transition: color 0.3s;
+}
+
+.back-link:hover {
+  color: var(--accent-gold);
+}
+
+.back-link::before {
+  content: '\2190\00a0';
+}
+
+/* ============================================================
+   Denominational tags
+   ============================================================ */
+.tag {
+  display: inline-block;
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.7rem;
+  border-radius: 2px;
+  margin-right: 0.4rem;
+  vertical-align: middle;
+  font-weight: 600;
+}
+
+.tag-catholic {
+  background: rgba(122, 46, 14, 0.12);
+  color: var(--accent);
+  border: 1px solid rgba(122, 46, 14, 0.3);
+}
+
+.tag-lutheran {
+  background: rgba(40, 70, 120, 0.1);
+  color: #2a4678;
+  border: 1px solid rgba(40, 70, 120, 0.25);
+}
+
+.tag-shared {
+  background: rgba(60, 110, 60, 0.1);
+  color: #3a6e3a;
+  border: 1px solid rgba(60, 110, 60, 0.25);
+}
+
+/* ============================================================
+   Axiom comparison tables
+   ============================================================ */
+.axiom-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.95rem;
+}
+
+.axiom-table th {
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-light);
+  border-bottom: 2px solid var(--border-dark);
+  padding: 0.6rem 0.8rem;
+  text-align: left;
+  font-weight: 600;
+}
+
+.axiom-table td {
+  padding: 0.7rem 0.8rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  line-height: 1.6;
+}
+
+.axiom-table tr:last-child td {
+  border-bottom: none;
+}
+
+.axiom-table code {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.8rem;
+  background: var(--bg-vellum);
+  padding: 0.1rem 0.4rem;
+  border-radius: 2px;
+}
+
+/* ============================================================
+   Sliding sidebar for theorem details (CSS-only, checkbox hack)
+   ============================================================ */
+.sidebar-toggle {
+  display: none;
+}
+
+.sidebar-label {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--accent);
+  color: var(--bg);
+  padding: 1.2rem 0.5rem;
+  cursor: pointer;
+  border-radius: 4px 0 0 4px;
+  z-index: 100;
+  transition: right 0.4s ease;
+  user-select: none;
+}
+
+.sidebar-label:hover {
+  background: #8f3a1a;
+}
+
+.sidebar-panel {
+  position: fixed;
+  top: 0;
+  right: -380px;
+  width: 380px;
+  height: 100vh;
+  background: var(--code-bg);
+  color: var(--code-text);
+  overflow-y: auto;
+  z-index: 99;
+  transition: right 0.4s ease;
+  padding: 2rem 1.5rem;
+  box-shadow: -4px 0 20px rgba(0,0,0,0.3);
+  scrollbar-width: none;
+}
+
+.sidebar-panel::-webkit-scrollbar {
+  display: none;
+}
+
+.sidebar-panel h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  color: var(--accent-gold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.sidebar-panel .sidebar-section {
+  margin-bottom: 2rem;
+}
+
+.sidebar-panel .sidebar-section h4 {
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  color: var(--accent-gold-light);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.06em;
+}
+
+.sidebar-panel pre {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.7rem;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  margin-bottom: 1rem;
+  color: #c8b89a;
+}
+
+.sidebar-panel .close-hint {
+  text-align: center;
+  font-size: 0.7rem;
+  color: #6a5a4a;
+  font-style: italic;
+  margin-top: 1rem;
+}
+
+/* When the checkbox is checked, slide the panel in */
+.sidebar-toggle:checked ~ .sidebar-label {
+  right: 380px;
+}
+
+.sidebar-toggle:checked ~ .sidebar-panel {
+  right: 0;
+}
+
+/* ============================================================
+   Axis comparison cards (for the 4-axis justification diff)
+   ============================================================ */
+.axis-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin: 1.2rem 0;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.axis-card .axis-label {
+  grid-column: 1 / -1;
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-align: center;
+  padding: 0.5rem;
+  background: var(--bg-vellum);
+  border-bottom: 1px solid var(--border);
+  color: var(--text-light);
+  font-weight: 600;
+}
+
+.axis-card .axis-side {
+  padding: 0.8rem 1rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.axis-card .axis-side:first-of-type {
+  border-right: 1px solid var(--border);
+  background: rgba(122, 46, 14, 0.04);
+}
+
+.axis-card .axis-side:last-of-type {
+  background: rgba(40, 70, 120, 0.04);
+}
+
+.axis-card .axis-side strong {
+  display: block;
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.3rem;
+}
+
+/* ============================================================
+   Agreement highlight boxes
+   ============================================================ */
+.agreement-box {
+  background: rgba(60, 110, 60, 0.06);
+  border: 1px solid rgba(60, 110, 60, 0.2);
+  border-left: 4px solid #3a6e3a;
+  padding: 1.2rem 1.5rem;
+  margin: 1.2rem 0;
+  border-radius: 0 4px 4px 0;
+}
+
+.agreement-box h4 {
+  font-family: 'Cinzel', serif;
+  font-size: 0.8rem;
+  color: #3a6e3a;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.5rem;
+}
+
+.agreement-box ul {
+  list-style: none;
+  padding: 0;
+}
+
+.agreement-box li {
+  padding: 0.3rem 0;
+  padding-left: 1.2rem;
+  position: relative;
+  font-size: 0.95rem;
+}
+
+.agreement-box li::before {
+  content: '\2713';
+  position: absolute;
+  left: 0;
+  color: #3a6e3a;
+  font-weight: bold;
+}
+
+/* ============================================================
+   Inline code in prose
+   ============================================================ */
+.article-body code {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.82rem;
+  background: var(--bg-vellum);
+  padding: 0.1rem 0.4rem;
+  border-radius: 2px;
+  color: var(--accent);
+}
+
+/* ============================================================
+   Article-specific link styling
+   ============================================================ */
+.article-body a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent-gold);
+  transition: color 0.3s, border-color 0.3s;
+}
+
+.article-body a:hover {
+  color: var(--accent-gold);
+  border-bottom-color: var(--accent-gold-light);
+}
+
+/* ============================================================
+   Ordered/unordered lists in article body
+   ============================================================ */
+.article-body ol,
+.article-body ul {
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.article-body li {
+  margin-bottom: 0.4rem;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+/* ============================================================
+   Responsive adjustments for articles
+   ============================================================ */
+@media (max-width: 700px) {
+  .sidebar-label {
+    display: none;
+  }
+
+  .sidebar-panel {
+    display: none;
+  }
+
+  .axis-card {
+    grid-template-columns: 1fr;
+  }
+
+  .axis-card .axis-side:first-of-type {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+}
