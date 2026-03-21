@@ -4,3 +4,4 @@ import Catlib.Creed.Trinity
 import Catlib.Creed.Providence
 import Catlib.Creed.Soul
 import Catlib.Creed.Purgatory
+import Catlib.Creed.DivineModes
