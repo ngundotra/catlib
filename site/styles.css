@@ -36,26 +36,16 @@ html {
 body {
   font-family: 'Cormorant Garamond', 'Georgia', serif;
   color: var(--text);
-  background: #2a1f14;
+  background: var(--bg);
   line-height: 1.8;
   font-weight: 400;
-}
-
-/* Scroll edges — clean modern fade, no fake 3D */
-.scroll-edge {
-  display: none; /* handled by main::before/after instead */
 }
 
 main {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 4rem 3rem 4rem;
+  padding: 4rem 1.5rem 4rem;
   background: var(--bg);
-  box-shadow: 0 0 60px rgba(0,0,0,0.4);
-  position: relative;
-  border-radius: 2px;
-  /* Top and bottom vignette — smooth parchment-to-dark transition */
-  /* Clean edge — the box-shadow does the atmospheric work */
   position: relative;
   /* Subtle parchment texture via gradient noise */
   background-image:
@@ -74,36 +64,6 @@ main {
       rgba(160, 137, 104, 0.02) 200px
     );
   background-color: var(--bg);
-}
-
-/* Inner vignette on the parchment — subtle darkening at edges */
-main::before,
-main::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 80px;
-  pointer-events: none;
-  z-index: 1;
-}
-
-main::before {
-  top: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(196, 168, 114, 0.15) 0%,
-    transparent 100%
-  );
-}
-
-main::after {
-  bottom: 0;
-  background: linear-gradient(
-    to top,
-    rgba(196, 168, 114, 0.15) 0%,
-    transparent 100%
-  );
 }
 
 /* Ornamental elements */
@@ -549,11 +509,9 @@ blockquote cite {
 footer {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 1.5rem 3rem 2.5rem;
-  background: var(--bg);
+  padding: 1.5rem 1.5rem 2.5rem;
   text-align: center;
-  box-shadow: 0 0 60px rgba(0,0,0,0.4);
-  border-radius: 0 0 2px 2px;
+  border-top: 1px solid var(--border);
 }
 
 footer .ornament {
@@ -573,12 +531,11 @@ footer a {
 /* Responsive */
 @media (max-width: 700px) {
   html { font-size: 16px; }
-  main { padding: 2rem 1.5rem 3rem; }
-  footer { padding: 1rem 1.5rem 2rem; }
+  main { padding: 2rem 1rem 3rem; }
+  footer { padding: 1rem 1rem 2rem; }
   .hero h1 { font-size: 1.5rem; }
   .step { flex-direction: column; gap: 0.6rem; }
   .cta-group { flex-direction: column; align-items: center; }
   .finding-card { padding: 1.3rem 1.2rem; }
   .summary-box { padding: 1.2rem 1rem; }
-  main::before, main::after { height: 40px; }
 }
