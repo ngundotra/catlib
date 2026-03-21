@@ -127,6 +127,43 @@ inductive Provenance where
   /-- From the Catechism's own defined terms -/
   | definition (paragraph : Nat)
 
+/-- Which denominations accept a given axiom or theorem.
+    This is the key insight: the axiom set IS the denomination.
+    Tagging results lets us say "this holds under Catholic axioms"
+    or "this is shared across denominations." -/
+inductive Denomination where
+  /-- Accepted by the Catholic Church -/
+  | catholic
+  /-- Accepted by Lutheran churches -/
+  | lutheran
+  /-- Accepted by Reformed/Calvinist churches -/
+  | reformed
+  /-- Accepted by all/most Christian denominations -/
+  | ecumenical
+
+/-- A denominational tag — which traditions accept this claim. -/
+structure DenominationalTag where
+  /-- Which denominations accept this axiom/theorem -/
+  acceptedBy : List Denomination
+  /-- Brief note on any qualifications -/
+  note : String
+
+/-- Shared across all major Christian denominations. -/
+def ecumenical : DenominationalTag :=
+  { acceptedBy := [Denomination.ecumenical], note := "broadly shared" }
+
+/-- Specifically Catholic — other denominations may reject. -/
+def catholicOnly : DenominationalTag :=
+  { acceptedBy := [Denomination.catholic], note := "Catholic distinctive" }
+
+/-- Shared by Catholic and Lutheran but not all denominations. -/
+def catholicAndLutheran : DenominationalTag :=
+  { acceptedBy := [Denomination.catholic, Denomination.lutheran], note := "" }
+
+/-- Specifically Lutheran — Catholics would reject. -/
+def lutheranOnly : DenominationalTag :=
+  { acceptedBy := [Denomination.lutheran], note := "Lutheran distinctive" }
+
 /-- The source from which authority derives. -/
 inductive AuthoritySource where
   /-- Authority from God directly -/

@@ -458,4 +458,47 @@ def baseAxiomProvenance : List (String × Provenance) :=
   , ("T3_SACRAMENTAL_EFFICACY",             t3_provenance)
   ]
 
+-- ============================================================================
+-- Denominational tagging: which traditions accept each axiom
+-- ============================================================================
+
+/-- Denominational scope of each base axiom.
+    This is the key to answering "was Luther right?" — you can see
+    exactly which axioms he accepted, rejected, or modified. -/
+def axiomDenominationalScope : List (String × DenominationalTag) :=
+  [ -- Philosophical: broadly shared (all Christians who engage philosophy)
+    ("P1_HYLOMORPHISM",                  catholicOnly)      -- Lutherans don't require it
+  , ("P2_TWO_TIER_CAUSATION",           ecumenical)         -- Most traditions accept implicitly
+  , ("P3_EVIL_IS_PRIVATION",            ecumenical)         -- Augustine shared across traditions
+    -- Scriptural: ecumenical (broadly shared)
+  , ("S1_GOD_IS_LOVE",                  ecumenical)
+  , ("S2_UNIVERSAL_SALVIFIC_WILL",      catholicAndLutheran) -- Calvinists reject (limited atonement)
+  , ("S3_LAW_ON_HEARTS",               ecumenical)
+  , ("S4_UNIVERSAL_PROVIDENCE",         ecumenical)
+  , ("S5_SIN_SEPARATES",               ecumenical)
+  , ("S6_MORAL_REALISM",               ecumenical)
+  , ("S7_TELEOLOGICAL_FREEDOM",        ecumenical)
+  , ("S8_GRACE_NECESSARY_TRANSFORMATIVE",
+      catholicOnly)     -- Luther: grace is forensic, not transformative
+  , ("S9_CONSCIENCE_BINDS",            ecumenical)
+    -- Tradition: denominationally specific
+  , ("T1_LIBERTARIAN_FREE_WILL",
+      { acceptedBy := [Denomination.catholic], note := "Luther/Calvin reject; emphasize bondage of will" })
+  , ("T2_GRACE_PRESERVES_FREEDOM",
+      { acceptedBy := [Denomination.catholic], note := "Lutherans: grace is irresistible (monergism)" })
+  , ("T3_SACRAMENTAL_EFFICACY",
+      catholicOnly)     -- Protestants: sacraments are signs, not causes of grace
+  ]
+
+/-- The Lutheran axiom modifications — what Luther changed.
+    These are NOT in our axiom base (catlib is Catholic) but we
+    document them for ecumenical comparison. -/
+def lutheranModifications : List (String × String) :=
+  [ ("S8 MODIFIED",  "Grace is forensic (declarative), not transformative — Rom 4:5 'credits righteousness'")
+  , ("T1 REPLACED",  "Will is in bondage to sin, not libertarianly free — Rom 7:15 'what I do I do not want to do'")
+  , ("T2 REPLACED",  "Grace is monergistic (God alone acts), not synergistic — Eph 2:8-9 'not of works'")
+  , ("T3 REJECTED",  "Sacraments are signs of grace received by faith, not causes — rejected ex opere operato")
+  , ("ADDED: SOLA_SCRIPTURA", "Scripture alone is the supreme authority — 2 Tim 3:16 'all Scripture is God-breathed'")
+  ]
+
 end Catlib
