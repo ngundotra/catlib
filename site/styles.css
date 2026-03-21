@@ -31,9 +31,11 @@
 html {
   font-size: 18px;
   -webkit-font-smoothing: antialiased;
-  /* Prevent scrollbar from shifting layout */
-  overflow-y: scroll;
-  scrollbar-gutter: stable;
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
 }
 
 body {
@@ -42,6 +44,8 @@ body {
   background: var(--bg);
   line-height: 1.8;
   font-weight: 400;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 main {
