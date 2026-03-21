@@ -118,6 +118,21 @@ We traced 44 hidden assumptions across 17 formalizations back to **15 base axiom
 | [Purgatory](site/articles/purgatory.html) | How do we know purgatory exists? (depends on which Bible) |
 | [Divine Modes](site/articles/divine-modes.html) | If God sustains everything, how can hell be "separation from God"? |
 | [Conjugal Ethics](site/articles/conjugal-ethics.html) | How should Catholics think about family size and contraception? |
+| [The Limits of Proof](site/articles/limits.html) | Where does formalization stop? (the self-control hypothesis) |
+
+## What formalization can and cannot do
+
+| Question type | Can formalization help? | Example |
+|--------------|------------------------|---------|
+| "What does the Catechism assume?" | **YES** — this is our core strength | Object independence axiom |
+| "Is this logically consistent?" | **YES** — proof assistant checks this | Trinity requires relative identity |
+| "Where do denominations disagree?" | **YES** — axiom set comparison | Lutheran 4-axis swap |
+| "What follows from these axioms?" | **YES** — theorem derivation | Contraception is intrinsically evil (given inseparability) |
+| "Did axiom X cause real-world effect Y?" | **NO** — this is empirical, not logical | Did A1_SEPARABILITY cause declining sexual temperance? |
+| "Which axiom set is TRUE?" | **NO** — that's faith, not logic | Is the inseparability principle true? |
+| "What would have happened if...?" | **NO** — counterfactuals need data | What if Lambeth 1930 hadn't happened? |
+
+Being honest about limits is part of the love letter. Knowing where formalization stops is as important as knowing where it starts.
 
 ## How we reason about questions
 
