@@ -51,6 +51,13 @@ main {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 4rem 1.5rem 4rem;
+  text-align: center;
+}
+
+main p, main blockquote, main .step,
+main .finding-card, main .assumption-callout,
+main .summary-box, main .code-toggle {
+  text-align: left;
 }
 
 /* Ornamental elements */
