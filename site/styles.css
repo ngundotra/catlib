@@ -41,44 +41,21 @@ body {
   font-weight: 400;
 }
 
-/* Scroll edges — the rolled parchment top/bottom */
+/* Scroll edges — clean modern fade, no fake 3D */
 .scroll-edge {
-  height: 2rem;
-  max-width: calc(var(--max-width) + 8rem);
-  margin: 0 auto;
-  position: relative;
-}
-
-.scroll-edge.top {
-  background: linear-gradient(
-    to bottom,
-    #8b7355 0%,
-    #a08968 20%,
-    #c4b08a 40%,
-    var(--bg) 100%
-  );
-  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.3);
-}
-
-.scroll-edge.bottom {
-  background: linear-gradient(
-    to top,
-    #8b7355 0%,
-    #a08968 20%,
-    #c4b08a 40%,
-    var(--bg) 100%
-  );
-  border-radius: 0 0 50% 50% / 0 0 100% 100%;
-  box-shadow: 0 -2px 12px rgba(0,0,0,0.3);
+  display: none; /* handled by main::before/after instead */
 }
 
 main {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 3rem 3rem 4rem;
+  padding: 4rem 3rem 4rem;
   background: var(--bg);
-  box-shadow: -4px 0 20px rgba(0,0,0,0.15), 4px 0 20px rgba(0,0,0,0.15);
+  box-shadow: 0 0 60px rgba(0,0,0,0.4);
+  position: relative;
+  border-radius: 2px;
+  /* Top and bottom vignette — smooth parchment-to-dark transition */
+  /* Clean edge — the box-shadow does the atmospheric work */
   position: relative;
   /* Subtle parchment texture via gradient noise */
   background-image:
@@ -97,6 +74,36 @@ main {
       rgba(160, 137, 104, 0.02) 200px
     );
   background-color: var(--bg);
+}
+
+/* Inner vignette on the parchment — subtle darkening at edges */
+main::before,
+main::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 80px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+main::before {
+  top: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(196, 168, 114, 0.15) 0%,
+    transparent 100%
+  );
+}
+
+main::after {
+  bottom: 0;
+  background: linear-gradient(
+    to top,
+    rgba(196, 168, 114, 0.15) 0%,
+    transparent 100%
+  );
 }
 
 /* Ornamental elements */
@@ -542,10 +549,11 @@ blockquote cite {
 footer {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 1rem 3rem 2rem;
+  padding: 1.5rem 3rem 2.5rem;
   background: var(--bg);
   text-align: center;
-  box-shadow: -4px 0 20px rgba(0,0,0,0.15), 4px 0 20px rgba(0,0,0,0.15);
+  box-shadow: 0 0 60px rgba(0,0,0,0.4);
+  border-radius: 0 0 2px 2px;
 }
 
 footer .ornament {
@@ -572,5 +580,5 @@ footer a {
   .cta-group { flex-direction: column; align-items: center; }
   .finding-card { padding: 1.3rem 1.2rem; }
   .summary-box { padding: 1.2rem 1rem; }
-  .scroll-edge { display: none; }
+  main::before, main::after { height: 40px; }
 }
