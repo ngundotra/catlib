@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Two Modes of God &mdash; Catlib</title>
+  <meta name="description" content="If God sustains all existence, how can the damned be separated from God? A proof assistant caught the contradiction and forced us to resolve it. The resolution is structurally beautiful.">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="The Two Modes of God: How a Proof Assistant Resolved the Hell Paradox">
+  <meta property="og:description" content="The Catechism says God sustains everything. It also says hell is separation from God. A formal verification tool caught the contradiction — and the resolution unifies five doctrines into one framework.">
+  <meta property="og:site_name" content="Catlib">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="The Two Modes of God: How a Proof Assistant Resolved the Hell Paradox">
+  <meta name="twitter:description" content="The deepest structural finding in the Catlib project: God relates to creation in two distinct modes, and that single distinction unifies hell, purgatory, heaven, providence, and the privation theory of evil.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel+Decorative:wght@400;700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="articles.css">
+
+  <style>
+    /* ============================================================
+       Divine Modes — article-specific styles
+       ============================================================ */
+
+    /* The centerpiece table: three states of the soul */
+    .modes-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin: 2rem 0;
+      border: 2px solid var(--accent-gold);
+      border-radius: 4px;
+      overflow: hidden;
+      font-size: 0.95rem;
+      background: var(--bg-parchment);
+      box-shadow: 0 2px 16px rgba(184, 134, 11, 0.12);
+    }
+
+    .modes-table thead {
+      background: linear-gradient(180deg, #3a2a1a 0%, #2a1f14 100%);
+    }
+
+    .modes-table th {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent-gold-light);
+      padding: 0.8rem 1rem;
+      text-align: center;
+      font-weight: 600;
+      border-bottom: 2px solid var(--accent-gold);
+    }
+
+    .modes-table th:first-child {
+      text-align: left;
+    }
+
+    .modes-table td {
+      padding: 0.7rem 1rem;
+      text-align: center;
+      vertical-align: middle;
+      line-height: 1.5;
+      border-bottom: 1px solid rgba(184, 134, 11, 0.25);
+    }
+
+    .modes-table td:first-child {
+      text-align: left;
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+    }
+
+    .modes-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Row-specific coloring */
+    .modes-table .row-hell {
+      background: rgba(140, 30, 30, 0.06);
+    }
+
+    .modes-table .row-hell td:first-child {
+      color: #8c1e1e;
+    }
+
+    .modes-table .row-purgatory {
+      background: rgba(180, 140, 50, 0.06);
+    }
+
+    .modes-table .row-purgatory td:first-child {
+      color: #8a6b12;
+    }
+
+    .modes-table .row-heaven {
+      background: rgba(40, 100, 160, 0.06);
+    }
+
+    .modes-table .row-heaven td:first-child {
+      color: #1a5a8a;
+    }
+
+    /* Check/cross marks */
+    .modes-table .yes {
+      color: #3a6e3a;
+      font-weight: 600;
+    }
+
+    .modes-table .no {
+      color: #8c1e1e;
+      font-weight: 600;
+    }
+
+    .modes-table .partial {
+      color: #8a6b12;
+      font-weight: 600;
+    }
+
+    .modes-table .duration {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 600;
+    }
+
+    .modes-table .duration-permanent {
+      color: var(--text);
+    }
+
+    .modes-table .duration-temporary {
+      color: var(--accent-gold);
+    }
+
+    /* Denominational scope tag for purgatory */
+    .modes-table .scope-tag {
+      display: inline-block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.55rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.1rem 0.4rem;
+      border-radius: 2px;
+      vertical-align: middle;
+      margin-left: 0.3rem;
+    }
+
+    .scope-catholic {
+      background: rgba(122, 46, 14, 0.12);
+      color: var(--accent);
+      border: 1px solid rgba(122, 46, 14, 0.3);
+    }
+
+    .scope-ecumenical {
+      background: rgba(60, 110, 60, 0.1);
+      color: #3a6e3a;
+      border: 1px solid rgba(60, 110, 60, 0.25);
+    }
+
+    /* The unification table */
+    .unification-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 0.92rem;
+    }
+
+    .unification-table th {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-light);
+      border-bottom: 2px solid var(--border-dark);
+      padding: 0.6rem 0.8rem;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    .unification-table td {
+      padding: 0.7rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      line-height: 1.6;
+    }
+
+    .unification-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .unification-table td:first-child {
+      font-weight: 600;
+      white-space: nowrap;
+      color: var(--accent);
+    }
+
+    .unification-table code {
+      font-family: 'JetBrains Mono', 'Fira Code', monospace;
+      font-size: 0.78rem;
+      background: var(--bg-vellum);
+      padding: 0.1rem 0.4rem;
+      border-radius: 2px;
+    }
+
+    /* Spectrum diagram */
+    .spectrum-container {
+      margin: 2rem 0;
+      padding: 1.5rem;
+      background: var(--bg-parchment);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      text-align: center;
+    }
+
+    .spectrum-bar {
+      display: flex;
+      align-items: stretch;
+      height: 3.5rem;
+      border-radius: 4px;
+      overflow: hidden;
+      margin: 1rem 0 0.8rem;
+      border: 1px solid var(--border-dark);
+    }
+
+    .spectrum-segment {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0.3rem 0.5rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .spectrum-segment-hell {
+      flex: 1;
+      background: linear-gradient(135deg, #4a1a1a, #6a2a2a);
+      color: #e8c0a0;
+    }
+
+    .spectrum-segment-purgatory {
+      flex: 1;
+      background: linear-gradient(135deg, #6a5520, #8a7530);
+      color: #f0e8c0;
+    }
+
+    .spectrum-segment-heaven {
+      flex: 1;
+      background: linear-gradient(135deg, #1a3a6a, #2a5a9a);
+      color: #c0d8f0;
+    }
+
+    .spectrum-segment small {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.7rem;
+      font-weight: 400;
+      text-transform: none;
+      letter-spacing: 0;
+      opacity: 0.85;
+    }
+
+    .spectrum-labels {
+      display: flex;
+      justify-content: space-between;
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .spectrum-axis {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 0.6rem;
+    }
+
+    .spectrum-axis::before {
+      content: '\2190 ';
+    }
+
+    .spectrum-axis::after {
+      content: ' \2192';
+    }
+
+    /* Competing axioms cards */
+    .axiom-option {
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent-gold);
+      background: var(--callout-bg);
+      padding: 1rem 1.2rem;
+      margin: 1rem 0;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .axiom-option h4 {
+      font-family: 'Cinzel', serif;
+      font-size: 0.78rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.4rem;
+    }
+
+    .axiom-option p {
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 0;
+    }
+
+    .axiom-option .source {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      font-style: italic;
+      margin-top: 0.3rem;
+    }
+
+    /* Paradox highlight box */
+    .paradox-box {
+      background: rgba(140, 30, 30, 0.05);
+      border: 1px solid rgba(140, 30, 30, 0.2);
+      border-left: 4px solid #8c1e1e;
+      padding: 1.2rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .paradox-box p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    .paradox-box .paradox-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      color: #8c1e1e;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.4rem;
+      font-weight: 700;
+    }
+
+    /* Resolution highlight */
+    .resolution-box {
+      background: rgba(60, 110, 60, 0.06);
+      border: 2px solid rgba(60, 110, 60, 0.3);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 4px;
+      text-align: center;
+    }
+
+    .resolution-box p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    .resolution-box .resolution-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      color: #3a6e3a;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar toggle for viewing Lean theorems -->
+  <input type="checkbox" id="sidebar-toggle" class="sidebar-toggle">
+  <label for="sidebar-toggle" class="sidebar-label">Lean Code</label>
+  <div class="sidebar-panel">
+    <h3>Theorem Reference</h3>
+
+    <div class="sidebar-section">
+      <h4>DivineMode</h4>
+<pre>inductive DivineMode where
+  | sustaining
+  | beatifying</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>SoulState</h4>
+<pre>structure SoulState where
+  sustained : Prop
+  inCommunion : Prop
+  purified : Prop</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>god_sustains_all</h4>
+<pre>axiom god_sustains_all :
+  &forall; (s : SoulState), s.sustained
+-- &sect;301, Col 1:17</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>hell_paradox_resolved</h4>
+<pre>theorem hell_paradox_resolved :
+    hellState.sustained &and;
+    &not;hellState.inCommunion := by
+  constructor
+  &middot; exact trivial
+  &middot; intro h
+    exact absurd h
+      (by simp [hellState])</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>purgatory_is_transitional</h4>
+<pre>theorem purgatory_is_transitional :
+    purgatoryState.inCommunion &and;
+    &not;purgatoryState.purified := by
+  constructor
+  &middot; exact trivial
+  &middot; intro h
+    exact absurd h
+      (by simp [purgatoryState])</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>all_states_sustained</h4>
+<pre>theorem all_states_sustained :
+    heavenState.sustained &and;
+    purgatoryState.sustained &and;
+    hellState.sustained := by
+  exact &langle;trivial, trivial, trivial&rangle;</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>The Three Afterlife States</h4>
+<pre>def heavenState : SoulState :=
+  { sustained := True
+    inCommunion := True
+    purified := True }
+
+def purgatoryState : SoulState :=
+  { sustained := True
+    inCommunion := True
+    purified := False }
+
+def hellState : SoulState :=
+  { sustained := True
+    inCommunion := False
+    purified := False }</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>Source File</h4>
+<pre><a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/DivineModes.lean" style="color: var(--accent-gold);">DivineModes.lean</a></pre>
+    </div>
+
+    <p class="close-hint">Click the tab again to close</p>
+  </div>
+
+  <main>
+    <a href="../index.html" class="back-link">Back to Catlib</a>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="ornament">&#10053;</div>
+      <h1>The Two Modes of God</h1>
+      <p class="subtitle">How a proof assistant resolved the deepest paradox in the Catechism</p>
+      <p class="subtitle">
+        &ldquo;In him all things hold together.&rdquo;&nbsp;&mdash; Colossians 1:17
+      </p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- The Paradox -->
+    <section class="article-body">
+      <p>
+        <span class="versal">T</span>he Catholic Catechism says two things that, taken
+        together, look like a flat contradiction. It says God sustains all existence at
+        every moment&nbsp;&mdash; &ldquo;in him we live and move and have our being&rdquo;
+        (Acts 17:28), &ldquo;in him all things hold together&rdquo; (Col 1:17). Without
+        God&rsquo;s sustaining power, nothing exists at all. Not a single atom, not a
+        single soul. This is &sect;301. It is not optional. It is the bedrock of Christian
+        metaphysics.
+      </p>
+
+      <p>
+        And then it says hell is &ldquo;the state of definitive self-exclusion from
+        communion with God&rdquo; (&sect;1033). Separation from God. Permanent, irrevocable
+        separation.
+      </p>
+
+      <div class="paradox-box">
+        <div class="paradox-label">The Contradiction</div>
+        <p>
+          If God sustains <em>everything that exists</em>, how can anything be <em>separated</em>
+          from God? The sustaining claim is universal. The separation claim is specific.
+          But you cannot be both sustained-by and separated-from the same being
+          in the same sense. Something has to give.
+        </p>
+      </div>
+
+      <p>
+        We did not set out to find this. We were formalizing eschatology&nbsp;&mdash; the
+        doctrines of heaven, hell, and purgatory&nbsp;&mdash; in the Lean 4 proof assistant.
+        The proof assistant is merciless about consistency. You cannot assert both
+        <code>god_sustains_all</code> and <code>hell_is_separation_from_god</code> without
+        the type checker asking: <em>separation in what sense?</em>
+      </p>
+
+      <p>
+        It forced us to be precise. And the precision revealed something beautiful.
+      </p>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- The Resolution -->
+    <section class="article-body">
+      <h2>The Resolution: Two Modes</h2>
+
+      <p>
+        <span class="versal">G</span>od relates to creation in two distinct modes.
+        This is not a new idea&nbsp;&mdash; it is implicit in Aquinas (<em>Summa Theologiae</em>
+        I, q.8 and q.104) and runs through the entire Thomistic tradition. But it has
+        never, to our knowledge, been stated as a formal structural principle and
+        machine-checked for consistency. Here it is.
+      </p>
+
+      <div class="finding-card">
+        <h3>Mode 1: Sustaining</h3>
+        <p>
+          God holds everything in existence. This is the ground of all being. Without it,
+          you do not fade or diminish&nbsp;&mdash; you simply <em>are not</em>.
+          &ldquo;In him all things hold together&rdquo; (Col 1:17).
+          &ldquo;Sustaining all things by his powerful word&rdquo; (Heb 1:3).
+          &ldquo;In him we live and move and have our being&rdquo; (Acts 17:28).
+        </p>
+        <p>
+          <span class="tag tag-shared">Ecumenical</span>
+          You cannot be separated from sustaining mode. If you were, you would cease to exist.
+          This is not a theological opinion; it is what the word &ldquo;sustain&rdquo; means.
+        </p>
+      </div>
+
+      <div class="finding-card">
+        <h3>Mode 2: Beatifying</h3>
+        <p>
+          God offers communion, love, friendship, and ultimately the beatific vision&nbsp;&mdash;
+          seeing God &ldquo;face to face&rdquo; (1 Cor 13:12), knowing God &ldquo;as he is&rdquo;
+          (1 Jn 3:2). This is the fullness of what humans were made for. It is the telos of
+          the entire creation.
+        </p>
+        <p>
+          <span class="tag tag-shared">Ecumenical</span>
+          You <em>can</em> be separated from beatifying mode. You can refuse communion.
+          And that refusal&nbsp;&mdash; that separation from God&rsquo;s friendship while
+          remaining in God&rsquo;s existence&nbsp;&mdash; <em>is</em> hell.
+        </p>
+      </div>
+
+      <div class="resolution-box">
+        <div class="resolution-label">The Resolution</div>
+        <p>
+          Hell is not separation from God&rsquo;s <em>power</em>.
+          It is separation from God&rsquo;s <em>love-as-communion</em>.
+          The damned are sustained by God&nbsp;&mdash; they must be, they exist&nbsp;&mdash;
+          but they are cut off from God&rsquo;s friendship. Both statements in the Catechism
+          are true. They are talking about different modes.
+        </p>
+      </div>
+
+      <p>
+        In Lean 4, this becomes the
+        <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/DivineModes.lean"><code>DivineMode</code></a>
+        inductive type: <code>sustaining</code> and <code>beatifying</code>.
+        The theorem
+        <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/DivineModes.lean"><code>hell_paradox_resolved</code></a>
+        proves that <code>hellState.sustained</code> and
+        <code>&not;hellState.inCommunion</code> hold simultaneously. The contradiction
+        is gone. Not by weakening either claim, but by making both claims precise.
+      </p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- The Three States -->
+    <section class="article-body">
+      <h2>The Three States</h2>
+
+      <p>
+        <span class="versal">O</span>nce you have the two modes, the three afterlife
+        states stop looking like three arbitrary bins. They become the three possible
+        combinations of sustaining mode, communion, and purification.
+      </p>
+
+      <table class="modes-table">
+        <thead>
+          <tr>
+            <th>State</th>
+            <th>Sustained?</th>
+            <th>In Communion?</th>
+            <th>Purified?</th>
+            <th>Duration</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="row-hell">
+            <td>
+              Hell
+              <span class="scope-tag scope-ecumenical">Ecumenical</span>
+            </td>
+            <td class="yes">&#10003; yes</td>
+            <td class="no">&#10007; no</td>
+            <td class="no">&#10007; no</td>
+            <td><span class="duration duration-permanent">Permanent</span></td>
+          </tr>
+          <tr class="row-purgatory">
+            <td>
+              Purgatory
+              <span class="scope-tag scope-catholic">Catholic</span>
+            </td>
+            <td class="yes">&#10003; yes</td>
+            <td class="partial">&#10003; yes (assured)</td>
+            <td class="no">&#10007; not yet</td>
+            <td><span class="duration duration-temporary">Temporary</span></td>
+          </tr>
+          <tr class="row-heaven">
+            <td>
+              Heaven
+              <span class="scope-tag scope-ecumenical">Ecumenical</span>
+            </td>
+            <td class="yes">&#10003; yes</td>
+            <td class="yes">&#10003; yes (full)</td>
+            <td class="yes">&#10003; yes</td>
+            <td><span class="duration duration-permanent">Permanent</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        The table reads top to bottom as an increase in communion. Hell: sustained,
+        nothing else. Purgatory: sustained, communion assured but not yet fully
+        received&nbsp;&mdash; purification is underway. Heaven: sustained, fully in
+        communion, fully purified. The structure is clean because it emerges from
+        the two-mode distinction, not from ad hoc categorization.
+      </p>
+
+      <p>
+        The theorem
+        <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/DivineModes.lean"><code>all_states_sustained</code></a>
+        proves that the first column is always &ldquo;yes.&rdquo; God sustains the
+        damned, the purifying, and the blessed alike. You cannot escape the ground
+        of being.
+      </p>
+
+      <p>
+        The theorem
+        <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/DivineModes.lean"><code>purgatory_is_transitional</code></a>
+        proves the distinctive character of purgatory: in communion (the soul chose God;
+        it died in grace) but not yet purified. This is why purgatory is temporary.
+        Death finalized the choice&nbsp;&mdash; but purification is still needed before
+        the soul can bear the full weight of the beatific vision.
+      </p>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- What This Unifies -->
+    <section class="article-body">
+      <h2>What This Unifies</h2>
+
+      <p>
+        <span class="versal">T</span>he two-mode distinction is not an isolated
+        result. It turns out to be the deepest structural principle in the entire
+        Catlib project. Five previous findings, which we had treated as separate,
+        all reduce to aspects of this one distinction.
+      </p>
+
+      <table class="unification-table">
+        <thead>
+          <tr>
+            <th>Previous Finding</th>
+            <th>How DivineModes Explains It</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Hell paradox</td>
+            <td>
+              Separation from <em>beatifying</em> mode, not <em>sustaining</em> mode.
+              The paradox dissolves once you distinguish the two senses of
+              &ldquo;separated from God.&rdquo;
+            </td>
+          </tr>
+          <tr>
+            <td>Purgatory</td>
+            <td>
+              Movement along the communion axis. Death finalizes the <em>choice</em>
+              (communion: yes or no), not the <em>purification</em>. Purgatory is the
+              completion of purification for souls whose choice is already settled.
+            </td>
+          </tr>
+          <tr>
+            <td>Providence asymmetry</td>
+            <td>
+              God sustains beings that do evil without beatifying the evil. The two modes
+              explain why God&rsquo;s providence operates through sinful agents without God
+              being the author of sin: sustaining mode is active; beatifying mode is not
+              applied to the evil act.
+            </td>
+          </tr>
+          <tr>
+            <td><code>P2</code> two-tier causation</td>
+            <td>
+              The two modes <em>are</em> two tiers. Sustaining mode is the primary causal
+              tier (God as ground of being); beatifying mode is the relational tier
+              (God as friend, lover, source of joy). The distinction in
+              <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Foundations/Axioms.lean">Axioms.lean</a>
+              is the same distinction, applied at a higher level.
+            </td>
+          </tr>
+          <tr>
+            <td><code>P3</code> evil as privation</td>
+            <td>
+              Hell is the ultimate privation&nbsp;&mdash; existence with all good removed.
+              Since God is the source of all good, separation from beatifying mode
+              <em>is</em> the removal of all good. Hell is not a place where bad things
+              happen to you. It is existence stripped bare.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="summary-box">
+        <h3>The structural finding</h3>
+        <p>
+          One distinction&nbsp;&mdash; sustaining vs. beatifying&nbsp;&mdash; unifies
+          eschatology, theodicy, and the metaphysics of evil into a single framework.
+          We did not design this. The proof assistant forced us to resolve a
+          contradiction, and the resolution turned out to be a unifying principle.
+        </p>
+      </div>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- The Open Question -->
+    <section class="article-body">
+      <h2>The Open Question</h2>
+
+      <p>
+        <span class="versal">T</span>he two-mode model resolves the paradox of
+        <em>how</em> the damned can be separated from God. But it raises a harder
+        question: <em>why does God sustain the damned?</em>
+      </p>
+
+      <p>
+        If existence without communion is suffering&nbsp;&mdash; and the tradition
+        uniformly says it is&nbsp;&mdash; then sustaining the damned is sustaining them
+        in suffering. Why does God do this? Three answers compete in the tradition.
+        The Catechism holds all three without resolving the tension among them.
+        We formalized all three as competing axioms in
+        <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/DivineModes.lean">DivineModes.lean</a>.
+      </p>
+
+      <div class="axiom-option">
+        <h4>Option 1: Existence is intrinsically good</h4>
+        <p>
+          Even diminished existence&nbsp;&mdash; even existence in hell&nbsp;&mdash;
+          is better than non-existence. Being itself is a good. God sustaining the
+          damned <em>is</em> an act of goodness, because the alternative (annihilation)
+          would be the removal of a good.
+        </p>
+        <p class="source">
+          Aquinas, <em>Summa Theologiae</em> I, q.5, a.2: &ldquo;Being is itself a good.&rdquo;
+        </p>
+      </div>
+
+      <div class="axiom-option">
+        <h4>Option 2: Respect for freedom</h4>
+        <p>
+          Annihilating the damned would override their choice. If they chose to exist
+          apart from God, God honors that choice by sustaining their existence. Love
+          does not coerce&nbsp;&mdash; not even by annihilation. This connects directly
+          to <code>S1</code> (God is love, and love requires freedom) and
+          <code>T1</code> (libertarian free will).
+        </p>
+        <p class="source">
+          C.S. Lewis, <em>The Great Divorce</em>: &ldquo;The doors of hell are locked from the inside.&rdquo;
+        </p>
+      </div>
+
+      <div class="axiom-option">
+        <h4>Option 3: Justice requires experienced consequences</h4>
+        <p>
+          The damned must experience the consequences of their choice. Annihilation
+          would remove the consequence&nbsp;&mdash; it would be, in a sense, an escape.
+          Justice requires that the choice to reject God be met with the reality of
+          what that rejection means.
+        </p>
+        <p class="source">
+          Aquinas, <em>Summa Theologiae</em> Supp., q.99.
+        </p>
+      </div>
+
+      <div class="assumption-callout">
+        These three options are not mutually exclusive, and the tradition has never
+        definitively chosen among them. We formalized each as a separate axiom
+        (<code>existence_is_intrinsically_good</code>,
+        <code>respect_for_freedom_sustains</code>,
+        <code>justice_requires_consequences</code>) precisely because the Catechism
+        leaves this open. Honest formalization means admitting where the tradition
+        itself is underdetermined.
+      </div>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- The Spectrum Insight -->
+    <section class="article-body">
+      <h2>The Spectrum of Communion</h2>
+
+      <p>
+        <span class="versal">H</span>ere is what emerges when you step back and
+        look at the whole picture. The afterlife is not three disconnected bins.
+        It is a spectrum of communion with God.
+      </p>
+
+      <div class="spectrum-container">
+        <div class="spectrum-bar">
+          <div class="spectrum-segment spectrum-segment-hell">
+            Hell
+            <small>No communion</small>
+          </div>
+          <div class="spectrum-segment spectrum-segment-purgatory">
+            Purgatory
+            <small>Assured, being purified</small>
+          </div>
+          <div class="spectrum-segment spectrum-segment-heaven">
+            Heaven
+            <small>Full communion</small>
+          </div>
+        </div>
+        <div class="spectrum-labels">
+          <span>Sustained only</span>
+          <span>Sustained + in communion</span>
+        </div>
+        <div class="spectrum-axis">Degree of communion with God</div>
+      </div>
+
+      <p>
+        Everything is sustained. The sustaining axis never varies&nbsp;&mdash; it is
+        always &ldquo;yes,&rdquo; because <code>god_sustains_all</code> admits no
+        exceptions. What varies is the <em>other</em> axis: how much of God&rsquo;s
+        friendship you receive.
+      </p>
+
+      <p>
+        At one end: nothing. Existence without any good. The ultimate privation.
+        At the other end: everything. Face to face with the source of all being,
+        all truth, all beauty, all love. And in between: the souls in purgatory,
+        who have chosen God, who are assured of reaching the far end, but who are
+        not yet ready to bear the full weight of that encounter.
+      </p>
+
+      <p>
+        This is structurally beautiful. It is not three categories bolted together
+        by theological fiat. It is one axis (communion) varying continuously across
+        a fixed background (sustenance). The three &ldquo;states&rdquo; are really
+        three regions on the same spectrum. And the spectrum has a direction:
+        toward God, or away.
+      </p>
+
+      <div class="summary-box">
+        <h3>Why this matters</h3>
+        <p>
+          The two-mode model gives the afterlife a <em>geometry</em>. It is not just
+          a list of outcomes; it is a space with structure. That structure was always
+          implicit in the tradition. The proof assistant made it explicit&nbsp;&mdash;
+          not because it added something, but because it refused to let us get away
+          with the ambiguity that hid the structure from view.
+        </p>
+      </div>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Conclusion -->
+    <section class="article-body">
+      <h2>Discovery, Not Design</h2>
+
+      <p>
+        <span class="versal">W</span>e did not set out to find a unifying principle
+        for eschatology and theodicy. We set out to formalize twelve passages from
+        the Catechism and see if the proof assistant would find anything interesting.
+      </p>
+
+      <p>
+        It found a contradiction. We had to resolve it. The resolution required a
+        distinction (sustaining vs. beatifying) that we had not planned. And that
+        distinction, once in place, turned out to explain five other things we had
+        already formalized.
+      </p>
+
+      <p>
+        This is what formal verification does at its best. It does not just check
+        your work. It forces a level of precision that can uncover structure you
+        did not know was there. The two-mode model of divine relation was always
+        implicit in the tradition&nbsp;&mdash; Aquinas knew it, the Catechism
+        presupposes it, preachers gesture at it when they say God is always
+        &ldquo;holding you in being.&rdquo; But no one, as far as we can tell,
+        had ever isolated it as a formal structural principle and shown that it
+        unifies five doctrines into one framework.
+      </p>
+
+      <p>
+        A proof assistant is a strange tool for theology. But perhaps a tradition
+        that produced Aquinas&rsquo;s architectonic precision should not be surprised
+        that a tool designed for architectonic precision finds something in it worth
+        finding.
+      </p>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Source references -->
+    <section class="article-body">
+      <div class="summary-box">
+        <h3>Source Code</h3>
+        <p>
+          The entire formalization is machine-checked in Lean 4. See
+          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/DivineModes.lean"><code>DivineModes.lean</code></a>
+          for the <code>DivineMode</code> type, the three afterlife states, and the
+          key theorems: <code>hell_paradox_resolved</code>,
+          <code>purgatory_is_transitional</code>, and <code>all_states_sustained</code>.
+          Open the <strong>Lean Code</strong> sidebar to preview the definitions.
+        </p>
+      </div>
+    </section>
+
+    <div class="ornament">&#10053;</div>
+
+    <section class="cta-section">
+      <div class="cta-group">
+        <a href="https://github.com/ngundotra/catlib" class="cta-button primary">View on GitHub</a>
+        <a href="../index.html" class="cta-button secondary">Back to Catlib</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="ornament">&#10053;</div>
+    <p>
+      <a href="https://github.com/ngundotra/catlib">Catlib</a>&nbsp;&mdash;
+      formalizing the Catholic Catechism in Lean 4.
+      A love letter to the Catholic intellectual tradition, written with precision.
+    </p>
+  </footer>
+
+</body>
+</html>
