@@ -36,18 +36,7 @@ html {
 body {
   font-family: 'Cormorant Garamond', 'Georgia', serif;
   color: var(--text);
-  background: var(--bg);
-  line-height: 1.8;
-  font-weight: 400;
-}
-
-main {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 4rem 1.5rem 4rem;
-  background: var(--bg);
-  position: relative;
-  /* Subtle parchment texture via gradient noise */
+  background-color: var(--bg);
   background-image:
     repeating-linear-gradient(
       120deg,
@@ -63,7 +52,14 @@ main {
       rgba(160, 137, 104, 0.02) 100px,
       rgba(160, 137, 104, 0.02) 200px
     );
-  background-color: var(--bg);
+  line-height: 1.8;
+  font-weight: 400;
+}
+
+main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 4rem 1.5rem 4rem;
 }
 
 /* Ornamental elements */
