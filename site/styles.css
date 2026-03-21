@@ -31,12 +31,9 @@
 html {
   font-size: 18px;
   -webkit-font-smoothing: antialiased;
-  /* Hide scrollbar but keep scroll functionality */
-  scrollbar-width: none; /* Firefox */
-}
-
-html::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Edge */
+  /* Prevent scrollbar from shifting layout */
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
 }
 
 body {
