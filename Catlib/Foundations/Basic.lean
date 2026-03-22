@@ -85,10 +85,29 @@ theorem good_iff_not_evil (eval : MoralEvaluation) :
     have hc : eval.circumstancesAppropriate := Classical.byContradiction fun hn => h (Or.inr (Or.inr hn))
     exact ⟨ho, hi, hc⟩
 
+/-- The type of grace — prevenient (preparing) vs sanctifying.
+    This distinction was the key finding of the Grace bootstrapping
+    formalization (CCC §2001): you need grace to prepare for grace,
+    which requires at least two KINDS of grace. -/
+inductive GraceType where
+  /-- Prevenient (preparing) grace — comes BEFORE any human response.
+      This is the grace that §2001 says "arouses" our collaboration.
+      It doesn't require any prior human action. -/
+  | prevenient
+  /-- Sanctifying grace — the grace of justification and ongoing
+      relationship with God. This is what prevenient grace prepares
+      us to receive. -/
+  | sanctifying
+
 /-- Grace — God's free and undeserved help.
     CCC §1996: "Grace is favor, the free and undeserved help that God gives
-    us to respond to his call." -/
+    us to respond to his call." Unified type combining essential properties
+    with the typed distinction (from Grace.lean finding). -/
 structure Grace where
+  /-- What kind of grace -/
+  graceType : GraceType
+  /-- Who receives it -/
+  recipient : Person
   /-- Grace is freely given (not earned) -/
   isFree : Prop
   /-- Grace is undeserved -/
@@ -96,9 +115,37 @@ structure Grace where
   /-- Grace enables a response to God's call -/
   enablesResponse : Prop
 
+/-- Knowledge in the context of moral action.
+    MODELING CHOICE: The Catechism treats knowledge as binary (full or not).
+    This is an assumption — one could model knowledge as graded.
+    We make the binary assumption explicit. -/
+inductive MoralKnowledge where
+  | full       -- The agent fully knows the moral character of the act
+  | notFull    -- The agent has some but incomplete knowledge
+
+/-- Consent in the context of moral action.
+    MODELING CHOICE: Same binary assumption as knowledge.
+    "Complete consent" is either present or not. -/
+inductive MoralConsent where
+  | complete   -- The agent fully and freely consents
+  | incomplete -- Consent is diminished (by fear, habit, pressure, etc.)
+
+/-- The gravity of the matter of an act.
+    MODELING CHOICE: The Catechism distinguishes "grave" from "less serious"
+    matter. We model this as binary. Again, this is an assumption —
+    gravity could be modeled as a spectrum. -/
+inductive MatterGravity where
+  | grave      -- Concerns a serious moral matter
+  | lesSerious -- Concerns a less serious matter
+
 /-- Sin — an offense against reason, truth, and right conscience.
     CCC §1849: "Sin is an offense against reason, truth, and right conscience;
-    it is a failure in genuine love for God and neighbor." -/
+    it is a failure in genuine love for God and neighbor."
+
+    This unified type captures both the essential nature of sin (what makes
+    it sin: freedom, contrariety to reason/truth) and the severity conditions
+    (knowledge, consent, gravity) that determine whether the sin is mortal
+    or venial (CCC §1857-1862). -/
 structure Sin where
   /-- The action constituting the sin -/
   action : Action
@@ -108,6 +155,12 @@ structure Sin where
   contraryToReason : Prop
   /-- Sin is contrary to truth -/
   contraryToTruth : Prop
+  /-- The agent's knowledge of the moral character of the act -/
+  knowledge : MoralKnowledge
+  /-- The agent's consent to the act -/
+  consent : MoralConsent
+  /-- The gravity of the matter -/
+  gravity : MatterGravity
 
 /-- Sin requires free will — you cannot sin without choosing to.
     CCC §1859: "Mortal sin requires full knowledge and complete consent." -/

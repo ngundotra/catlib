@@ -15,9 +15,9 @@ The most cross-cutting formalization in catlib. This file connects:
 - **Authority.lean**: absolution_authority, absolutionDomain, christ_delegates_absolution,
   apostolic_succession_general, episcopal_delegation
 - **Love.lean**: LoveKind.agape, mortal_sin_can_destroy_charity, agape_requires_freedom
-- **Sin.lean**: SinfulAct, isMortal, GraceState, mortal_sin_causes_loss_of_grace
+- **Sin.lean**: Sin.isMortal, GraceState, mortal_sin_causes_loss_of_grace
 - **Grace.lean**: GraceType.prevenient, prevenient_grace_unconditioned,
-  divine_initiative_preserves_freedom, TypedGrace, grace_bootstrapping_resolved
+  divine_initiative_preserves_freedom, Grace, grace_bootstrapping_resolved
 - **DivineModes.lean**: SoulState, heavenState, hellState, DivineMode
 - **Purgatory.lean**: HolinessDegree, fullyPurified, diedInGrace
 
@@ -128,7 +128,7 @@ structure Contrition where
   /-- The person expressing contrition -/
   penitent : Person
   /-- The sin for which the person is contrite -/
-  sin : SinfulAct
+  sin : Sin
   /-- Genuine sorrow for the sin (not merely fear of punishment) -/
   genuineSorrow : Prop
   /-- Firm purpose of amendment — intent not to sin again -/
@@ -153,7 +153,7 @@ structure Confession where
   /-- The priest hearing the confession -/
   priest : Person
   /-- The sins disclosed -/
-  sinsDisclosed : List SinfulAct
+  sinsDisclosed : List Sin
   /-- The confession is complete (all mortal sins recounted) -/
   isComplete : Prop
 
@@ -297,7 +297,7 @@ axiom contrition_requires_sincerity :
     Provenance: [Definition] CCC §1456.
     Denominational scope: CATHOLIC + ORTHODOX. -/
 axiom confession_requires_completeness :
-  ∀ (conf : Confession) (sa : SinfulAct),
+  ∀ (conf : Confession) (sa : Sin),
     sa.isMortal →
     conf.isComplete →
     True -- The completeness condition is met
@@ -440,10 +440,10 @@ axiom contrition_requires_prevenient_grace :
   ∀ (c : Contrition),
     c.genuineSorrow →
     c.firmPurpose →
-    ∃ (g : TypedGrace),
+    ∃ (g : Grace),
       g.graceType = GraceType.prevenient ∧
       g.recipient = c.penitent ∧
-      g.freelyGiven
+      g.isFree
 
 -- ============================================================================
 -- § 4. Key Theorems
@@ -574,10 +574,10 @@ Denominational scope: ECUMENICAL — God initiates repentance.
 theorem grace_bootstrapping_in_reconciliation
     (p : Person)
     (h_free : p.hasFreeWill = true) :
-    ∃ (g : TypedGrace),
+    ∃ (g : Grace),
       g.graceType = GraceType.prevenient ∧
       g.recipient = p ∧
-      g.freelyGiven :=
+      g.isFree :=
   -- Identical to grace_bootstrapping_resolved (Grace.lean)!
   -- The same axiom resolves both bootstrapping problems.
   prevenient_grace_unconditioned p h_free
@@ -634,7 +634,7 @@ satisfaction + prevenient grace. The inverse operation is strictly harder.
 This is a STRUCTURAL finding: the Catechism's sacramental theology
 embodies the thermodynamic intuition that breaking is easier than fixing.
 
-Cross-ref: SinfulAct.isMortal (Sin.lean) — the single act of destruction.
+Cross-ref: Sin.isMortal (Sin.lean) — the single act of destruction.
 Cross-ref: ReconciliationAct — the four-component act of restoration.
 
 Denominational scope: CATHOLIC + ORTHODOX (the specific components).
@@ -649,14 +649,14 @@ that repentance requires more than just "undoing" a sin.
     (contrition, confession, absolution, satisfaction) plus prevenient
     grace. The inverse is strictly harder.
 
-    Formalized as: a single SinfulAct can destroy grace, but restoring
+    Formalized as: a single Sin can destroy grace, but restoring
     grace requires a ReconciliationAct (which has four sub-components).
 
     This theorem proves both directions:
     (a) A single mortal sin can cause loss of grace
     (b) Restoration requires all four components of reconciliation -/
 theorem destruction_asymmetric_to_restoration
-    (sa : SinfulAct)
+    (sa : Sin)
     (state : SpiritualState)
     (h_mortal : sa.isMortal)
     (h_in_grace : state.graceState = GraceState.inGrace) :
@@ -796,12 +796,12 @@ This file references 10 existing files. Here is the complete map:
 ### Moral Theology
 | File | What we use | Where |
 |------|------------|-------|
-| **Sin.lean** | SinfulAct, isMortal, GraceState, SpiritualState, mortal_sin_causes_loss_of_grace | destruction_asymmetric_to_restoration |
+| **Sin.lean** | Sin.isMortal, GraceState, SpiritualState, mortal_sin_causes_loss_of_grace | destruction_asymmetric_to_restoration |
 
 ### Creed
 | File | What we use | Where |
 |------|------------|-------|
-| **Grace.lean** | GraceType.prevenient, TypedGrace, prevenient_grace_unconditioned | grace_bootstrapping_in_reconciliation |
+| **Grace.lean** | GraceType.prevenient, Grace, prevenient_grace_unconditioned | grace_bootstrapping_in_reconciliation |
 | **DivineModes.lean** | SoulState, DivineMode, heavenState, hellState | reconciliation_restores_communion |
 | **Purgatory.lean** | HolinessDegree, fullyPurified, diedInGrace (conceptual) | temporal_punishment_survives_absolution docstrings |
 

@@ -78,28 +78,12 @@ The Catechism uses "grace" as if it were one thing, but the bootstrapping
 problem forces us to distinguish at least two kinds. Catholic theology
 actually has a rich taxonomy of grace types (from the Council of Trent
 and earlier). We model the minimum needed to resolve the circularity.
+
+The `GraceType` enum and unified `Grace` structure are defined in
+`Basic.lean`. The typed distinction (prevenient vs sanctifying) was the
+key finding of this formalization — you need at least two KINDS of grace
+for §2001 to avoid circularity.
 -/
-
-/-- Types of grace — the minimum taxonomy needed to avoid circularity.
-    MODELING CHOICE: Catholic theology distinguishes many more kinds
-    (actual, habitual, sacramental, etc.) but we need at least these
-    two for §2001 to work without circularity. -/
-inductive GraceType where
-  /-- Prevenient (preparing) grace — comes BEFORE any human response.
-      This is the grace that §2001 says "arouses" our collaboration.
-      It doesn't require any prior human action. -/
-  | prevenient
-  /-- Sanctifying grace — the grace of justification and ongoing
-      relationship with God. This is what prevenient grace prepares
-      us to receive. -/
-  | sanctifying
-
-/-- A specific instance of grace with its type and recipient. -/
-structure TypedGrace where
-  graceType : GraceType
-  recipient : Person
-  /-- Grace is always freely given by God -/
-  freelyGiven : Prop
 
 /-- Whether a person is in a state of receptivity to grace. -/
 structure Receptivity where
@@ -155,10 +139,10 @@ axiom preparation_requires_prevenient :
 axiom prevenient_grace_unconditioned :
   ∀ (p : Person),
     p.hasFreeWill = true →
-    ∃ (g : TypedGrace),
+    ∃ (g : Grace),
       g.graceType = GraceType.prevenient ∧
       g.recipient = p ∧
-      g.freelyGiven
+      g.isFree
 
 /-- AXIOM 3 (§2002): Divine initiative preserves human freedom.
     "God's free initiative demands man's free response."
@@ -168,7 +152,7 @@ axiom prevenient_grace_unconditioned :
     grace-freedom compatibility problem. The Catechism asserts both
     without explaining how they coexist. -/
 axiom divine_initiative_preserves_freedom :
-  ∀ (p : Person) (g : TypedGrace),
+  ∀ (p : Person) (g : Grace),
     g.graceType = GraceType.prevenient →
     g.recipient = p →
     -- After receiving prevenient grace, the person is STILL free
@@ -191,10 +175,10 @@ axiom divine_initiative_preserves_freedom :
 theorem grace_bootstrapping_resolved
     (p : Person)
     (h_free : p.hasFreeWill = true) :
-    ∃ (g : TypedGrace),
+    ∃ (g : Grace),
       g.graceType = GraceType.prevenient ∧
       g.recipient = p ∧
-      g.freelyGiven :=
+      g.isFree :=
   prevenient_grace_unconditioned p h_free
 
 /-- The human response to grace is genuinely free — not coerced by
@@ -202,7 +186,7 @@ theorem grace_bootstrapping_resolved
     Pelagian controversy: grace is necessary AND freedom is real. -/
 theorem grace_and_freedom_compatible
     (p : Person)
-    (g : TypedGrace)
+    (g : Grace)
     (h_prev : g.graceType = GraceType.prevenient)
     (h_recip : g.recipient = p)
     (h_free : p.hasFreeWill = true) :

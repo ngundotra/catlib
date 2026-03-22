@@ -50,72 +50,53 @@ hidden assumption.
 - **Assessment**: Tier 3 — multiple hidden premises exposed.
 -/
 
-namespace Catlib.MoralTheology
+-- Define isMortal and isVenial in the Catlib namespace so they become
+-- Catlib.Sin.isMortal and Catlib.Sin.isVenial (dot notation on Sin).
+namespace Catlib
 
-open Catlib
-
-/-- Knowledge in the context of moral action.
-    MODELING CHOICE: The Catechism treats knowledge as binary (full or not).
-    This is an assumption — one could model knowledge as graded.
-    We make the binary assumption explicit. -/
-inductive MoralKnowledge where
-  | full       -- The agent fully knows the moral character of the act
-  | notFull    -- The agent has some but incomplete knowledge
-
-/-- Consent in the context of moral action.
-    MODELING CHOICE: Same binary assumption as knowledge.
-    "Complete consent" is either present or not. -/
-inductive MoralConsent where
-  | complete   -- The agent fully and freely consents
-  | incomplete -- Consent is diminished (by fear, habit, pressure, etc.)
-
-/-- The gravity of the matter of an act.
-    MODELING CHOICE: The Catechism distinguishes "grave" from "less serious"
-    matter. We model this as binary. Again, this is an assumption —
-    gravity could be modeled as a spectrum. -/
-inductive MatterGravity where
-  | grave      -- Concerns a serious moral matter
-  | lesSerious -- Concerns a less serious matter
-
-/-- A sinful act with its morally relevant properties. -/
-structure SinfulAct where
-  action : Action
-  knowledge : MoralKnowledge
-  consent : MoralConsent
-  gravity : MatterGravity
+-- MoralKnowledge, MoralConsent, MatterGravity, and Sin are defined in
+-- Basic.lean. The unified Sin type captures both the essential nature of
+-- sin (freedom, contrariety to reason/truth) and the severity conditions
+-- (knowledge, consent, gravity).
 
 /-- §1857: "Mortal sin is sin whose object is grave matter and which is
     also committed with full knowledge and deliberate consent."
     All three conditions must be met simultaneously. -/
-def SinfulAct.isMortal (s : SinfulAct) : Prop :=
+def Sin.isMortal (s : Sin) : Prop :=
   s.gravity = MatterGravity.grave ∧
   s.knowledge = MoralKnowledge.full ∧
   s.consent = MoralConsent.complete
 
 /-- §1862: Venial sin occurs when ANY of the three conditions for mortal
     sin is not met. -/
-def SinfulAct.isVenial (s : SinfulAct) : Prop :=
+def Sin.isVenial (s : Sin) : Prop :=
   -- Less serious matter with any knowledge/consent, OR
   -- Grave matter but without full knowledge or complete consent
   s.gravity = MatterGravity.lesSerious ∨
   s.knowledge = MoralKnowledge.notFull ∨
   s.consent = MoralConsent.incomplete
 
+end Catlib
+
+namespace Catlib.MoralTheology
+
+open Catlib
+
 /-- Mortal and venial are exhaustive: every sin is one or the other.
     HIDDEN ASSUMPTION: There are exactly two categories. No sin is
     "neither mortal nor venial." The Catechism asserts this but doesn't
     prove it — it follows from the binary modeling of all three properties. -/
-theorem mortal_or_venial (s : SinfulAct) :
+theorem mortal_or_venial (s : Sin) :
     s.isMortal ∨ s.isVenial := by
-  unfold SinfulAct.isMortal SinfulAct.isVenial
+  unfold Sin.isMortal Sin.isVenial
   cases hg : s.gravity <;> cases hk : s.knowledge <;> cases hc : s.consent
   all_goals simp_all
 
 /-- Mortal and venial are mutually exclusive. -/
-theorem mortal_venial_exclusive (s : SinfulAct) :
+theorem mortal_venial_exclusive (s : Sin) :
     s.isMortal → ¬s.isVenial := by
   intro ⟨hg, hk, hc⟩ hv
-  unfold SinfulAct.isVenial at hv
+  unfold Sin.isVenial at hv
   cases hv with
   | inl h => simp [hg] at h
   | inr h => cases h with
@@ -154,7 +135,7 @@ structure SpiritualState where
     free human acts and divine states (grace). This is a specific
     metaphysics that the Catechism assumes but doesn't argue for. -/
 axiom mortal_sin_causes_loss_of_grace :
-  ∀ (s : SinfulAct) (state : SpiritualState),
+  ∀ (s : Sin) (state : SpiritualState),
     s.isMortal →
     state.graceState = GraceState.inGrace →
     ∃ (newState : SpiritualState),
@@ -166,7 +147,7 @@ axiom mortal_sin_causes_loss_of_grace :
     the axiom — the "proof" is trivial. The FINDING is that we needed
     the axiom at all. -/
 theorem mortal_sin_removes_grace
-    (s : SinfulAct) (state : SpiritualState)
+    (s : Sin) (state : SpiritualState)
     (h_mortal : s.isMortal)
     (h_in_grace : state.graceState = GraceState.inGrace) :
     ∃ (newState : SpiritualState),
