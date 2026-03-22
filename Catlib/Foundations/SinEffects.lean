@@ -128,13 +128,23 @@ def fullyPurified : SinProfile :=
     guilt := EffectState.removed
     attachment := EffectState.removed }
 
-/-- A person who never heard the Gospel (§847).
-    The CCC does NOT determine their sin-state.
+/-- A person who never heard the Gospel — all layers unknown (§847).
     "In ways known to himself [God]." -/
 def unevangelized : SinProfile :=
   { originalWound := EffectState.unknownToUs
     guilt := EffectState.unknownToUs
     attachment := EffectState.unknownToUs }
+
+/-- A more precise model: someone born with original sin (they're
+    human — §405) but who never heard the Gospel. We KNOW they have
+    the inherited wound. We DON'T know their personal moral state.
+    Result: still knownToGodAlone — one unknown poisons the whole
+    determination. The CCC knows they have original sin but cannot
+    judge their personal relationship with God (§847). -/
+def nativeWithOriginalSin : SinProfile :=
+  { originalWound := EffectState.present   -- we KNOW this (§405)
+    guilt := EffectState.unknownToUs        -- can't judge their conscience
+    attachment := EffectState.unknownToUs }  -- can't judge their attachments
 
 /-!
 ## Afterlife determination
@@ -202,6 +212,17 @@ theorem attachments_go_to_purgatory :
 theorem unevangelized_is_unknown :
     afterlifeFromProfile unevangelized = AfterlifeOutcome.knownToGodAlone := by
   simp [afterlifeFromProfile, unevangelized]
+
+/-- Even knowing someone has original sin (they're human), if we
+    can't determine their guilt or attachments, the outcome is still
+    knownToGodAlone. The unknowns propagate — one unknown poisons
+    the whole determination.
+    This models the CCC's position on natives who never heard the
+    Gospel: we KNOW they have original sin (§405), but we CANNOT
+    judge their personal moral state (§847). -/
+theorem native_with_original_sin_still_unknown :
+    afterlifeFromProfile nativeWithOriginalSin = AfterlifeOutcome.knownToGodAlone := by
+  simp [afterlifeFromProfile, nativeWithOriginalSin]
 
 /-- §1472: Temporal punishment is NOT vengeance — it follows from
     the nature of sin. The attachment IS the punishment, not
