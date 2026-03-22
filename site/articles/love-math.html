@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Mathematics of Love &mdash; Catlib</title>
+  <meta name="description" content="The Catechism uses 'love' in at least four different senses. What happens when a proof assistant forces the disambiguation? We extract the properties each kind of love has and identify what remains genuinely open.">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="The Mathematics of Love">
+  <meta property="og:description" content="Four kinds of love, each with different mathematical properties. What a proof assistant found when it forced the Catechism to disambiguate.">
+  <meta property="og:site_name" content="Catlib">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="The Mathematics of Love">
+  <meta name="twitter:description" content="The Catechism uses 'love' in four senses without distinguishing them. Formalizing the distinction reveals structure, asymmetries, and genuine open questions.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel+Decorative:wght@400;700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="articles.css">
+  <style>
+    /* ============================================================
+       The Mathematics of Love — article-specific styles
+       ============================================================ */
+
+    /* Open-question callout — amber/red border to signal "unsolved" */
+    .open-question {
+      background: rgba(180, 100, 20, 0.07);
+      border: 2px solid rgba(180, 80, 20, 0.4);
+      border-left: 5px solid #b45014;
+      padding: 1.5rem 1.8rem;
+      margin: 1.8rem 0;
+      border-radius: 0 4px 4px 0;
+      position: relative;
+    }
+
+    .open-question::before {
+      content: 'OPEN QUESTION';
+      display: block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #b45014;
+      margin-bottom: 0.8rem;
+    }
+
+    .open-question h4 {
+      font-family: 'Cinzel', serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #8a3a0a;
+      margin-bottom: 0.6rem;
+      letter-spacing: 0.03em;
+    }
+
+    .open-question p {
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .open-question ul {
+      padding-left: 1.3rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .open-question li {
+      margin-bottom: 0.3rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* Model options within the open question */
+    .model-option {
+      background: rgba(180, 100, 20, 0.05);
+      border: 1px solid rgba(180, 100, 20, 0.15);
+      padding: 0.8rem 1.2rem;
+      margin: 0.6rem 0;
+      border-radius: 3px;
+    }
+
+    .model-option strong {
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      color: #8a3a0a;
+      letter-spacing: 0.03em;
+    }
+
+    .model-option .model-problem {
+      font-size: 0.88rem;
+      color: var(--text-light);
+      font-style: italic;
+      margin-top: 0.3rem;
+      margin-bottom: 0;
+    }
+
+    /* Structure table — the visual centerpiece */
+    .structure-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      font-size: 0.92rem;
+      border: 2px solid var(--border-dark);
+    }
+
+    .structure-table th {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--bg);
+      background: var(--accent);
+      padding: 0.7rem 0.8rem;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    .structure-table td {
+      padding: 0.65rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      line-height: 1.55;
+    }
+
+    .structure-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .structure-table tr:nth-child(even) {
+      background: rgba(122, 46, 14, 0.03);
+    }
+
+    .structure-table .status-proven {
+      color: #3a6e3a;
+      font-weight: 600;
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+    }
+
+    .structure-table .status-implied {
+      color: var(--accent-gold);
+      font-weight: 600;
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+    }
+
+    .structure-table .status-open {
+      color: #b45014;
+      font-weight: 700;
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+    }
+
+    .structure-table code {
+      font-family: 'JetBrains Mono', 'Fira Code', monospace;
+      font-size: 0.78rem;
+      background: var(--bg-vellum);
+      padding: 0.1rem 0.35rem;
+      border-radius: 2px;
+    }
+
+    /* Property cards */
+    .property-card {
+      border: 1px solid var(--border);
+      padding: 1rem 1.4rem;
+      margin: 0.8rem 0;
+      border-radius: 2px;
+      background: var(--bg-parchment);
+    }
+
+    .property-card h4 {
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.03em;
+    }
+
+    .property-card p {
+      font-size: 0.98rem;
+      margin-bottom: 0;
+      line-height: 1.65;
+    }
+
+    /* Property table — the four-love comparison */
+    .property-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      font-size: 0.88rem;
+      border: 2px solid var(--border-dark);
+    }
+
+    .property-table th {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--bg);
+      background: var(--accent);
+      padding: 0.6rem 0.7rem;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .property-table th:first-child {
+      text-align: left;
+    }
+
+    .property-table td {
+      padding: 0.55rem 0.7rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    .property-table td:first-child {
+      text-align: left;
+      font-weight: 500;
+    }
+
+    .property-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .property-table tr:nth-child(even) {
+      background: rgba(122, 46, 14, 0.03);
+    }
+
+    .property-table .yes {
+      color: #3a6e3a;
+      font-weight: 700;
+    }
+
+    .property-table .no {
+      color: #999;
+    }
+
+    .property-table .na {
+      color: #bbb;
+      font-style: italic;
+    }
+
+    /* Ordo amoris visual */
+    .ordo-visual {
+      text-align: center;
+      margin: 2rem 0;
+      padding: 1.5rem;
+      background: var(--bg-parchment);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+    }
+
+    .ordo-visual .ordo-item {
+      display: inline-block;
+      margin: 0 0.4rem;
+    }
+
+    .ordo-visual .ordo-separator {
+      color: var(--accent-gold);
+      font-size: 1.3rem;
+      vertical-align: middle;
+    }
+
+    /* Theoretical code block label */
+    .code-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #b45014;
+      background: rgba(180, 100, 20, 0.1);
+      border: 1px solid rgba(180, 100, 20, 0.25);
+      display: inline-block;
+      padding: 0.2rem 0.7rem;
+      border-radius: 2px 2px 0 0;
+      margin-bottom: -1px;
+      position: relative;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar toggle for viewing Lean theorems -->
+  <input type="checkbox" id="sidebar-toggle" class="sidebar-toggle">
+  <label for="sidebar-toggle" class="sidebar-label">Lean Code</label>
+  <div class="sidebar-panel">
+    <h3>Theorem Reference</h3>
+
+    <div class="sidebar-section">
+      <h4>TypedLove</h4>
+<pre>inductive LoveKind where
+  | agape      -- Charity
+  | eros       -- Desire-love
+  | philia     -- Friendship
+  | selfLove   -- Self-love
+
+structure TypedLove where
+  kind    : LoveKind
+  lover   : Person
+  beloved : Person
+  degree  : Nat</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>agape_requires_freedom</h4>
+<pre>axiom agape_requires_freedom :
+  &forall; (tl : TypedLove),
+    tl.kind = LoveKind.agape &rarr;
+    tl.degree &gt; 0 &rarr;
+    tl.lover.hasFreeWill = true</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>eros_does_not_require_freedom</h4>
+<pre>axiom eros_does_not_require_freedom :
+  &exist; (tl : TypedLove),
+    tl.kind = LoveKind.eros &and;
+    tl.degree &gt; 0 &and;
+    tl.lover.hasFreeWill = false</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>mortal_sin_destroys_charity_not_eros</h4>
+<pre>theorem mortal_sin_destroys_charity_not_eros
+  (tl_agape tl_eros : TypedLove)
+  (s : Sin)
+  (h_agape : tl_agape.kind = .agape)
+  (h_eros  : tl_eros.kind  = .eros)
+  (h_pos   : tl_eros.degree &gt; 0)
+  (h_grave : isGraveSin s) :
+  -- Agape CAN be destroyed...
+  (&exist; tl', tl'.kind = .agape &and;
+    tl'.degree = 0) &and;
+  -- ...but eros SURVIVES
+  (&exist; tl', tl'.kind = .eros &and;
+    tl'.degree &gt; 0)</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>love_requires_freedom_only_agape</h4>
+<pre>theorem love_requires_freedom_only_agape :
+  (&exist; (tl : TypedLove),
+    tl.kind = .eros &and;
+    tl.degree &gt; 0 &and;
+    tl.lover.hasFreeWill = false) &and;
+  (&forall; (tl : TypedLove),
+    tl.kind = .agape &rarr;
+    tl.degree &gt; 0 &rarr;
+    tl.lover.hasFreeWill = true)</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>self_love_grounds_self_defense</h4>
+<pre>theorem self_love_grounds_self_defense :
+  &forall; (tl : TypedLove),
+    tl.kind = LoveKind.selfLove &rarr;
+    tl.degree &gt; 0 &rarr;
+    tl.lover = tl.beloved</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>The 15 Base Axioms (P/S/T)</h4>
+<pre>-- Philosophical (3)
+P1. Hylomorphism
+P2. Two-tier causation
+P3. Evil is privation
+
+-- Scriptural (9)
+S1. God is love
+S2. Universal salvific will
+S3. Law on hearts
+S4. Universal providence
+S5. Sin separates
+S6. Moral realism
+S7. Teleological freedom
+S8. Grace necessary &amp; transformative
+S9. Conscience binds
+
+-- Tradition (3)
+T1. Libertarian free will
+T2. Grace preserves freedom
+T3. Sacramental efficacy</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>Source Files</h4>
+<pre><a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Foundations/Love.lean" style="color: var(--accent-gold);">Love.lean</a>
+<a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Foundations/Axioms.lean" style="color: var(--accent-gold);">Axioms.lean</a>
+<a href="https://github.com/ngundotra/catlib/blob/main/Catlib/MoralTheology/TheologyOfBody.lean" style="color: var(--accent-gold);">TheologyOfBody.lean</a></pre>
+    </div>
+
+    <p class="close-hint">Click the tab again to close</p>
+  </div>
+
+  <main>
+    <a href="../index.html" class="back-link">Back to Catlib</a>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="ornament">&#10053;</div>
+      <h1>The Mathematics of Love</h1>
+      <p class="subtitle">Four kinds, four algebras, four open questions</p>
+      <p class="subtitle">
+        The Catechism uses &ldquo;love&rdquo; in at least four different senses without
+        always distinguishing them. What happens when a proof assistant forces
+        the disambiguation?
+      </p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Section 1: Opening -->
+    <section class="article-body">
+      <p>
+        <span class="versal">T</span>he Catechism uses &ldquo;love&rdquo; in at least
+        four different senses without always distinguishing them. What happens when a
+        proof assistant forces the disambiguation?
+      </p>
+      <p>
+        The existing formalization in
+        <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Foundations/Axioms.lean"><code>Axioms.lean</code></a>
+        declares three love-related primitives: <code>godIsLove</code> (God&rsquo;s nature is love),
+        <code>loves</code> (a binary relation between persons), and <code>loveRequiresFreedom</code>
+        (genuine love requires the beloved&rsquo;s freedom). These are clean and useful. They are
+        also imprecise. The &ldquo;love&rdquo; of 1 John 4:8 (&ldquo;God IS love&rdquo;),
+        the &ldquo;love&rdquo; of Mt 5:44 (&ldquo;love your enemies&rdquo;), the &ldquo;love&rdquo;
+        that CCC &sect;1827 says increases through virtue, and the &ldquo;love&rdquo; that
+        CCC &sect;2264 says grounds legitimate defense are not the same concept. Using a
+        single <code>loves</code> predicate collapses distinctions the Catechism itself makes.
+      </p>
+      <p>
+        The new formalization in
+        <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Foundations/Love.lean"><code>Love.lean</code></a>
+        introduces a <code>TypedLove</code> structure that specifies <em>which kind</em> of love
+        is at work. Each kind turns out to have different mathematical properties&nbsp;&mdash;
+        different symmetry, different freedom requirements, different behavior under mortal sin.
+        The disambiguation is not pedantic. It resolves genuine theological puzzles.
+      </p>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Section 2: The Four Kinds -->
+    <section class="article-body">
+      <h2>The Four Kinds</h2>
+
+      <p>
+        <span class="versal">F</span>ollowing the classical tradition (Aquinas, C.S. Lewis,
+        Benedict XVI), the formalization distinguishes four kinds of love. The Catechism never
+        uses the Greek terms, but its text operates with exactly these distinctions.
+      </p>
+
+      <div class="property-card">
+        <h4>Agape (Charity)</h4>
+        <p>
+          Willing the good of the other for their own sake. CCC &sect;1822:
+          &ldquo;Charity is the theological virtue by which we love God above all things
+          for his own sake.&rdquo; This is the <em>supernatural</em> love&nbsp;&mdash;
+          the one that CCC &sect;1827 says increases through virtue and CCC &sect;1855 says
+          mortal sin destroys. It is the love of Mt 5:44: you can love your enemies with
+          agape, because it is a free act of the will, not a feeling.
+          <span class="tag tag-shared">Ecumenical</span>
+        </p>
+      </div>
+
+      <div class="property-card">
+        <h4>Eros (Desire-Love)</h4>
+        <p>
+          Attraction toward the good, the beautiful, the true. Benedict XVI (Deus Caritas
+          Est &sect;3&ndash;8) argues this is not opposed to agape but is its natural starting
+          point. The critical difference: eros is <em>involuntary</em>. You do not choose
+          whom you find beautiful. This makes eros categorically different from agape with
+          respect to freedom&nbsp;&mdash; a difference the untyped <code>loves</code>
+          predicate cannot express.
+          <span class="tag tag-shared">Ecumenical</span>
+        </p>
+      </div>
+
+      <div class="property-card">
+        <h4>Philia (Friendship)</h4>
+        <p>
+          Mutual benevolence between persons. Aquinas (ST II-II q.23 a.1) defines charity
+          itself as a <em>friendship</em> with God&nbsp;&mdash; but friendship, by definition,
+          requires mutuality. You cannot be friends with someone who does not know you exist.
+          This makes philia the only love-kind that is symmetric by definition.
+          <span class="tag tag-shared">Ecumenical</span>
+        </p>
+      </div>
+
+      <div class="property-card">
+        <h4>Self-Love</h4>
+        <p>
+          Legitimate love of self. CCC &sect;2264: &ldquo;Love toward oneself remains a
+          fundamental principle of morality. It is therefore legitimate to insist on respect
+          for one&rsquo;s own right to life.&rdquo; This is the moral basis for legitimate
+          defense. It is reflexive by definition: the lover and beloved are the same person.
+          <span class="tag tag-shared">Ecumenical</span>
+        </p>
+      </div>
+
+      <div class="assumption-callout">
+        The Catechism never names these four kinds explicitly as a taxonomy. But its text
+        operates with exactly these distinctions&nbsp;&mdash; treating charity as destroyable
+        by mortal sin, attraction as involuntary, friendship as mutual, and self-love as
+        the ground of legitimate defense. The formalization makes the implicit taxonomy
+        explicit.
+      </div>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Section 3: The Property Table -->
+    <section class="article-body">
+      <h2>The Property Table</h2>
+
+      <p>
+        <span class="versal">E</span>ach kind of love has different mathematical properties.
+        The following table summarizes what the formalization establishes. Every cell is
+        either a proven theorem, a declared axiom, or a structural consequence of the type
+        definitions.
+      </p>
+
+      <div style="overflow-x: auto;">
+      <table class="property-table">
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>Agape</th>
+            <th>Eros</th>
+            <th>Philia</th>
+            <th>Self-Love</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Reflexive</td>
+            <td class="no">No</td>
+            <td class="no">No</td>
+            <td class="no">No</td>
+            <td class="yes">YES</td>
+          </tr>
+          <tr>
+            <td>Symmetric</td>
+            <td class="no"><strong>NO</strong></td>
+            <td class="no">No*</td>
+            <td class="yes"><strong>YES</strong></td>
+            <td class="na">N/A</td>
+          </tr>
+          <tr>
+            <td>Transitive</td>
+            <td class="no">No</td>
+            <td class="no">No</td>
+            <td class="no">No</td>
+            <td class="na">N/A</td>
+          </tr>
+          <tr>
+            <td>Ordered (ordo amoris)</td>
+            <td class="yes">YES</td>
+            <td class="no">No</td>
+            <td class="no">No</td>
+            <td class="yes">YES</td>
+          </tr>
+          <tr>
+            <td>Requires freedom</td>
+            <td class="yes"><strong>YES</strong></td>
+            <td class="no"><strong>NO</strong></td>
+            <td class="no">Partial</td>
+            <td class="no">Partial</td>
+          </tr>
+          <tr>
+            <td>Destroyed by mortal sin</td>
+            <td class="yes"><strong>YES</strong></td>
+            <td class="no"><strong>NO</strong></td>
+            <td class="no"><strong>NO</strong></td>
+            <td class="no"><strong>NO</strong></td>
+          </tr>
+          <tr>
+            <td>Can increase</td>
+            <td class="yes">YES</td>
+            <td class="yes">Yes</td>
+            <td class="yes">Yes</td>
+            <td class="yes">Yes</td>
+          </tr>
+          <tr>
+            <td>Supernatural</td>
+            <td class="yes">YES</td>
+            <td class="no">No</td>
+            <td class="no">No</td>
+            <td class="no">No</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+
+      <p>
+        <em>* Eros can be unrequited (not symmetric), but this is factual asymmetry, not
+        normative. Agape&rsquo;s asymmetry is normative: you are commanded to love
+        enemies who do not love you back (Mt 5:44).</em>
+      </p>
+
+      <p>
+        The table makes visible what the single <code>loves</code> predicate hides. A claim
+        like &ldquo;love requires freedom&rdquo; is true for one row and false for another.
+        A claim like &ldquo;mortal sin destroys love&rdquo; is true for exactly one kind.
+        Without the disambiguation, these claims appear contradictory. With it, they are
+        precise.
+      </p>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Section 4: The Ordo Amoris -->
+    <section class="article-body">
+      <h2>The Ordo Amoris</h2>
+
+      <p>
+        <span class="versal">A</span>quinas (ST II-II q.26) argues that love has a proper
+        <em>ordering</em>. Not all love-targets are equal. The Great Commandment (Mt 22:37&ndash;39)
+        establishes a strict hierarchy:
+      </p>
+
+      <div class="ordo-visual">
+        <span class="ordo-item">Love of God</span>
+        <span class="ordo-separator">&gt;</span>
+        <span class="ordo-item">Love of Neighbor</span>
+        <span class="ordo-separator">&gt;</span>
+        <span class="ordo-item">Love of Self</span>
+      </div>
+
+      <p>
+        This ordering applies to <em>agape specifically</em>&nbsp;&mdash; it is about the proper
+        direction of charity, not of eros or philia. The formalization models this as a strict
+        ordering on <code>LoveTarget</code> values (<code>god</code>, <code>neighbor</code>,
+        <code>self_</code>), with axioms asserting that properly ordered agape directs more
+        intensity toward higher targets.
+      </p>
+
+      <p>
+        The ordo amoris explains why self-sacrifice for others is a higher act of love than
+        self-preservation: neighbor ranks above self in the ordering. But it also explains why
+        self-love is <em>legitimate</em>&nbsp;&mdash; it is the lowest rank, not an illegitimate
+        rank. CCC &sect;2264 explicitly affirms self-love as a &ldquo;fundamental principle of
+        morality.&rdquo; The ordering does not eliminate self-love; it subordinates it.
+      </p>
+
+      <div class="assumption-callout">
+        The ordo amoris is a strict ordering on love-TARGETS, not on love-KINDS. Agape, eros,
+        philia, and self-love are kinds; God, neighbor, and self are targets. These are
+        orthogonal dimensions. The formalization makes this distinction explicit&nbsp;&mdash;
+        a conflation the Catechism sometimes invites by discussing both without separating them.
+      </div>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Section 5: Impact on Existing Theorems -->
+    <section class="article-body">
+      <h2>Impact on Existing Theorems</h2>
+
+      <p>
+        <span class="versal">T</span>he typed love relation sharpens several results in
+        the existing formalization and exposes imprecision in others.
+      </p>
+
+      <div class="property-card">
+        <h4>Sharper: S1 (God is love; love requires freedom)</h4>
+        <p>
+          <code>s1_god_is_love</code> asserts <code>godIsLove &and; loveRequiresFreedom</code>.
+          The typed version restricts the second conjunct:
+          <code>love_requires_freedom_only_agape</code> proves that agape requires freedom
+          while eros does not. The over-general axiom is now qualified. This matters for
+          the hell doctrine: the damned may still experience eros (desire for goods they
+          lack) but have definitively refused agape toward God.
+        </p>
+      </div>
+
+      <div class="property-card">
+        <h4>Sharper: S5 (Sin separates from God)</h4>
+        <p>
+          <code>s5_sin_separates</code> asserts that grave sin breaks communion.
+          <code>mortal_sin_destroys_charity_not_eros</code> specifies what &ldquo;breaks
+          communion&rdquo; means at the love level: agape is destroyed, but eros and philia
+          survive. The sinner is separated from God&rsquo;s friendship (agape-communion)
+          but not from all forms of love.
+        </p>
+      </div>
+
+      <div class="property-card">
+        <h4>Sharper: TheologyOfBody (participatesInLove)</h4>
+        <p>
+          <code>PARTICIPATION</code> in
+          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/MoralTheology/TheologyOfBody.lean"><code>TheologyOfBody.lean</code></a>
+          derives that persons &ldquo;participate in love&rdquo; via the Imago Dei. But
+          <em>which kind</em> of love? The typed version reveals: persons participate in
+          agape (as images of the God who IS agape), which is why the personalist norm
+          demands agape as the adequate response. Eros alone would not ground the norm.
+        </p>
+      </div>
+
+      <div class="property-card">
+        <h4>Connected: Self-love and legitimate defense</h4>
+        <p>
+          <code>self_love_grounds_self_defense</code> derives from <code>self_love_reflexive</code>
+          that the lover and beloved coincide. CCC &sect;2264 makes this derivation explicitly:
+          because you legitimately love yourself, you may defend the good of your own life.
+          This connects
+          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Foundations/Love.lean"><code>Love.lean</code></a>
+          to
+          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/MoralTheology/LegitimateDefense.lean"><code>LegitimateDefense.lean</code></a>.
+        </p>
+      </div>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Section 6: Mortal Sin Destroys Charity Specifically -->
+    <section class="article-body">
+      <h2>Why Sinners Can Still Love</h2>
+
+      <p>
+        <span class="versal">C</span>CC &sect;1855: &ldquo;Mortal sin destroys charity in the
+        heart of man.&rdquo; This has always presented a pastoral puzzle. If mortal sin destroys
+        love, how can mortal sinners still love their children, maintain friendships, or feel
+        moved by beauty? The answer, made precise by the typed formalization, is that mortal sin
+        destroys <em>charity specifically</em>&nbsp;&mdash; supernatural agape&nbsp;&mdash; while
+        leaving the natural forms of love intact.
+      </p>
+
+      <p>
+        <span class="tag tag-catholic">Catholic</span>
+        After mortal sin, a person retains:
+      </p>
+
+      <ul>
+        <li><strong>Eros</strong>&nbsp;&mdash; the sinner still finds beauty beautiful, still
+        feels attracted to goodness and truth. CCC &sect;1264 confirms that even concupiscence
+        (disordered eros) persists in the baptized.</li>
+        <li><strong>Philia</strong>&nbsp;&mdash; the sinner still has genuine friendships.
+        Natural mutual benevolence does not require grace.</li>
+        <li><strong>Self-love</strong>&nbsp;&mdash; the sinner still cares about their own
+        well-being. They suffer, which implies self-love.</li>
+      </ul>
+
+      <p>
+        What is lost is agape&nbsp;&mdash; the supernatural love by which the person wills the
+        good of others <em>for God&rsquo;s sake</em> and participates in God&rsquo;s own love.
+        This is why the Catechism can say mortal sin &ldquo;destroys charity&rdquo; without
+        implying that mortal sinners become incapable of all love. The typed formalization makes
+        the scope precise. The theorem <code>mortal_sin_destroys_charity_not_eros</code> proves
+        this formally.
+      </p>
+
+      <div class="assumption-callout">
+        This resolves a common misreading. &ldquo;Mortal sin destroys love&rdquo; sounds like
+        mortal sinners become loveless monsters. The precise claim is: mortal sin destroys the
+        <em>supernatural</em> love-kind (agape/charity). The natural love-kinds (eros, philia,
+        self-love) survive. The Catechism says exactly this (&sect;1855: &ldquo;charity&rdquo;
+        specifically) but the disambiguation is easy to miss without the typed formalization.
+      </div>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Section 7: The Open Questions -->
+    <section class="article-body">
+      <h2>The Open Questions</h2>
+
+      <p>
+        <span class="versal">E</span>verything above is established&nbsp;&mdash; directly
+        stated or logically implied by the Catechism&rsquo;s reasoning combined with the
+        classical tradition. What follows is not. These are genuine gaps in the source
+        material, not gaps in the formalization. Identifying them precisely is one of the
+        contributions of formal analysis&nbsp;&mdash; parallel to the
+        <a href="culpability-math.html">diminisher composition problem</a> discovered in
+        culpability.
+      </p>
+
+      <div class="open-question">
+        <h4>1. How do love-kinds compose?</h4>
+
+        <p>
+          How do agape and eros combine in conjugal love? Benedict XVI (Deus Caritas Est
+          &sect;3&ndash;8) argues that in married love, eros and agape are not simply summed
+          but <em>transformed</em>&nbsp;&mdash; eros is &ldquo;purified&rdquo; and
+          &ldquo;elevated&rdquo; by agape. But we have no operator for this transformation.
+          This is structurally the SAME problem as
+          <a href="culpability-math.html">diminisher composition</a> in culpability: the
+          Catechism asserts that multiple factors interact but does not specify the algebra.
+        </p>
+
+        <div class="model-option">
+          <strong>a) Sum</strong>
+          <p>conjugal_love = agape.degree + eros.degree</p>
+          <p class="model-problem">Problem: Does not capture transformation. Two independent quantities added together is not what Benedict XVI describes.</p>
+        </div>
+
+        <div class="model-option">
+          <strong>b) Product</strong>
+          <p>conjugal_love = agape.degree &times; eros.degree</p>
+          <p class="model-problem">Problem: If either is zero, total is zero. Is loveless attraction zero conjugal love? Is affectionless charity zero conjugal love? Both seem wrong.</p>
+        </div>
+
+        <div class="model-option">
+          <strong>c) Transformation</strong>
+          <p>elevated_agape = transform(eros, agape)</p>
+          <p class="model-problem">Problem: What is the function? Benedict XVI suggests the direction but not the mechanism.</p>
+        </div>
+
+        <div class="model-option">
+          <strong>d) Unspecified</strong>
+          <p>The magisterium genuinely does not tell us.</p>
+          <p class="model-problem">This is not a gap in the formalization. It is a gap in the source material.</p>
+        </div>
+      </div>
+
+      <div class="open-question">
+        <h4>2. Can love reach zero across ALL dimensions?</h4>
+
+        <p>
+          The damned have definitively refused agape toward God. But do they retain self-love?
+          They <em>suffer</em>&nbsp;&mdash; which implies they care about their own state,
+          which implies some form of self-love. Zero total love (all four kinds at degree 0)
+          may be impossible for a conscious being.
+        </p>
+        <p>
+          If the damned retain self-love, then total love is never zero for any existent
+          conscious being. This would be a surprisingly strong claim: love as a strictly
+          positive quantity, like temperature above absolute zero.
+        </p>
+      </div>
+
+      <div class="open-question">
+        <h4>3. &ldquo;God IS love&rdquo; as identity</h4>
+
+        <p>
+          S1 declares <code>godIsLove : Prop</code>&nbsp;&mdash; God IS love. But this is
+          modeled as a <em>predicate</em> (God has the property of being love), not an
+          <em>identity</em> (God&rsquo;s essence = love). The identity claim is much stronger:
+          it says love is not something God HAS but something God IS.
+        </p>
+        <p>
+          In Lean, we could write <code>axiom god_essence_is_love : God = Love</code>, but
+          this requires <code>God</code> and <code>Love</code> to be the same type&nbsp;&mdash;
+          which our type system does not support. The identity claim connects to divine
+          simplicity (all God&rsquo;s attributes are identical with His essence). Fully
+          capturing this requires metaphysical modeling beyond what the current formalization
+          attempts.
+        </p>
+      </div>
+
+      <div class="open-question">
+        <h4>4. Is eros ordered toward agape?</h4>
+
+        <p>
+          Benedict XVI (Deus Caritas Est &sect;6&ndash;7) argues that eros is not simply a
+          different kind of love but is <em>ordered toward</em> agape&nbsp;&mdash; eros
+          naturally tends toward transformation into agape when properly directed. If true,
+          this introduces a teleological ordering among love-<em>kinds</em> (not just among
+          love-targets as in the ordo amoris). Disordered eros would be eros that resists
+          this natural trajectory.
+        </p>
+        <p>
+          But Benedict XVI suggests the direction without specifying the mechanism. We can
+          assert that eros &ldquo;should&rdquo; be ordered toward agape, but we cannot
+          formalize the transformation function.
+        </p>
+      </div>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Section 8: The Lean Structure -->
+    <section class="article-body">
+      <h2>The Proposed Lean Structure</h2>
+
+      <p>
+        <span class="versal">T</span>he formalization introduces two core types. The first
+        is an inductive type distinguishing the four love-kinds. The second is a structure
+        that captures a specific love-relation with its kind, participants, and degree.
+      </p>
+
+      <div class="code-label">Machine-checked &mdash; builds with lake build</div>
+      <div class="lean-code"><span class="keyword">inductive</span> <span class="type">LoveKind</span> <span class="keyword">where</span>
+  | agape      <span class="comment">-- Charity: willing the good of the other</span>
+  | eros       <span class="comment">-- Desire-love: attraction toward the good</span>
+  | philia     <span class="comment">-- Friendship: mutual benevolence</span>
+  | selfLove   <span class="comment">-- Legitimate self-love (CCC &sect;2264)</span>
+
+<span class="keyword">structure</span> <span class="type">TypedLove</span> <span class="keyword">where</span>
+  kind    : <span class="type">LoveKind</span>
+  lover   : <span class="type">Person</span>
+  beloved : <span class="type">Person</span>   <span class="comment">-- for selfLove: lover = beloved</span>
+  degree  : <span class="type">Nat</span>      <span class="comment">-- 0 = absent, higher = more intense</span></div>
+
+      <p>
+        The <code>degree</code> field captures CCC &sect;1827&rsquo;s teaching that charity
+        can increase (&ldquo;the practice of all the virtues is animated and inspired by
+        charity&rdquo;) and CCC &sect;1855&rsquo;s teaching that mortal sin can reduce it
+        to zero. The <code>kind</code> field is what the untyped <code>loves</code> predicate
+        lacks: it forces you to say <em>which</em> love you mean.
+      </p>
+
+      <p>
+        The axioms and theorems built on this structure are all machine-checked. They build
+        with <code>lake build</code> and require no external dependencies beyond the existing
+        Catlib foundation.
+      </p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Section 9: Structure Summary -->
+    <section class="article-body">
+      <h2>The Full Structure</h2>
+
+      <p>
+        <span class="versal">H</span>ere is the complete picture, as far as the Catechism&rsquo;s
+        reasoning determines it. This table parallels the
+        <a href="culpability-math.html">culpability structure summary</a>&nbsp;&mdash; what is
+        established, what is implied, and what is left open.
+      </p>
+
+      <div style="overflow-x: auto;">
+      <table class="structure-table">
+        <thead>
+          <tr>
+            <th>Claim</th>
+            <th>What the CCC / Tradition Implies</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Four distinct love-kinds</strong></td>
+            <td>Agape, eros, philia, self-love are distinguishable</td>
+            <td><span class="status-proven">Proven</span> &mdash; different properties</td>
+          </tr>
+          <tr>
+            <td><strong>Agape requires freedom</strong></td>
+            <td>Charity is a free act of the will</td>
+            <td><span class="status-proven">Proven</span> &mdash; <code>agape_requires_freedom</code></td>
+          </tr>
+          <tr>
+            <td><strong>Eros does not require freedom</strong></td>
+            <td>Involuntary attraction is possible and not sinful</td>
+            <td><span class="status-proven">Proven</span> &mdash; <code>eros_does_not_require_freedom</code></td>
+          </tr>
+          <tr>
+            <td><strong>Philia is symmetric</strong></td>
+            <td>Friendship requires mutuality by definition</td>
+            <td><span class="status-proven">Proven</span> &mdash; <code>philia_symmetric</code></td>
+          </tr>
+          <tr>
+            <td><strong>Self-love is reflexive</strong></td>
+            <td>Lover = beloved</td>
+            <td><span class="status-proven">Proven</span> &mdash; <code>self_love_reflexive</code></td>
+          </tr>
+          <tr>
+            <td><strong>Mortal sin destroys charity only</strong></td>
+            <td>CCC &sect;1855: &ldquo;charity&rdquo; specifically</td>
+            <td><span class="status-proven">Proven</span> &mdash; <code>mortal_sin_destroys_charity_not_eros</code></td>
+          </tr>
+          <tr>
+            <td><strong>Charity is graded</strong></td>
+            <td>Can increase (CCC &sect;1827) and be destroyed (CCC &sect;1855)</td>
+            <td><span class="status-proven">Proven</span> &mdash; <code>charity_can_increase</code></td>
+          </tr>
+          <tr>
+            <td><strong>Ordo amoris</strong></td>
+            <td>God &gt; neighbor &gt; self (Mt 22:37&ndash;39)</td>
+            <td><span class="status-implied">Implied</span> &mdash; axiomatized from Scripture</td>
+          </tr>
+          <tr>
+            <td><strong>Self-love grounds defense</strong></td>
+            <td>CCC &sect;2264 makes this derivation</td>
+            <td><span class="status-proven">Proven</span> &mdash; <code>self_love_grounds_self_defense</code></td>
+          </tr>
+          <tr>
+            <td><strong>Composition of love-kinds</strong></td>
+            <td>How agape + eros combine in conjugal love</td>
+            <td><span class="status-open">Open question</span></td>
+          </tr>
+          <tr>
+            <td><strong>Zero total love possible?</strong></td>
+            <td>Whether all four kinds can reach degree 0</td>
+            <td><span class="status-open">Open question</span></td>
+          </tr>
+          <tr>
+            <td><strong>God IS love (identity)</strong></td>
+            <td>Predicate vs. identity in the type system</td>
+            <td><span class="status-open">Open question</span></td>
+          </tr>
+          <tr>
+            <td><strong>Eros ordered toward agape?</strong></td>
+            <td>Benedict XVI suggests transformation, not sum</td>
+            <td><span class="status-open">Open question</span></td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+
+      <p>
+        The pattern is the same as in culpability: most of the structure is recoverable from
+        careful reading. But the composition question&nbsp;&mdash; how multiple love-kinds
+        interact&nbsp;&mdash; is not merely unrecovered. It is unspecified in the source
+        material. The magisterium leaves it as a free parameter.
+      </p>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Section 10: Closing -->
+    <section class="article-body">
+      <h2>What Formalization Found</h2>
+
+      <p>
+        <span class="versal">T</span>his is what happens when you take the Catechism&rsquo;s
+        use of &ldquo;love&rdquo; seriously as a formal concept. The single word splits into
+        four distinct relations, each with its own algebra. The disambiguation is not academic.
+        It resolves at least three genuine puzzles:
+      </p>
+
+      <ul>
+        <li>Why mortal sinners can still love their families (eros and philia survive mortal sin)</li>
+        <li>Why &ldquo;love requires freedom&rdquo; and &ldquo;involuntary attraction is not
+        sinful&rdquo; are not contradictions (different love-kinds)</li>
+        <li>Why self-love is legitimate but subordinate (the ordo amoris ranks targets, not kinds)</li>
+      </ul>
+
+      <p>
+        And it identifies four questions the Catechism does not answer&nbsp;&mdash; the
+        composition of love-kinds, the possibility of zero total love, the identity (not merely
+        predicate) nature of &ldquo;God IS love,&rdquo; and the teleological ordering of eros
+        toward agape. These are not failures of formalization. They are gaps in the source
+        material that only become visible when you try to make every claim precise.
+      </p>
+
+      <p>
+        The proof assistant found both the structure and the silence. Both matter.
+      </p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Sources -->
+    <section class="article-body">
+      <div class="summary-box">
+        <h3>Source Formalizations</h3>
+        <p>
+          This article draws on
+          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Foundations/Love.lean"><code>Love.lean</code></a>
+          (the typed love relation, four love-kinds, and all theorems referenced above),
+          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Foundations/Axioms.lean"><code>Axioms.lean</code></a>
+          (the 15 base axioms, including S1, S2, S5),
+          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/MoralTheology/TheologyOfBody.lean"><code>TheologyOfBody.lean</code></a>
+          (the personalist norm and participation in love), and
+          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/MoralTheology/LegitimateDefense.lean"><code>LegitimateDefense.lean</code></a>
+          (double effect and legitimate defense).
+          See also the companion article
+          <a href="culpability-math.html">Culpability as a Partially Ordered Space</a>
+          for the parallel analysis of diminisher composition.
+          All Catechism references are to the English translation of the
+          <em>Catechismus Catholicae Ecclesiae</em>, editio typica 1997.
+        </p>
+      </div>
+    </section>
+
+    <div class="ornament">&#10053;</div>
+
+    <section class="cta-section">
+      <div class="cta-group">
+        <a href="https://github.com/ngundotra/catlib" class="cta-button primary">View on GitHub</a>
+        <a href="../index.html" class="cta-button secondary">Back to Catlib</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="ornament">&#10053;</div>
+    <p>
+      <a href="https://github.com/ngundotra/catlib">Catlib</a>&nbsp;&mdash;
+      formalizing the Catholic Catechism in Lean 4.
+      A love letter to the Catholic intellectual tradition, written with precision.
+    </p>
+  </footer>
+
+</body>
+</html>
