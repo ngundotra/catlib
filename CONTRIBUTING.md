@@ -28,6 +28,8 @@
 
 - [ ] **Add a formalization that shows an argument FAILING** — Where the conclusion genuinely doesn't follow from stated premises without adding significant unstated axioms. Would strengthen intellectual honesty.
 
+- [ ] **Papal Infallibility (Vatican I, 1870)** — Derive from 5 axioms: S_PETRINE_COMMISSION (Mt 16:18-19), S_FAITH_PRAYER (Lk 22:31-32), T_PETER_IS_ROCK (interpretation — this is where Protestants diverge), T_PETRINE_SUCCESSION (Peter→Rome→successors), T_CHARISM_EXTENDS (prayer for Peter extends to the office — the biggest leap). The load-bearing axiom is T_CHARISM_EXTENDS. Replace the current vacuous `claim → claim` in MarianDogma.lean with this real derivation chain. Orthodox cut: accept succession but deny infallibility (primacy of honor only). Protestant cut: reject T_PETER_IS_ROCK and T_PETRINE_SUCCESSION entirely.
+
 - [ ] **Eucharist / Real Presence** — Major sacramental doctrine, connects to P1 (hylomorphism), body-as-sign, Authority chain
 
 - [ ] **Suicide (CCC §2280-2283)** — Pastoral + connects to freedom (diminished culpability), conscience, natural law
