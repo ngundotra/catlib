@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reconciliation and the Restoration of Love &mdash; Catlib</title>
+  <meta name="description" content="Mortal sin destroys charity but not all love. Reconciliation restores exactly one kind: agape. A formalization reveals the asymmetry, the bootstrapping recurrence, and the thread that leads to the Reformation.">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Reconciliation and the Restoration of Love">
+  <meta property="og:description" content="What kind of love does mortal sin destroy? What does reconciliation restore? The most cross-cutting formalization in catlib connects Love, Grace, Authority, Purgatory, and the Reformation.">
+  <meta property="og:site_name" content="Catlib">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Reconciliation and the Restoration of Love">
+  <meta name="twitter:description" content="Mortal sin destroys charity but not all love. Reconciliation restores agape specifically. The formalization reveals structure the Catechism never states as a principle.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel+Decorative:wght@400;700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="articles.css">
+  <style>
+    /* ============================================================
+       Reconciliation and the Restoration of Love — article-specific styles
+       ============================================================ */
+
+    /* Flow diagram — the visual centerpiece */
+    .flow-diagram {
+      max-width: 640px;
+      margin: 2.5rem auto;
+      padding: 0;
+    }
+
+    .flow-state {
+      position: relative;
+      padding: 1.2rem 1.6rem;
+      border-radius: 4px;
+      margin-bottom: 0;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .flow-state .state-label {
+      display: block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+
+    .flow-state .file-ref {
+      display: inline-block;
+      font-family: 'JetBrains Mono', 'Fira Code', monospace;
+      font-size: 0.72rem;
+      color: var(--text-light);
+      background: rgba(0,0,0,0.04);
+      padding: 0.15rem 0.45rem;
+      border-radius: 2px;
+      margin-top: 0.3rem;
+    }
+
+    .flow-state-destruction {
+      background: rgba(180, 40, 20, 0.08);
+      border: 2px solid rgba(180, 40, 20, 0.35);
+      border-left: 5px solid #b42814;
+    }
+
+    .flow-state-destruction .state-label {
+      color: #8a1a0a;
+    }
+
+    .flow-state-lost {
+      background: rgba(140, 60, 20, 0.07);
+      border: 2px solid rgba(140, 60, 20, 0.25);
+      border-left: 5px solid #8c3c14;
+    }
+
+    .flow-state-lost .state-label {
+      color: #7a3010;
+    }
+
+    .flow-state-exists {
+      background: rgba(100, 80, 40, 0.06);
+      border: 2px solid rgba(100, 80, 40, 0.2);
+      border-left: 5px solid #6e5828;
+    }
+
+    .flow-state-exists .state-label {
+      color: #5c4a20;
+    }
+
+    .flow-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.3rem 0;
+      color: var(--text-light);
+      font-size: 1.4rem;
+      line-height: 1;
+    }
+
+    .flow-arrow-long {
+      flex-direction: column;
+      padding: 0.5rem 0;
+    }
+
+    .flow-arrow-long .arrow-line {
+      width: 2px;
+      height: 18px;
+      background: var(--accent-gold);
+    }
+
+    .flow-arrow-long .arrow-head {
+      color: var(--accent-gold);
+      font-size: 1.2rem;
+    }
+
+    /* The sacrament intervention box — golden */
+    .flow-intervention {
+      background: rgba(184, 134, 11, 0.08);
+      border: 2px solid var(--accent-gold);
+      border-radius: 4px;
+      padding: 1.4rem 1.6rem;
+      margin: 0;
+      position: relative;
+    }
+
+    .flow-intervention .state-label {
+      display: block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      margin-bottom: 0.6rem;
+    }
+
+    .flow-intervention .intervention-items {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .flow-intervention .intervention-items li {
+      padding: 0.25rem 0;
+      font-size: 0.95rem;
+      line-height: 1.55;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+
+    .flow-intervention .intervention-items li::before {
+      content: '\2022';
+      position: absolute;
+      left: 0;
+      color: var(--accent-gold);
+      font-weight: bold;
+    }
+
+    /* Restoration states — green tones */
+    .flow-state-restored {
+      background: rgba(34, 120, 50, 0.07);
+      border: 2px solid rgba(34, 120, 50, 0.3);
+      border-left: 5px solid #227832;
+    }
+
+    .flow-state-restored .state-label {
+      color: #1a6028;
+    }
+
+    .flow-state-remaining {
+      background: rgba(160, 120, 40, 0.07);
+      border: 2px solid rgba(160, 120, 40, 0.25);
+      border-left: 5px solid #a07828;
+    }
+
+    .flow-state-remaining .state-label {
+      color: #7a5a18;
+    }
+
+    .flow-state-consequence {
+      background: rgba(100, 90, 70, 0.05);
+      border: 1px solid rgba(100, 90, 70, 0.2);
+      border-left: 4px solid rgba(100, 90, 70, 0.35);
+      padding: 0.8rem 1.4rem;
+    }
+
+    .flow-state-consequence .state-label {
+      font-size: 0.75rem;
+      color: var(--text-light);
+    }
+
+    .flow-state-consequence p {
+      font-size: 0.9rem;
+      margin: 0;
+      color: var(--text-light);
+    }
+
+    /* Asymmetry comparison */
+    .asymmetry-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 1.8rem 0;
+    }
+
+    @media (max-width: 600px) {
+      .asymmetry-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .asymmetry-side {
+      padding: 1.4rem;
+      border-radius: 4px;
+    }
+
+    .asymmetry-side h4 {
+      font-family: 'Cinzel', serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+
+    .asymmetry-destruction {
+      background: rgba(180, 40, 20, 0.06);
+      border: 2px solid rgba(180, 40, 20, 0.25);
+    }
+
+    .asymmetry-destruction h4 {
+      color: #8a1a0a;
+    }
+
+    .asymmetry-restoration {
+      background: rgba(34, 120, 50, 0.06);
+      border: 2px solid rgba(34, 120, 50, 0.25);
+    }
+
+    .asymmetry-restoration h4 {
+      color: #1a6028;
+    }
+
+    .asymmetry-side ol {
+      padding-left: 1.3rem;
+      margin: 0;
+    }
+
+    .asymmetry-side li {
+      padding: 0.2rem 0;
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+
+    /* Reformation chain — compact horizontal flow */
+    .reformation-chain {
+      background: var(--bg-parchment);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.5rem 1.8rem;
+      margin: 1.8rem 0;
+      overflow-x: auto;
+    }
+
+    .reformation-chain .chain-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .chain-steps {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+
+    .chain-step {
+      background: rgba(122, 46, 14, 0.06);
+      border: 1px solid rgba(122, 46, 14, 0.2);
+      padding: 0.3rem 0.7rem;
+      border-radius: 3px;
+      white-space: nowrap;
+    }
+
+    .chain-arrow {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* Survival table — what mortal sin does NOT destroy */
+    .survival-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 0.95rem;
+    }
+
+    .survival-table th {
+      font-family: 'Cinzel', serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: left;
+      padding: 0.7rem 1rem;
+      border-bottom: 2px solid var(--border);
+      color: var(--accent);
+    }
+
+    .survival-table td {
+      padding: 0.6rem 1rem;
+      border-bottom: 1px solid rgba(196, 168, 114, 0.4);
+      vertical-align: top;
+    }
+
+    .survival-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .status-destroyed {
+      color: #8a1a0a;
+      font-weight: 600;
+    }
+
+    .status-survives {
+      color: #1a6028;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar toggle for viewing Lean theorems -->
+  <input type="checkbox" id="sidebar-toggle" class="sidebar-toggle">
+  <label for="sidebar-toggle" class="sidebar-label">Lean Code</label>
+  <div class="sidebar-panel">
+    <h3>Theorem Reference</h3>
+
+    <div class="sidebar-section">
+      <h4>reconciliation_restores_charity</h4>
+<pre>theorem reconciliation_restores_charity
+    (r : ReconciliationAct) (tl : TypedLove)
+    (h_sorrow : r.contrition.genuineSorrow)
+    (h_purpose : r.contrition.firmPurpose)
+    (h_auth : r.absolution.hasAuthority)
+    (h_pronounced : r.absolution.isPronounced)
+    (h_agape : tl.kind = LoveKind.agape)
+    (h_lover : tl.lover = r.contrition.penitent)
+    (h_destroyed : tl.degree = 0) :
+    &exist; (tl&rsquo; : TypedLove),
+      tl&rsquo;.kind = LoveKind.agape &and;
+      tl&rsquo;.lover = tl.lover &and;
+      tl&rsquo;.beloved = tl.beloved &and;
+      tl&rsquo;.degree &gt; 0</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>reconciliation_restores_communion</h4>
+<pre>theorem reconciliation_restores_communion
+    (r : ReconciliationAct) (tl : TypedLove)
+    ... :
+    &exist; (s : SoulState),
+      s.sustained &and; s.inCommunion
+
+-- Derivation:
+-- 1. reconciliation restores agape &gt; 0
+-- 2. charity_implies_communion:
+--    agape &gt; 0 &rarr; &exist; SoulState with
+--    sustained &and; inCommunion</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>mortal_sin_destroys_charity_not_eros</h4>
+<pre>-- From Love.lean
+theorem mortal_sin_destroys_charity_not_eros
+  (tl_agape tl_eros : TypedLove) (s : Sin)
+  ... :
+  -- Agape CAN be destroyed...
+  (&exist; tl&rsquo;, tl&rsquo;.kind = agape &and;
+           tl&rsquo;.degree = 0) &and;
+  -- ...but eros SURVIVES
+  (&exist; tl&rsquo;, tl&rsquo;.kind = eros &and;
+           tl&rsquo;.degree &gt; 0)</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>destruction_asymmetric_to_restoration</h4>
+<pre>theorem destruction_asymmetric_to_restoration
+    (sa : SinfulAct) (state : SpiritualState)
+    (h_mortal : sa.isMortal)
+    (h_in_grace : state.graceState = inGrace) :
+    -- (a) ONE sinful act suffices
+    (&exist; newState, ... notInGrace) &and;
+    -- (b) restoration requires a full
+    --     ReconciliationAct (4 components)
+    (&forall; (r : ReconciliationAct) ...,
+      r.contrition.genuineSorrow &rarr;
+      r.contrition.firmPurpose &rarr;
+      r.contrition.isFree &rarr;
+      r.confession.isComplete &rarr;
+      r.absolution.hasAuthority &rarr;
+      r.absolution.isPronounced &rarr;
+      r.satisfaction.penancePerformed &rarr;
+      &exist; restoredState, ... inGrace)</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>grace_bootstrapping_in_reconciliation</h4>
+<pre>theorem grace_bootstrapping_in_reconciliation
+    (p : Person)
+    (h_free : p.hasFreeWill = true) :
+    &exist; (g : TypedGrace),
+      g.graceType = GraceType.prevenient &and;
+      g.recipient = p &and;
+      g.freelyGiven
+
+-- Identical to grace_bootstrapping_resolved
+-- from Grace.lean! Same axiom resolves both.</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>temporal_punishment_survives_absolution</h4>
+<pre>theorem temporal_punishment_survives_absolution
+    (r : ReconciliationAct)
+    (h_sorrow : r.contrition.genuineSorrow)
+    (h_auth : r.absolution.hasAuthority)
+    (h_pronounced : r.absolution.isPronounced) :
+    eternalPunishmentRemitted r.contrition.penitent
+
+-- Eternal punishment removed, but temporal
+-- punishment may remain (&sect;1472-1473).
+-- This is what indulgences address.</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>The 15 Base Axioms (P/S/T)</h4>
+<pre>-- Philosophical (3)
+P1. Hylomorphism
+P2. Two-tier causation
+P3. Evil is privation
+
+-- Scriptural (9)
+S1. God is love
+S2. Universal salvific will
+S3. Law on hearts
+S4. Universal providence
+S5. Sin separates
+S6. Moral realism
+S7. Teleological freedom
+S8. Grace necessary &amp; transformative
+S9. Conscience binds
+
+-- Tradition (3)
+T1. Libertarian free will
+T2. Grace preserves freedom
+T3. Sacramental efficacy</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>Source Files</h4>
+<pre><a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Sacraments/Reconciliation.lean" style="color: var(--accent-gold);">Reconciliation.lean</a>
+<a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Foundations/Love.lean" style="color: var(--accent-gold);">Love.lean</a>
+<a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/DivineModes.lean" style="color: var(--accent-gold);">DivineModes.lean</a>
+<a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/Grace.lean" style="color: var(--accent-gold);">Grace.lean</a>
+<a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/Purgatory.lean" style="color: var(--accent-gold);">Purgatory.lean</a>
+<a href="https://github.com/ngundotra/catlib/blob/main/Catlib/MoralTheology/Sin.lean" style="color: var(--accent-gold);">Sin.lean</a></pre>
+    </div>
+
+    <p class="close-hint">Click the tab again to close</p>
+  </div>
+
+  <main>
+    <a href="../index.html" class="back-link">Back to Catlib</a>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="ornament">&#10053;</div>
+      <h1>Reconciliation and the Restoration of Love</h1>
+      <p class="subtitle">The Most Cross-Cutting Formalization in Catlib</p>
+      <p class="subtitle">
+        Mortal sin does not make you loveless. It destroys exactly one kind of love.
+        Reconciliation restores exactly that kind&nbsp;&mdash; and no more.
+      </p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Introduction -->
+    <section class="article-body">
+      <p>
+        <span class="versal">R</span>econciliation.lean is the most cross-cutting file in catlib. It imports ten other formalizations. It connects sin to love, love to grace, grace to authority, authority to absolution, absolution to temporal punishment, temporal punishment to purgatory, and purgatory to the Reformation. No other file touches this many parts of the system.
+      </p>
+      <p>
+        But the article you are reading is not about all of those connections. It is about one question that the formalization answers with a precision the Catechism itself never achieves: <em>what kind of love does mortal sin destroy, and what kind does reconciliation restore?</em>
+      </p>
+      <p>
+        The answer, once you see it in the formal model, is surprisingly comforting. A person in mortal sin is not loveless. They have lost one specific kind of love&nbsp;&mdash; agape, supernatural charity&nbsp;&mdash; while retaining three others. Reconciliation restores exactly that one kind. The formalization makes this visible in a way that centuries of pastoral theology have gestured toward but never stated with this clarity.
+      </p>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Section: The Four Modes of Love -->
+    <section class="article-body">
+      <h2>The Four Kinds of Love</h2>
+
+      <p>
+        <span class="versal">T</span>he full treatment is in <a href="love-math.html">The Mathematics of Love</a>. Here is the summary. The Catechism uses &ldquo;love&rdquo; in at least four distinct senses, and <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Foundations/Love.lean"><code>Love.lean</code></a> formalizes them as the four constructors of <code>LoveKind</code>.
+      </p>
+
+      <table class="survival-table">
+        <thead>
+          <tr>
+            <th>Kind</th>
+            <th>What It Is</th>
+            <th>After Mortal Sin</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Agape</strong> (charity)</td>
+            <td>Willing the good of the other for their own sake. The supernatural love of God above all things. CCC &sect;1822.</td>
+            <td class="status-destroyed">Destroyed</td>
+          </tr>
+          <tr>
+            <td><strong>Eros</strong> (desire)</td>
+            <td>Attraction toward the good, the beautiful, the true. Involuntary&nbsp;&mdash; you do not choose whom you find beautiful. Benedict XVI, <em>Deus Caritas Est</em> &sect;3&ndash;8.</td>
+            <td class="status-survives">Survives</td>
+          </tr>
+          <tr>
+            <td><strong>Philia</strong> (friendship)</td>
+            <td>Mutual benevolence between persons. Requires reciprocity by definition. Aquinas, <em>ST</em> II-II q.23 a.1.</td>
+            <td class="status-survives">Survives</td>
+          </tr>
+          <tr>
+            <td><strong>Self-love</strong></td>
+            <td>Legitimate love of oneself. CCC &sect;2264: &ldquo;Love toward oneself remains a fundamental principle of morality.&rdquo;</td>
+            <td class="status-survives">Survives</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        The Catechism says mortal sin &ldquo;destroys charity&rdquo; (&sect;1855). It does not say mortal sin destroys love. The formalization makes the distinction load-bearing: <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Foundations/Love.lean"><code>mortal_sin_can_destroy_charity</code></a> reduces agape to degree zero, while <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Foundations/Love.lean"><code>mortal_sin_preserves_eros</code></a> and <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Foundations/Love.lean"><code>mortal_sin_preserves_philia</code></a> prove that eros and philia remain intact.
+      </p>
+
+      <div class="assumption-callout">
+        The Catechism says &ldquo;destroys charity.&rdquo; The formalization says: <em>and only charity.</em> This specificity is implied but never stated as a principle. The proof assistant forced us to declare it.
+      </div>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Section: The Flow Diagram — CENTERPIECE -->
+    <section class="article-body">
+      <h2>The Flow of Destruction and Restoration</h2>
+
+      <p>
+        <span class="versal">T</span>his is the path a soul travels from mortal sin through reconciliation, rendered from the formal model. Each box references the Lean file where that claim is machine-checked.
+      </p>
+
+      <div class="flow-diagram">
+
+        <!-- State 1: Mortal Sin -->
+        <div class="flow-state flow-state-destruction">
+          <span class="state-label">Mortal Sin</span>
+          Agape destroyed&nbsp;&mdash; charity drops to degree zero.
+          <br><span class="file-ref">Love.lean : mortal_sin_can_destroy_charity</span>
+        </div>
+
+        <div class="flow-arrow flow-arrow-long">
+          <div class="arrow-line"></div>
+          <span class="arrow-head">&darr;</span>
+        </div>
+
+        <!-- State 2: Communion lost -->
+        <div class="flow-state flow-state-lost">
+          <span class="state-label">Communion Lost</span>
+          Beatifying mode off&nbsp;&mdash; separated from God&rsquo;s friendship.
+          The soul is in a hellState-like condition: sustained but not in communion.
+          <br><span class="file-ref">DivineModes.lean : hellState, charity_implies_communion</span>
+        </div>
+
+        <div class="flow-arrow flow-arrow-long">
+          <div class="arrow-line"></div>
+          <span class="arrow-head">&darr;</span>
+        </div>
+
+        <!-- State 3: Person still exists -->
+        <div class="flow-state flow-state-exists">
+          <span class="state-label">Person Still Exists</span>
+          Sustaining mode remains on. God holds the sinner in being.
+          Eros, philia, and self-love all survive.
+          <br><span class="file-ref">DivineModes.lean : god_sustains_all</span>
+          <br><span class="file-ref">Love.lean : mortal_sin_preserves_eros, mortal_sin_preserves_philia</span>
+        </div>
+
+        <div class="flow-arrow flow-arrow-long">
+          <div class="arrow-line"></div>
+          <div class="arrow-line"></div>
+          <div class="arrow-line"></div>
+        </div>
+
+        <!-- INTERVENTION: Reconciliation -->
+        <div class="flow-intervention">
+          <span class="state-label">Reconciliation</span>
+          <ul class="intervention-items">
+            <li><strong>Contrition</strong>&nbsp;&mdash; genuine sorrow + firm purpose of amendment (CCC &sect;1451)</li>
+            <li><strong>Confession</strong>&nbsp;&mdash; disclosure of sins to a priest (CCC &sect;1456)</li>
+            <li><strong>Absolution</strong>&nbsp;&mdash; the priest forgives in persona Christi (CCC &sect;1461)</li>
+            <li><strong>Satisfaction</strong>&nbsp;&mdash; penance performed (CCC &sect;1459)</li>
+          </ul>
+          <div style="margin-top: 0.8rem; padding-top: 0.8rem; border-top: 1px solid rgba(184, 134, 11, 0.3);">
+            <span class="file-ref">Grace.lean : prevenient grace enables contrition (bootstrapping)</span>
+            <br><span class="file-ref">Authority.lean : priest has authority (Jn 20:23 delegation chain)</span>
+            <br><span class="file-ref">Axioms.lean : T3 &mdash; sacrament confers grace</span>
+          </div>
+        </div>
+
+        <div class="flow-arrow flow-arrow-long">
+          <div class="arrow-line"></div>
+          <span class="arrow-head">&darr;</span>
+        </div>
+
+        <!-- State 4: Agape restored -->
+        <div class="flow-state flow-state-restored">
+          <span class="state-label">Agape Restored</span>
+          Charity returns to degree &gt; 0. The supernatural love of God is alive again.
+          <br><span class="file-ref">Reconciliation.lean : reconciliation_restores_charity</span>
+        </div>
+
+        <div class="flow-arrow flow-arrow-long">
+          <div class="arrow-line"></div>
+          <span class="arrow-head">&darr;</span>
+        </div>
+
+        <!-- State 5: Communion restored -->
+        <div class="flow-state flow-state-restored">
+          <span class="state-label">Communion Restored</span>
+          Beatifying mode back on. The soul is in friendship with God once more.
+          <br><span class="file-ref">Reconciliation.lean : reconciliation_restores_communion</span>
+        </div>
+
+        <div class="flow-arrow flow-arrow-long">
+          <div class="arrow-line"></div>
+          <span class="arrow-head">&darr;</span>
+        </div>
+
+        <!-- State 6: But temporal punishment remains -->
+        <div class="flow-state flow-state-remaining">
+          <span class="state-label">But Temporal Punishment Remains</span>
+          Guilt (eternal punishment) is gone. But the disordered attachments and damage caused by the sin persist.
+          <br><span class="file-ref">Reconciliation.lean : temporal_punishment_survives_absolution</span>
+        </div>
+
+        <div class="flow-arrow flow-arrow-long">
+          <div class="arrow-line"></div>
+          <span class="arrow-head">&darr;</span>
+        </div>
+
+        <!-- Consequences chain -->
+        <div class="flow-state flow-state-consequence">
+          <span class="state-label">This is what indulgences address</span>
+          <p><span class="file-ref">Purgatory.lean</span> &mdash; temporal punishment at death &rarr; purgatory addresses it post-mortem</p>
+        </div>
+
+        <div class="flow-arrow">&darr;</div>
+
+        <div class="flow-state flow-state-consequence">
+          <span class="state-label">This is what Luther objected to</span>
+          <p>If guilt is removed, why does punishment remain? The 95 Theses (1517) contested the sale of indulgences.</p>
+        </div>
+
+        <div class="flow-arrow">&darr;</div>
+
+        <div class="flow-state flow-state-consequence">
+          <span class="state-label">The Reformation</span>
+          <p>Reject temporal punishment &rarr; reject purgatory &rarr; reject indulgences &rarr; <em>sola fide</em> &rarr; the axiom swap.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Section: The Asymmetry -->
+    <section class="article-body">
+      <h2>The Asymmetry: Breaking Is Easier Than Mending</h2>
+
+      <p>
+        <span class="versal">T</span>he formal model makes something visible that the Catechism never states as a principle. Consider the type signatures:
+      </p>
+
+      <div class="asymmetry-grid">
+        <div class="asymmetry-side asymmetry-destruction">
+          <h4>Destruction</h4>
+          <ol>
+            <li>One free act (mortal sin: gravity + knowledge + consent)</li>
+          </ol>
+          <p style="margin-top: 0.8rem; font-size: 0.88rem; color: var(--text-light);">
+            A single <code>SinfulAct</code> where <code>isMortal = true</code> suffices to transition the soul from <code>inGrace</code> to <code>notInGrace</code>.
+          </p>
+        </div>
+        <div class="asymmetry-side asymmetry-restoration">
+          <h4>Restoration</h4>
+          <ol>
+            <li>Prevenient grace (God&rsquo;s prior initiative)</li>
+            <li>Contrition (genuine sorrow + firm purpose)</li>
+            <li>Confession (disclosure to a priest)</li>
+            <li>Absolution (priest with valid authority)</li>
+            <li>Satisfaction (penance performed)</li>
+          </ol>
+          <p style="margin-top: 0.8rem; font-size: 0.88rem; color: var(--text-light);">
+            A full <code>ReconciliationAct</code> with four sub-structures, plus prevenient grace, is required.
+          </p>
+        </div>
+      </div>
+
+      <p>
+        The theorem <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Sacraments/Reconciliation.lean"><code>destruction_asymmetric_to_restoration</code></a> proves both directions formally: part (a) shows that one sinful act suffices for destruction, and part (b) shows that restoration requires all four components of the <code>ReconciliationAct</code>.
+      </p>
+
+      <div class="assumption-callout">
+        Destruction is one act. Restoration is four acts plus divine initiative. The Catechism never calls this an asymmetry. The formalization makes it structurally visible: the inverse operation is strictly harder than the original. This is a thermodynamic intuition embedded in sacramental theology.
+      </div>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Section: The Grace Bootstrapping Recurrence -->
+    <section class="article-body">
+      <h2>The Grace Bootstrapping Recurrence</h2>
+
+      <p>
+        <span class="versal">H</span>ere is the circle. A person in mortal sin wants to repent. But:
+      </p>
+
+      <ol>
+        <li>Contrition requires <strong>hope</strong>&nbsp;&mdash; you must believe reconciliation is possible.</li>
+        <li>Hope is a theological virtue requiring <strong>grace</strong>.</li>
+        <li>But you are in mortal sin&nbsp;&mdash; charity destroyed, separated from God.</li>
+        <li>You need grace to get the grace that enables contrition.</li>
+      </ol>
+
+      <p>
+        This is the same circularity that appears in CCC &sect;2001, formalized in <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/Grace.lean"><code>Grace.lean</code></a> as the <code>grace_bootstrapping_resolved</code> theorem. The resolution is identical: <em>prevenient grace</em> (<code>GraceType.prevenient</code>) is unconditionally available. It precedes any human response. God moves first.
+      </p>
+
+      <p>
+        CCC &sect;1489 states it plainly: &ldquo;To come back to communion with God after having lost it through sin is a process born of the grace of God who is rich in mercy&hellip; One must be moved by grace to respond to the merciful love of God who loved us first.&rdquo;
+      </p>
+
+      <p>
+        The theorem <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Sacraments/Reconciliation.lean"><code>grace_bootstrapping_in_reconciliation</code></a> resolves the circle by calling <code>prevenient_grace_unconditioned</code>&nbsp;&mdash; the same axiom from <code>Grace.lean</code> that resolves the &sect;2001 bootstrapping problem. The proof is literally identical: the same function call, the same axiom, the same resolution. This is not a coincidence. It reflects a deep structural principle: God always initiates.
+      </p>
+
+      <div class="assumption-callout">
+        The same formal pattern solves two apparently different theological problems. The &sect;2001 bootstrapping (&ldquo;how can you come to faith without grace if grace requires faith?&rdquo;) and the reconciliation bootstrapping (&ldquo;how can you be contrite without grace if contrition requires grace?&rdquo;) are the same recurrence with the same base case: <code>prevenient_grace_unconditioned</code>.
+      </div>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Section: What Mortal Sin Does NOT Destroy -->
+    <section class="article-body">
+      <h2>What Mortal Sin Does Not Destroy</h2>
+
+      <p>
+        <span class="versal">T</span>his is pastorally important. A person hearing &ldquo;mortal sin destroys love&rdquo; might conclude that a mortal sinner is incapable of any love at all. The formalization shows this is false. The theorem <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Foundations/Love.lean"><code>mortal_sin_destroys_charity_not_eros</code></a> proves both halves: agape can be destroyed, and eros survives.
+      </p>
+
+      <div class="finding-card">
+        <h3>Eros Survives Mortal Sin</h3>
+        <p>
+          A person in mortal sin can still feel attraction to beauty, goodness, and truth. Eros is involuntary&nbsp;&mdash; you do not choose your attractions&nbsp;&mdash; and mortal sin, which is a free act against charity, does not extinguish involuntary responses. The axiom <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Foundations/Love.lean"><code>mortal_sin_preserves_eros</code></a> states this directly. A sinner watching a sunset still finds it beautiful.
+        </p>
+      </div>
+
+      <div class="finding-card">
+        <h3>Philia Survives Mortal Sin</h3>
+        <p>
+          A person in mortal sin can still have genuine friendships. Philia is mutual benevolence between persons, and the axiom <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Foundations/Love.lean"><code>mortal_sin_preserves_philia</code></a> preserves it. This resolves a real pastoral puzzle: how can mortal sinners still love their families? They love with eros and philia, not with supernatural charity.
+        </p>
+      </div>
+
+      <div class="finding-card">
+        <h3>Self-Love Survives Mortal Sin</h3>
+        <p>
+          CCC &sect;2264 declares that &ldquo;love toward oneself remains a fundamental principle of morality.&rdquo; Self-love grounds the right to legitimate defense. Since mortal sin does not destroy self-love, a person in mortal sin retains the right to self-defense. The theorem <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Foundations/Love.lean"><code>self_love_grounds_self_defense</code></a> connects self-love to the defense right; nothing in the model removes self-love upon mortal sin.
+        </p>
+      </div>
+
+      <div class="summary-box">
+        <h3>The structural finding</h3>
+        <p>
+          A person in mortal sin is not loveless. They have lost the supernatural dimension of love&nbsp;&mdash; agape, the willing of another&rsquo;s good for God&rsquo;s sake&nbsp;&mdash; while retaining the natural dimensions: attraction, friendship, and care for self. The Catechism implies this by saying &ldquo;destroys charity&rdquo; rather than &ldquo;destroys love.&rdquo; The formalization makes the implication an explicit, machine-checked claim.
+        </p>
+      </div>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Section: Where They Agree -->
+    <section class="article-body">
+      <h2>Where They Agree</h2>
+
+      <p>
+        <span class="versal">B</span>efore the disagreement, the common ground. It is more than most people on either side expect.
+      </p>
+
+      <div class="agreement-box">
+        <h4>Fully Shared</h4>
+        <ul>
+          <li><strong>Sin separates from God.</strong> <code>S5</code> is ecumenical. All Christians agree that sin breaks the relationship with God.</li>
+          <li><strong>Repentance requires genuine sorrow.</strong> Contrition&nbsp;&mdash; real sorrow with the intent to change&nbsp;&mdash; is affirmed across all traditions.</li>
+          <li><strong>God initiates the return.</strong> The sinner cannot repent from their own resources. God moves first. Even Calvinists and Arminians agree on this, though they describe the mechanism differently.</li>
+          <li><strong>Destruction is easier than restoration.</strong> No tradition claims that undoing sin is as simple as committing it. The asymmetry is universally recognized in substance.</li>
+          <li><strong>Mortal sin does not destroy all love.</strong> No tradition claims that sinners are utterly incapable of any love. The four-fold distinction (agape, eros, philia, self-love) is broadly ecumenical&nbsp;&mdash; C.S. Lewis articulated essentially the same taxonomy in <em>The Four Loves</em>.</li>
+        </ul>
+      </div>
+
+      <div class="summary-box">
+        <h3>The disagreement, precisely stated</h3>
+        <p>
+          The disagreement is not about whether sin separates or whether God initiates return. It is about <em>the mechanism of restoration</em>: whether sacramental confession to a priest with apostolic authority is required (<span class="tag tag-catholic">Catholic</span> + <span class="tag tag-shared">Orthodox</span>), or whether confession directly to God suffices (<span class="tag tag-lutheran">Protestant</span>). And it is about whether temporal punishment survives absolution (<span class="tag tag-catholic">Catholic</span>) or whether Christ&rsquo;s atonement removes all punishment (<span class="tag tag-lutheran">Protestant</span>).
+        </p>
+      </div>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Section: The Reformation Narrative -->
+    <section class="article-body">
+      <h2>The Thread to the Reformation</h2>
+
+      <p>
+        <span class="versal">R</span>econciliation.lean completes a narrative arc that runs through the entire project. The thread is tight enough to follow in a single chain.
+      </p>
+
+      <div class="reformation-chain">
+        <div class="chain-title">The Complete Arc</div>
+        <div class="chain-steps">
+          <span class="chain-step">Temporal punishment survives absolution</span>
+          <span class="chain-arrow">&rarr;</span>
+          <span class="chain-step">Purgatory exists to address it</span>
+          <span class="chain-arrow">&rarr;</span>
+          <span class="chain-step">Indulgences remit temporal punishment</span>
+          <span class="chain-arrow">&rarr;</span>
+          <span class="chain-step">Luther&rsquo;s 95 Theses (1517)</span>
+          <span class="chain-arrow">&rarr;</span>
+          <span class="chain-step"><em>Sola fide</em></span>
+          <span class="chain-arrow">&rarr;</span>
+          <span class="chain-step">The axiom swap</span>
+        </div>
+      </div>
+
+      <p>
+        Luther&rsquo;s objection was not primarily about confession itself. He valued private confession and never abolished it. The objection was about what happens <em>after</em> absolution: if guilt is truly removed, why does punishment remain? Under Catholic axioms, the answer is the temporal/eternal distinction&nbsp;&mdash; absolution removes eternal punishment (guilt) but temporal punishment (disordered attachments) persists. This is what indulgences claim to address, and what purgatory resolves post-mortem.
+      </p>
+
+      <p>
+        Under Protestant axioms, Christ&rsquo;s atonement covers everything. There is no residual temporal punishment, therefore no purgatory, therefore no coherent role for indulgences. The theorem <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Sacraments/Reconciliation.lean"><code>temporal_punishment_survives_absolution</code></a> is the hinge: accept it, and the Catholic sacramental system is coherent; reject it, and indulgences become incoherent.
+      </p>
+
+      <p>
+        Neither side is being foolish. Both reason correctly from their premises. The disagreement is not about logic&nbsp;&mdash; it is about which axioms to accept. A proof assistant cannot tell you which axioms are true. But it can show you what you are accepting and what follows from it.
+      </p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Section: Denominational Tags -->
+    <section class="article-body">
+      <h2>Denominational Scope</h2>
+
+      <p>
+        <span class="versal">E</span>ach claim in the formalization carries a denominational tag. Here is how the components of reconciliation divide.
+      </p>
+
+      <table class="axiom-table">
+        <thead>
+          <tr>
+            <th>Claim</th>
+            <th>Scope</th>
+            <th>Note</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Three acts of the penitent (contrition, confession, satisfaction)</td>
+            <td><span class="tag tag-catholic">Catholic</span> + Orthodox</td>
+            <td>Protestants affirm contrition but not sacramental confession or assigned penance</td>
+          </tr>
+          <tr>
+            <td>Absolution by a priest with apostolic authority</td>
+            <td><span class="tag tag-catholic">Catholic</span> + Orthodox</td>
+            <td>Protestants: confess directly to God (1 Jn 1:9)</td>
+          </tr>
+          <tr>
+            <td>Temporal punishment remaining after absolution</td>
+            <td><span class="tag tag-catholic">Catholic</span></td>
+            <td>The load-bearing doctrine for indulgences and purgatory; Protestants deny</td>
+          </tr>
+          <tr>
+            <td>Prevenient grace enabling contrition</td>
+            <td><span class="tag tag-shared">Ecumenical</span></td>
+            <td>God initiates repentance (Eph 2:8&ndash;9); mechanism is Catholic, principle is shared</td>
+          </tr>
+          <tr>
+            <td>The asymmetry (breaking easier than restoring)</td>
+            <td><span class="tag tag-shared">Ecumenical</span></td>
+            <td>Structural observation; specific components vary by tradition</td>
+          </tr>
+          <tr>
+            <td>Mortal sin destroys agape specifically (not all love)</td>
+            <td><span class="tag tag-shared">Ecumenical</span></td>
+            <td>The four-fold love distinction is broadly shared (C.S. Lewis, Benedict XVI, Aquinas)</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Section: What This Article Cannot Answer -->
+    <section class="article-body">
+      <h2>Where Formalization Stops</h2>
+
+      <p>
+        <span class="versal">T</span>he formal model shows that reconciliation restores agape under Catholic axioms. It shows the asymmetry between destruction and restoration. It shows the bootstrapping recurrence. It does not&nbsp;&mdash; and cannot&nbsp;&mdash; answer the following:
+      </p>
+
+      <ul>
+        <li><strong>Whether Catholic or Protestant axioms are correct.</strong> The model proves logical validity given axioms, not the truth of the axioms themselves.</li>
+        <li><strong>Whether a specific penitent&rsquo;s contrition is genuine.</strong> This is an empirical, interior question that no formal system can adjudicate.</li>
+        <li><strong>To what degree agape is restored.</strong> The formalization proves <code>degree &gt; 0</code>&nbsp;&mdash; charity returns. Whether it returns to its previous level, or higher, or lower, is not specified. CCC &sect;1468 speaks of &ldquo;restoring us to God&rsquo;s grace&rdquo; without quantifying the degree.</li>
+        <li><strong>Why temporal punishment survives absolution.</strong> The model takes this as an axiom (&sect;1472&ndash;1473). The &ldquo;why&rdquo; belongs to a deeper metaphysics of justice and disorder that the current formalization does not model.</li>
+      </ul>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Conclusion -->
+    <section class="article-body">
+      <h2>The Charitable Conclusion</h2>
+
+      <p>
+        <span class="versal">A</span> person in mortal sin is not a person without love. They are a person who has lost one specific kind of love&nbsp;&mdash; the supernatural charity that orders all lesser loves toward God. They can still find beauty in a sunset (eros). They can still cherish their friends (philia). They can still care about their own life (self-love). What they have lost is the love that connects all of these to their source and summit.
+      </p>
+
+      <p>
+        Reconciliation restores exactly that. Not more, not less. The agape that was at zero returns to positive. The beatifying mode of divine relation switches back on. Communion is restored.
+      </p>
+
+      <p>
+        But the restoration is harder than the destruction. One free act broke charity. Four acts&nbsp;&mdash; contrition, confession, absolution, satisfaction&nbsp;&mdash; plus God&rsquo;s prior initiative through prevenient grace are needed to restore it. The Catechism never calls this an asymmetry. The formalization makes it structurally visible, and it connects by a single thread through temporal punishment, purgatory, and indulgences all the way to the Reformation.
+      </p>
+
+      <p>
+        Seeing this precisely is more honest than arguing past each other. Both the Catholic who holds that temporal punishment survives absolution and the Protestant who denies it are reasoning coherently from their respective axiom sets. The disagreement is not about logic. It is about which axioms to accept. Seeing that clearly is better than caricaturing either side.
+      </p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Source references -->
+    <section class="article-body">
+      <div class="summary-box">
+        <h3>Source Code &amp; Further Reading</h3>
+        <p>
+          The formalizations referenced in this article are machine-checked in Lean 4. See
+          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Sacraments/Reconciliation.lean"><code>Reconciliation.lean</code></a>
+          for the complete sacramental model (7 theorems, 10 cross-references). See
+          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Foundations/Love.lean"><code>Love.lean</code></a>
+          for the four-fold love taxonomy and the survival/destruction axioms. See
+          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/DivineModes.lean"><code>DivineModes.lean</code></a>
+          for sustaining vs. beatifying modes of divine relation. See
+          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/Grace.lean"><code>Grace.lean</code></a>
+          for the prevenient grace bootstrapping resolution. The 15 base axioms are in
+          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Foundations/Axioms.lean"><code>Axioms.lean</code></a>.
+          For the love taxonomy in detail, see the companion article <a href="love-math.html">The Mathematics of Love</a>.
+        </p>
+      </div>
+    </section>
+
+    <div class="ornament">&#10053;</div>
+
+    <section class="cta-section">
+      <div class="cta-group">
+        <a href="https://github.com/ngundotra/catlib" class="cta-button primary">View on GitHub</a>
+        <a href="../index.html" class="cta-button secondary">Back to Catlib</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="ornament">&#10053;</div>
+    <p>
+      <a href="https://github.com/ngundotra/catlib">Catlib</a>&nbsp;&mdash;
+      formalizing the Catholic Catechism in Lean 4.
+      A love letter to the Catholic intellectual tradition, written with precision.
+    </p>
+  </footer>
+
+</body>
+</html>
