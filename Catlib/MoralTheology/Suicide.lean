@@ -110,6 +110,10 @@ opaque contradictsNaturalLaw : Action → Prop
 /-- Whether an action is the act of taking one's own life. -/
 opaque isSuicideAct : Action → Prop
 
+/-- The psychological state of the agent at the time of an action.
+    This connects a sin to the agent's psychological condition. -/
+axiom psychologicalStateOf : Sin → PsychologicalState
+
 -- ============================================================================
 -- § Axiom: Self-preservation is a natural inclination (from Natural Law)
 -- ============================================================================
@@ -196,7 +200,7 @@ axiom suicide_is_grave_matter :
 axiom psychological_suffering_diminishes_consent :
   ∀ (sa : Sin),
     isSuicideAct sa.action →
-    PsychologicalState.graveSuffering = PsychologicalState.graveSuffering →
+    psychologicalStateOf sa = PsychologicalState.graveSuffering →
     sa.consent = MoralConsent.incomplete
 
 -- ============================================================================
@@ -229,7 +233,7 @@ axiom psychological_suffering_diminishes_consent :
 theorem suicide_under_suffering_not_necessarily_mortal
     (sa : Sin)
     (h_suicide : isSuicideAct sa.action)
-    (h_suffering : PsychologicalState.graveSuffering = PsychologicalState.graveSuffering) :
+    (h_suffering : psychologicalStateOf sa = PsychologicalState.graveSuffering) :
     sa.isVenial := by
   unfold Sin.isVenial
   right; right
@@ -247,7 +251,7 @@ theorem suicide_under_suffering_not_necessarily_mortal
 theorem suicide_under_suffering_not_mortal
     (sa : Sin)
     (h_suicide : isSuicideAct sa.action)
-    (h_suffering : PsychologicalState.graveSuffering = PsychologicalState.graveSuffering) :
+    (h_suffering : psychologicalStateOf sa = PsychologicalState.graveSuffering) :
     ¬sa.isMortal := by
   intro h_mortal
   have h_venial := suicide_under_suffering_not_necessarily_mortal sa h_suicide h_suffering
@@ -277,7 +281,7 @@ theorem suicide_under_suffering_not_mortal
 theorem grace_may_be_preserved
     (sa : Sin)
     (h_suicide : isSuicideAct sa.action)
-    (h_suffering : PsychologicalState.graveSuffering = PsychologicalState.graveSuffering) :
+    (h_suffering : psychologicalStateOf sa = PsychologicalState.graveSuffering) :
     -- The mortal-sin-based mechanism for losing grace does not apply,
     -- because the sin is not mortal. Since mortal_sin_causes_loss_of_grace
     -- (Sin.lean) only triggers on mortal sin, a person in grace who
@@ -327,7 +331,7 @@ theorem hope_for_salvation_of_suicide
     (p : Person)
     (sa : Sin)
     (h_suicide : isSuicideAct sa.action)
-    (h_suffering : PsychologicalState.graveSuffering = PsychologicalState.graveSuffering) :
+    (h_suffering : psychologicalStateOf sa = PsychologicalState.graveSuffering) :
     -- Pillar 1: The act is not necessarily mortal sin
     ¬sa.isMortal ∧
     -- Pillar 2: God desires this person's salvation
