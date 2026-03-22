@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Body &amp; Soul: What the CCC Actually Says &mdash; Catlib</title>
+  <meta name="description" content="The Catechism's model of body and soul is not what most people think. The soul without a body is incomplete — and that changes everything about heaven.">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Body &amp; Soul: What the CCC Actually Says">
+  <meta property="og:description" content="Heaven for disembodied souls is a temporary arrangement. The real endpoint is resurrection — the complete person, body and soul, in full communion with God.">
+  <meta property="og:site_name" content="Catlib">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Body &amp; Soul: What the CCC Actually Says">
+  <meta name="twitter:description" content="The Catechism says a soul without a body is incomplete — even in heaven. That changes everything about what resurrection means.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel+Decorative:wght@400;700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="articles.css">
+  <style>
+    /* ============================================================
+       Body & Soul — article-specific styles
+       ============================================================ */
+
+    /* WIP banner */
+    .wip-banner {
+      background: rgba(180, 100, 20, 0.12);
+      border: 2px solid rgba(180, 80, 20, 0.5);
+      border-radius: 4px;
+      padding: 1.2rem 1.8rem;
+      margin: 0 auto 2rem;
+      max-width: 720px;
+      text-align: center;
+    }
+
+    .wip-banner strong {
+      font-family: 'Cinzel', serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #b45014;
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+
+    .wip-banner p {
+      font-size: 0.92rem;
+      color: var(--text-light);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* State table — the visual centerpiece */
+    .state-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      font-size: 0.92rem;
+      border: 2px solid var(--border-dark);
+    }
+
+    .state-table th {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--bg);
+      background: var(--accent);
+      padding: 0.7rem 0.8rem;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    .state-table td {
+      padding: 0.65rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    .state-table tbody tr:nth-child(even) {
+      background: rgba(184, 134, 11, 0.06);
+    }
+
+    .state-table tbody tr:hover {
+      background: rgba(184, 134, 11, 0.12);
+    }
+
+    .state-table .yes {
+      color: #2d6a2d;
+      font-weight: 600;
+    }
+
+    .state-table .no {
+      color: #a03030;
+      font-weight: 600;
+    }
+
+    .state-table .restored {
+      color: #2d6a2d;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+    }
+
+    .state-table .incomplete {
+      color: #b45014;
+      font-weight: 600;
+    }
+
+    .state-table .highlight-row {
+      background: rgba(45, 106, 45, 0.08);
+      border-left: 3px solid #2d6a2d;
+    }
+
+    /* Rejected views table */
+    .rejected-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      font-size: 0.88rem;
+      border: 2px solid var(--border-dark);
+    }
+
+    .rejected-table th {
+      font-family: 'Cinzel', serif;
+      font-size: 0.70rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--bg);
+      background: var(--accent);
+      padding: 0.65rem 0.8rem;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    .rejected-table td {
+      padding: 0.6rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    .rejected-table tbody tr:nth-child(even) {
+      background: rgba(184, 134, 11, 0.06);
+    }
+
+    /* Afterlife states list */
+    .afterlife-states {
+      list-style: none;
+      padding: 0;
+      margin: 1.5rem 0;
+    }
+
+    .afterlife-states li {
+      padding: 1rem 1.4rem;
+      margin-bottom: 0.8rem;
+      border-radius: 3px;
+      border-left: 4px solid var(--border);
+      background: var(--callout-bg);
+      line-height: 1.7;
+    }
+
+    .afterlife-states li strong {
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      display: block;
+      margin-bottom: 0.3rem;
+      letter-spacing: 0.03em;
+    }
+
+    .afterlife-states .state-heaven {
+      border-left-color: #b8860b;
+    }
+
+    .afterlife-states .state-purgatory {
+      border-left-color: #b45014;
+    }
+
+    .afterlife-states .state-hell {
+      border-left-color: #8a3a0a;
+    }
+
+    .afterlife-states .state-risen {
+      border-left-color: #2d6a2d;
+      background: rgba(45, 106, 45, 0.07);
+    }
+
+    /* Open-question callout */
+    .open-question {
+      background: rgba(180, 100, 20, 0.07);
+      border: 2px solid rgba(180, 80, 20, 0.4);
+      border-left: 5px solid #b45014;
+      padding: 1.5rem 1.8rem;
+      margin: 1.8rem 0;
+      border-radius: 0 4px 4px 0;
+      position: relative;
+    }
+
+    .open-question::before {
+      content: 'OPEN QUESTION';
+      display: block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #b45014;
+      margin-bottom: 0.8rem;
+    }
+
+    .open-question h4 {
+      font-family: 'Cinzel', serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #8a3a0a;
+      margin-bottom: 0.6rem;
+      letter-spacing: 0.03em;
+    }
+
+    .open-question p {
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .open-question ul {
+      padding-left: 1.3rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .open-question li {
+      margin-bottom: 0.3rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <a href="../index.html" class="back-link">Back to Catlib</a>
+
+    <!-- WIP Banner -->
+    <div class="wip-banner">
+      <strong>Work in Progress</strong>
+      <p>
+        This article is a work in progress. The formalization of body-soul
+        anthropology is being rebuilt from the CCC&rsquo;s own categories.
+        What follows is the insight, not the finished proof.
+      </p>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="ornament">&#10053;</div>
+      <h1>Body &amp; Soul</h1>
+      <p class="subtitle">What the CCC actually says&nbsp;&mdash; and why it changes everything about heaven</p>
+      <p class="subtitle">
+        If the soul without the body is incomplete, then heaven for
+        disembodied souls is a temporary arrangement. The real endpoint
+        is resurrection.
+      </p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Section 1: What most people think -->
+    <section class="article-body">
+      <p>
+        <span class="versal">H</span>ere is what most people&nbsp;&mdash;
+        including most Catholics&nbsp;&mdash; assume about death: when you
+        die, your soul leaves your body and goes to heaven (or hell). The
+        body is left behind. The soul is the &ldquo;real you.&rdquo; Done.
+      </p>
+      <p>
+        This picture is clean and intuitive. It is also, according to the
+        Catechism of the Catholic Church, <em>incomplete</em>. Not wrong in
+        every detail&nbsp;&mdash; the soul does survive death (&sect;366).
+        But the popular version leaves out the part that changes everything:
+        a soul without a body is not a complete person.
+      </p>
+      <p>
+        I only understood this recently. I had read the Catechism paragraphs
+        before. But formalizing them&nbsp;&mdash; forcing every claim into
+        precise logical structure&nbsp;&mdash; made me see what I had been
+        skipping over. What follows is the insight, stated as plainly as I
+        can.
+      </p>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Section 2: What the CCC actually says -->
+    <section class="article-body">
+      <h2>What the Catechism Actually Says</h2>
+
+      <p>
+        <span class="versal">T</span>he Catechism&rsquo;s anthropology is
+        built on four claims. Each one sounds modest individually. Together,
+        they form a picture most people do not expect.
+      </p>
+
+      <div class="finding-card">
+        <h3>&sect;362: The person is BOTH corporeal and spiritual</h3>
+        <p>
+          &ldquo;The human person, created in the image of God, is a being
+          at once corporeal and spiritual.&rdquo; Not a soul using a body.
+          Not a body that happens to have consciousness. Both at once,
+          irreducibly.
+        </p>
+      </div>
+
+      <div class="finding-card">
+        <h3>&sect;365: One nature, not two</h3>
+        <p>
+          &ldquo;Spirit and matter, in man, are not two natures united, but
+          rather their union forms a single nature.&rdquo; The soul is the
+          <em>form</em> of the body&nbsp;&mdash; an Aristotelian technical
+          term the Catechism adopts without naming Aristotle. The soul is
+          not a thing inside you. It is what <em>makes</em> you a living
+          human body. Without it, the matter is not a corpse&nbsp;&mdash;
+          it is not a body at all.
+        </p>
+      </div>
+
+      <div class="finding-card">
+        <h3>&sect;366: The soul survives death</h3>
+        <p>
+          &ldquo;The Church teaches that every spiritual soul is created
+          immediately by God&nbsp;&mdash; it is not &lsquo;produced&rsquo;
+          by the parents&nbsp;&mdash; and also that it is immortal: it does
+          not perish when it separates from the body at death.&rdquo; The
+          soul endures. But notice what this implies: if the person IS the
+          body-soul composite, and the soul survives without the body, then
+          after death you have a soul that is <em>not fully a person</em>.
+        </p>
+      </div>
+
+      <div class="finding-card">
+        <h3>&sect;997: The body will be raised</h3>
+        <p>
+          &ldquo;In death, the separation of the soul from the body, the
+          human body decays and the soul goes to meet God, while awaiting
+          its reunion with its glorified body.&rdquo; The soul <em>awaits</em>
+          reunion. This is not a bonus feature. It is restoration of what
+          death broke.
+        </p>
+      </div>
+
+      <div class="assumption-callout">
+        The hidden logic: if the person is the body-soul composite
+        (&sect;365), and death separates them (&sect;366), then the
+        separated soul is an <em>incomplete person</em>&nbsp;&mdash; even
+        if that soul is in full communion with God. The Catechism does not
+        shy away from this. It builds resurrection (&sect;997) as the
+        necessary resolution.
+      </div>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Section 3: The Table -->
+    <section class="article-body">
+      <h2>The States of the Person</h2>
+
+      <p>
+        <span class="versal">T</span>his is the table that made it click.
+        Three states, five columns.
+      </p>
+
+      <table class="state-table">
+        <thead>
+          <tr>
+            <th>State</th>
+            <th>Corporeal?</th>
+            <th>Spiritual?</th>
+            <th>Complete?</th>
+            <th>CCC Basis</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Living person</td>
+            <td class="yes">Yes</td>
+            <td class="yes">Yes</td>
+            <td class="yes">Yes</td>
+            <td>&sect;362</td>
+          </tr>
+          <tr>
+            <td>After death (soul separated)</td>
+            <td class="no">No</td>
+            <td class="yes">Yes</td>
+            <td class="incomplete">Incomplete</td>
+            <td>&sect;366</td>
+          </tr>
+          <tr class="highlight-row">
+            <td>After resurrection</td>
+            <td class="yes">Yes</td>
+            <td class="yes">Yes</td>
+            <td class="restored">Restored</td>
+            <td>&sect;997</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        Read the &ldquo;Complete?&rdquo; column. The middle row is the
+        surprise. A saint in heaven right now&nbsp;&mdash; fully in
+        communion with God, seeing God face to face&nbsp;&mdash; is, by the
+        Catechism&rsquo;s own anthropology, an <em>incomplete person</em>.
+        Not because anything is wrong with their communion with God. Because
+        they lack a body. And the person IS the body-soul composite.
+      </p>
+
+      <div class="assumption-callout">
+        Resurrection is not a reward on top of heaven. It is the completion
+        of what death broke. The CCC is more radical than most Catholics
+        realize: it says the soul without the body is not fully itself.
+      </div>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Section 4: Combining with divine modes -->
+    <section class="article-body">
+      <h2>The Afterlife: Person + Divine Modes</h2>
+
+      <p>
+        <span class="versal">N</span>ow combine the body-soul anthropology
+        with the <a href="divine-modes.html">two modes of God</a>&nbsp;&mdash;
+        sustaining (God holds everything in existence) and beatifying (God
+        offers communion and love). The afterlife states become combinations
+        of two independent axes: the person&rsquo;s completeness and
+        God&rsquo;s modes.
+      </p>
+
+      <ul class="afterlife-states">
+        <li class="state-heaven">
+          <strong>Soul in Heaven</strong>
+          Spiritual: yes. Corporeal: no. Beatifying mode: on.
+          &rarr; An <em>incomplete</em> person in full communion with God.
+          The soul sees God face to face (1 Cor 13:12) but is separated
+          from its body. This state is real, blessed&nbsp;&mdash; and temporary.
+        </li>
+        <li class="state-purgatory">
+          <strong>Soul in Purgatory</strong>
+          Spiritual: yes. Corporeal: no. Beatifying mode: on (assured).
+          &rarr; An <em>incomplete</em> person being purified. The soul
+          chose God and will reach the beatific vision, but is not yet
+          ready (Rev 21:27).
+        </li>
+        <li class="state-hell">
+          <strong>Soul in Hell</strong>
+          Spiritual: yes. Corporeal: no. Beatifying mode: off.
+          &rarr; An <em>incomplete</em> person permanently separated from
+          God&rsquo;s communion. Sustained in existence (Col 1:17) but
+          without any good.
+        </li>
+        <li class="state-risen">
+          <strong>Risen Saint</strong>
+          Spiritual: yes. Corporeal: yes. Beatifying mode: on.
+          &rarr; A <em>complete</em> person in full communion with God.
+          This is the real endpoint. This is what everything else is
+          pointing toward.
+        </li>
+      </ul>
+
+      <p>
+        The risen saint is the only state where BOTH axes are fully
+        resolved: the person is complete (body + soul reunited) AND in
+        full communion (beatifying mode active). Every other afterlife
+        state is missing something.
+      </p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Section 5: What the CCC rules out -->
+    <section class="article-body">
+      <h2>Five Views the CCC Rules Out</h2>
+
+      <p>
+        <span class="versal">T</span>o see the force of the CCC&rsquo;s
+        position, consider what it denies. Each of these views is held by
+        someone, and the Catechism rejects all five.
+      </p>
+
+      <table class="rejected-table">
+        <thead>
+          <tr>
+            <th>View</th>
+            <th>What It Claims</th>
+            <th>Why the CCC Rejects It</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Cartesian dualism</strong></td>
+            <td>Soul and body are two separate substances joined together</td>
+            <td>&sect;365: &ldquo;not two natures united&rdquo;&nbsp;&mdash; one nature</td>
+          </tr>
+          <tr>
+            <td><strong>Platonism</strong></td>
+            <td>The soul is trapped in the body and wants to escape</td>
+            <td>&sect;364: The body shares in the dignity of the image of God</td>
+          </tr>
+          <tr>
+            <td><strong>Materialism</strong></td>
+            <td>There is no soul; the body is all there is</td>
+            <td>&sect;363: The soul is the &ldquo;spiritual principle&rdquo; in man</td>
+          </tr>
+          <tr>
+            <td><strong>Gnostic contempt</strong></td>
+            <td>The body is evil or irrelevant; salvation is escape from matter</td>
+            <td>&sect;997: The body will be <em>raised</em>&nbsp;&mdash; it matters eternally</td>
+          </tr>
+          <tr>
+            <td><strong>&ldquo;Soul goes to heaven&rdquo; finalism</strong></td>
+            <td>Death is the final event; the soul in heaven is the endpoint</td>
+            <td>&sect;997: The soul <em>awaits</em> reunion with the glorified body</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        The last row is the one that surprised me. The popular Christian
+        picture&nbsp;&mdash; &ldquo;you die and go to heaven, the end&rdquo;
+        &nbsp;&mdash; is not the CCC&rsquo;s position. The CCC says heaven
+        for disembodied souls is an <em>intermediate</em> state, not the
+        final one. The final state is resurrection: body and soul together,
+        in full communion with God.
+      </p>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Section 6: Why this matters -->
+    <section class="article-body">
+      <h2>Why This Matters</h2>
+
+      <p>
+        <span class="versal">I</span>f the body is just a container&nbsp;&mdash;
+        a vehicle the soul rides around in&nbsp;&mdash; then resurrection
+        is a nice bonus. God gives you your body back as a reward. It adds
+        something, but nothing essential was missing.
+      </p>
+      <p>
+        But if the person IS the body-soul composite, as the Catechism
+        insists (&sect;365), then a soul without a body is genuinely
+        incomplete. Something essential <em>is</em> missing. And
+        resurrection is not a reward&nbsp;&mdash; it is restoration.
+        It is the healing of what death broke.
+      </p>
+      <p>
+        This changes the logic of the whole eschatological picture. Heaven
+        is not the endpoint. Heaven is the <em>waiting room</em> (a
+        blessed, glorious waiting room, but a waiting room). The endpoint
+        is the resurrection of the dead: complete persons, body and soul,
+        in full communion with God. The Creed says it plainly: &ldquo;I
+        believe in the resurrection of the body.&rdquo; Not &ldquo;I
+        believe my soul will go to heaven.&rdquo;
+      </p>
+
+      <div class="assumption-callout">
+        The Catechism&rsquo;s anthropology (&sect;362&ndash;365) and its
+        eschatology (&sect;997) are not two separate teachings. They are
+        one argument: the person is the composite &rarr; death breaks the
+        composite &rarr; resurrection restores the composite. Once you see
+        this, the entire structure clicks.
+      </div>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Section 7: Open Questions -->
+    <section class="article-body">
+      <h2>Open Questions</h2>
+
+      <p>
+        <span class="versal-small">T</span>his insight raises questions the
+        formalization has not yet answered. These are genuine open problems,
+        not rhetorical devices.
+      </p>
+
+      <div class="open-question">
+        <h4>What is a separated soul&rsquo;s experience?</h4>
+        <p>
+          If the soul is the <em>form</em> of the body, and it exists
+          without a body after death, what does it experience? Form without
+          matter is, under hylomorphism, a strange state. The Catechism
+          says the soul &ldquo;goes to meet God&rdquo; (&sect;997)&nbsp;&mdash;
+          but what is that meeting <em>like</em> for a disembodied form?
+        </p>
+      </div>
+
+      <div class="open-question">
+        <h4>What does resurrection ADD?</h4>
+        <p>
+          A saint in heaven already has the beatific vision. When the body
+          is restored, what changes? More joy? A different kind of
+          communion? The Catechism does not specify. But if the person is
+          the composite, then the restoration must add something essential
+          &nbsp;&mdash; not just quantitative but qualitative. What?
+        </p>
+      </div>
+
+      <div class="open-question">
+        <h4>Can a separated soul think and will?</h4>
+        <p>
+          Under strict hylomorphism, intellect and will operate through the
+          body (Aquinas, ST I q.84&ndash;85). If the soul is separated from
+          the body, HOW does it think? Aquinas proposed that God grants
+          separated souls a special mode of knowing (&ldquo;infused
+          species&rdquo;). The Catechism does not address this. The
+          formalization needs to decide: does cognition require embodiment?
+        </p>
+      </div>
+
+      <div class="open-question">
+        <h4>How does &ldquo;soul as form&rdquo; relate to &ldquo;soul as
+          immortal substance&rdquo;?</h4>
+        <p>
+          The Catechism says both that the soul is the form of the body
+          (&sect;365) and that it is immortal and survives death (&sect;366).
+          But in Aristotle, forms do not exist independently. Aquinas solved
+          this by arguing the rational soul is a <em>subsistent</em> form
+          &nbsp;&mdash; capable of existing without matter. This is a
+          specific philosophical commitment the Catechism assumes without
+          stating. The formalization must make it explicit.
+        </p>
+      </div>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Source references -->
+    <section class="article-body">
+      <div class="summary-box">
+        <h3>Source Code &amp; Further Reading</h3>
+        <p>
+          The existing formalization of the soul-as-form model is in
+          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/Soul.lean"><code>Soul.lean</code></a>.
+          The divine modes framework (sustaining vs. beatifying) is in
+          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/DivineModes.lean"><code>DivineModes.lean</code></a>.
+          The 15 base axioms are in
+          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Foundations/Axioms.lean"><code>Axioms.lean</code></a>.
+        </p>
+        <p>
+          Related articles:
+          <a href="divine-modes.html">The Two Modes of God</a> explains the
+          sustaining/beatifying distinction.
+          <a href="purgatory.html">How Do We Know Purgatory Exists?</a>
+          explores the afterlife spectrum in more detail.
+        </p>
+      </div>
+    </section>
+
+    <div class="ornament">&#10053;</div>
+
+    <section class="cta-section">
+      <div class="cta-group">
+        <a href="https://github.com/ngundotra/catlib" class="cta-button primary">View on GitHub</a>
+        <a href="../index.html" class="cta-button secondary">Back to Catlib</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="ornament">&#10053;</div>
+    <p>
+      <a href="https://github.com/ngundotra/catlib">Catlib</a>&nbsp;&mdash;
+      formalizing the Catholic Catechism in Lean 4.
+      A love letter to the Catholic intellectual tradition, written with precision.
+    </p>
+  </footer>
+
+</body>
+</html>
