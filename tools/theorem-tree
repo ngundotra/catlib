@@ -8,6 +8,9 @@ Usage:
     ./tools/theorem-tree --connections <path>       # Cross-file connections only
     ./tools/theorem-tree --axioms-only <path>       # Show just axioms
     ./tools/theorem-tree --theorems-only <path>     # Show just theorems
+    ./tools/theorem-tree --brief <path>             # One-line descriptions (default)
+    ./tools/theorem-tree --verbose <path>           # Full multi-line docstrings
+    ./tools/theorem-tree --flow <path>              # Sankey-style dependency flow
 """
 
 import os
@@ -52,11 +55,17 @@ class Declaration:
     def __init__(self, kind, name, description, line_no, file_path):
         self.kind = kind
         self.name = name
-        self.description = description
+        self.description = description  # short one-line description
         self.line_no = line_no
         self.file_path = file_path
         self.references = []
         self.body_lines = []  # lines of the declaration body (type sig + proof)
+        # New fields for enhanced docstring parsing
+        self.full_docstring = ""       # the complete raw docstring text
+        self.source = ""               # extracted *Source*: or Provenance: line
+        self.scope = ""                # extracted Denominational scope: line
+        self.hidden_assumptions = []   # HIDDEN ASSUMPTION: lines
+        self.provenance_type = ""      # [Scripture] / [Tradition] / [Definition]
 
     def display_kind(self):
         return self.kind
@@ -86,10 +95,11 @@ def parse_lean_file(filepath):
 
     # First pass: identify all declaration start lines and docstrings
     pending_docstring = ""
+    pending_full_docstring = ""
     in_docstring = False
     is_module_doc = False
     docstring_lines = []
-    decl_starts = []  # (line_idx_0based, kind, name, description)
+    decl_starts = []  # (line_idx_0based, kind, name, description, full_docstring)
 
     for i, raw_line in enumerate(lines):
         line = raw_line.rstrip()
@@ -117,6 +127,7 @@ def parse_lean_file(filepath):
                     in_docstring = False
                     is_module_doc = False
                     pending_docstring = ""
+                    pending_full_docstring = ""
             elif stripped.startswith("/--"):
                 in_docstring = True
                 is_module_doc = False
@@ -125,7 +136,8 @@ def parse_lean_file(filepath):
                 if content.endswith("-/"):
                     content = content[:-2].strip()
                     in_docstring = False
-                    pending_docstring = _extract_first_line(content)
+                    pending_full_docstring = content
+                    pending_docstring = _extract_short_description(content)
                 else:
                     docstring_lines.append(content)
             else:
@@ -135,12 +147,11 @@ def parse_lean_file(filepath):
                     kind = m.group(1)
                     name = m.group(2).rstrip(":").rstrip("(")
                     desc = pending_docstring
-                    decl_starts.append((i, kind, name, desc))
+                    full_doc = pending_full_docstring
+                    decl_starts.append((i, kind, name, desc, full_doc))
                     pending_docstring = ""
+                    pending_full_docstring = ""
                 elif stripped and not stripped.startswith("--"):
-                    # Non-empty, non-comment line that's not a declaration
-                    # Don't clear pending_docstring -- it might be separated
-                    # by blank lines or comments
                     pass
         else:
             if "-/" in line:
@@ -150,26 +161,19 @@ def parse_lean_file(filepath):
                     docstring_lines.append(content)
                 if is_module_doc:
                     pending_docstring = ""
+                    pending_full_docstring = ""
                     is_module_doc = False
                 else:
-                    full_doc = " ".join(docstring_lines)
-                    pending_docstring = _extract_first_line(full_doc)
+                    full_doc = "\n".join(docstring_lines)
+                    pending_full_docstring = full_doc
+                    pending_docstring = _extract_short_description(full_doc)
             else:
                 docstring_lines.append(stripped)
 
     # Second pass: extract body text for each declaration.
-    # A declaration's body extends from its start line to the line before the
-    # next declaration's docstring (or the next declaration start, or a section
-    # comment, or end of file).
-    #
-    # We look for the start of the "preamble" of the next declaration, which
-    # is either its docstring start or its declaration line.
-    for idx, (start_line, kind, name, desc) in enumerate(decl_starts):
-        # Find the end of this declaration's body
+    for idx, (start_line, kind, name, desc, full_doc) in enumerate(decl_starts):
         if idx + 1 < len(decl_starts):
             next_start = decl_starts[idx + 1][0]
-            # Walk backwards from next declaration to find where its
-            # preamble (docstring/comments) begins
             preamble_start = next_start
             j = next_start - 1
             while j > start_line:
@@ -188,13 +192,86 @@ def parse_lean_file(filepath):
 
         decl = Declaration(kind, name, desc, start_line + 1, filepath)
         decl.body_lines = body
+        decl.full_docstring = full_doc
+        # Extract metadata from docstring
+        _extract_metadata(decl)
         lf.declarations.append(decl)
 
     return lf
 
 
-def _extract_first_line(text):
-    """Extract a clean one-line description from docstring text."""
+def _extract_short_description(text):
+    """Extract a clean one-line description from docstring text, avoiding name repetition."""
+    if not text:
+        return ""
+
+    lines = text.split("\n")
+
+    # Try to find the first actual descriptive sentence, skipping:
+    # - Lines that are just the name in caps (e.g., "THE PERSONALIST NORM")
+    # - Section headers (lines starting with ##)
+    # - Empty lines
+    # - Lines that are just labels like "AXIOM (TOB 15:1):"
+    # - Lines that are just provenance/metadata
+
+    candidate_lines = []
+    for line in lines:
+        line = line.strip()
+        if not line:
+            continue
+        # Skip bold-wrapped headers like "**AXIOM (TOB 15:1): NAME.**"
+        # but try to extract the description after the name
+        cleaned = re.sub(r"\*\*", "", line)
+        # Skip section headers
+        if cleaned.startswith("#"):
+            continue
+        # Skip metadata lines
+        if re.match(r"^\s*(CONNECTS TO|PROVENANCE|HIDDEN ASSUMPTION|Denominational scope|Source:|Denominational|MODELING CHOICE)\s*:", cleaned, re.IGNORECASE):
+            continue
+        if re.match(r"^\s*\*Source\*\s*:", cleaned):
+            continue
+        if re.match(r"^\s*\*Grounds\*\s*:", cleaned):
+            continue
+        # Skip lines that are JUST a label like "AXIOM (TOB 15:1): THE PERSONALIST NORM."
+        m_label = re.match(r"^(?:AXIOM|THEOREM|GIVEN|OPAQUE|DEF)\s*(?:\([^)]*\))?\s*[:.]?\s*(.*)$", cleaned)
+        if m_label:
+            rest = m_label.group(1).strip()
+            if rest:
+                # Check if the rest is just a name in ALL CAPS with underscores
+                name_part = rest.rstrip(".")
+                if re.match(r'^[A-Z_\s]+$', name_part) and len(name_part.split()) <= 6:
+                    continue  # Skip — it's just the name
+                # Use the rest as the description
+                candidate_lines.append(rest)
+                continue
+            continue
+        # Skip lines that are purely the name in caps
+        if re.match(r'^[A-Z_\s]+\.?$', cleaned) and len(cleaned.split()) <= 6:
+            continue
+        candidate_lines.append(cleaned)
+
+    if not candidate_lines:
+        # Fall back to original extraction
+        return _extract_first_line_fallback(text)
+
+    first = candidate_lines[0]
+    # Clean up the first candidate
+    first = re.sub(r"\*\*", "", first)
+    # Remove leading "AXIOM/THEOREM" prefixes
+    first = re.sub(r"^(?:AXIOM|THEOREM|GIVEN)\s*\([^)]*\)\s*[:.]?\s*", "", first)
+    # Remove leading labels like "P1. " or "S1. "
+    first = re.sub(r"^[A-Z]\d+\.\s*", "", first)
+    # Take first sentence if long
+    if ". " in first and len(first) > 100:
+        first = first.split(". ")[0].strip()
+    # Truncate
+    if len(first) > 120:
+        first = first[:117] + "..."
+    return first.strip()
+
+
+def _extract_first_line_fallback(text):
+    """Fallback: extract a clean one-line description from docstring text."""
     if not text:
         return ""
     # Remove ** bold markers
@@ -215,6 +292,68 @@ def _extract_first_line(text):
     return first
 
 
+def _extract_metadata(decl):
+    """Extract structured metadata (source, scope, hidden assumptions, provenance type) from full docstring."""
+    doc = decl.full_docstring
+    if not doc:
+        return
+
+    lines = doc.split("\n")
+
+    source_parts = []
+    scope_parts = []
+    hidden_parts = []
+    prov_types = set()
+
+    for line in lines:
+        stripped = line.strip()
+
+        # Source / Provenance
+        m = re.match(r'^\*?Source\*?\s*:\s*(.+)', stripped, re.IGNORECASE)
+        if m:
+            source_parts.append(m.group(1).strip())
+            continue
+
+        m = re.match(r'^PROVENANCE\s*:\s*(.+)', stripped, re.IGNORECASE)
+        if m:
+            source_parts.append(m.group(1).strip())
+            continue
+
+        # Denominational scope
+        m = re.match(r'^Denominational\s+scope\s*:\s*(.+)', stripped, re.IGNORECASE)
+        if m:
+            scope_parts.append(m.group(1).strip())
+            continue
+
+        # Hidden assumptions
+        m = re.match(r'^HIDDEN\s+ASSUMPTION\s*:\s*(.+)', stripped, re.IGNORECASE)
+        if m:
+            hidden_parts.append(m.group(1).strip())
+            continue
+
+        # Provenance type tags
+        if '[Scripture]' in stripped:
+            prov_types.add('Scripture')
+        if '[Tradition]' in stripped:
+            prov_types.add('Tradition')
+        if '[Definition]' in stripped:
+            prov_types.add('Definition')
+
+    # Also check for Source in *Source*: format (with asterisks)
+    m_source = re.search(r'\*Source\*\s*:\s*([^\n]+)', doc)
+    if m_source and m_source.group(1).strip() not in source_parts:
+        source_parts.append(m_source.group(1).strip())
+
+    decl.source = "; ".join(source_parts) if source_parts else ""
+    decl.scope = "; ".join(scope_parts) if scope_parts else ""
+    decl.hidden_assumptions = hidden_parts
+    decl.provenance_type = ", ".join(sorted(prov_types)) if prov_types else ""
+
+    # Truncate source if very long
+    if len(decl.source) > 120:
+        decl.source = decl.source[:117] + "..."
+
+
 def resolve_references(all_files):
     """Scan declaration bodies for references to other known declarations."""
     # Build index: name -> Declaration
@@ -229,18 +368,14 @@ def resolve_references(all_files):
     for name, decl in all_names.items():
         if name in NOISE_NAMES:
             continue
-        # Skip very short names (likely to cause false matches)
         if len(name) < 4:
             continue
-        # Skip denomination tag defs -- these are metadata, not logical deps
         if name.endswith("_tag") or name.endswith("_provenance"):
             continue
         interesting_names[name] = decl
 
-    # For each declaration, scan its body for references
     for lf in all_files:
         for decl in lf.declarations:
-            # Skip tag/provenance defs from being sources too
             if decl.name.endswith("_tag") or decl.name.endswith("_provenance"):
                 continue
 
@@ -249,7 +384,6 @@ def resolve_references(all_files):
             for name, target in interesting_names.items():
                 if name == decl.name:
                     continue
-                # Match as whole word
                 if re.search(r'\b' + re.escape(name) + r'\b', body):
                     refs.append(name)
             decl.references = sorted(set(refs))
@@ -267,7 +401,8 @@ def make_relative(filepath, root):
         return filepath
 
 
-def print_tree(all_files, root, filter_kind=None, connections_only=False):
+def print_tree(all_files, root, filter_kind=None, connections_only=False,
+               verbose=False):
     """Print the tree-style breakdown."""
     if connections_only:
         print_connections(all_files, root)
@@ -285,8 +420,8 @@ def print_tree(all_files, root, filter_kind=None, connections_only=False):
     for di, dir_path in enumerate(sorted_dirs):
         files = sorted(dir_files[dir_path], key=lambda x: x.path)
         is_last_dir = (di == len(sorted_dirs) - 1)
-        dir_prefix = "└── " if is_last_dir else "├── "
-        dir_cont = "    " if is_last_dir else "│   "
+        dir_prefix = "\u2514\u2500\u2500 " if is_last_dir else "\u251c\u2500\u2500 "
+        dir_cont = "    " if is_last_dir else "\u2502   "
 
         print(f"{dir_prefix}{dir_path}/")
 
@@ -294,15 +429,14 @@ def print_tree(all_files, root, filter_kind=None, connections_only=False):
             rel = make_relative(lf.path, root)
             filename = os.path.basename(rel)
             is_last_file = (fi == len(files) - 1)
-            file_prefix = dir_cont + ("└── " if is_last_file else "├── ")
-            file_cont = dir_cont + ("    " if is_last_file else "│   ")
+            file_prefix = dir_cont + ("\u2514\u2500\u2500 " if is_last_file else "\u251c\u2500\u2500 ")
+            file_cont = dir_cont + ("    " if is_last_file else "\u2502   ")
 
             # Filter declarations
             decls = lf.declarations
             if filter_kind:
                 decls = [d for d in decls if d.kind in filter_kind]
 
-            # Also filter out tag/provenance defs in normal view for cleanliness
             if not filter_kind:
                 decls = [d for d in decls
                          if not d.name.endswith("_tag")
@@ -315,25 +449,80 @@ def print_tree(all_files, root, filter_kind=None, connections_only=False):
 
             for deci, decl in enumerate(decls):
                 is_last_decl = (deci == len(decls) - 1)
-                decl_prefix = file_cont + ("└── " if is_last_decl else "├── ")
-                decl_cont = file_cont + ("    " if is_last_decl else "│   ")
+                decl_prefix = file_cont + ("\u2514\u2500\u2500 " if is_last_decl else "\u251c\u2500\u2500 ")
+                decl_cont = file_cont + ("    " if is_last_decl else "\u2502   ")
 
                 tag = f"[{decl.display_kind()}]"
-                desc_part = f" -- {decl.description}" if decl.description else ""
-                print(f"{decl_prefix}{tag} {decl.name}{desc_part}")
+
+                # Print declaration name (no description repetition in the name line)
+                print(f"{decl_prefix}{tag} {decl.name}")
+
+                if verbose:
+                    # Show full docstring, indented
+                    _print_verbose_docstring(decl, decl_cont)
+                else:
+                    # Show brief: one-line description + metadata
+                    _print_brief_info(decl, decl_cont)
 
                 # Print references
                 refs = decl.references
                 if refs:
                     for ri, ref in enumerate(refs):
                         is_last_ref = (ri == len(refs) - 1)
-                        ref_prefix = decl_cont + ("└── " if is_last_ref else "├── ")
+                        ref_prefix = decl_cont + ("\u2514\u2500\u2500 " if is_last_ref else "\u251c\u2500\u2500 ")
                         ref_decl = _find_decl(all_files, ref)
                         if ref_decl and ref_decl.file_path != lf.path:
                             ref_file = make_relative(ref_decl.file_path, root)
                             print(f"{ref_prefix}<- uses: {ref} (from {ref_file})")
                         else:
                             print(f"{ref_prefix}<- uses: {ref}")
+
+
+def _print_brief_info(decl, prefix):
+    """Print one-line description and metadata summary."""
+    if decl.description:
+        print(f'{prefix}\u2502   "{decl.description}"')
+
+    # Build metadata line
+    meta_parts = []
+    if decl.source:
+        meta_parts.append(f"Source: {decl.source}")
+    if decl.scope:
+        meta_parts.append(f"Scope: {decl.scope}")
+    if decl.provenance_type:
+        meta_parts.append(f"[{decl.provenance_type}]")
+
+    if meta_parts:
+        meta_line = " | ".join(meta_parts)
+        # Truncate if too long
+        if len(meta_line) > 120:
+            meta_line = meta_line[:117] + "..."
+        print(f"{prefix}\u2502   {meta_line}")
+
+    if decl.hidden_assumptions:
+        for ha in decl.hidden_assumptions:
+            ha_short = ha if len(ha) <= 100 else ha[:97] + "..."
+            print(f"{prefix}\u2502   \u26a0 HIDDEN ASSUMPTION: {ha_short}")
+
+
+def _print_verbose_docstring(decl, prefix):
+    """Print full multi-line docstring, indented."""
+    if not decl.full_docstring:
+        if decl.description:
+            print(f'{prefix}\u2502   "{decl.description}"')
+        return
+
+    doc_lines = decl.full_docstring.split("\n")
+    for dl in doc_lines:
+        dl = dl.strip()
+        if dl:
+            print(f"{prefix}\u2502   {dl}")
+        else:
+            print(f"{prefix}\u2502")
+
+    if decl.hidden_assumptions:
+        for ha in decl.hidden_assumptions:
+            print(f"{prefix}\u2502   \u26a0 HIDDEN ASSUMPTION: {ha}")
 
 
 def print_connections(all_files, root):
@@ -358,7 +547,6 @@ def print_connections(all_files, root):
         print("  (no cross-file connections found)")
         return
 
-    # Group by source file
     by_src = defaultdict(list)
     for conn in connections:
         by_src[conn[0]].append(conn)
@@ -368,7 +556,7 @@ def print_connections(all_files, root):
         print(f"\n{src_file}:")
         for i, (sf, sname, skind, df, dname, dkind) in enumerate(conns):
             is_last = (i == len(conns) - 1)
-            prefix = "  └── " if is_last else "  ├── "
+            prefix = "  \u2514\u2500\u2500 " if is_last else "  \u251c\u2500\u2500 "
             print(f"{prefix}[{skind}] {sname} -> [{dkind}] {dname} (in {df})")
 
 
@@ -379,6 +567,272 @@ def _find_decl(all_files, name):
             if decl.name == name:
                 return decl
     return None
+
+
+# ---------------------------------------------------------------------------
+# Flow diagram (Sankey-style dependency visualization)
+# ---------------------------------------------------------------------------
+
+def print_flow(target_parsed, all_parsed, root):
+    """Print a Sankey-style left-to-right dependency flow diagram."""
+
+    # Build a global name->decl index
+    all_decl_index = {}
+    for lf in all_parsed:
+        for decl in lf.declarations:
+            all_decl_index[decl.name] = decl
+
+    # Collect all declarations in target files (excluding tags/provenance)
+    target_decls = []
+    target_names = set()
+    for lf in target_parsed:
+        for decl in lf.declarations:
+            if decl.name.endswith("_tag") or decl.name.endswith("_provenance"):
+                continue
+            target_decls.append(decl)
+            target_names.add(decl.name)
+
+    if not target_decls:
+        print("  (no declarations found)")
+        return
+
+    # Build dependency graph within target
+    # edges: (dependency_name -> set of dependent_names)
+    # i.e., "X is used by Y" means Y depends on X
+    dep_graph = defaultdict(set)       # name -> set of names that USE it
+    reverse_graph = defaultdict(set)   # name -> set of names it USES
+    external_deps = defaultdict(set)   # name -> set of (ext_name, ext_file) it uses from outside
+
+    for decl in target_decls:
+        for ref in decl.references:
+            if ref in target_names:
+                dep_graph[ref].add(decl.name)
+                reverse_graph[decl.name].add(ref)
+            else:
+                # External dependency
+                ref_decl = all_decl_index.get(ref)
+                if ref_decl:
+                    ext_file = os.path.basename(ref_decl.file_path).replace(".lean", "")
+                    external_deps[decl.name].add((ref, ext_file))
+
+    # Classify into columns by topological depth
+    # Depth 0 = no internal dependencies (axioms/leaves)
+    # Higher depth = depends on depth-0 items, etc.
+    depth = {}
+    remaining = set(d.name for d in target_decls)
+
+    # Find items with no internal dependencies (roots)
+    changed = True
+    current_depth = 0
+    while remaining and changed:
+        changed = False
+        batch = set()
+        for name in remaining:
+            internal_deps = reverse_graph[name] & remaining
+            # Items whose only remaining deps are already placed
+            resolved_deps = reverse_graph[name] - remaining
+            if not internal_deps or internal_deps <= set(depth.keys()):
+                batch.add(name)
+        if batch:
+            for name in batch:
+                # Depth = max depth of deps + 1, or 0 if no deps
+                dep_depths = [depth.get(d, 0) for d in reverse_graph[name] if d in depth]
+                depth[name] = (max(dep_depths) + 1) if dep_depths else 0
+                remaining.discard(name)
+            changed = True
+
+    # Handle cycles (shouldn't happen in well-formed code, but be safe)
+    for name in remaining:
+        depth[name] = 99
+
+    # Group by depth
+    by_depth = defaultdict(list)
+    for decl in target_decls:
+        d = depth.get(decl.name, 0)
+        by_depth[d].append(decl)
+
+    max_depth = max(by_depth.keys()) if by_depth else 0
+
+    # Assign column labels
+    column_labels = {}
+    if max_depth == 0:
+        column_labels[0] = "DECLARATIONS"
+    elif max_depth == 1:
+        column_labels[0] = "AXIOMS/BASES"
+        column_labels[1] = "DERIVED"
+    else:
+        column_labels[0] = "AXIOMS"
+        for d in range(1, max_depth):
+            column_labels[d] = "THEOREMS" if d == 1 else f"DERIVED (L{d})"
+        column_labels[max_depth] = "DERIVED"
+
+    # Build connected components for vertical grouping
+    components = _find_components(target_decls, dep_graph, reverse_graph)
+
+    # Print the flow diagram
+    # We'll render each connected component as a block
+    printed_names = set()
+
+    for comp_idx, component in enumerate(components):
+        if comp_idx > 0:
+            print()  # Blank line between components
+
+        # Sort component members by depth
+        comp_by_depth = defaultdict(list)
+        for name in component:
+            d = depth.get(name, 0)
+            comp_by_depth[d].append(name)
+
+        comp_depths = sorted(comp_by_depth.keys())
+        if not comp_depths:
+            continue
+
+        # Render this component
+        _render_component(comp_by_depth, comp_depths, depth, dep_graph,
+                          reverse_graph, external_deps, all_decl_index,
+                          target_names, root, column_labels, printed_names)
+        printed_names.update(component)
+
+    # Print column legend
+    print()
+    used_depths = sorted(set(depth.get(d.name, 0) for d in target_decls))
+    legend_parts = []
+    for d in used_depths:
+        label = column_labels.get(d, f"L{d}")
+        count = len(by_depth[d])
+        legend_parts.append(f"{label}: {count}")
+    print(f"Flow: {' -> '.join(legend_parts)}")
+
+
+def _find_components(decls, dep_graph, reverse_graph):
+    """Find connected components in the dependency graph."""
+    all_names = set(d.name for d in decls)
+    visited = set()
+    components = []
+
+    def bfs(start):
+        comp = set()
+        queue = [start]
+        while queue:
+            node = queue.pop(0)
+            if node in comp or node not in all_names:
+                continue
+            comp.add(node)
+            # Neighbors in both directions
+            for neighbor in dep_graph.get(node, set()):
+                if neighbor in all_names and neighbor not in comp:
+                    queue.append(neighbor)
+            for neighbor in reverse_graph.get(node, set()):
+                if neighbor in all_names and neighbor not in comp:
+                    queue.append(neighbor)
+        return comp
+
+    for decl in decls:
+        if decl.name not in visited:
+            comp = bfs(decl.name)
+            visited.update(comp)
+            components.append(comp)
+
+    return components
+
+
+def _render_component(comp_by_depth, comp_depths, depth, dep_graph,
+                      reverse_graph, external_deps, all_decl_index,
+                      target_names, root, column_labels, already_printed):
+    """Render a single connected component of the flow diagram."""
+
+    # Collect all items in this component by depth column
+    columns = {}
+    for d in comp_depths:
+        columns[d] = comp_by_depth[d]
+
+    # For single-depth components (isolated nodes), just list them
+    if len(comp_depths) == 1 and len(columns[comp_depths[0]]) == 1:
+        d = comp_depths[0]
+        name = columns[d][0]
+        decl = all_decl_index.get(name)
+        if not decl:
+            return
+        kind_tag = f"[{decl.kind}]" if decl else ""
+        desc = f'  "{decl.description}"' if decl and decl.description else ""
+        ext = external_deps.get(name, set())
+        ext_str = ""
+        if ext:
+            ext_parts = [f"{en} (from {ef})" for en, ef in sorted(ext)]
+            ext_str = f"  <- {', '.join(ext_parts)}"
+        print(f"{name} {kind_tag}{desc}{ext_str}")
+        return
+
+    # Multi-depth component: render with arrows
+    # First, compute the max name width for each column for alignment
+    col_widths = {}
+    for d in comp_depths:
+        names = columns.get(d, [])
+        max_w = max((len(n) for n in names), default=0)
+        col_widths[d] = max(max_w, len(column_labels.get(d, "")))
+
+    # Print column headers for this component
+    if comp_depths[0] not in already_printed or True:
+        header_parts = []
+        for d in comp_depths:
+            label = column_labels.get(d, f"L{d}")
+            header_parts.append(label.ljust(col_widths[d] + 4))
+        print("  ".join(header_parts))
+        print("  ".join(["\u2500" * len(p) for p in header_parts]))
+
+    # Build the rendering rows
+    # For each item at depth 0 (leftmost), trace its connections rightward
+    # For fan-in/fan-out, use branching lines
+
+    # Collect all edges within this component
+    edges = []  # (src_name, dst_name, src_depth, dst_depth)
+    for d in comp_depths:
+        for name in columns.get(d, []):
+            for used_by in dep_graph.get(name, set()):
+                if used_by in set().union(*[set(columns.get(dd, [])) for dd in comp_depths]):
+                    edges.append((name, used_by, d, depth.get(used_by, 0)))
+
+    # Render left-to-right
+    # Strategy: for each depth column, list items with their connections
+    rendered = set()
+
+    for d in comp_depths:
+        items = sorted(columns.get(d, []))
+        for name in items:
+            if name in rendered:
+                continue
+
+            decl = all_decl_index.get(name)
+            kind_str = f"[{decl.kind}]" if decl else ""
+
+            # Who does this item feed into?
+            feeds_into = sorted(dep_graph.get(name, set()) &
+                                set().union(*[set(columns.get(dd, [])) for dd in comp_depths]))
+            # Who feeds into this item?
+            fed_by = sorted(reverse_graph.get(name, set()) &
+                            set().union(*[set(columns.get(dd, [])) for dd in comp_depths]))
+
+            # External deps
+            ext = external_deps.get(name, set())
+
+            # Build the line
+            indent = "  " * d
+            arrow_out = ""
+            if feeds_into:
+                targets = ", ".join(feeds_into)
+                arrow_out = f" \u2500\u2500\u2500\u25b6 {targets}"
+
+            ext_str = ""
+            if ext:
+                ext_parts = [f"{en} (from {ef})" for en, ef in sorted(ext)]
+                ext_str = f"\n{indent}  {'  ' * d}    <- {', '.join(ext_parts)}"
+
+            desc_str = ""
+            if decl and decl.description:
+                desc_str = f'\n{indent}  {"  " * d}    "{decl.description}"'
+
+            print(f"{indent}{name} {kind_str}{arrow_out}{desc_str}{ext_str}")
+            rendered.add(name)
 
 
 # ---------------------------------------------------------------------------
@@ -418,12 +872,17 @@ def main():
         print("  --axioms-only     Show only axiom declarations")
         print("  --theorems-only   Show only theorem declarations")
         print("  --defs-only       Show only def declarations")
+        print("  --brief           One-line descriptions with metadata (default)")
+        print("  --verbose         Full multi-line docstrings")
+        print("  --flow            Sankey-style left-to-right dependency flow")
         print("  -h, --help        Show this help message")
         sys.exit(0)
 
     connections_only = False
     filter_kind = None
     target_path = None
+    verbose = False
+    flow_mode = False
 
     for arg in args:
         if arg == "--connections":
@@ -434,6 +893,12 @@ def main():
             filter_kind = {"theorem"}
         elif arg == "--defs-only":
             filter_kind = {"def"}
+        elif arg == "--verbose":
+            verbose = True
+        elif arg == "--brief":
+            verbose = False
+        elif arg == "--flow":
+            flow_mode = True
         else:
             target_path = arg
 
@@ -483,14 +948,21 @@ def main():
         sys.exit(1)
 
     rel_target = make_relative(target_path, root)
-    print(f"Theorem Tree: {rel_target}")
-    print("=" * 60)
-    print()
 
-    print_tree(target_parsed, root, filter_kind=filter_kind, connections_only=connections_only)
+    if flow_mode:
+        print(f"Dependency Flow: {rel_target}")
+        print("=" * 60)
+        print()
+        print_flow(target_parsed, all_parsed, root)
+    else:
+        print(f"Theorem Tree: {rel_target}")
+        print("=" * 60)
+        print()
+        print_tree(target_parsed, root, filter_kind=filter_kind,
+                   connections_only=connections_only, verbose=verbose)
 
     # Summary
-    if not connections_only:
+    if not connections_only and not flow_mode:
         print()
         total = sum(len(lf.declarations) for lf in target_parsed)
         by_kind = defaultdict(int)
