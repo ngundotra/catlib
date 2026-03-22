@@ -340,12 +340,16 @@ def print_theorem_report(results, theorem_name):
 
 
 def print_true_islands(results, source_axioms):
-    """Print axioms that no theorem depends on (kernel-verified)."""
+    """Print axioms that no theorem depends on (kernel-verified).
+
+    Only includes `axiom` declarations, not `opaque` type/relation definitions.
+    """
     all_used = set()
     for deps in results.values():
         all_used.update(filter_catlib_axioms(deps))
 
-    source_axiom_names = {fqn for fqn, _, _, _ in source_axioms}
+    # Only consider `axiom` declarations, not `opaque` (types/relations are definitions)
+    source_axiom_names = {fqn for fqn, _, _, kind in source_axioms if kind == "axiom"}
     islands = sorted(source_axiom_names - all_used)
 
     print("=" * 70)

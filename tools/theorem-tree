@@ -988,11 +988,14 @@ def print_top_theorems(all_parsed, root, m):
 
 
 def print_islands(all_parsed, root):
-    """Show axioms that no theorem references (directly or transitively)."""
+    """Show axioms that no theorem references (directly or transitively).
+
+    Only includes `axiom` declarations, not `opaque` type/relation definitions.
+    """
     decl_index = _build_decl_index(all_parsed)
 
     axiom_names = [name for name, decl in decl_index.items()
-                   if decl.kind in ("axiom", "opaque")]
+                   if decl.kind == "axiom"]
 
     islands = []
     for aname in axiom_names:
