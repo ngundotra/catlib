@@ -1,4 +1,5 @@
 import Catlib.Foundations
+import Catlib.Creed.Soul
 
 /-!
 # God's Two Modes: Sustaining Being vs. Beatifying Communion
@@ -106,7 +107,7 @@ structure SoulState where
   /-- Is God sustaining this soul in existence? -/
   sustained : Prop
   /-- Is this soul in communion with God (beatifying mode)? -/
-  inCommunion : Prop
+  inBeatifyingCommunion : Prop
   /-- Degree of purification (0 = unpurified, full = ready for vision) -/
   purified : Prop
 
@@ -125,7 +126,7 @@ axiom god_sustains_all :
     1 Jn 3:2 ("we shall see him as he is").
     Only the fully purified can see God "face to face." -/
 axiom beatific_vision_requires_purity :
-  ∀ (s : SoulState), s.inCommunion → s.purified
+  ∀ (s : SoulState), s.inBeatifyingCommunion → s.purified
 
 /-- AXIOM (§1033): Hell is the absence of beatifying mode.
     Provenance: [Definition] CCC §1033.
@@ -134,7 +135,7 @@ axiom beatific_vision_requires_purity :
     separation from BEATIFYING mode, not from SUSTAINING mode. -/
 axiom hell_is_absence_of_communion :
   ∀ (s : SoulState),
-    ¬s.inCommunion → s.sustained → -- Still exists, but no communion
+    ¬s.inBeatifyingCommunion → s.sustained → -- Still exists, but no communion
     True  -- This state IS hell
 
 /-- AXIOM: Existence without communion is possible but terrible.
@@ -146,7 +147,7 @@ axiom hell_is_absence_of_communion :
     sustains them. Why? (See below.) -/
 axiom existence_without_communion_is_suffering :
   ∀ (s : SoulState),
-    s.sustained → ¬s.inCommunion →
+    s.sustained → ¬s.inBeatifyingCommunion →
     -- This state involves suffering (the suffering of privation)
     True
 
@@ -159,7 +160,7 @@ They are the three possible combinations of the two modes:
 
 /-- Heaven: sustained AND in full communion (beatified). -/
 def heavenState : SoulState :=
-  { sustained := True, inCommunion := True, purified := True }
+  { sustained := True, inBeatifyingCommunion := True, purified := True }
 
 /-- Purgatory: sustained AND in communion (assured), but not yet
     fully purified. The soul is on its way to heaven.
@@ -167,12 +168,21 @@ def heavenState : SoulState :=
     died in grace. They are not yet FULLY in communion (beatific
     vision) because they need purification first. -/
 def purgatoryState : SoulState :=
-  { sustained := True, inCommunion := True, purified := False }
+  { sustained := True, inBeatifyingCommunion := True, purified := False }
 
 /-- Hell: sustained but NOT in communion. Exists without any good.
     The soul is permanently separated from God's friendship. -/
 def hellState : SoulState :=
-  { sustained := True, inCommunion := False, purified := False }
+  { sustained := True, inBeatifyingCommunion := False, purified := False }
+
+/-- Bridge: the SoulState's inBeatifyingCommunion field corresponds to the
+    global inCommunion relation (Axioms.lean) applied to this soul and God.
+    The beatifying mode being active for a person IS what it means to be
+    in communion with God. This is an axiom — the theological claim that
+    communion with God = God's beatifying mode being active. -/
+axiom soulstate_communion_bridge :
+  ∀ (p : Person) (s : SoulState),
+    s.inBeatifyingCommunion ↔ inCommunion (.person p) .god
 
 /-- Key theorem: all three states are sustained — nothing stops existing.
     God sustains the damned, the purifying, and the blessed alike. -/
@@ -187,7 +197,7 @@ theorem hell_paradox_resolved :
     -- The damned exist (sustained)
     hellState.sustained ∧
     -- The damned are separated from communion
-    ¬hellState.inCommunion := by
+    ¬hellState.inBeatifyingCommunion := by
   constructor
   · exact trivial
   · intro h; exact absurd h (by simp [hellState])
@@ -195,14 +205,14 @@ theorem hell_paradox_resolved :
 /-- Heaven requires full purification — you can't be in communion
     without being purified. -/
 theorem heaven_requires_purity :
-    heavenState.inCommunion → heavenState.purified :=
+    heavenState.inBeatifyingCommunion → heavenState.purified :=
   fun _ => trivial
 
 /-- Purgatory is the state of being in communion (chose God) but
     not yet purified. This is why it's temporary — once purified,
     the soul transitions to full beatific vision. -/
 theorem purgatory_is_transitional :
-    purgatoryState.inCommunion ∧ ¬purgatoryState.purified := by
+    purgatoryState.inBeatifyingCommunion ∧ ¬purgatoryState.purified := by
   constructor
   · exact trivial
   · intro h; exact absurd h (by simp [purgatoryState])
@@ -231,7 +241,7 @@ axiom existence_is_intrinsically_good :
     free will). Love does not coerce — not even by annihilation. -/
 axiom respect_for_freedom_sustains :
   ∀ (s : SoulState),
-    s.sustained → ¬s.inCommunion →
+    s.sustained → ¬s.inBeatifyingCommunion →
     -- God sustains because annihilation would violate their choice
     True
 
@@ -241,7 +251,7 @@ axiom respect_for_freedom_sustains :
     Source: Aquinas ST Supp. q.99. -/
 axiom justice_requires_consequences :
   ∀ (s : SoulState),
-    s.sustained → ¬s.inCommunion →
+    s.sustained → ¬s.inBeatifyingCommunion →
     -- Justice is served by the soul experiencing separation
     True
 
@@ -309,5 +319,144 @@ moving along the communion axis.
    in the entire project — it unifies hell, purgatory, heaven,
    providence, and the privation theory of evil into one framework.
 -/
+
+/-!
+## Connecting DivineModes to the Human Person (Soul.lean)
+
+The SoulState infrastructure above models afterlife states as Prop-flag
+structures. But afterlife states happen to PERSONS. The definitions below
+bridge Soul.lean's `HumanPerson` model to DivineModes' `SoulState`, so
+that we can say what it means for a specific person to be in heaven,
+purgatory, hell, or risen glory.
+-/
+
+/-- Whether a human person is in beatifying communion with God.
+    This is the person-level analogue of SoulState.inBeatifyingCommunion.
+    Opaque: the Catechism asserts it as a state, not something we construct. -/
+opaque inBeatifyingCommunionPerson : HumanPerson → Prop
+
+/-- Whether a human person has been fully purified.
+    Opaque: purification is a divine action, not something we construct. -/
+opaque isPurified : HumanPerson → Prop
+
+/-- AXIOM: The beatific vision requires full purification for persons.
+    Person-level analogue of beatific_vision_requires_purity.
+    Provenance: [Scripture] Rev 21:27; [Definition] CCC §1023-1024. -/
+axiom beatific_vision_requires_purity_person :
+  ∀ (p : HumanPerson), inBeatifyingCommunionPerson p → isPurified p
+
+/-- A person in the afterlife — isDead, so spiritual but not corporeal.
+    Their divine mode (communion or not, purified or not) determines
+    their state. This connects Soul.lean's person model to DivineModes'
+    afterlife infrastructure. -/
+structure PersonAfterlife where
+  /-- The person in question -/
+  person : HumanPerson
+  /-- Proof that the person is dead (soul separated from body) -/
+  dead : isDead person
+
+/-!
+### Person-based afterlife predicates
+
+These define heaven, purgatory, hell, and risen glory in terms of
+a HumanPerson — not as standalone Prop-flag bundles.
+-/
+
+/-- A person in heaven: dead (incomplete — no body) but in full
+    beatifying communion, fully purified. Awaits resurrection to
+    become complete.
+    CCC §1023: "those who die in God's grace… are perfectly purified…
+    live for ever with Christ." -/
+def personInHeaven (p : HumanPerson) : Prop :=
+  isDead p ∧ inBeatifyingCommunionPerson p ∧ isPurified p
+
+/-- A person in purgatory: dead (incomplete), communion assured,
+    but not yet fully purified. Being prepared for the beatific vision.
+    CCC §1030: "those who die in God's grace… but still imperfectly
+    purified… undergo purification." -/
+def personInPurgatory (p : HumanPerson) : Prop :=
+  isDead p ∧ ¬isPurified p
+
+/-- A person in hell: dead (incomplete), NOT in beatifying communion.
+    Sustained by God (they exist) but permanently separated from
+    God's friendship.
+    CCC §1033: "To die in mortal sin without repenting… means remaining
+    separated from him for ever by our own free choice." -/
+def personInHell (p : HumanPerson) : Prop :=
+  isDead p ∧ ¬inBeatifyingCommunionPerson p
+
+/-- A risen saint: the TRUE endpoint. Body and soul reunited AND in
+    full beatifying communion. The complete person in full glory.
+    CCC §997: "God will definitively grant incorruptible life to our
+    bodies by reuniting them with our souls." -/
+def personRisen (p : HumanPerson) : Prop :=
+  isRisen p ∧ inBeatifyingCommunionPerson p ∧ isPurified p
+
+/-!
+### Bridge theorems: connecting Soul.lean and DivineModes.lean
+-/
+
+/-- A dead person still has a spiritual aspect — the soul persists.
+    This bridges Soul.lean's `soul_is_immortal` to the afterlife context:
+    whether in heaven, purgatory, or hell, the person's spiritual
+    aspect endures. -/
+theorem dead_person_sustained (p : HumanPerson) (_h : isDead p) :
+    hasSpiritualAspect p :=
+  soul_is_immortal p
+
+/-- A dead person is INCOMPLETE — no corporeal aspect.
+    Connects Soul.lean's death model to DivineModes' afterlife states.
+    Everyone in the afterlife (heaven, purgatory, hell) is incomplete. -/
+theorem afterlife_is_incomplete (p : HumanPerson) (h : isDead p) :
+    ¬hasCorporealAspect p :=
+  (death_separates p h).1
+
+/-- A risen person is COMPLETE — both corporeal and spiritual aspects
+    restored. The resurrection repairs what death broke. -/
+theorem risen_is_complete (p : HumanPerson) (h : isRisen p) :
+    hasCorporealAspect p ∧ hasSpiritualAspect p :=
+  resurrection_reunites p h
+
+/-- A person in heaven is INCOMPLETE — dead means no body.
+    Even in full beatifying communion, the person awaits resurrection
+    to be made whole. This is why the Creed says "I look for the
+    resurrection of the dead" — heaven is not the final state. -/
+theorem heaven_is_incomplete (p : HumanPerson)
+    (h : personInHeaven p) :
+    ¬hasCorporealAspect p :=
+  (death_separates p h.1).1
+
+/-- A person in purgatory is INCOMPLETE — same reason. -/
+theorem purgatory_is_incomplete (p : HumanPerson)
+    (h : personInPurgatory p) :
+    ¬hasCorporealAspect p :=
+  (death_separates p h.1).1
+
+/-- A person in hell is INCOMPLETE — same reason. -/
+theorem hell_is_incomplete (p : HumanPerson)
+    (h : personInHell p) :
+    ¬hasCorporealAspect p :=
+  (death_separates p h.1).1
+
+/-- The key insight: ONLY the risen person is complete.
+    Everyone in the afterlife — heaven, purgatory, hell — lacks
+    their corporeal aspect. Only resurrection restores completeness.
+    Resurrection is not a bonus; it is restoration. -/
+theorem only_risen_is_complete (p : HumanPerson) :
+    (personInHeaven p → ¬hasCorporealAspect p) ∧
+    (personRisen p → hasCorporealAspect p ∧ hasSpiritualAspect p) :=
+  ⟨fun h => heaven_is_incomplete p h,
+   fun h => resurrection_reunites p h.1⟩
+
+/-- A risen saint has BOTH completeness AND communion — the true
+    endpoint of salvation history. No one in the intermediate afterlife
+    states has both. -/
+theorem risen_saint_is_true_endpoint (p : HumanPerson)
+    (h : personRisen p) :
+    hasCorporealAspect p ∧ hasSpiritualAspect p ∧
+    inBeatifyingCommunionPerson p ∧ isPurified p :=
+  let ⟨h_risen, h_comm, h_pur⟩ := h
+  let ⟨h_corp, h_spir⟩ := resurrection_reunites p h_risen
+  ⟨h_corp, h_spir, h_comm, h_pur⟩
 
 end Catlib.Creed

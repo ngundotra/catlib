@@ -288,4 +288,46 @@ Theorems (7 — all derived, none trivially true):
 7. rejects_cartesian_dualism, rejects_materialism, rejects_annihilationism
 -/
 
+/-!
+## Bridge: connecting HumanPerson to HumanNature and Person
+
+Three types model the human person from different angles:
+
+- `Person` (Basic.lean): the **capacities** — can this being think, choose,
+  act morally? (Bool flags: hasIntellect, hasFreeWill, isMoralAgent)
+- `HumanNature` (HumanNature.lean): the **state** — how healthy are
+  those capacities? (graded: intellectState, willState, wounds)
+- `HumanPerson` (this file): the **person** — the indivisible body-soul
+  composite (opaque: hasCorporealAspect, hasSpiritualAspect)
+
+The `PersonWithNature` structure ties these together: the HumanPerson
+IS the person; the HumanNature describes the condition of their
+spiritual powers (intellect and will); and the Person inside
+HumanNature records which capacities they have.
+-/
+
+/-- Bridge connecting the indivisible HumanPerson (body-soul composite)
+    to the HumanNature that describes the state of their spiritual powers.
+
+    The HumanPerson is the WHO — one indivisible nature (§365).
+    The HumanNature is the HOW — the condition of their intellect,
+    will, and body (§405, §1705).
+
+    The Person field inside HumanNature records WHAT capacities
+    the person has (intellect, will, moral agency). -/
+structure PersonWithNature where
+  /-- The indivisible body-soul composite (§365) -/
+  humanPerson : HumanPerson
+  /-- The state of their spiritual powers and bodily condition -/
+  nature : HumanNature
+
+/-- A HumanPerson always has a spiritual aspect (soul_is_immortal),
+    and HumanNature tracks the state of that spiritual aspect's
+    powers (intellect and will). This theorem witnesses that the
+    spiritual aspect exists for any PersonWithNature — the powers
+    that HumanNature tracks are always present. -/
+theorem spiritual_powers_exist (pwn : PersonWithNature) :
+    hasSpiritualAspect pwn.humanPerson :=
+  soul_is_immortal pwn.humanPerson
+
 end Catlib.Creed

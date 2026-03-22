@@ -137,7 +137,7 @@ structure SpiritualState where
 
     CONNECTION TO BASE AXIOM: This connects to
     `Catlib.s5_sin_separates` (S5: ∀ p s, isGraveSin s → s.action.agent = p →
-    ¬ inCommunion p). S5 uses the opaque predicates `isGraveSin`/`inCommunion`
+    ¬ inCommunion (.person p) .god). S5 uses the binary communion relation
     from Axioms.lean; this axiom uses the richer `Sin.isMortal`/`GraceState`
     model. Both express the same causal chain: grave sin → loss of communion
     with God. The local axiom is more specific: it models the transition
@@ -151,11 +151,11 @@ axiom mortal_sin_causes_loss_of_grace :
       newState.graceState = GraceState.notInGrace
 
 /-- Bridge to S5: grave sin breaks communion with God.
-    The base axiom uses opaque `isGraveSin`/`inCommunion` types. -/
+    Uses the binary communion relation from Axioms.lean. -/
 theorem sin_separates_from_s5
     (p : Person) (s : Sin)
     (h_grave : isGraveSin s) (h_agent : s.action.agent = p) :
-    ¬ inCommunion p :=
+    ¬ inCommunion (.person p) .god :=
   s5_sin_separates p s h_grave h_agent
 
 /-- Consequence: a person who commits mortal sin while in grace

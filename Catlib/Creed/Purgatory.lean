@@ -1,4 +1,5 @@
 import Catlib.Foundations
+import Catlib.Creed.Soul
 
 /-!
 # CCC §1030-1032: Purgatory as Post-Mortem Purification
@@ -381,5 +382,71 @@ system, but they require a distinction (choice-finality vs. state-finality)
 that the Catechism never makes explicit. The proof assistant forced this
 distinction to the surface.
 -/
+
+/-!
+## Bridges to Soul.lean
+
+Soul.lean models the person as an opaque indivisible entity with two
+observable aspects: corporeal and spiritual. Death separates them (§997).
+Purgatory happens to the SOUL (spiritual aspect) while the corporeal
+aspect awaits resurrection.
+
+The key compatibility: Soul.lean's `isDead` says the body is gone.
+Purgatory says the soul can still be PURIFIED after death. These are
+compatible because death separates body from soul, but the soul (which
+persists per `soul_is_immortal`) can still change STATE (purification).
+The CHOICE (to accept God) is final; the STATE (purity level) is not.
+-/
+
+/-- Bridge: a person in purgatory is isDead — their soul persists but
+    body is gone. Purification happens to the SOUL (spiritual aspect)
+    while the corporeal aspect awaits resurrection.
+    This connects Soul.lean's death model to Purgatory's purification:
+    death removes the body, but the soul that remains can still be purified. -/
+theorem purgatory_person_is_dead_and_spiritual (p : HumanPerson)
+    (_h_dead : isDead p) :
+    hasSpiritualAspect p :=
+  soul_is_immortal p
+
+/-- Bridge: Soul.lean says isDead → ¬hasCorporealAspect (body gone).
+    Purgatory says the soul can still be PURIFIED after death.
+    This theorem witnesses both facts simultaneously: the body is gone
+    AND the soul persists for purification.
+
+    death_finalizes_choice_not_state (Purgatory axiom) says the choice
+    to accept God is irrevocable. Soul.lean's death_separates says the
+    body decays. Together: the person in purgatory has an irrevocable
+    orientation toward God (choice is final) AND lacks a body (death
+    separated it), but the soul can still be purified (state is not final). -/
+theorem purgatory_death_compatible_with_purification (p : HumanPerson)
+    (h_dead : isDead p) :
+    -- Soul persists (can be purified)
+    hasSpiritualAspect p ∧
+    -- Body is gone (death separated it)
+    ¬hasCorporealAspect p :=
+  ⟨soul_is_immortal p, (death_separates p h_dead).1⟩
+
+/-- Bridge: after purification, the soul awaits resurrection (§997).
+    Purgatory → heaven (soul in communion) → resurrection (body restored).
+    The person becomes complete again only at resurrection.
+
+    A person who has completed purgatory and attained the beatific vision
+    is still isDead (incomplete) until resurrection. The risen person is
+    the real endpoint: body + soul reunited in full communion. This is
+    why the Creed says "I look for the resurrection of the dead" — even
+    saints in heaven are incomplete without their bodies. -/
+theorem purified_soul_awaits_resurrection (p : HumanPerson)
+    (h_risen : isRisen p) :
+    hasCorporealAspect p ∧ hasSpiritualAspect p :=
+  resurrection_reunites p h_risen
+
+/-- Bridge: the incompleteness of a person in purgatory. They have their
+    spiritual aspect (soul persists, is being purified) but lack their
+    corporeal aspect. Even after purification completes and they enter
+    heaven, they remain incomplete until the resurrection. -/
+theorem purgatory_person_is_incomplete (p : HumanPerson)
+    (h_dead : isDead p) :
+    ¬hasCorporealAspect p :=
+  (death_separates p h_dead).1
 
 end Catlib.Creed

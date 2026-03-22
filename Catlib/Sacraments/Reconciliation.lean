@@ -13,7 +13,7 @@ The most cross-cutting formalization in catlib. This file connects:
 - **Axioms.lean**: S8 (grace necessary & transformative), T2 (grace preserves
   freedom), T3 (sacramental efficacy), S5 (sin separates)
 - **Authority.lean**: absolution_authority, absolutionDomain, christ_delegates_absolution,
-  apostolic_succession_general, episcopal_delegation
+  apostolic_succession_general
 - **Love.lean**: LoveKind.agape, mortal_sin_can_destroy_charity, agape_requires_freedom
 - **Sin.lean**: Sin.isMortal, GraceState, mortal_sin_causes_loss_of_grace
 - **Grace.lean**: GraceType.prevenient, prevenient_grace_unconditioned,
@@ -286,21 +286,24 @@ opaque eternalPunishmentRemitted : Person → Prop
 ### Axiom group 1: The conditions for valid reconciliation
 -/
 
-/-- AXIOM (§1451): Contrition requires genuine sorrow and firm purpose.
+/-- AXIOM (§1451): Genuine contrition is a free act of the will.
     Provenance: [Definition] CCC §1451.
     Denominational scope: ECUMENICAL — all Christians agree repentance
-    must be sincere. -/
+    must be sincere.
+
+    CONNECTION TO BASE AXIOMS: This connects to S7 (teleological freedom:
+    freedom is ordered toward the good) and T1 (libertarian free will:
+    persons genuinely could choose otherwise). Contrition is a voluntary
+    act of choosing the good (repentance). Genuine sorrow and firm purpose
+    are exercises of free will directed toward the good.
+
+    This remains an axiom rather than a theorem because S7 and T1 don't
+    have the right types to formally derive it — S7 compares freedom
+    degrees, T1 asserts couldChooseOtherwise. The conceptual connection
+    is clear but the formal derivation would require bridging types. -/
 axiom contrition_requires_sincerity :
   ∀ (c : Contrition), c.genuineSorrow ∧ c.firmPurpose → c.isFree
 
-/-- AXIOM (§1456): Valid confession requires completeness for mortal sins.
-    Provenance: [Definition] CCC §1456.
-    Denominational scope: CATHOLIC + ORTHODOX. -/
-axiom confession_requires_completeness :
-  ∀ (conf : Confession) (sa : Sin),
-    sa.isMortal →
-    conf.isComplete →
-    True -- The completeness condition is met
 
 /-- AXIOM (§1461, Jn 20:23): Valid absolution requires the delegation chain.
     Provenance: [Scripture] Jn 20:23; [Tradition] CCC §1461.
@@ -426,24 +429,30 @@ through faith, and this is not your own doing"). The specific mechanism
 Catholic, but the principle (God starts the process) is shared.
 -/
 
-/-- AXIOM (§1489): Contrition requires prevenient grace.
+/-- THEOREM (§1489): Contrition requires prevenient grace.
     A person in mortal sin cannot generate contrition from their own
     resources — they need God's prior initiative.
     Provenance: [Definition] CCC §1489; [Tradition] Council of Orange.
 
-    Cross-ref: prevenient_grace_unconditioned (Grace.lean) — the same
-    axiom that resolves the §2001 bootstrapping problem.
+    This is NOT a standalone axiom — it follows from
+    prevenient_grace_unconditioned (Grace.lean), the same axiom that
+    resolves the §2001 bootstrapping problem. Contrition is a free act,
+    so the penitent has free will, so prevenient grace is available.
 
-    Cross-ref: GraceType.prevenient (Grace.lean) — the type of grace
-    that precedes any human response. -/
-axiom contrition_requires_prevenient_grace :
-  ∀ (c : Contrition),
-    c.genuineSorrow →
-    c.firmPurpose →
+    Cross-ref: prevenient_grace_unconditioned (Grace.lean)
+    Cross-ref: GraceType.prevenient (Basic.lean) -/
+theorem contrition_requires_prevenient_grace
+    (c : Contrition)
+    (h_sorrow : c.genuineSorrow)
+    (h_purpose : c.firmPurpose)
+    (h_free : c.penitent.hasFreeWill = true) :
     ∃ (g : Grace),
       g.graceType = GraceType.prevenient ∧
       g.recipient = c.penitent ∧
-      g.isFree
+      g.isFree :=
+  -- Contrition is a free act → the penitent has free will →
+  -- prevenient_grace_unconditioned guarantees prevenient grace exists
+  prevenient_grace_unconditioned c.penitent h_free
 
 -- ============================================================================
 -- § 4. Key Theorems
@@ -508,19 +517,19 @@ Denominational scope: CATHOLIC + ORTHODOX.
     relation. When agape is above zero, the person is in communion.
 
     The connection to DivineModes.lean:
-    - hellState: sustained = True, inCommunion = False (no agape toward God)
-    - heavenState: sustained = True, inCommunion = True (full agape)
+    - hellState: sustained = True, inBeatifyingCommunion = False (no agape toward God)
+    - heavenState: sustained = True, inBeatifyingCommunion = True (full agape)
     - Reconciliation moves the soul from hellState-like (no communion)
       to a state where communion is restored.
 
     This theorem connects Love.lean (agape > 0) to DivineModes.lean
-    (inCommunion = True). -/
+    (inBeatifyingCommunion = True). -/
 axiom charity_implies_communion :
   ∀ (p : Person) (tl : TypedLove),
     tl.kind = LoveKind.agape →
     tl.lover = p →
     tl.degree > 0 →
-    ∃ (s : SoulState), s.sustained ∧ s.inCommunion
+    ∃ (s : SoulState), s.sustained ∧ s.inBeatifyingCommunion
 
 theorem reconciliation_restores_communion
     (r : ReconciliationAct) (tl : TypedLove)
@@ -531,7 +540,7 @@ theorem reconciliation_restores_communion
     (h_agape : tl.kind = LoveKind.agape)
     (h_lover : tl.lover = r.contrition.penitent)
     (h_destroyed : tl.degree = 0) :
-    ∃ (s : SoulState), s.sustained ∧ s.inCommunion := by
+    ∃ (s : SoulState), s.sustained ∧ s.inBeatifyingCommunion := by
   -- Step 1: reconciliation restores agape to degree > 0
   obtain ⟨tl', h_kind', h_lover', _, h_deg'⟩ :=
     reconciliation_restores_charity r tl h_sorrow h_purpose h_auth
@@ -753,10 +762,10 @@ These make the documented Axioms.lean connections executable in Lean.
 -/
 
 /-- Bridge to S5: sin separates from communion with God.
-    The base axiom uses opaque `isGraveSin`/`inCommunion` from Axioms.lean. -/
+    Uses the binary communion relation from Axioms.lean. -/
 theorem sin_separates_bridge (p : Person) (s : Sin)
     (h_grave : isGraveSin s) (h_agent : s.action.agent = p) :
-    ¬ inCommunion p :=
+    ¬ inCommunion (.person p) .god :=
   s5_sin_separates p s h_grave h_agent
 
 /-- Bridge to S8: grace is transformative, not merely forensic.

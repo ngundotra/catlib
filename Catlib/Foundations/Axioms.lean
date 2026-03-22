@@ -104,8 +104,28 @@ opaque divinelyGoverned : Prop → Prop
 /-- Whether a sin is grave (mortal). -/
 opaque isGraveSin : Sin → Prop
 
-/-- Whether a person is in communion with God. -/
-opaque inCommunion : Person → Prop
+/-- Whether two parties are in communion with each other.
+    Communion is a mutual participatory relationship (Latin: communio,
+    "sharing in common"). It is binary — it relates two parties.
+    CCC §1024, §946, §1033. -/
+opaque inCommunion : CommunionParty → CommunionParty → Prop
+
+/-- Communion is symmetric: if A is in communion with B, B is in communion with A.
+    Communion is mutual by definition — it is shared participation. -/
+axiom communion_symmetric :
+  ∀ (a b : CommunionParty), inCommunion a b → inCommunion b a
+
+/-- Persons are not in communion with themselves — communion requires an other. -/
+axiom communion_not_self_reflexive :
+  ∀ (p : Person), p.isMoralAgent = true → ¬ inCommunion (.person p) (.person p)
+
+/-- God is in communion with Godself (the Trinity is eternal mutual communion).
+    CCC §255: The divine persons are subsistent relations. -/
+axiom god_self_communion : inCommunion .god .god
+
+/-- The Church is in communion with itself (the communion of saints).
+    CCC §946: "The communion of saints." -/
+axiom church_self_communion : inCommunion .church .church
 
 /-- Grace given to a person. -/
 opaque graceGiven : Person → Grace → Prop
@@ -275,7 +295,8 @@ def s4_provenance : Provenance := Provenance.scripture "Mt 10:29; Is 46:10"
     axiom 31 (grave_sin_prevents_love). CCC §1855: "Mortal sin destroys
     charity in the heart of man." -/
 axiom s5_sin_separates :
-  ∀ (p : Person) (s : Sin), isGraveSin s → s.action.agent = p → ¬ inCommunion p
+  ∀ (p : Person) (s : Sin), isGraveSin s → s.action.agent = p →
+    ¬ inCommunion (.person p) .god
 
 /-- Provenance tag for S5. -/
 def s5_provenance : Provenance := Provenance.scripture "1 Jn 3:14-15; Rom 6:23"

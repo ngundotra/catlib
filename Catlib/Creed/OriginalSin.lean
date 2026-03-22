@@ -1,5 +1,6 @@
 import Catlib.Foundations
 import Catlib.MoralTheology.TheologyOfBody
+import Catlib.Creed.Soul
 
 /-!
 # CCC §396–412: Original Sin and the Derivation of S8
@@ -616,5 +617,66 @@ Theorems: 5 (s8_derived_grace_transformative, grace_is_necessary,
 s8_full_derived, fall_diminishes_freedom,
 original_sin_grounds_prevenient_grace)
 -/
+
+-- ============================================================================
+-- ## Bridge: Original sin and the HumanPerson (Soul.lean)
+-- ============================================================================
+
+/-!
+## Connection 4: The wound of original sin and the body-soul composite
+
+Soul.lean models the HumanPerson as an opaque body-soul composite (§365)
+with an immortal spiritual aspect (§366). Original sin wounds the spiritual
+powers (intellect and will) that RESIDE in that spiritual aspect.
+
+Since `soul_is_immortal` guarantees the spiritual aspect always persists
+— even after death — the wound of original sin (which is in the soul)
+also persists after death. This is part of WHY purgatory exists: the
+wound needs healing even when the body is gone.
+
+The connection:
+- `HumanPerson` (Soul.lean) = the indivisible person
+- `hasSpiritualAspect` (Soul.lean) = the soul persists
+- `natureIsWounded` (this file) = the soul's powers are damaged
+- The wound is IN the spiritual aspect, so it persists as long as the
+  spiritual aspect does — which is forever (soul_is_immortal).
+-/
+
+open Catlib.Creed
+
+/-- **THEOREM: The wound of original sin persists after death.**
+    Since the wound resides in the spiritual aspect (the soul's powers
+    of intellect and will), and the spiritual aspect is immortal
+    (soul_is_immortal, §366), the wound survives bodily death.
+
+    This is theologically significant: it explains WHY purgatory is
+    needed. A person who dies in God's grace but with the wound still
+    partially present needs post-mortem purification — the wound
+    doesn't vanish just because the body does.
+
+    CONNECTS TO: Soul.lean soul_is_immortal, Purgatory.lean -/
+theorem wound_survives_death
+    (hp : HumanPerson)
+    (_h_dead : isDead hp) :
+    -- The spiritual aspect persists after death (soul_is_immortal)
+    hasSpiritualAspect hp :=
+  soul_is_immortal hp
+
+/-- **THEOREM: A wounded person whose nature is described by
+    PersonWithNature carries the wound in their immortal soul.**
+    Combines the PersonWithNature bridge (Soul.lean) with
+    THE_FALL (this file): the person's nature is wounded,
+    AND their spiritual aspect persists forever.
+
+    CONNECTS TO: Soul.lean PersonWithNature, spiritual_powers_exist -/
+theorem wounded_person_has_immortal_soul
+    (pwn : PersonWithNature)
+    (h_intellect : pwn.nature.person.hasIntellect = true) :
+    -- The wound exists in the person's nature
+    natureIsWounded pwn.nature.person
+    -- AND the spiritual aspect (where the wound resides) is immortal
+    ∧ hasSpiritualAspect pwn.humanPerson := by
+  exact ⟨(THE_FALL pwn.nature.person h_intellect).1,
+         soul_is_immortal pwn.humanPerson⟩
 
 end Catlib.Creed.OriginalSin

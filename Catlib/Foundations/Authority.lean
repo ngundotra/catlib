@@ -343,16 +343,6 @@ axiom apostolic_succession_general :
     -- Bishops possess this authority as successors of the Apostles
     True
 
-/-- AXIOM: Bishops can delegate specific authorities to priests.
-    Provenance: [Tradition] CCC §1562-1567.
-    Not all episcopal authority is delegated -- some (like ordination)
-    bishops reserve to themselves. -/
-axiom episcopal_delegation :
-  ∀ (_d : AuthorityDomain),
-    -- A bishop can authorize a priest to exercise this authority
-    -- (with conditions -- e.g., exorcism needs explicit permission,
-    -- absolution is given at ordination for most cases)
-    True
 
 /-!
 ## The specific delegation registry

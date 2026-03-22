@@ -1,4 +1,5 @@
 import Catlib.Foundations
+import Catlib.Creed.Soul
 
 /-!
 # CCC §1033 + §1037: Hell as Self-Exclusion
@@ -90,18 +91,20 @@ inductive EternalDestiny where
     CONNECTION TO BASE AXIOM: This is an instantiation of the second
     conjunct of `Catlib.s1_god_is_love` (S1: godIsLove ∧ loveRequiresFreedom).
     The base axiom `loveRequiresFreedom` is an untyped Prop; this local
-    axiom gives it operational content by specifying that without free will,
-    communion with God (which requires loving God) is impossible. -/
+    axiom gives it operational content: without free will, communion with
+    God is impossible. -/
 axiom love_requires_freedom :
   ∀ (p : Person), p.hasFreeWill = false →
-    ¬(∃ (c : CommunionWithGod), c.person = p ∧ c.lovesGod)
+    ¬ inCommunion (.person p) .god
 
-/-- AXIOM 2 (§1033): Grave sin prevents loving God.
-    Provenance: [Definition] CCC §1033
-    "We cannot love God if we sin gravely against him." -/
+/-- AXIOM 2 (§1033): Communion with God implies being in a state of grace.
+    Provenance: [Definition] CCC §1033, §1855
+    "Mortal sin destroys charity in the heart of man." If you are in
+    communion with God, you must be in grace — grave sin (which removes
+    grace) also removes communion. -/
 axiom grave_sin_prevents_love :
-  ∀ (p : Person) (c : CommunionWithGod),
-    c.person = p → c.lovesGod → c.inGrace
+  ∀ (p : Person),
+    inCommunion (.person p) .god → ¬ (∃ (s : Sin), isGraveSin s ∧ s.action.agent = p)
 
 /-- AXIOM 3: Death is final — no post-mortem change of state.
     Provenance: [Tradition] — not explicitly argued in §1033, assumed.
@@ -236,5 +239,55 @@ The proof assistant showed: it's the logical consequence of free choice
 PLUS four unstated premises about the nature of freedom, love, death,
 and the grace-sin relationship.
 -/
+
+/-!
+## Bridges to Soul.lean
+
+Soul.lean models death as body-soul separation (§997): `isDead p` means
+the person's corporeal aspect is gone but the spiritual aspect persists.
+Hell.lean models the CHOICE dimension: `DeathState.inMortalSin` means
+the person died without repenting. Both are true simultaneously for the
+damned: the body is gone AND the choice to reject God is irrevocable.
+-/
+
+/-- Bridge: a dead person (Soul.lean's sense) has their spiritual aspect
+    (soul persists, §366) but NOT their corporeal aspect (body decays, §997).
+    This applies to all dead persons, including the damned. -/
+theorem hell_dead_person_is_incomplete (p : HumanPerson)
+    (h_dead : isDead p) :
+    hasSpiritualAspect p ∧ ¬hasCorporealAspect p :=
+  ⟨soul_is_immortal p, (death_separates p h_dead).1⟩
+
+/-- Bridge: death_is_final (Hell.lean) concerns the irrevocability of the
+    CHOICE to reject God. Soul.lean's isDead concerns the BODY-SOUL separation.
+    For a person in hell, both are true simultaneously: the choice is
+    irrevocable AND the body is gone. The soul persists (soul_is_immortal)
+    but is not in beatifying communion.
+
+    This theorem witnesses that a dead person's soul always persists —
+    hell is not annihilation. The damned exist forever, sustained by God
+    (per DivineModes), but without communion. -/
+theorem damned_soul_persists (p : HumanPerson)
+    (_h_dead : isDead p) :
+    hasSpiritualAspect p :=
+  soul_is_immortal p
+
+/-- Bridge: a person in hell is isDead (incomplete person) — the soul
+    persists (soul_is_immortal) but the corporeal aspect is absent.
+    Hell is not the destruction of the person but the permanent
+    self-exclusion of an INCOMPLETE person from communion with God.
+    At resurrection, even the damned receive their bodies back (cf. §1038),
+    but remain separated from God. -/
+theorem hell_is_incomplete_existence (p : HumanPerson)
+    (h_dead : isDead p) :
+    -- Soul persists (not annihilated)
+    hasSpiritualAspect p ∧
+    -- Body is gone (incomplete person)
+    ¬hasCorporealAspect p ∧
+    -- Body always requires soul (no "zombie" state)
+    (∀ (q : HumanPerson), hasCorporealAspect q → hasSpiritualAspect q) :=
+  ⟨soul_is_immortal p,
+   (death_separates p h_dead).1,
+   fun q h => corporeal_requires_spiritual q h⟩
 
 end Catlib.Creed

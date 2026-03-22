@@ -46,6 +46,33 @@ the CCC. We model what the CCC says.
 namespace Catlib
 
 /-!
+## How three files model "human nature"
+
+Three types in Catlib capture different aspects of the human person:
+
+```
+Person (Basic.lean)          = the CAPACITIES (can this being think and choose?)
+                               Bool flags: hasIntellect, hasFreeWill, isMoralAgent
+
+HumanNature (this file)      = the STATE (how healthy are those capacities?)
+                               Graded: intellectState, willState, wounds
+
+HumanPerson (Soul.lean)      = the PERSON (the indivisible body-soul composite)
+                               Opaque: hasCorporealAspect, hasSpiritualAspect
+```
+
+Person tells you WHAT a human can do (intellect, will, moral agency).
+HumanNature tells you HOW WELL they can do it (wounded, healed, level).
+HumanPerson tells you WHO they are (one indivisible nature, not parts).
+
+A HumanNature has a `person : Person` field — this is the capacity
+description of the person whose state is being tracked. The same
+Person also corresponds to the spiritual aspect of a HumanPerson
+from Soul.lean: the intellect and will that HumanNature tracks ARE
+the spiritual powers of the soul that hasSpiritualAspect witnesses.
+-/
+
+/-!
 ## The two aspects of the person
 -/
 

@@ -254,15 +254,28 @@ structure FreeChoice (α : Type) where
   /-- The choice was uncoerced -/
   uncoerced : Prop
 
-/-- Communion with God — the ultimate end of human life per the Catechism.
-    CCC §1024: "To live in the full and definitive communion with God." -/
-structure CommunionWithGod where
-  /-- The person in communion -/
-  person : Person
-  /-- The person loves God -/
-  lovesGod : Prop
-  /-- The person is in a state of grace -/
-  inGrace : Prop
+/-- A party that can participate in communion.
+    Communion is a mutual participatory relationship — it requires two parties.
+    CCC §1024: "To live in the full and definitive communion with God."
+    CCC §946: "The communion of saints."
+
+    Examples of communion:
+    - Person + God: the core theological relationship (CCC §1033)
+    - Person + Church: what excommunication breaks
+    - Church + God: the Church as Body of Christ
+    - God + God: intra-Trinitarian communion (CCC §255)
+    - Church + Church: the communion of saints (CCC §946)
+    - Person + Person: friendship/philia
+
+    NOT reflexive for persons (communion requires an other).
+    Reflexive for God (Trinity) and Church (communion of saints). -/
+inductive CommunionParty where
+  /-- A human or angelic person -/
+  | person (p : Person)
+  /-- God (the Trinity) -/
+  | god
+  /-- The Church (the Body of Christ, the communion of saints) -/
+  | church
 
 /-- The degree of freedom a person has.
     MODELING CHOICE: Freedom is graded, not binary.
