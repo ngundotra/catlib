@@ -68,17 +68,8 @@ opaque accessibleToReason : MoralProposition → Prop
 /-- The good — the final cause or telos toward which freedom is ordered. -/
 opaque TheGood : Type
 
-/-- The degree of freedom an agent possesses (0 = none, higher = more). -/
-opaque FreedomDegree : Type
-
-/-- A strict ordering on freedom degrees. -/
-opaque freedomLt : FreedomDegree → FreedomDegree → Prop
-
-/-- An agent (a Person who can act). -/
-opaque Agent : Type
-
-/-- Whether an agent genuinely could have chosen otherwise in a given situation. -/
-opaque couldChooseOtherwise : Agent → Prop
+/-- Whether a person genuinely could have chosen otherwise in a given situation. -/
+opaque couldChooseOtherwise : Person → Prop
 
 /-- Primary cause — God's causal activity as first cause. -/
 opaque PrimaryCause : Type
@@ -307,11 +298,11 @@ axiom s6_moral_realism :
 def s6_provenance : Provenance := Provenance.scripture "Rom 1:20; Rom 2:14-15"
 
 -- Helpers for S7
-/-- Whether an agent is directed toward the good. -/
-axiom directedTowardGood : Agent → Prop
+/-- Whether a person is directed toward the good. -/
+axiom directedTowardGood : Person → Prop
 
-/-- The freedom degree an agent possesses. -/
-axiom agentFreedom : Agent → FreedomDegree
+/-- The freedom degree a person possesses. -/
+axiom agentFreedom : Person → FreedomDegree
 
 /-- **S7. TELEOLOGICAL_FREEDOM**: Freedom is ordered toward the good; choosing
     evil is a defect that diminishes freedom rather than expressing it.
@@ -325,7 +316,7 @@ axiom agentFreedom : Agent → FreedomDegree
     it, evil possible only in imperfect freedom, responsibility proportional to
     freedom). CCC §1733: "The more one does what is good, the freer one becomes." -/
 axiom s7_teleological_freedom :
-  ∀ (a1 a2 : Agent),
+  ∀ (a1 a2 : Person),
     directedTowardGood a1 → ¬ directedTowardGood a2 →
     freedomLt (agentFreedom a2) (agentFreedom a1)
 
@@ -391,7 +382,7 @@ def s9_provenance : Provenance := Provenance.scripture "Rom 14:23; Acts 24:16"
     rational being, conferring on him the dignity of a person who can initiate
     and control his own actions." -/
 axiom t1_libertarian_free_will :
-  ∀ (a : Agent), couldChooseOtherwise a
+  ∀ (a : Person), couldChooseOtherwise a
 
 /-- Provenance tag for T1. -/
 def t1_provenance : Provenance := Provenance.tradition "Sir 15:14; Trent Session 6"
