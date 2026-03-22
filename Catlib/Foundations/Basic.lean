@@ -211,4 +211,19 @@ structure CommunionWithGod where
   /-- The person is in a state of grace -/
   inGrace : Prop
 
+/-- The degree of freedom a person has.
+    MODELING CHOICE: Freedom is graded, not binary.
+    The Catechism says you can become "freer" (§1733),
+    which means freedom admits of degrees. -/
+structure FreedomDegree where
+  /-- How free is this person? (0 = enslaved, higher = more free) -/
+  level : Nat
+  /-- Is this person currently able to choose between good and evil? -/
+  canChooseEvil : Prop
+  /-- Is this person oriented toward the good? -/
+  orientedToGood : Prop
+
+/-- A strict ordering on freedom degrees, by level. -/
+def freedomLt (a b : FreedomDegree) : Prop := a.level < b.level
+
 end Catlib

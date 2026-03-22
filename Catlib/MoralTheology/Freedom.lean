@@ -76,18 +76,6 @@ open Catlib
 ## Two models of freedom
 -/
 
-/-- The degree of freedom a person has.
-    MODELING CHOICE: Freedom is graded, not binary.
-    The Catechism says you can become "freer" (§1733),
-    which means freedom admits of degrees. -/
-structure FreedomDegree where
-  /-- How free is this person? (0 = enslaved, 1 = perfectly free) -/
-  level : Nat  -- Using Nat for simplicity; ideally an ordered type
-  /-- Is this person currently able to choose between good and evil? -/
-  canChooseEvil : Prop
-  /-- Is this person oriented toward the good? -/
-  orientedToGood : Prop
-
 /-- Freedom-as-choice: the modern/liberal concept.
     Freedom = having options. More options = more freedom.
     Choosing evil is an EXERCISE of freedom. -/
