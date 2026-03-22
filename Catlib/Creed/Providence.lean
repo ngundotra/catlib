@@ -148,7 +148,17 @@ axiom creaturely_causation_genuine :
     God causing something at the primary level doesn't prevent the
     creature from genuinely causing it at the secondary level. This
     is a NON-STANDARD causation model — normally if A causes X and B
-    causes X, they're competitors. Here they're not. -/
+    causes X, they're competitors. Here they're not.
+
+    CONNECTION TO BASE AXIOM: This is the local instantiation of
+    `Catlib.p2_two_tier_causation` (P2: ∀ p s, ¬ causesCompete p s).
+    P2 uses the opaque predicates `PrimaryCause`/`SecondaryCause`/`causesCompete`
+    from Axioms.lean. This local axiom uses the richer `CausedEvent`/`CausalLevel`
+    model. Both express the same non-competition principle.
+
+    NOTE: This local axiom is VACUOUS (excluded middle on CausalLevel).
+    The real content is in P2's `¬ causesCompete`, which asserts non-competition
+    as a negative fact rather than a trivial disjunction. -/
 axiom primary_secondary_non_competing :
   ∀ (_e : CausedEvent) (level : CausalLevel),
     -- Both levels of causation apply simultaneously
@@ -193,13 +203,47 @@ axiom causation_asymmetry :
     But if God knows evil will happen, has the power to prevent it,
     and chooses not to — is that really not causing it? The Catechism
     says yes: permission ≠ causation. This distinction requires the
-    primary/secondary causation framework to be coherent. -/
+    primary/secondary causation framework to be coherent.
+
+    CONNECTION TO BASE AXIOM: This connects to
+    `Catlib.p3_evil_is_privation` (P3: ∀ e, isEvil e → isDueGoodAbsent e).
+    P3 explains WHY God is not the cause of evil: evil is a privation
+    (absence of a due good), not a positive reality. God causes being;
+    evil is a deficiency in being. Therefore God cannot cause evil directly.
+
+    NOTE: This local axiom is VACUOUS (concludes with True). The real
+    content is in P3's non-vacuous statement. -/
 axiom god_not_cause_of_evil :
   ∀ (_e : CausedEvent) (_mc : MoralCharacter),
     _mc = MoralCharacter.evil →
     -- God permits but does not cause
     -- (permission ≠ causation is an axiom, not a derivation)
     True
+
+/-!
+## Bridge theorems to base axioms
+-/
+
+/-- Bridge to P2: primary and secondary causes do not compete.
+    The base axiom uses opaque `PrimaryCause`/`SecondaryCause` types;
+    this makes the non-competition principle available in the Providence
+    namespace. -/
+theorem two_tier_causation_from_p2 (p : PrimaryCause) (s : SecondaryCause) :
+    ¬ causesCompete p s :=
+  p2_two_tier_causation p s
+
+/-- Bridge to P3: evil is privation, not positive reality.
+    This grounds the causation asymmetry — God causes being, evil is
+    the absence of due being, so God does not cause evil. -/
+theorem evil_is_privation_from_p3 (e : Prop) (h : isEvil e) :
+    isDueGoodAbsent e :=
+  p3_evil_is_privation e h
+
+/-- Bridge to S4: universal providence.
+    The base axiom asserts every event is divinely governed. -/
+theorem universal_providence_from_s4 (event : Prop) :
+    divinelyGoverned event :=
+  s4_universal_providence event
 
 /-!
 ## The permission problem

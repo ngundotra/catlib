@@ -85,7 +85,13 @@ inductive EternalDestiny where
     HIDDEN ASSUMPTION: Love requires freedom. Why? The Catechism asserts
     this but doesn't argue for it. One could ask: can a determined being
     love? The Catechism says no — but that's a philosophical commitment,
-    not a derivation. -/
+    not a derivation.
+
+    CONNECTION TO BASE AXIOM: This is an instantiation of the second
+    conjunct of `Catlib.s1_god_is_love` (S1: godIsLove ∧ loveRequiresFreedom).
+    The base axiom `loveRequiresFreedom` is an untyped Prop; this local
+    axiom gives it operational content by specifying that without free will,
+    communion with God (which requires loving God) is impossible. -/
 axiom love_requires_freedom :
   ∀ (p : Person), p.hasFreeWill = false →
     ¬(∃ (c : CommunionWithGod), c.person = p ∧ c.lovesGod)
@@ -110,12 +116,35 @@ axiom death_is_final :
 
 /-- AXIOM 4 (§1037): God predestines no one to hell.
     Provenance: [Definition] CCC §1037
-    This means hell is always the result of free choice. -/
+    This means hell is always the result of free choice.
+
+    CONNECTION TO BASE AXIOMS:
+    - `Catlib.s2_universal_salvific_will` (S2: ∀ p, godWillsSalvation p)
+      establishes that God WANTS everyone saved. This axiom establishes the
+      complementary claim: no one is predestined to damnation.
+    - `Catlib.t1_libertarian_free_will` (T1: ∀ a, couldChooseOtherwise a)
+      provides the freedom model that makes self-exclusion meaningful. -/
 axiom no_predestination_to_hell :
   ∀ (p : Person) (dest : EternalDestiny),
     dest = EternalDestiny.separatedFromGod →
     -- The person must have had free will AND chosen to turn away
     p.hasFreeWill = true
+
+/-- Bridge to base axiom S1: love requires freedom (from s1_god_is_love).
+    The base axiom asserts `loveRequiresFreedom` as an untyped Prop.
+    The local axiom gives this operational content. -/
+theorem love_freedom_from_s1 : loveRequiresFreedom :=
+  (s1_god_is_love).2
+
+/-- Bridge to base axiom S2: God desires all to be saved.
+    This is the positive counterpart of no_predestination_to_hell. -/
+theorem god_wills_all_saved (p : Person) : godWillsSalvation p :=
+  s2_universal_salvific_will p
+
+/-- Bridge to base axiom T1: libertarian free will.
+    The base axiom asserts everyone could choose otherwise. -/
+theorem could_choose_otherwise (a : Person) : couldChooseOtherwise a :=
+  t1_libertarian_free_will a
 
 /-- AXIOM 5 (implicit): The freedom model is libertarian.
     Provenance: [Tradition] — assumed but never stated

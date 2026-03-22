@@ -151,7 +151,18 @@ any one moves you closer to a different denomination's position.
     "Faith, hope, and charity are poured into our hearts." (§1991)
     HIDDEN ASSUMPTION: Grace changes the person's actual state —
     they become genuinely righteous, not just declared so. This is
-    the central Catholic claim that Luther rejected. -/
+    the central Catholic claim that Luther rejected.
+
+    CONNECTION TO BASE AXIOM: This connects to
+    `Catlib.s8_grace_necessary_and_transformative`
+    (S8: ∀ p g, graceGiven p g → graceTransforms g p).
+    S8 has REAL content — it asserts grace actually transforms.
+    This local axiom is VACUOUS (concludes with True). The real
+    content of the transformative claim is captured by S8 and the
+    `JustificationType.transformative` model above.
+
+    NOTE: This local axiom is VACUOUS. S8 from Axioms.lean carries the
+    actual logical content for the transformative claim. -/
 axiom grace_is_transformative :
   ∀ (p : Person),
     p.hasFreeWill = true →
@@ -184,7 +195,15 @@ axiom human_cooperation_in_justification :
     is the ordinary means of justification. This connects soteriology
     to ecclesiology — you (normally) need the Church to be justified.
     This is why "outside the Church there is no salvation" (with
-    nuances the Catechism addresses elsewhere). -/
+    nuances the Catechism addresses elsewhere).
+
+    CONNECTION TO BASE AXIOM: This connects to
+    `Catlib.t3_sacramental_efficacy` (T3: ∀ s, signifies s → confers s).
+    T3 has REAL content: sacraments confer what they signify (ex opere
+    operato). This local axiom is VACUOUS (just True). The real logical
+    content is in T3's non-trivial implication.
+
+    NOTE: This local axiom is VACUOUS. T3 carries the actual content. -/
 axiom baptism_confers_justification :
   -- Baptism is the sacramental instrument of justification
   -- (not faith alone, not works, but a Church-administered rite)
@@ -203,6 +222,21 @@ axiom justification_is_process :
   -- conversion → forgiveness → purification → healing
   -- (not a single event but an unfolding transformation)
   True
+
+/-!
+## Bridge theorems to base axioms
+-/
+
+/-- Bridge to S8: grace is transformative (non-vacuous base axiom). -/
+theorem grace_transforms_from_s8
+    (p : Person) (g : Grace) (h : graceGiven p g) :
+    graceTransforms g p :=
+  s8_grace_necessary_and_transformative p g h
+
+/-- Bridge to T3: sacraments confer what they signify. -/
+theorem sacramental_efficacy_from_t3 (s : Sacrament) (h : signifies s) :
+    confers s :=
+  t3_sacramental_efficacy s h
 
 /-!
 ## The axiom-set-as-denomination result

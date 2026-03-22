@@ -150,7 +150,17 @@ axiom prevenient_grace_unconditioned :
     HIDDEN ASSUMPTION: How can God's initiative be the cause of our
     willing, while our willing remains free? This is the core of the
     grace-freedom compatibility problem. The Catechism asserts both
-    without explaining how they coexist. -/
+    without explaining how they coexist.
+
+    CONNECTION TO BASE AXIOMS:
+    - `Catlib.t2_grace_preserves_freedom` (T2) asserts the same principle
+      but is VACUOUS (concludes with excluded middle: cooperates ∨ ¬cooperates).
+      This local axiom has REAL content: it asserts genuine alternatives exist
+      and the response is uncoerced.
+    - `Catlib.s8_grace_necessary_and_transformative` (S8: graceGiven p g →
+      graceTransforms g p) asserts grace transforms. This axiom asserts
+      the transformation preserves freedom — a non-trivial compatibility
+      claim that S8 alone does not capture. -/
 axiom divine_initiative_preserves_freedom :
   ∀ (p : Person) (g : Grace),
     g.graceType = GraceType.prevenient →
@@ -160,6 +170,16 @@ axiom divine_initiative_preserves_freedom :
     -- They can freely respond (accept or reject)
     ∃ (choice : FreeChoice Bool),
       choice.alternativesExist ∧ choice.uncoerced
+
+/-!
+## Bridge theorems to base axioms
+-/
+
+/-- Bridge to S8: grace is transformative, not merely forensic. -/
+theorem grace_transforms_from_s8
+    (p : Person) (g : Grace) (h : graceGiven p g) :
+    graceTransforms g p :=
+  s8_grace_necessary_and_transformative p g h
 
 /-!
 ## The main results

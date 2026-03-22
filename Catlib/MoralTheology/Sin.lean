@@ -133,7 +133,15 @@ structure SpiritualState where
 
     HIDDEN ASSUMPTION: There exists a causal connection between
     free human acts and divine states (grace). This is a specific
-    metaphysics that the Catechism assumes but doesn't argue for. -/
+    metaphysics that the Catechism assumes but doesn't argue for.
+
+    CONNECTION TO BASE AXIOM: This connects to
+    `Catlib.s5_sin_separates` (S5: ∀ p s, isGraveSin s → s.action.agent = p →
+    ¬ inCommunion p). S5 uses the opaque predicates `isGraveSin`/`inCommunion`
+    from Axioms.lean; this axiom uses the richer `Sin.isMortal`/`GraceState`
+    model. Both express the same causal chain: grave sin → loss of communion
+    with God. The local axiom is more specific: it models the transition
+    from in-grace to not-in-grace as an existential witness. -/
 axiom mortal_sin_causes_loss_of_grace :
   ∀ (s : Sin) (state : SpiritualState),
     s.isMortal →
@@ -141,6 +149,14 @@ axiom mortal_sin_causes_loss_of_grace :
     ∃ (newState : SpiritualState),
       newState.person = state.person ∧
       newState.graceState = GraceState.notInGrace
+
+/-- Bridge to S5: grave sin breaks communion with God.
+    The base axiom uses opaque `isGraveSin`/`inCommunion` types. -/
+theorem sin_separates_from_s5
+    (p : Person) (s : Sin)
+    (h_grave : isGraveSin s) (h_agent : s.action.agent = p) :
+    ¬ inCommunion p :=
+  s5_sin_separates p s h_grave h_agent
 
 /-- Consequence: a person who commits mortal sin while in grace
     necessarily transitions out of grace. This follows directly from

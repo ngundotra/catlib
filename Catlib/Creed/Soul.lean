@@ -140,7 +140,16 @@ structure HylomorphicPerson where
     Provenance: [Tradition] Aristotle, De Anima; Aquinas ST I q.76;
     Council of Vienne (1312)
     This means: the soul is what makes matter into a living human body.
-    Without the soul, the matter is not a dead body — it's not a body. -/
+    Without the soul, the matter is not a dead body — it's not a body.
+
+    CONNECTION TO BASE AXIOM: This is the local instantiation of
+    `Catlib.p1_hylomorphism` (P1: ∀ f m, ∃ c, c.form = f ∧ c.matter = m).
+    P1 uses `Catlib.Form`/`Catlib.Matter`/`Catlib.Composite` from Axioms.lean;
+    this file defines its own `Form`/`Matter`/`HylomorphicComposition` types
+    with richer structure (isUnified, formIsNotPart). Both express the
+    same hylomorphic principle. The local types are NOT compatible with
+    P1's types due to separate opaque declarations (Soul.lean's Form ≠
+    Axioms.lean's Form). Unifying these types is future work. -/
 axiom soul_is_form :
   ∀ (p : HylomorphicPerson),
     p.soulIsForm →

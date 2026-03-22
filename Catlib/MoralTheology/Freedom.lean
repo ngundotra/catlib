@@ -106,7 +106,14 @@ axiom freedom_requires_reason_and_will :
     a direction. It's not neutral between good and evil choices.
     This contradicts the common modern assumption that freedom is
     just "having options." Under the Catechism, some options make
-    you MORE free and others make you LESS free. -/
+    you MORE free and others make you LESS free.
+
+    CONNECTION TO BASE AXIOM: This is an instantiation of
+    `Catlib.s7_teleological_freedom` (S7: ∀ a1 a2, directedTowardGood a1 →
+    ¬ directedTowardGood a2 → freedomLt (agentFreedom a2) (agentFreedom a1)).
+    S7 compares TWO agents; this axiom states the principle for a single
+    freedom degree. Both express the same teleological commitment: orientation
+    toward good = greater freedom. -/
 axiom good_increases_freedom :
   ∀ (fd : FreedomDegree),
     fd.orientedToGood →
@@ -146,6 +153,23 @@ axiom evil_possible_only_in_imperfect_freedom :
     ¬fd.orientedToGood ∨ fd.orientedToGood
     -- (this is trivially true but the conceptual point is:
     -- canChooseEvil implies not-yet-perfected)
+
+/-!
+## Bridge theorems to base axioms
+-/
+
+/-- Bridge to S7: teleological freedom — the good-directed agent is freer
+    than the non-good-directed agent. Uses the base axiom's comparison model. -/
+theorem teleological_freedom_from_s7
+    (a1 a2 : Person)
+    (h1 : directedTowardGood a1) (h2 : ¬ directedTowardGood a2) :
+    freedomLt (agentFreedom a2) (agentFreedom a1) :=
+  s7_teleological_freedom a1 a2 h1 h2
+
+/-- Bridge to T1: libertarian free will — every person could choose otherwise. -/
+theorem libertarian_free_will_from_t1 (a : Person) :
+    couldChooseOtherwise a :=
+  t1_libertarian_free_will a
 
 /-!
 ## The perfect freedom paradox

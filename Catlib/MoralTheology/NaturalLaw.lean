@@ -112,7 +112,14 @@ structure Application where
     Provenance: [Natural Law] — assumed throughout
     HIDDEN ASSUMPTION: This is the deepest premise of natural law theory.
     If moral "facts" are just human conventions, natural law collapses.
-    The Catechism never argues for moral realism — it assumes it. -/
+    The Catechism never argues for moral realism — it assumes it.
+
+    CONNECTION TO BASE AXIOM: This connects to
+    `Catlib.s6_moral_realism` (S6: ∀ mp, moralTruthValue mp → accessibleToReason mp).
+    S6 asserts that moral truths are accessible to reason — a claim that
+    presupposes moral realism. S6 uses the opaque `MoralProposition` type
+    from Axioms.lean; this uses the richer `MoralPrecept` structure.
+    Both assume moral facts have determinate truth values. -/
 axiom moral_realism :
   ∀ (p : MoralPrecept), p.content ∨ ¬p.content
   -- Moral precepts have definite truth values
@@ -167,7 +174,14 @@ axiom law_application_distinction :
     HIDDEN ASSUMPTION: Without God, there is no natural law. This means
     natural law theory is not really "accessible to reason alone" — it
     requires belief in (or at least the existence of) a divine lawgiver.
-    This is a tension the Catechism doesn't resolve. -/
+    This is a tension the Catechism doesn't resolve.
+
+    CONNECTION TO BASE AXIOM: This connects to
+    `Catlib.s3_law_on_hearts` (S3: ∀ p, p.hasIntellect = true → moralLawInscribed p).
+    S3 says God INSCRIBED the law on every heart; this axiom says the law
+    has binding force BECAUSE it comes from God. Together they form a complete
+    picture: the law is divinely grounded (this axiom) and universally
+    inscribed (S3). -/
 axiom divine_grounding :
   -- Natural law has binding force BECAUSE it comes from God
   -- Without this axiom, natural law is just "what reason discovers"
@@ -176,6 +190,21 @@ axiom divine_grounding :
     p.accessibleToReason →
     -- The precept has binding moral authority
     p.content
+
+/-!
+## Bridge theorems to base axioms
+-/
+
+/-- Bridge to S6: moral truths are accessible to reason.
+    The base axiom uses the opaque `MoralProposition` type. -/
+theorem moral_realism_from_s6 (mp : MoralProposition) (h : moralTruthValue mp) :
+    accessibleToReason mp :=
+  s6_moral_realism mp h
+
+/-- Bridge to S3: the moral law is inscribed on every rational heart. -/
+theorem law_on_hearts_from_s3 (p : Person) (h : p.hasIntellect = true) :
+    moralLawInscribed p :=
+  s3_law_on_hearts p h
 
 /-!
 ## The rational convergence problem

@@ -743,6 +743,35 @@ theorem absolution_has_delegation_chain :
   absolution_authority
 
 -- ============================================================================
+-- § 4b. Bridge theorems to base axioms (Axioms.lean)
+-- ============================================================================
+
+/-!
+### Bridge theorems connecting to the 15 base axioms
+
+These make the documented Axioms.lean connections executable in Lean.
+-/
+
+/-- Bridge to S5: sin separates from communion with God.
+    The base axiom uses opaque `isGraveSin`/`inCommunion` from Axioms.lean. -/
+theorem sin_separates_bridge (p : Person) (s : Sin)
+    (h_grave : isGraveSin s) (h_agent : s.action.agent = p) :
+    ¬ inCommunion p :=
+  s5_sin_separates p s h_grave h_agent
+
+/-- Bridge to S8: grace is transformative, not merely forensic.
+    This is the Catholic claim that Luther rejected. -/
+theorem grace_transforms_bridge (p : Person) (g : Grace)
+    (h : graceGiven p g) : graceTransforms g p :=
+  s8_grace_necessary_and_transformative p g h
+
+/-- Bridge to T3: sacraments confer what they signify (ex opere operato).
+    This grounds the efficacy of absolution as a sacrament. -/
+theorem sacramental_efficacy_bridge (s : Sacrament)
+    (h : signifies s) : confers s :=
+  t3_sacramental_efficacy s h
+
+-- ============================================================================
 -- § 5. Denominational Tags
 -- ============================================================================
 

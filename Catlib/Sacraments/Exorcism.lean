@@ -103,7 +103,18 @@ axiom christ_delegated_to_apostles :
     Provenance: [Tradition] CCC §77, §861-862. This is the core
     claim of apostolic succession. Without it, the chain breaks.
     HIDDEN ASSUMPTION: Authority transfer is valid across generations
-    without loss or expiration. -/
+    without loss or expiration.
+
+    CONNECTION TO BASE AXIOMS: Authority.lean provides
+    `Catlib.apostolic_succession_general` and `Catlib.christ_delegates_exorcism`,
+    but the general succession axiom is VACUOUS (concludes with True).
+    This local axiom has REAL content (existential witness for exorcism
+    domain specifically). The Authority.lean axiom needs strengthening
+    in a future phase before this local axiom can be derived from it.
+
+    Authority.lean's `christ_delegates_exorcism` does confirm that
+    `exorcismDomain.christDelegatedIt` holds, which is the first link
+    in the chain. -/
 axiom apostolic_succession :
   ∃ (a : SpiritualAuthority),
     a.domain = "exorcism" ∧
@@ -121,6 +132,13 @@ axiom bishop_delegates_to_priest :
     a.domain = "exorcism" ∧
     a.holder = ChurchRole.priest ∧
     a.source = ChurchRole.bishop
+
+/-- Bridge to Authority.lean: Christ has exorcism authority and
+    specifically delegated it. This connects the local exorcism model
+    to the general authority framework in Authority.lean. -/
+theorem exorcism_delegated_from_authority_lean :
+    exorcismDomain.christHasIt ∧ exorcismDomain.christDelegatedIt :=
+  exorcism_authority
 
 /-- The complete authority chain: Christ → Apostles → Bishops → Priests.
     This is derivable from the four axioms above. -/

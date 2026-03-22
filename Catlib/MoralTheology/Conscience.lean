@@ -118,13 +118,32 @@ conscience." This is the core axiom — conscience binds even when wrong.
 /-- AXIOM 1 (§1790): You must always follow your certain conscience.
     Provenance: [Definition] CCC §1790
     This is the strongest claim in the section. It means conscience
-    binds EVEN WHEN IT IS WRONG — as long as the agent is certain. -/
+    binds EVEN WHEN IT IS WRONG — as long as the agent is certain.
+
+    CONNECTION TO BASE AXIOM: This is the local instantiation of
+    `Catlib.s9_conscience_binds` (S9: ∀ p a, conscienceJudges p a → obligated p a).
+    S9 uses the opaque predicates `conscienceJudges`/`obligated` from Axioms.lean;
+    this axiom uses the richer `ConscienceJudgment` structure which models
+    certainty and correctness. The local axiom is STRONGER than S9 because it
+    models the certainty condition (conscience binds only when certain). -/
 axiom conscience_always_binds :
   ∀ (cj : ConscienceJudgment),
     cj.isCertain →
     -- The agent is morally obligated to follow this judgment
     -- (regardless of whether it's objectively correct)
     cj.judgesRight
+
+/-- Bridge to base axiom S9: a certain conscience judgment implies the
+    base-level obligation relation from Axioms.lean.
+
+    This shows how the local `ConscienceJudgment` model refines the base
+    axiom's simpler `conscienceJudges → obligated` pattern. The local
+    model adds the certainty condition that S9 leaves implicit. -/
+theorem conscience_binds_via_s9
+    (p : Person) (a : Action)
+    (h : conscienceJudges p a) :
+    obligated p a :=
+  s9_conscience_binds p a h
 
 /-- AXIOM 2 (§1790): Acting against conscience is always wrong.
     Provenance: [Definition] CCC §1790
@@ -218,7 +237,17 @@ theorem culpability_asymmetry
     HIDDEN ASSUMPTION: You have a positive obligation to SEEK truth,
     not just follow whatever your conscience currently says. This is
     what makes culpable ignorance possible — if there were no duty
-    to inquire, all ignorance would be innocent. -/
+    to inquire, all ignorance would be innocent.
+
+    CONNECTION TO BASE AXIOM: This is grounded in `Catlib.s3_law_on_hearts`
+    (S3: ∀ p, p.hasIntellect = true → moralLawInscribed p). The duty to
+    form conscience presupposes that the moral law IS accessible — i.e.,
+    written on the heart. If it were not accessible, the duty to discover
+    it would be vacuous.
+
+    NOTE: This axiom is VACUOUS (concludes with True). The real content
+    is in the connection to S3 and the culpable/innocent ignorance
+    distinction above. -/
 axiom duty_to_form_conscience :
   ∀ (p : Person),
     p.hasIntellect = true →
