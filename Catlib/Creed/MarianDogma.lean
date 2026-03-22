@@ -591,7 +591,7 @@ theorem assumption_follows_from_ic
     (_h_no_original : ¬hasOriginalSin mary)
     (_h_no_personal : ¬committedPersonalSin mary)
     (h_bodily_integrity : ¬bodySubjectToCorruption mary)
-    (_h_hylomorphism : ∀ (p : HylomorphicPerson), p.soulIsForm → p.composition.isUnified)
+    (_h_hylomorphism : ∀ (p : HumanPerson), hasCorporealAspect p → hasSpiritualAspect p)
     (h_assumed : bodilyAssumed mary) :
     -- Mary was assumed body and soul, AND her body was not subject to corruption
     bodilyAssumed mary ∧ ¬bodySubjectToCorruption mary :=
@@ -611,10 +611,10 @@ theorem sinlessness_to_integrity
     (full beatifying communion, body and soul).
     The heavenState from DivineModes.lean has:
     - sustained = True (God sustains her in existence)
-    - inCommunion = True (full beatifying communion)
+    - inBeatifyingCommunion = True (full beatifying communion)
     - purified = True (fully purified — indeed, never needed purification) -/
 theorem assumption_is_full_communion :
-    heavenState.sustained ∧ heavenState.inCommunion ∧ heavenState.purified := by
+    heavenState.sustained ∧ heavenState.inBeatifyingCommunion ∧ heavenState.purified := by
   exact ⟨trivial, trivial, trivial⟩
 
 def assumption_tag : DenominationalTag :=

@@ -64,7 +64,17 @@ These are genuine gaps in the Catechism's reasoning that formalization exposed:
 
 - [ ] **The mortal/venial threshold surface** — Is it a sharp boundary or a fuzzy region? The Catechism uses binary language but pastoral practice implies gradation.
 
-- [ ] **Mathematics of grace/healing** — Grace heals four wounded faculties (intellect, will, desires, body) independently and progressively. The healing space is a 4D product, graded and partially ordered — structurally parallel to culpability and love. The central open question: how do sacraments map to per-faculty healing? Same class of problem as diminisher composition (culpability) and love-kind composition (love). Existing formalizations (FreedomDegree, NuptialCapacity, TypedLove.agape.degree, HolinessDegree) are projections of this space but lack a unifying framework. See `specs/grace-healing-math-research.md`.
+- [ ] **Mathematics of grace/healing** — NOTE: our earlier "4D faculty" model was our invention, not the CCC's. The CCC describes body + soul, with intellect + will as powers of the soul (§1705). Healing space is 2D (intellect × will) at the spiritual level, not 4D. Needs rework based on HumanNature.lean. Central open question remains: how do sacraments map to healing?
+
+### Priority 6: Body & Soul open questions (from HumanNature formalization)
+
+- [ ] **What is a separated soul's experience?** — After death, the soul exists without the body (§366). The CCC implies awareness (purgatory and hell involve suffering/purification). But what can a soul DO without a body? Can it think? Will? The CCC doesn't specify the mechanism. Connects to P1 (hylomorphism): if the soul is the form of the body, what does "form without matter" mean?
+
+- [ ] **What does resurrection ADD?** — Saints in heaven are already in full communion with God (§1023). But they're INCOMPLETE persons — soul without body. Resurrection restores the body (§997). What does completeness add to someone already in beatific vision? Is it experiential (embodied joy)? Ontological (they become fully what they are)? The CCC says resurrection is essential but doesn't explain what the soul was MISSING.
+
+- [ ] **Can a separated soul think and will?** — The CCC implies yes (purgatory involves progressive purification, hell involves awareness of separation). But under strict hylomorphism (P1), intellect and will are powers of the SOUL — so they should persist. Aquinas argues (ST I q.89) that separated souls know differently (not through bodily senses). Worth formalizing: does our HumanNature model support cognition without corporeality?
+
+- [ ] **How does soul "form" matter into body?** — §365 says the soul is the "form" of the body — but this is an Aristotelian MECHANISM the CCC borrows without explaining. The CCC uses the word "form" but doesn't specify how form constitutes matter into a living body. This is philosophical infrastructure the CCC assumes (P1). Formalizing it would require modeling what "formation" means — not just asserting it.
 
 ## How to contribute
 
