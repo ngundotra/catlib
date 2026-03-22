@@ -62,6 +62,8 @@ These are genuine gaps in the Catechism's reasoning that formalization exposed:
 
 - [ ] **The mortal/venial threshold surface** — Is it a sharp boundary or a fuzzy region? The Catechism uses binary language but pastoral practice implies gradation.
 
+- [ ] **Mathematics of grace/healing** — Grace heals four wounded faculties (intellect, will, desires, body) independently and progressively. The healing space is a 4D product, graded and partially ordered — structurally parallel to culpability and love. The central open question: how do sacraments map to per-faculty healing? Same class of problem as diminisher composition (culpability) and love-kind composition (love). Existing formalizations (FreedomDegree, NuptialCapacity, TypedLove.agape.degree, HolinessDegree) are projections of this space but lack a unifying framework. See `specs/grace-healing-math-research.md`.
+
 ## How to contribute
 
 ### Formalizations
