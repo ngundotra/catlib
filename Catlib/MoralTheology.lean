@@ -7,3 +7,4 @@ import Catlib.MoralTheology.LegitimateDefense
 import Catlib.MoralTheology.Justification
 import Catlib.MoralTheology.ConjugalEthics
 import Catlib.MoralTheology.TheologyOfBody
+import Catlib.MoralTheology.Suicide
