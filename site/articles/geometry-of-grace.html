@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Hidden Geometry of Grace &mdash; Catlib</title>
+  <meta name="description" content="When a proof assistant examined four different theological concepts, it found they all have the same mathematical shape. Culpability, love, freedom, and grace are four surfaces of one deeper structure.">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="The Hidden Geometry of Grace">
+  <meta property="og:description" content="Four theological concepts. One mathematical shape. What formal verification revealed inside the Catholic Catechism.">
+  <meta property="og:site_name" content="Catlib">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="The Hidden Geometry of Grace">
+  <meta name="twitter:description" content="Culpability, love, freedom, and grace all have the same mathematical structure. We did not expect this.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel+Decorative:wght@400;700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="articles.css">
+  <style>
+    /* ============================================================
+       The Hidden Geometry of Grace &mdash; article-specific styles
+       ============================================================ */
+
+    /* The centerpiece: four-domain table */
+    .domains-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin: 2.5rem 0;
+      border: 2px solid var(--accent-gold);
+      border-radius: 4px;
+      overflow: hidden;
+      font-size: 0.92rem;
+      background: var(--bg-parchment);
+      box-shadow: 0 4px 24px rgba(184, 134, 11, 0.15);
+    }
+
+    .domains-table thead {
+      background: linear-gradient(180deg, #3a2a1a 0%, #2a1f14 100%);
+    }
+
+    .domains-table th {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent-gold-light);
+      padding: 0.9rem 1rem;
+      text-align: left;
+      font-weight: 600;
+      border-bottom: 2px solid var(--accent-gold);
+    }
+
+    .domains-table td {
+      padding: 0.85rem 1rem;
+      vertical-align: top;
+      line-height: 1.6;
+      border-bottom: 1px solid rgba(184, 134, 11, 0.25);
+    }
+
+    .domains-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .domains-table tr:nth-child(even) {
+      background: rgba(184, 134, 11, 0.04);
+    }
+
+    .domains-table td:first-child {
+      font-family: 'Cinzel', serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .domains-table .dim-list {
+      font-size: 0.85rem;
+      color: var(--text);
+      font-style: italic;
+    }
+
+    .domains-table .finding-text {
+      font-size: 0.9rem;
+    }
+
+    .domains-table .open-q {
+      font-size: 0.85rem;
+      color: #b45014;
+      font-style: italic;
+    }
+
+    /* Connection diagram */
+    .connection-card {
+      background: var(--bg-parchment);
+      border: 2px solid var(--accent-gold);
+      border-radius: 4px;
+      padding: 1.8rem 2rem;
+      margin: 2rem 0;
+      box-shadow: 0 2px 16px rgba(184, 134, 11, 0.1);
+    }
+
+    .connection-card h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-align: center;
+      margin-bottom: 1.2rem;
+      letter-spacing: 0.06em;
+    }
+
+    .connection-row {
+      display: flex;
+      align-items: center;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(184, 134, 11, 0.15);
+      font-size: 0.92rem;
+      line-height: 1.5;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .connection-row:last-child {
+      border-bottom: none;
+    }
+
+    .conn-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      min-width: 6rem;
+    }
+
+    .conn-arrow {
+      color: var(--accent-gold);
+      font-weight: 700;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .conn-desc {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    /* The punchline callout */
+    .punchline {
+      background: rgba(122, 46, 14, 0.06);
+      border: 2px solid var(--accent);
+      border-radius: 4px;
+      padding: 1.5rem 2rem;
+      margin: 2rem 0;
+      text-align: center;
+    }
+
+    .punchline p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 500;
+      line-height: 1.7;
+      color: var(--accent);
+      margin: 0;
+    }
+
+    .punchline p strong {
+      font-weight: 600;
+    }
+
+    /* Analogy cards */
+    .analogy-card {
+      border: 1px solid var(--border);
+      padding: 1rem 1.4rem;
+      margin: 0.8rem 0;
+      border-radius: 2px;
+      background: var(--bg-parchment);
+    }
+
+    .analogy-card h4 {
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent-gold);
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .analogy-card p {
+      font-size: 0.98rem;
+      margin-bottom: 0;
+      line-height: 1.65;
+    }
+
+    /* Fixed point highlight */
+    .fixed-point {
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.03em;
+    }
+
+    @media (max-width: 600px) {
+      .domains-table {
+        font-size: 0.82rem;
+      }
+      .domains-table th,
+      .domains-table td {
+        padding: 0.6rem 0.5rem;
+      }
+      .connection-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.2rem;
+      }
+      .conn-arrow {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <a href="../index.html" class="back-link">Back to Catlib</a>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="ornament">&#10053;</div>
+      <h1>The Hidden Geometry of Grace</h1>
+      <p class="subtitle">Four theological concepts. One mathematical shape.</p>
+      <p class="subtitle">
+        When we pointed a proof assistant at the Catholic Catechism,
+        we found something we did not expect: culpability, love,
+        freedom, and grace all have the same underlying structure.
+      </p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Introduction -->
+    <section class="article-body">
+      <p>
+        <span class="versal">T</span>his article is about a discovery.
+        Not a discovery we set out to make, but one that emerged when we tried
+        something unusual: we took the reasoning in the Catholic Catechism and
+        fed it into a <em>proof assistant</em>&nbsp;&mdash; a computer program
+        that checks whether conclusions actually follow from premises. Think of
+        it as a calculator for reasoning instead of numbers. You type in your
+        assumptions, you type in your claim, and the machine tells you whether
+        the claim follows&nbsp;&mdash; or whether you are smuggling in
+        something you have not stated.
+      </p>
+      <p>
+        We started with a specific question about sin. What we found was a
+        pattern. And then we found the same pattern again in a completely
+        different part of the Catechism. And again. And again. Four different
+        theological concepts&nbsp;&mdash; culpability, love, freedom, and
+        grace&nbsp;&mdash; all turned out to have the <em>same mathematical
+        shape</em>.
+      </p>
+      <p>
+        This is the story of that pattern, told without any technical
+        prerequisites. If you know that calculus exists and that math can
+        describe the physical world, you have everything you need.
+      </p>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Section: What a proof assistant does -->
+    <section class="article-body">
+      <h2>A Calculator for Reasoning</h2>
+
+      <p>
+        <span class="versal">B</span>efore the pattern, a word about the tool.
+        Most people think of math as being about numbers. But there is a branch
+        of mathematics that is about <em>structure</em>&nbsp;&mdash; the study
+        of how things relate to each other, what can be compared to what, and
+        what follows from what.
+      </p>
+      <p>
+        A proof assistant is software that works in this structural world.
+        You tell it your starting assumptions (axioms), and then you try to
+        prove claims. The machine will not let you skip a step or sneak in an
+        assumption you have not declared. It is brutally honest. If your
+        conclusion does not follow from your stated premises, the program
+        refuses to accept it&nbsp;&mdash; and it tells you exactly what is
+        missing.
+      </p>
+      <p>
+        We used a proof assistant called Lean 4 to formalize parts of the
+        Catholic Catechism. &ldquo;Formalize&rdquo; means: take the
+        Catechism&rsquo;s claims and reasoning, translate them into precise
+        mathematical language, and let the machine check whether the
+        conclusions follow. This project is called
+        <a href="https://github.com/ngundotra/catlib">Catlib</a>.
+      </p>
+      <p>
+        The proof assistant does not tell you whether the Catholic faith is
+        <em>true</em>. It tells you: <em>if</em> you accept these starting
+        premises, <em>then</em> these conclusions follow. It separates the
+        question of logic from the question of belief. And in the process, it
+        reveals structure that is invisible to the naked eye.
+      </p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Section: The first discovery (culpability) -->
+    <section class="article-body">
+      <h2>It Started with Sin</h2>
+
+      <p>
+        <span class="versal">T</span>he Catechism distinguishes between
+        mortal sin (which destroys your relationship with God) and venial sin
+        (which wounds it but does not destroy it). Most people think of this
+        as a simple binary: either your sin is mortal or it is not. A light
+        switch&nbsp;&mdash; on or off.
+      </p>
+      <p>
+        But when we formalized the Catechism&rsquo;s actual reasoning, we
+        found something richer. The Catechism says mortal sin requires three
+        things: grave matter, full knowledge, and complete consent. And then
+        it lists factors that <em>diminish</em> these&nbsp;&mdash; fear, habit,
+        ignorance, psychological pressure, affective immaturity. The word
+        &ldquo;diminish&rdquo; is key. You do not &ldquo;diminish&rdquo;
+        something that has only two values. You diminish something that lives
+        on a spectrum.
+      </p>
+      <p>
+        So culpability is not a light switch. It is more like
+        temperature&nbsp;&mdash; a continuous spectrum, with the mortal/venial
+        boundary acting like the freezing point of water. Above the threshold:
+        mortal sin. Below it: venial. The threshold is real, but the underlying
+        reality is a <em>gradient</em>, not a binary.
+      </p>
+      <p>
+        And the gradient is not one-dimensional. It lives in a
+        <em>three-dimensional space</em>: knowledge, consent, and the gravity
+        of the act. Some pairs of sinners cannot be compared&nbsp;&mdash;
+        like trying to decide whether a tall short person is &ldquo;bigger&rdquo;
+        than a short tall person. The comparison does not have a single answer.
+        Mathematicians call this a <em>partial order</em>: some things can be
+        compared, and some genuinely cannot.
+      </p>
+
+      <div class="assumption-callout">
+        The mortal/venial boundary is not a line. It is a <em>surface</em>
+        in three-dimensional space&nbsp;&mdash; like a phase transition in
+        physics, separating two qualitatively different states.
+      </div>
+
+      <p>
+        This was already surprising. The Catechism implies a precise
+        mathematical structure that no one had spelled out before. But the
+        real surprise was what came next.
+      </p>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Section: The same shape appears three more times -->
+    <section class="article-body">
+      <h2>The Pattern Repeats</h2>
+
+      <p>
+        <span class="versal">W</span>hen we formalized <em>love</em>, we
+        found the same shape. The Catechism uses &ldquo;love&rdquo; to mean
+        at least four different things: agape (selfless love, charity), eros
+        (desire and attraction), philia (friendship), and self-love. Each is
+        a separate dimension. Each admits of degrees. And just like
+        culpability, the different kinds of love cannot always be
+        ranked&nbsp;&mdash; is a person with deep friendship but little
+        charity &ldquo;more loving&rdquo; than someone with burning charity
+        but few friends? The comparison breaks down. It is a partial order
+        again.
+      </p>
+      <p>
+        When we formalized <em>freedom</em>, the same shape appeared a third
+        time. The Catechism does not treat freedom as binary (free or not
+        free). It treats freedom as <em>graded</em>. A person struggling with
+        addiction is less free than someone without that burden, but more free
+        than someone under total coercion. And here is the part that surprises
+        people: the Catechism says that <em>more goodness means more
+        freedom</em>. Perfect freedom is not the ability to choose evil. It is
+        the state where you are so fully aligned with the good that evil holds
+        no attraction at all. The saints are <em>more</em> free, not less.
+        Freedom is a spectrum, oriented toward an endpoint.
+      </p>
+      <p>
+        And when we formalized <em>grace</em>&nbsp;&mdash; God&rsquo;s
+        healing action in the soul&nbsp;&mdash; there it was again. The
+        Catechism teaches that original sin wounded four faculties: the
+        intellect (darkened), the will (weakened), the desires (disordered),
+        and the body (subject to suffering). Grace heals each of these
+        <em>independently and progressively</em>. You can have a well-formed
+        intellect but a weak will. You can have strong desires oriented toward
+        the good but a body that still suffers. Each faculty lives on its own
+        spectrum from wounded to healed. The complete healing of all
+        four&nbsp;&mdash; what the tradition calls heaven&nbsp;&mdash; is the
+        point where all four reach their maximum:
+        <span class="fixed-point">(1, 1, 1, 1)</span>.
+      </p>
+      <p>
+        With a striking exception: the body stays wounded (locked at zero)
+        until the resurrection. A saint in heaven before the general
+        resurrection is at <span class="fixed-point">(1, 1, 1, 0)</span>.
+        Only after the resurrection of the body does the healing become
+        complete.
+      </p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- THE CENTERPIECE TABLE -->
+    <section class="article-body">
+      <h2>Four Spaces, One Pattern</h2>
+
+      <p>
+        <span class="versal">H</span>ere is the discovery, laid out in one
+        view. Four theological concepts. Each one a multi-dimensional space
+        with its own axes. Each one graded, not binary. Each one a partial
+        order. And each one has the same open question at its heart.
+      </p>
+
+      <div style="overflow-x: auto;">
+      <table class="domains-table">
+        <thead>
+          <tr>
+            <th>Domain</th>
+            <th>Dimensions</th>
+            <th>What We Found</th>
+            <th>The Open Question</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Culpability</td>
+            <td><span class="dim-list">Knowledge &times; Consent &times; Matter</span></td>
+            <td><span class="finding-text">Partially ordered, not binary. The mortal/venial boundary is a surface, not a line.</span></td>
+            <td><span class="open-q">How do diminishers (fear, habit, anxiety) combine?</span></td>
+          </tr>
+          <tr>
+            <td>Love</td>
+            <td><span class="dim-list">Agape &times; Eros &times; Philia &times; Self-love</span></td>
+            <td><span class="finding-text">Not symmetric&nbsp;&mdash; you can love enemies (agape without philia). Mortal sin destroys only agape; eros, philia, and self-love survive.</span></td>
+            <td><span class="open-q">How do the four kinds compose in conjugal love?</span></td>
+          </tr>
+          <tr>
+            <td>Freedom</td>
+            <td><span class="dim-list">Level &times; Can-choose-evil &times; Oriented-to-good</span></td>
+            <td><span class="finding-text">Graded, not binary. More good = more free. Perfect freedom = inability to sin.</span></td>
+            <td><span class="open-q">Where is the threshold between free and coerced?</span></td>
+          </tr>
+          <tr>
+            <td>Grace / Healing</td>
+            <td><span class="dim-list">Intellect &times; Will &times; Desires &times; Body</span></td>
+            <td><span class="finding-text">Four faculties healed independently and progressively. Heaven = (1,1,1,1). Body locked at 0 until resurrection.</span></td>
+            <td><span class="open-q">How do sacraments map to per-faculty healing?</span></td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+
+      <div class="punchline">
+        <p>
+          All four domains have the same open question:
+          <strong>what is the composition operator?</strong>
+          The Catechism asserts that these relationships <em>exist</em>
+          but never specifies the <em>algebra</em>&nbsp;&mdash; the recipe
+          for how the pieces combine. Same gap, four times.
+        </p>
+      </div>
+
+      <p>
+        To make this concrete: if a person acts out of fear <em>and</em>
+        habit <em>and</em> anxiety simultaneously, how do those three factors
+        interact to reduce their culpability? Do they add up? Multiply? Does
+        the worst one dominate? The Catechism says each factor diminishes
+        culpability, but it never says <em>how they combine</em>. It is like
+        being given a list of ingredients but not the recipe.
+      </p>
+      <p>
+        The same gap appears in love (how do agape and eros combine in
+        marriage?), in freedom (where exactly does the line between
+        diminished freedom and no freedom fall?), and in grace (does
+        confession heal the will more than the intellect? does the Eucharist
+        heal the desires?). Four different theological domains, four instances
+        of the same structural silence.
+      </p>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Section: Why this matters — the connections -->
+    <section class="article-body">
+      <h2>Not Four Systems&nbsp;&mdash; One</h2>
+
+      <p>
+        <span class="versal">T</span>he pattern would be interesting even if
+        the four domains were independent. But they are not. The proof
+        assistant revealed that they are <em>connected</em>&nbsp;&mdash;
+        different faces of the same underlying structure, like different
+        views of the same building.
+      </p>
+
+      <div class="connection-card">
+        <h3>How the Four Domains Connect</h3>
+
+        <div class="connection-row">
+          <span class="conn-label">Freedom</span>
+          <span class="conn-arrow">&rarr;</span>
+          <span class="conn-desc">Your freedom level <em>is</em> your will-healing level in the grace framework. Freedom is not separate from grace&nbsp;&mdash; it is grace measured along one axis.</span>
+        </div>
+
+        <div class="connection-row">
+          <span class="conn-label">Love</span>
+          <span class="conn-arrow">&rarr;</span>
+          <span class="conn-desc">Your agape (charity) degree <em>is</em> your will-healing expressed as love. The capacity for selfless love is not a different thing from a healed will&nbsp;&mdash; it is the same thing, named differently.</span>
+        </div>
+
+        <div class="connection-row">
+          <span class="conn-label">Desire</span>
+          <span class="conn-arrow">&rarr;</span>
+          <span class="conn-desc">The capacity for properly ordered desire (what the tradition calls &ldquo;nuptial capacity&rdquo;) <em>is</em> the desire-healing level. Conjugal ethics is not a separate system&nbsp;&mdash; it is grace measured along the desire axis.</span>
+        </div>
+
+        <div class="connection-row">
+          <span class="conn-label">Culpability</span>
+          <span class="conn-arrow">&rarr;</span>
+          <span class="conn-desc">The mortal sin threshold depends on your freedom level, which depends on your healing level. The four domains are not parallel&nbsp;&mdash; they are <em>nested</em>.</span>
+        </div>
+      </div>
+
+      <p>
+        This is like the moment in physics when people realized that
+        electricity and magnetism are not two separate forces but two aspects
+        of one force&nbsp;&mdash; electromagnetism. The proof assistant did not
+        just find four similar structures. It found that they are the
+        <em>same</em> structure, measured along different axes.
+      </p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Section: The analogy — making it tangible -->
+    <section class="article-body">
+      <h2>Making It Tangible</h2>
+
+      <p>
+        <span class="versal">I</span>f this still feels abstract, here are
+        some analogies that may help.
+      </p>
+
+      <div class="analogy-card">
+        <h4>Temperature, not a light switch</h4>
+        <p>
+          We are used to binary labels: hot or cold, guilty or innocent,
+          free or unfree. But the reality underneath is a spectrum. Water is
+          not &ldquo;hot&rdquo; or &ldquo;cold&rdquo;&nbsp;&mdash; it has a
+          temperature. The freezing point is real (water genuinely becomes ice),
+          but the underlying reality is continuous. That is what the Catechism
+          describes: real thresholds (mortal vs. venial, free vs. coerced)
+          imposed on continuous spectrums.
+        </p>
+      </div>
+
+      <div class="analogy-card">
+        <h4>Ingredients without a recipe</h4>
+        <p>
+          Imagine someone hands you flour, eggs, sugar, and butter and says:
+          &ldquo;These combine to make something.&rdquo; That is true. But
+          <em>how</em> they combine matters enormously&nbsp;&mdash; you could
+          get cake, cookies, or bread depending on proportions and method.
+          The Catechism gives us the ingredients (fear, habit, ignorance all
+          diminish culpability) but not the recipe (how they combine). The
+          proof assistant identified exactly where the recipe is missing.
+        </p>
+      </div>
+
+      <div class="analogy-card">
+        <h4>A fully healed patient</h4>
+        <p>
+          Think of someone recovering from an illness that affected their
+          vision, their strength, their coordination, and their endurance.
+          Each recovers independently&nbsp;&mdash; you might have sharp eyes
+          but still be weak. Full health is the point where all four are
+          restored. That is what heaven looks like in this framework:
+          <span class="fixed-point">(1, 1, 1, 1)</span>&nbsp;&mdash;
+          intellect clear, will strong, desires rightly ordered, body
+          glorified. The endpoint of a healing process, not a location you
+          are teleported to.
+        </p>
+      </div>
+
+      <div class="analogy-card">
+        <h4>Newton&rsquo;s unification</h4>
+        <p>
+          Before Newton, people thought the force that makes apples fall and
+          the force that keeps the moon in orbit were different things. Newton
+          showed they are the same force&nbsp;&mdash; gravity&nbsp;&mdash;
+          just measured at different scales. The proof assistant did something
+          similar here: it showed that culpability, love, freedom, and grace,
+          which <em>seem</em> like separate topics in the Catechism, are
+          actually different measurements of one underlying structure.
+        </p>
+      </div>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Section: What this means -->
+    <section class="article-body">
+      <h2>What the Proof Assistant Found&nbsp;&mdash; and What It Did Not</h2>
+
+      <p>
+        <span class="versal">L</span>et us be precise about what we are
+        claiming and what we are not.
+      </p>
+      <p>
+        <strong>What we found:</strong> The Catechism contains mathematical
+        structure that has never been made explicit. Four different theological
+        concepts share the same shape: multi-dimensional, graded, partially
+        ordered spaces with a shared open question about how their dimensions
+        compose. These four spaces are connected&nbsp;&mdash; they are
+        different views of one deeper system.
+      </p>
+      <p>
+        <strong>What we did not find:</strong> The recipe. The Catechism
+        tells us the <em>shape</em> of these spaces but not the
+        <em>algebra</em>&nbsp;&mdash; the rules for how the pieces combine.
+        This is not a failure of our analysis. It is a genuine gap in the
+        source material. The Catechism asserts that fear diminishes
+        culpability, that agape and eros both operate in marriage, that grace
+        heals the intellect and the will. But it does not say how these
+        combine. Every confessor, every spiritual director, every married
+        couple is implicitly working with a composition model that the
+        Catechism does not provide.
+      </p>
+      <p>
+        <strong>What we cannot say:</strong> Whether the Catechism is
+        <em>right</em>. The proof assistant checks logic, not truth. It says:
+        <em>if</em> you accept these axioms, <em>then</em> this structure
+        follows. Whether to accept those axioms is a question of faith, not
+        mathematics.
+      </p>
+
+      <div class="assumption-callout">
+        The proof assistant found both the structure and the silence. Both
+        matter. The structure is beautiful&nbsp;&mdash; more coherent than
+        most people expect. The silence is honest&nbsp;&mdash; a genuine open
+        question, not a defect, and one that formal analysis made visible
+        for the first time.
+      </div>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Section: Why it matters -->
+    <section class="article-body">
+      <h2>Why This Matters</h2>
+
+      <p>
+        <span class="versal">Y</span>ou might wonder: who cares about the
+        mathematical structure of theology? Here is why it matters.
+      </p>
+      <p>
+        The Catechism is a document read by over a billion people. Its
+        reasoning about culpability affects how confessors evaluate sin.
+        Its reasoning about freedom affects how the Church thinks about
+        moral responsibility. Its reasoning about grace affects how people
+        understand their own spiritual development. And its reasoning about
+        love shapes how Catholic marriages are understood.
+      </p>
+      <p>
+        In all four of these areas, the Catechism is doing something more
+        sophisticated than most readers realize. It is not saying
+        &ldquo;guilty or innocent.&rdquo; It is not saying &ldquo;free or
+        unfree.&rdquo; It is describing graded, multi-dimensional spaces
+        with real thresholds&nbsp;&mdash; and then leaving the hardest
+        question (how the dimensions interact) to pastoral judgment.
+      </p>
+      <p>
+        Knowing that this structure exists does not replace pastoral judgment.
+        But it does clarify what that judgment is <em>doing</em>. A
+        confessor evaluating someone who acted under fear, habit, and
+        psychological duress is not just &ldquo;making a call.&rdquo; They
+        are implicitly choosing a composition operator in a partially ordered
+        space. Seeing that clearly is better than doing it blindly.
+      </p>
+      <p>
+        And the fact that four different theological concepts share the same
+        mathematical shape suggests something about the Catechism itself: it
+        may be more unified, more internally coherent, than even its authors
+        knew. The hidden geometry was there all along. The proof assistant
+        just made it visible.
+      </p>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Going deeper -->
+    <section class="article-body">
+      <div class="summary-box">
+        <h3>Going Deeper</h3>
+        <p>
+          This article is an overview. Each of the four domains has its own
+          detailed treatment:
+        </p>
+        <ul style="text-align: left; margin-top: 0.8rem;">
+          <li><a href="culpability-math.html">Culpability as a Partially Ordered Space</a>&nbsp;&mdash; the full mathematical structure of sin, diminishers, and the mortal/venial threshold surface</li>
+          <li><a href="love-math.html">The Mathematics of Love</a>&nbsp;&mdash; four kinds of love, their asymmetries, and the mortal sin discovery</li>
+          <li><a href="divine-modes.html">The Two Modes of God</a>&nbsp;&mdash; how a proof assistant resolved the hell paradox and found a spectrum from damnation to heaven</li>
+        </ul>
+        <p style="margin-top: 0.8rem;">
+          The underlying Lean 4 formalizations are open source at
+          <a href="https://github.com/ngundotra/catlib">github.com/ngundotra/catlib</a>.
+          The 15 base axioms are in
+          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Foundations/Axioms.lean"><code>Axioms.lean</code></a>.
+        </p>
+      </div>
+    </section>
+
+    <div class="ornament">&#10053;</div>
+
+    <section class="cta-section">
+      <div class="cta-group">
+        <a href="https://github.com/ngundotra/catlib" class="cta-button primary">View on GitHub</a>
+        <a href="../index.html" class="cta-button secondary">Back to Catlib</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="ornament">&#10053;</div>
+    <p>
+      <a href="https://github.com/ngundotra/catlib">Catlib</a>&nbsp;&mdash;
+      formalizing the Catholic Catechism in Lean 4.
+      A love letter to the Catholic intellectual tradition, written with precision.
+    </p>
+  </footer>
+
+</body>
+</html>
