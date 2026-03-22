@@ -290,4 +290,66 @@ theorem hell_is_incomplete_existence (p : HumanPerson)
    (death_separates p h_dead).1,
    fun q h => corporeal_requires_spiritual q h⟩
 
+/-!
+## Bridge: SinEffects → Hell
+
+The three-layer sin model (SinEffects.lean) makes explicit WHY a person
+goes to hell: their sin profile has guilt PRESENT (Layer 2 — they died
+in mortal sin). This connects the SinProfile model to the Hell formalization.
+
+Note: if guilt is present but another layer is `unknownToUs`, the result
+is `knownToGodAlone`, not `hell`. The unknown poisons the determination.
+So guilt being present implies hell OR knownToGodAlone.
+-/
+
+/-- Bridge: a person goes to hell because their sin profile has
+    guilt PRESENT (they died in mortal sin) AND all layers are
+    determinate. This makes the connection explicit: hell is a
+    CONSEQUENCE of Layer 2 (guilt) being unresolved at death,
+    when the full profile is known.
+
+    If guilt is present but another layer is unknown, the result
+    is `knownToGodAlone`, not `hell`. We prove the disjunction. -/
+theorem hell_from_sin_profile (sp : SinProfile)
+    (h_guilt : sp.guilt = EffectState.present) :
+    afterlifeFromProfile sp = AfterlifeOutcome.hell ∨
+    afterlifeFromProfile sp = AfterlifeOutcome.knownToGodAlone := by
+  unfold afterlifeFromProfile
+  by_cases h_unk : sp.originalWound = EffectState.unknownToUs
+                   ∨ sp.guilt = EffectState.unknownToUs
+                   ∨ sp.attachment = EffectState.unknownToUs
+  · right; simp [h_unk]
+  · left
+    simp [h_unk]
+    split
+    · next h_all =>
+      exact absurd h_all.2.1 (by rw [h_guilt]; decide)
+    · simp [h_guilt]
+
+/-- When the full sin profile is determinate (no unknowns) and guilt
+    is present, the outcome is definitively hell. No ambiguity. -/
+theorem determinate_guilt_means_hell (sp : SinProfile)
+    (h_guilt : sp.guilt = EffectState.present)
+    (h_no_unk_ow : sp.originalWound ≠ EffectState.unknownToUs)
+    (h_no_unk_g : sp.guilt ≠ EffectState.unknownToUs)
+    (h_no_unk_a : sp.attachment ≠ EffectState.unknownToUs) :
+    afterlifeFromProfile sp = AfterlifeOutcome.hell := by
+  unfold afterlifeFromProfile
+  have h_no_unk : ¬(sp.originalWound = EffectState.unknownToUs
+                   ∨ sp.guilt = EffectState.unknownToUs
+                   ∨ sp.attachment = EffectState.unknownToUs) :=
+    fun h => h.elim h_no_unk_ow (fun h2 => h2.elim h_no_unk_g h_no_unk_a)
+  simp [h_no_unk]
+  split
+  · next h_all =>
+    exact absurd h_all.2.1 (by rw [h_guilt]; decide)
+  · simp [h_guilt]
+
+/-- The standard mortal-sin profile (baptized person who committed
+    mortal sin) maps to hell — confirming the SinEffects theorem
+    `mortal_sin_goes_to_hell` at the Hell.lean level. -/
+theorem baptized_mortal_sin_is_hell :
+    afterlifeFromProfile baptizedInMortalSin = AfterlifeOutcome.hell :=
+  mortal_sin_goes_to_hell
+
 end Catlib.Creed

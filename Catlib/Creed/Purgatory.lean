@@ -449,4 +449,56 @@ theorem purgatory_person_is_incomplete (p : HumanPerson)
     ¬hasCorporealAspect p :=
   (death_separates p h_dead).1
 
+/-!
+## Bridge: SinEffects → Purgatory
+
+The three-layer sin model (SinEffects.lean) makes explicit WHY a person
+goes to purgatory: their sin profile has guilt REMOVED (Layer 2 cleared
+by Reconciliation) but attachment PRESENT (Layer 3 remains). This is
+the CCC's §1030 made formal: "imperfectly purified" = Layer 3 unresolved.
+
+The connection: afterReconciliation (SinEffects) maps to purgatory,
+confirming `attachments_go_to_purgatory` from SinEffects.lean.
+-/
+
+/-- Bridge: a person goes to purgatory because their sin profile
+    has guilt REMOVED but attachment PRESENT. Layer 2 cleared,
+    Layer 3 remains. This is the CCC's §1030 made formal.
+
+    Directly reuses `attachments_go_to_purgatory` from SinEffects. -/
+theorem purgatory_from_sin_profile :
+    afterlifeFromProfile afterReconciliation = AfterlifeOutcome.purgatory :=
+  attachments_go_to_purgatory
+
+/-- The fully purified go to heaven, not purgatory. If all three
+    layers are removed, no purification is needed.
+    Bridges SinEffects' `purified_go_to_heaven` into the purgatory context. -/
+theorem fully_purified_skips_purgatory :
+    afterlifeFromProfile Catlib.fullyPurified = AfterlifeOutcome.heaven :=
+  purified_go_to_heaven
+
+/-- When the sin profile is determinate, has no guilt, but has
+    attachment, the outcome is purgatory. This is the general form
+    of the purgatory condition. -/
+theorem attachment_without_guilt_means_purgatory (sp : SinProfile)
+    (h_ow : sp.originalWound ≠ EffectState.unknownToUs)
+    (h_g : sp.guilt ≠ EffectState.unknownToUs)
+    (h_a : sp.attachment ≠ EffectState.unknownToUs)
+    (h_no_guilt : sp.guilt = EffectState.removed)
+    (h_attach : sp.attachment = EffectState.present) :
+    afterlifeFromProfile sp = AfterlifeOutcome.purgatory := by
+  unfold afterlifeFromProfile
+  have h_no_unk : ¬(sp.originalWound = EffectState.unknownToUs
+                   ∨ sp.guilt = EffectState.unknownToUs
+                   ∨ sp.attachment = EffectState.unknownToUs) :=
+    fun h => h.elim h_ow (fun h2 => h2.elim h_g h_a)
+  simp [h_no_unk]
+  split
+  · next h_all =>
+    exact absurd h_all.2.2 (by rw [h_attach]; decide)
+  · split
+    · next h_guilt_present =>
+      exact absurd h_guilt_present (by rw [h_no_guilt]; decide)
+    · rfl
+
 end Catlib.Creed

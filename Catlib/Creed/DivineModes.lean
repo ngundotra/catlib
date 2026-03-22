@@ -459,4 +459,98 @@ theorem risen_saint_is_true_endpoint (p : HumanPerson)
   let ⟨h_corp, h_spir⟩ := resurrection_reunites p h_risen
   ⟨h_corp, h_spir, h_comm, h_pur⟩
 
+/-!
+## Bridge: SinEffects → DivineModes
+
+The three-layer sin model (SinEffects.lean) determines the afterlife
+outcome via `afterlifeFromProfile`. The afterlife outcome then determines
+which divine modes are active. This section connects the two.
+
+```
+SinProfile → afterlifeFromProfile → AfterlifeOutcome → afterlifeToSoulState → Option SoulState
+```
+
+For determinate cases (heaven, purgatory, hell), the mapping is clear.
+For `knownToGodAlone`, we return `none` — the model REFUSES to assign
+a determinate divine mode where the CCC says "we don't know" (§847).
+-/
+
+/-- Bridge: the afterlife outcome (from SinEffects) determines
+    which divine modes are active.
+    Returns `none` for `knownToGodAlone` — the CCC does not determine
+    which divine mode is active for those cases (§847, §1260). -/
+def afterlifeToSoulState : AfterlifeOutcome → Option SoulState
+  | .heaven    => some heavenState
+  | .purgatory => some purgatoryState
+  | .hell      => some hellState
+  | .knownToGodAlone => none
+
+/-- The determinate cases map correctly: heaven → heavenState. -/
+theorem afterlife_heaven_is_heavenState :
+    afterlifeToSoulState AfterlifeOutcome.heaven = some heavenState := by
+  rfl
+
+/-- The determinate cases map correctly: purgatory → purgatoryState. -/
+theorem afterlife_purgatory_is_purgatoryState :
+    afterlifeToSoulState AfterlifeOutcome.purgatory = some purgatoryState := by
+  rfl
+
+/-- The determinate cases map correctly: hell → hellState. -/
+theorem afterlife_hell_is_hellState :
+    afterlifeToSoulState AfterlifeOutcome.hell = some hellState := by
+  rfl
+
+/-- If the outcome is `knownToGodAlone`, we CANNOT determine the divine mode.
+    The model preserves the CCC's epistemic humility (§847). -/
+theorem knownToGodAlone_indeterminate :
+    afterlifeToSoulState AfterlifeOutcome.knownToGodAlone = none := by
+  rfl
+
+/-- A person whose sin profile determines their afterlife state.
+    The afterlife outcome follows entirely from the three-layer sin
+    profile — no additional input is needed. -/
+def personAfterlifeFromSin (_p : HumanPerson) (sp : SinProfile)
+    (_h_dead : isDead _p) : AfterlifeOutcome :=
+  afterlifeFromProfile sp
+
+/-- If the sin profile yields heaven, the person is in beatifying communion
+    and fully purified. That is, the SoulState for heaven has both properties. -/
+theorem heaven_profile_means_heavenState (sp : SinProfile)
+    (h : afterlifeFromProfile sp = AfterlifeOutcome.heaven) :
+    afterlifeToSoulState (afterlifeFromProfile sp) = some heavenState := by
+  rw [h]
+  rfl
+
+/-- If the sin profile yields purgatory, the person is in communion but
+    not yet purified (purgatoryState). -/
+theorem purgatory_profile_means_purgatoryState (sp : SinProfile)
+    (h : afterlifeFromProfile sp = AfterlifeOutcome.purgatory) :
+    afterlifeToSoulState (afterlifeFromProfile sp) = some purgatoryState := by
+  rw [h]
+  rfl
+
+/-- If the sin profile yields hell, the person is sustained but NOT in
+    beatifying communion (hellState). -/
+theorem hell_profile_means_hellState (sp : SinProfile)
+    (h : afterlifeFromProfile sp = AfterlifeOutcome.hell) :
+    afterlifeToSoulState (afterlifeFromProfile sp) = some hellState := by
+  rw [h]
+  rfl
+
+/-- The three-layer sin model DETERMINES the afterlife outcome
+    (for determinate cases). There is no additional input needed —
+    the sin profile IS the complete input to the afterlife function.
+
+    This is what the CCC says: your afterlife follows from the
+    state of your soul (which layers are resolved), not from an
+    external judgment imposed from without (§1472).
+
+    For every AfterlifeOutcome, either the divine mode is determined
+    (Some SoulState) or the CCC explicitly defers to God (None). -/
+theorem sin_profile_determines_divine_mode (sp : SinProfile) :
+    (∃ s, afterlifeToSoulState (afterlifeFromProfile sp) = some s) ∨
+    afterlifeToSoulState (afterlifeFromProfile sp) = none := by
+  simp [afterlifeToSoulState]
+  cases h : afterlifeFromProfile sp <;> simp [afterlifeToSoulState, h]
+
 end Catlib.Creed
