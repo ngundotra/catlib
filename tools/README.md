@@ -49,6 +49,14 @@ Run from the project root (`/home/ngundotra/Documents/catlib/`):
 # Dependency flow diagram — Sankey-style left-to-right
 ./tools/theorem-tree --flow Catlib/MoralTheology/TheologyOfBody.lean
 ./tools/theorem-tree --flow Catlib/Creed/MarianDogma.lean
+
+# Graph queries — analyze the dependency structure
+./tools/theorem-tree --top-axioms 5 Catlib/          # Most load-bearing axioms
+./tools/theorem-tree --top-theorems 5 Catlib/         # Most complex theorems
+./tools/theorem-tree --bottom-axioms 5 Catlib/        # Least-connected axioms
+./tools/theorem-tree --islands Catlib/                 # Isolated/unused axioms
+./tools/theorem-tree --trace hope_for_salvation_of_suicide Catlib/  # Trace a theorem's deps
+./tools/theorem-tree --defs Catlib/Creed/DivineModes.lean           # Definitions and their users
 ```
 
 ## Example output
@@ -100,6 +108,12 @@ Flow: AXIOMS: 9 -> THEOREMS: 16 -> DERIVED (L2): 5 -> DERIVED (L3): 2 -> DERIVED
 | `--axioms-only` | Filter to show only `axiom` declarations |
 | `--theorems-only` | Filter to show only `theorem` declarations |
 | `--defs-only` | Filter to show only `def` declarations |
+| `--top-axioms K` | Show the K most load-bearing axioms (by transitive theorem dependents) |
+| `--top-theorems M` | Show the M most-dependent theorems (by transitive axiom count) |
+| `--bottom-axioms K` | Show the K least-connected axioms (candidates for removal) |
+| `--islands` | Show isolated axioms not used by any theorem |
+| `--trace NAME` | Trace all transitive dependencies of a declaration as a tree |
+| `--defs` | Show definitions and which declarations use them |
 | `-h`, `--help` | Show help message |
 
 ## Docstring metadata extraction

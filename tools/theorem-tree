@@ -11,6 +11,12 @@ Usage:
     ./tools/theorem-tree --brief <path>             # One-line descriptions (default)
     ./tools/theorem-tree --verbose <path>           # Full multi-line docstrings
     ./tools/theorem-tree --flow <path>              # Sankey-style dependency flow
+    ./tools/theorem-tree --top-axioms K <path>      # K most load-bearing axioms
+    ./tools/theorem-tree --top-theorems M <path>    # M most-dependent theorems
+    ./tools/theorem-tree --bottom-axioms K <path>   # K least-connected axioms
+    ./tools/theorem-tree --islands <path>           # Disconnected/isolated axioms
+    ./tools/theorem-tree --trace NAME <path>        # Trace dependencies of a theorem
+    ./tools/theorem-tree --defs <path>              # Definitions and their connections
 """
 
 import os
@@ -858,6 +864,307 @@ def find_lean_files(path):
 
 
 # ---------------------------------------------------------------------------
+# Graph queries
+# ---------------------------------------------------------------------------
+
+def _build_decl_index(all_parsed):
+    """Build a name -> Declaration index from all parsed files."""
+    index = {}
+    for lf in all_parsed:
+        for decl in lf.declarations:
+            if decl.name.endswith("_tag") or decl.name.endswith("_provenance"):
+                continue
+            index[decl.name] = decl
+    return index
+
+
+def _transitive_dependents(name, decl_index):
+    """Find all declarations that transitively depend on `name`."""
+    dependents = set()
+    # Build reverse map: for each decl, which decls reference it?
+    used_by = defaultdict(set)
+    for dname, decl in decl_index.items():
+        for ref in decl.references:
+            if ref in decl_index:
+                used_by[ref].add(dname)
+
+    # BFS from name
+    queue = [name]
+    visited = {name}
+    while queue:
+        current = queue.pop(0)
+        for dep in used_by.get(current, set()):
+            if dep not in visited:
+                visited.add(dep)
+                dependents.add(dep)
+                queue.append(dep)
+    return dependents
+
+
+def _transitive_dependencies(name, decl_index):
+    """Find all declarations that `name` transitively depends on."""
+    dependencies = set()
+    queue = [name]
+    visited = {name}
+    while queue:
+        current = queue.pop(0)
+        decl = decl_index.get(current)
+        if not decl:
+            continue
+        for ref in decl.references:
+            if ref in decl_index and ref not in visited:
+                visited.add(ref)
+                dependencies.add(ref)
+                queue.append(ref)
+    return dependencies
+
+
+def print_top_axioms(all_parsed, root, k):
+    """Show the K most load-bearing axioms by transitive dependent count."""
+    decl_index = _build_decl_index(all_parsed)
+
+    # Find all axiom-like declarations (axiom + opaque, since opaques are often axioms)
+    axiom_names = [name for name, decl in decl_index.items()
+                   if decl.kind in ("axiom", "opaque")]
+
+    # Count transitive theorem dependents for each axiom
+    results = []
+    for aname in axiom_names:
+        deps = _transitive_dependents(aname, decl_index)
+        # Count only theorem dependents
+        theorem_deps = [d for d in deps if decl_index[d].kind == "theorem"]
+        results.append((aname, len(theorem_deps), len(deps)))
+
+    results.sort(key=lambda x: x[1], reverse=True)
+    results = results[:k]
+
+    print(f"Top {k} load-bearing axioms:")
+    print("=" * 60)
+    print()
+    for i, (name, theorem_count, total_count) in enumerate(results, 1):
+        decl = decl_index[name]
+        kind_tag = decl.kind
+        print(f"  {i:>2}. [{kind_tag}] {name} ({theorem_count} theorem dependents, {total_count} total)")
+        if decl.description:
+            desc = decl.description
+            if len(desc) > 100:
+                desc = desc[:97] + "..."
+            print(f'      "{desc}"')
+        rel_file = make_relative(decl.file_path, root)
+        print(f"      File: {rel_file}")
+        print()
+
+
+def print_top_theorems(all_parsed, root, m):
+    """Show the M most dependent theorems by transitive axiom count."""
+    decl_index = _build_decl_index(all_parsed)
+
+    theorem_names = [name for name, decl in decl_index.items()
+                     if decl.kind == "theorem"]
+
+    results = []
+    for tname in theorem_names:
+        deps = _transitive_dependencies(tname, decl_index)
+        axiom_deps = [d for d in deps if decl_index[d].kind in ("axiom", "opaque")]
+        results.append((tname, sorted(axiom_deps), len(deps)))
+
+    results.sort(key=lambda x: len(x[1]), reverse=True)
+    results = results[:m]
+
+    print(f"Top {m} most-dependent theorems:")
+    print("=" * 60)
+    print()
+    for i, (name, axiom_deps, total_deps) in enumerate(results, 1):
+        decl = decl_index[name]
+        print(f"  {i:>2}. [{decl.kind}] {name} (depends on {len(axiom_deps)} axioms, {total_deps} total deps)")
+        if axiom_deps:
+            axiom_list = ", ".join(axiom_deps[:8])
+            if len(axiom_deps) > 8:
+                axiom_list += f", ... (+{len(axiom_deps) - 8} more)"
+            print(f"      Axioms: {axiom_list}")
+        rel_file = make_relative(decl.file_path, root)
+        print(f"      File: {rel_file}")
+        print()
+
+
+def print_islands(all_parsed, root):
+    """Show axioms that no theorem references (directly or transitively)."""
+    decl_index = _build_decl_index(all_parsed)
+
+    axiom_names = [name for name, decl in decl_index.items()
+                   if decl.kind in ("axiom", "opaque")]
+
+    islands = []
+    for aname in axiom_names:
+        deps = _transitive_dependents(aname, decl_index)
+        theorem_deps = [d for d in deps if decl_index[d].kind == "theorem"]
+        if not theorem_deps:
+            decl = decl_index[aname]
+            rel_file = os.path.basename(decl.file_path)
+            islands.append((aname, decl, rel_file))
+
+    islands.sort(key=lambda x: (x[2], x[0]))
+
+    print("Isolated axioms (not used by any theorem):")
+    print("=" * 60)
+    print()
+    if not islands:
+        print("  (none — all axioms are used by at least one theorem)")
+        return
+
+    for name, decl, filename in islands:
+        kind_tag = decl.kind
+        desc = ""
+        if decl.description:
+            d = decl.description
+            if len(d) > 80:
+                d = d[:77] + "..."
+            desc = f'  "{d}"'
+        print(f"  [{kind_tag}] {name} ({filename}){desc}")
+    print()
+    print(f"Total: {len(islands)} isolated axiom(s)")
+
+
+def print_trace(all_parsed, root, theorem_name):
+    """Trace all transitive dependencies of a theorem as a tree."""
+    decl_index = _build_decl_index(all_parsed)
+
+    if theorem_name not in decl_index:
+        print(f"Error: declaration '{theorem_name}' not found", file=sys.stderr)
+        # Suggest close matches
+        candidates = [n for n in decl_index if theorem_name.lower() in n.lower()]
+        if candidates:
+            print(f"Did you mean: {', '.join(candidates[:5])}", file=sys.stderr)
+        sys.exit(1)
+
+    root_decl = decl_index[theorem_name]
+
+    print(f"Dependency trace: {theorem_name}")
+    print("=" * 60)
+    print()
+
+    def _print_dep_tree(name, prefix="", visited=None):
+        if visited is None:
+            visited = set()
+
+        decl = decl_index.get(name)
+        if not decl:
+            return
+
+        # Get direct dependencies
+        direct_deps = [ref for ref in decl.references if ref in decl_index]
+
+        for i, dep_name in enumerate(direct_deps):
+            dep_decl = decl_index[dep_name]
+            is_last = (i == len(direct_deps) - 1)
+            connector = "\u2514\u2500\u2500 " if is_last else "\u251c\u2500\u2500 "
+            child_prefix = "    " if is_last else "\u2502   "
+
+            kind_tag = f"[{dep_decl.kind}]"
+            # Show cross-file origin
+            file_note = ""
+            if dep_decl.file_path != decl.file_path:
+                file_note = f" (from {os.path.basename(dep_decl.file_path).replace('.lean', '')})"
+
+            cycle_note = ""
+            if dep_name in visited:
+                cycle_note = " [circular]"
+
+            print(f"{prefix}{connector}{kind_tag} {dep_name}{file_note}{cycle_note}")
+
+            if dep_name not in visited:
+                visited.add(dep_name)
+                _print_dep_tree(dep_name, prefix + child_prefix, visited)
+
+    kind_tag = f"[{root_decl.kind}]"
+    rel_file = make_relative(root_decl.file_path, root)
+    print(f"{kind_tag} {theorem_name} ({rel_file})")
+    visited = {theorem_name}
+    _print_dep_tree(theorem_name, "", visited)
+
+    # Summary
+    all_deps = _transitive_dependencies(theorem_name, decl_index)
+    by_kind = defaultdict(list)
+    for dep in all_deps:
+        by_kind[decl_index[dep].kind].append(dep)
+    print()
+    parts = [f"{len(v)} {k}{'s' if len(v) != 1 else ''}" for k, v in sorted(by_kind.items())]
+    print(f"Total transitive dependencies: {len(all_deps)} ({', '.join(parts)})")
+
+
+def print_defs(all_parsed, root):
+    """Show definitions and which theorems use them."""
+    decl_index = _build_decl_index(all_parsed)
+
+    # Build reverse map: for each def, which theorems reference it?
+    def_names = [name for name, decl in decl_index.items()
+                 if decl.kind == "def"]
+
+    results = []
+    for dname in def_names:
+        deps = _transitive_dependents(dname, decl_index)
+        # Direct theorem users (not transitive — more useful for defs)
+        direct_users = []
+        for uname, udecl in decl_index.items():
+            if dname in udecl.references:
+                direct_users.append(uname)
+
+        results.append((dname, sorted(direct_users)))
+
+    results.sort(key=lambda x: len(x[1]), reverse=True)
+
+    print("Definitions and their theorem connections:")
+    print("=" * 60)
+    print()
+    for name, users in results:
+        decl = decl_index[name]
+        rel_file = os.path.basename(decl.file_path).replace(".lean", "")
+        if users:
+            user_list = ", ".join(users[:10])
+            if len(users) > 10:
+                user_list += f", ... (+{len(users) - 10} more)"
+            print(f"  [def] {name} ({rel_file}) -> used by: {user_list}")
+        else:
+            print(f"  [def] {name} ({rel_file}) -> (unused)")
+    print()
+    used_count = sum(1 for _, users in results if users)
+    print(f"Total: {len(results)} defs ({used_count} used, {len(results) - used_count} unused)")
+
+
+def print_bottom_axioms(all_parsed, root, k):
+    """Show the K least connected axioms by transitive dependent count."""
+    decl_index = _build_decl_index(all_parsed)
+
+    axiom_names = [name for name, decl in decl_index.items()
+                   if decl.kind in ("axiom", "opaque")]
+
+    results = []
+    for aname in axiom_names:
+        deps = _transitive_dependents(aname, decl_index)
+        theorem_deps = [d for d in deps if decl_index[d].kind == "theorem"]
+        results.append((aname, len(theorem_deps), len(deps)))
+
+    results.sort(key=lambda x: (x[1], x[2]))
+    results = results[:k]
+
+    print(f"Bottom {k} least-connected axioms:")
+    print("=" * 60)
+    print()
+    for i, (name, theorem_count, total_count) in enumerate(results, 1):
+        decl = decl_index[name]
+        kind_tag = decl.kind
+        print(f"  {i:>2}. [{kind_tag}] {name} ({theorem_count} theorem dependents, {total_count} total)")
+        if decl.description:
+            desc = decl.description
+            if len(desc) > 100:
+                desc = desc[:97] + "..."
+            print(f'      "{desc}"')
+        rel_file = make_relative(decl.file_path, root)
+        print(f"      File: {rel_file}")
+        print()
+
+
+# ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
 
@@ -868,14 +1175,20 @@ def main():
         print(__doc__.strip())
         print()
         print("Options:")
-        print("  --connections     Show cross-file connections only")
-        print("  --axioms-only     Show only axiom declarations")
-        print("  --theorems-only   Show only theorem declarations")
-        print("  --defs-only       Show only def declarations")
-        print("  --brief           One-line descriptions with metadata (default)")
-        print("  --verbose         Full multi-line docstrings")
-        print("  --flow            Sankey-style left-to-right dependency flow")
-        print("  -h, --help        Show this help message")
+        print("  --connections        Show cross-file connections only")
+        print("  --axioms-only        Show only axiom declarations")
+        print("  --theorems-only      Show only theorem declarations")
+        print("  --defs-only          Show only def declarations")
+        print("  --brief              One-line descriptions with metadata (default)")
+        print("  --verbose            Full multi-line docstrings")
+        print("  --flow               Sankey-style left-to-right dependency flow")
+        print("  --top-axioms K       Show K most load-bearing axioms")
+        print("  --top-theorems M     Show M most-dependent theorems")
+        print("  --bottom-axioms K    Show K least-connected axioms")
+        print("  --islands            Show disconnected/isolated axioms")
+        print("  --trace NAME         Trace all dependencies of a theorem")
+        print("  --defs               Show definitions and their theorem connections")
+        print("  -h, --help           Show this help message")
         sys.exit(0)
 
     connections_only = False
@@ -883,8 +1196,16 @@ def main():
     target_path = None
     verbose = False
     flow_mode = False
+    top_axioms_k = None
+    top_theorems_m = None
+    bottom_axioms_k = None
+    islands_mode = False
+    trace_name = None
+    defs_mode = False
 
-    for arg in args:
+    i = 0
+    while i < len(args):
+        arg = args[i]
         if arg == "--connections":
             connections_only = True
         elif arg == "--axioms-only":
@@ -899,8 +1220,37 @@ def main():
             verbose = False
         elif arg == "--flow":
             flow_mode = True
+        elif arg == "--top-axioms":
+            i += 1
+            if i >= len(args):
+                print("Error: --top-axioms requires a number", file=sys.stderr)
+                sys.exit(1)
+            top_axioms_k = int(args[i])
+        elif arg == "--top-theorems":
+            i += 1
+            if i >= len(args):
+                print("Error: --top-theorems requires a number", file=sys.stderr)
+                sys.exit(1)
+            top_theorems_m = int(args[i])
+        elif arg == "--bottom-axioms":
+            i += 1
+            if i >= len(args):
+                print("Error: --bottom-axioms requires a number", file=sys.stderr)
+                sys.exit(1)
+            bottom_axioms_k = int(args[i])
+        elif arg == "--islands":
+            islands_mode = True
+        elif arg == "--trace":
+            i += 1
+            if i >= len(args):
+                print("Error: --trace requires a theorem name", file=sys.stderr)
+                sys.exit(1)
+            trace_name = args[i]
+        elif arg == "--defs":
+            defs_mode = True
         else:
             target_path = arg
+        i += 1
 
     if not target_path:
         print("Error: no path specified", file=sys.stderr)
@@ -949,7 +1299,25 @@ def main():
 
     rel_target = make_relative(target_path, root)
 
-    if flow_mode:
+    # Dispatch to the appropriate mode
+    graph_mode = any([top_axioms_k, top_theorems_m, bottom_axioms_k,
+                      islands_mode, trace_name, defs_mode])
+
+    if graph_mode:
+        # Graph query modes operate on all parsed files in the target scope
+        if top_axioms_k:
+            print_top_axioms(all_parsed, root, top_axioms_k)
+        elif top_theorems_m:
+            print_top_theorems(all_parsed, root, top_theorems_m)
+        elif bottom_axioms_k:
+            print_bottom_axioms(all_parsed, root, bottom_axioms_k)
+        elif islands_mode:
+            print_islands(all_parsed, root)
+        elif trace_name:
+            print_trace(all_parsed, root, trace_name)
+        elif defs_mode:
+            print_defs(target_parsed, root)
+    elif flow_mode:
         print(f"Dependency Flow: {rel_target}")
         print("=" * 60)
         print()
@@ -962,7 +1330,7 @@ def main():
                    connections_only=connections_only, verbose=verbose)
 
     # Summary
-    if not connections_only and not flow_mode:
+    if not connections_only and not flow_mode and not graph_mode:
         print()
         total = sum(len(lf.declarations) for lf in target_parsed)
         by_kind = defaultdict(int)
