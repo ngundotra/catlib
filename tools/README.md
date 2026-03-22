@@ -1,3 +1,58 @@
+# Tools
+
+## axiom-deps
+
+Ground-truth axiom dependency analysis using Lean's kernel (`#print axioms`).
+
+Unlike `theorem-tree` which uses regex to guess dependencies, `axiom-deps` asks Lean's kernel directly what axioms each theorem transitively depends on. This catches tactic-generated references, namespace-resolved names, and indirect dependencies that regex misses.
+
+### Requirements
+
+- Python 3 (no external dependencies)
+- Working `lake` installation (used to invoke `lake env lean`)
+- Project must build successfully (`lake build` must pass)
+
+### Usage
+
+Run from the project root (`/home/ngundotra/Documents/catlib/`):
+
+```bash
+# Full report — all theorems with their kernel-verified axiom dependencies
+./tools/axiom-deps Catlib/
+
+# Single theorem lookup
+./tools/axiom-deps --theorem hope_for_salvation_of_suicide Catlib/
+
+# Kernel-verified unused axioms (true islands)
+./tools/axiom-deps --true-islands Catlib/
+
+# Compare regex-based (theorem-tree) vs kernel-based dependencies
+./tools/axiom-deps --compare Catlib/
+
+# JSON output for programmatic consumption
+./tools/axiom-deps --json Catlib/
+```
+
+### How it works
+
+1. Scans all `.lean` files for `theorem`, `axiom`, and `opaque` declarations
+2. Generates a temporary Lean file with `#print axioms` for each theorem
+3. Runs it via `lake env lean <tempfile>` (sets up LEAN_PATH correctly)
+4. Parses the kernel output to extract true transitive dependencies
+5. Filters out Lean builtins (`propext`, `Classical.choice`, etc.) to show only Catlib axioms
+
+### Options
+
+| Flag | Description |
+|------|-------------|
+| `--theorem NAME` | Show dependencies for a single theorem (partial match) |
+| `--true-islands` | List axioms that no theorem depends on (kernel-verified) |
+| `--compare` | Compare regex-based vs kernel-based dependency detection |
+| `--json` | Output full report as JSON |
+| `-h`, `--help` | Show help message |
+
+---
+
 # theorem-tree
 
 Generate tree-style breakdowns of Lean 4 theorems, axioms, and their connections.
