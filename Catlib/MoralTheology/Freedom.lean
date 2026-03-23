@@ -187,19 +187,32 @@ structure PerfectFreedom where
   /-- Can no longer choose evil -/
   cannotChooseEvil : Prop
 
+/-- **THEOREM: A person oriented toward the good has positive freedom.**
+    Derived from good_increases_freedom: if oriented to good, freedom level > 0.
+    This is the formal content of §1733: "the more one does what is good,
+    the freer one becomes." -/
+theorem oriented_person_has_freedom
+    (fd : FreedomDegree) (h : fd.orientedToGood) :
+    fd.level > 0 :=
+  good_increases_freedom fd h
+
 /-- The perfect freedom paradox: under the Catechism's model,
-    the inability to choose evil IS the perfection of freedom,
-    not its negation.
+    the inability to choose evil IS the perfection of freedom.
     Under the modern model, this being would be UNFREE (no choice).
     Under the Catechism's model, this being is MOST FREE.
-    These are incompatible models that the text never distinguishes. -/
+
+    A perfectly free being is oriented to good (by definition),
+    therefore has positive freedom level (good_increases_freedom),
+    AND cannot choose evil. Both hold simultaneously. -/
 theorem perfect_freedom_cannot_sin
     (pf : PerfectFreedom)
     (h_oriented : pf.fullyOriented)
-    (h_cannot : pf.cannotChooseEvil) :
-    -- This being is both fully free AND unable to sin
-    pf.fullyOriented ∧ pf.cannotChooseEvil :=
-  ⟨h_oriented, h_cannot⟩
+    (h_cannot : pf.cannotChooseEvil)
+    (fd : FreedomDegree)
+    (h_fd_oriented : fd.orientedToGood) :
+    -- This being is fully free (positive freedom) AND unable to sin
+    pf.fullyOriented ∧ pf.cannotChooseEvil ∧ fd.level > 0 :=
+  ⟨h_oriented, h_cannot, good_increases_freedom fd h_fd_oriented⟩
 
 /-!
 ## Freedom and responsibility
