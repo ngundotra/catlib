@@ -329,20 +329,22 @@ Without it, the chain stops at the first generation. Catholics and
 Orthodox accept it. Most Protestants do not.
 -/
 
-/-- AXIOM (CCC §77, §862): Apostolic succession -- bishops are the
-    Apostles' successors and inherit their delegated authorities.
-    Provenance: [Tradition] CCC §77, §862; [Scripture] 2 Tim 2:2,
-    Titus 1:5, Acts 1:20-26.
-    Denominational scope: Catholic + Orthodox. This is the axiom
-    that Protestants reject or reinterpret.
-    HIDDEN ASSUMPTION: The chain is unbroken. Authority transfers
-    validly across generations without loss or expiration. -/
-axiom apostolic_succession_general :
-  ∀ (d : AuthorityDomain),
-    d.christDelegatedIt →
-    -- Bishops possess this authority as successors of the Apostles
-    True
+/-!
+### Apostolic succession (general)
 
+CCC §77, §862: Bishops are the Apostles' successors and inherit their
+delegated authorities. Scripture: 2 Tim 2:2, Titus 1:5, Acts 1:20-26.
+Denominational scope: Catholic + Orthodox. Protestants reject or reinterpret.
+
+HIDDEN ASSUMPTION: The chain is unbroken — authority transfers validly
+across generations without loss or expiration.
+
+This was previously a vacuous axiom (body was `True`). The real content
+of apostolic succession is captured by the specific delegation axioms
+below (christ_delegates_absolution, christ_delegates_baptism, etc.) and
+by the Exorcism.lean `apostolic_succession` axiom which has real content
+(existential witness for authority chain).
+-/
 
 /-!
 ## The specific delegation registry

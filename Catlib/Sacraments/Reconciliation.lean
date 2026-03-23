@@ -13,7 +13,7 @@ The most cross-cutting formalization in catlib. This file connects:
 - **Axioms.lean**: S8 (grace necessary & transformative), T2 (grace preserves
   freedom), T3 (sacramental efficacy), S5 (sin separates)
 - **Authority.lean**: absolution_authority, absolutionDomain, christ_delegates_absolution,
-  apostolic_succession_general
+  apostolic_succession (Exorcism.lean)
 - **Love.lean**: LoveKind.agape, mortal_sin_can_destroy_charity, agape_requires_freedom
 - **Sin.lean**: Sin.isMortal, GraceState, mortal_sin_causes_loss_of_grace
 - **Grace.lean**: GraceType.prevenient, prevenient_grace_unconditioned,
