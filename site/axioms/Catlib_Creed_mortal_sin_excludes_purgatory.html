@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>mortal_sin_excludes_purgatory — Catlib Axiom Wiki</title>
+  <meta name="description" content="Axiom: mortal_sin_excludes_purgatory — AXIOM 6: Those who die in mortal sin do NOT enter purgatory. Purgatory is only for those who die in God&#x27;s grace. This axiom distinguishes purgatory from hell: t">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel+Decorative:wght@400;700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../articles/articles.css">
+</head>
+<body>
+
+  <main>
+    <a href="index.html" class="back-link">Back to Axiom Index</a>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="ornament">&#10053;</div>
+      <h1>mortal_sin_excludes_purgatory</h1>
+      <p class="subtitle">axiom &mdash; Catlib/Creed/Purgatory.lean:189</p>
+      <p class="subtitle"><span class="tag tag-catholic">Catholic</span></p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <section class="article-body">
+      <h2>Lean Declaration</h2>
+      <pre class="lean-code">axiom mortal_sin_excludes_purgatory :
+  ∀ (p : Person), diedInMortalSin p → ¬inPurgatory p</pre>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <section class="article-body">
+      <h2>Why This Axiom?</h2>
+      <p>AXIOM 6: Those who die in mortal sin do NOT enter purgatory. Purgatory is only for those who die in God's grace. This axiom distinguishes purgatory from hell: the person in purgatory CHOSE God. The person in hell REJECTED God.</p>
+      <p><strong>Source:</strong> [Definition] CCC §1033 (from Hell.lean&#x27;s scope)</p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <section class="article-body">
+      <h2>Theorems That Use This Axiom</h2>
+      <p>Kernel-verified via <code>#print axioms</code> &mdash; these theorems genuinely depend on this axiom at the proof level.</p>
+      <div class="finding-card">
+        <ul style="list-style: none; padding: 0;">
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><code>hell_purgatory_boundary</code> <span style="color: var(--text-light); font-size: 0.85rem;">(Catlib/Creed/Purgatory.lean:297)</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <section class="article-body">
+      <h2>Related Axioms</h2>
+      <p>Other axioms declared in the same file:</p>
+      <div class="finding-card">
+        <ul style="list-style: none; padding: 0;">
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_Creed_HolinessDegree.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">HolinessDegree</a> <span style="color: var(--text-light); font-size: 0.85rem;">(opaque)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_Creed_holinessLt.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">holinessLt</a> <span style="color: var(--text-light); font-size: 0.85rem;">(opaque)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_Creed_heavenThreshold.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">heavenThreshold</a> <span style="color: var(--text-light); font-size: 0.85rem;">(axiom)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_Creed_personHoliness.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">personHoliness</a> <span style="color: var(--text-light); font-size: 0.85rem;">(axiom)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_Creed_diedInGrace.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">diedInGrace</a> <span style="color: var(--text-light); font-size: 0.85rem;">(opaque)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_Creed_diedInMortalSin.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">diedInMortalSin</a> <span style="color: var(--text-light); font-size: 0.85rem;">(opaque)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_Creed_fullyPurified.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">fullyPurified</a> <span style="color: var(--text-light); font-size: 0.85rem;">(opaque)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_Creed_inPurgatory.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">inPurgatory</a> <span style="color: var(--text-light); font-size: 0.85rem;">(opaque)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_Creed_praysFor.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">praysFor</a> <span style="color: var(--text-light); font-size: 0.85rem;">(opaque)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_Creed_prayerAidsPurification.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">prayerAidsPurification</a> <span style="color: var(--text-light); font-size: 0.85rem;">(opaque)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_Creed_attainsBeatificVision.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">attainsBeatificVision</a> <span style="color: var(--text-light); font-size: 0.85rem;">(opaque)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_Creed_holiness_required_for_heaven.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">holiness_required_for_heaven</a> <span style="color: var(--text-light); font-size: 0.85rem;">(axiom)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_Creed_imperfect_purification_exists.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">imperfect_purification_exists</a> <span style="color: var(--text-light); font-size: 0.85rem;">(axiom)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_Creed_post_mortem_purification.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">post_mortem_purification</a> <span style="color: var(--text-light); font-size: 0.85rem;">(axiom)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_Creed_purgatory_leads_to_heaven.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">purgatory_leads_to_heaven</a> <span style="color: var(--text-light); font-size: 0.85rem;">(axiom)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_Creed_prayer_aids_dead.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">prayer_aids_dead</a> <span style="color: var(--text-light); font-size: 0.85rem;">(axiom)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_Creed_purified_in_grace_sees_god.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">purified_in_grace_sees_god</a> <span style="color: var(--text-light); font-size: 0.85rem;">(axiom)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_Creed_death_finalizes_choice_not_state.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">death_finalizes_choice_not_state</a> <span style="color: var(--text-light); font-size: 0.85rem;">(axiom)</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="ornament">&#10053;</div>
+
+    <section class="cta-section">
+      <div class="cta-group">
+        <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/Purgatory.lean" class="cta-button primary">View Source</a>
+        <a href="index.html" class="cta-button secondary">Axiom Index</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="ornament">&#10053;</div>
+    <p>
+      <a href="https://github.com/ngundotra/catlib">Catlib</a>&nbsp;&mdash;
+      formalizing the Catholic Catechism in Lean 4.
+    </p>
+  </footer>
+
+</body>
+</html>

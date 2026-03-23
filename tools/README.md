@@ -1,80 +1,26 @@
-# Tools
-
-## axiom-deps
-
-Ground-truth axiom dependency analysis using Lean's kernel (`#print axioms`).
-
-Unlike `theorem-tree` which uses regex to guess dependencies, `axiom-deps` asks Lean's kernel directly what axioms each theorem transitively depends on. This catches tactic-generated references, namespace-resolved names, and indirect dependencies that regex misses.
-
-### Requirements
-
-- Python 3 (no external dependencies)
-- Working `lake` installation (used to invoke `lake env lean`)
-- Project must build successfully (`lake build` must pass)
-
-### Usage
-
-Run from the project root (`/home/ngundotra/Documents/catlib/`):
-
-```bash
-# Full report — all theorems with their kernel-verified axiom dependencies
-./tools/axiom-deps Catlib/
-
-# Single theorem lookup
-./tools/axiom-deps --theorem hope_for_salvation_of_suicide Catlib/
-
-# Kernel-verified unused axioms (true islands)
-./tools/axiom-deps --true-islands Catlib/
-
-# Compare regex-based (theorem-tree) vs kernel-based dependencies
-./tools/axiom-deps --compare Catlib/
-
-# JSON output for programmatic consumption
-./tools/axiom-deps --json Catlib/
-```
-
-### How it works
-
-1. Scans all `.lean` files for `theorem`, `axiom`, and `opaque` declarations
-2. Generates a temporary Lean file with `#print axioms` for each theorem
-3. Runs it via `lake env lean <tempfile>` (sets up LEAN_PATH correctly)
-4. Parses the kernel output to extract true transitive dependencies
-5. Filters out Lean builtins (`propext`, `Classical.choice`, etc.) to show only Catlib axioms
-
-### Options
-
-| Flag | Description |
-|------|-------------|
-| `--theorem NAME` | Show dependencies for a single theorem (partial match) |
-| `--true-islands` | List axioms that no theorem depends on (kernel-verified) |
-| `--compare` | Compare regex-based vs kernel-based dependency detection |
-| `--json` | Output full report as JSON |
-| `-h`, `--help` | Show help message |
-
----
-
 # theorem-tree
 
-Generate tree-style breakdowns of Lean 4 theorems, axioms, and their connections.
+Dependency analysis and visualization for Lean 4 formalizations.
 
-## What it does
+Two modes of operation:
 
-Parses Lean 4 `.lean` files and produces a tree visualization showing:
+| Mode | Flags | Speed | Accuracy | Requirements |
+|------|-------|-------|----------|--------------|
+| **Regex** | `--flow`, `--trace`, `--connections`, etc. | Fast | Approximate | Python 3 only |
+| **Kernel** | `--true-islands`, `--kernel`, `--compare`, `--json`, `--props` | Slow | Exact | Python 3 + `lake build` |
 
-- **Declarations**: axiom, theorem, def, structure, inductive, opaque
-- **Descriptions**: extracted from `/-- ... -/` docstring blocks (smart extraction avoids repeating the name)
-- **Metadata**: source references, denominational scope, hidden assumptions, provenance type tags
-- **Dependencies**: what each declaration references (other axioms, theorems, defs)
-- **Cross-file connections**: when a theorem in file A uses an axiom from file B
-- **Flow diagrams**: Sankey-style left-to-right dependency visualization (axioms -> theorems -> derived)
+Use regex mode for fast exploration and visualization. Use kernel mode when you need the definitive answer about what depends on what (or for `--props` proposition-centric analysis).
 
 ## Requirements
 
 - Python 3 (no external dependencies)
+- For kernel mode: working `lake` installation + successful `lake build`
 
 ## Usage
 
-Run from the project root (`/home/ngundotra/Documents/catlib/`):
+Run from the project root:
+
+### Regex mode — fast, no build needed
 
 ```bash
 # Tree of a single file (default: --brief mode)
@@ -83,76 +29,49 @@ Run from the project root (`/home/ngundotra/Documents/catlib/`):
 # Tree of a directory
 ./tools/theorem-tree Catlib/Creed/
 
-# Tree of everything
-./tools/theorem-tree Catlib/
-
 # Show cross-file connections only
 ./tools/theorem-tree --connections Catlib/
 
-# Show just axioms
+# Filter by declaration kind
 ./tools/theorem-tree --axioms-only Catlib/Foundations/
-
-# Show just theorems
 ./tools/theorem-tree --theorems-only Catlib/MoralTheology/
 
-# Brief mode (default) — one-line description + source/scope metadata
+# Brief mode (default) vs verbose (full docstrings)
 ./tools/theorem-tree --brief Catlib/Foundations/Axioms.lean
-
-# Verbose mode — full multi-line docstrings
 ./tools/theorem-tree --verbose Catlib/Creed/DivineModes.lean
 
 # Dependency flow diagram — Sankey-style left-to-right
 ./tools/theorem-tree --flow Catlib/MoralTheology/TheologyOfBody.lean
-./tools/theorem-tree --flow Catlib/Creed/MarianDogma.lean
 
-# Graph queries — analyze the dependency structure
-./tools/theorem-tree --top-axioms 5 Catlib/          # Most load-bearing axioms
-./tools/theorem-tree --top-theorems 5 Catlib/         # Most complex theorems
-./tools/theorem-tree --bottom-axioms 5 Catlib/        # Least-connected axioms
-./tools/theorem-tree --islands Catlib/                 # Isolated/unused axioms
-./tools/theorem-tree --trace hope_for_salvation_of_suicide Catlib/  # Trace a theorem's deps
-./tools/theorem-tree --defs Catlib/Creed/DivineModes.lean           # Definitions and their users
+# Trace all transitive dependencies of a declaration
+./tools/theorem-tree --trace hope_for_salvation_of_suicide Catlib/
+
+# Show definitions and their connections
+./tools/theorem-tree --defs Catlib/Creed/DivineModes.lean
 ```
 
-## Example output
+### Kernel mode — slow, exact (requires `lake build`)
 
-### Brief mode (default)
+```bash
+# Kernel-verified unused axioms (true islands)
+./tools/theorem-tree --true-islands Catlib/
 
-```
-Theorem Tree: Catlib/Foundations/Axioms.lean
-============================================================
+# Kernel-verified deps for a specific theorem
+./tools/theorem-tree --kernel hope_for_salvation_of_suicide Catlib/
 
-└── Catlib/Foundations/
-    └── Axioms.lean
-        ├── [axiom] p1_hylomorphism
-        │   │   "HYLOMORPHISM: Every material substance is a composite of form and matter."
-        │   │   Source: Aristotle, Metaphysics VII-IX; Aquinas, ST I q.75-76
-        │   └── <- uses: Composite
-        ├── [axiom] s1_god_is_love
-        │   │   "GOD_IS_LOVE: God's very nature is love, and genuine love requires"
-        │   │   Source: 1 John 4:8 ("God is love"); Deuteronomy 30:19 ...
-        ...
+# Compare regex vs kernel dependency detection
+./tools/theorem-tree --compare Catlib/
 
-Summary: 68 declarations (17 axioms, 18 defs, 32 opaques, 1 structure)
-```
+# JSON output for programmatic consumption
+./tools/theorem-tree --json Catlib/
 
-### Flow mode
-
-```
-Dependency Flow: Catlib/MoralTheology/TheologyOfBody.lean
-============================================================
-
-AXIOMS               THEOREMS                        DERIVED
-───────────────────  ──────────────────────────────  ─────────────────────────────
-inherentMeaning [opaque] ───▶ contraception_is_body_lie, contradictsInherentMeaning
-  contradictsInherentMeaning [def] ───▶ SIGN_TRUTHFULNESS, contraception_is_body_lie
-    SIGN_TRUTHFULNESS [axiom] ───▶ contraception_is_body_lie
-      contraception_is_body_lie [theorem]
-
-Flow: AXIOMS: 9 -> THEOREMS: 16 -> DERIVED (L2): 5 -> DERIVED (L3): 2 -> DERIVED: 1
+# Proposition-centric analysis: what has been proven?
+./tools/theorem-tree --props Catlib/
 ```
 
 ## Options
+
+### Regex mode (fast)
 
 | Flag | Description |
 |------|-------------|
@@ -163,46 +82,45 @@ Flow: AXIOMS: 9 -> THEOREMS: 16 -> DERIVED (L2): 5 -> DERIVED (L3): 2 -> DERIVED
 | `--axioms-only` | Filter to show only `axiom` declarations |
 | `--theorems-only` | Filter to show only `theorem` declarations |
 | `--defs-only` | Filter to show only `def` declarations |
-| `--top-axioms K` | Show the K most load-bearing axioms (by transitive theorem dependents) |
-| `--top-theorems M` | Show the M most-dependent theorems (by transitive axiom count) |
-| `--bottom-axioms K` | Show the K least-connected axioms (candidates for removal) |
-| `--islands` | Show isolated axioms not used by any theorem |
 | `--trace NAME` | Trace all transitive dependencies of a declaration as a tree |
 | `--defs` | Show definitions and which declarations use them |
-| `-h`, `--help` | Show help message |
 
-## Docstring metadata extraction
+### Kernel mode (slow, exact)
 
-The tool parses `/-- ... -/` docstring blocks and extracts:
-
-- **Short description**: First meaningful sentence (skips name-in-caps repetition, labels, section headers)
-- **Source**: `*Source*:` or `PROVENANCE:` lines (e.g., "Aristotle, Metaphysics VII-IX")
-- **Scope**: `Denominational scope:` lines (e.g., "Ecumenical", "Catholic only")
-- **Hidden assumptions**: `HIDDEN ASSUMPTION:` lines (flagged with a warning symbol)
-- **Provenance type**: `[Scripture]`, `[Tradition]`, `[Definition]` tags
+| Flag | Description |
+|------|-------------|
+| `--true-islands` | Kernel-verified unused `axiom` declarations (excludes `opaque` defs) |
+| `--kernel NAME` | Show kernel-verified dependencies for a theorem (partial match) |
+| `--compare` | Compare regex-based vs kernel-based dependency detection |
+| `--json` | Output full kernel dependency report as JSON |
+| `--props` | Proposition-centric analysis (what has been proven) |
 
 ## How it works
 
-The tool uses regex-based parsing to extract declarations from Lean 4 source files. For each declaration it:
+### Regex mode
 
-1. Identifies the kind (axiom/theorem/def/structure/inductive/opaque)
-2. Extracts the name
-3. Parses the full `/-- ... -/` docstring, extracting a smart one-line description plus structured metadata
-4. Scans the declaration body for references to other known declarations
-5. Tags cross-file references with the source file
+Scans `.lean` source files with regex to extract declarations and build a dependency graph:
 
-For `--flow` mode, it additionally:
+1. Identifies declarations by kind (axiom/theorem/def/structure/inductive/opaque)
+2. Parses `/-- ... -/` docstrings, extracting descriptions and metadata
+3. Scans declaration bodies for references to other known declarations
+4. Tags cross-file references with the source file
 
-6. Builds a dependency graph (which declarations use which others)
-7. Topologically sorts declarations by depth (axioms left, derived results right)
-8. Groups connected components vertically
-9. Draws ASCII arrows showing the dependency flow
-10. Annotates cross-file dependencies with `(from File)` labels
+### Kernel mode
+
+Uses Lean's type checker directly for ground-truth dependencies:
+
+1. Scans `.lean` files for `theorem`, `axiom`, and `opaque` declarations (namespace-aware)
+2. Generates a temp Lean file with `#print axioms` for each theorem
+3. Runs it via `lake env lean` (sets up LEAN_PATH correctly)
+4. Parses kernel output to extract true transitive dependencies
+5. Filters out Lean builtins (`propext`, `Classical.choice`, etc.)
+
+This catches tactic-generated references, namespace-resolved names, and indirect dependencies that regex misses.
 
 ## Limitations
 
-- **Regex-based, not a full Lean parser.** It matches top-level declarations by pattern. Nested or unusual formatting may be missed.
-- **Reference detection is heuristic.** It scans declaration bodies for whole-word matches of known declaration names. This can miss indirect references and occasionally produce false positives.
-- **Denomination tags and provenance defs are filtered out** from the default view (they are metadata, not logical content). Use `--defs-only` to see all defs.
-- **Does not resolve Lean namespaces.** If two files declare the same name in different namespaces, the tool treats them as the same name.
-- **Flow diagram layout is heuristic.** For very large files with many interconnections, the ASCII rendering may be wide. Connected components are grouped separately to improve readability.
+- **Regex mode is heuristic.** It matches top-level declarations by pattern and scans bodies for name mentions. It can miss indirect references and occasionally produce false positives.
+- **Kernel mode requires a build.** `lake build` must pass before `--true-islands`, `--kernel`, `--compare`, or `--json` can run.
+- **Does not resolve Lean namespaces in regex mode.** If two files declare the same name in different namespaces, regex mode treats them as the same name. Kernel mode handles this correctly.
+- **Flow diagram layout is heuristic.** For very large files, the ASCII rendering may be wide.

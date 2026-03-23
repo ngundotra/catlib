@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What Is Communion? &mdash; Catlib</title>
+  <meta name="description" content="The Catechism uses 'communion' in at least three different senses without always distinguishing them. A proof assistant forces the disambiguation.">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="What Is Communion? Formalizing a Concept the Catechism Never Defines">
+  <meta property="og:description" content="Three separate communion concepts in our codebase revealed that 'communion' is a binary relation between parties &mdash; not a property of persons.">
+  <meta property="og:site_name" content="Catlib">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="What Is Communion? &mdash; Catlib">
+  <meta name="twitter:description" content="How formalizing the Catechism forced us to define what 'communion' actually means.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel+Decorative:wght@400;700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="articles.css">
+</head>
+<body>
+
+  <!-- Lean code sidebar -->
+  <input type="checkbox" id="sidebar-toggle" class="sidebar-toggle">
+  <label for="sidebar-toggle" class="sidebar-label">Lean Code</label>
+  <div class="sidebar-panel">
+    <h3>Theorem Reference</h3>
+
+    <div class="sidebar-section">
+      <h4>The Parties</h4>
+      <pre>inductive CommunionParty where
+  | person (p : Person)
+  | god
+  | church</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>The Relation</h4>
+      <pre>opaque inCommunion :
+  CommunionParty &rarr;
+  CommunionParty &rarr; Prop</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>Structural Properties</h4>
+      <pre>-- Symmetric
+axiom communion_symmetric :
+  &forall; (a b : CommunionParty),
+    inCommunion a b &rarr;
+    inCommunion b a
+
+-- Not reflexive for persons
+axiom communion_not_self_reflexive :
+  &forall; (p : Person),
+    p.isMoralAgent = true &rarr;
+    &not; inCommunion (.person p)
+                   (.person p)
+
+-- Reflexive for God (Trinity)
+axiom god_self_communion :
+  inCommunion .god .god
+
+-- Reflexive for Church
+axiom church_self_communion :
+  inCommunion .church .church</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>Sin Breaks Communion</h4>
+      <pre>axiom s5_sin_separates :
+  &forall; (p : Person) (s : Sin),
+    isGraveSin s &rarr;
+    s.action.agent = p &rarr;
+    &not; inCommunion (.person p) .god</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>The Bridge to DivineModes</h4>
+      <pre>-- Communion with God =
+--   beatifying mode active
+axiom soulstate_communion_bridge :
+  &forall; (p : Person) (s : SoulState),
+    s.inBeatifyingCommunion &harr;
+    inCommunion (.person p) .god</pre>
+    </div>
+
+    <p class="close-hint">Click the tab again to close</p>
+  </div>
+
+  <main>
+    <a href="../index.html" class="back-link">Back to Catlib</a>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="ornament">&#10053;</div>
+      <h1>What Is Communion?</h1>
+      <p class="subtitle">Formalizing a concept the Catechism never defines</p>
+      <p class="subtitle">
+        The word &ldquo;communion&rdquo; appears over 300 times in the Catechism.
+        It never gets a definition.
+      </p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- The Problem -->
+    <section class="article-body">
+      <p>
+        <span class="versal">T</span>he Catechism uses &ldquo;communion&rdquo; to mean
+        at least three different things. A person can be in communion with God
+        (&sect;1024). The Church is a communion of saints (&sect;946). A person can lose
+        communion through mortal sin (&sect;1855). Excommunication severs communion with
+        the Church. The Trinity <em>is</em> communion &mdash; Father, Son, and Spirit in
+        eternal mutual self-gift (&sect;255).
+      </p>
+      <p>
+        When we first formalized these passages, we ended up with three separate
+        representations of &ldquo;communion&rdquo; in our Lean code &mdash; each invented
+        independently by the file that needed it, each with a different type:
+      </p>
+
+      <div class="finding-card">
+        <h3>The Three Communions (Before)</h3>
+        <p>
+          <strong>1. A structure in Basic.lean</strong> &mdash;
+          <code>CommunionWithGod</code> with fields for <code>person</code>,
+          <code>lovesGod</code>, and <code>inGrace</code>. Used by Hell.lean.
+        </p>
+        <p>
+          <strong>2. An opaque predicate in Axioms.lean</strong> &mdash;
+          <code>inCommunion : Person &rarr; Prop</code>. A bare assertion that
+          &ldquo;this word exists.&rdquo; No definition, no content, no relation. Used
+          by the base axiom S5 (sin separates) and bridge theorems.
+        </p>
+        <p>
+          <strong>3. A field on a structure in DivineModes.lean</strong> &mdash;
+          <code>SoulState.inCommunion : Prop</code>. Here it meant
+          &ldquo;the beatifying mode is active.&rdquo; Used by the heaven/hell/purgatory
+          definitions.
+        </p>
+      </div>
+
+      <p>
+        Three concepts, three types, zero connection between them. The Lean compiler
+        was perfectly happy &mdash; the names resolved by namespace, so they never
+        collided. But they should have been the same thing. A proof assistant won&rsquo;t
+        tell you when two things <em>should</em> be related but aren&rsquo;t. That
+        requires a human noticing.
+      </p>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- What Communion Actually Is -->
+    <section class="article-body">
+      <h2>What Communion Actually Is</h2>
+
+      <p>
+        <span class="versal">C</span>ommunion, from the Latin <em>communio</em>
+        (&ldquo;sharing in common&rdquo;), is a <strong>mutual participatory
+        relationship between two parties</strong>. That&rsquo;s the dictionary definition,
+        and it turns out to be exactly the right type.
+      </p>
+      <p>
+        Not a property of one person. Not a structure with fields. A
+        <em>relation</em> &mdash; binary, taking two arguments. You are in communion
+        <em>with</em> someone.
+      </p>
+
+      <div class="assumption-callout">
+        The key insight: communion is not a state you&rsquo;re <em>in</em>.
+        It&rsquo;s a relationship you&rsquo;re in <em>with</em>.
+      </div>
+
+      <p>
+        Once you see it as a binary relation, the structural properties fall out
+        naturally:
+      </p>
+
+      <div class="finding-card">
+        <h3>Properties of Communion</h3>
+        <p>
+          <strong>Symmetric.</strong> If I am in communion with you, you are in
+          communion with me. Communion is mutual by definition &mdash; it is shared
+          participation.
+        </p>
+        <p>
+          <strong>Not reflexive for persons.</strong> You cannot be in communion with
+          yourself. Communion requires an <em>other</em>. Self-communion is not a
+          meaningful theological concept for creatures.
+        </p>
+        <p>
+          <strong>Reflexive for God.</strong> The Trinity <em>is</em> communion.
+          Father, Son, and Spirit are in eternal mutual communion. God is in communion
+          with Godself (&sect;255).
+        </p>
+        <p>
+          <strong>Reflexive for the Church.</strong> The communion of saints (&sect;946)
+          &mdash; the Church is in communion with itself.
+        </p>
+      </div>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- The Three Layers -->
+    <section class="article-body">
+      <h2>Definition, Relation, Claim</h2>
+
+      <p>
+        <span class="versal">T</span>he unified formalization has three clean layers,
+        each in its proper place:
+      </p>
+
+      <div class="finding-card compact">
+        <h3>Layer 1: Vocabulary <span class="tag tag-shared">Basic.lean</span></h3>
+        <p>
+          <strong>Who can be in communion?</strong> The <code>CommunionParty</code>
+          type: a person, God, or the Church. This is pure vocabulary &mdash; no
+          claims, no axioms, just the cast of characters.
+        </p>
+      </div>
+
+      <div class="finding-card compact">
+        <h3>Layer 2: The Relation <span class="tag tag-shared">Axioms.lean</span></h3>
+        <p>
+          <strong>What is communion?</strong> A binary relation
+          <code>inCommunion : CommunionParty &rarr; CommunionParty &rarr; Prop</code>
+          with the structural axioms above (symmetry, non-reflexivity for persons,
+          reflexivity for God and Church). Still no theological content &mdash; just
+          the relational structure.
+        </p>
+      </div>
+
+      <div class="finding-card compact">
+        <h3>Layer 3: The Theological Claim <span class="tag tag-catholic">DivineModes.lean</span></h3>
+        <p>
+          <strong>What does communion with God <em>mean</em>?</strong> A bridge axiom
+          connects the abstract relation to its theological content: being in communion
+          with God <em>is</em> God&rsquo;s beatifying mode being active toward that
+          person. This is the Catholic claim &mdash; the claim that makes hell, purgatory,
+          and heaven fall out as three points on a spectrum of communion.
+        </p>
+      </div>
+
+      <p>
+        Each layer does exactly one thing. The vocabulary doesn&rsquo;t make claims.
+        The relation doesn&rsquo;t interpret. The theological axiom connects the
+        abstract to the concrete. If you disagree with the Catholic interpretation of
+        what communion with God <em>means</em>, you swap Layer 3. Layers 1 and 2 are
+        ecumenical.
+      </p>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- What This Fixes -->
+    <section class="article-body">
+      <h2>What This Fixes</h2>
+
+      <p>
+        <span class="versal">T</span>he old formalization had three problems that the
+        new one solves.
+      </p>
+
+      <p>
+        <strong>Hell.lean</strong> used to say &ldquo;without free will, there does not
+        exist a <code>CommunionWithGod</code> structure where this person loves
+        God.&rdquo; That&rsquo;s not how anyone thinks about losing communion. Now it
+        says: <code>&not; inCommunion (.person p) .god</code>. You lose communion with
+        God. Simple.
+      </p>
+      <p>
+        <strong>Sin.lean</strong> and <strong>Reconciliation.lean</strong> used a bare
+        predicate <code>inCommunion p</code> that said &ldquo;this person is in
+        communion&rdquo; without specifying <em>with whom</em>. Now it says
+        <code>inCommunion (.person p) .god</code> &mdash; explicit that sin breaks your
+        communion <em>with God specifically</em>, not communion in general. A person in
+        mortal sin can still be in communion with the Church (until excommunication) and
+        in communion with other persons (friendship survives sin).
+      </p>
+      <p>
+        <strong>DivineModes.lean</strong> had an <code>inCommunion</code> field on a
+        structure that happened to share a name with the base predicate in Axioms.lean
+        but was a completely unrelated declaration. Now the field is called
+        <code>inBeatifyingCommunion</code> (the specific mode), and a bridge axiom
+        connects it to the global relation: beatifying communion <em>is</em> communion
+        with God.
+      </p>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- The Spectrum -->
+    <section class="article-body">
+      <h2>The Spectrum of Communion</h2>
+
+      <p>
+        <span class="versal">O</span>nce communion is formalized as a relation, the
+        afterlife states stop being three disconnected bins and become points on a
+        spectrum:
+      </p>
+
+      <div class="finding-card">
+        <table class="axiom-table" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>State</th>
+              <th>Sustained?</th>
+              <th>In Communion with God?</th>
+              <th>Purified?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Heaven</strong></td>
+              <td>Yes</td>
+              <td>Yes (full)</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td><strong>Purgatory</strong></td>
+              <td>Yes</td>
+              <td>Yes (assured)</td>
+              <td>Not yet</td>
+            </tr>
+            <tr>
+              <td><strong>Hell</strong></td>
+              <td>Yes</td>
+              <td>No</td>
+              <td>No</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          God sustains everything &mdash; you cannot be separated from sustaining mode.
+          The only axis that varies is communion. Hell is
+          <code>&not; inCommunion (.person p) .god</code>. That&rsquo;s all it is.
+        </p>
+      </div>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- The Denominational Question -->
+    <section class="article-body">
+      <h2>Where Denominations Diverge</h2>
+
+      <p>
+        <span class="versal">L</span>ayers 1 and 2 are ecumenical. Every Christian
+        tradition agrees that communion is a mutual relationship, that it involves God
+        and persons, and that sin disrupts it. The disagreements are all in Layer 3.
+      </p>
+
+      <div class="finding-card compact">
+        <p>
+          <span class="tag tag-catholic">Catholic</span>
+          Communion with God = beatifying mode active. Grace transforms. Sacraments
+          are instruments that restore communion (Reconciliation). The Church mediates.
+        </p>
+      </div>
+
+      <div class="finding-card compact">
+        <p>
+          <span class="tag tag-lutheran">Lutheran</span>
+          Communion with God = faith in Christ&rsquo;s promise. Grace declares righteous
+          (forensic). Communion is restored by faith alone, not through a sacramental
+          instrument.
+        </p>
+      </div>
+
+      <div class="finding-card compact">
+        <p>
+          <span class="tag tag-shared">Shared</span>
+          Sin breaks communion with God. Love requires freedom. The Trinity is eternal
+          communion. The Church is a communion of saints. All of this is in Layers 1&ndash;2.
+        </p>
+      </div>
+
+      <p>
+        The formal structure makes the disagreement precise: it is not about <em>what
+        communion is</em> but about <em>how it is restored</em> and <em>what
+        constitutes it theologically</em>.
+      </p>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- What We Learned -->
+    <section class="article-body">
+      <h2>What We Learned</h2>
+
+      <div class="summary-box">
+        <p>
+          The Catechism uses &ldquo;communion&rdquo; over 300 times without once defining
+          it. When we formalized the passages that depend on it, we independently
+          invented three separate types. The proof assistant didn&rsquo;t catch this
+          &mdash; it was perfectly happy with three unrelated declarations that happened
+          to share a name. A human had to notice.
+        </p>
+        <p>
+          The fix was to ask the dictionary: communion is a mutual participatory
+          relationship between two parties. That single insight &mdash;
+          <code>inCommunion : CommunionParty &rarr; CommunionParty &rarr; Prop</code>
+          &mdash; unified hell, purgatory, heaven, excommunication, the Trinity, the
+          communion of saints, and the sin/grace dynamic under one relation.
+        </p>
+        <p>
+          Sometimes the proof assistant finds the hidden assumption. Sometimes
+          you have to find it yourself and then let the proof assistant hold you to it.
+        </p>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <div class="cta-group">
+        <a href="https://github.com/ngundotra/catlib" class="cta-button primary">View on GitHub</a>
+        <a href="../index.html" class="cta-button secondary">Back to Catlib</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="ornament">&#10053;</div>
+    <p>
+      <a href="https://github.com/ngundotra/catlib">Catlib</a>&nbsp;&mdash;
+      formalizing the Catholic Catechism in Lean 4.
+      A love letter to the Catholic intellectual tradition, written with precision.
+    </p>
+  </footer>
+</body>
+</html>

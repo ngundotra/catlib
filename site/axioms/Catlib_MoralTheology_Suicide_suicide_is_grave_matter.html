@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>suicide_is_grave_matter — Catlib Axiom Wiki</title>
+  <meta name="description" content="Axiom: suicide_is_grave_matter — Suicide is objectively grave matter.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel+Decorative:wght@400;700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../articles/articles.css">
+</head>
+<body>
+
+  <main>
+    <a href="index.html" class="back-link">Back to Axiom Index</a>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="ornament">&#10053;</div>
+      <h1>suicide_is_grave_matter</h1>
+      <p class="subtitle">axiom &mdash; Catlib/MoralTheology/Suicide.lean:166</p>
+      <p class="subtitle"><span class="tag tag-shared">Shared</span></p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <section class="article-body">
+      <div class="assumption-callout" style="border-left-color: #b8860b; background: rgba(184, 134, 11, 0.08);">
+        <strong>Island axiom.</strong> No theorem in the current formalization depends on this axiom
+        (kernel-verified via <code>#print axioms</code>). It may be foundational vocabulary
+        awaiting use, or a candidate for future theorems.
+      </div>
+    </section>
+
+    <section class="article-body">
+      <h2>Lean Declaration</h2>
+      <pre class="lean-code">axiom suicide_is_grave_matter :
+  ∀ (a : Action), isSuicideAct a →
+    ∀ (sa : Sin), sa.action = a → sa.gravity = MatterGravity.grave</pre>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <section class="article-body">
+      <h2>Why This Axiom?</h2>
+      <p>Suicide is objectively grave matter.</p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <section class="article-body">
+      <h2>Theorems That Use This Axiom</h2>
+      <p style="color: var(--text-light); font-style: italic;">No theorems currently depend on this axiom.</p>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <section class="article-body">
+      <h2>Related Axioms</h2>
+      <p>Other axioms declared in the same file:</p>
+      <div class="finding-card">
+        <ul style="list-style: none; padding: 0;">
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_MoralTheology_Suicide_selfPreservationIsNaturalInclination.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">selfPreservationIsNaturalInclination</a> <span style="color: var(--text-light); font-size: 0.85rem;">(opaque)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_MoralTheology_Suicide_contradictsSelfLove.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">contradictsSelfLove</a> <span style="color: var(--text-light); font-size: 0.85rem;">(opaque)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_MoralTheology_Suicide_contradictsNaturalLaw.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">contradictsNaturalLaw</a> <span style="color: var(--text-light); font-size: 0.85rem;">(opaque)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_MoralTheology_Suicide_isSuicideAct.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">isSuicideAct</a> <span style="color: var(--text-light); font-size: 0.85rem;">(opaque)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_MoralTheology_Suicide_psychologicalStateOf.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">psychologicalStateOf</a> <span style="color: var(--text-light); font-size: 0.85rem;">(axiom)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_MoralTheology_Suicide_self_preservation_is_natural_law.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">self_preservation_is_natural_law</a> <span style="color: var(--text-light); font-size: 0.85rem;">(axiom)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_MoralTheology_Suicide_suicide_contradicts_self_love_and_natural_law.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">suicide_contradicts_self_love_and_natural_law</a> <span style="color: var(--text-light); font-size: 0.85rem;">(axiom)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_MoralTheology_Suicide_psychological_suffering_diminishes_consent.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">psychological_suffering_diminishes_consent</a> <span style="color: var(--text-light); font-size: 0.85rem;">(axiom)</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="ornament">&#10053;</div>
+
+    <section class="cta-section">
+      <div class="cta-group">
+        <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/MoralTheology/Suicide.lean" class="cta-button primary">View Source</a>
+        <a href="index.html" class="cta-button secondary">Axiom Index</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="ornament">&#10053;</div>
+    <p>
+      <a href="https://github.com/ngundotra/catlib">Catlib</a>&nbsp;&mdash;
+      formalizing the Catholic Catechism in Lean 4.
+    </p>
+  </footer>
+
+</body>
+</html>

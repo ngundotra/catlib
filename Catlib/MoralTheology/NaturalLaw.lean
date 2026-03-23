@@ -1,4 +1,5 @@
 import Catlib.Foundations
+import Catlib.MoralTheology.SourcesOfMorality
 
 /-!
 # CCC §1954–1957: The Natural Moral Law
@@ -190,6 +191,96 @@ axiom divine_grounding :
     p.accessibleToReason →
     -- The precept has binding moral authority
     p.content
+
+/-!
+## Teleology — Things Have Natural Ends
+
+The Aristotelian-Thomistic framework holds that things have inherent
+purposes (telos). An acorn's telos is to become an oak. The eye's
+telos is to see. The conjugal act's telos includes procreation.
+
+This is not a scientific claim about mechanism — it's a metaphysical
+claim about the structure of reality. Things are not just collections
+of properties; they are ordered toward ends.
+
+The moral consequence: deliberately preventing something from reaching
+its natural end is a specific kind of wrong — it's "frustration" in
+the technical sense. Not frustration as emotion, but as the deliberate
+thwarting of teleological purpose.
+
+This is the deepest layer of Catholic natural law ethics. It grounds:
+- The conjugal ethics (frustrating procreation = contraception)
+- The suicide prohibition (frustrating self-preservation)
+- The virtue ethics (frustrating human flourishing)
+
+Denominational scope: CATHOLIC (Aristotelian-Thomistic metaphysics).
+Protestants generally do not rely on teleological metaphysics for
+ethics, preferring biblical command ethics or divine command theory.
+-/
+
+/-- A natural end (telos) — the inherent purpose or final cause of something.
+    Aristotle, Metaphysics V.2, Physics II.3; Aquinas, ST I-II q.1.
+    The telos is what a thing is FOR — not what it happens to do, but
+    what it is ordered toward by its nature. -/
+structure NaturalEnd where
+  /-- What the end pertains to (e.g., "the conjugal act", "the eye", "human life") -/
+  subject : Prop
+  /-- What the end IS (e.g., "procreation", "sight", "flourishing") -/
+  purpose : Prop
+
+/-- Whether an agent deliberately prevents something from reaching its natural end.
+    This is "frustration" in the teleological sense — the deliberate thwarting
+    of purpose. Not frustration as emotion, but as the active prevention of
+    a thing's fulfillment.
+
+    Key distinction: natural failure to reach an end (infertility, blindness)
+    is NOT frustration. Frustration requires deliberate human intervention
+    against the natural ordering. -/
+opaque deliberatelyFrustrates : Person → NaturalEnd → Prop
+
+/-- **AXIOM: TELEOLOGICAL REALISM.**
+    Things have natural ends (purposes) that are real features of the world,
+    not merely human projections.
+    Source: Aristotle, Physics II.8; Aquinas, ST I-II q.94 a.2.
+    CCC §1954: Natural law "expresses the original moral sense" — implying
+    that moral truths are built into the nature of things, not imposed on them.
+
+    Denominational scope: CATHOLIC. Teleological realism is the metaphysical
+    foundation of natural law ethics. Without it, "natural ends" are just
+    descriptions of what usually happens, not normative standards.
+
+    HIDDEN ASSUMPTION: The is-ought bridge. Teleological realism claims that
+    what a thing IS FOR generates what it OUGHT to do. This is the step
+    that Hume questioned and that consequentialists reject. -/
+axiom teleological_realism :
+  ∀ (e : NaturalEnd),
+    -- Natural ends have real normative content:
+    -- the purpose is a genuine feature of the subject, not a projection
+    e.subject → e.purpose ∨ ¬e.purpose
+
+/-- **AXIOM: FRUSTRATION OF NATURAL ENDS IS INTRINSICALLY EVIL.**
+    Deliberately preventing something from reaching its natural end is
+    always wrong, regardless of intention or circumstances.
+    Source: Aquinas, ST I-II q.94 a.2; CCC §1756 (some acts are
+    intrinsically evil "by their very object").
+
+    This is the bridge from teleology to morality: natural ends are not
+    merely descriptive (what things tend toward) but normative (what
+    OUGHT to happen). Deliberately thwarting them is wrong.
+
+    Denominational scope: CATHOLIC. This axiom, combined with
+    teleological_realism, generates the entire natural law ethic.
+
+    HIDDEN ASSUMPTION: The is-ought bridge. This axiom says that what
+    IS (a natural end) determines what OUGHT to be (don't frustrate it).
+    Hume's guillotine says you can't derive ought from is. Aquinas's
+    response: the natural law is not derived from facts alone but from
+    facts + the divine ordering of creation. Without divine_grounding
+    (axiom 5 above), this axiom lacks its ultimate foundation. -/
+axiom frustration_is_evil :
+  ∀ (p : Person) (e : NaturalEnd),
+    deliberatelyFrustrates p e →
+    IntrinsicallyEvil e.purpose
 
 /-!
 ## Bridge theorems to base axioms

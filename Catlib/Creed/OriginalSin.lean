@@ -55,18 +55,18 @@ not the type signature.
 
 We can derive the S8 signature (graceGiven p g → graceTransforms g p)
 from original sin axioms IF we add:
-- THE_FALL: human nature is wounded (shared with TheologyOfBody)
-- WOUND_REQUIRES_HEALING: wounded nature needs help to reach its end
-- GRACE_IS_THE_HEALING: grace is what heals the wound (= transforms)
+- the_fall: human nature is wounded (shared with TheologyOfBody)
+- wound_requires_healing: wounded nature needs help to reach its end
+- grace_is_the_healing: grace is what heals the wound (= transforms)
 
 The derivation chain:
-1. From GRACE_IS_THE_HEALING: grace given to a person heals/transforms
+1. From grace_is_the_healing: grace given to a person heals/transforms
 2. This is exactly graceGiven p g → graceTransforms g p
 3. ∴ S8 is derived
 
 ### Honest assessment: is S8 genuinely DERIVED or just RESTATED?
 
-**Partially honest answer**: GRACE_IS_THE_HEALING essentially says
+**Partially honest answer**: grace_is_the_healing essentially says
 "grace heals/transforms" which is very close to what S8 says ("grace
 transforms"). The derivation is short — almost a restatement.
 
@@ -83,8 +83,8 @@ derivation is short, the theological grounding is genuine.
 
 ### Net axiom count change
 
-We add 4 new axioms (ORIGINAL_INTEGRITY, THE_FALL, WOUND_REQUIRES_HEALING,
-GRACE_IS_THE_HEALING) and derive S8 as a theorem. This does NOT reduce
+We add 4 new axioms (original_integrity, the_fall, wound_requires_healing,
+grace_is_the_healing) and derive S8 as a theorem. This does NOT reduce
 the base axiom count from 15 to 14 — it replaces 1 axiom with 4 that
 have independent theological grounding. However, these 4 are not
 among the 15 BASE axioms (they are local axioms in a formalization
@@ -155,7 +155,7 @@ opaque graceHealsWound : Grace → Person → Prop
     Provenance: [Scripture] Gen 2:8-25; CCC §374-379.
     Denominational scope: ECUMENICAL — all Christians accept that
     the original state was one of integrity/communion with God. -/
-axiom ORIGINAL_INTEGRITY :
+axiom original_integrity :
   ∀ (p : Person),
     p.hasIntellect = true →
     canReachSupernaturalEnd p AnthropologicalState.OriginalIntegrity
@@ -196,9 +196,9 @@ def original_integrity_tag : DenominationalTag :=
     in (b) — wounded but not destroyed — is CATHOLIC. See the
     denominational spectrum below.
 
-    CONNECTS TO: CONCUPISCENCE_DIMINISHES_NOT_DESTROYS (TheologyOfBody.lean)
+    CONNECTS TO: concupiscence_diminishes_not_destroys (TheologyOfBody.lean)
     — that axiom captures the same calibration for nuptial capacity. -/
-axiom THE_FALL :
+axiom the_fall :
   ∀ (p : Person),
     p.hasIntellect = true →
     -- (a) Human nature is wounded
@@ -206,7 +206,7 @@ axiom THE_FALL :
     -- (c) Fallen humans cannot reach their supernatural end unaided
     ¬ canReachSupernaturalEnd p AnthropologicalState.Fallen
 
-/-- Denominational tag for THE_FALL. The Fall itself is ecumenical;
+/-- Denominational tag for the_fall. The Fall itself is ecumenical;
     the calibration (wounded vs. destroyed) is where traditions diverge.
 
     The denominational spectrum on the severity of the Fall:
@@ -234,16 +234,16 @@ def the_fall_tag : DenominationalTag :=
     save itself.
 
     This is the bridge between the Fall and the necessity of grace:
-    - From THE_FALL: nature is wounded and cannot reach its end
-    - From WOUND_REQUIRES_HEALING: help from outside is needed
-    - From GRACE_IS_THE_HEALING: that help is grace
+    - From the_fall: nature is wounded and cannot reach its end
+    - From wound_requires_healing: help from outside is needed
+    - From grace_is_the_healing: that help is grace
 
     Provenance: [Tradition] Council of Trent Session 6, ch. 1;
     CCC §405, §1708.
     Denominational scope: ECUMENICAL — all Christians accept that
     fallen humans need divine help (they disagree on the nature and
     mechanism of that help, but agree it is needed). -/
-axiom WOUND_REQUIRES_HEALING :
+axiom wound_requires_healing :
   ∀ (p : Person),
     natureIsWounded p →
     ¬ canReachSupernaturalEnd p AnthropologicalState.Fallen →
@@ -281,7 +281,7 @@ def wound_requires_healing_tag : DenominationalTag :=
     Lutheran alternative: grace is forensic — God declares the sinner
     righteous (Rom 4:5 "credits righteousness") without ontologically
     changing them. This is the central Reformation dispute. -/
-axiom GRACE_IS_THE_HEALING :
+axiom grace_is_the_healing :
   ∀ (p : Person) (g : Grace),
     graceGiven p g →
     graceHealsWound g p ∧ graceTransforms g p
@@ -303,12 +303,12 @@ S8's formal signature:
 ∀ (p : Person) (g : Grace), graceGiven p g → graceTransforms g p
 ```
 
-We derive this from GRACE_IS_THE_HEALING, which gives us:
+We derive this from grace_is_the_healing, which gives us:
 ```
 ∀ (p : Person) (g : Grace), graceGiven p g → graceHealsWound g p ∧ graceTransforms g p
 ```
 
-The derivation is straightforward: GRACE_IS_THE_HEALING gives both
+The derivation is straightforward: grace_is_the_healing gives both
 healing AND transformation; S8 only needs transformation.
 
 ### But is this a genuine derivation?
@@ -318,8 +318,8 @@ that S8 alone lacks:
 
 1. S8 asserts: "grace transforms" (a bare fact)
 2. Original sin explains: "grace transforms BECAUSE there is a wound
-   (THE_FALL) that needs healing (WOUND_REQUIRES_HEALING), and grace
-   IS that healing (GRACE_IS_THE_HEALING)"
+   (the_fall) that needs healing (wound_requires_healing), and grace
+   IS that healing (grace_is_the_healing)"
 
 The original sin axioms are independently motivated by CCC §396-412
 — they are not ad hoc axioms invented to derive S8. They formalize
@@ -328,40 +328,40 @@ a distinct and major doctrinal passage.
 ### The "necessity" half
 
 S8's docstring says "without grace, humans cannot perform saving good."
-This is derivable from THE_FALL + WOUND_REQUIRES_HEALING:
-- THE_FALL: fallen humans cannot reach their supernatural end
-- WOUND_REQUIRES_HEALING: only external help (grace) can heal this
+This is derivable from the_fall + wound_requires_healing:
+- the_fall: fallen humans cannot reach their supernatural end
+- wound_requires_healing: only external help (grace) can heal this
 - ∴ Grace is necessary
 -/
 
 /-- **THEOREM: S8 DERIVED — Grace is transformative.**
     This is the formal content of S8 (s8_grace_necessary_and_transformative)
-    derived from GRACE_IS_THE_HEALING.
+    derived from grace_is_the_healing.
 
     When grace is given to a person, it transforms them — it does not
     merely declare them righteous while leaving them internally unchanged.
 
     DERIVATION:
-    - GRACE_IS_THE_HEALING gives: graceGiven p g → (heals ∧ transforms)
+    - grace_is_the_healing gives: graceGiven p g → (heals ∧ transforms)
     - Take the second conjunct: graceGiven p g → transforms
     - This IS S8. ∎
 
     NOTE: This derivation replaces S8 as a base axiom with the more
-    foundational GRACE_IS_THE_HEALING. S8 is now a consequence of the
+    foundational grace_is_the_healing. S8 is now a consequence of the
     doctrine of original sin, not a standalone assertion. -/
 theorem s8_derived_grace_transformative
     (p : Person) (g : Grace)
     (h_given : graceGiven p g) :
     graceTransforms g p := by
-  exact (GRACE_IS_THE_HEALING p g h_given).2
+  exact (grace_is_the_healing p g h_given).2
 
 /-- **THEOREM: Grace is necessary — fallen humans need grace.**
     The "necessity" half of S8 (from the docstring, not the formal type).
 
     DERIVATION:
-    - THE_FALL: every person with intellect has a wounded nature AND
+    - the_fall: every person with intellect has a wounded nature AND
       cannot reach their supernatural end in the Fallen state
-    - WOUND_REQUIRES_HEALING: wounded + unable → there exists a grace
+    - wound_requires_healing: wounded + unable → there exists a grace
       that would heal
     - ∴ Grace is necessary (there must be grace for healing to occur)
 
@@ -372,8 +372,8 @@ theorem grace_is_necessary
     (h_intellect : p.hasIntellect = true) :
     -- Fallen humans need grace: there exists a grace that would heal
     ∃ (g : Grace), graceGiven p g → graceHealsWound g p := by
-  have ⟨h_wounded, h_cannot⟩ := THE_FALL p h_intellect
-  exact WOUND_REQUIRES_HEALING p h_wounded h_cannot
+  have ⟨h_wounded, h_cannot⟩ := the_fall p h_intellect
+  exact wound_requires_healing p h_wounded h_cannot
 
 /-- **THEOREM: Grace both heals AND transforms — derivation of FULL S8.**
     Combines both halves: necessity (grace is needed because of the wound)
@@ -385,7 +385,7 @@ theorem s8_full_derived
     graceHealsWound g p
     -- AND grace transforms the person (the formal S8 content)
     ∧ graceTransforms g p := by
-  exact GRACE_IS_THE_HEALING p g h_given
+  exact grace_is_the_healing p g h_given
 
 -- ============================================================================
 -- ## Original sin as inherited wound (not personal guilt)
@@ -412,7 +412,7 @@ opaque isPersonalFault : Person → Prop
     The question of whether concupiscence itself is sin (Lutheran: yes;
     Catholic: no, it is an inclination to sin but not sin proper) is
     a denominational difference. -/
-axiom ORIGINAL_SIN_NOT_PERSONAL :
+axiom original_sin_not_personal :
   ∀ (p : Person),
     p.hasIntellect = true →
     natureIsWounded p ∧ ¬ isPersonalFault p
@@ -448,7 +448,7 @@ theorem fall_diminishes_freedom
     (p : Person)
     (h_intellect : p.hasIntellect = true) :
     natureIsWounded p := by
-  exact (THE_FALL p h_intellect).1
+  exact (the_fall p h_intellect).1
 
 /-!
 ## Connection 2: Original sin explains WHY prevenient grace is needed
@@ -461,7 +461,7 @@ preparation impossible.
 -/
 
 /-- **THEOREM: Original sin grounds the need for prevenient grace.**
-    WOUND_REQUIRES_HEALING says wounded nature needs external help.
+    wound_requires_healing says wounded nature needs external help.
     This is exactly why prevenient grace (Grace.lean) is needed: the
     wound prevents self-preparation.
 
@@ -473,7 +473,7 @@ theorem original_sin_grounds_prevenient_grace
     -- The wound exists AND healing requires external help
     natureIsWounded p ∧
     ¬ canReachSupernaturalEnd p AnthropologicalState.Fallen := by
-  exact THE_FALL p h_intellect
+  exact the_fall p h_intellect
 
 /-!
 ## Connection 3: Original sin explains WHY communion was lost
@@ -544,7 +544,7 @@ and made opposite to all good, and wholly inclined to all evil."
     severely than Catholic theology: concupiscence IS sin (not merely
     an inclination to sin), and the will is in "bondage."
 
-    Under the Lutheran model, WOUND_REQUIRES_HEALING would be
+    Under the Lutheran model, wound_requires_healing would be
     strengthened: not just "needs help" but "is completely unable to
     contribute to its own healing" (monergism). The Catholic model
     says "needs help but can cooperate" (synergism). -/
@@ -554,7 +554,7 @@ def lutheranWoundCalibration : String :=
 /-- The Calvinist modification: total depravity.
     Under the Calvinist model, the wound is so severe that every
     faculty is corrupted. The capacity level would be zero, and
-    CONCUPISCENCE_DIMINISHES_NOT_DESTROYS would be rejected.
+    concupiscence_diminishes_not_destroys would be rejected.
     Only irresistible grace can restore any capacity. -/
 def calvinistWoundCalibration : String :=
   "Calvinist: total depravity (Westminster ch.6); every faculty corrupted; capacity = 0; irresistible grace needed"
@@ -573,15 +573,15 @@ sin axioms. The formal theorem `s8_derived_grace_transformative` proves:
 
     ∀ (p : Person) (g : Grace), graceGiven p g → graceTransforms g p
 
-from GRACE_IS_THE_HEALING. Additionally, `grace_is_necessary` captures
+from grace_is_the_healing. Additionally, `grace_is_necessary` captures
 the necessity claim that S8's docstring asserted but its type signature
 did not formalize.
 
 ### Does the base axiom count drop from 15 to 14?
 
 **Formally: yes.** If S8 is reclassified as a theorem derived from
-GRACE_IS_THE_HEALING, the base axiom count drops to 14. However,
-GRACE_IS_THE_HEALING is itself an axiom — it just lives in the
+grace_is_the_healing, the base axiom count drops to 14. However,
+grace_is_the_healing is itself an axiom — it just lives in the
 OriginalSin formalization rather than the base axiom file.
 
 **Honestly**: The reduction is real but modest. We have not eliminated
@@ -593,26 +593,26 @@ than standing as a brute assertion.
 ### The original sin axiom set
 
 This formalization adds:
-1. ORIGINAL_INTEGRITY — in the original state, the supernatural end
+1. original_integrity — in the original state, the supernatural end
    was reachable (ecumenical)
-2. THE_FALL — nature was wounded, supernatural end unreachable unaided
+2. the_fall — nature was wounded, supernatural end unreachable unaided
    (ecumenical for the Fall; Catholic for the calibration)
-3. WOUND_REQUIRES_HEALING — wounded nature needs external help
+3. wound_requires_healing — wounded nature needs external help
    (ecumenical)
-4. GRACE_IS_THE_HEALING — grace heals/transforms the wound
+4. grace_is_the_healing — grace heals/transforms the wound
    (CATHOLIC — the transformative claim is the Reformation divide)
-5. ORIGINAL_SIN_NOT_PERSONAL — inherited condition, not personal guilt
+5. original_sin_not_personal — inherited condition, not personal guilt
    (ecumenical)
 
-Of these, only GRACE_IS_THE_HEALING carries the Catholic distinctive.
+Of these, only grace_is_the_healing carries the Catholic distinctive.
 The first three are ecumenical. This means the ECUMENICAL axioms of
 original sin lead to "grace is necessary" (shared), and the CATHOLIC
 axiom (grace heals/transforms) gives S8's distinctive content.
 
 ### New axiom count for this file: 5
 
-Local axioms: 5 (ORIGINAL_INTEGRITY, THE_FALL, WOUND_REQUIRES_HEALING,
-GRACE_IS_THE_HEALING, ORIGINAL_SIN_NOT_PERSONAL)
+Local axioms: 5 (original_integrity, the_fall, wound_requires_healing,
+grace_is_the_healing, original_sin_not_personal)
 Theorems: 5 (s8_derived_grace_transformative, grace_is_necessary,
 s8_full_derived, fall_diminishes_freedom,
 original_sin_grounds_prevenient_grace)
@@ -665,7 +665,7 @@ theorem wound_survives_death
 /-- **THEOREM: A wounded person whose nature is described by
     PersonWithNature carries the wound in their immortal soul.**
     Combines the PersonWithNature bridge (Soul.lean) with
-    THE_FALL (this file): the person's nature is wounded,
+    the_fall (this file): the person's nature is wounded,
     AND their spiritual aspect persists forever.
 
     CONNECTS TO: Soul.lean PersonWithNature, spiritual_powers_exist -/
@@ -676,7 +676,7 @@ theorem wounded_person_has_immortal_soul
     natureIsWounded pwn.nature.person
     -- AND the spiritual aspect (where the wound resides) is immortal
     ∧ hasSpiritualAspect pwn.humanPerson := by
-  exact ⟨(THE_FALL pwn.nature.person h_intellect).1,
+  exact ⟨(the_fall pwn.nature.person h_intellect).1,
          soul_is_immortal pwn.humanPerson⟩
 
 end Catlib.Creed.OriginalSin

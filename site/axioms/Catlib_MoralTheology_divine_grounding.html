@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>divine_grounding — Catlib Axiom Wiki</title>
+  <meta name="description" content="Axiom: divine_grounding — AXIOM 5 (§1954): Divine grounding — natural law has the force of law because it participates in a &quot;higher reason.&quot; &quot;This command of human reason would not have ">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel+Decorative:wght@400;700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../articles/articles.css">
+</head>
+<body>
+
+  <main>
+    <a href="index.html" class="back-link">Back to Axiom Index</a>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="ornament">&#10053;</div>
+      <h1>divine_grounding</h1>
+      <p class="subtitle">axiom &mdash; Catlib/MoralTheology/NaturalLaw.lean:185</p>
+      <p class="subtitle"><span class="tag tag-catholic">Catholic</span></p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <section class="article-body">
+      <h2>Lean Declaration</h2>
+      <pre class="lean-code">axiom divine_grounding :
+  -- Natural law has binding force BECAUSE it comes from God
+  -- Without this axiom, natural law is just &quot;what reason discovers&quot;
+  -- which lacks the normative force of LAW
+  ∀ (p : MoralPrecept),
+    p.accessibleToReason →
+    -- The precept has binding moral authority
+    p.content</pre>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <section class="article-body">
+      <h2>Why This Axiom?</h2>
+      <p>AXIOM 5 (§1954): Divine grounding — natural law has the force of law because it participates in a "higher reason." "This command of human reason would not have the force of law if it were not the voice and interpreter of a higher reason." natural law theory is not really "accessible to reason alone" — it requires belief in (or at least the existence of) a divine lawgiver. This is a tension the Catechism doesn't resolve.</p>
+      <p><strong>Source:</strong> [Definition] CCC §1954</p>
+      <p><strong>Hidden assumption:</strong> Without God, there is no natural law. This means</p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <section class="article-body">
+      <h2>Theorems That Use This Axiom</h2>
+      <p>Kernel-verified via <code>#print axioms</code> &mdash; these theorems genuinely depend on this axiom at the proof level.</p>
+      <div class="finding-card">
+        <ul style="list-style: none; padding: 0;">
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><code>binding_force_requires_god</code> <span style="color: var(--text-light); font-size: 0.85rem;">(Catlib/MoralTheology/NaturalLaw.lean:266)</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <section class="article-body">
+      <h2>Related Axioms</h2>
+      <p>Other axioms declared in the same file:</p>
+      <div class="finding-card">
+        <ul style="list-style: none; padding: 0;">
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_MoralTheology_moral_realism.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">moral_realism</a> <span style="color: var(--text-light); font-size: 0.85rem;">(axiom)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_MoralTheology_rational_accessibility.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">rational_accessibility</a> <span style="color: var(--text-light); font-size: 0.85rem;">(axiom)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_MoralTheology_universality.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">universality</a> <span style="color: var(--text-light); font-size: 0.85rem;">(axiom)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_MoralTheology_law_application_distinction.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">law_application_distinction</a> <span style="color: var(--text-light); font-size: 0.85rem;">(axiom)</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="ornament">&#10053;</div>
+
+    <section class="cta-section">
+      <div class="cta-group">
+        <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/MoralTheology/NaturalLaw.lean" class="cta-button primary">View Source</a>
+        <a href="index.html" class="cta-button secondary">Axiom Index</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="ornament">&#10053;</div>
+    <p>
+      <a href="https://github.com/ngundotra/catlib">Catlib</a>&nbsp;&mdash;
+      formalizing the Catholic Catechism in Lean 4.
+    </p>
+  </footer>
+
+</body>
+</html>

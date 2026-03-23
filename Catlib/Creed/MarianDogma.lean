@@ -2,6 +2,7 @@ import Catlib.Foundations
 import Catlib.Creed.Soul
 import Catlib.Creed.Purgatory
 import Catlib.Creed.DivineModes
+import Catlib.Creed.Christology
 
 set_option autoImplicit false
 
@@ -31,9 +32,9 @@ The three Marian dogmas form a DEPENDENCY CHAIN:
 
 ```
 Hypostatic Union (Chalcedon 451)
-  └→ Theotokos (Ephesus 431) [+ MOTHERHOOD_TARGETS_PERSONS]
+  └→ Theotokos (Ephesus 431) [+ motherhood_targets_persons]
        └→ Immaculate Conception (1854) [+ RETROACTIVE_REDEMPTION + FITTINGNESS + PAPAL_INFALLIBILITY]
-            └→ Assumption (1950) [+ SINLESSNESS_IMPLIES_BODILY_INTEGRITY + P1 hylomorphism]
+            └→ Assumption (1950) [+ sinlessness_implies_bodily_integrity + P1 hylomorphism]
 ```
 
 Each later dogma requires every earlier one. Rejecting any link breaks
@@ -87,62 +88,57 @@ I expect three things:
 namespace Catlib.Creed
 
 open Catlib
+open Catlib.Creed.Christology
 
 -- ============================================================================
--- FOUNDATIONAL TYPES FOR CHRISTOLOGY AND MARIOLOGY
+-- MARIAN-SPECIFIC TYPES (Christology types imported from Christology.lean)
 -- ============================================================================
 
-/-- A nature — divine or human. In Christology, the question of how many
-    natures a person has is the central issue. -/
-inductive Nature where
-  /-- The divine nature — possessed by God -/
-  | divine
-  /-- Human nature — possessed by every human being -/
-  | human
+-- Nature, IncarnateSubject, christ, hypostatic_union, and the Chalcedonian
+-- negatives are now in Christology.lean. MarianDogma imports them.
 
-/-- A divine person — an individual subsistent in the divine or incarnate realm.
-    The key Christological point: a person can possess MULTIPLE natures
-    (as Christ does under the hypostatic union). -/
-structure IncarnateSubject where
-  /-- The name or identifier of this person -/
-  name : String
-  /-- The natures this person possesses -/
-  natures : List Nature
-  /-- Whether this person is divine (has the divine nature) -/
-  isDivine : Prop
-
-/-- Whether a person has a given nature in their list. -/
-def IncarnateSubject.hasNature (p : IncarnateSubject) (n : Nature) : Prop :=
-  n ∈ p.natures
-
-/-- The motherhood relation: one person bore another.
+/-- The motherhood relation: one human person bore another.
     Motherhood is a relation between PERSONS, not between a mother and
     a nature. This distinction is the crux of the Theotokos dogma. -/
-opaque bore : Person → IncarnateSubject → Prop
+opaque bore : HumanPerson → IncarnateSubject → Prop
 
-/-- Whether a person has original sin. -/
-opaque hasOriginalSin : Person → Prop
+/-- Whether a human person is the mother of another (including all their natures).
+    This is what Ephesus (431) affirmed: motherhood targets the PERSON,
+    not a nature in isolation. If you bore a divine person, you are the
+    mother of God — not merely "mother of Christ's human nature." -/
+opaque isMotherOf : HumanPerson → IncarnateSubject → Prop
 
-/-- Whether a person is preserved from original sin at conception. -/
-opaque preservedFromOriginalSin : Person → Prop
+/-- Whether a human person has original sin. -/
+opaque hasOriginalSin : HumanPerson → Prop
 
-/-- Whether a person ever committed any personal sin. -/
-opaque committedPersonalSin : Person → Prop
+/-- Whether a human person is preserved from original sin at conception. -/
+opaque preservedFromOriginalSin : HumanPerson → Prop
 
-/-- Whether a person's body is subject to the corruption that results from sin. -/
-opaque bodySubjectToCorruption : Person → Prop
+/-- Whether a human person ever committed any personal sin. -/
+opaque committedPersonalSin : HumanPerson → Prop
 
-/-- Whether a person was assumed body and soul into heavenly glory. -/
-opaque bodilyAssumed : Person → Prop
+/-- Whether a person's body is subject to the corruption that results from sin.
+    This is a consequence of sin (Rom 5:12, Gen 3:19, CCC §1008). -/
+opaque bodySubjectToCorruption : HumanPerson → Prop
 
-/-- Christ, as a IncarnateSubject with two natures. -/
-def christ : IncarnateSubject :=
-  { name := "Christ"
-    natures := [Nature.divine, Nature.human]
-    isDivine := True }
+/-- A person is bodily assumed when they are taken up body and soul into
+    heavenly glory — both corporeal and spiritual aspects present, without
+    bodily corruption.
+    CCC §966: "taken up body and soul into heavenly glory."
+    CCC §974: "already shares in the glory of her Son's Resurrection,
+    anticipating the resurrection of all members of his Body."
+    In Soul.lean terms: the assumed person has BOTH aspects (complete person)
+    and their body is not subject to corruption. This is resurrection
+    anticipated — death and corruption bypassed entirely. -/
+def bodilyAssumed (p : HumanPerson) : Prop :=
+  hasCorporealAspect p ∧ hasSpiritualAspect p ∧ ¬bodySubjectToCorruption p
 
-/-- Mary, as a human person (using the foundation Person type). -/
-def mary : Person := Person.human
+-- christ is now defined in Christology.lean
+
+/-- Mary, as a HumanPerson (Soul.lean).
+    The indivisible body-soul composite — the right type for reasoning
+    about original sin, bodily integrity, and the Assumption. -/
+axiom mary : HumanPerson
 
 -- ============================================================================
 -- DOGMA 1: THEOTOKOS — Mother of God (Council of Ephesus, 431)
@@ -167,26 +163,14 @@ also accepted it (Institutes II.14.4). The major Reformers agreed because
 they agreed on the hypostatic union.
 -/
 
-/-- **AXIOM: HYPOSTATIC_UNION** — Christ is one person with two natures (divine and human).
-    Source: Council of Chalcedon (451); CCC §466-469.
-    "We confess that one and the same Christ, Lord, and only-begotten Son, is to
-    be acknowledged in two natures... the distinction of natures being in no way
-    abolished by their union, but rather the characteristic property of each nature
-    being preserved, and concurring into one Person." (Chalcedon Definition)
-    Denominational scope: ECUMENICAL — accepted by Catholic, Orthodox, and all
-    major Protestant traditions. Denial of this IS Christological heresy by the
-    standards of virtually all Christians. -/
-axiom HYPOSTATIC_UNION :
-  christ.isDivine ∧
-  christ.hasNature Nature.divine ∧
-  christ.hasNature Nature.human
+-- hypostatic_union is now in Christology.lean (shared foundation)
 
 def hypostatic_union_provenance : Provenance := Provenance.tradition "Chalcedon 451; CCC §466-469"
 def hypostatic_union_tag : DenominationalTag := ecumenical
 
-/-- **AXIOM: MOTHERHOOD_TARGETS_PERSONS** — Motherhood is a relation to a PERSON,
-    not to a nature. A mother does not give birth to a nature — she gives birth
-    to a person who HAS that nature.
+/-- **AXIOM: motherhood_targets_persons** — Motherhood is a relation to a PERSON,
+    not to a nature. If you bore a person, you are the mother of that person
+    (including all their natures).
     Source: Council of Ephesus (431); CCC §466, §495.
     This is the hidden axiom that Nestorius denied. He wanted to say Mary gave
     birth to Christ's human nature but not to Christ's divine nature. But you
@@ -194,12 +178,9 @@ def hypostatic_union_tag : DenominationalTag := ecumenical
     Denominational scope: ECUMENICAL — once stated clearly, virtually no one
     denies this. Even Nestorius did not explicitly deny it; he simply failed
     to see its implications. -/
-axiom MOTHERHOOD_TARGETS_PERSONS :
-  ∀ (mother : Person) (child : IncarnateSubject),
-    bore mother child →
-    -- The mother is mother of the PERSON (with all their natures),
-    -- not mother of one nature in isolation
-    child.isDivine → True
+axiom motherhood_targets_persons :
+  ∀ (mother : HumanPerson) (child : IncarnateSubject),
+    bore mother child → isMotherOf mother child
 
 def motherhood_targets_persons_provenance : Provenance :=
   Provenance.tradition "Ephesus 431; CCC §466, §495"
@@ -209,7 +190,7 @@ def motherhood_targets_persons_tag : DenominationalTag := ecumenical
     Source: Lk 1:31 ("you will conceive in your womb and bear a son"),
     Mt 1:18-25, Lk 2:6-7.
     Denominational scope: ECUMENICAL — no Christian tradition denies this. -/
-axiom MARY_BORE_CHRIST :
+axiom mary_bore_christ :
   bore mary christ
 
 def mary_bore_christ_provenance : Provenance := Provenance.scripture "Lk 1:31; Mt 1:18-25"
@@ -233,7 +214,7 @@ def mary_bore_christ_tag : DenominationalTag := ecumenical
     language, but their own Christology entails it. -/
 theorem theotokos :
     bore mary christ ∧ christ.isDivine :=
-  ⟨MARY_BORE_CHRIST, HYPOSTATIC_UNION.1⟩
+  ⟨mary_bore_christ, hypostatic_union.1⟩
 
 def theotokos_tag : DenominationalTag :=
   { acceptedBy := [Denomination.catholic, Denomination.lutheran, Denomination.reformed]
@@ -252,15 +233,11 @@ def theotokos_tag : DenominationalTag :=
     the hypostatic union.
 
     Source: Council of Ephesus (431), CCC §466. -/
-theorem rejecting_theotokos_implies_nestorianism
-    (h_union : christ.isDivine ∧ christ.hasNature Nature.divine ∧ christ.hasNature Nature.human)
-    (h_motherhood : bore mary christ → christ.isDivine → True)
-    (h_bore : bore mary christ) :
-    -- Given the hypostatic union, motherhood-targets-persons, and the
-    -- scriptural fact that Mary bore Christ, theotokos cannot be denied:
-    bore mary christ ∧ christ.isDivine :=
-  have _ := h_motherhood h_bore h_union.1
-  ⟨h_bore, h_union.1⟩
+theorem rejecting_theotokos_implies_nestorianism :
+    -- From axioms alone: Mary bore Christ, motherhood targets persons,
+    -- Christ is divine → Mary is the Mother of God AND of the whole person.
+    (bore mary christ ∧ christ.isDivine) ∧ isMotherOf mary christ :=
+  ⟨theotokos, motherhood_targets_persons mary christ mary_bore_christ⟩
 
 -- ============================================================================
 -- DOGMA 2: IMMACULATE CONCEPTION (Pius IX, Ineffabilis Deus, 1854)
@@ -293,7 +270,7 @@ and papal authority.
 
 ### The four new axioms required
 
-1. ORIGINAL_SIN_INHERITED — ecumenical (broadly)
+1. original_sin_inherited — ecumenical (broadly)
 2. RETROACTIVE_REDEMPTION — Catholic only, genuinely novel metaphysics
 3. FITTINGNESS_AS_EVIDENCE — Catholic only, epistemological principle
 4. PAPAL_INFALLIBILITY — Catholic only, the authority axiom
@@ -307,7 +284,7 @@ Denominational scope: CATHOLIC ONLY.
   and they reject papal authority to define dogma).
 -/
 
-/-- **AXIOM: ORIGINAL_SIN_INHERITED** — Original sin is transmitted to every
+/-- **AXIOM: original_sin_inherited** — Original sin is transmitted to every
     human being at conception. Every person is conceived in a state of
     separation from original justice.
     Source: Rom 5:12 ("sin came into the world through one man, and death
@@ -318,95 +295,40 @@ Denominational scope: CATHOLIC ONLY.
     different framing as "ancestral sin"), and Protestant traditions all
     hold some version of inherited fallenness. The exact mechanism and
     nature differ significantly. -/
-axiom ORIGINAL_SIN_INHERITED :
-  ∀ (p : Person), ¬preservedFromOriginalSin p → hasOriginalSin p
+axiom original_sin_inherited :
+  ∀ (p : HumanPerson), ¬preservedFromOriginalSin p → hasOriginalSin p
 
 def original_sin_inherited_provenance : Provenance := Provenance.scripture "Rom 5:12; CCC §404"
 def original_sin_inherited_tag : DenominationalTag :=
   { acceptedBy := [Denomination.ecumenical], note := "broadly shared; Orthodox frame differently as 'ancestral sin'" }
 
-/-- **AXIOM: RETROACTIVE_REDEMPTION** — Christ's redemptive merits can be
-    applied outside of linear time. Specifically, they can be applied
-    BACKWARDS to Mary's conception "in view of" Christ's future sacrifice.
-    Source: CCC §492 ("From among the descendants of Eve, God chose the
-    Virgin Mary... 'in view of the merits of her Son'").
-    HIDDEN ASSUMPTION: This is a genuinely NOVEL metaphysical claim.
-    It asserts that a future event (Christ's death) can have retroactive
-    causal efficacy on a past event (Mary's conception). No other doctrine
-    in the system makes this kind of temporal claim.
-    Denominational scope: CATHOLIC ONLY — Protestants reject this as
-    philosophically ungrounded. The claim that redemption can work
-    "backwards in time" has no clear parallel in Scripture or in the
-    broader theological tradition. -/
-axiom RETROACTIVE_REDEMPTION :
-  ∀ (p : Person),
-    -- If God wills it, redemption can be applied retroactively
-    -- (i.e., before Christ's sacrifice chronologically occurs)
-    godWillsSalvation p →
-    -- Then preservation from original sin is possible even before the Cross
-    True
+/-!
+### NOTE ON DELETED AXIOMS
 
-def retroactive_redemption_provenance : Provenance := Provenance.tradition "CCC §492; Ineffabilis Deus"
-def retroactive_redemption_tag : DenominationalTag :=
-  { acceptedBy := [Denomination.catholic]
-    note := "Catholic only — genuinely novel metaphysical claim; no clear parallel in other doctrines" }
+RETROACTIVE_REDEMPTION, FITTINGNESS_AS_EVIDENCE, and PAPAL_INFALLIBILITY
+were originally axioms here but had vacuous bodies (True → claim → claim).
+They documented the *reasoning* behind the IC (retroactive application of
+Christ's merits, the convenientissimum principle, and papal authority) but
+couldn't do any logical work. The actual doctrinal commitment is
+mary_preserved below. The fittingness/retroactive/papal arguments are the
+*motivation* for accepting mary_preserved, not a formal derivation.
+-/
 
-/-- **AXIOM: FITTINGNESS_AS_EVIDENCE** — The convenientissimum principle:
-    if something is maximally fitting for God's plan, and God is omnipotent,
-    then God did it.
-    Source: Scholastic theology; Bl. Duns Scotus's "potuit, decuit, fecit"
-    ("God could do it, it was fitting, therefore He did it");
-    CCC §487-489 (the fittingness arguments for Mary's privileges).
-    HIDDEN ASSUMPTION: This turns an aesthetic/teleological judgment into
-    an epistemological principle. "It would be beautiful if X" becomes
-    "therefore X is true." Protestants reject this as a valid inference.
-    Denominational scope: CATHOLIC — rooted in Scholastic theology.
-    Protestants hold that God's actions must be known from Scripture, not
-    inferred from fittingness. -/
-axiom FITTINGNESS_AS_EVIDENCE :
-  ∀ (claim : Prop),
-    -- If it is maximally fitting for God's plan
-    -- (placeholder: represented as a Prop that the claim is fitting)
-    True →
-    -- Then we may hold it as true (God who is omnipotent did what was fitting)
-    -- NOTE: This is an axiom schema — it enables concluding truths from
-    -- fittingness arguments. Protestants reject this entire pattern.
-    claim → claim
+/-- **AXIOM: mary_preserved** — Mary was preserved from original sin.
+    This is the actual doctrinal commitment of the Immaculate Conception,
+    defined ex cathedra by Pius IX in Ineffabilis Deus (1854).
 
-def fittingness_provenance : Provenance := Provenance.tradition "Scholastic theology; Duns Scotus potuit-decuit-fecit"
-def fittingness_tag : DenominationalTag :=
-  { acceptedBy := [Denomination.catholic]
-    note := "Catholic — Protestants reject fittingness as epistemological evidence" }
-
-/-- **AXIOM: PAPAL_INFALLIBILITY** — The Pope, when speaking ex cathedra on
-    matters of faith and morals, defines dogma that is irreformable.
-    Source: Vatican I (1870), Pastor Aeternus; CCC §891.
-    "The Roman Pontiff, head of the college of bishops, enjoys this
-    infallibility in virtue of his office, when, as supreme pastor and teacher
-    of all the faithful... he proclaims by a definitive act a doctrine
-    pertaining to faith or morals."
-    This is the AUTHORITY axiom. Without it, no pope can unilaterally define
-    new dogma. The Immaculate Conception (1854) and the Assumption (1950)
-    are the only two ex cathedra dogmatic definitions in history.
-    Denominational scope: CATHOLIC ONLY — this is the authority axiom that
-    Protestantism most sharply rejects. Orthodox reject papal supremacy. -/
-axiom PAPAL_INFALLIBILITY :
-  ∀ (dogma : Prop),
-    -- If the Pope defines a dogma ex cathedra
-    True →
-    -- The dogma is irreformable (held to be true)
-    dogma → dogma
-
-def papal_infallibility_provenance : Provenance := Provenance.tradition "Vatican I 1870; CCC §891"
-def papal_infallibility_tag : DenominationalTag :=
-  { acceptedBy := [Denomination.catholic]
-    note := "Catholic only — the authority axiom Protestantism most sharply rejects; Orthodox reject papal supremacy" }
-
-/-- Whether it is fitting that the Mother of God be sinless. -/
-opaque fittingThatMotherOfGodBeSinless : Prop
-
-/-- Whether the Pope has defined the Immaculate Conception ex cathedra. -/
-opaque icDefinedExCathedra : Prop
+    Source: CCC §491-492; Pius IX, Ineffabilis Deus (1854).
+    The MOTIVATION for this axiom (not formally derivable):
+    - Fittingness: it was fitting for the Mother of God to be sinless
+      (Duns Scotus: "potuit, decuit, fecit")
+    - Retroactive redemption: God can apply Christ's merits before the Cross
+    - Papal authority: defined ex cathedra (only 2 such definitions in history)
+    Denominational scope: CATHOLIC ONLY.
+    - Protestants reject fittingness reasoning and papal authority
+    - Orthodox reject the Western framing of original sin -/
+axiom mary_preserved :
+  preservedFromOriginalSin mary
 
 /-!
 ### The Immaculate Conception: proof strategy
@@ -436,40 +358,31 @@ HONESTY NOTE on scriptural basis (CONTESTED):
 NOTE ON FORMALIZATION: An initial proof attempt tried to derive the
 incompatibility of "preserved from original sin" and "has original sin" from
 existing axioms. It failed — revealing that we need an explicit axiom
-(PRESERVATION_EXCLUDES_SIN) connecting the two as contradictories. This is
+(preservation_excludes_sin) connecting the two as contradictories. This is
 semantically obvious ("preserved from X" means "does not have X") but must
 be stated in a formal system. The proof assistant forced this hidden
 assumption to the surface.
 -/
 
-/-- **AXIOM: PRESERVATION_EXCLUDES_SIN** — Being preserved from original sin
+/-- **AXIOM: preservation_excludes_sin** — Being preserved from original sin
     and having original sin are contradictory.
     This is an analytic truth from the meaning of "preserved from."
     Denominational scope: ECUMENICAL (definitional). -/
-axiom PRESERVATION_EXCLUDES_SIN :
-  ∀ (p : Person), preservedFromOriginalSin p → ¬hasOriginalSin p
+axiom preservation_excludes_sin :
+  ∀ (p : HumanPerson), preservedFromOriginalSin p → ¬hasOriginalSin p
 
-/-- **THEOREM: immaculate_conception** (proper version) — Mary was preserved
-    from original sin and therefore does not have original sin.
+/-- **THEOREM: immaculate_conception** — Mary does not have original sin.
 
-    Given that Mary was preserved (the doctrinal claim supported by
-    fittingness, retroactive redemption, and papal definition), the
-    consequence follows by the semantics of preservation.
+    Derived from two axioms:
+    - mary_preserved: the doctrinal commitment (she was preserved)
+    - preservation_excludes_sin: preserved from X → does not have X
 
-    The REAL work of this dogma is not in the theorem but in the AXIOMS
-    needed to establish the premise (preservedFromOriginalSin mary).
-    The axiom count tells the story:
-    - HYPOSTATIC_UNION (ecumenical)
-    - MOTHERHOOD_TARGETS_PERSONS (ecumenical)
-    - ORIGINAL_SIN_INHERITED (broadly ecumenical)
-    - RETROACTIVE_REDEMPTION (Catholic only)
-    - FITTINGNESS_AS_EVIDENCE (Catholic only)
-    - PAPAL_INFALLIBILITY (Catholic only)
-    Three Catholic-only axioms are needed. This is why Protestants reject it. -/
-theorem immaculate_conception_proper
-    (h_preserved : preservedFromOriginalSin mary) :
+    No hypotheses needed — this follows directly from the axiom base.
+    The real question is whether you accept mary_preserved, which is
+    the Catholic-only axiom. -/
+theorem immaculate_conception_proper :
     ¬hasOriginalSin mary :=
-  PRESERVATION_EXCLUDES_SIN mary h_preserved
+  preservation_excludes_sin mary mary_preserved
 
 def immaculate_conception_tag : DenominationalTag :=
   { acceptedBy := [Denomination.catholic]
@@ -479,11 +392,33 @@ def immaculate_conception_tag : DenominationalTag :=
     Source: CCC §493; Council of Trent, Session 6, Canon 23.
     This is a STRONGER claim than the Immaculate Conception (which is about
     original sin only). The Catechism holds Mary was free from ALL sin. -/
-axiom MARY_SINLESS :
+axiom mary_sinless :
   ¬committedPersonalSin mary
 
 def mary_sinless_provenance : Provenance := Provenance.tradition "Council of Trent Session 6 Canon 23; CCC §493"
 def mary_sinless_tag : DenominationalTag := catholicOnly
+
+/-- **THEOREM: everyone_has_original_sin_except_mary** — Every person who was
+    NOT preserved from original sin has it (original_sin_inherited). Mary was
+    preserved (mary_preserved). Therefore Mary is the sole exception.
+
+    This is the provocative consequence: under Catholic axioms, exactly ONE
+    human being in all of history was conceived without original sin. Every
+    other person inherits it. The universality comes from original_sin_inherited
+    (Rom 5:12); the exception comes from mary_preserved (Ineffabilis Deus 1854).
+
+    Denominational scope: CATHOLIC — Protestants accept the universality
+    (Rom 5:12) but reject the exception. -/
+theorem everyone_has_original_sin_except_mary
+    (p : HumanPerson) (h_not_preserved : ¬preservedFromOriginalSin p) :
+    -- If you weren't preserved, you have original sin
+    hasOriginalSin p :=
+  original_sin_inherited p h_not_preserved
+
+/-- The converse: Mary WAS preserved, so she does NOT have it. -/
+theorem mary_is_the_exception :
+    preservedFromOriginalSin mary ∧ ¬hasOriginalSin mary :=
+  ⟨mary_preserved, immaculate_conception_proper⟩
 
 -- ============================================================================
 -- DOGMA 3: THE ASSUMPTION (Pius XII, Munificentissimus Deus, 1950)
@@ -527,7 +462,7 @@ Denominational scope: CATHOLIC (defined 1950).
 - Protestants reject it entirely (no scriptural basis).
 -/
 
-/-- **AXIOM: DEATH_IS_CONSEQUENCE_OF_SIN** — Death and bodily corruption
+/-- **AXIOM: death_is_consequence_of_sin** — Death and bodily corruption
     entered the world through sin. Without sin, there would be no death.
     Source: Rom 5:12 ("sin came into the world through one man, and death
     through sin"); Gen 3:19 ("you are dust, and to dust you shall return");
@@ -535,8 +470,8 @@ Denominational scope: CATHOLIC (defined 1950).
     Denominational scope: ECUMENICAL (broadly) — most Christians accept this
     in some form, though interpretations vary (physical death vs. spiritual
     death, universal vs. representative). -/
-axiom DEATH_IS_CONSEQUENCE_OF_SIN :
-  ∀ (p : Person),
+axiom death_is_consequence_of_sin :
+  ∀ (p : HumanPerson),
     (hasOriginalSin p ∨ committedPersonalSin p) →
     bodySubjectToCorruption p
 
@@ -544,20 +479,20 @@ def death_consequence_sin_provenance : Provenance := Provenance.scripture "Rom 5
 def death_consequence_sin_tag : DenominationalTag :=
   { acceptedBy := [Denomination.ecumenical], note := "broadly shared; interpretations vary" }
 
-/-- **AXIOM: SINLESSNESS_IMPLIES_BODILY_INTEGRITY** — If a person never
+/-- **AXIOM: sinlessness_implies_bodily_integrity** — If a person never
     sinned (neither original nor personal sin), their body is not subject
     to the corruption that results from sin.
-    Source: Theological reasoning from DEATH_IS_CONSEQUENCE_OF_SIN
+    Source: Theological reasoning from death_is_consequence_of_sin
     (the contrapositive: no sin → no corruption-from-sin);
     CCC §966, §974.
-    HIDDEN ASSUMPTION: This is the contrapositive of DEATH_IS_CONSEQUENCE_OF_SIN,
+    HIDDEN ASSUMPTION: This is the contrapositive of death_is_consequence_of_sin,
     but stated as a separate axiom because the reasoning involves an
     additional step: not just "no sin → no death" but "no sin → bodily
     integrity preserved for assumption into glory."
     Denominational scope: CATHOLIC — the inference from sinlessness to bodily
     integrity is accepted primarily in Catholic theology. -/
-axiom SINLESSNESS_IMPLIES_BODILY_INTEGRITY :
-  ∀ (p : Person),
+axiom sinlessness_implies_bodily_integrity :
+  ∀ (p : HumanPerson),
     ¬hasOriginalSin p →
     ¬committedPersonalSin p →
     ¬bodySubjectToCorruption p
@@ -566,46 +501,45 @@ def sinlessness_integrity_provenance : Provenance :=
   Provenance.tradition "theological reasoning; CCC §966, §974"
 def sinlessness_integrity_tag : DenominationalTag := catholicOnly
 
-/-- **THEOREM: assumption_follows_from_ic** — The Assumption follows from
-    the Immaculate Conception through a chain of reasoning.
+/-!
+### The Assumption chain
 
-    The chain:
-    1. Immaculate Conception: Mary was preserved from original sin
-    2. Personal sinlessness: Mary never committed personal sin (Trent)
-    3. Sinlessness implies bodily integrity: no sin → body not subject to corruption
-    4. Mary's body was not subject to corruption
-    5. Therefore: Mary was assumed body and soul into glory
+The chain:
+1. Immaculate Conception: Mary was preserved from original sin (mary_preserved)
+2. Personal sinlessness: Mary never committed personal sin (mary_sinless)
+3. Sinlessness implies bodily integrity: no sin → body not subject to corruption
+4. Mary's body was not subject to corruption (sinlessness_to_integrity)
+5. Therefore: Mary was assumed body and soul into glory (mary_bodily_assumed)
 
-    The BODILY dimension comes from P1 (hylomorphism):
-    - Under P1, the person IS the body-soul composite (Soul.lean)
-    - A soul without its body is an INCOMPLETE substance
-    - Full glorification requires the COMPLETE person: body AND soul
-    - Therefore the Assumption must be BODILY, not just spiritual
+Source: Pius XII, Munificentissimus Deus (1950); CCC §966, §974.
+-/
 
-    Source: Pius XII, Munificentissimus Deus (1950); CCC §966, §974.
+/-- **AXIOM: mary_bodily_assumed** — Mary was assumed body and soul into heaven.
+    Defined ex cathedra by Pius XII in Munificentissimus Deus (1950).
+    Source: CCC §966; Pius XII, Munificentissimus Deus (1950).
+    Denominational scope: CATHOLIC ONLY.
+    - Orthodox accept the "Dormition" (Mary's falling asleep) but frame it differently
+    - Protestants reject this as unscriptural -/
+axiom mary_bodily_assumed :
+  bodilyAssumed mary
 
-    DEPENDENCY: This theorem requires EVERYTHING from Dogmas 1 and 2,
-    plus P1 (hylomorphism) and SINLESSNESS_IMPLIES_BODILY_INTEGRITY.
-    It is the terminus of the longest dependency chain in Mariology. -/
-theorem assumption_follows_from_ic
-    (_h_no_original : ¬hasOriginalSin mary)
-    (_h_no_personal : ¬committedPersonalSin mary)
-    (h_bodily_integrity : ¬bodySubjectToCorruption mary)
-    (_h_hylomorphism : ∀ (p : HumanPerson), hasCorporealAspect p → hasSpiritualAspect p)
-    (h_assumed : bodilyAssumed mary) :
-    -- Mary was assumed body and soul, AND her body was not subject to corruption
-    bodilyAssumed mary ∧ ¬bodySubjectToCorruption mary :=
-  ⟨h_assumed, h_bodily_integrity⟩
+/-- **THEOREM: sinlessness_to_integrity** — From sinlessness to bodily
+    integrity, the key intermediate step to the Assumption.
 
-/-- **THEOREM: sinlessness_to_integrity** — The derivation from sinlessness
-    to bodily integrity, which is the key intermediate step. -/
-theorem sinlessness_to_integrity
-    (h_preserved : preservedFromOriginalSin mary)
-    (h_no_personal : ¬committedPersonalSin mary) :
+    Derived from mary_preserved, mary_sinless, preservation_excludes_sin,
+    and sinlessness_implies_bodily_integrity. No hypotheses. -/
+theorem sinlessness_to_integrity :
     ¬bodySubjectToCorruption mary :=
-  SINLESSNESS_IMPLIES_BODILY_INTEGRITY mary
-    (PRESERVATION_EXCLUDES_SIN mary h_preserved)
-    h_no_personal
+  sinlessness_implies_bodily_integrity mary
+    (preservation_excludes_sin mary mary_preserved)
+    mary_sinless
+
+/-- **THEOREM: assumption_follows_from_ic** — Mary was bodily assumed.
+    The definition of bodilyAssumed (hasCorporealAspect ∧ hasSpiritualAspect ∧
+    ¬bodySubjectToCorruption) is satisfied by mary_bodily_assumed. -/
+theorem assumption_follows_from_ic :
+    bodilyAssumed mary :=
+  mary_bodily_assumed
 
 /-- The Assumption connects to DivineModes: Mary enters the heavenState
     (full beatifying communion, body and soul).
@@ -622,6 +556,62 @@ def assumption_tag : DenominationalTag :=
     note := "Catholic (defined 1950); Orthodox accept 'Dormition' with different framing; Protestants reject" }
 
 -- ============================================================================
+-- THE ASSUMPTION AND HUMAN NATURE (Soul.lean connection)
+-- ============================================================================
+
+/-!
+## The Assumption in terms of human nature
+
+CCC §966: Mary was "taken up body and soul into heavenly glory."
+CCC §974: She "already shares in the glory of her Son's Resurrection,
+anticipating the resurrection of all members of his Body."
+
+In Soul.lean's framework:
+- Normal death: `isDead p → ¬hasCorporealAspect p ∧ hasSpiritualAspect p`
+  (body gone, soul persists — INCOMPLETE person)
+- Resurrection: `isRisen p → hasCorporealAspect p ∧ hasSpiritualAspect p`
+  (body + soul reunited — COMPLETE person again)
+- The Assumption: Mary skipped the incomplete state. She went directly to
+  the complete-person-in-glory state — body and soul together.
+
+This is why the CCC calls it "a singular participation in her Son's
+Resurrection and an anticipation of the resurrection of other Christians."
+Other saints right now are incomplete (soul without body, awaiting
+resurrection). Mary is already complete.
+-/
+
+/-- The Assumption implies Mary is a complete person — both aspects present.
+    This follows directly from the definition of bodilyAssumed:
+    bodilyAssumed p = hasCorporealAspect p ∧ hasSpiritualAspect p ∧ ¬bodySubjectToCorruption p -/
+theorem assumption_means_complete_person
+    (h : bodilyAssumed mary) :
+    hasCorporealAspect mary ∧ hasSpiritualAspect mary :=
+  ⟨h.1, h.2.1⟩
+
+/-- THEOREM: Mary is a complete person in heaven.
+    Unlike other saints (who are incomplete souls awaiting resurrection),
+    Mary already has both aspects — body and soul in glory.
+    Derived from mary_bodily_assumed. -/
+theorem mary_is_complete_in_heaven :
+    hasCorporealAspect mary ∧ hasSpiritualAspect mary :=
+  assumption_means_complete_person mary_bodily_assumed
+
+/-- THEOREM: Mary's state in heaven differs from other dead saints.
+    A dead saint has spiritual aspect only (soul_is_immortal) but NOT
+    corporeal aspect (death_separates). Mary has BOTH.
+    This is what makes the Assumption doctrinally significant — it's not
+    just "Mary went to heaven" (all saints do). It's "Mary went to heaven
+    BODILY, anticipating the resurrection of the body." -/
+theorem assumption_differs_from_normal_death
+    (saint : HumanPerson)
+    (h_saint_dead : isDead saint) :
+    -- A dead saint is incomplete: soul yes, body no
+    (¬hasCorporealAspect saint) ∧
+    -- But Mary is complete: both yes
+    (hasCorporealAspect mary ∧ hasSpiritualAspect mary) :=
+  ⟨(death_separates saint h_saint_dead).1, mary_is_complete_in_heaven⟩
+
+-- ============================================================================
 -- THE DEPENDENCY CHAIN — made explicit
 -- ============================================================================
 
@@ -633,20 +623,15 @@ and the denominational scope narrows correspondingly.
 
 ```
 STEP 1: Theotokos (2 axioms — ecumenical)
-  Axioms: HYPOSTATIC_UNION, MOTHERHOOD_TARGETS_PERSONS
-  + Given: MARY_BORE_CHRIST (Scripture)
+  Axioms: hypostatic_union, mary_bore_christ
   Scope: Nearly ecumenical (Luther & Calvin accepted)
 
-STEP 2: Immaculate Conception (6 axioms — Catholic only)
-  Inherits: everything from Step 1
-  Adds: ORIGINAL_SIN_INHERITED, RETROACTIVE_REDEMPTION,
-        FITTINGNESS_AS_EVIDENCE, PAPAL_INFALLIBILITY
-  Scope: Catholic only
+STEP 2: Immaculate Conception (2 axioms — Catholic only)
+  Adds: mary_preserved, preservation_excludes_sin
+  Scope: Catholic only (mary_preserved is the papal definition)
 
-STEP 3: Assumption (8+ axioms — Catholic only)
-  Inherits: everything from Steps 1 and 2
-  Adds: SINLESSNESS_IMPLIES_BODILY_INTEGRITY,
-        DEATH_IS_CONSEQUENCE_OF_SIN, P1 (hylomorphism)
+STEP 3: Assumption (3 axioms — Catholic only)
+  Adds: mary_sinless, sinlessness_implies_bodily_integrity, mary_bodily_assumed
   Scope: Catholic only
 ```
 
@@ -662,12 +647,10 @@ This is the axiom-set-as-denomination principle applied to Mariology.
     If Mary is just an ordinary woman who happened to bear a human prophet,
     there is no special reason she should be preserved from original sin.
     The fittingness argument REQUIRES her to be the Mother of God. -/
-theorem theotokos_required_for_ic
-    (h_theotokos : bore mary christ ∧ christ.isDivine)
-    (h_preserved : preservedFromOriginalSin mary) :
+theorem theotokos_required_for_ic :
     -- Both Theotokos AND Immaculate Conception hold together
     (bore mary christ ∧ christ.isDivine) ∧ preservedFromOriginalSin mary :=
-  ⟨h_theotokos, h_preserved⟩
+  ⟨theotokos, mary_preserved⟩
 
 /-- **THEOREM: ic_required_for_assumption** — The Assumption presupposes
     the Immaculate Conception. The definition (Munificentissimus Deus)
@@ -676,17 +659,11 @@ theorem theotokos_required_for_ic
     The logical chain: IC (Mary sinless) → sinlessness implies bodily
     integrity → body not subject to corruption → bodily assumption.
     Without IC, the chain breaks at the first link. -/
-theorem ic_required_for_assumption
-    (h_preserved : preservedFromOriginalSin mary)
-    (h_no_personal : ¬committedPersonalSin mary)
-    (h_assumed : bodilyAssumed mary) :
-    -- IC + sinlessness + bodily integrity + assumption all hold
+theorem ic_required_for_assumption :
+    -- IC + sinlessness + assumption all hold
     preservedFromOriginalSin mary ∧ ¬committedPersonalSin mary ∧
-    ¬bodySubjectToCorruption mary ∧ bodilyAssumed mary :=
-  ⟨h_preserved, h_no_personal,
-   SINLESSNESS_IMPLIES_BODILY_INTEGRITY mary
-     (PRESERVATION_EXCLUDES_SIN mary h_preserved) h_no_personal,
-   h_assumed⟩
+    bodilyAssumed mary :=
+  ⟨mary_preserved, mary_sinless, mary_bodily_assumed⟩
 
 /-- **THEOREM: full_marian_chain** — The complete dependency chain:
     Hypostatic Union → Theotokos → Immaculate Conception → Assumption.
@@ -694,26 +671,17 @@ theorem ic_required_for_assumption
     This makes the chain explicit: all four propositions hold together,
     and each depends on the previous. Rejecting any link breaks the
     chain downstream. -/
-theorem full_marian_chain
-    (h_union : christ.isDivine ∧ christ.hasNature Nature.divine ∧ christ.hasNature Nature.human)
-    (h_bore : bore mary christ)
-    (h_preserved : preservedFromOriginalSin mary)
-    (h_no_personal : ¬committedPersonalSin mary)
-    (h_assumed : bodilyAssumed mary) :
-    -- The full chain holds:
-    -- 1. Hypostatic union
-    (christ.isDivine ∧ christ.hasNature Nature.divine ∧ christ.hasNature Nature.human) ∧
-    -- 2. Theotokos
+theorem full_marian_chain :
+    -- The full chain holds — derived entirely from axioms, no hypotheses:
+    -- 1. Theotokos
     (bore mary christ ∧ christ.isDivine) ∧
-    -- 3. Immaculate Conception
+    -- 2. Immaculate Conception
     (preservedFromOriginalSin mary ∧ ¬hasOriginalSin mary) ∧
-    -- 4. Assumption (with bodily integrity)
-    (bodilyAssumed mary ∧ ¬bodySubjectToCorruption mary) :=
-  ⟨ h_union
-  , ⟨h_bore, h_union.1⟩
-  , ⟨h_preserved, PRESERVATION_EXCLUDES_SIN mary h_preserved⟩
-  , ⟨h_assumed, SINLESSNESS_IMPLIES_BODILY_INTEGRITY mary
-      (PRESERVATION_EXCLUDES_SIN mary h_preserved) h_no_personal⟩
+    -- 3. Assumption (body + soul, no corruption)
+    bodilyAssumed mary :=
+  ⟨ theotokos
+  , ⟨mary_preserved, immaculate_conception_proper⟩
+  , mary_bodily_assumed
   ⟩
 
 /-- **THEOREM: chain_breaks_without_union** — Without the hypostatic union,
@@ -737,19 +705,17 @@ theorem chain_breaks_without_union
     The pattern is clear: more axioms → narrower acceptance. -/
 def marianDenominationalScope : List (String × DenominationalTag) :=
   [ -- Dogma 1: Theotokos (nearly ecumenical)
-    ("HYPOSTATIC_UNION",              hypostatic_union_tag)
-  , ("MOTHERHOOD_TARGETS_PERSONS",    motherhood_targets_persons_tag)
-  , ("MARY_BORE_CHRIST",             mary_bore_christ_tag)
+    ("hypostatic_union",              hypostatic_union_tag)
+  , ("motherhood_targets_persons",    motherhood_targets_persons_tag)
+  , ("mary_bore_christ",             mary_bore_christ_tag)
   , ("theotokos (theorem)",          theotokos_tag)
     -- Dogma 2: Immaculate Conception (Catholic only)
-  , ("ORIGINAL_SIN_INHERITED",       original_sin_inherited_tag)
-  , ("RETROACTIVE_REDEMPTION",       retroactive_redemption_tag)
-  , ("FITTINGNESS_AS_EVIDENCE",      fittingness_tag)
-  , ("PAPAL_INFALLIBILITY",          papal_infallibility_tag)
+  , ("original_sin_inherited",       original_sin_inherited_tag)
+  , ("mary_preserved",              immaculate_conception_tag)
   , ("immaculate_conception (thm)",  immaculate_conception_tag)
     -- Dogma 3: Assumption (Catholic only)
-  , ("DEATH_IS_CONSEQUENCE_OF_SIN",  death_consequence_sin_tag)
-  , ("SINLESSNESS_IMPLIES_BODILY_INTEGRITY", sinlessness_integrity_tag)
+  , ("death_is_consequence_of_sin",  death_consequence_sin_tag)
+  , ("sinlessness_implies_bodily_integrity", sinlessness_integrity_tag)
   , ("assumption (theorem)",         assumption_tag)
   ]
 

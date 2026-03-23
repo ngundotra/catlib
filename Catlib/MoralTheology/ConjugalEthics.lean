@@ -1,6 +1,7 @@
 import Catlib.Foundations
 import Catlib.MoralTheology.SourcesOfMorality
 import Catlib.MoralTheology.LegitimateDefense
+import Catlib.MoralTheology.NaturalLaw
 
 /-!
 # CCC §2366-2372: Conjugal Ethics
@@ -93,6 +94,100 @@ structure ConjugalAct where
 def ConjugalAct.bothMeaningsIntact (act : ConjugalAct) : Prop :=
   act.unitiveIntact ∧ act.procreativeIntact
 
+/-- Whether a conjugal act deliberately frustrates one of its meanings.
+    This is the key distinction: NFP does NOT deliberately frustrate
+    procreation (the couple simply abstains during fertile times).
+    Contraception DOES deliberately frustrate it (the act is performed
+    while procreation is actively rendered impossible).
+    This predicate captures the "by human initiative" clause of HV §12. -/
+opaque deliberatelyFrustratesProcreation : ConjugalAct → Prop
+
+/-- The natural end (telos) of the conjugal act: procreation.
+    The conjugal act is ordered toward generating new life. This is
+    the teleological claim that grounds the inseparability principle.
+    Source: Aquinas, ST II-II q.154; Humanae Vitae §12. -/
+def conjugal_procreative_end (act : ConjugalAct) : NaturalEnd :=
+  { subject := act.unitiveIntact  -- the conjugal act (as performed)
+  , purpose := act.procreativeIntact  -- its natural end: openness to life
+  }
+
+/-!
+## The Physical Act Principle
+
+Before stating the inseparability principle, we must state its
+deepest hidden assumption: the moral object of a conjugal act is
+determined by what is PHYSICALLY done to the act, not by the
+couple's reproductive intent.
+
+This is the load-bearing claim that distinguishes Catholic moral
+theology from consequentialism and from most Protestant ethics.
+Two couples may have identical intentions (avoid pregnancy). But if
+one uses contraception (modifying the act) and the other uses NFP
+(choosing when to act), the MORAL OBJECTS are different — because
+the physical structure of the act is different.
+
+Why does Catholicism take the physical act so seriously? Because of
+its anthropology: the person IS the body-soul composite (Soul.lean,
+§365). The body is not packaging for intentions — it has its own
+moral grammar. What you do with and to the body matters in itself,
+not merely as an expression of the will. This is the "fleshy"
+dimension of Catholic theology: the Incarnation (God became flesh),
+the Eucharist (real presence in bread and wine), the sacraments
+(physical matter as vehicle of grace), and sexual ethics (the
+physical structure of the act is morally constitutive) all flow
+from the same principle — the physical world is morally significant
+in itself.
+
+Protestantism, broadly, locates moral significance more in the
+intention and the faith of the agent. This is why dropping the
+physical-act principle collapses the NFP/contraception distinction:
+if only intent matters, and the intent is the same, there is no
+moral difference. The axiom swap is:
+
+Catholic: moral object = physical structure of the act
+Protestant (post-1930): moral object = the agent's intention + consequences
+
+This is a PHILOSOPHICAL commitment, not a scriptural one. The
+Catechism inherits it from Aristotle (via Aquinas) and from the
+broader sacramental worldview. It is the same commitment that makes
+transubstantiation possible (physical bread IS the body of Christ)
+and that makes hylomorphism necessary (the soul IS the form of the
+body, not a separate substance).
+-/
+
+/-- **AXIOM: THE PHYSICAL ACT PRINCIPLE.**
+    The moral object of a conjugal act is determined by what is
+    physically done to the act, not by the couple's reproductive intent.
+
+    Two couples with identical intentions (avoid pregnancy) have DIFFERENT
+    moral objects if one modifies the physical act (contraception) and the
+    other does not (NFP). This is because the body is constitutive of
+    personhood (Soul.lean, §365), and what is done to the body carries
+    moral weight independently of what is intended.
+
+    Source: Implicit in CCC §1750-1756 (the object of the act is one of
+    the three sources of morality, evaluated independently); explicit in
+    Humanae Vitae §13-14 and Veritatis Splendor §78.
+
+    CONNECTION TO BASE AXIOM: This is the operational form of the
+    object-independence axiom from SourcesOfMorality.lean, applied to
+    sexual ethics. It also connects to Soul.lean's hylomorphism: the
+    body is not morally neutral matter — it is constitutive of the person.
+
+    Denominational scope: CATHOLIC. Consequentialists and most Protestants
+    reject this — they evaluate the act by its intent and outcomes, not
+    by its physical structure. Dropping this axiom collapses the
+    NFP/contraception distinction entirely.
+
+    HIDDEN ASSUMPTION: This is a PHILOSOPHICAL commitment inherited from
+    Aristotelian-Thomistic ethics. It is not derivable from Scripture. -/
+axiom physical_act_determines_object :
+  ∀ (act : ConjugalAct),
+    -- If the physical act is not modified (procreative structure intact),
+    -- then the act does not deliberately frustrate procreation,
+    -- REGARDLESS of the couple's intent to avoid pregnancy
+    act.procreativeIntact → ¬deliberatelyFrustratesProcreation act
+
 /-!
 ## The Inseparability Principle (Humanae Vitae §12)
 
@@ -117,28 +212,47 @@ moral obligations is itself a philosophical question (the is-ought
 gap).
 -/
 
-/-- **AXIOM (HV §12, CCC §2366): THE INSEPARABILITY PRINCIPLE.**
-    The unitive and procreative meanings of the conjugal act may not
-    be deliberately separated.
+/-- **AXIOM: Conjugal frustration IS teleological frustration.**
+    Deliberately frustrating the procreative meaning of a conjugal act
+    is an instance of the general concept of deliberately frustrating a
+    natural end (NaturalLaw.lean).
 
-    Denominational scope:
-    - Pre-1930: ecumenical (all Christians held this)
-    - Post-1930: Catholic only (Anglicans dropped it at Lambeth 1930;
-      other Protestants followed within decades)
-    - The Orthodox position is more nuanced: generally permits
-      contraception within marriage by economia, without a formal
-      doctrinal statement equivalent to Humanae Vitae.
+    This is the bridge between the general teleology framework and the
+    specific conjugal case. It says: when you use contraception, you are
+    not just "separating meanings" — you are thwarting the natural end
+    of the conjugal act, which is a specific instance of frustrating
+    teleological purpose.
 
-    PROVENANCE: Tradition (Humanae Vitae §12, 1968; reaffirming
-    Casti Connubii §56, 1930; rooted in natural law reasoning
-    from Aquinas ST II-II q.154).
+    Denominational scope: CATHOLIC (requires teleological_realism). -/
+axiom conjugal_frustration_is_teleological :
+  ∀ (act : ConjugalAct) (agent : Person),
+    deliberatelyFrustratesProcreation act →
+    deliberatelyFrustrates agent (conjugal_procreative_end act)
 
-    HIDDEN ASSUMPTION: This is a foundational assertion, not a
-    derived theorem. The WHY is never formally established. -/
-axiom inseparability_principle :
-  ∀ (act : ConjugalAct),
-    act.unitiveIntact → act.procreativeIntact →
-    act.bothMeaningsIntact
+/-- **THEOREM (HV §12, CCC §2366): THE INSEPARABILITY PRINCIPLE.**
+    Deliberately frustrating the procreative meaning of a conjugal act
+    is intrinsically evil.
+
+    THIS IS NOW A THEOREM, NOT AN AXIOM. It follows from:
+    1. frustration_is_evil (NaturalLaw.lean): frustrating any natural end is evil
+    2. conjugal_frustration_is_teleological: conjugal frustration IS teleological frustration
+    3. conjugal_procreative_end: the conjugal act's natural end is procreation
+
+    The entire Catholic position on contraception reduces to:
+    - Do things have purposes? (teleological_realism)
+    - Is thwarting purposes wrong? (frustration_is_evil)
+    - Does the conjugal act have procreation as a purpose? (conjugal_procreative_end)
+    - Does contraception thwart that purpose? (contraception_frustrates + conjugal_frustration_is_teleological)
+
+    Drop any one of these → the conclusion falls.
+    Denominational scope: Catholic (post-1930). Pre-1930: ecumenical. -/
+theorem inseparability_principle
+    (act : ConjugalAct)
+    (agent : Person)
+    (h_frustrates : deliberatelyFrustratesProcreation act) :
+    IntrinsicallyEvil (conjugal_procreative_end act).purpose :=
+  frustration_is_evil agent (conjugal_procreative_end act)
+    (conjugal_frustration_is_teleological act agent h_frustrates)
 
 /-- Denominational tag: Catholic (post-1930; pre-1930 ecumenical). -/
 def inseparability_tag : DenominationalTag :=
@@ -201,36 +315,37 @@ def NFPObject : Prop :=
 def ContraceptionObject (act : ConjugalAct) : Prop :=
   act.unitiveIntact ∧ ¬act.procreativeIntact
 
-/-- Contraception violates the inseparability principle.
-    If the procreative meaning is deliberately frustrated while the
-    unitive meaning is retained, the two meanings have been separated
-    — which the inseparability principle forbids.
+/-- **AXIOM: Contraception deliberately frustrates procreation.**
+    The moral object of contraception is to have conjugal relations
+    while actively rendering procreation impossible. This is the
+    definition of "deliberately frustrates" applied to contraception.
+    Denominational scope: ECUMENICAL (definitional — even those who
+    permit contraception agree this is what it does). -/
+axiom contraception_frustrates :
+  ∀ (act : ConjugalAct),
+    ContraceptionObject act →
+    deliberatelyFrustratesProcreation act
 
-    HIDDEN ASSUMPTION: The "deliberately" qualifier is crucial but
-    hard to formalize. The inseparability principle says the meanings
-    cannot be deliberately separated by human initiative. NFP doesn't
-    separate them — it simply abstains during fertile times. The
-    distinction between "separating" and "not acting" is the entire
-    moral weight of the argument. -/
-theorem contraception_violates_inseparability
-    (act : ConjugalAct)
-    (_h_unitive : act.unitiveIntact)
-    (h_not_procreative : ¬act.procreativeIntact) :
-    ¬act.bothMeaningsIntact := by
-  intro ⟨_, h_proc⟩
-  exact h_not_procreative h_proc
+/-- **THEOREM: Contraception is intrinsically evil** (under inseparability).
+    Derived from the full chain:
+    - contraception_frustrates: contraception deliberately frustrates procreation
+    - conjugal_frustration_is_teleological: this is teleological frustration
+    - frustration_is_evil (NaturalLaw.lean): frustrating natural ends is evil
 
-/-- Contraception is intrinsically evil (under inseparability).
-    Since contraception's object is to separate the two meanings,
-    and the inseparability principle says this cannot be done,
-    contraception's object is never good — making it intrinsically
-    evil per the SourcesOfMorality framework. -/
+    This is the formal version of HV §14: "every action which proposes to
+    render procreation impossible is intrinsically evil."
+
+    The proof chain makes the axiom dependencies explicit:
+    teleological_realism + frustration_is_evil + conjugal_frustration_is_teleological
+    + contraception_frustrates → contraception is evil.
+
+    Denominational scope: CATHOLIC (depends on the entire teleological framework). -/
 theorem contraception_intrinsically_evil
     (act : ConjugalAct)
+    (agent : Person)
     (h_contra : ContraceptionObject act) :
-    IntrinsicallyEvil act.bothMeaningsIntact := by
-  intro ⟨_, h_proc⟩
-  exact h_contra.2 h_proc
+    IntrinsicallyEvil (conjugal_procreative_end act).purpose :=
+  inseparability_principle act agent (contraception_frustrates act h_contra)
 
 /-- Denominational tag: Catholic. -/
 def contraception_evil_tag : DenominationalTag :=
@@ -254,21 +369,35 @@ not rendered artificially infertile.
 theorem nfp_object_not_evil : NFPObject := by
   trivial
 
-/-- A conjugal act during a naturally infertile period retains both
-    meanings. The procreative meaning is not deliberately frustrated
-    — it is simply not actualized due to natural circumstances.
+/-- **THEOREM: NFP does NOT deliberately frustrate procreation.**
+    Derived from physical_act_determines_object: the physical act is
+    not modified (procreativeIntact), therefore it does not deliberately
+    frustrate procreation — regardless of the couple's intent to space births.
 
-    HIDDEN ASSUMPTION: There is a morally relevant distinction
-    between "natural infertility" and "artificially induced
-    infertility." This distinction is clear under the inseparability
-    principle (one separates; the other doesn't) but is not obvious
-    from a consequentialist perspective (same outcome either way). -/
-axiom nfp_preserves_both_meanings :
-  ∀ (act : ConjugalAct),
-    act.unitiveIntact →
-    act.procreativeIntact →
-    -- The act during an infertile period still has both meanings
-    act.bothMeaningsIntact
+    This was previously an axiom. Now it's a theorem derived from the
+    deeper principle that the physical structure of the act determines
+    its moral object. -/
+theorem nfp_does_not_frustrate
+    (act : ConjugalAct)
+    (h_unitive : act.unitiveIntact)
+    (h_procreative : act.procreativeIntact) :
+    ¬deliberatelyFrustratesProcreation act :=
+  physical_act_determines_object act h_procreative
+
+/-- **THEOREM: NFP does not trigger the inseparability principle.**
+    An NFP act (both meanings intact) does not deliberately frustrate
+    procreation, so the inseparability principle's antecedent is not
+    satisfied. Contraception DOES trigger it (contraception_frustrates).
+    This is the formal version of the Catholic claim that NFP and
+    contraception are morally different despite the same outcome (no child).
+
+    Derived from nfp_does_not_frustrate. -/
+theorem nfp_does_not_trigger_inseparability
+    (act : ConjugalAct)
+    (h_unitive : act.unitiveIntact)
+    (h_procreative : act.procreativeIntact) :
+    ¬deliberatelyFrustratesProcreation act :=
+  nfp_does_not_frustrate act h_unitive h_procreative
 
 /-- NFP is permissible: the moral evaluation can be good.
     Given that NFP's object is not evil, and the intention is
@@ -395,16 +524,16 @@ are in themselves contrary to the moral law." The State has no
 authority to impose contraception as population policy.
 -/
 
-/-- The State lacks authority to impose methods contrary to the
-    moral law, including contraception. CCC §2372.
-    This follows from the general principle that state authority
-    is delegated (from Basic.lean) and cannot override natural law. -/
-axiom state_no_authority_to_impose_contraception :
-  ∀ (stateAuth : Authority),
-    stateAuth.source = AuthoritySource.naturalLaw →
-    -- Even natural-law-based authority cannot impose intrinsically
-    -- evil methods — authority does not extend to commanding evil
-    True
+/-!
+### State Authority and Contraception (CCC §2372)
+
+"The political authority has no right to intervene by encouraging
+the use of methods of birth regulation contrary to the moral law."
+
+This principle (state authority cannot command intrinsically evil
+acts) is a consequence of the general natural law framework and
+does not require a separate axiom.
+-/
 
 /-!
 ## Summary of Hidden Assumptions

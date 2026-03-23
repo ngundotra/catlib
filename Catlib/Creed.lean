@@ -1,3 +1,4 @@
+import Catlib.Creed.Christology
 import Catlib.Creed.Hell
 import Catlib.Creed.Grace
 import Catlib.Creed.Trinity
@@ -7,3 +8,4 @@ import Catlib.Creed.Purgatory
 import Catlib.Creed.DivineModes
 import Catlib.Creed.MarianDogma
 import Catlib.Creed.OriginalSin
+import Catlib.Creed.PapalInfallibility

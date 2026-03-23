@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>mortal_sin_preserves_eros — Catlib Axiom Wiki</title>
+  <meta name="description" content="Axiom: mortal_sin_preserves_eros — Mortal sin does NOT destroy eros.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel+Decorative:wght@400;700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../articles/articles.css">
+</head>
+<body>
+
+  <main>
+    <a href="index.html" class="back-link">Back to Axiom Index</a>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="ornament">&#10053;</div>
+      <h1>mortal_sin_preserves_eros</h1>
+      <p class="subtitle">axiom &mdash; Catlib/Foundations/Love.lean:329</p>
+      <p class="subtitle"><span class="tag tag-catholic">Catholic</span></p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <section class="article-body">
+      <h2>Lean Declaration</h2>
+      <pre class="lean-code">axiom mortal_sin_preserves_eros :
+  ∀ (tl : TypedLove) (s : Sin),
+    tl.kind = LoveKind.eros →
+    tl.degree &gt; 0 →
+    isGraveSin s →
+    -- Eros is not affected: the love remains
+    ∃ (tl&#x27; : TypedLove),
+      tl&#x27;.kind = LoveKind.eros ∧
+      tl&#x27;.lover = tl.lover ∧
+      tl&#x27;.beloved = tl.beloved ∧
+      tl&#x27;.degree &gt; 0</pre>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <section class="article-body">
+      <h2>Why This Axiom?</h2>
+      <p>Mortal sin does NOT destroy eros.</p>
+      <p><strong>Source:</strong> Implied by CCC §1855 (which says charity specifically) and</p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <section class="article-body">
+      <h2>Theorems That Use This Axiom</h2>
+      <p>Kernel-verified via <code>#print axioms</code> &mdash; these theorems genuinely depend on this axiom at the proof level.</p>
+      <div class="finding-card">
+        <ul style="list-style: none; padding: 0;">
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><code>mortal_sin_destroys_charity_not_eros</code> <span style="color: var(--text-light); font-size: 0.85rem;">(Catlib/Foundations/Love.lean:475)</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <section class="article-body">
+      <h2>Related Axioms</h2>
+      <p>Other axioms declared in the same file:</p>
+      <div class="finding-card">
+        <ul style="list-style: none; padding: 0;">
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_Foundations_Love_agape_not_symmetric_witness.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">agape_not_symmetric_witness</a> <span style="color: var(--text-light); font-size: 0.85rem;">(axiom)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_Foundations_Love_philia_symmetric.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">philia_symmetric</a> <span style="color: var(--text-light); font-size: 0.85rem;">(axiom)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_Foundations_Love_self_love_reflexive.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">self_love_reflexive</a> <span style="color: var(--text-light); font-size: 0.85rem;">(axiom)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_Foundations_Love_agape_requires_freedom.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">agape_requires_freedom</a> <span style="color: var(--text-light); font-size: 0.85rem;">(axiom)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_Foundations_Love_eros_does_not_require_freedom.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">eros_does_not_require_freedom</a> <span style="color: var(--text-light); font-size: 0.85rem;">(axiom)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_Foundations_Love_charity_can_increase.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">charity_can_increase</a> <span style="color: var(--text-light); font-size: 0.85rem;">(axiom)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_Foundations_Love_mortal_sin_can_destroy_charity.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">mortal_sin_can_destroy_charity</a> <span style="color: var(--text-light); font-size: 0.85rem;">(axiom)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_Foundations_Love_mortal_sin_preserves_philia.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">mortal_sin_preserves_philia</a> <span style="color: var(--text-light); font-size: 0.85rem;">(axiom)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_Foundations_Love_ordo_amoris_god_over_neighbor.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">ordo_amoris_god_over_neighbor</a> <span style="color: var(--text-light); font-size: 0.85rem;">(axiom)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_Foundations_Love_ordo_amoris_neighbor_over_self.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">ordo_amoris_neighbor_over_self</a> <span style="color: var(--text-light); font-size: 0.85rem;">(axiom)</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="ornament">&#10053;</div>
+
+    <section class="cta-section">
+      <div class="cta-group">
+        <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Foundations/Love.lean" class="cta-button primary">View Source</a>
+        <a href="index.html" class="cta-button secondary">Axiom Index</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="ornament">&#10053;</div>
+    <p>
+      <a href="https://github.com/ngundotra/catlib">Catlib</a>&nbsp;&mdash;
+      formalizing the Catholic Catechism in Lean 4.
+    </p>
+  </footer>
+
+</body>
+</html>

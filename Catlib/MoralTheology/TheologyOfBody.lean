@@ -24,12 +24,12 @@ We formalize the three most foundational claims:
 ## Structural note: PERSONALIST_NORM is a THEOREM, not an axiom
 
 In an earlier version, the personalist norm was axiomatized directly.
-It is now DERIVED as a theorem from two axioms (IMAGO_DEI + PARTICIPATION)
+It is now DERIVED as a theorem from two axioms (imago_dei + participation)
 combined with S1 (God is love) from Axioms.lean. The derivation chain:
 
 1. God is love (S1 — `s1_god_is_love`, giving `godIsLove`)
-2. Humans are in God's image (IMAGO_DEI)
-3. An image participates in what it images (PARTICIPATION)
+2. Humans are in God's image (imago_dei)
+3. An image participates in what it images (participation)
 4. Therefore humans participate in love
 5. Therefore the adequate response to a being that participates in love is love
 6. Therefore PERSONALIST_NORM (now a theorem)
@@ -72,7 +72,7 @@ as a standalone tradition.
   of the personalist norm applied to conjugal acts.
 
   **Structural improvement**: The personalist norm is now DERIVED from
-  S1 (God is love) + IMAGO_DEI + PARTICIPATION, rather than axiomatized.
+  S1 (God is love) + imago_dei + participation, rather than axiomatized.
   This gives it explicit theological grounding: persons must be loved
   because they are images of the God who IS love, and as images they
   participate in what they image. The formal derivation reveals a
@@ -144,7 +144,7 @@ says: even treating a person as a means WITH CONSENT violates dignity,
 because dignity is intrinsic and cannot be waived.
 
 In this formalization, the personalist norm is DERIVED (not axiomatized)
-from IMAGO_DEI + PARTICIPATION + S1 (God is love).
+from imago_dei + participation + S1 (God is love).
 -/
 
 /-- The three possible orientations toward a person.
@@ -213,7 +213,7 @@ opaque loveIsAdequateResponse : Person → Prop
 
     CONNECTS TO: S1 (God is love), Soul.lean axiom 4
     (only_humans_know_god — the rational soul grounds the image). -/
-axiom IMAGO_DEI :
+axiom imago_dei :
   ∀ (p : Person), p.hasIntellect = true → isImageOfGod p
 
 /-- Denominational tag: ecumenical. All Christians affirm Gen 1:27. -/
@@ -221,9 +221,9 @@ def imago_dei_tag : DenominationalTag :=
   { acceptedBy := [Denomination.ecumenical],
     note := "Universal Christian teaching; Gen 1:27; CCC §1700" }
 
-/-- **AXIOM (Aquinas, ST I q.44-45): PARTICIPATION.**
+/-- **AXIOM (Aquinas, ST I q.44-45): participation.**
     An image participates in what it images. If God is love (S1), and
-    a person is God's image (IMAGO_DEI), then that person participates
+    a person is God's image (imago_dei), then that person participates
     in love. Furthermore, participation in love makes love the adequate
     response to that being.
 
@@ -234,9 +234,9 @@ def imago_dei_tag : DenominationalTag :=
     Source: Aquinas, ST I q.44-45 (participation metaphysics).
     Denominational scope: Philosophical (Catholic/Thomistic).
 
-    CONNECTS TO: S1 (God is love), IMAGO_DEI,
+    CONNECTS TO: S1 (God is love), imago_dei,
     the personalist norm (derived below). -/
-axiom PARTICIPATION :
+axiom participation :
   ∀ (p : Person),
     isImageOfGod p →
     godIsLove →
@@ -256,28 +256,28 @@ def participation_tag : DenominationalTag :=
 /-- **Lemma: Humans participate in love.**
     Derivation chain:
     1. God is love (S1 — `s1_god_is_love`)
-    2. Humans are in God's image (IMAGO_DEI)
-    3. Images participate in what they image (PARTICIPATION)
+    2. Humans are in God's image (imago_dei)
+    3. Images participate in what they image (participation)
     4. ∴ Humans participate in love -/
 theorem humans_participate_in_love
     (p : Person)
     (h_intellect : p.hasIntellect = true) :
     participatesInLove p := by
-  have h_image := IMAGO_DEI p h_intellect
+  have h_image := imago_dei p h_intellect
   have h_god_love := s1_god_is_love.1
-  exact (PARTICIPATION p h_image h_god_love).1
+  exact (participation p h_image h_god_love).1
 
 /-- **Lemma: Love is the adequate response to any human person.**
-    From IMAGO_DEI + PARTICIPATION + S1. -/
+    From imago_dei + participation + S1. -/
 theorem love_is_adequate_response_to_persons
     (p : Person)
     (h_intellect : p.hasIntellect = true) :
     loveIsAdequateResponse p := by
-  have h_image := IMAGO_DEI p h_intellect
+  have h_image := imago_dei p h_intellect
   have h_god_love := s1_god_is_love.1
-  exact (PARTICIPATION p h_image h_god_love).2
+  exact (participation p h_image h_god_love).2
 
-/-- **AXIOM (bridge): ADEQUATE_RESPONSE_MEANS_ONLY_LOVE.**
+/-- **AXIOM (bridge): adequate_response_means_only_love.**
     If love is the adequate response to a person, then ONLY Love
     (not Use, not Indifference) respects their dignity. This bridges
     the abstract "love is adequate" predicate to the concrete
@@ -291,7 +291,7 @@ theorem love_is_adequate_response_to_persons
 
     Denominational scope: ECUMENICAL — if you accept that love is
     the adequate response, you accept that only love qualifies. -/
-axiom ADEQUATE_RESPONSE_MEANS_ONLY_LOVE :
+axiom adequate_response_means_only_love :
   ∀ (p : Person),
     loveIsAdequateResponse p →
     ∀ (rk : RelationKind), rk.respectsDignity → rk = RelationKind.Love
@@ -304,13 +304,13 @@ axiom ADEQUATE_RESPONSE_MEANS_ONLY_LOVE :
     Wojtyła says: the positive response (love = willing the person's good
     for their own sake) is the ONLY adequate response.
 
-    DERIVED FROM: S1 (God is love) + IMAGO_DEI + PARTICIPATION +
-    ADEQUATE_RESPONSE_MEANS_ONLY_LOVE.
+    DERIVED FROM: S1 (God is love) + imago_dei + participation +
+    adequate_response_means_only_love.
 
     The derivation chain:
     1. God is love (S1)
-    2. Humans are in God's image (IMAGO_DEI)
-    3. Images participate in what they image (PARTICIPATION)
+    2. Humans are in God's image (imago_dei)
+    3. Images participate in what they image (participation)
     4. ∴ Love is the adequate response to every person
     5. ∴ Only Love (not Use, not Indifference) respects dignity
 
@@ -324,7 +324,7 @@ theorem PERSONALIST_NORM
     (h_intellect : p.hasIntellect = true) :
     ∀ (rk : RelationKind), rk.respectsDignity → rk = RelationKind.Love := by
   have h_adequate := love_is_adequate_response_to_persons p h_intellect
-  exact ADEQUATE_RESPONSE_MEANS_ONLY_LOVE p h_adequate
+  exact adequate_response_means_only_love p h_adequate
 
 /-- Denominational tag: broadly ecumenical for the norm itself.
     The principle that persons must not be used instrumentally is shared
@@ -338,7 +338,7 @@ def personalist_norm_tag : DenominationalTag :=
     Person dignity does not depend on consent, capability, or social
     valuation. It is a property of being a person, period.
 
-    DERIVED FROM: IMAGO_DEI. If dignity is rooted in being God's image,
+    DERIVED FROM: imago_dei. If dignity is rooted in being God's image,
     and being God's image is ontological (not functional), then dignity
     is intrinsic — it does not depend on any external condition.
 
@@ -359,7 +359,7 @@ theorem DIGNITY_IS_INTRINSIC
       -- ontological and independent of these external conditions.
       isImageOfGod p := by
   intro _ _ _
-  exact IMAGO_DEI p h_intellect
+  exact imago_dei p h_intellect
 
 /-- Denominational tag: ecumenical. All Christian traditions affirm
     intrinsic human dignity rooted in the imago Dei. -/
@@ -470,7 +470,7 @@ anthropology from both Pelagian optimism and Calvinist pessimism.
     MODELING CHOICE: These are discrete states, not a continuum. The
     transitions (Fall, Redemption) are events, not gradual shifts. But
     WITHIN the Redeemed state, restoration is gradual (see
-    REDEMPTION_IS_PROGRESSIVE below). -/
+    redemption_is_progressive below). -/
 inductive AnthropologicalState where
   /-- Before the Fall: full integrity, no concupiscence.
       The human person's desires are perfectly ordered toward the good. -/
@@ -528,7 +528,7 @@ def NuptialCapacity.zero : NuptialCapacity :=
     CONNECTS TO: Freedom.lean evil_diminishes_freedom (choosing evil
     reduces freedom, but doesn't eliminate it),
     S7 teleological_freedom (freedom is ordered toward the good). -/
-axiom CONCUPISCENCE_DIMINISHES_NOT_DESTROYS :
+axiom concupiscence_diminishes_not_destroys :
   ∀ (nc : NuptialCapacity),
     -- In the Fallen state, capacity is diminished...
     nc.level > 0 →
@@ -554,7 +554,7 @@ def concupiscence_tag : DenominationalTag :=
 
     CONNECTS TO: Freedom.lean FreedomDegree (each state has a different
     freedom level). -/
-axiom THREE_STATE_ANTHROPOLOGY :
+axiom three_state_anthropology :
   ∀ (state : AnthropologicalState),
     match state with
     | .OriginalIntegrity => True   -- Full capacity
@@ -579,7 +579,7 @@ def three_state_tag : DenominationalTag :=
     CONNECTS TO: S8 (grace is transformative, not merely forensic —
     transformation takes time), T2 (grace preserves freedom — progressive
     restoration requires ongoing cooperation). -/
-axiom REDEMPTION_IS_PROGRESSIVE :
+axiom redemption_is_progressive :
   ∀ (nc1 nc2 : NuptialCapacity),
     -- If capacity increases from nc1 to nc2...
     nc1.level < nc2.level →
@@ -609,7 +609,7 @@ def redemption_progressive_tag : DenominationalTag :=
 
     CONNECTS TO: T2 (grace preserves freedom), t2_grace_preserves_freedom
     (Axioms.lean). -/
-axiom COOPERATION_REQUIRED :
+axiom cooperation_required :
   ∀ (p : Person) (g : Grace) (nc : NuptialCapacity),
     -- Grace is given and the person has some capacity...
     graceGiven p g → nc.level > 0 →
@@ -630,7 +630,7 @@ def cooperation_required_tag : DenominationalTag :=
     We show this by exhibiting: capacity is non-zero (against Calvinism)
     AND capacity is less than maximum (against Pelagianism).
 
-    CONNECTS TO: CONCUPISCENCE_DIMINISHES_NOT_DESTROYS,
+    CONNECTS TO: concupiscence_diminishes_not_destroys,
     Freedom.lean evil_diminishes_freedom. -/
 theorem fallen_not_total_depravity
     (nc : NuptialCapacity)
@@ -706,7 +706,7 @@ def contradictsInherentMeaning (bodilyAct : Prop) (agentAction : Prop) : Prop :=
 
     CONNECTS TO: Soul.lean (hylomorphism — the body CAN be a sign
     because the soul IS its form; form grounds sign). -/
-axiom BODY_AS_SIGN :
+axiom body_as_sign :
   ∀ (bodilyAct : Prop), isSign bodilyAct
 
 /-- Denominational tag: ecumenical for the general principle that
@@ -733,7 +733,7 @@ def body_as_sign_tag : DenominationalTag :=
 
     CONNECTS TO: T3 (sacramental efficacy — if material signs are the
     ONLY channel, then sacraments are necessary, not optional). -/
-axiom MATERIAL_MEDIATION :
+axiom material_mediation :
   ∀ (spiritualReality : Prop),
     -- If a spiritual reality is made accessible...
     (∃ (materialSign : Prop), makesAccessible materialSign spiritualReality) →
@@ -764,7 +764,7 @@ def material_mediation_tag : DenominationalTag :=
 
     CONNECTS TO: PERSONALIST_NORM (body-lies instrumentalize the other
     person), ConjugalEthics.lean inseparability_principle. -/
-axiom SIGN_TRUTHFULNESS :
+axiom sign_truthfulness :
   ∀ (bodilyAct agentAction : Prop),
     -- If the body's inherent meaning is contradicted by the agent's action...
     contradictsInherentMeaning bodilyAct agentAction →
@@ -781,7 +781,7 @@ def sign_truthfulness_tag : DenominationalTag :=
 /-- **Theorem: The body-as-sign principle grounds sacramental efficacy.**
 
     If spiritual realities are accessible ONLY through material signs
-    (MATERIAL_MEDIATION), then any channel through which grace reaches
+    (material_mediation), then any channel through which grace reaches
     a person must be a material sign — which is exactly what a sacrament
     is. Therefore sacraments are NECESSARY (not just helpful) for grace
     to reach persons in the created order.
@@ -790,8 +790,8 @@ def sign_truthfulness_tag : DenominationalTag :=
     from the body-as-sign anthropology rather than asserting it as a
     standalone tradition.
 
-    CONNECTS TO: T3 (t3_sacramental_efficacy), MATERIAL_MEDIATION,
-    BODY_AS_SIGN. -/
+    CONNECTS TO: T3 (t3_sacramental_efficacy), material_mediation,
+    body_as_sign. -/
 theorem body_sign_grounds_sacraments
     (spiritualReality : Prop)
     (materialSign : Prop)
@@ -813,7 +813,7 @@ def body_sign_sacraments_tag : DenominationalTag :=
     The conjugal act has an inherent meaning (total self-gift, including
     fertility). Contraception retains the bodily act while withholding
     fertility. This contradicts the act's inherent meaning — the body
-    "says" total gift while the agent withholds. By SIGN_TRUTHFULNESS,
+    "says" total gift while the agent withholds. By sign_truthfulness,
     this contradiction is a body-lie, which is morally disordered.
 
     This provides a SECOND derivation of the immorality of contraception
@@ -823,7 +823,7 @@ def body_sign_sacraments_tag : DenominationalTag :=
     is a form of lying.
 
     CONNECTS TO: ConjugalEthics.lean contraception_violates_inseparability,
-    SIGN_TRUTHFULNESS, PERSONALIST_NORM. -/
+    sign_truthfulness, PERSONALIST_NORM. -/
 theorem contraception_is_body_lie
     (conjugalActMeaning : Prop)  -- "total self-gift including fertility"
     (contraceptiveAction : Prop) -- "self-gift minus fertility"
@@ -832,7 +832,7 @@ theorem contraception_is_body_lie
     (h_contradicts : contradictsInherentMeaning conjugalActMeaning contraceptiveAction) :
     -- Contraception is morally disordered (a body-lie)
     isEvil (contradictsInherentMeaning conjugalActMeaning contraceptiveAction) := by
-  exact SIGN_TRUTHFULNESS conjugalActMeaning contraceptiveAction h_contradicts
+  exact sign_truthfulness conjugalActMeaning contraceptiveAction h_contradicts
 
 /-- Denominational tag: Catholic. -/
 def contraception_body_lie_tag : DenominationalTag :=
@@ -846,7 +846,7 @@ Formalizing the three core TOB claims required these assumptions:
 
 1. **Imago Dei** (AXIOM) — humans are made in God's image. This is the
    ontological ground of dignity. Combined with S1 (God is love) and
-   PARTICIPATION, it yields the personalist norm as a THEOREM.
+   participation, it yields the personalist norm as a THEOREM.
 
 2. **Participation** (AXIOM) — an image participates in what it images.
    This is the Thomistic metaphysical bridge: if God is love and humans
@@ -859,7 +859,7 @@ Formalizing the three core TOB claims required these assumptions:
    the opaque participation predicate to the concrete RelationKind type.
 
 4. **The personalist norm** (THEOREM, formerly axiom) — derived from
-   S1 + IMAGO_DEI + PARTICIPATION. Use always violates dignity, even
+   S1 + imago_dei + participation. Use always violates dignity, even
    with consent.
 
 5. **Consent does not legitimize use** (THEOREM, formerly axiom) —
@@ -867,7 +867,7 @@ Formalizing the three core TOB claims required these assumptions:
    is definitionally False, so consent is irrelevant.
 
 6. **Dignity is intrinsic** (THEOREM, formerly axiom) — derived from
-   IMAGO_DEI: the image of God is ontological, not dependent on
+   imago_dei: the image of God is ontological, not dependent on
    consent, capability, or social valuation.
 
 7. **The Fall diminished but did not destroy** — this is a specific

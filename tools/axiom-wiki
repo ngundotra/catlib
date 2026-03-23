@@ -1,0 +1,670 @@
+#!/usr/bin/env python3
+"""
+axiom-wiki: Generate wiki-style HTML pages for every axiom in the Catlib project.
+
+Usage:
+    ./tools/axiom-wiki                   # Generate all axiom pages
+    ./tools/axiom-wiki --axiom NAME      # Generate page for a single axiom
+"""
+
+import html
+import importlib.machinery
+import importlib.util
+import os
+import re
+import subprocess
+import sys
+from collections import defaultdict
+from pathlib import Path
+
+# ---------------------------------------------------------------------------
+# Import theorem-tree as a module
+# ---------------------------------------------------------------------------
+TOOL_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "theorem-tree")
+loader = importlib.machinery.SourceFileLoader("theorem_tree", TOOL_PATH)
+spec = importlib.util.spec_from_loader("theorem_tree", loader, origin=TOOL_PATH)
+theorem_tree = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(theorem_tree)
+
+# ---------------------------------------------------------------------------
+# Constants
+# ---------------------------------------------------------------------------
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+CATLIB_DIR = PROJECT_ROOT / "Catlib"
+SITE_DIR = PROJECT_ROOT / "site"
+AXIOMS_DIR = SITE_DIR / "axioms"
+
+
+# ---------------------------------------------------------------------------
+# Docstring extraction
+# ---------------------------------------------------------------------------
+
+def extract_docstring(file_path, line_no):
+    """Extract the /-- ... -/ docstring immediately before a declaration.
+
+    Args:
+        file_path: Path to the .lean file
+        line_no: 1-based line number of the declaration
+
+    Returns:
+        The raw docstring text (without /-- -/ delimiters), or ""
+    """
+    try:
+        with open(file_path, "r", encoding="utf-8") as f:
+            lines = f.readlines()
+    except (IOError, UnicodeDecodeError):
+        return ""
+
+    # line_no is 1-based; the declaration is on lines[line_no - 1]
+    # Walk backwards from the line before the declaration to find the docstring
+    idx = line_no - 2  # 0-based index of line before declaration
+    if idx < 0:
+        return ""
+
+    # Skip blank lines between docstring and declaration
+    while idx >= 0 and lines[idx].strip() == "":
+        idx -= 1
+
+    if idx < 0:
+        return ""
+
+    # Check if this line ends a docstring (contains -/)
+    end_line = idx
+    if "-/" not in lines[end_line]:
+        return ""
+
+    # Now find the start of the docstring (line containing /--)
+    start_line = end_line
+    while start_line >= 0:
+        if "/--" in lines[start_line]:
+            break
+        start_line -= 1
+
+    if start_line < 0:
+        return ""
+
+    # Extract the docstring content
+    doc_lines = lines[start_line:end_line + 1]
+    text = "".join(doc_lines)
+
+    # Remove the /-- and -/ delimiters
+    text = re.sub(r'^.*?/--\s*', '', text, count=1)
+    text = re.sub(r'\s*-/\s*$', '', text)
+    return text.strip()
+
+
+def extract_type_signature(file_path, line_no):
+    """Extract the full type signature of a declaration starting at line_no.
+
+    Returns the declaration line(s) up to the next blank line or declaration.
+    """
+    try:
+        with open(file_path, "r", encoding="utf-8") as f:
+            lines = f.readlines()
+    except (IOError, UnicodeDecodeError):
+        return ""
+
+    idx = line_no - 1  # 0-based
+    if idx >= len(lines):
+        return ""
+
+    sig_lines = []
+    for i in range(idx, min(idx + 20, len(lines))):
+        line = lines[i].rstrip()
+        sig_lines.append(line)
+        # Stop when we see a blank line, or when we hit the next declaration/comment
+        if i > idx and (line.strip() == "" or
+                        line.strip().startswith("/--") or
+                        line.strip().startswith("/-!") or
+                        re.match(r'^(axiom|theorem|def|structure|inductive|opaque)\s', line)):
+            sig_lines.pop()
+            break
+    return "\n".join(sig_lines)
+
+
+def parse_docstring_metadata(docstring):
+    """Parse structured metadata from a docstring.
+
+    Returns a dict with keys:
+        description: first paragraph
+        source: Source/Provenance lines
+        scope: Denominational scope
+        hidden_assumptions: list of HIDDEN ASSUMPTION lines
+        grounds: *Grounds*: lines
+    """
+    result = {
+        "description": "",
+        "source": "",
+        "scope": "",
+        "hidden_assumptions": [],
+        "grounds": "",
+    }
+
+    if not docstring:
+        return result
+
+    lines = docstring.split("\n")
+    source_parts = []
+    scope_parts = []
+    hidden_parts = []
+    grounds_parts = []
+    desc_lines = []
+    past_first_para = False
+
+    for line in lines:
+        stripped = line.strip()
+
+        # Source
+        m = re.match(r'^\*?Source\*?\s*:\s*(.+)', stripped, re.IGNORECASE)
+        if m:
+            source_parts.append(m.group(1).strip())
+            continue
+
+        m = re.match(r'^PROVENANCE\s*:\s*(.+)', stripped, re.IGNORECASE)
+        if m:
+            source_parts.append(m.group(1).strip())
+            continue
+
+        # Grounds
+        m = re.match(r'^\*?Grounds\*?\s*:\s*(.+)', stripped, re.IGNORECASE)
+        if m:
+            grounds_parts.append(m.group(1).strip())
+            continue
+
+        # Denominational scope
+        m = re.match(r'^Denominational\s+scope\s*:\s*(.+)', stripped, re.IGNORECASE)
+        if m:
+            scope_parts.append(m.group(1).strip())
+            continue
+
+        # Hidden assumptions
+        m = re.match(r'^HIDDEN\s+ASSUMPTION\s*:\s*(.+)', stripped, re.IGNORECASE)
+        if m:
+            hidden_parts.append(m.group(1).strip())
+            continue
+
+        # Skip metadata-like lines for description
+        if re.match(r'^\s*(CONNECTS TO|MODELING CHOICE)\s*:', stripped, re.IGNORECASE):
+            continue
+
+        # Description: collect lines until first blank line
+        if not past_first_para:
+            if stripped == "":
+                if desc_lines:
+                    past_first_para = True
+            else:
+                desc_lines.append(stripped)
+
+    result["source"] = "; ".join(source_parts) if source_parts else ""
+    result["scope"] = "; ".join(scope_parts) if scope_parts else ""
+    result["hidden_assumptions"] = hidden_parts
+    result["grounds"] = " ".join(grounds_parts) if grounds_parts else ""
+
+    # Clean up description
+    desc = " ".join(desc_lines)
+    # Remove bold markers
+    desc = re.sub(r"\*\*", "", desc)
+    # Remove leading labels like "P1. NAME:" or "S1. GOD_IS_LOVE:"
+    desc = re.sub(r"^[A-Z]\d+\.\s*[A-Z_]+\s*[:.]?\s*", "", desc)
+    result["description"] = desc.strip()
+
+    return result
+
+
+def determine_scope_tag(scope_text, docstring):
+    """Determine the denominational scope from metadata.
+
+    Returns one of: 'catholic', 'lutheran', 'shared', or 'catholic' as default.
+    """
+    text = (scope_text + " " + docstring).lower()
+
+    if "lutheran only" in text or "lutheranonly" in text:
+        return "lutheran"
+    if "ecumenical" in text or "shared" in text or "catholicandlutheran" in text:
+        return "shared"
+    if "catholic only" in text or "catholiconly" in text:
+        return "catholic"
+    # Default: check for clues in source
+    if "luther" in text and "catholic" not in text:
+        return "lutheran"
+    if any(kw in text for kw in ["ccc ", "ccc§", "catechism", "aquinas", "augustine",
+                                  "council of trent", "magisterium"]):
+        return "catholic"
+    # If scripture references are prominent, likely shared
+    if any(kw in text for kw in ["rom ", "gen ", "mt ", "jn ", "1 jn", "1 tim"]):
+        return "shared"
+    return "catholic"
+
+
+def build_defense(metadata, docstring, axiom_name):
+    """Build a defense/explanation for why assuming this axiom is sensible."""
+    parts = []
+
+    desc = metadata["description"]
+    if desc:
+        parts.append(desc)
+
+    source = metadata["source"]
+    if source:
+        parts.append(f"<strong>Source:</strong> {html.escape(source)}")
+
+    grounds = metadata["grounds"]
+    if grounds:
+        parts.append(f"<strong>Grounds:</strong> {html.escape(grounds)}")
+
+    for ha in metadata["hidden_assumptions"]:
+        parts.append(f"<strong>Hidden assumption:</strong> {html.escape(ha)}")
+
+    if not parts:
+        parts.append("This axiom defines foundational vocabulary for the formalization.")
+
+    return parts
+
+
+def safe_filename(name):
+    """Convert an axiom FQN to a safe filename."""
+    return name.replace(".", "_").replace(" ", "_")
+
+
+# ---------------------------------------------------------------------------
+# HTML generation
+# ---------------------------------------------------------------------------
+
+def scope_tag_html(scope):
+    """Generate a denominational scope badge."""
+    labels = {
+        "catholic": "Catholic",
+        "lutheran": "Lutheran",
+        "shared": "Shared",
+    }
+    label = labels.get(scope, "Catholic")
+    return f'<span class="tag tag-{scope}">{label}</span>'
+
+
+def generate_axiom_page(axiom_fqn, axiom_file, axiom_line, axiom_kind,
+                         dependent_theorems, related_axioms, all_axiom_map):
+    """Generate a single axiom HTML page.
+
+    Args:
+        axiom_fqn: Fully qualified name
+        axiom_file: Path to the .lean file
+        axiom_line: Line number
+        axiom_kind: 'axiom' or 'opaque'
+        dependent_theorems: list of (theorem_fqn, theorem_file, theorem_line) that use this axiom
+        related_axioms: list of (fqn, file, line, kind) for other axioms in the same file
+        all_axiom_map: dict of fqn -> filename for linking
+    """
+    short_name = theorem_tree._kernel_short_name(axiom_fqn)
+    docstring = extract_docstring(axiom_file, axiom_line)
+    type_sig = extract_type_signature(axiom_file, axiom_line)
+    metadata = parse_docstring_metadata(docstring)
+    scope = determine_scope_tag(metadata["scope"], docstring)
+    defense = build_defense(metadata, docstring, axiom_fqn)
+    is_island = len(dependent_theorems) == 0
+
+    # Relative file path for display
+    try:
+        rel_path = Path(axiom_file).relative_to(PROJECT_ROOT)
+    except ValueError:
+        rel_path = Path(axiom_file).name
+
+    page_html = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{html.escape(short_name)} — Catlib Axiom Wiki</title>
+  <meta name="description" content="Axiom: {html.escape(short_name)} — {html.escape(metadata['description'][:160])}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel+Decorative:wght@400;700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../articles/articles.css">
+</head>
+<body>
+
+  <main>
+    <a href="index.html" class="back-link">Back to Axiom Index</a>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="ornament">&#10053;</div>
+      <h1>{html.escape(short_name)}</h1>
+      <p class="subtitle">{html.escape(axiom_kind)} &mdash; {html.escape(str(rel_path))}:{axiom_line}</p>
+      <p class="subtitle">{scope_tag_html(scope)}</p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+"""
+
+    # Island notice
+    if is_island:
+        page_html += """
+    <section class="article-body">
+      <div class="assumption-callout" style="border-left-color: #b8860b; background: rgba(184, 134, 11, 0.08);">
+        <strong>Island axiom.</strong> No theorem in the current formalization depends on this axiom
+        (kernel-verified via <code>#print axioms</code>). It may be foundational vocabulary
+        awaiting use, or a candidate for future theorems.
+      </div>
+    </section>
+"""
+
+    # Lean code block
+    page_html += f"""
+    <section class="article-body">
+      <h2>Lean Declaration</h2>
+      <pre class="lean-code">{html.escape(type_sig)}</pre>
+    </section>
+
+    <div class="divider">&#10053;</div>
+"""
+
+    # Defense section
+    page_html += """
+    <section class="article-body">
+      <h2>Why This Axiom?</h2>
+"""
+    for part in defense:
+        # part may contain HTML (from build_defense)
+        page_html += f"      <p>{part}</p>\n"
+
+    page_html += "    </section>\n"
+
+    # Dependent theorems
+    if dependent_theorems:
+        page_html += """
+    <div class="divider">&#8258;</div>
+
+    <section class="article-body">
+      <h2>Theorems That Use This Axiom</h2>
+      <p>Kernel-verified via <code>#print axioms</code> &mdash; these theorems genuinely depend on this axiom at the proof level.</p>
+      <div class="finding-card">
+        <ul style="list-style: none; padding: 0;">
+"""
+        for t_fqn, t_file, t_line in sorted(dependent_theorems, key=lambda x: x[0]):
+            t_short = theorem_tree._kernel_short_name(t_fqn)
+            try:
+                t_rel = Path(t_file).relative_to(PROJECT_ROOT)
+            except ValueError:
+                t_rel = Path(t_file).name
+            page_html += f'          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><code>{html.escape(t_short)}</code> <span style="color: var(--text-light); font-size: 0.85rem;">({html.escape(str(t_rel))}:{t_line})</span></li>\n'
+
+        page_html += """        </ul>
+      </div>
+    </section>
+"""
+    else:
+        page_html += """
+    <div class="divider">&#8258;</div>
+
+    <section class="article-body">
+      <h2>Theorems That Use This Axiom</h2>
+      <p style="color: var(--text-light); font-style: italic;">No theorems currently depend on this axiom.</p>
+    </section>
+"""
+
+    # Related axioms
+    other_related = [a for a in related_axioms if a[0] != axiom_fqn]
+    if other_related:
+        page_html += """
+    <div class="divider">&#10053;</div>
+
+    <section class="article-body">
+      <h2>Related Axioms</h2>
+      <p>Other axioms declared in the same file:</p>
+      <div class="finding-card">
+        <ul style="list-style: none; padding: 0;">
+"""
+        for r_fqn, r_file, r_line, r_kind in other_related:
+            r_short = theorem_tree._kernel_short_name(r_fqn)
+            r_filename = safe_filename(r_fqn)
+            if r_fqn in all_axiom_map:
+                page_html += f'          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="{r_filename}.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">{html.escape(r_short)}</a> <span style="color: var(--text-light); font-size: 0.85rem;">({r_kind})</span></li>\n'
+            else:
+                page_html += f'          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><code>{html.escape(r_short)}</code> <span style="color: var(--text-light); font-size: 0.85rem;">({r_kind})</span></li>\n'
+
+        page_html += """        </ul>
+      </div>
+    </section>
+"""
+
+    # Footer
+    page_html += f"""
+    <div class="ornament">&#10053;</div>
+
+    <section class="cta-section">
+      <div class="cta-group">
+        <a href="https://github.com/ngundotra/catlib/blob/main/{html.escape(str(rel_path))}" class="cta-button primary">View Source</a>
+        <a href="index.html" class="cta-button secondary">Axiom Index</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="ornament">&#10053;</div>
+    <p>
+      <a href="https://github.com/ngundotra/catlib">Catlib</a>&nbsp;&mdash;
+      formalizing the Catholic Catechism in Lean 4.
+    </p>
+  </footer>
+
+</body>
+</html>
+"""
+    return page_html
+
+
+def generate_index_page(axioms_by_file, connected_set, all_axiom_map):
+    """Generate the index page listing all axioms grouped by file."""
+    total = sum(len(axs) for axs in axioms_by_file.values())
+    connected_count = len(connected_set)
+    island_count = total - connected_count
+
+    page_html = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Axiom Wiki — Catlib</title>
+  <meta name="description" content="Index of all {total} axioms in the Catlib formalization, grouped by file, with kernel-verified dependency data.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel+Decorative:wght@400;700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../articles/articles.css">
+</head>
+<body>
+
+  <main>
+    <a href="../index.html" class="back-link">Back to Catlib</a>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="ornament">&#10053;</div>
+      <h1>Axiom Wiki</h1>
+      <p class="subtitle">Every axiom in the Catlib formalization, with kernel-verified dependency data</p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Summary -->
+    <section class="article-body">
+      <div class="summary-box">
+        <h3>Summary</h3>
+        <p style="font-style: normal;">
+          <strong>{total}</strong> axioms total &mdash;
+          <strong>{connected_count}</strong> connected (used by at least one theorem) &mdash;
+          <strong>{island_count}</strong> islands (unused)
+        </p>
+      </div>
+    </section>
+
+    <div class="divider">&#10053;</div>
+"""
+
+    # Group by file
+    for file_path in sorted(axioms_by_file.keys()):
+        axs = axioms_by_file[file_path]
+        try:
+            rel_path = Path(file_path).relative_to(PROJECT_ROOT)
+        except ValueError:
+            rel_path = Path(file_path).name
+
+        page_html += f"""
+    <section class="article-body">
+      <h2>{html.escape(str(rel_path))}</h2>
+      <div class="finding-card">
+        <ul style="list-style: none; padding: 0;">
+"""
+        for fqn, f, line, kind in sorted(axs, key=lambda x: x[2]):
+            short = theorem_tree._kernel_short_name(fqn)
+            filename = safe_filename(fqn)
+            is_connected = fqn in connected_set
+            opacity = " opacity: 0.5;" if not is_connected else ""
+            island_badge = "" if is_connected else ' <span style="font-size: 0.75rem; color: var(--accent-gold); font-style: italic;">(island)</span>'
+            page_html += f'          <li style="padding: 0.4rem 0; border-bottom: 1px solid var(--border);{opacity}"><a href="{filename}.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">{html.escape(short)}</a> <span style="color: var(--text-light); font-size: 0.8rem;">{html.escape(kind)}</span>{island_badge}</li>\n'
+
+        page_html += """        </ul>
+      </div>
+    </section>
+"""
+
+    page_html += """
+    <div class="ornament">&#10053;</div>
+
+    <section class="cta-section">
+      <div class="cta-group">
+        <a href="https://github.com/ngundotra/catlib" class="cta-button primary">View on GitHub</a>
+        <a href="../index.html" class="cta-button secondary">Back to Catlib</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="ornament">&#10053;</div>
+    <p>
+      <a href="https://github.com/ngundotra/catlib">Catlib</a>&nbsp;&mdash;
+      formalizing the Catholic Catechism in Lean 4.
+    </p>
+  </footer>
+
+</body>
+</html>
+"""
+    return page_html
+
+
+# ---------------------------------------------------------------------------
+# Main pipeline
+# ---------------------------------------------------------------------------
+
+def check_lake():
+    """Check if `lake` is available."""
+    try:
+        subprocess.run(["lake", "--version"], capture_output=True, timeout=10)
+    except (FileNotFoundError, subprocess.TimeoutExpired):
+        print("Error: `lake` not found. axiom-wiki requires a working Lean/lake install.",
+              file=sys.stderr)
+        print("Make sure `lake` is on your PATH (e.g., export PATH=\"$HOME/.elan/bin:$PATH\").",
+              file=sys.stderr)
+        sys.exit(1)
+
+
+def main():
+    import argparse
+    parser = argparse.ArgumentParser(description="Generate axiom wiki pages for Catlib")
+    parser.add_argument("--axiom", type=str, default=None,
+                        help="Generate page for a single axiom (by FQN or short name)")
+    args = parser.parse_args()
+
+    check_lake()
+
+    print("Scanning declarations...", file=sys.stderr)
+    os.chdir(PROJECT_ROOT)
+    theorems, axioms = theorem_tree.kernel_scan_declarations(str(CATLIB_DIR))
+
+    print(f"  Found {len(theorems)} theorems, {len(axioms)} axioms", file=sys.stderr)
+
+    # If --axiom specified, filter
+    if args.axiom:
+        target = args.axiom
+        matching = [a for a in axioms if a[0] == target or
+                    theorem_tree._kernel_short_name(a[0]) == target or
+                    a[0].endswith("." + target)]
+        if not matching:
+            print(f"Error: axiom '{target}' not found. Available axioms:", file=sys.stderr)
+            for fqn, _, _, _ in sorted(axioms, key=lambda x: x[0]):
+                print(f"  {fqn}", file=sys.stderr)
+            sys.exit(1)
+        # Still need all theorems for dependency data
+        target_axiom_fqns = {a[0] for a in matching}
+    else:
+        target_axiom_fqns = None
+
+    # Run #print axioms for all theorems
+    theorem_fqns = [t[0] for t in theorems]
+    print(f"Running #print axioms for {len(theorem_fqns)} theorems...", file=sys.stderr)
+    results, errors = theorem_tree.run_print_axioms(theorem_fqns)
+
+    if errors:
+        print(f"  {len(errors)} errors (skipped)", file=sys.stderr)
+
+    # Build reverse map: axiom -> list of theorems that depend on it
+    axiom_to_theorems = defaultdict(list)
+    theorem_map = {t[0]: t for t in theorems}  # fqn -> (fqn, file, line)
+
+    for t_fqn, deps in results.items():
+        catlib_deps = theorem_tree.filter_catlib_axioms(deps)
+        for ax_fqn in catlib_deps:
+            if t_fqn in theorem_map:
+                axiom_to_theorems[ax_fqn].append(theorem_map[t_fqn])
+
+    # Build axioms by file
+    axioms_by_file = defaultdict(list)
+    all_axiom_map = {}
+    for fqn, f, line, kind in axioms:
+        axioms_by_file[f].append((fqn, f, line, kind))
+        all_axiom_map[fqn] = safe_filename(fqn)
+
+    # Connected set (axioms used by at least one theorem)
+    connected_set = set(axiom_to_theorems.keys())
+
+    # Create output directory
+    AXIOMS_DIR.mkdir(parents=True, exist_ok=True)
+
+    # Determine which axioms to generate
+    if target_axiom_fqns:
+        axioms_to_generate = [a for a in axioms if a[0] in target_axiom_fqns]
+    else:
+        axioms_to_generate = axioms
+
+    # Generate individual axiom pages
+    print(f"Generating {len(axioms_to_generate)} axiom pages...", file=sys.stderr)
+    for fqn, file_path, line_no, kind in axioms_to_generate:
+        dependent_theorems = axiom_to_theorems.get(fqn, [])
+        related_axioms = axioms_by_file.get(file_path, [])
+
+        page = generate_axiom_page(
+            fqn, file_path, line_no, kind,
+            dependent_theorems, related_axioms, all_axiom_map
+        )
+
+        out_path = AXIOMS_DIR / f"{safe_filename(fqn)}.html"
+        out_path.write_text(page, encoding="utf-8")
+        short = theorem_tree._kernel_short_name(fqn)
+        status = "connected" if fqn in connected_set else "island"
+        print(f"  {short} ({status})", file=sys.stderr)
+
+    # Generate index page (always)
+    print("Generating index page...", file=sys.stderr)
+    index_page = generate_index_page(axioms_by_file, connected_set, all_axiom_map)
+    (AXIOMS_DIR / "index.html").write_text(index_page, encoding="utf-8")
+
+    print(f"\nDone! Generated {len(axioms_to_generate)} axiom pages + index at {AXIOMS_DIR}/",
+          file=sys.stderr)
+    print(f"  Connected: {len(connected_set)}, Islands: {len(all_axiom_map) - len(connected_set)}",
+          file=sys.stderr)
+
+
+if __name__ == "__main__":
+    main()

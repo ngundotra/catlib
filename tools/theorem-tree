@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
 """
-theorem-tree: Generate tree-style breakdowns of Lean 4 theorems, axioms,
-and their connections.
+theorem-tree: Dependency analysis and visualization for Lean 4 formalizations.
 
-Usage:
+Two modes of operation:
+  Regex mode (fast, no build needed):  Tree views, flow diagrams, traces
+  Kernel mode (slow, needs lake build): Ground-truth deps via #print axioms
+
+Regex mode — fast, approximate:
     ./tools/theorem-tree <path>                    # Tree of file or directory
     ./tools/theorem-tree --connections <path>       # Cross-file connections only
     ./tools/theorem-tree --axioms-only <path>       # Show just axioms
@@ -11,17 +14,23 @@ Usage:
     ./tools/theorem-tree --brief <path>             # One-line descriptions (default)
     ./tools/theorem-tree --verbose <path>           # Full multi-line docstrings
     ./tools/theorem-tree --flow <path>              # Sankey-style dependency flow
-    ./tools/theorem-tree --top-axioms K <path>      # K most load-bearing axioms
-    ./tools/theorem-tree --top-theorems M <path>    # M most-dependent theorems
-    ./tools/theorem-tree --bottom-axioms K <path>   # K least-connected axioms
-    ./tools/theorem-tree --islands <path>           # Disconnected/isolated axioms
     ./tools/theorem-tree --trace NAME <path>        # Trace dependencies of a theorem
     ./tools/theorem-tree --defs <path>              # Definitions and their connections
+
+Kernel mode — slow, exact (requires `lake build`):
+    ./tools/theorem-tree --true-islands <path>      # Kernel-verified unused axioms
+    ./tools/theorem-tree --kernel NAME <path>       # Kernel deps for a theorem
+    ./tools/theorem-tree --compare <path>           # Compare regex vs kernel deps
+    ./tools/theorem-tree --json <path>              # JSON kernel dependency report
+    ./tools/theorem-tree --props <path>             # Proposition-centric analysis
 """
 
+import json
 import os
 import re
+import subprocess
 import sys
+import tempfile
 from collections import defaultdict
 from pathlib import Path
 
@@ -919,113 +928,6 @@ def _transitive_dependencies(name, decl_index):
     return dependencies
 
 
-def print_top_axioms(all_parsed, root, k):
-    """Show the K most load-bearing axioms by transitive dependent count."""
-    decl_index = _build_decl_index(all_parsed)
-
-    # Find all axiom-like declarations (axiom + opaque, since opaques are often axioms)
-    axiom_names = [name for name, decl in decl_index.items()
-                   if decl.kind in ("axiom", "opaque")]
-
-    # Count transitive theorem dependents for each axiom
-    results = []
-    for aname in axiom_names:
-        deps = _transitive_dependents(aname, decl_index)
-        # Count only theorem dependents
-        theorem_deps = [d for d in deps if decl_index[d].kind == "theorem"]
-        results.append((aname, len(theorem_deps), len(deps)))
-
-    results.sort(key=lambda x: x[1], reverse=True)
-    results = results[:k]
-
-    print(f"Top {k} load-bearing axioms:")
-    print("=" * 60)
-    print()
-    for i, (name, theorem_count, total_count) in enumerate(results, 1):
-        decl = decl_index[name]
-        kind_tag = decl.kind
-        print(f"  {i:>2}. [{kind_tag}] {name} ({theorem_count} theorem dependents, {total_count} total)")
-        if decl.description:
-            desc = decl.description
-            if len(desc) > 100:
-                desc = desc[:97] + "..."
-            print(f'      "{desc}"')
-        rel_file = make_relative(decl.file_path, root)
-        print(f"      File: {rel_file}")
-        print()
-
-
-def print_top_theorems(all_parsed, root, m):
-    """Show the M most dependent theorems by transitive axiom count."""
-    decl_index = _build_decl_index(all_parsed)
-
-    theorem_names = [name for name, decl in decl_index.items()
-                     if decl.kind == "theorem"]
-
-    results = []
-    for tname in theorem_names:
-        deps = _transitive_dependencies(tname, decl_index)
-        axiom_deps = [d for d in deps if decl_index[d].kind in ("axiom", "opaque")]
-        results.append((tname, sorted(axiom_deps), len(deps)))
-
-    results.sort(key=lambda x: len(x[1]), reverse=True)
-    results = results[:m]
-
-    print(f"Top {m} most-dependent theorems:")
-    print("=" * 60)
-    print()
-    for i, (name, axiom_deps, total_deps) in enumerate(results, 1):
-        decl = decl_index[name]
-        print(f"  {i:>2}. [{decl.kind}] {name} (depends on {len(axiom_deps)} axioms, {total_deps} total deps)")
-        if axiom_deps:
-            axiom_list = ", ".join(axiom_deps[:8])
-            if len(axiom_deps) > 8:
-                axiom_list += f", ... (+{len(axiom_deps) - 8} more)"
-            print(f"      Axioms: {axiom_list}")
-        rel_file = make_relative(decl.file_path, root)
-        print(f"      File: {rel_file}")
-        print()
-
-
-def print_islands(all_parsed, root):
-    """Show axioms that no theorem references (directly or transitively).
-
-    Only includes `axiom` declarations, not `opaque` type/relation definitions.
-    """
-    decl_index = _build_decl_index(all_parsed)
-
-    axiom_names = [name for name, decl in decl_index.items()
-                   if decl.kind == "axiom"]
-
-    islands = []
-    for aname in axiom_names:
-        deps = _transitive_dependents(aname, decl_index)
-        theorem_deps = [d for d in deps if decl_index[d].kind == "theorem"]
-        if not theorem_deps:
-            decl = decl_index[aname]
-            rel_file = os.path.basename(decl.file_path)
-            islands.append((aname, decl, rel_file))
-
-    islands.sort(key=lambda x: (x[2], x[0]))
-
-    print("Isolated axioms (not used by any theorem):")
-    print("=" * 60)
-    print()
-    if not islands:
-        print("  (none — all axioms are used by at least one theorem)")
-        return
-
-    for name, decl, filename in islands:
-        kind_tag = decl.kind
-        desc = ""
-        if decl.description:
-            d = decl.description
-            if len(d) > 80:
-                d = d[:77] + "..."
-            desc = f'  "{d}"'
-        print(f"  [{kind_tag}] {name} ({filename}){desc}")
-    print()
-    print(f"Total: {len(islands)} isolated axiom(s)")
 
 
 def print_trace(all_parsed, root, theorem_name):
@@ -1134,37 +1036,714 @@ def print_defs(all_parsed, root):
     print(f"Total: {len(results)} defs ({used_count} used, {len(results) - used_count} unused)")
 
 
-def print_bottom_axioms(all_parsed, root, k):
-    """Show the K least connected axioms by transitive dependent count."""
-    decl_index = _build_decl_index(all_parsed)
 
-    axiom_names = [name for name, decl in decl_index.items()
-                   if decl.kind in ("axiom", "opaque")]
+# ---------------------------------------------------------------------------
+# Kernel mode — ground-truth dependency analysis via Lean's #print axioms
+# ---------------------------------------------------------------------------
 
-    results = []
-    for aname in axiom_names:
-        deps = _transitive_dependents(aname, decl_index)
-        theorem_deps = [d for d in deps if decl_index[d].kind == "theorem"]
-        results.append((aname, len(theorem_deps), len(deps)))
+# Lean built-in axioms to filter out of kernel results
+LEAN_BUILTINS = {
+    "propext", "Quot.mk", "Classical.choice", "Quot.sound",
+    "Quot.ind", "Quot.lift", "rfl", "Eq.refl",
+}
 
-    results.sort(key=lambda x: (x[1], x[2]))
-    results = results[:k]
+# Regex patterns for kernel-mode source scanning (namespace-aware)
+_KERNEL_THEOREM_RE = re.compile(r"^theorem\s+(\S+)")
+_KERNEL_AXIOM_RE = re.compile(r"^(axiom|opaque)\s+(\S+)")
+_KERNEL_END_NS_RE = re.compile(r"^end\s+(\S+)")
+_KERNEL_VALID_IDENT_RE = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*$")
 
-    print(f"Bottom {k} least-connected axioms:")
-    print("=" * 60)
+
+def _check_lake():
+    """Check if `lake` is available. Exit with a helpful message if not."""
+    try:
+        subprocess.run(["lake", "--version"], capture_output=True, timeout=10)
+    except (FileNotFoundError, subprocess.TimeoutExpired):
+        print("Error: `lake` not found. Kernel mode requires a working Lean/lake install.",
+              file=sys.stderr)
+        print("Use regex-based flags (--flow, --trace, etc.) instead, or install lake.",
+              file=sys.stderr)
+        sys.exit(1)
+
+
+def _is_import_only(filepath):
+    """Check if a file is just imports (module aggregator files)."""
+    try:
+        text = Path(filepath).read_text(encoding="utf-8")
+        for line in text.splitlines():
+            stripped = line.strip()
+            if stripped and not stripped.startswith("import") and not stripped.startswith("--"):
+                return False
+        return True
+    except Exception:
+        return False
+
+
+def kernel_scan_declarations(root_path):
+    """Scan all .lean files for theorem and axiom declarations (kernel mode).
+
+    Uses namespace-aware FQN construction for accurate #print axioms queries.
+
+    Returns:
+        theorems: list of (fqn, file_path, line_no)
+        axioms: list of (fqn, file_path, line_no, kind)
+    """
+    theorems = []
+    axioms = []
+    root = Path(root_path)
+
+    lean_files = sorted(root.rglob("*.lean"))
+    lean_files = [f for f in lean_files if not _is_import_only(f)]
+
+    for filepath in lean_files:
+        try:
+            lines = filepath.read_text(encoding="utf-8").splitlines()
+        except (IOError, UnicodeDecodeError):
+            continue
+
+        ns_stack = []
+        in_block_comment = False
+
+        for i, line in enumerate(lines, 1):
+            stripped = line.strip()
+
+            if not in_block_comment:
+                if stripped.startswith("/-"):
+                    in_block_comment = True
+                    if "-/" in stripped[2:]:
+                        in_block_comment = False
+                    continue
+            else:
+                if "-/" in stripped:
+                    in_block_comment = False
+                continue
+
+            if stripped.startswith("--"):
+                continue
+
+            m = NAMESPACE_RE.match(line)
+            if m:
+                ns_stack.append(m.group(1))
+                continue
+
+            m = _KERNEL_END_NS_RE.match(line)
+            if m:
+                end_ns = m.group(1)
+                if ns_stack and ns_stack[-1] == end_ns:
+                    ns_stack.pop()
+                continue
+
+            current_ns = ns_stack[-1] if ns_stack else ""
+
+            m = _KERNEL_THEOREM_RE.match(line)
+            if m:
+                name = m.group(1).rstrip(":").rstrip("(")
+                if not _KERNEL_VALID_IDENT_RE.match(name):
+                    continue
+                fqn = f"{current_ns}.{name}" if current_ns else name
+                theorems.append((fqn, str(filepath), i))
+                continue
+
+            m = _KERNEL_AXIOM_RE.match(line)
+            if m:
+                kind = m.group(1)
+                name = m.group(2).rstrip(":").rstrip("(")
+                if not _KERNEL_VALID_IDENT_RE.match(name):
+                    continue
+                fqn = f"{current_ns}.{name}" if current_ns else name
+                axioms.append((fqn, str(filepath), i, kind))
+
+    return theorems, axioms
+
+
+def run_print_axioms(theorem_fqns, batch_size=50):
+    """Run #print axioms via lake env lean for each theorem.
+
+    Returns:
+        results: dict { theorem_fqn: [list of axiom fqns] }
+        errors: dict { name: error_message }
+    """
+    results = {}
+    errors = {}
+
+    for batch_start in range(0, len(theorem_fqns), batch_size):
+        batch = theorem_fqns[batch_start:batch_start + batch_size]
+        batch_num = batch_start // batch_size + 1
+        total_batches = (len(theorem_fqns) + batch_size - 1) // batch_size
+
+        print(f"  Processing batch {batch_num}/{total_batches} "
+              f"({len(batch)} theorems)...", file=sys.stderr)
+
+        with tempfile.NamedTemporaryFile(
+            mode="w", suffix=".lean", delete=False, prefix="axiom_deps_"
+        ) as f:
+            f.write("import Catlib\n\n")
+            for fqn in batch:
+                f.write(f"#print axioms {fqn}\n")
+            tmp_path = f.name
+
+        try:
+            proc = subprocess.run(
+                ["lake", "env", "lean", tmp_path],
+                capture_output=True, text=True, timeout=300,
+            )
+            output = proc.stdout + proc.stderr
+            _parse_print_axioms_output(output, results, errors)
+        except subprocess.TimeoutExpired:
+            print(f"  WARNING: Batch {batch_num} timed out!", file=sys.stderr)
+        finally:
+            os.unlink(tmp_path)
+
+    return results, errors
+
+
+def _parse_print_axioms_output(output, results, errors):
+    """Parse the output of multiple #print axioms commands."""
+    buffer = ""
+    for line in output.splitlines():
+        line = line.strip()
+        if not line:
+            continue
+
+        if "unknown identifier" in line or "unknown constant" in line:
+            m = re.search(r"'([^']+)'", line)
+            if m:
+                errors[m.group(1)] = line
+            continue
+
+        if line.startswith("'") and "depends on" in line:
+            buffer = line
+        elif line.startswith("'") and "does not depend" in line:
+            buffer = line
+        elif buffer:
+            buffer += " " + line
+        else:
+            continue
+
+        if "does not depend" in buffer:
+            m = re.match(r"'([^']+)'\s+does not depend on any axioms", buffer)
+            if m:
+                results[m.group(1)] = []
+            buffer = ""
+        elif "]" in buffer:
+            m = re.match(r"'([^']+)'\s+depends on axioms:\s*\[(.+)\]", buffer)
+            if m:
+                name = m.group(1)
+                axiom_str = m.group(2)
+                axiom_list = [a.strip() for a in axiom_str.split(",") if a.strip()]
+                results[name] = axiom_list
+            buffer = ""
+
+
+def filter_catlib_axioms(axiom_list):
+    """Filter out Lean builtin axioms, keep only Catlib ones."""
+    return [a for a in axiom_list if a not in LEAN_BUILTINS and not a.startswith("Lean.")]
+
+
+def run_check_types(theorem_fqns, batch_size=50):
+    """Run #check @theorem_name via lake env lean to get theorem types.
+
+    Returns:
+        types: dict { theorem_fqn: type_string }
+        errors: dict { theorem_fqn: error_message }
+    """
+    types = {}
+    errors = {}
+
+    for batch_start in range(0, len(theorem_fqns), batch_size):
+        batch = theorem_fqns[batch_start:batch_start + batch_size]
+        batch_num = batch_start // batch_size + 1
+        total_batches = (len(theorem_fqns) + batch_size - 1) // batch_size
+
+        print(f"  [#check] Processing batch {batch_num}/{total_batches} "
+              f"({len(batch)} theorems)...", file=sys.stderr)
+
+        with tempfile.NamedTemporaryFile(
+            mode="w", suffix=".lean", delete=False, prefix="check_types_"
+        ) as f:
+            f.write("import Catlib\nset_option pp.fullNames true\n\n")
+            for fqn in batch:
+                f.write(f"#check @{fqn}\n")
+            tmp_path = f.name
+
+        try:
+            proc = subprocess.run(
+                ["lake", "env", "lean", tmp_path],
+                capture_output=True, text=True, timeout=300,
+            )
+            output = proc.stdout + proc.stderr
+            _parse_check_types_output(output, batch, types, errors)
+        except subprocess.TimeoutExpired:
+            print(f"  WARNING: #check batch {batch_num} timed out!", file=sys.stderr)
+        finally:
+            os.unlink(tmp_path)
+
+    return types, errors
+
+
+def _parse_check_types_output(output, batch_fqns, types, errors):
+    """Parse #check output lines like 'Catlib.Foo.bar : some_type'."""
+    # Build a set of expected names for matching
+    fqn_set = set(batch_fqns)
+
+    for line in output.splitlines():
+        line = line.strip()
+        if not line:
+            continue
+
+        # Error lines
+        if "unknown identifier" in line or "unknown constant" in line:
+            m = re.search(r"'([^']+)'", line)
+            if m:
+                errors[m.group(1)] = line
+            continue
+
+        # Skip warning/info lines that don't contain type info
+        if line.startswith("warning:") or line.startswith("info:"):
+            continue
+
+        # Match "name : type" pattern
+        # The name could be a fully qualified name like Catlib.Foo.bar
+        colon_pos = line.find(" : ")
+        if colon_pos == -1:
+            continue
+
+        name = line[:colon_pos].strip()
+        type_str = line[colon_pos + 3:].strip()
+
+        # The name might have @-prefix stripped by Lean, or match an FQN
+        if name.startswith("@"):
+            name = name[1:]
+
+        if name in fqn_set:
+            types[name] = type_str
+
+
+def print_propositions(axiom_results, type_results, source_axioms):
+    """Print proposition-centric analysis: what has been proven and how."""
+
+    # Group theorems by the type (proposition) they prove
+    prop_to_theorems = defaultdict(list)
+    for thm_fqn, type_str in type_results.items():
+        prop_to_theorems[type_str].append(thm_fqn)
+
+    # For each proposition, collect axiom paths from each proving theorem
+    prop_data = []
+    for prop_type, proving_theorems in sorted(prop_to_theorems.items()):
+        axiom_paths = {}
+        for thm in proving_theorems:
+            if thm in axiom_results:
+                catlib_axioms = filter_catlib_axioms(axiom_results[thm])
+                axiom_paths[thm] = sorted(catlib_axioms)
+        prop_data.append({
+            "type": prop_type,
+            "theorems": proving_theorems,
+            "axiom_paths": axiom_paths,
+        })
+
+    # Classify: fragile (1 axiom path set), overdetermined (multiple independent paths)
+    fragile = []
+    overdetermined = []
+    proven = []
+
+    for pd in prop_data:
+        paths = pd["axiom_paths"]
+        if not paths:
+            continue
+        # Get unique axiom sets
+        unique_sets = []
+        for thm, ax_list in paths.items():
+            ax_set = frozenset(ax_list)
+            if ax_set not in [s for s, _ in unique_sets]:
+                unique_sets.append((ax_set, thm))
+
+        pd["unique_axiom_sets"] = unique_sets
+        proven.append(pd)
+
+        if len(unique_sets) <= 1:
+            fragile.append(pd)
+        else:
+            overdetermined.append(pd)
+
+    # --- Print report ---
     print()
-    for i, (name, theorem_count, total_count) in enumerate(results, 1):
-        decl = decl_index[name]
-        kind_tag = decl.kind
-        print(f"  {i:>2}. [{kind_tag}] {name} ({theorem_count} theorem dependents, {total_count} total)")
-        if decl.description:
-            desc = decl.description
-            if len(desc) > 100:
-                desc = desc[:97] + "..."
-            print(f'      "{desc}"')
-        rel_file = make_relative(decl.file_path, root)
-        print(f"      File: {rel_file}")
+    print("PROPOSITIONS — What Has Been Proven")
+    print("=" * 70)
+    print()
+    print(f"PROVEN ({len(proven)} propositions with proofs):")
+    print()
+
+    for idx, pd in enumerate(proven, 1):
+        print(f"  {idx}. {pd['type']}")
+        thm_names = [_kernel_short_name(t) for t in pd["theorems"]]
+        print(f"     Proven by: {', '.join(thm_names)}")
+        if pd["axiom_paths"]:
+            print(f"     Axiom paths:")
+            for thm, ax_list in pd["axiom_paths"].items():
+                short = _kernel_short_name(thm)
+                if ax_list:
+                    ax_display = [_kernel_short_name(a) for a in ax_list]
+                    print(f"       via {short}: [{', '.join(ax_display)}]")
+                else:
+                    print(f"       via {short}: [no Catlib axioms — pure logic]")
+        unique_sets = pd.get("unique_axiom_sets", [])
+        if len(unique_sets) > 1:
+            print(f"     NOTE: {len(unique_sets)} independent proof paths"
+                  f" — robust to single axiom rejection")
         print()
+
+    # Fragile propositions
+    print("-" * 70)
+    print(f"FRAGILE ({len(fragile)} proven by exactly 1 axiom path):")
+    print()
+    for pd in fragile:
+        print(f"  - {pd['type']}")
+        for thm, ax_list in pd["axiom_paths"].items():
+            ax_display = [_kernel_short_name(a) for a in ax_list]
+            print(f"    via {_kernel_short_name(thm)}: [{', '.join(ax_display)}]")
+    print()
+
+    # Overdetermined propositions
+    print("-" * 70)
+    print(f"OVERDETERMINED ({len(overdetermined)} proven by multiple independent axiom paths):")
+    print()
+    for pd in overdetermined:
+        print(f"  - {pd['type']}")
+        for thm, ax_list in pd["axiom_paths"].items():
+            ax_display = [_kernel_short_name(a) for a in ax_list]
+            print(f"    via {_kernel_short_name(thm)}: [{', '.join(ax_display)}]")
+    print()
+
+    # Axiom impact analysis
+    print("-" * 70)
+    print("AXIOM IMPACT ANALYSIS:")
+    print()
+
+    # Collect all catlib axioms used across all proofs
+    all_catlib_axioms = set()
+    for pd in proven:
+        for ax_list in pd["axiom_paths"].values():
+            all_catlib_axioms.update(filter_catlib_axioms(ax_list))
+
+    # Also include declared axioms that might not be used
+    declared_axiom_fqns = {fqn for fqn, _, _, kind in source_axioms if kind == "axiom"}
+    all_catlib_axioms.update(declared_axiom_fqns)
+
+    for axiom in sorted(all_catlib_axioms):
+        loses_all = []
+        loses_some = []
+        unaffected_count = 0
+
+        for pd in proven:
+            paths = pd["axiom_paths"]
+            # Count how many proof paths use this axiom
+            paths_using = 0
+            total_paths = len(paths)
+            for thm, ax_list in paths.items():
+                if axiom in ax_list:
+                    paths_using += 1
+
+            if paths_using == 0:
+                unaffected_count += 1
+            elif paths_using == total_paths:
+                loses_all.append(pd["type"])
+            else:
+                loses_some.append(pd["type"])
+
+        if not loses_all and not loses_some:
+            continue  # Axiom not used — skip
+
+        short_ax = _kernel_short_name(axiom)
+        print(f"  If you reject [{short_ax}]:")
+        if loses_all:
+            print(f"    LOSES ALL PROOFS:")
+            for prop_type in loses_all:
+                print(f"      - {prop_type}")
+        if loses_some:
+            print(f"    LOSES SOME PROOFS (has alternatives):")
+            for prop_type in loses_some:
+                print(f"      - {prop_type}")
+        print(f"    UNAFFECTED: {unaffected_count}")
+        print()
+
+    # Report theorems that failed #check
+    theorems_without_types = set(axiom_results.keys()) - set(type_results.keys())
+    if theorems_without_types:
+        print("-" * 70)
+        print(f"SKIPPED ({len(theorems_without_types)} theorems where #check failed):")
+        for t in sorted(theorems_without_types):
+            print(f"  - {t}")
+        print()
+
+
+def _kernel_short_name(fqn):
+    """Strip common Catlib prefix for display."""
+    for prefix in ["Catlib.MoralTheology.Suicide.",
+                    "Catlib.MoralTheology.TheologyOfBody.",
+                    "Catlib.MoralTheology.ConjugalEthics.",
+                    "Catlib.MoralTheology.",
+                    "Catlib.Creed.OriginalSin.",
+                    "Catlib.Creed.",
+                    "Catlib.Foundations.Love.",
+                    "Catlib.Foundations.",
+                    "Catlib.Sacraments.Reconciliation.",
+                    "Catlib.Sacraments.",
+                    "Catlib."]:
+        if fqn.startswith(prefix):
+            return fqn[len(prefix):]
+    return fqn
+
+
+def print_true_islands(results, source_axioms):
+    """Print axioms that no theorem depends on (kernel-verified).
+
+    Only includes `axiom` declarations, not `opaque` type/relation definitions.
+    """
+    all_used = set()
+    for deps in results.values():
+        all_used.update(filter_catlib_axioms(deps))
+
+    source_axiom_names = {fqn for fqn, _, _, kind in source_axioms if kind == "axiom"}
+    islands = sorted(source_axiom_names - all_used)
+
+    print("=" * 70)
+    print("TRUE ISLANDS — Kernel-Verified Unused Axioms")
+    print("=" * 70)
+    print()
+    print(f"Of {len(source_axiom_names)} declared axioms,")
+    print(f"{len(islands)} are not used by ANY theorem (per Lean's kernel):")
+    print()
+    for ax in islands:
+        print(f"  {ax}")
+    print()
+
+
+def print_kernel_theorem(results, theorem_name):
+    """Print kernel-verified dependencies for a single theorem."""
+    matches = [fqn for fqn in results if theorem_name in fqn]
+    if not matches:
+        print(f"ERROR: No theorem matching '{theorem_name}' found in results.")
+        print(f"  Available: {', '.join(sorted(results.keys())[:10])}...")
+        sys.exit(1)
+
+    for fqn in sorted(matches):
+        deps = results[fqn]
+        catlib_deps = filter_catlib_axioms(deps)
+        lean_deps = [a for a in deps if a in LEAN_BUILTINS]
+
+        print(f"theorem {fqn}")
+        print(f"  Catlib dependencies ({len(catlib_deps)}):")
+        for d in sorted(catlib_deps):
+            print(f"    <- {d}")
+        if lean_deps:
+            print(f"  Lean builtins: {', '.join(lean_deps)}")
+        print()
+
+
+def print_kernel_compare(results, source_theorems, root_path):
+    """Compare regex-based deps vs kernel deps."""
+    print("=" * 70)
+    print("COMPARISON: Regex vs Kernel (#print axioms)")
+    print("=" * 70)
+    print()
+
+    all_lean_files = sorted(Path(root_path).rglob("*.lean"))
+    all_names = set()
+    for f in all_lean_files:
+        try:
+            for line in f.read_text().splitlines():
+                m = re.match(r"^(axiom|opaque)\s+(\S+)", line.strip())
+                if m:
+                    all_names.add(m.group(2).rstrip(":").rstrip("("))
+        except Exception:
+            pass
+
+    theorem_bodies = {}
+    for fqn, filepath, lineno in source_theorems:
+        try:
+            lines = Path(filepath).read_text().splitlines()
+            body_lines = []
+            for i in range(lineno - 1, len(lines)):
+                line = lines[i]
+                if i > lineno - 1 and re.match(r"^(axiom|theorem|def|structure|inductive|opaque|namespace|end)\s", line):
+                    break
+                body_lines.append(line)
+            theorem_bodies[fqn] = "\n".join(body_lines)
+        except Exception:
+            pass
+
+    discrepancies = 0
+    for fqn in sorted(results.keys()):
+        kernel_deps = set(filter_catlib_axioms(results[fqn]))
+        body = theorem_bodies.get(fqn, "")
+
+        regex_deps = set()
+        for name in all_names:
+            if re.search(r'\b' + re.escape(name) + r'\b', body):
+                regex_deps.add(name)
+
+        kernel_short = {_kernel_short_name(d) for d in kernel_deps}
+        only_kernel = kernel_short - regex_deps
+        only_regex = regex_deps - kernel_short
+
+        if only_kernel or only_regex:
+            discrepancies += 1
+            print(f"  theorem {_kernel_short_name(fqn)}")
+            if only_kernel:
+                print(f"    MISSED by regex (kernel found): {', '.join(sorted(only_kernel))}")
+            if only_regex:
+                print(f"    FALSE POSITIVE (regex found, kernel didn't): {', '.join(sorted(only_regex))}")
+            print()
+
+    if discrepancies == 0:
+        print("  No discrepancies found! (unlikely — check for errors)")
+    else:
+        print(f"  Total theorems with discrepancies: {discrepancies}/{len(results)}")
+    print()
+
+
+def print_kernel_json(results, errors, source_axioms):
+    """Output JSON kernel dependency report."""
+    all_used = set()
+    theorem_data = {}
+    for fqn, deps in sorted(results.items()):
+        catlib_deps = filter_catlib_axioms(deps)
+        lean_deps = [a for a in deps if a in LEAN_BUILTINS]
+        all_used.update(catlib_deps)
+        theorem_data[fqn] = {
+            "catlib_deps": sorted(catlib_deps),
+            "lean_builtins": sorted(lean_deps),
+        }
+
+    source_axiom_names = {fqn for fqn, _, _, _ in source_axioms}
+    islands = sorted(source_axiom_names - all_used)
+
+    report = {
+        "theorems": theorem_data,
+        "summary": {
+            "theorems_analyzed": len(results),
+            "source_axioms_declared": len(source_axiom_names),
+            "axioms_used_by_theorems": len(all_used),
+            "true_islands": islands,
+        },
+        "errors": errors,
+    }
+    print(json.dumps(report, indent=2))
+
+
+def print_kernel_full(results, errors, source_axioms, source_theorems):
+    """Print the full kernel dependency report."""
+    print("=" * 70)
+    print("AXIOM DEPENDENCIES — Ground Truth (Lean Kernel)")
+    print("=" * 70)
+    print()
+
+    all_used_axioms = set()
+    theorem_deps = {}
+
+    for fqn, deps in sorted(results.items()):
+        catlib_deps = filter_catlib_axioms(deps)
+        theorem_deps[fqn] = catlib_deps
+        all_used_axioms.update(catlib_deps)
+
+    print(f"Theorems analyzed: {len(results)}")
+    if errors:
+        print(f"Errors (could not resolve): {len(errors)}")
+    print()
+
+    for fqn, deps in sorted(theorem_deps.items()):
+        lean_deps = [a for a in results.get(fqn, []) if a in LEAN_BUILTINS]
+        print(f"  theorem {_kernel_short_name(fqn)}")
+        if deps:
+            for d in sorted(deps):
+                print(f"    <- {_kernel_short_name(d)}")
+        else:
+            print(f"    (no Catlib axiom dependencies)")
+        if lean_deps:
+            print(f"    [Lean builtins: {', '.join(lean_deps)}]")
+        print()
+
+    print("-" * 70)
+    print("SUMMARY")
+    print("-" * 70)
+
+    source_axiom_names = {fqn for fqn, _, _, _ in source_axioms}
+    print(f"  Source axioms/opaques declared: {len(source_axiom_names)}")
+    print(f"  Axioms referenced by theorems: {len(all_used_axioms)}")
+    print(f"  Theorems analyzed: {len(results)}")
+    print()
+
+    axiom_usage = defaultdict(list)
+    for fqn, deps in theorem_deps.items():
+        for dep in deps:
+            axiom_usage[dep].append(fqn)
+
+    if axiom_usage:
+        print("  Most-used axioms (by theorem count):")
+        for ax, users in sorted(axiom_usage.items(), key=lambda x: -len(x[1]))[:15]:
+            print(f"    {_kernel_short_name(ax)}: {len(users)} theorems")
+        print()
+
+    true_islands = source_axiom_names - all_used_axioms
+    if true_islands:
+        print(f"  TRUE ISLANDS — axioms no theorem depends on ({len(true_islands)}):")
+        for ax in sorted(true_islands):
+            print(f"    {_kernel_short_name(ax)}")
+        print()
+
+    if errors:
+        print(f"  RESOLUTION ERRORS ({len(errors)}):")
+        for name, err in sorted(errors.items()):
+            print(f"    {name}: {err}")
+        print()
+
+
+def _run_kernel_mode(kernel_mode, kernel_name, kernel_json, root_path):
+    """Execute kernel-mode operations. Requires lake."""
+    _check_lake()
+
+    print("Scanning Lean sources...", file=sys.stderr)
+    theorems, axioms = kernel_scan_declarations(root_path)
+    print(f"  Found {len(theorems)} theorems, {len(axioms)} axioms/opaques",
+          file=sys.stderr)
+
+    if kernel_mode == "kernel" and kernel_name:
+        query_fqns = [fqn for fqn, _, _ in theorems if kernel_name in fqn]
+        if not query_fqns:
+            print(f"ERROR: No theorem matching '{kernel_name}'", file=sys.stderr)
+            print(f"Available theorems:", file=sys.stderr)
+            for fqn, _, _ in theorems[:20]:
+                print(f"  {fqn}", file=sys.stderr)
+            sys.exit(1)
+    else:
+        query_fqns = [fqn for fqn, _, _ in theorems]
+
+    print(f"Running #print axioms on {len(query_fqns)} theorems...", file=sys.stderr)
+    results, errors = run_print_axioms(query_fqns)
+    print(f"  Got results for {len(results)} theorems", file=sys.stderr)
+    if errors:
+        print(f"  {len(errors)} errors", file=sys.stderr)
+    print(file=sys.stderr)
+
+    if kernel_mode == "props":
+        # Props mode: also run #check to get theorem types
+        print(f"Running #check on {len(query_fqns)} theorems...", file=sys.stderr)
+        type_results, type_errors = run_check_types(query_fqns)
+        print(f"  Got types for {len(type_results)} theorems", file=sys.stderr)
+        if type_errors:
+            print(f"  {len(type_errors)} #check errors (skipped)", file=sys.stderr)
+        print(file=sys.stderr)
+        print_propositions(results, type_results, axioms)
+    elif kernel_json:
+        print_kernel_json(results, errors, axioms)
+    elif kernel_mode == "kernel":
+        print_kernel_theorem(results, kernel_name)
+    elif kernel_mode == "true-islands":
+        print_true_islands(results, axioms)
+    elif kernel_mode == "compare":
+        print_kernel_compare(results, theorems, root_path)
+    else:
+        print_kernel_full(results, errors, axioms, theorems)
 
 
 # ---------------------------------------------------------------------------
@@ -1177,7 +1756,7 @@ def main():
     if not args or "--help" in args or "-h" in args:
         print(__doc__.strip())
         print()
-        print("Options:")
+        print("Regex mode (fast, no build needed):")
         print("  --connections        Show cross-file connections only")
         print("  --axioms-only        Show only axiom declarations")
         print("  --theorems-only      Show only theorem declarations")
@@ -1185,12 +1764,16 @@ def main():
         print("  --brief              One-line descriptions with metadata (default)")
         print("  --verbose            Full multi-line docstrings")
         print("  --flow               Sankey-style left-to-right dependency flow")
-        print("  --top-axioms K       Show K most load-bearing axioms")
-        print("  --top-theorems M     Show M most-dependent theorems")
-        print("  --bottom-axioms K    Show K least-connected axioms")
-        print("  --islands            Show disconnected/isolated axioms")
-        print("  --trace NAME         Trace all dependencies of a theorem")
+        print("  --trace NAME         Trace all dependencies of a declaration")
         print("  --defs               Show definitions and their theorem connections")
+        print()
+        print("Kernel mode (slow, requires `lake build`):")
+        print("  --true-islands       Kernel-verified unused axioms (axiom-only)")
+        print("  --kernel NAME        Kernel-verified deps for a theorem")
+        print("  --compare            Compare regex vs kernel dependency detection")
+        print("  --json               JSON output of kernel dependency report")
+        print("  --props              Proposition-centric analysis (what has been proven)")
+        print()
         print("  -h, --help           Show this help message")
         sys.exit(0)
 
@@ -1199,12 +1782,12 @@ def main():
     target_path = None
     verbose = False
     flow_mode = False
-    top_axioms_k = None
-    top_theorems_m = None
-    bottom_axioms_k = None
-    islands_mode = False
     trace_name = None
     defs_mode = False
+    # Kernel mode flags
+    kernel_mode = None   # "true-islands", "kernel", "compare", "full"
+    kernel_name = None
+    kernel_json = False
 
     i = 0
     while i < len(args):
@@ -1223,26 +1806,6 @@ def main():
             verbose = False
         elif arg == "--flow":
             flow_mode = True
-        elif arg == "--top-axioms":
-            i += 1
-            if i >= len(args):
-                print("Error: --top-axioms requires a number", file=sys.stderr)
-                sys.exit(1)
-            top_axioms_k = int(args[i])
-        elif arg == "--top-theorems":
-            i += 1
-            if i >= len(args):
-                print("Error: --top-theorems requires a number", file=sys.stderr)
-                sys.exit(1)
-            top_theorems_m = int(args[i])
-        elif arg == "--bottom-axioms":
-            i += 1
-            if i >= len(args):
-                print("Error: --bottom-axioms requires a number", file=sys.stderr)
-                sys.exit(1)
-            bottom_axioms_k = int(args[i])
-        elif arg == "--islands":
-            islands_mode = True
         elif arg == "--trace":
             i += 1
             if i >= len(args):
@@ -1251,6 +1814,24 @@ def main():
             trace_name = args[i]
         elif arg == "--defs":
             defs_mode = True
+        # Kernel mode flags
+        elif arg == "--true-islands":
+            kernel_mode = "true-islands"
+        elif arg == "--kernel":
+            kernel_mode = "kernel"
+            i += 1
+            if i >= len(args):
+                print("Error: --kernel requires a theorem name", file=sys.stderr)
+                sys.exit(1)
+            kernel_name = args[i]
+        elif arg == "--compare":
+            kernel_mode = "compare"
+        elif arg == "--json":
+            kernel_json = True
+            if not kernel_mode:
+                kernel_mode = "full"
+        elif arg == "--props":
+            kernel_mode = "props"
         else:
             target_path = arg
         i += 1
@@ -1265,6 +1846,11 @@ def main():
     if not os.path.exists(target_path):
         print(f"Error: path not found: {target_path}", file=sys.stderr)
         sys.exit(1)
+
+    # Kernel mode: dispatch early (no need for regex parsing)
+    if kernel_mode:
+        _run_kernel_mode(kernel_mode, kernel_name, kernel_json, target_path)
+        return
 
     # Find project root
     root = os.getcwd()
@@ -1303,20 +1889,11 @@ def main():
     rel_target = make_relative(target_path, root)
 
     # Dispatch to the appropriate mode
-    graph_mode = any([top_axioms_k, top_theorems_m, bottom_axioms_k,
-                      islands_mode, trace_name, defs_mode])
+    graph_mode = any([trace_name, defs_mode])
 
     if graph_mode:
         # Graph query modes operate on all parsed files in the target scope
-        if top_axioms_k:
-            print_top_axioms(all_parsed, root, top_axioms_k)
-        elif top_theorems_m:
-            print_top_theorems(all_parsed, root, top_theorems_m)
-        elif bottom_axioms_k:
-            print_bottom_axioms(all_parsed, root, bottom_axioms_k)
-        elif islands_mode:
-            print_islands(all_parsed, root)
-        elif trace_name:
+        if trace_name:
             print_trace(all_parsed, root, trace_name)
         elif defs_mode:
             print_defs(target_parsed, root)

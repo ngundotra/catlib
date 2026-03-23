@@ -1,16 +1,16 @@
 import Catlib.Foundations.Basic
 
 /-!
-# Catlib Foundations: The 15 Base Axioms
+# Catlib Foundations: The 14 Base Axioms
 
-Every axiom in the 12 formalization files (44 total) traces back to one of these
-15 foundational assumptions, organized into three groups by source:
+Every axiom in the formalization files traces back to one of these
+14 foundational assumptions, organized into three groups by source:
 
-- **P1-P3**: Philosophical commitments (Aristotle / Aquinas / natural reason)
+- **P2-P3**: Philosophical commitments (Aristotle / Aquinas / natural reason)
 - **S1-S9**: Scriptural axioms (specific Bible passages under Catholic reading)
 - **T1-T3**: Sacred Tradition (Church Fathers, Councils, Magisterium)
 
-**Note on the 5/5/5 → 3/9/3 reclassification.** An earlier draft split the 15
+**Note on the 5/5/5 → 2/9/3 reclassification.** An earlier draft split the
 axioms evenly across Philosophy, Scripture, and Tradition. Closer analysis
 showed that several axioms originally classified as Philosophical or Traditional
 actually have strong *direct* scriptural grounding: Paul explicitly teaches
@@ -18,7 +18,7 @@ moral realism (Rom 1:20; 2:14-15), Jesus explicitly teaches teleological freedom
 (Jn 8:34-36; Gal 5:1), multiple New-Testament passages assert the necessity and
 transformative power of grace (Jn 15:5; 2 Cor 5:17; Ezek 36:26), and Paul
 explicitly grounds the binding force of conscience (Rom 14:23; Acts 24:16).
-Most of the system's assumptions therefore trace to Scripture; only three
+Most of the system's assumptions therefore trace to Scripture; only two
 irreducibly philosophical models and three distinctively conciliar formulations
 remain outside the scriptural core.
 
@@ -32,8 +32,8 @@ Each axiom is:
 2. Tagged with a `Provenance` value documenting its source
 3. Typed using the foundational types from `Basic.lean` where applicable
 
-The 12 formalization files should eventually derive their local axioms from
-these 15 rather than declaring them independently.
+The formalization files should eventually derive their local axioms from
+these 14 rather than declaring them independently.
 -/
 
 namespace Catlib
@@ -42,19 +42,6 @@ namespace Catlib
 -- Additional foundational types needed by the base axioms
 -- ============================================================================
 
-/-- Form — the organizing principle that makes a thing what it is.
-    From Aristotle's Metaphysics, adopted by Aquinas (ST I, q.75-76). -/
-opaque Form : Type
-
-/-- Matter — the principle of potentiality and individuation.
-    From Aristotle's Physics, adopted by Aquinas. -/
-opaque Matter : Type
-
-/-- A composite of form and matter. Aristotelian hylomorphism holds that
-    every material substance is such a composite. -/
-structure Composite where
-  form : Form
-  matter : Matter
 
 /-- A moral proposition — a claim about what is good, right, or obligatory. -/
 opaque MoralProposition : Type
@@ -158,26 +145,9 @@ opaque isEvil : Prop → Prop
 opaque isDueGoodAbsent : Prop → Prop
 
 -- ============================================================================
--- P1-P3: PHILOSOPHICAL AXIOMS — the irreducible non-scriptural residue (3)
+-- P2-P3: PHILOSOPHICAL AXIOMS — the irreducible non-scriptural residue (2)
 -- ============================================================================
 
-/-- **P1. HYLOMORPHISM**: Every material substance is a composite of form and matter.
-
-    *Source*: Aristotle, Metaphysics VII-IX; Aquinas, ST I q.75-76
-
-    Gen 2:7 ("the Lord God formed man of dust… and breathed into his nostrils
-    the breath of life") is an inspiration but not a derivation of the formal
-    hylomorphic model.
-
-    *Grounds*: soul-as-form-of-body (Soul.lean axioms 5-7), the unity of the
-    human person, anti-Cartesian dualism. The Catechism presupposes this in
-    CCC §365: "The unity of soul and body is so profound that one has to consider
-    the soul to be the 'form' of the body." -/
-axiom p1_hylomorphism :
-  ∀ (f : Form) (m : Matter), ∃ (c : Composite), c.form = f ∧ c.matter = m
-
-/-- Provenance tag for P1. -/
-def p1_provenance : Provenance := Provenance.naturalLaw
 
 /-- **P2. TWO_TIER_CAUSATION**: Primary (divine) and secondary (creaturely)
     causes operate on different levels and do not compete — more divine action
@@ -449,12 +419,11 @@ def t3_provenance : Provenance := Provenance.tradition "Jn 3:5; Acts 2:38; Trent
 -- Summary: the complete axiom set with provenance
 -- ============================================================================
 
-/-- The 15 base axioms with their provenance tags, for programmatic access.
-    Organized 3 Philosophical / 9 Scriptural / 3 Tradition (reclassified from
+/-- The 14 base axioms with their provenance tags, for programmatic access.
+    Organized 2 Philosophical / 9 Scriptural / 3 Tradition (reclassified from
     the original 5/5/5 split — most assumptions trace to Scripture). -/
 def baseAxiomProvenance : List (String × Provenance) :=
-  [ ("P1_HYLOMORPHISM",                     p1_provenance)
-  , ("P2_TWO_TIER_CAUSATION",               p2_provenance)
+  [ ("P2_TWO_TIER_CAUSATION",               p2_provenance)
   , ("P3_EVIL_IS_PRIVATION",                p3_provenance)
   , ("S1_GOD_IS_LOVE",                      s1_provenance)
   , ("S2_UNIVERSAL_SALVIFIC_WILL",          s2_provenance)
@@ -479,8 +448,7 @@ def baseAxiomProvenance : List (String × Provenance) :=
     exactly which axioms he accepted, rejected, or modified. -/
 def axiomDenominationalScope : List (String × DenominationalTag) :=
   [ -- Philosophical: broadly shared (all Christians who engage philosophy)
-    ("P1_HYLOMORPHISM",                  catholicOnly)      -- Lutherans don't require it
-  , ("P2_TWO_TIER_CAUSATION",           ecumenical)         -- Most traditions accept implicitly
+    ("P2_TWO_TIER_CAUSATION",           ecumenical)         -- Most traditions accept implicitly
   , ("P3_EVIL_IS_PRIVATION",            ecumenical)         -- Augustine shared across traditions
     -- Scriptural: ecumenical (broadly shared)
   , ("S1_GOD_IS_LOVE",                  ecumenical)

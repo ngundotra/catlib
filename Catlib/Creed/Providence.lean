@@ -102,30 +102,33 @@ inductive MoralCharacter where
   | evil
   | neutral
 
-/-- AXIOM 1 (§302): God guides all creation.
-    Provenance: [Definition] CCC §302
-    Divine providence is universal — nothing escapes it. -/
-axiom providence_universal :
-  ∀ (_e : CausedEvent),
-    -- God's providence extends to this event
-    -- (even if it results from free creaturely action)
-    True
+/-! ### §302: Divine providence is universal
 
-/-- AXIOM 2 (§302): God knows all future events, including free ones.
-    Provenance: [Definition] CCC §302
-    "All are open and laid bare to his eyes, even those things which
-    are yet to come into existence through the free action of creatures."
-    HIDDEN ASSUMPTION: Foreknowledge is compatible with freedom. The
-    Catechism asserts this without explaining how. This is one of
-    the deepest problems in philosophical theology. -/
-axiom foreknowledge_compatible_with_freedom :
-  ∀ (e : CausedEvent),
-    e.isFreeAct →
-    -- God knows this event will occur AND the creature is free
-    -- (both are true simultaneously — mechanism unexplained)
-    e.isFreeAct
+"We call 'divine providence' the dispositions by which God guides his
+creation toward this perfection." (CCC §302)
 
-/-- AXIOM 3 (§306): Creatures are genuine secondary causes.
+Divine providence is universal — nothing escapes it, even events resulting
+from free creaturely action.
+
+*Deleted axiom*: `providence_universal` had a vacuous body (`True`).
+The real content is carried by base axiom `s4_universal_providence`
+and its bridge theorem `universal_providence_from_s4` below.
+
+### §302: Foreknowledge is compatible with freedom
+
+"All are open and laid bare to his eyes, even those things which are yet
+to come into existence through the free action of creatures." (CCC §302)
+
+Foreknowledge is compatible with freedom. The Catechism asserts this
+without explaining how. This is one of the deepest problems in
+philosophical theology.
+
+*Deleted axiom*: `foreknowledge_compatible_with_freedom` had an identity
+body (`e.isFreeAct → e.isFreeAct`). The compatibility is asserted as a
+mystery — the base axiom `s4_universal_providence` captures the universal
+scope, and `t1_libertarian_free_will` captures the freedom side. -/
+
+/-- AXIOM (§306): Creatures are genuine secondary causes.
     Provenance: [Definition] CCC §306
     "God grants his creatures not only their existence, but also the
     dignity of acting on their own."
@@ -140,30 +143,20 @@ axiom creaturely_causation_genuine :
     -- (not merely an instrument — a real cause)
     e.isFreeAct
 
-/-- AXIOM 4 (§308): God operates in and through secondary causes.
-    Provenance: [Definition] CCC §308; [Scripture] Phil 2:13
-    "God is at work in you, both to will and to work for his good
-    pleasure."
-    HIDDEN ASSUMPTION: Primary and secondary causation don't compete.
-    God causing something at the primary level doesn't prevent the
-    creature from genuinely causing it at the secondary level. This
-    is a NON-STANDARD causation model — normally if A causes X and B
-    causes X, they're competitors. Here they're not.
+/-! ### §308: Primary and secondary causes do not compete
 
-    CONNECTION TO BASE AXIOM: This is the local instantiation of
-    `Catlib.p2_two_tier_causation` (P2: ∀ p s, ¬ causesCompete p s).
-    P2 uses the opaque predicates `PrimaryCause`/`SecondaryCause`/`causesCompete`
-    from Axioms.lean. This local axiom uses the richer `CausedEvent`/`CausalLevel`
-    model. Both express the same non-competition principle.
+"God is at work in you, both to will and to work for his good pleasure."
+(CCC §308; Phil 2:13)
 
-    NOTE: This local axiom is VACUOUS (excluded middle on CausalLevel).
-    The real content is in P2's `¬ causesCompete`, which asserts non-competition
-    as a negative fact rather than a trivial disjunction. -/
-axiom primary_secondary_non_competing :
-  ∀ (_e : CausedEvent) (level : CausalLevel),
-    -- Both levels of causation apply simultaneously
-    -- without diminishing either
-    level = CausalLevel.primary ∨ level = CausalLevel.secondary
+Primary and secondary causation don't compete. God causing something at
+the primary level doesn't prevent the creature from genuinely causing it
+at the secondary level. This is a NON-STANDARD causation model — normally
+if A causes X and B causes X, they're competitors. Here they're not.
+
+*Deleted axiom*: `primary_secondary_non_competing` had a trivially true body
+(exhaustive disjunction on `CausalLevel`). The real content is in base axiom
+`p2_two_tier_causation` (`¬ causesCompete p s`) and its bridge theorem
+`two_tier_causation_from_p2` below. -/
 
 /-!
 ## The good/evil asymmetry
@@ -180,45 +173,36 @@ inductive DivineRelation where
   /-- God merely permits this event -/
   | permits
 
-/-- AXIOM 5 (§308 + §311): The causation asymmetry.
-    Provenance: [Definition] CCC §308, §311
-    God operates through good acts but only permits evil acts.
-    HIDDEN ASSUMPTION: This asymmetry is HUGE and never argued for.
-    Why does God's relationship to causation change based on the moral
-    character of the effect? This requires evil to be a privation
-    (absence of good) rather than a positive reality — otherwise God
-    would need to cause it just as he causes good. The privation
-    theory of evil is doing invisible work. -/
-axiom causation_asymmetry :
-  ∀ (_e : CausedEvent) (mc : MoralCharacter),
-    match mc with
-    | MoralCharacter.good => DivineRelation.operatesThrough = DivineRelation.operatesThrough
-    | MoralCharacter.evil => DivineRelation.permits = DivineRelation.permits
-    | MoralCharacter.neutral => True
+/-! ### §308 + §311: The causation asymmetry
 
-/-- AXIOM 6 (§311): God is not the cause of moral evil.
-    Provenance: [Definition] CCC §311
-    "God is in no way, directly or indirectly, the cause of moral evil."
-    HIDDEN ASSUMPTION: This requires that "permitting" is not "causing."
-    But if God knows evil will happen, has the power to prevent it,
-    and chooses not to — is that really not causing it? The Catechism
-    says yes: permission ≠ causation. This distinction requires the
-    primary/secondary causation framework to be coherent.
+God operates through good acts but only permits evil acts (CCC §308, §311).
 
-    CONNECTION TO BASE AXIOM: This connects to
-    `Catlib.p3_evil_is_privation` (P3: ∀ e, isEvil e → isDueGoodAbsent e).
-    P3 explains WHY God is not the cause of evil: evil is a privation
-    (absence of a due good), not a positive reality. God causes being;
-    evil is a deficiency in being. Therefore God cannot cause evil directly.
+This asymmetry is HUGE and never argued for. Why does God's relationship
+to causation change based on the moral character of the effect? This
+requires evil to be a privation (absence of good) rather than a positive
+reality — otherwise God would need to cause it just as he causes good.
+The privation theory of evil is doing invisible work.
 
-    NOTE: This local axiom is VACUOUS (concludes with True). The real
-    content is in P3's non-vacuous statement. -/
-axiom god_not_cause_of_evil :
-  ∀ (_e : CausedEvent) (_mc : MoralCharacter),
-    _mc = MoralCharacter.evil →
-    -- God permits but does not cause
-    -- (permission ≠ causation is an axiom, not a derivation)
-    True
+*Deleted axiom*: `causation_asymmetry` had a vacuous body (each match branch
+was reflexivity or `True`). The `DivineRelation` type above captures the
+structural distinction; the base axiom `p3_evil_is_privation` provides the
+non-vacuous grounding.
+
+### §311: God is not the cause of moral evil
+
+"God is in no way, directly or indirectly, the cause of moral evil."
+(CCC §311)
+
+This requires that "permitting" is not "causing." But if God knows evil
+will happen, has the power to prevent it, and chooses not to — is that
+really not causing it? The Catechism says yes: permission ≠ causation.
+This distinction requires the primary/secondary causation framework to
+be coherent.
+
+*Deleted axiom*: `god_not_cause_of_evil` had a vacuous body (`True`).
+The real content is in base axiom `p3_evil_is_privation`
+(`∀ e, isEvil e → isDueGoodAbsent e`) and its bridge theorem
+`evil_is_privation_from_p3` below. -/
 
 /-!
 ## Bridge theorems to base axioms
@@ -263,15 +247,22 @@ But this requires a VALUE JUDGMENT: freedom > the evil freedom enables.
 This is an axiom the Catechism doesn't argue for.
 -/
 
-/-- The freedom-justifies-evil axiom.
-    Freedom is valuable enough to justify God's permitting the evil
-    that free creatures do. -/
-axiom freedom_justifies_permission :
-  ∀ (p : Person),
-    p.hasFreeWill = true →
-    -- The value of this person's freedom outweighs the evil
-    -- they might freely commit
-    True
+/-! ### The freedom-justifies-permission principle
+
+Freedom is valuable enough to justify God's permitting the evil that free
+creatures do (CCC §311).
+
+1. Freedom is so valuable that it's worth the evil it enables
+2. God can bring good even from evil
+3. Therefore, permitting evil is justified
+
+But this requires a VALUE JUDGMENT: freedom > the evil freedom enables.
+This is an axiom the Catechism doesn't argue for.
+
+*Deleted axiom*: `freedom_justifies_permission` had a vacuous body (`True`).
+The value judgment is acknowledged as a hidden assumption. The base axioms
+`t1_libertarian_free_will` and `p3_evil_is_privation` provide the structural
+framework without encoding this particular value claim. -/
 
 /-!
 ## Summary of hidden assumptions
@@ -301,8 +292,10 @@ Formalizing §302-311 required these assumptions the text doesn't state:
    text doesn't argue for.
 
 The Catechism compresses the entire Thomistic doctrine of providence
-into ten paragraphs. The proof assistant showed that six major axioms
-are required — none of which the text states explicitly.
+into ten paragraphs. Six hidden assumptions were identified — five had
+vacuous formalizations and were converted to module docs. One local axiom
+(`creaturely_causation_genuine`) has real content. The remaining theological
+claims are grounded by base axioms P2, P3, S4, and T1 via bridge theorems.
 -/
 
 end Catlib.Creed

@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="articles.css">
   <style>
     /* ============================================================
-       The Hidden Geometry of Grace &mdash; article-specific styles
+       The Hidden Geometry of Grace — article-specific styles
        ============================================================ */
 
     /* The centerpiece: four-domain table */
@@ -206,6 +206,42 @@
       font-weight: 700;
       color: var(--accent);
       letter-spacing: 0.03em;
+    }
+
+    /* Viz buttons row */
+    .viz-buttons {
+      display: flex;
+      gap: 0.8rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 0.6rem;
+    }
+
+    .viz-btn {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: transparent;
+      border: 1px solid var(--accent-gold);
+      color: var(--accent-gold);
+      padding: 0.4rem 1.2rem;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .viz-btn:hover {
+      background: rgba(184,134,11,0.1);
+    }
+
+    .viz-btn.sin-btn {
+      border-color: #4a1a1a;
+      color: #6a3030;
+    }
+
+    .viz-btn.sin-btn:hover {
+      background: rgba(74,26,26,0.1);
     }
 
     @media (max-width: 600px) {
@@ -423,49 +459,56 @@
 
     <!-- THE CENTERPIECE TABLE -->
     <section class="article-body">
-      <h2>Four Spaces, One Pattern</h2>
+      <h2>Four Measurements, One Nature</h2>
 
       <p>
         <span class="versal">H</span>ere is the discovery, laid out in one
-        view. Four theological concepts. Each one a multi-dimensional space
-        with its own axes. Each one graded, not binary. Each one a partial
-        order. And each one has the same open question at its heart.
+        view. Human nature sits at the center with four faculties. Grace and
+        sin are opposing forces acting on those faculties. What we measure
+        from the outside are different <em>types</em> of reading: faculty
+        states, expressions of those faculties, and computed outputs.
       </p>
 
       <div style="overflow-x: auto;">
       <table class="domains-table">
         <thead>
           <tr>
-            <th>Domain</th>
-            <th>Dimensions</th>
+            <th>Measurement</th>
+            <th>Type</th>
             <th>What We Found</th>
             <th>The Open Question</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Culpability</td>
-            <td><span class="dim-list">Knowledge &times; Consent &times; Matter</span></td>
-            <td><span class="finding-text">Partially ordered, not binary. The mortal/venial boundary is a surface, not a line.</span></td>
-            <td><span class="open-q">How do diminishers (fear, habit, anxiety) combine?</span></td>
+            <td>Healing</td>
+            <td><span class="dim-list">Faculty states: Intellect &times; Will &times; Desires &times; Body</span></td>
+            <td><span class="finding-text">Four faculties healed independently and progressively by grace, wounded by sin. Heaven = (1,1,1,1). Body locked at 0 until resurrection.</span></td>
+            <td><span class="open-q">How do sacraments map to per-faculty healing?</span></td>
+          </tr>
+          <tr>
+            <td>Freedom</td>
+            <td><span class="dim-list">Faculty reading: state of the Will</span></td>
+            <td><span class="finding-text">Graded, not binary. Freedom IS the will-faculty brightness. More good = more free. Perfect freedom = inability to sin.</span></td>
+            <td><span class="open-q">Where is the threshold between free and coerced?</span></td>
           </tr>
           <tr>
             <td>Love</td>
-            <td><span class="dim-list">Agape &times; Eros &times; Philia &times; Self-love</span></td>
+            <td><span class="dim-list">Expression: Will (agape) + Desires (eros, philia, self-love)</span></td>
             <td><span class="finding-text">Not symmetric&nbsp;&mdash; you can love enemies (agape without philia). Mortal sin destroys only agape; eros, philia, and self-love survive.</span></td>
             <td><span class="open-q">How do the four kinds compose in conjugal love?</span></td>
           </tr>
           <tr>
-            <td>Freedom</td>
-            <td><span class="dim-list">Level &times; Can-choose-evil &times; Oriented-to-good</span></td>
-            <td><span class="finding-text">Graded, not binary. More good = more free. Perfect freedom = inability to sin.</span></td>
-            <td><span class="open-q">Where is the threshold between free and coerced?</span></td>
+            <td>Conscience</td>
+            <td><span class="dim-list">Faculty reading: Intellect + Will working together</span></td>
+            <td><span class="finding-text">The capacity to judge acts rightly. Depends on clarity of intellect and strength of will. Can be malformed by sin, rectified by grace.</span></td>
+            <td><span class="open-q">How do intellect-healing and will-healing combine into moral judgment?</span></td>
           </tr>
           <tr>
-            <td>Grace / Healing</td>
-            <td><span class="dim-list">Intellect &times; Will &times; Desires &times; Body</span></td>
-            <td><span class="finding-text">Four faculties healed independently and progressively. Heaven = (1,1,1,1). Body locked at 0 until resurrection.</span></td>
-            <td><span class="open-q">How do sacraments map to per-faculty healing?</span></td>
+            <td>Culpability</td>
+            <td><span class="dim-list">Computed output: Knowledge &times; Consent &times; Matter</span></td>
+            <td><span class="finding-text">Partially ordered, not binary. The mortal/venial boundary is a surface. Consent depends on freedom level (will state). Culpability is <em>derived</em>, not primary.</span></td>
+            <td><span class="open-q">How do diminishers (fear, habit, anxiety) combine?</span></td>
           </tr>
         </tbody>
       </table>
@@ -473,11 +516,11 @@
 
       <div class="punchline">
         <p>
-          All four domains have the same open question:
+          These are not five parallel systems. They are faculty states,
+          expressions, and computed readings of <strong>one thing</strong>&nbsp;&mdash;
+          human nature under the opposing forces of sin and grace.
+          The shared open question remains:
           <strong>what is the composition operator?</strong>
-          The Catechism asserts that these relationships <em>exist</em>
-          but never specifies the <em>algebra</em>&nbsp;&mdash; the recipe
-          for how the pieces combine. Same gap, four times.
         </p>
       </div>
 
@@ -505,11 +548,11 @@
     <section class="article-body">
       <h2>Seeing the Geometry</h2>
       <p>
-        <span class="versal">W</span>atch how one source&nbsp;&mdash;
-        grace&nbsp;&mdash; produces four different mathematical surfaces.
-        Each ring is a different domain (freedom, love, healing, culpability),
-        yet they all pulse from the same center. Hover over a ring to see its
-        structure.
+        <span class="versal">W</span>atch how two forces&nbsp;&mdash;
+        grace and sin&nbsp;&mdash; act on human nature. The four faculties
+        brighten as grace heals them and dim as sin wounds them. Freedom,
+        love, and conscience are readings of the faculty states. Culpability
+        is computed from them.
       </p>
 
       <div id="grace-viz-container" style="
@@ -523,7 +566,7 @@
         <div id="grace-viz" style="
           width: 100%;
           max-width: 600px;
-          aspect-ratio: 1 / 1;
+          aspect-ratio: 4 / 5;
           border: 2px solid var(--accent-gold);
           border-radius: 4px;
           box-shadow: 0 4px 24px rgba(184, 134, 11, 0.15);
@@ -542,22 +585,14 @@
           opacity: 0;
           transition: opacity 0.3s ease;
         "></div>
-        <button id="grace-pulse-btn" style="
-          margin-top: 0.6rem;
-          font-family: 'Cinzel', serif;
-          font-size: 0.7rem;
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
-          background: transparent;
-          border: 1px solid var(--accent-gold);
-          color: var(--accent-gold);
-          padding: 0.4rem 1.2rem;
-          border-radius: 2px;
-          cursor: pointer;
-          transition: all 0.3s ease;
-        " onmouseover="this.style.background='rgba(184,134,11,0.1)'" onmouseout="this.style.background='transparent'">
-          Send a wave of grace
-        </button>
+        <div class="viz-buttons">
+          <button id="grace-pulse-btn" class="viz-btn">
+            Send a wave of grace
+          </button>
+          <button id="sin-pulse-btn" class="viz-btn sin-btn">
+            Sin wounds
+          </button>
+        </div>
       </div>
     </section>
 
@@ -568,89 +603,93 @@
 
       // ── Color palette (warm, manuscript-feel) ──
       const COLORS = {
-        bg:          [239, 227, 200],     // #efe3c8 parchment
+        bg:          [244, 234, 213],     // #f4ead5 parchment
         grace:       [184, 134, 11],      // #b8860b gold
         graceGlow:   [212, 169, 55],      // #d4a937 light gold
-        freedom:     [198, 155, 30],      // warm gold
-        love:        [152, 56, 20],       // deep crimson-brown
-        healing:     [86, 130, 70],       // soft sage green
-        culpability: [176, 120, 48],      // muted amber
+        sin:         [74, 26, 26],        // #4a1a1a dark muted red-brown
+        sinGlow:     [120, 40, 40],       // lighter sin for effects
+        intellect:   [180, 200, 230],     // soft blue-white
+        will:        [210, 170, 50],      // warm gold
+        desires:     [210, 150, 150],     // soft rose
+        body:        [160, 130, 100],     // earth brown
         text:        [42, 31, 20],        // #2a1f14
         accent:      [122, 46, 14],       // #7a2e0e
       };
 
-      // ── Domain definitions ──
-      const DOMAINS = [
+      // ── Faculty definitions ──
+      const FACULTIES = [
         {
-          name: 'Freedom',
-          greek: 'ἐλευθερία',
-          color: COLORS.freedom,
-          dims: 'Level × Can-choose-evil × Oriented-to-good',
-          openQ: 'Unknown: threshold between free and coerced',
-          baseRadius: 0.22,
-          waveSpeed: 1.0,
-          waveAmp: 0.018,
-          phaseOffset: 0,
+          name: 'Intellect',
+          desc: 'Can know truth. Darkened by sin, illumined by faith.',
+          color: COLORS.intellect,
+          wounded: 'darkened',
+          healed: 'clear',
         },
         {
-          name: 'Love',
-          greek: 'ἀγάπη',
-          color: COLORS.love,
-          dims: 'Agape × Eros × Philia × Self-love',
-          openQ: 'Unknown: how four kinds compose in conjugal love',
-          baseRadius: 0.34,
-          waveSpeed: 0.75,
-          waveAmp: 0.022,
-          phaseOffset: Math.PI * 0.3,
+          name: 'Will',
+          desc: 'Can choose freely. Weakened by sin, strengthened by charity.',
+          color: COLORS.will,
+          wounded: 'weakened',
+          healed: 'strong',
         },
         {
-          name: 'Healing',
-          greek: 'ἴασις',
-          color: COLORS.healing,
-          dims: 'Intellect × Will × Desires × Body',
-          openQ: 'Unknown: how sacraments map to per-faculty healing',
-          baseRadius: 0.46,
-          waveSpeed: 0.6,
-          waveAmp: 0.015,
-          phaseOffset: Math.PI * 0.7,
+          name: 'Desires',
+          desc: 'Oriented toward goods. Disordered by sin, ordered by virtue.',
+          color: COLORS.desires,
+          wounded: 'disordered',
+          healed: 'ordered',
         },
         {
-          name: 'Culpability',
-          greek: 'ἐνοχή',
-          color: COLORS.culpability,
-          dims: 'Knowledge × Consent × Matter',
-          openQ: 'Unknown: how diminishers (fear, habit, anxiety) combine',
-          baseRadius: 0.58,
-          waveSpeed: 0.45,
-          waveAmp: 0.020,
-          phaseOffset: Math.PI * 1.1,
+          name: 'Body',
+          desc: 'Mortal after the Fall. Locked at 0 until resurrection.',
+          color: COLORS.body,
+          wounded: 'mortal',
+          healed: 'glorified',
         },
       ];
 
       // ── State ──
-      let hoveredDomain = -1;
-      let manualPulses = [];
-      let particles = [];
+      // Faculty brightness levels: 0 = fully wounded, 1 = fully healed
+      let facultyLevels = [0.45, 0.45, 0.45, 0.0]; // intellect, will, desires, body
+      let hoveredFaculty = -1;
+      let gracePulses = [];
+      let sinPulses = [];
       let isVisible = false;
       let hasStarted = false;
 
       const tooltip = document.getElementById('grace-viz-tooltip');
-      const pulseBtn = document.getElementById('grace-pulse-btn');
+      const graceBtn = document.getElementById('grace-pulse-btn');
+      const sinBtn = document.getElementById('sin-pulse-btn');
 
-      // Manual pulse button
-      pulseBtn.addEventListener('click', function() {
-        manualPulses.push({ time: 0, strength: 1.0 });
+      // Grace pulse
+      graceBtn.addEventListener('click', function() {
+        gracePulses.push({ time: 0, strength: 1.0 });
+        // Brighten all faculties (body only slightly)
+        for (let i = 0; i < 4; i++) {
+          const boost = i === 3 ? 0.02 : 0.15;
+          facultyLevels[i] = Math.min(1.0, facultyLevels[i] + boost);
+        }
+      });
+
+      // Sin pulse
+      sinBtn.addEventListener('click', function() {
+        sinPulses.push({ time: 0, strength: 1.0 });
+        // Dim all faculties (body unaffected — already at ~0)
+        for (let i = 0; i < 3; i++) {
+          facultyLevels[i] = Math.max(0.05, facultyLevels[i] - 0.15);
+        }
       });
 
       // ── p5 instance ──
       const sketch = function(p) {
         let cnv;
-        let sz;
+        let w, h;
 
         p.setup = function() {
           const container = document.getElementById('grace-viz');
-          sz = container.offsetWidth;
-          cnv = p.createCanvas(sz, sz);
+          w = container.offsetWidth;
+          h = container.offsetHeight;
+          cnv = p.createCanvas(w, h);
           cnv.parent('grace-viz');
           p.pixelDensity(Math.min(window.devicePixelRatio || 1, 2));
           p.textFont('Cinzel, serif');
@@ -659,8 +698,9 @@
 
         p.windowResized = function() {
           const container = document.getElementById('grace-viz');
-          sz = container.offsetWidth;
-          p.resizeCanvas(sz, sz);
+          w = container.offsetWidth;
+          h = container.offsetHeight;
+          p.resizeCanvas(w, h);
         };
 
         p.draw = function() {
@@ -671,275 +711,402 @@
           }
           p.frameRate(30);
 
-          const cx = sz / 2;
-          const cy = sz / 2;
           const t = p.millis() / 1000;
+          const cx = w / 2;
+          // Human nature is in the upper 60% area, meters below
+          const bodyTop = h * 0.08;
+          const bodyH = h * 0.52;
+          const bodyCy = bodyTop + bodyH / 2;
+          const bodyW = w * 0.36;
 
           p.background(...COLORS.bg);
 
-          // ── Determine hovered domain ──
+          // ── SIN FORCE (left side) ──
+          drawForce(p, t, 'sin', w * 0.04, bodyCy, cx - bodyW * 0.6, bodyH);
+
+          // ── GRACE FORCE (right side) ──
+          drawForce(p, t, 'grace', w * 0.96, bodyCy, cx + bodyW * 0.6, bodyH);
+
+          // ── HUMAN NATURE (center body/soul composite) ──
+          drawHumanNature(p, t, cx, bodyCy, bodyW, bodyH);
+
+          // ── FORCE LABELS ──
+          p.textSize(w * 0.025);
+          p.textStyle(p.BOLD);
+          p.noStroke();
+
+          // Sin label (left)
+          p.fill(...COLORS.sin, 200);
+          p.text('SIN', w * 0.08, bodyCy - bodyH * 0.42);
+          p.textSize(w * 0.016);
+          p.textStyle(p.NORMAL);
+          p.fill(...COLORS.sin, 140);
+          p.text('wounds', w * 0.08, bodyCy - bodyH * 0.35);
+
+          // Grace label (right)
+          p.fill(...COLORS.grace, 200);
+          p.textSize(w * 0.025);
+          p.textStyle(p.BOLD);
+          p.text('GRACE', w * 0.92, bodyCy - bodyH * 0.42);
+          p.textSize(w * 0.016);
+          p.textStyle(p.NORMAL);
+          p.fill(...COLORS.grace, 180);
+          p.text('heals', w * 0.92, bodyCy - bodyH * 0.35);
+
+          // ── HUMAN NATURE LABEL ──
+          p.fill(...COLORS.text, 200);
+          p.textSize(w * 0.02);
+          p.textStyle(p.BOLD);
+          p.text('HUMAN NATURE', cx, bodyTop - h * 0.02);
+
+          // ── METERS / READINGS (below the human nature) ──
+          const meterTop = bodyTop + bodyH + h * 0.06;
+          drawMeters(p, t, cx, meterTop, w, h);
+
+          // ── PULSE ANIMATIONS ──
+          // Grace pulses (from right)
+          for (let i = gracePulses.length - 1; i >= 0; i--) {
+            gracePulses[i].time += 1/30;
+            gracePulses[i].strength *= 0.97;
+            const gp = gracePulses[i];
+            const progress = Math.min(gp.time * 0.8, 1.0);
+            const px = p.lerp(w * 0.92, cx, progress);
+            const alpha = gp.strength * 50 * (1 - progress);
+            if (alpha > 1) {
+              p.noFill();
+              p.stroke(...COLORS.graceGlow, alpha);
+              p.strokeWeight(3);
+              // Vertical wave moving left
+              p.beginShape();
+              for (let y = bodyCy - bodyH * 0.5; y <= bodyCy + bodyH * 0.5; y += 4) {
+                const wave = Math.sin((y - bodyCy) * 0.05 + t * 3) * 8 * gp.strength;
+                p.vertex(px + wave, y);
+              }
+              p.endShape();
+            }
+            if (gp.time > 2.5) gracePulses.splice(i, 1);
+          }
+
+          // Sin pulses (from left)
+          for (let i = sinPulses.length - 1; i >= 0; i--) {
+            sinPulses[i].time += 1/30;
+            sinPulses[i].strength *= 0.97;
+            const sp = sinPulses[i];
+            const progress = Math.min(sp.time * 0.8, 1.0);
+            const px = p.lerp(w * 0.08, cx, progress);
+            const alpha = sp.strength * 40 * (1 - progress);
+            if (alpha > 1) {
+              p.noFill();
+              p.stroke(...COLORS.sinGlow, alpha);
+              p.strokeWeight(3);
+              p.beginShape();
+              for (let y = bodyCy - bodyH * 0.5; y <= bodyCy + bodyH * 0.5; y += 4) {
+                const wave = Math.sin((y - bodyCy) * 0.05 - t * 3) * 8 * sp.strength;
+                p.vertex(px + wave, y);
+              }
+              p.endShape();
+            }
+            if (sp.time > 2.5) sinPulses.splice(i, 1);
+          }
+
+          // ── Hover detection for faculties ──
+          detectHover(p, cx, bodyCy, bodyW, bodyH);
+        };
+
+        function drawForce(p, t, type, startX, cy, endX, rangeH) {
+          const isGrace = type === 'grace';
+          const col = isGrace ? COLORS.grace : COLORS.sin;
+          const glowCol = isGrace ? COLORS.graceGlow : COLORS.sinGlow;
+          const dir = isGrace ? -1 : 1;
+
+          // Streaming particles / tendrils
+          const breathe = Math.sin(t * 1.5) * 0.5 + 0.5;
+
+          // Draw tendrils reaching toward center
+          for (let i = 0; i < 6; i++) {
+            const yOff = (i - 2.5) * rangeH * 0.15;
+            const baseY = cy + yOff;
+            const waveY = Math.sin(t * 0.8 + i * 1.5) * 10;
+            const alpha = 20 + 15 * breathe;
+
+            p.noFill();
+            p.stroke(...col, alpha);
+            p.strokeWeight(2 + breathe);
+
+            p.beginShape();
+            const steps = 20;
+            for (let s = 0; s <= steps; s++) {
+              const frac = s / steps;
+              const x = p.lerp(startX, endX, frac);
+              const y = baseY + waveY * Math.sin(frac * Math.PI * 2 + t * 2 + i);
+              p.curveVertex(x, y);
+            }
+            p.endShape();
+          }
+
+          // Glowing region near source
+          for (let layer = 3; layer >= 0; layer--) {
+            const f = layer / 3;
+            const rw = w * 0.06 * (1 + f * 0.5);
+            const rh = rangeH * 0.6 * (1 + f * 0.3);
+            const alpha = 15 * (1 - f) * (0.6 + 0.4 * breathe);
+            p.noStroke();
+            p.fill(...glowCol, alpha);
+            p.ellipse(startX, cy, rw, rh);
+          }
+        }
+
+        function drawHumanNature(p, t, cx, cy, bw, bh) {
+          const breathe = Math.sin(t * 0.8) * 0.5 + 0.5;
+
+          // Body outline (shell) — the body faculty
+          const bodyAlpha = 60 + facultyLevels[3] * 160;
+          const bodyCol = COLORS.body;
+
+          // Outer glow based on aggregate healing
+          const avgHealing = (facultyLevels[0] + facultyLevels[1] + facultyLevels[2]) / 3;
+          for (let layer = 4; layer >= 0; layer--) {
+            const f = layer / 4;
+            const rw = bw * (1.1 + f * 0.3);
+            const rh = bh * (1.05 + f * 0.15);
+            const alpha = avgHealing * 20 * (1 - f) * (0.6 + 0.4 * breathe);
+            p.noStroke();
+            p.fill(...COLORS.graceGlow, alpha);
+            p.ellipse(cx, cy, rw, rh);
+          }
+
+          // Body shape (rounded rectangle / capsule)
+          p.stroke(...bodyCol, bodyAlpha);
+          p.strokeWeight(2.5);
+          p.noFill();
+          p.beginShape();
+          const segments = 60;
+          for (let s = 0; s <= segments; s++) {
+            const angle = (s / segments) * p.TWO_PI;
+            const deform = 1 + 0.04 * Math.sin(angle * 2 + t * 0.3)
+                           + 0.02 * Math.sin(angle * 3 - t * 0.5);
+            // Slightly taller than wide
+            const rx = bw * 0.5 * deform * Math.cos(angle);
+            const ry = bh * 0.5 * deform * Math.sin(angle);
+            p.curveVertex(cx + rx, cy + ry);
+          }
+          // Close smoothly
+          for (let s = 0; s <= 2; s++) {
+            const angle = (s / segments) * p.TWO_PI;
+            const rx = bw * 0.5 * Math.cos(angle);
+            const ry = bh * 0.5 * Math.sin(angle);
+            p.curveVertex(cx + rx, cy + ry);
+          }
+          p.endShape();
+
+          // Fill body area subtly
+          p.noStroke();
+          p.fill(...bodyCol, 15 + facultyLevels[3] * 30);
+          p.ellipse(cx, cy, bw, bh);
+
+          // ── FOUR FACULTIES as internal orbs ──
+          const facultyPositions = [
+            { x: cx, y: cy - bh * 0.32 },              // Intellect (top — head/mind)
+            { x: cx, y: cy - bh * 0.06 },              // Will (center — heart)
+            { x: cx, y: cy + bh * 0.2 },               // Desires (lower — gut)
+            // Body is the outline itself, but we show a small indicator
+            { x: cx, y: cy + bh * 0.38 },              // Body (bottom)
+          ];
+
+          for (let i = 0; i < 4; i++) {
+            const fac = FACULTIES[i];
+            const level = facultyLevels[i];
+            const pos = facultyPositions[i];
+            const orbR = w * (i === 3 ? 0.035 : 0.055);
+            const isHovered = hoveredFaculty === i;
+
+            // Glow based on brightness
+            for (let layer = 4; layer >= 0; layer--) {
+              const f = layer / 4;
+              const r = orbR * (1.5 + f * 1.5);
+              const alpha = level * 40 * (1 - f) * (0.7 + 0.3 * breathe);
+              if (isHovered) {
+                p.fill(fac.color[0], fac.color[1], fac.color[2], alpha * 1.5);
+              } else {
+                p.fill(fac.color[0], fac.color[1], fac.color[2], alpha);
+              }
+              p.noStroke();
+              p.ellipse(pos.x, pos.y, r * 2);
+            }
+
+            // Core orb
+            const coreAlpha = 80 + level * 175;
+            const coreBright = 0.3 + level * 0.7;
+            p.noStroke();
+            // Gradient core
+            for (let g = 10; g >= 0; g--) {
+              const gf = g / 10;
+              const r = orbR * gf;
+              p.fill(
+                p.lerp(fac.color[0] * coreBright, 255, (1 - gf) * 0.3 * level),
+                p.lerp(fac.color[1] * coreBright, 245, (1 - gf) * 0.3 * level),
+                p.lerp(fac.color[2] * coreBright, 220, (1 - gf) * 0.2 * level),
+                coreAlpha
+              );
+              p.ellipse(pos.x, pos.y, r * 2);
+            }
+
+            // Hovered ring
+            if (isHovered) {
+              p.noFill();
+              p.stroke(fac.color[0], fac.color[1], fac.color[2], 180);
+              p.strokeWeight(1.5);
+              p.ellipse(pos.x, pos.y, orbR * 2.8);
+            }
+
+            // Faculty label
+            p.noStroke();
+            p.fill(...COLORS.text, isHovered ? 220 : 120);
+            p.textSize(w * (isHovered ? 0.02 : 0.017));
+            p.textStyle(p.BOLD);
+            const labelX = pos.x + orbR * 1.8;
+            p.textAlign(p.LEFT, p.CENTER);
+            p.text(fac.name, labelX, pos.y);
+            p.textAlign(p.CENTER, p.CENTER);
+          }
+        }
+
+        function drawMeters(p, t, cx, top, w, h) {
+          const meterW = w * 0.7;
+          const meterH = h * 0.03;
+          const gap = h * 0.055;
+          const leftX = cx - meterW / 2;
+
+          const meters = [
+            {
+              name: 'Freedom',
+              desc: 'reading of Will',
+              value: facultyLevels[1],
+              color: COLORS.will,
+              derived: false,
+            },
+            {
+              name: 'Love / Charity',
+              desc: 'expression of Will + Desires',
+              value: (facultyLevels[1] * 0.6 + facultyLevels[2] * 0.4),
+              color: COLORS.desires,
+              derived: false,
+            },
+            {
+              name: 'Conscience',
+              desc: 'Intellect + Will',
+              value: (facultyLevels[0] * 0.5 + facultyLevels[1] * 0.5),
+              color: COLORS.intellect,
+              derived: false,
+            },
+            {
+              name: 'Culpability',
+              desc: 'computed from Freedom + Knowledge + Act',
+              // Inverse: higher freedom = lower culpability
+              value: 1.0 - facultyLevels[1] * 0.6 - facultyLevels[0] * 0.3,
+              color: [176, 120, 48],
+              derived: true,
+            },
+          ];
+
+          p.textAlign(p.LEFT, p.CENTER);
+
+          for (let i = 0; i < meters.length; i++) {
+            const m = meters[i];
+            const y = top + i * gap;
+            const val = Math.max(0, Math.min(1, m.value));
+
+            // Label
+            p.noStroke();
+            p.fill(...COLORS.text, 180);
+            p.textSize(w * 0.018);
+            p.textStyle(p.BOLD);
+            p.text(m.name, leftX, y - meterH * 0.8);
+
+            // Type indicator
+            p.fill(...COLORS.text, 100);
+            p.textSize(w * 0.013);
+            p.textStyle(p.NORMAL);
+            if (m.derived) {
+              p.fill(...COLORS.accent, 140);
+              p.text('computed from \u2192 ' + m.desc, leftX + p.textWidth(m.name + '  ') + w * 0.01, y - meterH * 0.8);
+            } else {
+              p.text(m.desc, leftX + p.textWidth(m.name + '  ') + w * 0.01, y - meterH * 0.8);
+            }
+
+            // Track
+            p.fill(...COLORS.bg);
+            p.stroke(...COLORS.text, 40);
+            p.strokeWeight(1);
+            p.rect(leftX, y, meterW, meterH, 2);
+
+            // Fill
+            p.noStroke();
+            const fillAlpha = 160;
+            if (m.derived) {
+              // Culpability: use a different visual — hatched or distinct
+              p.fill(m.color[0], m.color[1], m.color[2], fillAlpha);
+            } else {
+              p.fill(m.color[0], m.color[1], m.color[2], fillAlpha);
+            }
+            p.rect(leftX + 1, y + 1, (meterW - 2) * val, meterH - 2, 1);
+
+            // Value text
+            p.fill(...COLORS.text, 140);
+            p.textSize(w * 0.014);
+            p.text((val * 100).toFixed(0) + '%', leftX + meterW + w * 0.015, y + meterH * 0.5);
+          }
+
+          p.textAlign(p.CENTER, p.CENTER);
+        }
+
+        function detectHover(p, cx, cy, bw, bh) {
           const mx = p.mouseX;
           const my = p.mouseY;
-          const md = p.dist(mx, my, cx, cy) / sz;
-          hoveredDomain = -1;
+          hoveredFaculty = -1;
 
-          if (mx >= 0 && mx <= sz && my >= 0 && my <= sz) {
-            // Check from outermost to innermost
-            for (let i = DOMAINS.length - 1; i >= 0; i--) {
-              const innerR = i === 0 ? 0.10 : (DOMAINS[i].baseRadius + DOMAINS[i-1].baseRadius) / 2;
-              const outerR = i === DOMAINS.length - 1
-                ? DOMAINS[i].baseRadius + 0.08
-                : (DOMAINS[i].baseRadius + DOMAINS[i+1].baseRadius) / 2;
-              if (md >= innerR && md <= outerR) {
-                hoveredDomain = i;
-                break;
-              }
+          if (mx < 0 || mx > w || my < 0 || my > h) {
+            tooltip.style.opacity = '0';
+            return;
+          }
+
+          const facultyPositions = [
+            { x: cx, y: cy - bh * 0.32 },
+            { x: cx, y: cy - bh * 0.06 },
+            { x: cx, y: cy + bh * 0.2 },
+            { x: cx, y: cy + bh * 0.38 },
+          ];
+
+          const hitR = w * 0.07;
+
+          for (let i = 0; i < 4; i++) {
+            const pos = facultyPositions[i];
+            if (p.dist(mx, my, pos.x, pos.y) < hitR) {
+              hoveredFaculty = i;
+              break;
             }
           }
 
-          // ── Update tooltip ──
-          if (hoveredDomain >= 0) {
-            const d = DOMAINS[hoveredDomain];
+          if (hoveredFaculty >= 0) {
+            const f = FACULTIES[hoveredFaculty];
+            const level = facultyLevels[hoveredFaculty];
             tooltip.innerHTML =
               '<strong style="font-family:Cinzel,serif;font-size:0.82rem;letter-spacing:0.06em;color:' +
-              rgbStr(d.color) + '">' + d.name + '</strong> ' +
-              '<span style="font-size:0.82rem;opacity:0.6">(' + d.greek + ')</span><br>' +
-              '<em style="font-size:0.85rem">' + d.dims + '</em><br>' +
-              '<span style="font-size:0.82rem;color:#b45014">' + d.openQ + '</span>';
+              rgbStr(f.color) + '">' + f.name + '</strong> ' +
+              '<span style="font-size:0.85rem;opacity:0.7">(' + f.wounded + ' \u2192 ' + f.healed + ')</span><br>' +
+              '<em style="font-size:0.85rem">' + f.desc + '</em><br>' +
+              '<span style="font-size:0.82rem;color:#b45014">Current level: ' + (level * 100).toFixed(0) + '%</span>';
             tooltip.style.opacity = '1';
           } else {
             tooltip.style.opacity = '0';
           }
-
-          // ── Grace center: pulsating glow ──
-          const breathe = Math.sin(t * 1.2) * 0.5 + 0.5;
-          const graceR = sz * (0.08 + 0.015 * breathe);
-
-          // Soft radial glow
-          for (let layer = 5; layer >= 0; layer--) {
-            const f = layer / 5;
-            const r = graceR * (1 + f * 2.5);
-            const alpha = 30 * (1 - f) * (0.6 + 0.4 * breathe);
-            p.noStroke();
-            p.fill(...COLORS.grace, alpha);
-            p.ellipse(cx, cy, r * 2);
-          }
-
-          // Core sphere (fake 3D with gradient)
-          for (let i = 20; i >= 0; i--) {
-            const f = i / 20;
-            const r = graceR * f;
-            const bright = p.lerp(60, 255, (1 - f) * 0.6 + breathe * 0.3);
-            p.fill(
-              p.lerp(COLORS.grace[0], 255, (1 - f) * 0.4),
-              p.lerp(COLORS.grace[1], 230, (1 - f) * 0.4),
-              p.lerp(COLORS.grace[2], 100, (1 - f) * 0.2),
-              200 + 55 * (1 - f)
-            );
-            p.noStroke();
-            // Offset slightly up-left for lighting effect
-            p.ellipse(cx - graceR * 0.1, cy - graceR * 0.1, r * 2);
-          }
-
-          // Grace label
-          p.fill(...COLORS.text, 220);
-          p.textSize(sz * 0.026);
-          p.textStyle(p.BOLD);
-          p.text('χάρις', cx, cy - graceR * 0.1);
-          p.textSize(sz * 0.018);
-          p.textStyle(p.NORMAL);
-          p.fill(...COLORS.text, 140);
-          p.text('GRACE', cx, cy + graceR * 0.5);
-
-          // ── Concentric rings ──
-          for (let i = 0; i < DOMAINS.length; i++) {
-            const d = DOMAINS[i];
-            const isHovered = hoveredDomain === i;
-
-            // Calculate ring radius with wave deformation
-            const baseR = sz * d.baseRadius;
-            const waveOffset = Math.sin(t * d.waveSpeed * 2 + d.phaseOffset) * sz * d.waveAmp;
-
-            // Manual pulse influence
-            let pulseInfluence = 0;
-            for (const pulse of manualPulses) {
-              const dist = pulse.time * 0.5 - d.baseRadius;
-              const falloff = Math.exp(-dist * dist * 80);
-              pulseInfluence += falloff * pulse.strength * sz * 0.03;
-            }
-
-            const r = baseR + waveOffset + pulseInfluence;
-
-            // Ring "thickness" deformation — draw as a band
-            const thickness = sz * (isHovered ? 0.025 : 0.015);
-            const alpha = isHovered ? 180 : 100;
-
-            // Outer glow for hovered ring
-            if (isHovered) {
-              p.noFill();
-              p.stroke(...d.color, 30);
-              p.strokeWeight(thickness * 3);
-              p.ellipse(cx, cy, r * 2);
-            }
-
-            // Draw the ring with organic deformation
-            p.noFill();
-            p.stroke(...d.color, alpha);
-            p.strokeWeight(thickness);
-
-            // Slightly deformed circle (not perfect — organic feel)
-            p.beginShape();
-            const segments = 80;
-            for (let s = 0; s <= segments; s++) {
-              const angle = (s / segments) * p.TWO_PI;
-              const deform = 1 + 0.008 * Math.sin(angle * 3 + t * 0.5 + i) +
-                             0.005 * Math.sin(angle * 5 - t * 0.3 + i * 2);
-              const rx = r * deform * Math.cos(angle) + cx;
-              const ry = r * deform * Math.sin(angle) + cy;
-              p.curveVertex(rx, ry);
-            }
-            // Close the curve smoothly
-            for (let s = 0; s <= 2; s++) {
-              const angle = (s / segments) * p.TWO_PI;
-              const deform = 1 + 0.008 * Math.sin(angle * 3 + t * 0.5 + i) +
-                             0.005 * Math.sin(angle * 5 - t * 0.3 + i * 2);
-              const rx = r * deform * Math.cos(angle) + cx;
-              const ry = r * deform * Math.sin(angle) + cy;
-              p.curveVertex(rx, ry);
-            }
-            p.endShape();
-
-            // ── Ring label ──
-            const labelR = r + sz * 0.012;
-            const labelAngle = -Math.PI / 2 + i * 0.35 - 0.3;
-            const lx = cx + labelR * Math.cos(labelAngle);
-            const ly = cy + labelR * Math.sin(labelAngle);
-
-            p.noStroke();
-            p.fill(...d.color, isHovered ? 240 : 130);
-            p.textSize(sz * (isHovered ? 0.026 : 0.022));
-            p.textStyle(p.BOLD);
-            p.text(d.name, lx, ly);
-          }
-
-          // ── Particles flowing outward from grace ──
-          // Spawn
-          if (p.frameCount % 3 === 0 && particles.length < 60) {
-            const channel = Math.floor(p.random(4));
-            const angle = -Math.PI / 2 + channel * Math.PI / 2 +
-                          p.random(-0.3, 0.3);
-            particles.push({
-              x: cx, y: cy,
-              angle: angle,
-              speed: p.random(0.3, 0.8),
-              life: 1.0,
-              channel: channel,
-              size: p.random(1.5, 3.5),
-            });
-          }
-
-          // Manual pulse particles (burst)
-          for (const pulse of manualPulses) {
-            if (pulse.time < 0.05 && particles.length < 120) {
-              for (let k = 0; k < 12; k++) {
-                const angle = p.random(p.TWO_PI);
-                particles.push({
-                  x: cx, y: cy,
-                  angle: angle,
-                  speed: p.random(0.6, 1.5),
-                  life: 1.0,
-                  channel: Math.floor(p.random(4)),
-                  size: p.random(2, 4),
-                });
-              }
-            }
-          }
-
-          // Update & draw particles
-          for (let i = particles.length - 1; i >= 0; i--) {
-            const pt = particles[i];
-            pt.x += Math.cos(pt.angle) * pt.speed * sz * 0.003;
-            pt.y += Math.sin(pt.angle) * pt.speed * sz * 0.003;
-            pt.life -= 0.008;
-
-            if (pt.life <= 0 || p.dist(pt.x, pt.y, cx, cy) > sz * 0.42) {
-              particles.splice(i, 1);
-              continue;
-            }
-
-            // Determine color based on distance from center
-            const dist = p.dist(pt.x, pt.y, cx, cy) / sz;
-            let col = COLORS.grace;
-            for (let d = DOMAINS.length - 1; d >= 0; d--) {
-              if (dist > DOMAINS[d].baseRadius * 0.7) {
-                col = DOMAINS[d].color;
-                break;
-              }
-            }
-
-            p.noStroke();
-            p.fill(...col, pt.life * 120);
-            p.ellipse(pt.x, pt.y, pt.size * pt.life);
-          }
-
-          // ── Update manual pulses ──
-          for (let i = manualPulses.length - 1; i >= 0; i--) {
-            manualPulses[i].time += 1 / 30;
-            manualPulses[i].strength *= 0.98;
-            if (manualPulses[i].time > 3) {
-              manualPulses.splice(i, 1);
-            }
-          }
-
-          // ── Radial wave lines (faint) traveling outward from grace ──
-          const waveCount = 3;
-          for (let w = 0; w < waveCount; w++) {
-            const waveT = (t * 0.15 + w / waveCount) % 1.0;
-            const waveR = waveT * sz * 0.65;
-            const waveAlpha = (1 - waveT) * 25 * (0.5 + 0.5 * breathe);
-            p.noFill();
-            p.stroke(...COLORS.grace, waveAlpha);
-            p.strokeWeight(1);
-            p.ellipse(cx, cy, waveR * 2);
-          }
-
-          // ── Manual pulse wave rings ──
-          for (const pulse of manualPulses) {
-            const waveR = pulse.time * sz * 0.25;
-            const alpha = pulse.strength * 60 * Math.max(0, 1 - pulse.time / 2.5);
-            if (alpha > 1) {
-              p.noFill();
-              p.stroke(...COLORS.graceGlow, alpha);
-              p.strokeWeight(2);
-              p.ellipse(cx, cy, waveR * 2);
-            }
-          }
-        };
+        }
 
         // ── Touch/tap support for mobile ──
         p.touchStarted = function() {
-          if (p.mouseX >= 0 && p.mouseX <= sz && p.mouseY >= 0 && p.mouseY <= sz) {
-            // Check if tapped on a ring (same logic as hover)
-            const md = p.dist(p.mouseX, p.mouseY, sz/2, sz/2) / sz;
-            for (let i = DOMAINS.length - 1; i >= 0; i--) {
-              const innerR = i === 0 ? 0.10 : (DOMAINS[i].baseRadius + DOMAINS[i-1].baseRadius) / 2;
-              const outerR = i === DOMAINS.length - 1
-                ? DOMAINS[i].baseRadius + 0.08
-                : (DOMAINS[i].baseRadius + DOMAINS[i+1].baseRadius) / 2;
-              if (md >= innerR && md <= outerR) {
-                hoveredDomain = i;
-                // Show tooltip for mobile
-                const d = DOMAINS[i];
-                tooltip.innerHTML =
-                  '<strong style="font-family:Cinzel,serif;font-size:0.82rem;letter-spacing:0.06em;color:' +
-                  rgbStr(d.color) + '">' + d.name + '</strong> ' +
-                  '<span style="font-size:0.82rem;opacity:0.6">(' + d.greek + ')</span><br>' +
-                  '<em style="font-size:0.85rem">' + d.dims + '</em><br>' +
-                  '<span style="font-size:0.82rem;color:#b45014">' + d.openQ + '</span>';
-                tooltip.style.opacity = '1';
-                return false; // prevent default
-              }
-            }
+          if (p.mouseX >= 0 && p.mouseX <= w && p.mouseY >= 0 && p.mouseY <= h) {
+            // Trigger hover detection to show tooltip
+            return false;
           }
         };
       };
@@ -967,50 +1134,53 @@
 
     <!-- Section: Why this matters — the connections -->
     <section class="article-body">
-      <h2>Not Four Systems&nbsp;&mdash; One</h2>
+      <h2>Not Five Systems&nbsp;&mdash; One</h2>
 
       <p>
         <span class="versal">T</span>he pattern would be interesting even if
-        the four domains were independent. But they are not. The proof
-        assistant revealed that they are <em>connected</em>&nbsp;&mdash;
-        different faces of the same underlying structure, like different
-        views of the same building.
+        these measurements were independent. But they are not. The proof
+        assistant revealed that they are all readings of the <em>same</em>
+        underlying reality&nbsp;&mdash; human nature acted upon by two
+        opposing forces. They are different instruments measuring the same
+        patient.
       </p>
 
       <div class="connection-card">
-        <h3>How the Four Domains Connect</h3>
+        <h3>Faculty States, Expressions, and Computed Readings</h3>
 
         <div class="connection-row">
           <span class="conn-label">Freedom</span>
           <span class="conn-arrow">&rarr;</span>
-          <span class="conn-desc">Your freedom level <em>is</em> your will-healing level in the grace framework. Freedom is not separate from grace&nbsp;&mdash; it is grace measured along one axis.</span>
+          <span class="conn-desc">Freedom <em>is</em> the current state of the will faculty. It is not a separate thing from grace&nbsp;&mdash; it is a <em>reading</em> of how healed the will is. More healing = more freedom.</span>
         </div>
 
         <div class="connection-row">
           <span class="conn-label">Love</span>
           <span class="conn-arrow">&rarr;</span>
-          <span class="conn-desc">Your agape (charity) degree <em>is</em> your will-healing expressed as love. The capacity for selfless love is not a different thing from a healed will&nbsp;&mdash; it is the same thing, named differently.</span>
+          <span class="conn-desc">Love is the <em>expression</em> of two faculties: agape (charity) is the will expressed outward, while eros and philia are the desires expressed outward. The capacity for love depends on how healed those faculties are.</span>
         </div>
 
         <div class="connection-row">
-          <span class="conn-label">Desire</span>
+          <span class="conn-label">Conscience</span>
           <span class="conn-arrow">&rarr;</span>
-          <span class="conn-desc">The capacity for properly ordered desire (what the tradition calls &ldquo;nuptial capacity&rdquo;) <em>is</em> the desire-healing level. Conjugal ethics is not a separate system&nbsp;&mdash; it is grace measured along the desire axis.</span>
+          <span class="conn-desc">Conscience is the intellect and will <em>working together</em> to judge acts. A clear intellect sees the truth; a strong will holds to it. Conscience is a reading of both faculties combined.</span>
         </div>
 
         <div class="connection-row">
           <span class="conn-label">Culpability</span>
           <span class="conn-arrow">&rarr;</span>
-          <span class="conn-desc">The mortal sin threshold depends on your freedom level, which depends on your healing level. The four domains are not parallel&nbsp;&mdash; they are <em>nested</em>.</span>
+          <span class="conn-desc">Culpability is a <em>computed output</em>, not a primary force or faculty state. It depends on your freedom level (will state), your knowledge (intellect state), and the gravity of the act. It is <em>derived</em> from the other readings.</span>
         </div>
       </div>
 
       <p>
-        This is like the moment in physics when people realized that
-        electricity and magnetism are not two separate forces but two aspects
-        of one force&nbsp;&mdash; electromagnetism. The proof assistant did not
-        just find four similar structures. It found that they are the
-        <em>same</em> structure, measured along different axes.
+        Think of a medical patient&nbsp;&mdash; one body, two opposing forces
+        (disease and medicine), four vital signs (temperature, blood pressure,
+        heart rate, oxygen saturation). The vital signs do not surround the
+        medicine. They <em>read the body</em>. And some readings are more
+        derived than others: cardiac output is <em>computed from</em> heart
+        rate and stroke volume, not measured directly. That is exactly how
+        culpability relates to freedom and knowledge.
       </p>
     </section>
 
@@ -1035,6 +1205,21 @@
           but the underlying reality is continuous. That is what the Catechism
           describes: real thresholds (mortal vs. venial, free vs. coerced)
           imposed on continuous spectrums.
+        </p>
+      </div>
+
+      <div class="analogy-card">
+        <h4>One patient, two forces, four vital signs</h4>
+        <p>
+          A patient in the ICU has one body. Disease attacks it; medicine
+          heals it. The doctors read four vital signs&nbsp;&mdash; temperature,
+          blood pressure, heart rate, oxygen. The vital signs do not surround
+          the medicine. They <em>read the body</em>. And some readings are
+          computed: cardiac output is derived from heart rate and stroke
+          volume. That is exactly the structure here&nbsp;&mdash; human nature
+          is the body, grace and sin are the opposing forces, and freedom,
+          love, conscience, and culpability are readings of how the faculties
+          are doing. Culpability is the computed one.
         </p>
       </div>
 
@@ -1065,19 +1250,6 @@
           are teleported to.
         </p>
       </div>
-
-      <div class="analogy-card">
-        <h4>Newton&rsquo;s unification</h4>
-        <p>
-          Before Newton, people thought the force that makes apples fall and
-          the force that keeps the moon in orbit were different things. Newton
-          showed they are the same force&nbsp;&mdash; gravity&nbsp;&mdash;
-          just measured at different scales. The proof assistant did something
-          similar here: it showed that culpability, love, freedom, and grace,
-          which <em>seem</em> like separate topics in the Catechism, are
-          actually different measurements of one underlying structure.
-        </p>
-      </div>
     </section>
 
     <div class="divider">&#10053;</div>
@@ -1092,11 +1264,11 @@
       </p>
       <p>
         <strong>What we found:</strong> The Catechism contains mathematical
-        structure that has never been made explicit. Four different theological
-        concepts share the same shape: multi-dimensional, graded, partially
-        ordered spaces with a shared open question about how their dimensions
-        compose. These four spaces are connected&nbsp;&mdash; they are
-        different views of one deeper system.
+        structure that has never been made explicit. Human nature has four
+        faculties that grace heals and sin wounds. Freedom, love, and
+        conscience are readings of those faculty states. Culpability is
+        computed from them. These are not parallel systems&nbsp;&mdash;
+        they are different measurements of one underlying reality.
       </p>
       <p>
         <strong>What we did not find:</strong> The recipe. The Catechism

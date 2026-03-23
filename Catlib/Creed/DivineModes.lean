@@ -128,28 +128,18 @@ axiom god_sustains_all :
 axiom beatific_vision_requires_purity :
   ∀ (s : SoulState), s.inBeatifyingCommunion → s.purified
 
-/-- AXIOM (§1033): Hell is the absence of beatifying mode.
-    Provenance: [Definition] CCC §1033.
-    The damned are sustained (they exist) but not in communion.
-    THIS is what resolves the paradox: separation from God means
-    separation from BEATIFYING mode, not from SUSTAINING mode. -/
-axiom hell_is_absence_of_communion :
-  ∀ (s : SoulState),
-    ¬s.inBeatifyingCommunion → s.sustained → -- Still exists, but no communion
-    True  -- This state IS hell
+/-! **§1033: Hell is the absence of beatifying mode.**
+    CCC §1033: The damned are sustained (they exist) but not in communion.
+    This resolves the paradox: separation from God means separation from
+    BEATIFYING mode, not from SUSTAINING mode.
 
-/-- AXIOM: Existence without communion is possible but terrible.
-    Provenance: [Scripture] Lk 16:23-24 (rich man in Hades:
-    "I am in agony in this flame" — exists, conscious, suffering).
-    [Tradition] Aquinas ST I-II q.87 a.4.
+    **Existence without communion is possible but terrible.**
+    Scripture: Lk 16:23-24 (rich man in Hades: "I am in agony in this
+    flame" — exists, conscious, suffering).
+    Tradition: Aquinas ST I-II q.87 a.4.
     HIDDEN ASSUMPTION: Existence without any good is worse than
     non-existence. The damned would prefer annihilation, but God
     sustains them. Why? (See below.) -/
-axiom existence_without_communion_is_suffering :
-  ∀ (s : SoulState),
-    s.sustained → ¬s.inBeatifyingCommunion →
-    -- This state involves suffering (the suffering of privation)
-    True
 
 /-!
 ## The three afterlife states as combinations of modes
@@ -206,7 +196,7 @@ theorem hell_paradox_resolved :
     without being purified. -/
 theorem heaven_requires_purity :
     heavenState.inBeatifyingCommunion → heavenState.purified :=
-  fun _ => trivial
+  beatific_vision_requires_purity heavenState
 
 /-- Purgatory is the state of being in communion (chose God) but
     not yet purified. This is why it's temporary — once purified,
@@ -224,36 +214,27 @@ Three possible axioms from the tradition. The Catechism doesn't
 choose among them — it holds all three without resolving the tension.
 -/
 
-/-- Option 1: Existence is intrinsically good.
+/-! **Why does God sustain the damned? Three options from the tradition.**
+
+    The Catechism holds all three without resolving the tension.
+
+    **Option 1: Existence is intrinsically good.**
     Even diminished existence (hell) is better than non-existence.
     Source: Aquinas ST I q.5 a.2 ("being is itself a good").
-    Implication: God sustaining the damned IS an act of goodness. -/
-axiom existence_is_intrinsically_good :
-  ∀ (s : SoulState), s.sustained → True
-  -- (The claim is: sustained existence is always a good, even in hell.
-  --  This is debatable — some argue annihilation would be more merciful.)
+    Implication: God sustaining the damned IS an act of goodness.
+    (Debatable — some argue annihilation would be more merciful.)
 
-/-- Option 2: Respect for freedom.
+    **Option 2: Respect for freedom.**
     Annihilating the damned would override their choice.
     If they chose to exist apart from God, God honors that choice
     by sustaining their existence.
     Source: Connects to S1 (love requires freedom) and T1 (libertarian
-    free will). Love does not coerce — not even by annihilation. -/
-axiom respect_for_freedom_sustains :
-  ∀ (s : SoulState),
-    s.sustained → ¬s.inBeatifyingCommunion →
-    -- God sustains because annihilation would violate their choice
-    True
+    free will). Love does not coerce — not even by annihilation.
 
-/-- Option 3: Justice requires experienced consequences.
+    **Option 3: Justice requires experienced consequences.**
     The damned must experience the consequences of their choice.
     Annihilation would remove the consequence.
     Source: Aquinas ST Supp. q.99. -/
-axiom justice_requires_consequences :
-  ∀ (s : SoulState),
-    s.sustained → ¬s.inBeatifyingCommunion →
-    -- Justice is served by the soul experiencing separation
-    True
 
 /-!
 ## The spectrum of communion

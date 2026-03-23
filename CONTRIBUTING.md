@@ -24,17 +24,73 @@
 
 ### Priority 3: New formalizations
 
-- [ ] **Formalize love properly** — Foundations/Love.lean with LoveKind (agape/eros/philia/selfLove), typed relations, per-kind properties. IN PROGRESS.
+**Already formalized / update the docs instead of treating as backlog debt**
 
-- [ ] **Add a formalization that shows an argument FAILING** — Where the conclusion genuinely doesn't follow from stated premises without adding significant unstated axioms. Would strengthen intellectual honesty.
+- [x] **Mary as Mother of God / divine maternity** — Substantively formalized in `MarianDogma.lean` as the Theotokos theorem. Remaining work is documentation polish or extension, not first-pass formalization.
+
+- [x] **Eucharist / Real Presence** — Substantively formalized in `Sacraments/Eucharist.lean`, including real presence, who-can-receive structure, and doctrine/discipline distinctions.
+
+- [x] **Suicide (CCC §2280-2283)** — Formalized in `MoralTheology/Suicide.lean`, including grave matter, diminished culpability, and hope for salvation.
+
+**Partially formalized — keep open because the sharper question remains**
+
+- [ ] **What makes a sin mortal rather than merely grave in effect?** — `Sin.lean` already formalizes the binary mortal/venial structure, but the threshold logic is still underexplored. Candidate chain: grave matter, knowledge, and consent must interact in a way that destroys charity; not every objectively grave act does so; therefore mortal sin requires a specific conjunction of conditions. Main question: is the key hidden structure a threshold surface, a causal break in communion, or both?
+
+- [ ] **Why does resurrection matter if the soul already survives?** — `Soul.lean` already argues that the separated soul is incomplete and resurrection restores what death broke, but the explanatory pressure remains. Candidate chain: the separated soul survives death but is not the complete human person; human beatitude is meant for embodied creatures; therefore resurrection is not ornamental but required for full human completion. Main question: what exactly is lacking in the intermediate state that resurrection restores?
+
+- [ ] **Formalize love properly** — `Foundations/Love.lean` is in progress, but the typed vocabulary and per-kind properties still need to be finished.
+
+**Metaphysical and Christological foundations**
+
+- [ ] **Theological grounds for scientific inquiry** — Formalize the classical Christian argument that rational and empirical inquiry are possible because creation is intelligible, ordered, and worth studying. Candidate chain: the world is created by Logos rather than chaos; nature has stable natures and causes; human reason is fitted to reality because it participates in that order; therefore systematic investigation of the world is meaningful rather than impious or futile. Main question: which premises are actually load-bearing for the rise of scientific inquiry — divine rationality, secondary causation, confidence in nature's regularity, or the moral legitimacy of studying creation?
+
+- [ ] **Christ as Word / Logos** — Formalize the Johannine and conciliar claim that Christ is the eternal Logos through whom all things were made, and clarify what explanatory work "Logos" is doing beyond a title. Candidate chain: the Son is eternally with God and is God; creation is through the Logos; divine wisdom/order is not external to God but personal in the Son; therefore Christ as Logos grounds intelligibility, revelation, and mediation between Creator and creation in a way that bare monotheism does not. Main question: is "Logos" functioning primarily as a metaphysical principle of cosmic order, a Christological identity claim, or both at once?
+
+- [ ] **Why should truth be intelligible at all?** — Formalize the metaphysical assumptions behind reason's fit to reality. Candidate chain: reality is ordered rather than brute chaos; intellect is proportioned to being; truth is discoverable because being is intelligible; therefore rational inquiry is not an accident but a participation in an ordered world. Main question: does this rest primarily on Logos theology, metaphysical realism, or both?
+
+- [ ] **Why did God become man rather than save some other way?** — Formalize the fittingness or necessity claims behind the Incarnation and atonement. Candidate chain: humanity needs reconciliation; the mediator must bridge God and man; fitting repair comes through one who is both divine and human; therefore the Incarnation is not arbitrary. Main question: is the Incarnation strictly necessary, maximally fitting, or only one possible mode of salvation?
+
+- [ ] **Why is the Cross necessary if God can simply forgive?** — Formalize the logic of satisfaction, sacrifice, justice, mercy, and covenant repair. Candidate chain: sin is not merely a private offense but a rupture in right order; forgiveness does not erase the need for restoration; the Cross accomplishes what bare waiver would not; therefore salvation through the Passion is not redundant. Main question: what exactly is the Cross doing that a divine declaration of pardon alone would not do?
+
+- [ ] **Divine attributes (CCC §198-231)** — Omnipotence, omniscience, divine simplicity. Simplicity may productively resist formalization.
+
+- [ ] **Why does evil permission not collapse into evil causation?** — Deepen the providence line by formalizing the difference between permitting evil and causing it. Candidate chain: God sustains all being; evil is a privation rather than a positive created substance; creaturely wills are real secondary causes; therefore divine permission of evil does not make God its moral author in the same way creatures are. Main question: is the privation theory enough, or is a stronger causal distinction required?
+
+**Sacraments, mediation, and ecclesial life**
+
+- [ ] **What exactly changes in a sacrament?** — Formalize sacramental causation rather than only sacramental validity or authority. Candidate chain: sacraments are efficacious signs; they signify and confer grace; some change is ontological rather than merely declarative; therefore reception alters the person in a real way. Main question: what kind of change is this — relational, ontological, juridical, dispositional, or some combination?
+
+- [ ] **Why does confession to a priest make sense if God alone forgives sins?** — Formalize principal vs instrumental causation in sacramental absolution. Candidate chain: God alone is the principal forgiver; Christ delegated a ministry of reconciliation; priests act instrumentally in his name; therefore priestly absolution does not compete with divine forgiveness. Main question: is the load-bearing step delegated authority, sacramental instrumentality, or the ecclesial visibility of reconciliation?
+
+- [ ] **Why pray if God already knows and wills the good?** — Formalize petitionary prayer under providence. Candidate chain: God's providence includes secondary causes; prayer is one such cause; divine foreknowledge does not render creaturely participation pointless; therefore petitionary prayer can be meaningful without changing God's mind in a crude sense. Main question: does prayer change outcomes, change the person praying, or both?
+
+- [ ] **Why ask saints to pray for us if Christ is the one mediator?** — Formalize participatory mediation without collapsing into rivalry with Christ. Candidate chain: Christ is the unique principal mediator; members of his body can share instrumentally in intercession; the saints remain alive in Christ; therefore heavenly intercession participates in, rather than competes with, Christ's mediation. Main question: what principle distinguishes subordinate mediation from usurpation?
+
+- [ ] **What is the exact difference between veneration and worship?** — Formalize the distinction between honor given to creatures and adoration due to God alone. Candidate chain: not all honor is worship; some honor tracks excellence or participation in divine grace; worship uniquely involves absolute divine ultimacy; therefore veneration of saints need not collapse into idolatry. Main question: where is the principled boundary — intention, object, mode of offering, or metaphysical status of the one honored?
+
+- [ ] **Infant Baptism** — Formalize the Catholic case for baptizing infants rather than only professing believers. Candidate chain: baptism is a grace-conferring sacrament, not merely a public testimony; entry into the covenant is not limited by age; the Church can present a child for sacramental grace before personal rational assent; later faith ratifies rather than creates the sacramental gift. Main question: which premise does the anti-paedobaptist objection actually reject — sacramental efficacy, covenant continuity, or representation by the Church/parents?
+
+- [ ] **What makes marriage indissoluble?** — Formalize the Catholic logic of marital permanence. Candidate chain: marriage is covenant, sacrament, and bodily union ordered to a comprehensive common life; what God joins is not merely contractual; therefore indissolubility follows from the nature of the bond, not just an external rule. Main question: which premise is load-bearing — covenantal form, sacramentality, consummation, or the Christ-Church analogy?
+
+- [ ] **Sabbath or Sunday / Lord's Day** — Formalize the Catholic argument that the old covenant Sabbath is no longer binding in the same way and that Christian worship properly gathers on Sunday, the Lord's Day. Candidate chain: Christ's resurrection reorients sacred time; apostolic and early Church practice gathers on the first day; ceremonial observances of the old covenant are not binding as before; therefore Sunday worship is not a later corruption but an apostolic development. Main question: which premise is doing the real work — resurrection symbolism, apostolic practice, or the abrogation/fulfillment of Mosaic ceremonial law?
+
+**Authority, canon, and doctrinal development**
+
+- [ ] **Why can't private judgment settle doctrine by itself?** — Formalize the anti-individualist logic behind magisterial authority. Candidate chain: revelation requires correct interpretation; sincere readers can disagree without a final internal resolver; Christ established a teaching authority in the Church; therefore private judgment cannot be the ultimate rule of faith. Main question: is the decisive problem epistemic disagreement, canon dependence, or the absence of a principled adjudicator?
+
+- [ ] **Scripture and Tradition / rule of faith** — Formalize the Catholic claim that divine revelation is transmitted through both Scripture and apostolic Tradition under the Church's teaching authority. Candidate chain: Christ entrusted teaching authority to the apostles; not all apostolic teaching was written; succession preserves that authority; the canon itself depends on Church judgment; therefore sola scriptura is not self-sufficient as a rule of faith. Main question: is the canon argument the load-bearing step, or is the deeper issue whether authoritative unwritten transmission can exist at all?
+
+- [ ] **Nicaea, conciliar authority, and the biblical canon** — Formalize the historical-theological chain connecting ecumenical councils, doctrinal settlement, and canon discernment. Candidate chain: the Church exercised binding teaching authority at councils like Nicaea before a universally settled New Testament canon was functionally closed; the canon was recognized through ecclesial judgment rather than self-attestation; later councils ratified the scriptural corpus used in the Church's life; therefore sola scriptura depends on an authority structure it cannot fully explain from Scripture alone. Main question: is the decisive anti-sola-scriptura point the canon problem, the conciliar problem, or the combination of both?
 
 - [ ] **Papal Infallibility (Vatican I, 1870)** — Derive from 5 axioms: S_PETRINE_COMMISSION (Mt 16:18-19), S_FAITH_PRAYER (Lk 22:31-32), T_PETER_IS_ROCK (interpretation — this is where Protestants diverge), T_PETRINE_SUCCESSION (Peter→Rome→successors), T_CHARISM_EXTENDS (prayer for Peter extends to the office — the biggest leap). The load-bearing axiom is T_CHARISM_EXTENDS. Replace the current vacuous `claim → claim` in MarianDogma.lean with this real derivation chain. Orthodox cut: accept succession but deny infallibility (primacy of honor only). Protestant cut: reject T_PETER_IS_ROCK and T_PETRINE_SUCCESSION entirely.
 
-- [ ] **Eucharist / Real Presence** — Major sacramental doctrine, connects to P1 (hylomorphism), body-as-sign, Authority chain
+- [ ] **Can development of doctrine be principled rather than ad hoc?** — Formalize the logic by which doctrine can develop while remaining identical in substance. Candidate chain: revelation is complete in Christ, but understanding unfolds over time; later definitions can clarify what was implicit without inventing new revelation; therefore doctrinal development need not be corruption. Main question: what criteria distinguish legitimate development from retrospective rationalization?
 
-- [ ] **Suicide (CCC §2280-2283)** — Pastoral + connects to freedom (diminished culpability), conscience, natural law
+**Broad synthesis / methodology**
 
-- [ ] **Divine attributes (CCC §198-231)** — Omnipotence, omniscience, divine simplicity. Simplicity may productively resist formalization.
+- [ ] **Soteriology / plan of salvation** — Formalize the Catholic salvation chain as a single argument structure rather than leaving it scattered across Grace.lean and Justification.lean. Candidate chain: all are sinners and cannot save themselves; Christ alone saves; grace is a free gift; that gift is ordinarily accessed through repentance, faith, and baptism; saving faith is lived through love; good works are required as grace-enabled obedience, not self-salvation. Main question: which links are genuinely doctrinal, and which are apologetic packaging?
+
+- [ ] **Add a formalization that shows an argument FAILING** — Where the conclusion genuinely doesn't follow from stated premises without adding significant unstated axioms. Would strengthen intellectual honesty.
 
 ### Priority 4: Infrastructure
 

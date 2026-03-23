@@ -42,7 +42,7 @@ Catlib is building toward a **formally verified theological reasoning engine** �
   → For 1,900 years, ALL Christians agreed. Then Lambeth 1930 made one
     axiom swap — and every Protestant denomination followed within decades.
   → Under Catholic axioms (inseparability): contraception is intrinsically evil.
-  → Under Protestant axioms (A1_SEPARABILITY, post-1930): contraception
+  → Under Protestant axioms (separability, post-1930): contraception
     is permitted in marriage.
   → The entire debate is one axiom.
     [See: site/articles/conjugal-ethics.html]
@@ -50,9 +50,9 @@ Catlib is building toward a **formally verified theological reasoning engine** �
 
 Every answer shows its axiom dependencies and denominational scope. You can see exactly what you'd need to accept or reject to hold a different position.
 
-## The axiom base: 3 / 9 / 3
+## The axiom base: 2 / 9 / 3
 
-We traced 44 hidden assumptions across 17 formalizations back to **15 base axioms**:
+We traced the hidden assumptions across our formalizations back to **14 base axioms**:
 
 **9 Scriptural** — with full verse references:
 
@@ -76,19 +76,66 @@ We traced 44 hidden assumptions across 17 formalizations back to **15 base axiom
 | T2. Grace preserves freedom (synergism) | Phil 2:12-13; Trent Session 6 | **Catholic** |
 | T3. Sacraments confer grace (ex opere operato) | Jn 3:5; Acts 2:38; Trent Session 7 | **Catholic** |
 
-**3 Philosophical** — the irreducible non-scriptural residue:
+**2 Philosophical** — the irreducible non-scriptural residue:
 
 | Axiom | Origin | Scope |
 |-------|--------|-------|
-| P1. Hylomorphism (soul as form of body) | Aristotle via Aquinas | Catholic |
 | P2. Two-tier causation | Aquinas | Broadly shared |
 | P3. Evil is privation | Augustine/Aquinas | Broadly shared |
 
+(An earlier draft included a third philosophical axiom, P1 hylomorphism. That content now lives in `Soul.lean` as the `HumanPerson` type rather than as a base axiom — the body-soul composite is modeled structurally, not asserted propositionally.)
+
 **The denominational insight:** S8, T1, T2, T3 are the axioms that make you Catholic. Luther's Reformation was a specific set of modifications to these 4 axioms — forensic grace, monergism, faith alone, signs not causes. Change these axioms, change the denomination. See the [full analysis](site/articles/luther.html).
+
+## Philosophical machinery we import
+
+Formalizing the Catechism in Lean 4 requires machinery that is not in the Catechism itself — and in some cases, not in Scripture either. We are transparent about this. The proof assistant requires precision the original texts do not provide, and filling those gaps means making philosophical commitments.
+
+### Teleological realism
+
+The Catechism assumes that things have natural ends (purposes) and that deliberately thwarting those ends is wrong. §1955 says the natural law "shows man the way to practice the good **and attain his end**." Humanae Vitae §12 says the conjugal act has an "inseparable connection" between its unitive and procreative meanings — a teleological claim.
+
+But the Catechism never names this framework. It does not cite Aristotle's *Physics* or Aquinas's formal/final cause distinction. It *assumes* teleological realism without stating it as a principle.
+
+We make it explicit: `teleological_realism` and `frustration_is_evil` in `NaturalLaw.lean`, built on the `NaturalEnd` structure and the `deliberatelyFrustrates` predicate. These axioms say that natural ends are real features of the world and that deliberately thwarting them is intrinsically evil. Together they generate the inseparability principle (now a theorem in `ConjugalEthics.lean`, not an axiom) and the entire Catholic position on contraception.
+
+**This is Aristotle, not the Gospels.** The teleological framework comes from Greek philosophy, adopted by Aquinas, and woven so deeply into Catholic moral theology that the Catechism treats it as obvious. We flag it because someone approaching the CCC from a non-Aristotelian tradition (most Protestants, most secular ethicists) would not share this starting point — and the conclusions (on contraception, on natural law, on the moral significance of physical acts) only follow if you accept it.
+
+### Law of excluded middle
+
+Lean 4 uses classical logic, which includes the law of excluded middle: every proposition is either true or false. Our `moral_realism` axiom (`∀ p, p.content ∨ ¬p.content`) is technically just excluded middle applied to moral propositions. But the *philosophical claim* matters: we are assuming that moral propositions have definite truth values, not that they are expressions of preference, culture, or emotion.
+
+This is a commitment to **moral cognitivism** — the view that moral statements are truth-apt. The Catechism assumes this throughout (§1954: the natural law "enables man to discern by reason the good and the evil"). But it is not a universally shared philosophical position, and our formalization bakes it in at the deepest level.
+
+### The body matters (hylomorphic anthropology)
+
+Our `HumanPerson` opaque type in `Soul.lean` (following §365: "the soul is the form of the body") treats the person as an indivisible body-soul composite. The body is not packaging for the soul — it is constitutive of personhood. This Aristotelian-Thomistic anthropology is modeled structurally (as the `HumanPerson` type with corporeal and spiritual aspects) rather than as a propositional axiom. It drives our formalization of:
+
+- **The Assumption** of Mary (she was taken up *body and soul* — a complete person, not just a soul)
+- **Conjugal ethics** (what you do *to the physical act* determines its moral object, independent of intent)
+- **The resurrection** (the endpoint is not a disembodied soul in heaven but a *risen body*)
+
+This is not a neutral modeling choice. A Cartesian dualist (soul and body as separate substances) or a materialist (no soul) would model these doctrines very differently — and some conclusions would not follow.
+
+### Substance and accidents (transubstantiation)
+
+The Eucharist formalization requires the Aristotelian distinction between **substance** (what a thing IS) and **accidents** (what a thing APPEARS to be). §1376 says the "whole substance" of bread is converted into the substance of Christ's body, while "the appearances of bread and wine remain."
+
+This distinction is not from Scripture. It is Aristotelian metaphysics, adopted by Aquinas (ST III, q.75), codified at the Council of Trent (Session XIII, 1551). The Catechism uses it without naming Aristotle — it just says "substance" and "species" as if these are obvious categories.
+
+We make it explicit: `EucharisticSubstance` and `EucharisticAccidents` in `Eucharist.lean`. Consecration changes the substance (bread → Christ) while preserving the accidents (still looks and tastes like bread). This is what makes transubstantiation coherent: `corporeal_requires_spiritual` from Soul.lean (a body requires a soul) is satisfied because the **substance** present after consecration is Christ (who has a soul), not bread. The bread-like appearances are accidents — they don't need a soul because they're not a substance.
+
+**This is Aristotle and Aquinas, not the Gospels.** A philosopher who rejects the substance/accident distinction (most modern analytic philosophers, most Protestants) would find the transubstantiation claim literally inexpressible in their framework. The Lutheran alternative (consubstantiation — Christ present "in, with, and under" the bread, which remains bread) does not require this Aristotelian machinery. We flag the dependency because it is load-bearing: without substance/accident, transubstantiation cannot even be stated.
+
+### What this means
+
+We are not smuggling in conclusions. We are being honest: the Catechism's positions on contraception, the body, natural law, and moral realism *require* philosophical machinery that comes from the Aristotelian-Thomistic tradition, not from Scripture alone. The Catechism rarely acknowledges this. We do.
+
+If you reject teleological realism, the inseparability principle falls. If you reject moral cognitivism, natural law theory loses its foundation. If you reject hylomorphic anthropology, the Assumption is just "Mary went to heaven" rather than "Mary went to heaven *bodily*." Each philosophical commitment is load-bearing, and we label each one.
 
 ## What we found
 
-17 formalizations, all revealing hidden assumptions:
+23 formalizations, all revealing hidden assumptions:
 
 | Passage | Finding |
 |---------|---------|
@@ -97,17 +144,24 @@ We traced 44 hidden assumptions across 17 formalizations back to **15 base axiom
 | **Hell** (§1033+1037) | "Self-exclusion" only works under libertarian free will — and the text never explains why love requires freedom |
 | **Grace** (§2001-2002) | "You need grace to prepare for grace" is a genuine circularity requiring a typed grace hierarchy |
 | **Trinity** (§253-255) | Cannot be modeled with standard equality — requires relative identity ("same God" ≠ "same person") |
-| **Natural Law** (§1954-1957) | If universal AND accessible to reason, then disagreement is always a failure of reason |
+| **Natural Law** (§1954-1957) | If universal AND accessible to reason, then disagreement is always a failure of reason. Teleological framework (`NaturalEnd`, `teleological_realism`, `frustration_is_evil`) makes the Aristotelian roots explicit |
 | **Conscience** (§1776-1791) | The erring conscience paradox: acting against conscience is categorically worse than following an erring one |
 | **Providence** (§302-311) | God "operates through" good but only "permits" evil — requires evil to be a privation |
-| **Soul** (§355-365) | The Catechism adopts Aristotelian hylomorphism without naming it |
+| **Soul** (§355-365) | The Catechism adopts Aristotelian hylomorphism without naming it. `HumanPerson` is the body-soul composite type |
 | **Freedom** (§1730-1738) | Perfect freedom is the *inability* to sin |
 | **Legitimate Defense** (§2263-2267) | Proportionality assumes accurate threat assessment under crisis conditions |
 | **Justification** (§1987-1993) | Catholic vs. Protestant = difference in axiom sets; the axiom set IS the denomination |
 | **Exorcism** (§1673) | Authority delegation chain Christ→Apostles→Bishops→Priests; demons are literal personal agents |
 | **Purgatory** (§1030-1032) | Post-mortem purification requires distinguishing "death finalizes choice" from "death finalizes state"; strongest proof text (2 Macc 12:46) depends on which canon you accept |
 | **Divine Modes** (§301 + §1033) | God relates to creation in two modes: sustaining (holds in being) and beatifying (offers communion). Hell is separation from beatifying mode only — the damned still exist because God sustains them. Unifies hell, purgatory, providence, and evil-as-privation into one framework |
-| **Conjugal Ethics** (§2366-2372) | The inseparability principle: 1,900 years of Christian consensus broken by one axiom swap at Lambeth 1930 |
+| **Conjugal Ethics** (§2366-2372) | The inseparability principle (now a theorem derived from `teleological_realism` + `frustration_is_evil`): 1,900 years of Christian consensus broken by one axiom swap at Lambeth 1930. `physical_act_determines_object` grounds the claim that the physical act itself has moral content |
+| **Christology** (§464-478) | The four Chalcedonian negatives (without confusion/change/division/separation) each rule out exactly one heresy. Christ's human nature follows the same body-soul rules as Soul.lean |
+| **Eucharist** (§1322-1419) | Each sacrament maps to a layer: Baptism→L1, Reconciliation→L2, Eucharist→L3. The CCC never states this — it emerges from formalization. Transubstantiation requires the Aristotelian substance/accident distinction; `corporeal_requires_spiritual` is satisfied because the substance is Christ (who has a soul), not bread |
+| **Marian Dogma** (§490-511, §966) | Four Marian dogmas (Theotokos, Immaculate Conception, Perpetual Virginity, Assumption) all require `HumanPerson` (body-soul composite). The Assumption (`bodilyAssumed`) means bodily — not just "went to heaven" |
+| **Original Sin** (§396-409) | Universal inheritance of original sin, with formal exception for Mary (Immaculate Conception). The inheritance axiom + preservation axiom yield the exception as a theorem |
+| **Reconciliation** (§1440-1449) | Sacramental restoration of communion with God — sin breaks `inCommunion (.person p) .god`, reconciliation restores it |
+| **Suicide** (§2280-2283) | Suicide contradicts natural law, but psychological suffering can diminish culpability. Hope for salvation follows from God's mercy (S2) + diminished freedom (S7) |
+| **Theology of the Body** | The personalist norm: the body is not an instrument but constitutive of the person. Grounds the inseparability principle from a different direction than teleological realism |
 
 ## Articles
 
@@ -119,6 +173,13 @@ We traced 44 hidden assumptions across 17 formalizations back to **15 base axiom
 | [Divine Modes](site/articles/divine-modes.html) | If God sustains everything, how can hell be "separation from God"? |
 | [Conjugal Ethics](site/articles/conjugal-ethics.html) | How should Catholics think about family size and contraception? |
 | [The Limits of Proof](site/articles/limits.html) | Where does formalization stop? (the self-control hypothesis) |
+| [Priestly Authority](site/articles/priestly-authority.html) | Where does priestly authority come from, specifically? |
+| [The Mathematics of Culpability](site/articles/culpability-math.html) | What mathematical structure does culpability have? |
+| [Communion](site/articles/communion.html) | What is "communion"? (a binary relation the Catechism never defines) |
+| [Body and Soul](site/articles/body-and-soul.html) | What does the Catechism mean by "the soul is the form of the body"? |
+| [The Geometry of Grace](site/articles/geometry-of-grace.html) | What shape does grace have? |
+| [The Mathematics of Love](site/articles/love-math.html) | What mathematical structure does love have? |
+| [Reconciliation](site/articles/reconciliation.html) | How does sacramental reconciliation restore communion? |
 
 ## What formalization can and cannot do
 
@@ -128,7 +189,7 @@ We traced 44 hidden assumptions across 17 formalizations back to **15 base axiom
 | "Is this logically consistent?" | **YES** — proof assistant checks this | Trinity requires relative identity |
 | "Where do denominations disagree?" | **YES** — axiom set comparison | Lutheran 4-axis swap |
 | "What follows from these axioms?" | **YES** — theorem derivation | Contraception is intrinsically evil (given inseparability) |
-| "Did axiom X cause real-world effect Y?" | **NO** — this is empirical, not logical | Did A1_SEPARABILITY cause declining sexual temperance? |
+| "Did axiom X cause real-world effect Y?" | **NO** — this is empirical, not logical | Did the separability axiom cause declining sexual temperance? |
 | "Which axiom set is TRUE?" | **NO** — that's faith, not logic | Is the inseparability principle true? |
 | "What would have happened if...?" | **NO** — counterfactuals need data | What if Lambeth 1930 hadn't happened? |
 
@@ -138,7 +199,7 @@ Being honest about limits is part of the love letter. Knowing where formalizatio
 
 When someone asks a theological question, the system:
 
-1. **Identifies relevant axioms** from the 15 base axioms
+1. **Identifies relevant axioms** from the 14 base axioms
 2. **Checks for cached theorems** — has this been formally proven before?
 3. **If not cached, reasons from axioms** — constructs a proof attempt
 4. **Tags the result** with denominational scope — Catholic? Lutheran? Ecumenical?
@@ -155,22 +216,63 @@ Requires [Lean 4](https://lean-lang.org/) (v4.16.0).
 lake build
 ```
 
+## Tools
+
+`theorem-tree` — dependency analysis and visualization with two modes:
+
+| Mode | Speed | Accuracy | Requirements |
+|------|-------|----------|--------------|
+| Regex (`--flow`, `--trace`, `--connections`, etc.) | Fast | Approximate | Python 3 only |
+| Kernel (`--true-islands`, `--kernel`, `--compare`, `--props`) | Slow | Exact | Python 3 + `lake build` |
+
+```bash
+# Quick overview: what does this file declare and depend on?
+./tools/theorem-tree Catlib/Creed/Hell.lean
+
+# Dependency flow: axioms → theorems → derived results
+./tools/theorem-tree --flow Catlib/MoralTheology/TheologyOfBody.lean
+
+# Kernel-verified unused axioms (slow, needs lake)
+./tools/theorem-tree --true-islands Catlib/
+
+# What axioms does a specific theorem actually depend on?
+./tools/theorem-tree --kernel hope_for_salvation_of_suicide Catlib/
+
+# Proposition-centric analysis: what has been proven?
+./tools/theorem-tree --props Catlib/
+```
+
+`axiom-wiki` — generates a browsable wiki of all axioms with cross-references.
+
+See [`tools/README.md`](tools/README.md) for full documentation.
+
 ## Project structure
 
 ```
 Catlib/
 ├── Foundations/
 │   ├── Basic.lean         ← Core types + Denomination tags
-│   ├── Axioms.lean        ← The 15 base axioms (3P/9S/3T)
-│   └── Authority.lean     ← General authority delegation chain
-├── Creed/                 ← Hell, Grace, Trinity, Providence, Soul, Purgatory, DivineModes
+│   ├── Axioms.lean        ← The 14 base axioms (2P/9S/3T)
+│   ├── Authority.lean     ← General authority delegation chain
+│   ├── HumanNature.lean   ← Shared human nature predicates
+│   ├── Love.lean          ← Love vocabulary and axioms
+│   └── SinEffects.lean    ← Sin effects on communion and grace
+├── Creed/                 ← Christology, Hell, Grace, Trinity, Providence, Soul,
+│                            Purgatory, DivineModes, MarianDogma, OriginalSin
 ├── MoralTheology/         ← Sources, Sin, Natural Law, Conscience, Freedom,
-│                            Legitimate Defense, Justification, ConjugalEthics
-└── Sacraments/            ← Exorcism (and more to come)
+│                            Legitimate Defense, Justification, ConjugalEthics,
+│                            TheologyOfBody, Suicide
+└── Sacraments/            ← Eucharist, Exorcism, Reconciliation
+tools/
+├── theorem-tree           ← Dependency analysis and visualization
+└── axiom-wiki             ← Browsable axiom wiki generator
 site/
 ├── index.html
 ├── styles.css
-└── articles/              ← Luther, Forgiveness, Purgatory, Divine Modes, Conjugal Ethics
+└── articles/              ← Luther, Forgiveness, Purgatory, Divine Modes,
+                             Conjugal Ethics, Limits, Priestly Authority,
+                             Culpability Math, Communion, Body & Soul,
+                             Geometry of Grace, Love Math, Reconciliation
 ```
 
 ## Spirit
@@ -189,4 +291,6 @@ This IS:
 
 ## License
 
-The Catechism text is from the [Vatican's official English translation](https://www.vatican.va/archive/ENG0015/_INDEX.HTM). The formalizations and site are original work.
+Catlib's original code, formalizations, tools, and site content are licensed under the [MIT License](LICENSE).
+
+The Catechism text is from the [Vatican's official English translation](https://www.vatican.va/archive/ENG0015/_INDEX.HTM) and remains subject to its own source terms.

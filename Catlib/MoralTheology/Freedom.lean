@@ -86,20 +86,18 @@ def freedomAsChoice (canChoose : Prop) : Prop := canChoose
     Choosing evil DIMINISHES freedom. -/
 def freedomAsFlourishing (orientedToGood : Prop) : Prop := orientedToGood
 
-/-- AXIOM 1 (§1731): Freedom is rooted in reason and will.
-    Provenance: [Definition] CCC §1731
-    HIDDEN ASSUMPTION: Freedom requires BOTH reason and will.
-    A being with will but no reason (an animal?) is not free.
-    A being with reason but no will (a computer?) is not free.
-    Freedom is specifically the intersection of these capacities. -/
-axiom freedom_requires_reason_and_will :
-  ∀ (p : Person),
-    p.hasIntellect = true →
-    p.hasFreeWill = true →
-    -- This person has genuine freedom
-    True
+/-! ### §1731: Freedom requires reason and will
 
-/-- AXIOM 2 (§1733): Doing good increases freedom.
+Freedom requires BOTH reason and will (CCC §1731).
+A being with will but no reason (an animal?) is not free.
+A being with reason but no will (a computer?) is not free.
+Freedom is specifically the intersection of these capacities.
+
+*Deleted axiom*: `freedom_requires_reason_and_will` had a vacuous body (`True`).
+The theological content is captured in the `Person` structure's `hasIntellect`
+and `hasFreeWill` fields — both must hold for genuine freedom. -/
+
+/-- AXIOM (§1733): Doing good increases freedom.
     Provenance: [Definition] CCC §1733
     "The more one does what is good, the freer one becomes."
     HIDDEN ASSUMPTION: This is a TELEOLOGICAL claim — freedom has
@@ -121,38 +119,31 @@ axiom good_increases_freedom :
     -- (choosing good makes you freer)
     fd.level > 0
 
-/-- AXIOM 3 (§1733): Choosing evil diminishes freedom.
-    Provenance: [Definition] CCC §1733
-    "The choice to disobey and do evil is an abuse of freedom
-    and leads to 'the slavery of sin.'"
-    HIDDEN ASSUMPTION: Evil is self-undermining. The more evil you
-    choose, the less capable you become of choosing good. This is
-    a specific empirical-metaphysical claim about the effects of
-    moral choices on the agent's capacities. -/
-axiom evil_diminishes_freedom :
-  ∀ (fd : FreedomDegree),
-    ¬fd.orientedToGood →
-    -- Choosing evil leads toward slavery
-    -- (the agent becomes less free)
-    True
+/-! ### §1733: Choosing evil diminishes freedom
 
-/-- AXIOM 4 (§1732): The possibility of evil is a feature of
-    IMPERFECT freedom, not freedom itself.
-    Provenance: [Definition] CCC §1732
-    "As long as freedom has not bound itself definitively to its
-    ultimate good... there is the possibility of choosing between
-    good and evil."
-    HIDDEN ASSUMPTION: The ability to choose evil is a TRANSITIONAL
-    property — it characterizes freedom on the way to perfection,
-    not freedom at its peak. -/
-axiom evil_possible_only_in_imperfect_freedom :
-  ∀ (fd : FreedomDegree),
-    fd.canChooseEvil →
-    -- Freedom is not yet perfected
-    -- (a perfectly free being CANNOT choose evil)
-    ¬fd.orientedToGood ∨ fd.orientedToGood
-    -- (this is trivially true but the conceptual point is:
-    -- canChooseEvil implies not-yet-perfected)
+"The choice to disobey and do evil is an abuse of freedom and leads to
+'the slavery of sin.'" (CCC §1733)
+
+Evil is self-undermining. The more evil you choose, the less capable you
+become of choosing good. This is a specific empirical-metaphysical claim
+about the effects of moral choices on the agent's capacities.
+
+*Deleted axiom*: `evil_diminishes_freedom` had a vacuous body (`True`).
+The real content is carried by `good_increases_freedom` (its contrapositive
+direction) and by base axiom `s7_teleological_freedom`.
+
+### §1732: Evil is possible only in imperfect freedom
+
+"As long as freedom has not bound itself definitively to its ultimate
+good... there is the possibility of choosing between good and evil."
+(CCC §1732)
+
+The ability to choose evil is a TRANSITIONAL property — it characterizes
+freedom on the way to perfection, not freedom at its peak.
+
+*Deleted axiom*: `evil_possible_only_in_imperfect_freedom` had a trivially
+true body (`¬p ∨ p`). The conceptual content is expressed by the
+`PerfectFreedom` structure and `perfect_freedom_cannot_sin` theorem below. -/
 
 /-!
 ## Bridge theorems to base axioms
@@ -218,20 +209,20 @@ that they are voluntary." This introduces proportional responsibility
 — another graded concept.
 -/
 
-/-- AXIOM 5 (§1734): Responsibility is proportional to freedom.
-    Provenance: [Definition] CCC §1734
-    HIDDEN ASSUMPTION: If freedom is graded (you can be more or less
-    free), and responsibility tracks freedom, then responsibility is
-    also graded. A person acting under diminished freedom has
-    diminished responsibility. This connects back to the Sin
-    formalization — the "full knowledge and complete consent"
-    requirement for mortal sin is a threshold on this spectrum. -/
-axiom responsibility_proportional_to_freedom :
-  ∀ (fd : FreedomDegree) (p : Person),
-    p.hasFreeWill = true →
-    -- Responsibility is proportional to the degree of freedom
-    -- (more free = more responsible)
-    fd.level > 0 → True
+/-! ### §1734: Responsibility is proportional to freedom
+
+"Freedom makes man responsible for his acts to the extent that they are
+voluntary." (CCC §1734)
+
+If freedom is graded (you can be more or less free), and responsibility
+tracks freedom, then responsibility is also graded. A person acting under
+diminished freedom has diminished responsibility. This connects back to the
+Sin formalization — the "full knowledge and complete consent" requirement
+for mortal sin is a threshold on this spectrum.
+
+*Deleted axiom*: `responsibility_proportional_to_freedom` had a vacuous body
+(`fd.level > 0 → True`). The proportionality concept is modeled through the
+`FreedomDegree.level` field and the Sin formalization's consent requirements. -/
 
 /-!
 ## Summary of hidden assumptions
