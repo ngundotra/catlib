@@ -175,28 +175,40 @@ axiom soulstate_communion_bridge :
     s.inBeatifyingCommunion ↔ inCommunion (.person p) .god
 
 /-- Key theorem: all three states are sustained — nothing stops existing.
-    God sustains the damned, the purifying, and the blessed alike. -/
+    God sustains the damned, the purifying, and the blessed alike.
+    Derived from god_sustains_all. -/
 theorem all_states_sustained :
-    heavenState.sustained ∧ purgatoryState.sustained ∧ hellState.sustained := by
-  exact ⟨trivial, trivial, trivial⟩
+    heavenState.sustained ∧ purgatoryState.sustained ∧ hellState.sustained :=
+  ⟨god_sustains_all heavenState, god_sustains_all purgatoryState, god_sustains_all hellState⟩
 
 /-- The hell paradox resolved: the damned are separated from God's
     communion but NOT from God's sustaining power. Both can be true
-    simultaneously because they are different modes. -/
+    simultaneously because they are different modes.
+    Derived from god_sustains_all (sustained) + definition of hellState (no communion). -/
 theorem hell_paradox_resolved :
     -- The damned exist (sustained)
     hellState.sustained ∧
     -- The damned are separated from communion
-    ¬hellState.inBeatifyingCommunion := by
-  constructor
-  · exact trivial
-  · intro h; exact absurd h (by simp [hellState])
+    ¬hellState.inBeatifyingCommunion :=
+  ⟨god_sustains_all hellState, fun h => absurd h (by simp [hellState])⟩
 
 /-- Heaven requires full purification — you can't be in communion
     without being purified. -/
 theorem heaven_requires_purity :
     heavenState.inBeatifyingCommunion → heavenState.purified :=
   beatific_vision_requires_purity heavenState
+
+/-- **THEOREM: Hell means loss of communion with God.**
+    The hell paradox restated using the global communion relation
+    (Axioms.lean) rather than the SoulState field. For any person p,
+    if they are in hellState (no beatifying communion), then they are
+    NOT in communion with God per the unified relation.
+    Derived from soulstate_communion_bridge + hellState definition. -/
+theorem hell_means_no_communion_with_god (p : Person) :
+    ¬hellState.inBeatifyingCommunion →
+    ¬inCommunion (.person p) .god :=
+  fun h_no_beat h_comm =>
+    h_no_beat ((soulstate_communion_bridge p hellState).mpr h_comm)
 
 /-- Purgatory is the state of being in communion (chose God) but
     not yet purified. This is why it's temporary — once purified,
@@ -311,17 +323,38 @@ that we can say what it means for a specific person to be in heaven,
 purgatory, hell, or risen glory.
 -/
 
+/-- The sin profile of a person — their current state across the three
+    layers of sin effects (original wound, guilt, attachment).
+    This connects a HumanPerson to the SinProfile framework from
+    SinEffects.lean. Without this bridge, SinProfiles float free
+    and predicates like "isPurified" become meaningless opaques. -/
+axiom sinProfileOf : HumanPerson → SinProfile
+
+/-- A person is fully purified when all three sin-effect layers are removed:
+    original wound (by baptism), guilt (by reconciliation), and attachment
+    (by purgation/penance). CCC §1030-1031.
+    This is a DEFINITION, not an opaque — purification has real structure. -/
+def isPurified (p : HumanPerson) : Prop :=
+  let sp := sinProfileOf p
+  sp.originalWound = EffectState.removed ∧
+  sp.guilt = EffectState.removed ∧
+  sp.attachment = EffectState.removed
+
 /-- Whether a human person is in beatifying communion with God.
-    This is the person-level analogue of SoulState.inBeatifyingCommunion.
-    Opaque: the Catechism asserts it as a state, not something we construct. -/
+    This SHOULD be defined as `inCommunion (.person p) .god` but
+    CommunionParty.person takes Person, not HumanPerson — the two
+    type systems (Person for moral reasoning, HumanPerson for body-soul
+    reasoning) are not yet bridged. A coercion HumanPerson → Person
+    would fix this.
+    TODO: Bridge Person ↔ HumanPerson, then replace this opaque with
+    a def using the global communion relation. -/
 opaque inBeatifyingCommunionPerson : HumanPerson → Prop
 
-/-- Whether a human person has been fully purified.
-    Opaque: purification is a divine action, not something we construct. -/
-opaque isPurified : HumanPerson → Prop
-
 /-- AXIOM: The beatific vision requires full purification for persons.
-    Person-level analogue of beatific_vision_requires_purity.
+    If a person is in communion with God, all three sin-effect layers
+    must be resolved. CCC §1023-1024: "those who die in God's grace
+    and friendship and are perfectly purified live for ever with Christ."
+    Rev 21:27: "nothing impure will ever enter" heaven.
     Provenance: [Scripture] Rev 21:27; [Definition] CCC §1023-1024. -/
 axiom beatific_vision_requires_purity_person :
   ∀ (p : HumanPerson), inBeatifyingCommunionPerson p → isPurified p
@@ -439,6 +472,17 @@ theorem risen_saint_is_true_endpoint (p : HumanPerson)
   let ⟨h_risen, h_comm, h_pur⟩ := h
   let ⟨h_corp, h_spir⟩ := resurrection_reunites p h_risen
   ⟨h_corp, h_spir, h_comm, h_pur⟩
+
+/-- **THEOREM: Communion with God requires purification.**
+    If a person in the afterlife is in beatifying communion with God,
+    they must be purified. This is why purgatory exists — the soul in
+    communion (chose God) but not yet purified must be purified before
+    the beatific vision.
+    Derived from beatific_vision_requires_purity_person. -/
+theorem communion_requires_purification (p : HumanPerson)
+    (h_comm : inBeatifyingCommunionPerson p) :
+    isPurified p :=
+  beatific_vision_requires_purity_person p h_comm
 
 /-!
 ## Bridge: SinEffects → DivineModes
