@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PapalInfallibility.T_CHARISM_EXTENDS — Catlib Axiom Wiki</title>
+  <meta name="description" content="Axiom: PapalInfallibility.T_CHARISM_EXTENDS — AXIOM (T_CHARISM_EXTENDS): Christ&#x27;s prayer for Peter&#x27;s faith (Lk 22:32) extends to every holder of the Petrine office. The divine assistance promised to Peter c">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel+Decorative:wght@400;700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../articles/articles.css">
+</head>
+<body>
+
+  <main>
+    <a href="index.html" class="back-link">Back to Axiom Index</a>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="ornament">&#10053;</div>
+      <h1>PapalInfallibility.T_CHARISM_EXTENDS</h1>
+      <p class="subtitle">axiom &mdash; Catlib/Creed/PapalInfallibility.lean:342</p>
+      <p class="subtitle"><span class="tag tag-catholic">Catholic</span></p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <section class="article-body">
+      <h2>Lean Declaration</h2>
+      <pre class="lean-code">axiom T_CHARISM_EXTENDS :
+  -- If divine assistance was promised to SOME holder of the Petrine office
+  -- (i.e., Peter — from S_FAITH_PRAYER), then the charism covers the office itself
+  (∃ (p : Person), holdsPetrineOffice p ∧ divineAssistancePromised p) →
+  ∀ (office : PetrineOffice), faithCharismCoversOffice office</pre>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <section class="article-body">
+      <h2>Why This Axiom?</h2>
+      <p>AXIOM (T_CHARISM_EXTENDS): Christ's prayer for Peter's faith (Lk 22:32) extends to every holder of the Petrine office. The divine assistance promised to Peter covers his successors when they exercise the full teaching authority of the office. Petrine succession, do not accept that this charism makes the Pope's ex cathedra teaching irreformable. HONEST NOTE: This is the single most contested axiom in the chain. It extends a personal prayer to an institutional guarantee.</p>
+      <p><strong>Source:</strong> CCC §891; Vatican I, Pastor Aeternus, Chapter 4.</p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <section class="article-body">
+      <h2>Theorems That Use This Axiom</h2>
+      <p>Kernel-verified via <code>#print axioms</code> &mdash; these theorems genuinely depend on this axiom at the proof level.</p>
+      <div class="finding-card">
+        <ul style="list-style: none; padding: 0;">
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><code>PapalInfallibility.full_chain</code> <span style="color: var(--text-light); font-size: 0.85rem;">(Catlib/Creed/PapalInfallibility.lean:589)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><code>PapalInfallibility.papal_infallibility</code> <span style="color: var(--text-light); font-size: 0.85rem;">(Catlib/Creed/PapalInfallibility.lean:424)</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <section class="article-body">
+      <h2>Related Axioms</h2>
+      <p>Other axioms declared in the same file:</p>
+      <div class="finding-card">
+        <ul style="list-style: none; padding: 0;">
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_Creed_PapalInfallibility_Teaching.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">PapalInfallibility.Teaching</a> <span style="color: var(--text-light); font-size: 0.85rem;">(opaque)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_Creed_PapalInfallibility_concernsFaithOrMorals.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">PapalInfallibility.concernsFaithOrMorals</a> <span style="color: var(--text-light); font-size: 0.85rem;">(opaque)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_Creed_PapalInfallibility_isDefinitiveForUniversalChurch.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">PapalInfallibility.isDefinitiveForUniversalChurch</a> <span style="color: var(--text-light); font-size: 0.85rem;">(opaque)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_Creed_PapalInfallibility_invokesFullAuthority.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">PapalInfallibility.invokesFullAuthority</a> <span style="color: var(--text-light); font-size: 0.85rem;">(opaque)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_Creed_PapalInfallibility_isIrreformable.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">PapalInfallibility.isIrreformable</a> <span style="color: var(--text-light); font-size: 0.85rem;">(opaque)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_Creed_PapalInfallibility_PetrineOffice.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">PapalInfallibility.PetrineOffice</a> <span style="color: var(--text-light); font-size: 0.85rem;">(opaque)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_Creed_PapalInfallibility_holdsPetrineOffice.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">PapalInfallibility.holdsPetrineOffice</a> <span style="color: var(--text-light); font-size: 0.85rem;">(opaque)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_Creed_PapalInfallibility_divineAssistancePromised.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">PapalInfallibility.divineAssistancePromised</a> <span style="color: var(--text-light); font-size: 0.85rem;">(opaque)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_Creed_PapalInfallibility_faithCharismCoversOffice.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">PapalInfallibility.faithCharismCoversOffice</a> <span style="color: var(--text-light); font-size: 0.85rem;">(opaque)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_Creed_PapalInfallibility_peterIsTheRock.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">PapalInfallibility.peterIsTheRock</a> <span style="color: var(--text-light); font-size: 0.85rem;">(opaque)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_Creed_PapalInfallibility_petrineSuccessionToRome.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">PapalInfallibility.petrineSuccessionToRome</a> <span style="color: var(--text-light); font-size: 0.85rem;">(opaque)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_Creed_PapalInfallibility_S_PETRINE_COMMISSION.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">PapalInfallibility.S_PETRINE_COMMISSION</a> <span style="color: var(--text-light); font-size: 0.85rem;">(axiom)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_Creed_PapalInfallibility_S_FAITH_PRAYER.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">PapalInfallibility.S_FAITH_PRAYER</a> <span style="color: var(--text-light); font-size: 0.85rem;">(axiom)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_Creed_PapalInfallibility_T_PETER_IS_ROCK.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">PapalInfallibility.T_PETER_IS_ROCK</a> <span style="color: var(--text-light); font-size: 0.85rem;">(axiom)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_Creed_PapalInfallibility_T_PETRINE_SUCCESSION.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">PapalInfallibility.T_PETRINE_SUCCESSION</a> <span style="color: var(--text-light); font-size: 0.85rem;">(axiom)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_Creed_PapalInfallibility_CHARISM_GUARANTEES_IRREFORMABILITY.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">PapalInfallibility.CHARISM_GUARANTEES_IRREFORMABILITY</a> <span style="color: var(--text-light); font-size: 0.85rem;">(axiom)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_Creed_PapalInfallibility_authorityIsCollegial.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">PapalInfallibility.authorityIsCollegial</a> <span style="color: var(--text-light); font-size: 0.85rem;">(opaque)</span></li>
+          <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border);"><a href="Catlib_Creed_PapalInfallibility_ORTHODOX_PRIMACY_OF_HONOR.html" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-gold);">PapalInfallibility.ORTHODOX_PRIMACY_OF_HONOR</a> <span style="color: var(--text-light); font-size: 0.85rem;">(axiom)</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="ornament">&#10053;</div>
+
+    <section class="cta-section">
+      <div class="cta-group">
+        <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/PapalInfallibility.lean" class="cta-button primary">View Source</a>
+        <a href="index.html" class="cta-button secondary">Axiom Index</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="ornament">&#10053;</div>
+    <p>
+      <a href="https://github.com/ngundotra/catlib">Catlib</a>&nbsp;&mdash;
+      formalizing the Catholic Catechism in Lean 4.
+    </p>
+  </footer>
+
+</body>
+</html>
