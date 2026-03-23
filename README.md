@@ -127,11 +127,24 @@ We make it explicit: `EucharisticSubstance` and `EucharisticAccidents` in `Eucha
 
 **This is Aristotle and Aquinas, not the Gospels.** A philosopher who rejects the substance/accident distinction (most modern analytic philosophers, most Protestants) would find the transubstantiation claim literally inexpressible in their framework. The Lutheran alternative (consubstantiation — Christ present "in, with, and under" the bread, which remains bread) does not require this Aristotelian machinery. We flag the dependency because it is load-bearing: without substance/accident, transubstantiation cannot even be stated.
 
+### Adequation of intellect to reality (*adaequatio rei et intellectus*)
+
+The CCC asserts in §36 that God "can be known with certainty from the created world by the natural light of human reason." But it never explains *why* human reason should be reliable. The answer requires combining two separate CCC claims:
+
+- §299: "Because God creates through **wisdom**, his creation is ordered"
+- §1700: "The dignity of the human person is rooted in his creation in the **image** and likeness of God"
+
+The same rational wisdom that *ordered the world* also *structured the mind that studies it*. The match between knower and known is not a coincidence — both are products of the same rational source. This is Aquinas's definition of truth: *adaequatio rei et intellectus* ("the adequation of the thing and the intellect," ST I q.16 a.1). The intellect is adequate to reality because both participate in divine wisdom.
+
+We make this explicit in `ScientificInquiry.lean`, which derives two propositions from CCC axioms: (A) the world is logical (from §299 + §306 + P2) and (B) humans can understand that logic (from §1700/imago_dei + §299 + §36). Proposition B depends on Proposition A — you can't understand a logical world unless it *is* logical first. Together they provide the metaphysical preconditions for scientific inquiry.
+
+**This is Aquinas, not the Gospels.** The *adaequatio* thesis presupposes that human cognitive faculties are reliably aimed at truth — a commitment the CCC inherits from Thomistic epistemology without naming it. A Humean skeptic (our categories may not match reality), a Kantian (we know appearances, not things-in-themselves), or a Barthian (reason is too fallen to know God from nature) would each reject a different step in this chain.
+
 ### What this means
 
-We are not smuggling in conclusions. We are being honest: the Catechism's positions on contraception, the body, natural law, and moral realism *require* philosophical machinery that comes from the Aristotelian-Thomistic tradition, not from Scripture alone. The Catechism rarely acknowledges this. We do.
+We are not smuggling in conclusions. We are being honest: the Catechism's positions on contraception, the body, natural law, moral realism, and the reliability of reason *require* philosophical machinery that comes from the Aristotelian-Thomistic tradition, not from Scripture alone. The Catechism rarely acknowledges this. We do.
 
-If you reject teleological realism, the inseparability principle falls. If you reject moral cognitivism, natural law theory loses its foundation. If you reject hylomorphic anthropology, the Assumption is just "Mary went to heaven" rather than "Mary went to heaven *bodily*." Each philosophical commitment is load-bearing, and we label each one.
+If you reject teleological realism, the inseparability principle falls. If you reject moral cognitivism, natural law theory loses its foundation. If you reject hylomorphic anthropology, the Assumption is just "Mary went to heaven" rather than "Mary went to heaven *bodily*." If you reject the *adaequatio*, you lose the grounding for natural theology and the CCC's claim that God is knowable by reason. Each philosophical commitment is load-bearing, and we label each one.
 
 ## What we found
 

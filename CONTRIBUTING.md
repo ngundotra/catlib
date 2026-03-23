@@ -4,7 +4,7 @@
 
 ### Priority 1: Formalization quality fixes (from project review)
 
-- [ ] **Fix T2 formalization** — `t2_grace_preserves_freedom` in Axioms.lean is currently `P ∨ ¬P` (law of excluded middle). This is a tautology — a Lutheran would accept it trivially. Should assert something a monergist would DENY: "there exists a state where grace is given and the person genuinely could either cooperate or not."
+- [x] **Fix T2 formalization** — Was `P ∨ ¬P` (LEM tautology). Now asserts `couldChooseOtherwise` under grace — what Trent Canon 4 actually says and what Calvinists (irresistible grace) deny.
 
 - [ ] **Fix FITTINGNESS_AS_EVIDENCE** in MarianDogma.lean — currently `claim → claim` (identity function). Should model the actual epistemological principle: "if something is maximally fitting for God's plan, and God is omnipotent, then God did it." This needs real content.
 
@@ -42,7 +42,9 @@
 
 **Metaphysical and Christological foundations**
 
-- [ ] **Theological grounds for scientific inquiry** — Formalize the classical Christian argument that rational and empirical inquiry are possible because creation is intelligible, ordered, and worth studying. Candidate chain: the world is created by Logos rather than chaos; nature has stable natures and causes; human reason is fitted to reality because it participates in that order; therefore systematic investigation of the world is meaningful rather than impious or futile. Main question: which premises are actually load-bearing for the rise of scientific inquiry — divine rationality, secondary causation, confidence in nature's regularity, or the moral legitimacy of studying creation?
+- [x] **Theological grounds for scientific inquiry** — Formalized in `Creed/ScientificInquiry.lean`. Derives two propositions: (A) the world is logical (from §299 + §306 + P2) and (B) humans can understand that logic (from §1700/imago_dei + §299 + §36). Key finding: P2 (two-tier causation) and imago_dei are equally load-bearing — drop P2 and you get occasionalism, drop imago_dei and you have no reason to trust reason. The *adaequatio rei et intellectus* (Aquinas) is hiding inside the CCC.
+
+- [ ] **Define what "the world is logical" means** — `worldIsLogical` in `ScientificInquiry.lean` is currently opaque. The CCC grounds science metaphysically but never commits to a specific philosophy of science. Three candidate definitions, each progressively stronger: (1) **Regularity** — same causes produce same effects. Weakest; even an occasionalist can observe regularities, they just ground them in God's habits. (2) **Essentialism** — things have stable natures with real causal powers. Fire burns BECAUSE OF WHAT FIRE IS. This is Aristotelian and aligns with P2/secondary causation. (3) **Mathematical describability** — the world's order is expressible in mathematical language (Galileo's "book of nature is written in mathematics"; Wigner's "unreasonable effectiveness of mathematics"). CCC §299 ("measure and number and weight") leans toward this but doesn't commit. Main question: does the CCC's argument require a specific account of natural order, or does it work with any of the three? If it works with all three, that's itself a finding — the metaphysical grounding is more general than the specific philosophy of science.
 
 - [ ] **Christ as Word / Logos** — Formalize the Johannine and conciliar claim that Christ is the eternal Logos through whom all things were made, and clarify what explanatory work "Logos" is doing beyond a title. Candidate chain: the Son is eternally with God and is God; creation is through the Logos; divine wisdom/order is not external to God but personal in the Son; therefore Christ as Logos grounds intelligibility, revelation, and mediation between Creator and creation in a way that bare monotheism does not. Main question: is "Logos" functioning primarily as a metaphysical principle of cosmic order, a Christological identity claim, or both at once?
 

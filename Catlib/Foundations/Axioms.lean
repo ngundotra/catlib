@@ -389,10 +389,24 @@ def t1_provenance : Provenance := Provenance.tradition "Sir 15:14; Trent Session
 
     *Grounds*: Grace.lean axiom 22 (divine_initiative_preserves_freedom),
     Justification.lean axiom 24 (human_cooperation_in_justification).
-    CCC §2002: "God's free initiative demands man's free response." -/
+    CCC §2002: "God's free initiative demands man's free response."
+
+    OLD VERSION was `P ∨ ¬P` (law of excluded middle) — a tautology that
+    a monergist would accept trivially. The new version asserts what Trent
+    Canon 4 actually says: under grace, BOTH cooperation AND refusal are
+    genuinely possible. This is what Calvinists deny (irresistible grace).
+
+    The denominational split:
+    - CATHOLIC (synergism): grace + freedom → can cooperate OR refuse
+    - REFORMED (monergism): effective grace → WILL cooperate (cannot refuse)
+    - LUTHERAN: somewhere between (grace is resistible but monergistic) -/
 axiom t2_grace_preserves_freedom :
   ∀ (p : Person) (g : Grace),
-    graceGiven p g → (cooperatesWithGrace p g ∨ ¬ cooperatesWithGrace p g)
+    graceGiven p g →
+    -- BOTH options are genuinely available — not just "one is true" (LEM)
+    -- but "the person could go either way" (libertarian freedom under grace)
+    -- A monergist denies this: under effective grace, refusal is impossible.
+    couldChooseOtherwise p
 
 /-- Provenance tag for T2. -/
 def t2_provenance : Provenance := Provenance.tradition "Phil 2:12-13; Trent Session 6"

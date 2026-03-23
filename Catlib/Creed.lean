@@ -9,3 +9,4 @@ import Catlib.Creed.DivineModes
 import Catlib.Creed.MarianDogma
 import Catlib.Creed.OriginalSin
 import Catlib.Creed.PapalInfallibility
+import Catlib.Creed.ScientificInquiry
