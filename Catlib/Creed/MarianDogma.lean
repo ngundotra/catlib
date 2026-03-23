@@ -303,16 +303,55 @@ def original_sin_inherited_tag : DenominationalTag :=
   { acceptedBy := [Denomination.ecumenical], note := "broadly shared; Orthodox frame differently as 'ancestral sin'" }
 
 /-!
-### NOTE ON DELETED AXIOMS
+### The fittingness principle — Duns Scotus's *potuit, decuit, fecit*
 
-RETROACTIVE_REDEMPTION, FITTINGNESS_AS_EVIDENCE, and PAPAL_INFALLIBILITY
-were originally axioms here but had vacuous bodies (True → claim → claim).
-They documented the *reasoning* behind the IC (retroactive application of
-Christ's merits, the convenientissimum principle, and papal authority) but
-couldn't do any logical work. The actual doctrinal commitment is
-mary_preserved below. The fittingness/retroactive/papal arguments are the
-*motivation* for accepting mary_preserved, not a formal derivation.
+The Immaculate Conception's most distinctive supporting argument is the
+**argument from fittingness** (convenientia). Duns Scotus (1266-1308):
+
+- *potuit* — God COULD do it (omnipotence)
+- *decuit* — it was FITTING that He do it (the Mother of God should be sinless)
+- *fecit* — therefore He DID it
+
+This is an epistemological principle: aesthetic/theological fittingness,
+combined with divine omnipotence, is treated as evidence that God acted.
+It turns "it would be beautiful if X" into "therefore X."
+
+This is a genuinely distinctive Catholic epistemological commitment.
+Protestants reject it — "fitting" doesn't imply "actual" without
+independent evidence. The principle has no scriptural basis; it's a
+method of theological reasoning imported from Scotist philosophy.
+
+NOTE: RETROACTIVE_REDEMPTION and the old PAPAL_INFALLIBILITY axioms
+were deleted because they had vacuous bodies. PAPAL_INFALLIBILITY is
+now properly formalized in `PapalInfallibility.lean`. The fittingness
+principle below replaces the old FITTINGNESS_AS_EVIDENCE (which was
+`claim → claim`).
 -/
+
+-- NOTE: We intentionally do NOT formalize the fittingness principle
+-- as an axiom here. The principle ("potuit, decuit, fecit") is real
+-- Catholic theology, but we don't yet understand what "fitting" means
+-- well enough to model it. Specifically:
+--
+-- 1. What IS fittingness? An aesthetic judgment? A mode of divine
+--    reasoning? A type of probability? Scotus, Aquinas, and Bonaventure
+--    all use the concept differently.
+--
+-- 2. What distinguishes "fitting" from "maximally fitting"? The IC
+--    argument needs the strongest form, but the CCC doesn't define
+--    degrees of fittingness.
+--
+-- 3. Why does fittingness + omnipotence → actuality? God COULD do
+--    many fitting things He hasn't done. What additional premise
+--    makes this one actual?
+--
+-- See CONTRIBUTING.md backlog item "Define what fittingness means"
+-- for the research agenda. For now, mary_preserved below is a direct
+-- axiom (the doctrinal commitment), not derived from fittingness.
+
+def fittingness_tag : DenominationalTag :=
+  { acceptedBy := [Denomination.catholic]
+    note := "Scotist epistemology (potuit, decuit, fecit). Fittingness principle not yet formalized — see backlog." }
 
 /-- **AXIOM: mary_preserved** — Mary was preserved from original sin.
     This is the actual doctrinal commitment of the Immaculate Conception,
@@ -420,6 +459,7 @@ theorem mary_is_the_exception :
     preservedFromOriginalSin mary ∧ ¬hasOriginalSin mary :=
   ⟨mary_preserved, immaculate_conception_proper⟩
 
+
 -- ============================================================================
 -- DOGMA 3: THE ASSUMPTION (Pius XII, Munificentissimus Deus, 1950)
 -- ============================================================================
@@ -479,18 +519,29 @@ def death_consequence_sin_provenance : Provenance := Provenance.scripture "Rom 5
 def death_consequence_sin_tag : DenominationalTag :=
   { acceptedBy := [Denomination.ecumenical], note := "broadly shared; interpretations vary" }
 
+/-- **THEOREM: Every non-preserved person's body is subject to corruption.**
+    Chain: not preserved → has original sin (original_sin_inherited) →
+    body subject to corruption (death_is_consequence_of_sin).
+    This is why death is universal — everyone except Mary has original sin,
+    and original sin causes bodily corruption (Rom 5:12, Gen 3:19). -/
+theorem non_preserved_body_corrupts
+    (p : HumanPerson) (h_not_preserved : ¬preservedFromOriginalSin p) :
+    bodySubjectToCorruption p :=
+  death_is_consequence_of_sin p
+    (Or.inl (original_sin_inherited p h_not_preserved))
+
 /-- **AXIOM: sinlessness_implies_bodily_integrity** — If a person never
     sinned (neither original nor personal sin), their body is not subject
     to the corruption that results from sin.
-    Source: Theological reasoning from death_is_consequence_of_sin
-    (the contrapositive: no sin → no corruption-from-sin);
-    CCC §966, §974.
-    HIDDEN ASSUMPTION: This is the contrapositive of death_is_consequence_of_sin,
-    but stated as a separate axiom because the reasoning involves an
-    additional step: not just "no sin → no death" but "no sin → bodily
-    integrity preserved for assumption into glory."
-    Denominational scope: CATHOLIC — the inference from sinlessness to bodily
-    integrity is accepted primarily in Catholic theology. -/
+
+    This is NOT the contrapositive of death_is_consequence_of_sin.
+    death_is_consequence_of_sin says: sin → corruption (forward direction).
+    This axiom says: ¬sin → ¬corruption (the converse of the contrapositive).
+    These are logically independent — "sin causes corruption" does not imply
+    "no sin prevents corruption" (there could be other causes of corruption).
+    Both directions must be separately asserted.
+
+    Source: CCC §966, §974. Denominational scope: CATHOLIC. -/
 axiom sinlessness_implies_bodily_integrity :
   ∀ (p : HumanPerson),
     ¬hasOriginalSin p →

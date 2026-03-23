@@ -224,18 +224,20 @@ theorem native_with_original_sin_still_unknown :
     afterlifeFromProfile nativeWithOriginalSin = AfterlifeOutcome.knownToGodAlone := by
   simp [afterlifeFromProfile, nativeWithOriginalSin]
 
-/-- §1472: Temporal punishment is NOT vengeance — it follows from
-    the nature of sin. The attachment IS the punishment, not
-    something added on top. Connects to P3 (evil is privation). -/
-axiom temporal_punishment_is_intrinsic :
-  ∀ (sp : SinProfile),
-    sp.attachment = EffectState.present →
-    -- The attachment follows from the sin itself, not from
-    -- external divine punishment (§1472)
-    True  -- NOTE: this is vacuous. The real content is in the
-          -- docstring. Future work: give it real content by
-          -- modeling attachment as a natural consequence of
-          -- the act, not an imposed penalty.
+/-!
+### Temporal punishment is intrinsic (§1472)
+
+"Every sin, even venial, entails an unhealthy attachment to creatures."
+Temporal punishment is NOT vengeance imposed from outside — the
+attachment IS the punishment. It follows from the nature of sin itself,
+connecting to P3 (evil is privation): the disordered attachment is the
+privation of right ordering, not an added penalty.
+
+This was previously a vacuous axiom (body was `True`). The real content
+is captured by the SinProfile model itself: attachment is a layer that
+must be removed (by penance, charity, or purgatory) independently of
+guilt removal.
+-/
 
 /-!
 ## Summary
