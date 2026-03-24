@@ -42,6 +42,9 @@
   --inductive-bg: #e8daf0;
   --inductive-border: #8a6aaa;
   --inductive-dot: #6a4a8a;
+  --proposition-bg: #f0e0e4;
+  --proposition-border: #aa5a6a;
+  --proposition-dot: #8a2a4a;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -78,6 +81,9 @@
     --inductive-bg: #201a28;
     --inductive-border: #6a4a8a;
     --inductive-dot: #aa8ad4;
+    --proposition-bg: #2a1420;
+    --proposition-border: #8a3a5a;
+    --proposition-dot: #d46a8a;
   }
 }
 
@@ -223,6 +229,7 @@ h1 {
 .tag-axiom { background: var(--axiom-bg); color: var(--axiom-dot); border: 1px solid var(--axiom-border); }
 .tag-theorem { background: var(--theorem-bg); color: var(--theorem-dot); border: 1px solid var(--theorem-border); }
 .tag-def { background: var(--def-bg); color: var(--def-dot); border: 1px solid var(--def-border); }
+.tag-proposition { background: var(--proposition-bg); color: var(--proposition-dot); border: 1px solid var(--proposition-border); }
 
 .file-card-ccc {
   font-size: 0.78rem;
@@ -259,6 +266,7 @@ h1 {
 .node-card.kind-opaque { border-left-color: var(--opaque-dot); }
 .node-card.kind-structure { border-left-color: var(--structure-dot); }
 .node-card.kind-inductive { border-left-color: var(--inductive-dot); }
+.node-card.kind-proposition { border-left-color: var(--proposition-dot); }
 
 .node-header {
   display: flex;
@@ -293,6 +301,7 @@ h1 {
 .kind-opaque .node-kind-badge { background: var(--opaque-bg); color: var(--opaque-dot); }
 .kind-structure .node-kind-badge { background: var(--structure-bg); color: var(--structure-dot); }
 .kind-inductive .node-kind-badge { background: var(--inductive-bg); color: var(--inductive-dot); }
+.kind-proposition .node-kind-badge { background: var(--proposition-bg); color: var(--proposition-dot); }
 
 .node-name {
   flex: 1;
@@ -452,6 +461,7 @@ h1 {
 .legend-dot.opaque { background: var(--opaque-dot); }
 .legend-dot.structure { background: var(--structure-dot); }
 .legend-dot.inductive { background: var(--inductive-dot); }
+.legend-dot.proposition { background: var(--proposition-dot); }
 
 /* ── Filter buttons ── */
 .filter-bar {
@@ -518,9 +528,9 @@ h1 {
   
   <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1023, &sect;1263, &sect;1322, &sect;1355, &sect;1373, &sect;1374, &sect;1376, &sect;1377, &sect;1385, &sect;1387, &sect;1391, &sect;1394, &sect;1395, &sect;1396, &sect;1401 +2 more</div>
 
-  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot structure"></span>structure</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
+  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot proposition"></span>proposition</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot structure"></span>structure</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
 
-  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (8)</button><button class="filter-btn" data-filter="def">def (9)</button><button class="filter-btn" data-filter="inductive">inductive (4)</button><button class="filter-btn" data-filter="opaque">opaque (4)</button><button class="filter-btn" data-filter="structure">structure (2)</button><button class="filter-btn" data-filter="theorem">theorem (21)</button></div>
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (8)</button><button class="filter-btn" data-filter="def">def (7)</button><button class="filter-btn" data-filter="proposition">proposition (2)</button><button class="filter-btn" data-filter="inductive">inductive (4)</button><button class="filter-btn" data-filter="opaque">opaque (4)</button><button class="filter-btn" data-filter="structure">structure (2)</button><button class="filter-btn" data-filter="theorem">theorem (21)</button></div>
 
   <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
 
@@ -849,9 +859,9 @@ h1 {
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="isWorthyToReceive">isWorthyToReceive</span><span class="dep-chip" data-target="grave_necessity_exception">grave_necessity_exception</span><span class="dep-chip" data-target="protestant_in_grave_necessity">protestant_in_grave_necessity</span><span class="dep-chip" data-target="grave_necessity_still_requires_grace">grave_necessity_still_requires_grace</span></div></div>
   </div>
 </div>
-<div class="node-card kind-def" data-kind="def" data-name="sinProfilePermitsCommunion">
+<div class="node-card kind-proposition" data-kind="proposition" data-name="sinProfilePermitsCommunion">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">def</span>
+    <span class="node-kind-badge">proposition</span>
     <span class="node-name">sinProfilePermitsCommunion</span>
     <span class="node-chevron">&#9654;</span>
   </div>
@@ -862,9 +872,9 @@ h1 {
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="isWorthyToReceive">isWorthyToReceive</span><span class="dep-chip" data-target="eucharist_reduces_attachment">eucharist_reduces_attachment</span><span class="dep-chip" data-target="guilt_bars_communion">guilt_bars_communion</span><span class="dep-chip" data-target="unbaptized_cannot_receive">unbaptized_cannot_receive</span><span class="dep-chip" data-target="baptized_in_grace_can_receive">baptized_in_grace_can_receive</span><span class="dep-chip" data-target="reconciled_can_receive">reconciled_can_receive</span><span class="dep-chip" data-target="mortal_sinner_cannot_receive">mortal_sinner_cannot_receive</span><span class="dep-chip" data-target="unevangelized_communion_indeterminate">unevangelized_communion_indeterminate</span><span class="dep-chip" data-target="reconciliation_enables_communion">reconciliation_enables_communion</span><span class="dep-chip" data-target="communion_leads_to_full_purification">communion_leads_to_full_purification</span><span class="dep-chip" data-target="communion_points_to_heaven">communion_points_to_heaven</span><span class="dep-chip" data-target="sacraments_have_distinct_domains">sacraments_have_distinct_domains</span><span class="dep-chip" data-target="graveNecessityExists">graveNecessityExists</span><span class="dep-chip" data-target="grave_necessity_exception">grave_necessity_exception</span><span class="dep-chip" data-target="protestant_in_grave_necessity">protestant_in_grave_necessity</span><span class="dep-chip" data-target="grave_necessity_still_requires_grace">grave_necessity_still_requires_grace</span></div></div>
   </div>
 </div>
-<div class="node-card kind-def" data-kind="def" data-name="isWorthyToReceive">
+<div class="node-card kind-proposition" data-kind="proposition" data-name="isWorthyToReceive">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">def</span>
+    <span class="node-kind-badge">proposition</span>
     <span class="node-name">isWorthyToReceive</span>
     <span class="node-chevron">&#9654;</span>
   </div>

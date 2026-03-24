@@ -42,6 +42,9 @@
   --inductive-bg: #e8daf0;
   --inductive-border: #8a6aaa;
   --inductive-dot: #6a4a8a;
+  --proposition-bg: #f0e0e4;
+  --proposition-border: #aa5a6a;
+  --proposition-dot: #8a2a4a;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -78,6 +81,9 @@
     --inductive-bg: #201a28;
     --inductive-border: #6a4a8a;
     --inductive-dot: #aa8ad4;
+    --proposition-bg: #2a1420;
+    --proposition-border: #8a3a5a;
+    --proposition-dot: #d46a8a;
   }
 }
 
@@ -223,6 +229,7 @@ h1 {
 .tag-axiom { background: var(--axiom-bg); color: var(--axiom-dot); border: 1px solid var(--axiom-border); }
 .tag-theorem { background: var(--theorem-bg); color: var(--theorem-dot); border: 1px solid var(--theorem-border); }
 .tag-def { background: var(--def-bg); color: var(--def-dot); border: 1px solid var(--def-border); }
+.tag-proposition { background: var(--proposition-bg); color: var(--proposition-dot); border: 1px solid var(--proposition-border); }
 
 .file-card-ccc {
   font-size: 0.78rem;
@@ -259,6 +266,7 @@ h1 {
 .node-card.kind-opaque { border-left-color: var(--opaque-dot); }
 .node-card.kind-structure { border-left-color: var(--structure-dot); }
 .node-card.kind-inductive { border-left-color: var(--inductive-dot); }
+.node-card.kind-proposition { border-left-color: var(--proposition-dot); }
 
 .node-header {
   display: flex;
@@ -293,6 +301,7 @@ h1 {
 .kind-opaque .node-kind-badge { background: var(--opaque-bg); color: var(--opaque-dot); }
 .kind-structure .node-kind-badge { background: var(--structure-bg); color: var(--structure-dot); }
 .kind-inductive .node-kind-badge { background: var(--inductive-bg); color: var(--inductive-dot); }
+.kind-proposition .node-kind-badge { background: var(--proposition-bg); color: var(--proposition-dot); }
 
 .node-name {
   flex: 1;
@@ -452,6 +461,7 @@ h1 {
 .legend-dot.opaque { background: var(--opaque-dot); }
 .legend-dot.structure { background: var(--structure-dot); }
 .legend-dot.inductive { background: var(--inductive-dot); }
+.legend-dot.proposition { background: var(--proposition-dot); }
 
 /* ── Filter buttons ── */
 .filter-bar {
@@ -518,9 +528,9 @@ h1 {
   
   <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1015, &sect;1023, &sect;1705, &sect;362, &sect;363, &sect;364, &sect;365, &sect;366, &sect;405, &sect;988, &sect;990, &sect;997</div>
 
-  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot structure"></span>structure</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
+  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot proposition"></span>proposition</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot structure"></span>structure</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
 
-  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (5)</button><button class="filter-btn" data-filter="def">def (2)</button><button class="filter-btn" data-filter="opaque">opaque (6)</button><button class="filter-btn" data-filter="structure">structure (1)</button><button class="filter-btn" data-filter="theorem">theorem (17)</button></div>
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (5)</button><button class="filter-btn" <button class="filter-btn" data-filter="proposition">proposition (2)</button><button class="filter-btn" data-filter="opaque">opaque (6)</button><button class="filter-btn" data-filter="structure">structure (1)</button><button class="filter-btn" data-filter="theorem">theorem (17)</button></div>
 
   <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
 
@@ -817,9 +827,9 @@ h1 {
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="both_aspects_in_life">both_aspects_in_life</span><span class="dep-chip" data-target="corporeal_requires_spiritual">corporeal_requires_spiritual</span><span class="dep-chip" data-target="death_separates">death_separates</span><span class="dep-chip" data-target="resurrection_reunites">resurrection_reunites</span><span class="dep-chip" data-target="soul_is_immortal">soul_is_immortal</span><span class="dep-chip" data-target="dead_person_is_incomplete">dead_person_is_incomplete</span><span class="dep-chip" data-target="dead_person_still_exists">dead_person_still_exists</span><span class="dep-chip" data-target="living_person_is_complete">living_person_is_complete</span><span class="dep-chip" data-target="no_body_without_soul">no_body_without_soul</span><span class="dep-chip" data-target="rejects_cartesian_dualism">rejects_cartesian_dualism</span><span class="dep-chip" data-target="rejects_materialism">rejects_materialism</span><span class="dep-chip" data-target="risen_person_is_complete">risen_person_is_complete</span><span class="dep-chip" data-target="soul_body_asymmetry">soul_body_asymmetry</span><span class="dep-chip" data-target="dualist_says_resurrection_ornamental">dualist_says_resurrection_ornamental</span><span class="dep-chip" data-target="fullHumanBeatitude">fullHumanBeatitude</span><span class="dep-chip" data-target="hylomorphism_requires_resurrection">hylomorphism_requires_resurrection</span><span class="dep-chip" data-target="intermediate_state_lacks_full_beatitude">intermediate_state_lacks_full_beatitude</span><span class="dep-chip" data-target="isCompletePerson">isCompletePerson</span><span class="dep-chip" data-target="resurrection_necessary_for_full_beatitude">resurrection_necessary_for_full_beatitude</span><span class="dep-chip" data-target="risen_in_communion_has_full_beatitude">risen_in_communion_has_full_beatitude</span><span class="dep-chip" data-target="risen_person_is_complete_person">risen_person_is_complete_person</span><span class="dep-chip" data-target="separated_soul_is_incomplete">separated_soul_is_incomplete</span></div></div>
   </div>
 </div>
-<div class="node-card kind-def" data-kind="def" data-name="isCompletePerson">
+<div class="node-card kind-proposition" data-kind="proposition" data-name="isCompletePerson">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">def</span>
+    <span class="node-kind-badge">proposition</span>
     <span class="node-name">isCompletePerson</span>
     <span class="node-chevron">&#9654;</span>
   </div>
@@ -844,9 +854,9 @@ h1 {
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="fullHumanBeatitude">fullHumanBeatitude</span><span class="dep-chip" data-target="intermediate_state_lacks_full_beatitude">intermediate_state_lacks_full_beatitude</span><span class="dep-chip" data-target="risen_in_communion_has_full_beatitude">risen_in_communion_has_full_beatitude</span><span class="dep-chip" data-target="resurrection_necessary_for_full_beatitude">resurrection_necessary_for_full_beatitude</span><span class="dep-chip" data-target="dualist_says_resurrection_ornamental">dualist_says_resurrection_ornamental</span><span class="dep-chip" data-target="hylomorphism_requires_resurrection">hylomorphism_requires_resurrection</span><span class="dep-chip" data-target="HumanPerson">HumanPerson</span></div></div>
   </div>
 </div>
-<div class="node-card kind-def" data-kind="def" data-name="fullHumanBeatitude">
+<div class="node-card kind-proposition" data-kind="proposition" data-name="fullHumanBeatitude">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">def</span>
+    <span class="node-kind-badge">proposition</span>
     <span class="node-name">fullHumanBeatitude</span>
     <span class="node-chevron">&#9654;</span>
   </div>
