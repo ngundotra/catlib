@@ -76,7 +76,12 @@ opaque godIsLove : Prop
 /-- Love between persons. -/
 opaque loves : Person → Person → Prop
 
-/-- Whether genuine love requires freedom. -/
+/-- Whether genuine love requires freedom.
+    OVER-GENERAL: This applies to agape (charity) specifically, not to all love.
+    Eros (involuntary attraction) does NOT require freedom — you do not choose
+    whom you find beautiful. See `Catlib.Foundations.Love.agape_requires_freedom`
+    for the precise, typed version.
+    Retained for backward compatibility with S1 and Hell.lean's bridge lemma. -/
 opaque loveRequiresFreedom : Prop
 
 /-- God desires a given person to be saved. -/
@@ -191,6 +196,14 @@ def p3_provenance : Provenance := Provenance.naturalLaw
 
 -- ============================================================================
 -- S1-S9: SCRIPTURAL AXIOMS — with full verse references (9)
+--
+-- NOTE ON CLASSIFICATION: The "Scriptural" label means each axiom has direct
+-- scriptural grounding. It does NOT mean the formal claim is purely exegetical.
+-- Several axioms (especially S6, S7, S8) import substantial philosophical
+-- frameworks to INTERPRET the scriptural data. A Protestant or non-Thomist
+-- would reasonably classify some of these as Philosophical or Tradition
+-- rather than Scripture. The 2/9/3 split is defensible but debatable —
+-- see the individual docstrings for S6, S7, and S8 for details.
 -- ============================================================================
 
 /-- **S1. GOD_IS_LOVE**: God's very nature is love, and genuine love requires
@@ -201,7 +214,15 @@ def p3_provenance : Provenance := Provenance.naturalLaw
 
     *Grounds*: Hell.lean axiom 30 (love_requires_freedom), the impossibility
     of predestination to damnation. CCC §214: "God is Love." CCC §1861: love
-    as the fundamental orientation that hell's self-exclusion negates. -/
+    as the fundamental orientation that hell's self-exclusion negates.
+
+    **NOTE (over-generality):** `loveRequiresFreedom` applies to **agape**
+    (charity / willing the good of the other) specifically. Eros (involuntary
+    attraction) does NOT require freedom — Benedict XVI, *Deus Caritas Est* §3-8.
+    The typed model in `Foundations/Love.lean` distinguishes four love-kinds and
+    proves this restriction: `agape_requires_freedom` (freedom required) vs.
+    `eros_does_not_require_freedom` (freedom not required). The untyped axiom
+    here should be read as: "agape requires freedom." -/
 axiom s1_god_is_love :
   godIsLove ∧ loveRequiresFreedom
 
@@ -281,7 +302,19 @@ def s5_provenance : Provenance := Provenance.scripture "1 Jn 3:14-15; Rom 6:23"
 
     *Grounds*: natural law theory (NaturalLaw.lean axioms 1-3), the claim that
     moral truths are objective and knowable. CCC §1954: "The natural law…
-    is nothing other than the light of understanding placed in us by God." -/
+    is nothing other than the light of understanding placed in us by God."
+
+    **Classification note.** The Scripture references describe a *phenomenon*
+    (Gentiles know right from wrong without the Torah). The formal claim —
+    that moral propositions have objective truth values accessible to reason —
+    is **moral cognitivism**, a philosophical position (Aristotle, Aquinas).
+    An emotivist or non-cognitivist could read Romans 2 as describing moral
+    *intuitions* without conceding they track mind-independent moral facts.
+    A Protestant in the Reformed tradition might classify this as Philosophy
+    (natural theology) rather than Scripture, since the exegetical claim
+    (moral awareness exists) is weaker than the philosophical claim (moral
+    realism is true). We classify it as Scriptural because the CCC reads
+    Romans 1-2 as teaching moral realism, but the classification is debatable. -/
 axiom s6_moral_realism :
   ∀ (mp : MoralProposition), moralTruthValue mp → accessibleToReason mp
 
@@ -305,7 +338,21 @@ axiom agentFreedom : Person → FreedomDegree
 
     *Grounds*: Freedom.lean axioms 10-13 (good increases freedom, evil diminishes
     it, evil possible only in imperfect freedom, responsibility proportional to
-    freedom). CCC §1733: "The more one does what is good, the freer one becomes." -/
+    freedom). CCC §1733: "The more one does what is good, the freer one becomes."
+
+    **Classification note.** The Scripture references teach that sin is
+    *slavery* and Christ brings *true freedom*. The formal claim — that
+    freedom has a telos (the good) and that choosing evil *diminishes*
+    freedom rather than expressing it — is **Aristotelian teleology**,
+    mediated through Aquinas (ST I-II q.1-5). A libertarian philosopher
+    (in the political sense) could accept John 8:34 while insisting that
+    choosing evil is a genuine exercise of freedom, just a bad one. The
+    teleological *ordering* of freedom toward the good is Aquinas's
+    philosophical framework imposed on the biblical text. A Protestant
+    might classify this as Philosophy (Aristotelian-Thomistic) rather than
+    Scripture. We classify it as Scriptural because Jesus's own language
+    ("slave to sin" / "free indeed") strongly implies the ordering, but
+    the formal teleological framing goes beyond what the text alone says. -/
 axiom s7_teleological_freedom :
   ∀ (a1 a2 : Person),
     directedTowardGood a1 → ¬ directedTowardGood a2 →
@@ -327,7 +374,22 @@ def s7_provenance : Provenance := Provenance.scripture "Jn 8:34-36; Gal 5:1"
     *Grounds*: Grace.lean axioms 20-21 (preparation_requires_prevenient,
     prevenient_grace_unconditioned), Justification.lean axiom 23
     (grace_is_transformative). CCC §1999: "Grace… is a participation in
-    the life of God." -/
+    the life of God."
+
+    **Classification note.** The *necessity* of grace (Jn 15:5) is broadly
+    scriptural and ecumenical — Luther affirmed it too. The contested part is
+    *transformative*: that grace does not merely *declare* the sinner righteous
+    (forensic/imputed justification, Luther's reading of Rom 4:5) but actually
+    *makes* the sinner righteous (infused justification, the Catholic reading
+    of 2 Cor 5:17 and Ezek 36:26). Both sides cite Scripture; the difference
+    is which passages are given interpretive priority and what theological
+    framework organizes them. A Lutheran would say the "transformative" reading
+    is Tradition (Trent, Session 6), not Scripture. A Protestant might
+    reclassify this axiom as Tradition rather than Scripture, since the
+    forensic-vs-transformative debate is precisely where the Reformation split.
+    We classify it as Scriptural because the Catholic reading of the cited
+    passages is natural and longstanding, but the classification is the most
+    debatable of any axiom in the base. -/
 axiom s8_grace_necessary_and_transformative :
   ∀ (p : Person) (g : Grace),
     graceGiven p g → graceTransforms g p

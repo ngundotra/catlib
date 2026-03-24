@@ -300,12 +300,16 @@ SourcesOfMorality.lean: the moral object of an act can be evaluated
 independently of its consequences.
 -/
 
-/-- The moral object of NFP: choosing not to have sex during fertile
-    periods. The object is abstinence — and abstinence is never evil,
-    because it is the absence of an act, not the performance of a
-    disordered one. -/
-def NFPObject : Prop :=
-  True  -- "not having sex" is not an evil act; no positive evil in the object
+/-- The moral object of NFP: when a couple engages in the conjugal act
+    during infertile periods, both meanings are intact — the act is
+    unitive AND its procreative structure is unmodified.  Therefore
+    the act does not deliberately frustrate procreation.
+
+    Previously `True` (trivially provable). Now defined in terms of
+    the existing moral-object framework so that proving it requires
+    the `physical_act_determines_object` axiom. -/
+def NFPObject (act : ConjugalAct) : Prop :=
+  act.unitiveIntact ∧ act.procreativeIntact → ¬deliberatelyFrustratesProcreation act
 
 /-- The moral object of contraception: having sex while deliberately
     rendering procreation impossible. Under the inseparability
@@ -363,11 +367,15 @@ periods), both meanings are intact: the act is unitive and is
 not rendered artificially infertile.
 -/
 
-/-- The object of NFP is not evil. Abstaining from sex is never
-    intrinsically evil — you cannot sin by NOT doing something
-    that is not obligatory. -/
-theorem nfp_object_not_evil : NFPObject := by
-  trivial
+/-- The object of NFP is not evil. When a conjugal act preserves both
+    meanings (unitive + procreative intact), it does not deliberately
+    frustrate procreation. Derived from `physical_act_determines_object`.
+
+    Previously provable by `trivial` (NFPObject was `True`). Now
+    genuinely depends on the axiom that physical structure determines
+    moral object. -/
+theorem nfp_object_not_evil (act : ConjugalAct) : NFPObject act :=
+  fun ⟨_, h_proc⟩ => physical_act_determines_object act h_proc
 
 /-- **THEOREM: NFP does NOT deliberately frustrate procreation.**
     Derived from physical_act_determines_object: the physical act is

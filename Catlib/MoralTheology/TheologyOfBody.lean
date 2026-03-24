@@ -543,23 +543,41 @@ def concupiscence_tag : DenominationalTag :=
   { acceptedBy := [Denomination.catholic],
     note := "Calibration is Catholic; three-state structure is ecumenical (creation-fall-redemption)" }
 
+/-- Default NuptialCapacity instance, needed for the opaque declaration. -/
+instance : Inhabited NuptialCapacity :=
+  ⟨{ level := 0, desiresOrdered := True, canChooseSelfGift := True }⟩
+
+/-- The nuptial capacity characteristic of each anthropological state.
+    This is opaque because the exact calibration is a modeling choice;
+    the axiom below constrains the relationships between them. -/
+opaque stateCapacity : AnthropologicalState → NuptialCapacity
+
 /-- **AXIOM (TOB 1-4; CCC §374-379, 396-409, 1987-1995):
     THREE-STATE ANTHROPOLOGY.**
     Human nature exists in one of three states (Original Integrity,
-    Fallen, Redeemed), each with different freedom and capacity levels.
+    Fallen, Redeemed), each with different nuptial-capacity levels.
+
+    Previously vacuous (every branch mapped to `True`). Now expresses
+    the substantive claims:
+    - Original Integrity: desires fully ordered, maximum capacity
+    - Fallen: capacity diminished but non-zero (against total depravity)
+    - Redeemed: capacity exceeds the Fallen state (grace restores)
 
     PROVENANCE: Scripture (Gen 1-3 for creation and fall; Rom 5-8 for
     redemption); CCC §374-379 (original justice), §396-409 (the fall),
     §1987-1995 (justification/grace).
 
     CONNECTS TO: Freedom.lean FreedomDegree (each state has a different
-    freedom level). -/
+    freedom level); concupiscence_diminishes_not_destroys (Fallen > 0). -/
 axiom three_state_anthropology :
-  ∀ (state : AnthropologicalState),
-    match state with
-    | .OriginalIntegrity => True   -- Full capacity
-    | .Fallen            => True   -- Diminished capacity (but non-zero)
-    | .Redeemed          => True   -- Capacity being restored
+  -- Original Integrity: desires ordered, full capacity for self-gift
+  (stateCapacity .OriginalIntegrity).desiresOrdered ∧
+  (stateCapacity .OriginalIntegrity).canChooseSelfGift ∧
+  -- Fallen: capacity diminished but non-zero (CCC §405)
+  (stateCapacity .Fallen).level > 0 ∧
+  (stateCapacity .Fallen).canChooseSelfGift ∧
+  -- Redeemed: grace restores capacity beyond the Fallen level
+  (stateCapacity .Redeemed).level > (stateCapacity .Fallen).level
 
 /-- Denominational tag: the three-state structure is ecumenical. -/
 def three_state_tag : DenominationalTag :=

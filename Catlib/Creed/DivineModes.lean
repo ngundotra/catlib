@@ -90,7 +90,12 @@ open Catlib
 -/
 
 /-- How God relates to a creature.
-    This is the fundamental distinction that resolves the hell paradox. -/
+    This is the fundamental distinction that resolves the hell paradox.
+    MODELING CHOICE: The CCC never names "sustaining" and "beatifying" as
+    two explicit modes. It says God sustains all (§301) and that hell is
+    separation from God (§1033). We introduce the two-mode framework to
+    reconcile these claims. Other formalizations might model the distinction
+    differently (e.g., as a spectrum rather than two discrete modes). -/
 inductive DivineMode where
   /-- Sustaining mode: God holds the creature in existence.
       Without this, the creature ceases to be entirely.
@@ -102,7 +107,11 @@ inductive DivineMode where
   | beatifying
 
 /-- The state of a soul's relationship with God after death.
-    Defined by which divine modes are active. -/
+    Defined by which divine modes are active.
+    MODELING CHOICE: The CCC does not model the afterlife as a three-field
+    Prop structure. We chose {sustained, inBeatifyingCommunion, purified}
+    to capture the distinctions the CCC draws. The three-state model
+    (heaven/purgatory/hell) emerges from combinations of these fields. -/
 structure SoulState where
   /-- Is God sustaining this soul in existence? -/
   sustained : Prop
@@ -169,14 +178,20 @@ def hellState : SoulState :=
     global inCommunion relation (Axioms.lean) applied to this soul and God.
     The beatifying mode being active for a person IS what it means to be
     in communion with God. This is an axiom — the theological claim that
-    communion with God = God's beatifying mode being active. -/
+    communion with God = God's beatifying mode being active.
+    MODELING CHOICE: We identify "beatifying communion" with the global
+    `inCommunion` relation. The CCC does not make this identification
+    explicit — it uses "communion with God" language without specifying
+    whether this is the same relation across all contexts. -/
 axiom soulstate_communion_bridge :
   ∀ (p : Person) (s : SoulState),
     s.inBeatifyingCommunion ↔ inCommunion (.person p) .god
 
-/-- Key theorem: all three states are sustained — nothing stops existing.
-    God sustains the damned, the purifying, and the blessed alike.
-    Derived from god_sustains_all. -/
+/-- **Structural lemma (Tier 0):** instantiates god_sustains_all for the
+    three concrete eschatological states. This is definitionally immediate
+    given that heavenState, purgatoryState, and hellState all set
+    `sustained := True`, but it documents the theological claim that God
+    sustains the damned, the purifying, and the blessed alike. -/
 theorem all_states_sustained :
     heavenState.sustained ∧ purgatoryState.sustained ∧ hellState.sustained :=
   ⟨god_sustains_all heavenState, god_sustains_all purgatoryState, god_sustains_all hellState⟩
@@ -327,7 +342,10 @@ purgatory, hell, or risen glory.
     layers of sin effects (original wound, guilt, attachment).
     This connects a HumanPerson to the SinProfile framework from
     SinEffects.lean. Without this bridge, SinProfiles float free
-    and predicates like "isPurified" become meaningless opaques. -/
+    and predicates like "isPurified" become meaningless opaques.
+    MODELING CHOICE: We assign each person a single determinate SinProfile.
+    The CCC does not model sin effects as a three-layer structure with
+    determinate states — that is our representation from SinEffects.lean. -/
 axiom sinProfileOf : HumanPerson → SinProfile
 
 /-- A person is fully purified when all three sin-effect layers are removed:
@@ -346,6 +364,8 @@ def isPurified (p : HumanPerson) : Prop :=
     type systems (Person for moral reasoning, HumanPerson for body-soul
     reasoning) are not yet bridged. A coercion HumanPerson → Person
     would fix this.
+    MODELING CHOICE: Opaque because the Person ↔ HumanPerson bridge
+    does not yet exist. Once bridged, this should become a def.
     TODO: Bridge Person ↔ HumanPerson, then replace this opaque with
     a def using the global communion relation. -/
 opaque inBeatifyingCommunionPerson : HumanPerson → Prop

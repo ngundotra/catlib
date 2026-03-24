@@ -78,12 +78,18 @@ open Catlib
 
 /-- Freedom-as-choice: the modern/liberal concept.
     Freedom = having options. More options = more freedom.
-    Choosing evil is an EXERCISE of freedom. -/
+    Choosing evil is an EXERCISE of freedom.
+    MODELING CHOICE: We represent this as a simple Prop wrapper to
+    contrast it with freedom-as-flourishing. The CCC mentions both
+    concepts (§1731 vs §1733) without naming them as distinct models. -/
 def freedomAsChoice (canChoose : Prop) : Prop := canChoose
 
 /-- Freedom-as-flourishing: the Catechism's deeper concept.
     Freedom = power to do what is genuinely good.
-    Choosing evil DIMINISHES freedom. -/
+    Choosing evil DIMINISHES freedom.
+    MODELING CHOICE: Same representation as freedomAsChoice — the
+    distinction is conceptual, not structural. The CCC holds both
+    simultaneously without explaining their relationship. -/
 def freedomAsFlourishing (orientedToGood : Prop) : Prop := orientedToGood
 
 /-! ### §1731: Freedom requires reason and will
@@ -179,7 +185,11 @@ being unable to sin, but BECAUSE of it.
 
 /-- Perfect freedom: fully oriented to good, no longer able to
     choose evil. This is the state of the blessed in heaven
-    and (always) of God. -/
+    and (always) of God.
+    MODELING CHOICE: We model perfect freedom as a structure with
+    Prop fields. The CCC describes this state (§1732: "bound itself
+    definitively to its ultimate good") but does not define it as a
+    formal concept distinct from ordinary freedom. -/
 structure PerfectFreedom where
   person : Person
   /-- Fully oriented to the good -/

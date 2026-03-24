@@ -63,10 +63,12 @@ We traced the hidden assumptions across our formalizations back to **14 base axi
 | S3. Moral law written on hearts | Rom 2:14-15 | Ecumenical |
 | S4. Universal providence | Mt 10:29; Is 46:10 | Ecumenical |
 | S5. Sin separates from God | 1 Jn 3:14-15; Rom 6:23 | Ecumenical |
-| S6. Moral realism | Rom 1:20; Rom 2:14-15 | Ecumenical |
-| S7. Freedom aims at the good; sin = slavery | Jn 8:34-36; Gal 5:1 | Ecumenical |
-| S8. Grace necessary and transformative | Jn 15:5; 2 Cor 5:17; Ezek 36:26 | **Catholic** |
+| S6. Moral realism (\*) | Rom 1:20; Rom 2:14-15 | Ecumenical |
+| S7. Freedom aims at the good; sin = slavery (\*) | Jn 8:34-36; Gal 5:1 | Ecumenical |
+| S8. Grace necessary and transformative (\*) | Jn 15:5; 2 Cor 5:17; Ezek 36:26 | **Catholic** |
 | S9. Conscience binds | Rom 14:23; Acts 24:16 | Ecumenical |
+
+(\*) **Classification note:** S6, S7, and S8 have substantial philosophical components that the "Scriptural" label can obscure. S6 imports moral cognitivism (Aristotle/Aquinas) to interpret Romans 1-2. S7 imports Aristotelian teleology to interpret John 8. S8's "transformative" reading is the Catholic interpretation of passages a Protestant reads as supporting forensic justification. A Protestant or non-Thomist could reasonably classify some of these as Philosophical or Tradition. The 2/9/3 split is defensible — the CCC does ground each in Scripture — but it is debatable. See the docstrings in `Catlib/Foundations/Axioms.lean` for full details.
 
 **3 Tradition** — with Council references:
 
@@ -148,7 +150,7 @@ If you reject teleological realism, the inseparability principle falls. If you r
 
 ## What we found
 
-23 formalizations, all revealing hidden assumptions:
+27 formalizations, all revealing hidden assumptions:
 
 | Passage | Finding |
 |---------|---------|
@@ -159,7 +161,7 @@ If you reject teleological realism, the inseparability principle falls. If you r
 | **Trinity** (§253-255) | Cannot be modeled with standard equality — requires relative identity ("same God" ≠ "same person") |
 | **Natural Law** (§1954-1957) | If universal AND accessible to reason, then disagreement is always a failure of reason. Teleological framework (`NaturalEnd`, `teleological_realism`, `frustration_is_evil`) makes the Aristotelian roots explicit |
 | **Conscience** (§1776-1791) | The erring conscience paradox: acting against conscience is categorically worse than following an erring one |
-| **Providence** (§302-311) | God "operates through" good but only "permits" evil — requires evil to be a privation |
+| **Providence** (§302-312) | God "operates through" good but only "permits" evil. Permission ≠ causation requires THREE pillars: evil is a privation (P3), two-tier causation (P2), and genuine freedom (T1). Drop any one and the argument fails |
 | **Soul** (§355-365) | The Catechism adopts Aristotelian hylomorphism without naming it. `HumanPerson` is the body-soul composite type |
 | **Freedom** (§1730-1738) | Perfect freedom is the *inability* to sin |
 | **Legitimate Defense** (§2263-2267) | Proportionality assumes accurate threat assessment under crisis conditions |
@@ -175,6 +177,10 @@ If you reject teleological realism, the inseparability principle falls. If you r
 | **Reconciliation** (§1440-1449) | Sacramental restoration of communion with God — sin breaks `inCommunion (.person p) .god`, reconciliation restores it |
 | **Suicide** (§2280-2283) | Suicide contradicts natural law, but psychological suffering can diminish culpability. Hope for salvation follows from God's mercy (S2) + diminished freedom (S7) |
 | **Theology of the Body** | The personalist norm: the body is not an instrument but constitutive of the person. Grounds the inseparability principle from a different direction than teleological realism |
+| **Intercession** (§956, §2683) | P2 (two-tier causation) does quadruple duty: causation, prayer, absolution, intercession. The same non-competition principle resolves four distinct puzzles. The Protestant objects that P2 applies to causation but NOT to mediation — this is the precise point of disagreement |
+| **Argument Gaps** (§491, §1374, §302) | Three cases where stated premises don't reach stated conclusions: the IC's scriptural basis is *compatibility* not *entailment*; "this is my body" underdetermines the metaphysics; foreknowledge + freedom is asserted as mystery. The gaps confirm the CCC's own claim that Scripture and Tradition are both necessary — the gaps are features under Catholic epistemology, not bugs |
+| **Heresies** (Nicaea, Ephesus, Chalcedon) | Every heresy is a DROP or SWAP of an orthodox axiom — never an ADDITION. Five heresies (Arianism, Nestorianism, Pelagianism, Modalism, Monophysitism) each deny a specific axiom; `orthodoxy_excludes_all_heresies` mechanically verifies the orthodox axiom set refutes all five. Heresies simplify; denominations can also extend. The axiom set IS the orthodoxy |
+| **Atonement** (§599-618) | Why can't God just FORGIVE? Because sin creates TWO problems: offense (addressable by pardon) and rupture in the order of justice (NOT addressable by pardon). The Cross, as satisfaction, addresses BOTH. The mediator must be divine (infinite dignity for adequate satisfaction) AND human (humanity participates in its own restoration) — the hypostatic union is what MAKES the Cross effective. Deepest hidden assumption: bare pardon does not repair disorder (a divine voluntarist would deny this). Three atonement models formalized; CCC gives primacy to satisfaction |
 
 ## Articles
 
@@ -271,7 +277,7 @@ Catlib/
 │   ├── Love.lean          ← Love vocabulary and axioms
 │   └── SinEffects.lean    ← Sin effects on communion and grace
 ├── Creed/                 ← Christology, Hell, Grace, Trinity, Providence, Soul,
-│                            Purgatory, DivineModes, MarianDogma, OriginalSin
+│                            Purgatory, DivineModes, MarianDogma, OriginalSin, Heresies
 ├── MoralTheology/         ← Sources, Sin, Natural Law, Conscience, Freedom,
 │                            Legitimate Defense, Justification, ConjugalEthics,
 │                            TheologyOfBody, Suicide

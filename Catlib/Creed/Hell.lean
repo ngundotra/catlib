@@ -70,13 +70,19 @@ premise explicit.
 
 /-- The state of a soul at death. The Catechism treats death as a hard
     boundary — no further change of will is possible.
+    MODELING CHOICE: We model the death state as a three-constructor enum.
+    The CCC uses richer language — we compress it to three discrete states.
     HIDDEN ASSUMPTION: Why is death final? This is asserted, not argued. -/
 inductive DeathState where
   | inMortalSin    -- Died without repenting of mortal sin
   | repentant      -- Died having repented / in grace
   | neverSinned    -- (Theoretical) died without mortal sin
 
-/-- The eternal destiny of a soul. -/
+/-- The eternal destiny of a soul.
+    MODELING CHOICE: Binary outcome (communion vs. separation). The CCC
+    also teaches purgatory as a transitional state, but for Hell.lean's
+    scope, the final destiny is binary. Purgatory.lean models the
+    transitional case. -/
 inductive EternalDestiny where
   | communionWithGod  -- Heaven / beatific vision
   | separatedFromGod  -- Hell
@@ -135,7 +141,12 @@ axiom no_predestination_to_hell :
 
 /-- Bridge to base axiom S1: love requires freedom (from s1_god_is_love).
     The base axiom asserts `loveRequiresFreedom` as an untyped Prop.
-    The local axiom gives this operational content. -/
+    The local axiom gives this operational content.
+
+    NOTE: `loveRequiresFreedom` is over-general — it applies to agape
+    specifically. See `Foundations/Love.lean` for the typed version
+    (`agape_requires_freedom`). Hell's usage is correct because the love
+    at stake (communion with God) IS agape. -/
 theorem love_freedom_from_s1 : loveRequiresFreedom :=
   (s1_god_is_love).2
 

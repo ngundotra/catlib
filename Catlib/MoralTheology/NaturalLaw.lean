@@ -81,7 +81,10 @@ to make §1956 and §1957 compatible.
 -/
 
 /-- A moral precept — a principle of the natural law.
-    These are the immutable, universal content of the law. -/
+    These are the immutable, universal content of the law.
+    MODELING CHOICE: We model precepts as having three Prop fields
+    (content, accessibleToReason, universal). The CCC describes these
+    properties but does not bundle them into a single formal object. -/
 structure MoralPrecept where
   /-- What the precept prescribes or forbids -/
   content : Prop

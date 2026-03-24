@@ -397,7 +397,7 @@
       <h4>SoulState</h4>
 <pre>structure SoulState where
   sustained : Prop
-  inCommunion : Prop
+  inBeatifyingCommunion : Prop
   purified : Prop</pre>
     </div>
 
@@ -412,18 +412,15 @@
       <h4>hell_paradox_resolved</h4>
 <pre>theorem hell_paradox_resolved :
     hellState.sustained &and;
-    &not;hellState.inCommunion := by
-  constructor
-  &middot; exact trivial
-  &middot; intro h
-    exact absurd h
-      (by simp [hellState])</pre>
+    &not;hellState.inBeatifyingCommunion :=
+  &lang;god_sustains_all hellState,
+   fun h =&gt; absurd h (by simp [hellState])&rang;</pre>
     </div>
 
     <div class="sidebar-section">
       <h4>purgatory_is_transitional</h4>
 <pre>theorem purgatory_is_transitional :
-    purgatoryState.inCommunion &and;
+    purgatoryState.inBeatifyingCommunion &and;
     &not;purgatoryState.purified := by
   constructor
   &middot; exact trivial
@@ -436,26 +433,27 @@
       <h4>all_states_sustained</h4>
 <pre>theorem all_states_sustained :
     heavenState.sustained &and;
-    purgatoryState.sustained &and;
-    hellState.sustained := by
-  exact &langle;trivial, trivial, trivial&rangle;</pre>
+    purgatoryState.sustained &and; hellState.sustained :=
+  &lang;god_sustains_all heavenState,
+   god_sustains_all purgatoryState,
+   god_sustains_all hellState&rang;</pre>
     </div>
 
     <div class="sidebar-section">
       <h4>The Three Afterlife States</h4>
 <pre>def heavenState : SoulState :=
   { sustained := True
-    inCommunion := True
+    inBeatifyingCommunion := True
     purified := True }
 
 def purgatoryState : SoulState :=
   { sustained := True
-    inCommunion := True
+    inBeatifyingCommunion := True
     purified := False }
 
 def hellState : SoulState :=
   { sustained := True
-    inCommunion := False
+    inBeatifyingCommunion := False
     purified := False }</pre>
     </div>
 
@@ -587,7 +585,7 @@ def hellState : SoulState :=
         The theorem
         <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/DivineModes.lean"><code>hell_paradox_resolved</code></a>
         proves that <code>hellState.sustained</code> and
-        <code>&not;hellState.inCommunion</code> hold simultaneously. The contradiction
+        <code>&not;hellState.inBeatifyingCommunion</code> hold simultaneously. The contradiction
         is gone. Not by weakening either claim, but by making both claims precise.
       </p>
     </section>
@@ -669,7 +667,7 @@ def hellState : SoulState :=
       <p>
         The theorem
         <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/DivineModes.lean"><code>purgatory_is_transitional</code></a>
-        proves the distinctive character of purgatory: in communion (the soul chose God;
+        proves the distinctive character of purgatory: in beatifying communion (the soul chose God;
         it died in grace) but not yet purified. This is why purgatory is temporary.
         Death finalized the choice&nbsp;&mdash; but purification is still needed before
         the soul can bear the full weight of the beatific vision.
@@ -906,8 +904,9 @@ def hellState : SoulState :=
 
       <p>
         <span class="versal">W</span>e did not set out to find a unifying principle
-        for eschatology and theodicy. We set out to formalize twelve passages from
-        the Catechism and see if the proof assistant would find anything interesting.
+        for eschatology and theodicy. We set out to formalize a growing set of
+        Catechism passages and connected doctrines and see if the proof assistant
+        would find anything interesting.
       </p>
 
       <p>

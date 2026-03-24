@@ -66,7 +66,10 @@ open Catlib
     HIDDEN ASSUMPTION: Holiness is a spectrum, not binary.
     The Catechism never argues for this — it assumes it. If holiness
     were binary (holy / not-holy), purgatory would be unnecessary:
-    you either have it or you don't. Purgatory requires DEGREES. -/
+    you either have it or you don't. Purgatory requires DEGREES.
+    MODELING CHOICE: We model holiness as an opaque ordered type.
+    The CCC does not specify whether holiness is continuous, discrete,
+    or what its structure is — only that some are "imperfectly purified." -/
 opaque HolinessDegree : Type
 
 /-- Ordering on holiness degrees — some are higher than others. -/
@@ -200,10 +203,11 @@ def purg_ax6_tag : DenominationalTag := catholicOnly
 /-- AXIOM 7: Those who die in grace AND are already fully purified go
     directly to heaven (no purgatory needed).
     Provenance: [Definition] CCC §1023
-    STRUCTURAL NOTE: This axiom is REQUIRED to prove that dying in grace
-    guarantees heaven. Without it, we can only show the imperfectly-purified
-    reach heaven (via purgatory). The already-purified case needs its own
-    axiom — the Catechism assumes this without stating it as a separate claim. -/
+    HIDDEN ASSUMPTION: The Catechism implies this (§1023: "those who die
+    in God's grace… are perfectly purified… live for ever with Christ")
+    but never isolates it as a distinct claim from the purgatory doctrine.
+    Our formalization needs it as a separate axiom to handle the
+    already-purified case, which the purgatory axioms do not cover. -/
 axiom purified_in_grace_sees_god :
   ∀ (p : Person), diedInGrace p → fullyPurified p → attainsBeatificVision p
 

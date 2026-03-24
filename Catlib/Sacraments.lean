@@ -1,3 +1,12 @@
+import Catlib.Sacraments.Anointing
+import Catlib.Sacraments.Baptism
+import Catlib.Sacraments.Confirmation
 import Catlib.Sacraments.Eucharist
 import Catlib.Sacraments.Exorcism
+import Catlib.Sacraments.HolyOrders
+import Catlib.Sacraments.PriestlyAbsolution
 import Catlib.Sacraments.Reconciliation
+import Catlib.Sacraments.Liturgy
+import Catlib.Sacraments.SacramentalCausation
+import Catlib.Sacraments.MatterAndForm
+import Catlib.Sacraments.TransubstantiationDepth

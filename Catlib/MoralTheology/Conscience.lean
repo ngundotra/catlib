@@ -74,7 +74,13 @@ a "judgment of reason" (§1778). This is itself a modeling choice.
 -/
 
 /-- A conscience judgment about a specific action.
-    §1778: "Conscience is a judgment of reason." -/
+    §1778: "Conscience is a judgment of reason."
+    MODELING CHOICE: We model conscience as a structure with four fields
+    (agent, action, judgesRight, isCertain). The CCC describes conscience
+    as "a judgment of reason" (§1778) — modeling it as a structure rather
+    than a predicate is our choice. The certainty field captures §1790's
+    "certain judgment" condition, which the CCC treats as prerequisite
+    for the binding force of conscience. -/
 structure ConscienceJudgment where
   /-- The agent making the judgment -/
   agent : Person
@@ -184,7 +190,10 @@ structure TwoLevelEvaluation where
 /-- AXIOM 3 (§1791): Culpable ignorance makes you responsible.
     Provenance: [Definition] CCC §1791
     If your conscience is wrong because you didn't bother to form it
-    properly, you are culpable for the evil that results. -/
+    properly, you are culpable for the evil that results.
+    NOTE: This axiom is VACUOUS (concludes with True). The real content
+    is in the culpable/innocent ignorance distinction (IgnoranceType)
+    and the culpability_asymmetry theorem. -/
 axiom culpable_ignorance_implies_culpability :
   ∀ (ec : ErringConscience),
     ec.ignoranceType = IgnoranceType.culpable →

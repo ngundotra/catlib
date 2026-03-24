@@ -96,9 +96,12 @@ circumstances and intentions. This requires a new axiom.
 
 /-- An act type is intrinsically evil if its object is never good,
     regardless of any other considerations.
-    ASSUMPTION: This definition treats the "object" as evaluable
-    independently of circumstances. This is not obvious — it assumes
-    a specific action ontology where acts have intrinsic natures. -/
+    HIDDEN ASSUMPTION: This definition treats the "object" as evaluable
+    independently of circumstances. The CCC requires this (§1756:
+    "independently of circumstances and intentions") but never states it
+    as an explicit principle. It assumes a specific action ontology where
+    acts have intrinsic natures — the deontological core of Catholic
+    moral theology. -/
 def IntrinsicallyEvil (objectPredicate : Prop) : Prop :=
   ¬objectPredicate
 

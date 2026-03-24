@@ -377,18 +377,69 @@ theorem chalcedon_rules_out_all_heresies :
     naturesInseparable christ :=      -- rules out Adoptionism
   chalcedonian_definition
 
+-- ============================================================================
+-- § 7. Christ's Resurrection as Model (§645-646)
+-- ============================================================================
+
+/-!
+### Christ's bodily resurrection
+
+Christ rose BODILY — not as a ghost, not as a spirit, but with a real
+(glorified) body (Lk 24:39: "Touch me, and see. For a spirit does not
+have flesh and bones as you see that I have").
+
+Under hylomorphism (§365), Christ rose bodily BECAUSE a complete person
+requires a body. His resurrection demonstrates the principle proven in
+Soul.lean: any risen person is complete (both aspects restored).
+
+1 Cor 15:20: "Christ has been raised from the dead, the firstfruits of
+those who have fallen asleep." His resurrection is not merely personal —
+it is the model and cause of ours.
+-/
+
+/-- AXIOM (§645-646): Christ is risen — his human nature has been
+    restored to completeness (body and soul reunited in glory).
+
+    Provenance: [Scripture] Lk 24:39 ("flesh and bones"), 1 Cor 15:20
+    ("the firstfruits of those who have fallen asleep");
+    [Definition] CCC §645-646.
+    Denominational scope: Ecumenical. -/
+axiom christ_is_risen : isRisen christHumanPerson
+
+/-- Christ's risen state demonstrates completeness: he has both
+    corporeal and spiritual aspects restored. Uses Soul.lean's
+    `resurrection_reunites` applied to christHumanPerson. -/
+theorem christ_risen_is_complete :
+    isCompletePerson christHumanPerson :=
+  resurrection_reunites christHumanPerson christ_is_risen
+
+/-- Christ as model of risen completeness: his resurrection shows that
+    a complete person has both aspects. Since `christ_has_full_human_nature`
+    already asserts both aspects, and `christ_is_risen` asserts he is
+    risen, Christ exemplifies the general principle that resurrection
+    restores completeness.
+
+    This connects the abstract argument from Soul.lean (any risen person
+    is complete) to the concrete Christological claim (Christ rose bodily).
+    The connection to Soul.lean's `risen_person_is_complete_person` is
+    direct: Christ is a HumanPerson, he is risen, therefore he is complete. -/
+theorem christ_models_risen_completeness :
+    isCompletePerson christHumanPerson ∧ isRisen christHumanPerson :=
+  ⟨resurrection_reunites christHumanPerson christ_is_risen, christ_is_risen⟩
+
 /-!
 ## Summary
 
-Axioms (5 with real content, none vacuous):
+Axioms (7 with real content, none vacuous):
 1. hypostatic_union (§466) — Christ is divine + has both natures
 2. chalcedonian_definition (§467) — four negatives hold for Christ
 3. christ_has_full_human_nature (§470) — real body + real soul
 4. christ_has_two_wills (§475) — human will + divine will
 5. divine_nature_persists_through_death (§624) — union survives death
 6. christHumanPerson — Christ's HumanPerson (connects to Soul.lean)
+7. christ_is_risen (§645-646) — Christ is risen (model for all resurrection)
 
-Theorems (12):
+Theorems (14):
 1. christ_is_both_divine_and_human — from hypostatic_union
 2. without_confusion — rules out Eutychianism
 3. without_change — rules out Apollinarianism
@@ -399,10 +450,14 @@ Theorems (12):
 8. christ_body_requires_soul — from Soul.lean's corporeal_requires_spiritual
 9. whole_christ_is_present — §1374's four items (body, blood, soul, divinity)
 10. chalcedon_rules_out_all_heresies — all four negatives bundled
+11. christ_human_obedience_is_genuine — real human will
+12. cross_does_not_break_union — divine nature persists through death
+13. christ_risen_is_complete — risen Christ is a complete person
+14. christ_models_risen_completeness — Christ exemplifies risen completeness
 
 Key connections:
-- Soul.lean: christ_soul_immortal, christ_body_requires_soul (Soul.lean
-  axioms apply to Christ's human nature)
+- Soul.lean: christ_soul_immortal, christ_body_requires_soul, christ_risen_is_complete
+  (Soul.lean axioms + resurrection theorems apply to Christ's human nature)
 - MarianDogma.lean: hypostatic_union + motherhood_targets_persons → Theotokos
 - Eucharist.lean: whole_christ_is_present gives real content to real_presence
 -/
