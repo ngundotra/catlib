@@ -174,8 +174,9 @@ def purgatoryState : SoulState :=
 def hellState : SoulState :=
   { sustained := True, inBeatifyingCommunion := False, purified := False }
 
-/-- Bridge: the SoulState's inBeatifyingCommunion field corresponds to the
-    global inCommunion relation (Axioms.lean) applied to this soul and God.
+/-- Bridge: the SoulState's inBeatifyingCommunion field corresponds to
+    `inBeatifyingCommunion hp` (Soul.lean) — which is itself defined as
+    `inCommunion hp.toCommunionParty .god` via the personOfHuman bridge.
     The beatifying mode being active for a person IS what it means to be
     in communion with God. This is an axiom — the theological claim that
     communion with God = God's beatifying mode being active.
@@ -184,8 +185,8 @@ def hellState : SoulState :=
     explicit — it uses "communion with God" language without specifying
     whether this is the same relation across all contexts. -/
 axiom soulstate_communion_bridge :
-  ∀ (p : Person) (s : SoulState),
-    s.inBeatifyingCommunion ↔ inCommunion (.person p) .god
+  ∀ (hp : HumanPerson) (s : SoulState),
+    s.inBeatifyingCommunion ↔ inBeatifyingCommunion hp
 
 /-- **Structural lemma (Tier 0):** instantiates god_sustains_all for the
     three concrete eschatological states. This is definitionally immediate
@@ -215,15 +216,15 @@ theorem heaven_requires_purity :
 
 /-- **THEOREM: Hell means loss of communion with God.**
     The hell paradox restated using the global communion relation
-    (Axioms.lean) rather than the SoulState field. For any person p,
+    (Axioms.lean) rather than the SoulState field. For any person hp,
     if they are in hellState (no beatifying communion), then they are
     NOT in communion with God per the unified relation.
     Derived from soulstate_communion_bridge + hellState definition. -/
-theorem hell_means_no_communion_with_god (p : Person) :
+theorem hell_means_no_communion_with_god (hp : HumanPerson) :
     ¬hellState.inBeatifyingCommunion →
-    ¬inCommunion (.person p) .god :=
+    ¬inBeatifyingCommunion hp :=
   fun h_no_beat h_comm =>
-    h_no_beat ((soulstate_communion_bridge p hellState).mpr h_comm)
+    h_no_beat ((soulstate_communion_bridge hp hellState).mpr h_comm)
 
 /-- Purgatory is the state of being in communion (chose God) but
     not yet purified. This is why it's temporary — once purified,
@@ -358,18 +359,6 @@ def isPurified (p : HumanPerson) : Prop :=
   sp.guilt = EffectState.removed ∧
   sp.attachment = EffectState.removed
 
-/-- Whether a human person is in beatifying communion with God.
-    This SHOULD be defined as `inCommunion (.person p) .god` but
-    CommunionParty.person takes Person, not HumanPerson — the two
-    type systems (Person for moral reasoning, HumanPerson for body-soul
-    reasoning) are not yet bridged. A coercion HumanPerson → Person
-    would fix this.
-    MODELING CHOICE: Opaque because the Person ↔ HumanPerson bridge
-    does not yet exist. Once bridged, this should become a def.
-    TODO: Bridge Person ↔ HumanPerson, then replace this opaque with
-    a def using the global communion relation. -/
-opaque inBeatifyingCommunionPerson : HumanPerson → Prop
-
 /-- AXIOM: The beatific vision requires full purification for persons.
     If a person is in communion with God, all three sin-effect layers
     must be resolved. CCC §1023-1024: "those who die in God's grace
@@ -377,7 +366,7 @@ opaque inBeatifyingCommunionPerson : HumanPerson → Prop
     Rev 21:27: "nothing impure will ever enter" heaven.
     Provenance: [Scripture] Rev 21:27; [Definition] CCC §1023-1024. -/
 axiom beatific_vision_requires_purity_person :
-  ∀ (p : HumanPerson), inBeatifyingCommunionPerson p → isPurified p
+  ∀ (p : HumanPerson), inBeatifyingCommunion p → isPurified p
 
 /-- A person in the afterlife — isDead, so spiritual but not corporeal.
     Their divine mode (communion or not, purified or not) determines
@@ -402,7 +391,7 @@ a HumanPerson — not as standalone Prop-flag bundles.
     CCC §1023: "those who die in God's grace… are perfectly purified…
     live for ever with Christ." -/
 def personInHeaven (p : HumanPerson) : Prop :=
-  isDead p ∧ inBeatifyingCommunionPerson p ∧ isPurified p
+  isDead p ∧ inBeatifyingCommunion p ∧ isPurified p
 
 /-- A person in purgatory: dead (incomplete), communion assured,
     but not yet fully purified. Being prepared for the beatific vision.
@@ -417,14 +406,14 @@ def personInPurgatory (p : HumanPerson) : Prop :=
     CCC §1033: "To die in mortal sin without repenting… means remaining
     separated from him for ever by our own free choice." -/
 def personInHell (p : HumanPerson) : Prop :=
-  isDead p ∧ ¬inBeatifyingCommunionPerson p
+  isDead p ∧ ¬inBeatifyingCommunion p
 
 /-- A risen saint: the TRUE endpoint. Body and soul reunited AND in
     full beatifying communion. The complete person in full glory.
     CCC §997: "God will definitively grant incorruptible life to our
     bodies by reuniting them with our souls." -/
 def personRisen (p : HumanPerson) : Prop :=
-  isRisen p ∧ inBeatifyingCommunionPerson p ∧ isPurified p
+  isRisen p ∧ inBeatifyingCommunion p ∧ isPurified p
 
 /-!
 ### Bridge theorems: connecting Soul.lean and DivineModes.lean
@@ -488,7 +477,7 @@ theorem only_risen_is_complete (p : HumanPerson) :
 theorem risen_saint_is_true_endpoint (p : HumanPerson)
     (h : personRisen p) :
     hasCorporealAspect p ∧ hasSpiritualAspect p ∧
-    inBeatifyingCommunionPerson p ∧ isPurified p :=
+    inBeatifyingCommunion p ∧ isPurified p :=
   let ⟨h_risen, h_comm, h_pur⟩ := h
   let ⟨h_corp, h_spir⟩ := resurrection_reunites p h_risen
   ⟨h_corp, h_spir, h_comm, h_pur⟩
@@ -500,7 +489,7 @@ theorem risen_saint_is_true_endpoint (p : HumanPerson)
     the beatific vision.
     Derived from beatific_vision_requires_purity_person. -/
 theorem communion_requires_purification (p : HumanPerson)
-    (h_comm : inBeatifyingCommunionPerson p) :
+    (h_comm : inBeatifyingCommunion p) :
     isPurified p :=
   beatific_vision_requires_purity_person p h_comm
 

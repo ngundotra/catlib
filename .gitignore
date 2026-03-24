@@ -8,3 +8,6 @@ build/
 .claude/
 specs/
 tools/ca-indexer
+.playwright-mcp/
+.surfpool/
+**/.surfpool/

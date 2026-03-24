@@ -368,16 +368,62 @@ cannot satisfy it.
 def isCompletePerson (p : HumanPerson) : Prop :=
   hasCorporealAspect p ∧ hasSpiritualAspect p
 
+/-!
+## Bridge: HumanPerson → Person → CommunionParty
+
+Three types model the human person from different angles:
+
+- `Person` (Basic.lean): the **capacities** — can this being think, choose,
+  act morally? (Bool flags: hasIntellect, hasFreeWill, isMoralAgent)
+- `HumanNature` (HumanNature.lean): the **state** — how healthy are
+  those capacities? (graded: intellectState, willState, wounds)
+- `HumanPerson` (this file): the **person** — the indivisible body-soul
+  composite (opaque: hasCorporealAspect, hasSpiritualAspect)
+
+The bridge `personOfHuman` connects HumanPerson to Person so that
+predicates like `inCommunion` can be applied to human persons directly.
+
+**Why axiom (non-reducible)?** If we defined `personOfHuman _ := Person.human`,
+all human persons would collapse to the same `Person` value, making
+`inCommunion (.person (personOfHuman hp1)) .god` and
+`inCommunion (.person (personOfHuman hp2)) .god` the same proposition.
+An axiom preserves distinctness: different HumanPersons produce different
+(non-reducible) Person terms, so communion is per-person.
+-/
+
+/-- Bridge: every HumanPerson corresponds to a Person with full human
+    capacities. Axiom (non-reducible) to preserve identity — different
+    HumanPersons yield distinct Person terms, so per-person predicates
+    (communion, grace, sin) remain distinguishable.
+    CCC §1700: "The dignity of the human person is rooted in his creation
+    in the image and likeness of God." -/
+axiom personOfHuman : HumanPerson → Person
+
+/-- Every human person has intellect, free will, and moral agency.
+    CCC §1705: "By virtue of his soul and his spiritual powers of
+    intellect and will, man is endowed with freedom." -/
+axiom personOfHuman_capacities : ∀ (hp : HumanPerson),
+  let p := personOfHuman hp
+  p.hasIntellect = true ∧ p.hasFreeWill = true ∧ p.isMoralAgent = true
+
+/-- Coercion: use a HumanPerson wherever a Person is expected. -/
+noncomputable instance : Coe HumanPerson Person := ⟨personOfHuman⟩
+
+/-- Lift a HumanPerson into a CommunionParty for use with `inCommunion`. -/
+noncomputable def HumanPerson.toCommunionParty (hp : HumanPerson) : CommunionParty :=
+  .person (personOfHuman hp)
+
+noncomputable instance : Coe HumanPerson CommunionParty := ⟨HumanPerson.toCommunionParty⟩
+
 /-- Whether a human person is in beatifying communion with God —
     the relationship of love and friendship that constitutes heaven.
     CCC §1023: "those who die in God's grace and friendship... live
     for ever with Christ."
 
-    Opaque because the nature of beatifying communion is not reducible
-    to simpler Catlib primitives. DivineModes.lean has a parallel
-    `inBeatifyingCommunionPerson` — the two should eventually be
-    unified (this file is imported by DivineModes, so it should be
-    defined here).
+    Defined via the global `inCommunion` relation using the
+    HumanPerson → Person → CommunionParty bridge. This unifies the
+    body-soul model (HumanPerson) with the moral-agency model (Person)
+    and the communion infrastructure (CommunionParty).
 
     HIDDEN ASSUMPTION: The CCC never says "beatitude requires a body"
     in those exact words. But it says (1) the person is the body-soul
@@ -392,7 +438,8 @@ def isCompletePerson (p : HumanPerson) : Prop :=
     graded quantity (partial in the intermediate state, full after
     resurrection). The CCC is underdetermined here — §1023 says saints
     "live for ever with Christ" but §997 says they await resurrection. -/
-opaque inBeatifyingCommunion : HumanPerson → Prop
+def inBeatifyingCommunion (hp : HumanPerson) : Prop :=
+  inCommunion (.person (personOfHuman hp)) .god
 
 /-- Full human beatitude — the person has BOTH completeness (body + soul)
     AND communion with God. Neither alone suffices:
@@ -547,7 +594,7 @@ The chain is:
 New definitions: 3
 - isCompletePerson
 - fullHumanBeatitude
-- inBeatifyingCommunion (opaque — see note below)
+- inBeatifyingCommunion (def via personOfHuman bridge + inCommunion)
 
 New theorems: 7
 1. separated_soul_is_incomplete
@@ -567,32 +614,25 @@ in Christology.lean, which imports this file. The theorems
 principle proven here (any risen person is complete) applies to Christ
 as a special case.
 
-### Note on inBeatifyingCommunion
+### The HumanPerson → Person bridge
 
-This file introduces `inBeatifyingCommunion : HumanPerson → Prop` as
-an opaque predicate. DivineModes.lean has a similar
-`inBeatifyingCommunionPerson` for the same concept. These should
-eventually be unified. The duplication exists because this file
-(Soul.lean) is imported by DivineModes.lean, so we cannot use
-DivineModes' version here. The right fix is to define the predicate
-once in this file and have DivineModes use it.
+This file defines `personOfHuman : HumanPerson → Person` (opaque)
+and coercion instances for `Coe HumanPerson Person` and
+`Coe HumanPerson CommunionParty`. This bridges the body-soul model
+(HumanPerson) to the moral-agency model (Person) and the communion
+infrastructure (CommunionParty), unifying the two type systems.
+
+`inBeatifyingCommunion` is defined as `inCommunion hp.toCommunionParty .god`
+— using the bridge directly. DivineModes.lean uses this definition
+(no separate opaque needed).
 -/
 
 /-!
-## Bridge: connecting HumanPerson to HumanNature and Person
+## Bridge: connecting HumanPerson to HumanNature
 
-Three types model the human person from different angles:
-
-- `Person` (Basic.lean): the **capacities** — can this being think, choose,
-  act morally? (Bool flags: hasIntellect, hasFreeWill, isMoralAgent)
-- `HumanNature` (HumanNature.lean): the **state** — how healthy are
-  those capacities? (graded: intellectState, willState, wounds)
-- `HumanPerson` (this file): the **person** — the indivisible body-soul
-  composite (opaque: hasCorporealAspect, hasSpiritualAspect)
-
-The `PersonWithNature` structure ties these together: the HumanPerson
-IS the person; the HumanNature describes the condition of their
-spiritual powers (intellect and will); and the Person inside
+The `PersonWithNature` structure ties HumanPerson to HumanNature:
+the HumanPerson IS the person; the HumanNature describes the condition
+of their spiritual powers (intellect and will); and the Person inside
 HumanNature records which capacities they have.
 -/
 

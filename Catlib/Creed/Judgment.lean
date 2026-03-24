@@ -465,7 +465,7 @@ judgment along three independent axes.
 - **Soul.lean**: `separated_soul_is_incomplete`, `resurrection_reunites`,
   `isCompletePerson`, `fullHumanBeatitude`
 - **DivineModes.lean**: `personInHeaven`, `personInPurgatory`, `personInHell`,
-  `inBeatifyingCommunionPerson`, `isPurified`
+  `inBeatifyingCommunion`, `isPurified`
 - **SinEffects.lean**: `SinProfile` → `afterlifeFromProfile` → afterlife states
   (indirect, via DivineModes)
 -/
