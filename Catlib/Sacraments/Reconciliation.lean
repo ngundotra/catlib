@@ -517,19 +517,19 @@ Denominational scope: CATHOLIC + ORTHODOX.
     relation. When agape is above zero, the person is in communion.
 
     The connection to DivineModes.lean:
-    - hellState: sustained = True, inBeatifyingCommunion = False (no agape toward God)
-    - heavenState: sustained = True, inBeatifyingCommunion = True (full agape)
+    - hellState: sustained, choseGod = False (no agape toward God)
+    - heavenState: sustained, choseGod = True (full agape)
     - Reconciliation moves the soul from hellState-like (no communion)
       to a state where communion is restored.
 
     This theorem connects Love.lean (agape > 0) to DivineModes.lean
-    (inBeatifyingCommunion = True). -/
+    (choseGod = True). -/
 axiom charity_implies_communion :
   ∀ (p : Person) (tl : TypedLove),
     tl.kind = LoveKind.agape →
     tl.lover = p →
     tl.degree > 0 →
-    ∃ (s : SoulState), s.sustained ∧ s.inBeatifyingCommunion
+    ∃ (s : SoulState), s.sustained ∧ s.choseGod
 
 theorem reconciliation_restores_communion
     (r : ReconciliationAct) (tl : TypedLove)
@@ -540,7 +540,7 @@ theorem reconciliation_restores_communion
     (h_agape : tl.kind = LoveKind.agape)
     (h_lover : tl.lover = r.contrition.penitent)
     (h_destroyed : tl.degree = 0) :
-    ∃ (s : SoulState), s.sustained ∧ s.inBeatifyingCommunion := by
+    ∃ (s : SoulState), s.sustained ∧ s.choseGod := by
   -- Step 1: reconciliation restores agape to degree > 0
   obtain ⟨tl', h_kind', h_lover', _, h_deg'⟩ :=
     reconciliation_restores_charity r tl h_sorrow h_purpose h_auth

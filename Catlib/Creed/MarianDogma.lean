@@ -595,11 +595,12 @@ theorem assumption_follows_from_ic :
 /-- The Assumption connects to DivineModes: Mary enters the heavenState
     (full beatifying communion, body and soul).
     The heavenState from DivineModes.lean has:
-    - sustained = True (God sustains her in existence)
-    - inBeatifyingCommunion = True (full beatifying communion)
-    - purified = True (fully purified — indeed, never needed purification) -/
+    - sustained (God sustains her in existence)
+    - choseGod (in communion with God)
+    - hasBeatificVision (sees God face to face)
+    - purified (fully purified — indeed, never needed purification) -/
 theorem assumption_is_full_communion :
-    heavenState.sustained ∧ heavenState.inBeatifyingCommunion ∧ heavenState.purified := by
+    heavenState.sustained ∧ heavenState.choseGod ∧ heavenState.purified := by
   exact ⟨trivial, trivial, trivial⟩
 
 def assumption_tag : DenominationalTag :=

@@ -135,6 +135,14 @@ structure TypedLove where
   /-- Love intensity/degree (charity can increase per CCC §1827).
       0 = absent, higher = more intense. -/
   degree : Nat
+  /-- Self-love is reflexive: lover = beloved by definition.
+      CCC §2264: "Love toward oneself remains a fundamental principle
+      of morality." This is a structural property, not an axiom. -/
+  wf_selfLove : kind = LoveKind.selfLove → lover = beloved
+  /-- Agape (charity) requires freedom of the will.
+      CCC §1822: charity is a theological VIRTUE — virtues require free acts.
+      A person without free will cannot perform genuine charity. -/
+  wf_agape_freedom : kind = LoveKind.agape → degree > 0 → lover.hasFreeWill = true
 
 -- ============================================================================
 -- ## Axioms: Properties of the four kinds
@@ -157,8 +165,14 @@ Denominational scope: ECUMENICAL — all Christians accept Mt 5:44.
     all to be saved — including those who reject Him).
 
     This is an existence claim: we assert that non-reciprocated agape
-    is POSSIBLE, not that it always fails to be reciprocated. -/
-axiom agape_not_symmetric_witness :
+    is POSSIBLE, not that it always fails to be reciprocated.
+
+    FORMERLY AN AXIOM — now provable from the well-formedness constraints.
+    Proof idea: pick a free lover (Person.human) who loves (agape, degree 1)
+    a beloved WITHOUT free will. Any reciprocal agape from the beloved must
+    have degree 0, because wf_agape_freedom requires hasFreeWill = true
+    for degree > 0, but the beloved lacks free will. -/
+theorem agape_not_symmetric_witness :
   ∃ (tl : TypedLove),
     tl.kind = LoveKind.agape ∧
     tl.degree > 0 ∧
@@ -167,7 +181,22 @@ axiom agape_not_symmetric_witness :
       tl'.kind = LoveKind.agape →
       tl'.lover = tl.beloved →
       tl'.beloved = tl.lover →
-      tl'.degree = 0
+      tl'.degree = 0 := by
+  -- Witness: Person.human (free) loves an unfree person with agape degree 1
+  let unfree : Person := ⟨true, false, false⟩
+  refine ⟨⟨.agape, Person.human, unfree, 1, nofun, fun _ _ => rfl⟩,
+         rfl, Nat.one_pos, ?_⟩
+  -- Any reciprocal agape from unfree back must have degree 0
+  intro tl' hkind hlover _
+  -- If degree > 0, then wf_agape_freedom says lover.hasFreeWill = true
+  -- But lover = unfree whose hasFreeWill = false — contradiction
+  -- So degree must be 0
+  match h : tl'.degree with
+  | 0 => rfl
+  | n + 1 =>
+    exfalso
+    have := tl'.wf_agape_freedom hkind (by omega)
+    simp [hlover] at this
 
 /-!
 ### Property 2: Philia IS symmetric
@@ -206,12 +235,13 @@ Denominational scope: ECUMENICAL.
 /-- Self-love is reflexive: lover = beloved.
 
     Source: [Definition] CCC §2264.
-    This is a constraint on well-formed TypedLove instances
-    of the selfLove kind. -/
-axiom self_love_reflexive :
+    FORMERLY AN AXIOM — now a trivial consequence of the wf_selfLove
+    field on TypedLove. The structure enforces this by construction. -/
+theorem self_love_reflexive :
   ∀ (tl : TypedLove),
     tl.kind = LoveKind.selfLove →
-    tl.lover = tl.beloved
+    tl.lover = tl.beloved :=
+  fun tl hkind => tl.wf_selfLove hkind
 
 /-!
 ### Property 4: Agape requires freedom; eros does NOT
@@ -237,12 +267,14 @@ and involuntary love is broadly accepted).
     Source: [Scripture] S1 (loveRequiresFreedom, restricted to agape);
     CCC §1822 (charity as a theological VIRTUE — virtues require free acts).
 
-    A person without free will cannot perform genuine charity. -/
-axiom agape_requires_freedom :
+    FORMERLY AN AXIOM — now a trivial consequence of the wf_agape_freedom
+    field on TypedLove. The structure enforces this by construction. -/
+theorem agape_requires_freedom :
   ∀ (tl : TypedLove),
     tl.kind = LoveKind.agape →
     tl.degree > 0 →
-    tl.lover.hasFreeWill = true
+    tl.lover.hasFreeWill = true :=
+  fun tl hkind hdeg => tl.wf_agape_freedom hkind hdeg
 
 /-- Eros does NOT require freedom. Involuntary attraction is possible
     and is not sinful precisely because it is not free.
@@ -277,11 +309,18 @@ charity can grow); the claim that mortal sin DESTROYS it is Catholic
 
 /-- Charity can increase: virtuous acts increase the degree of agape.
 
-    Source: [Definition] CCC §1827.
-    Formalized as: for any agape love, there exists a greater degree. -/
+    Source: [Definition] CCC §1827: "The practice of all the virtues is
+    animated and inspired by charity."
+
+    Requires hasFreeWill because practicing virtue (which increases charity)
+    is a free act. A being without free will cannot grow in charity.
+
+    Formalized as: for any agape love with a free lover, there exists a
+    greater degree. -/
 axiom charity_can_increase :
   ∀ (tl : TypedLove),
     tl.kind = LoveKind.agape →
+    tl.lover.hasFreeWill = true →
     ∃ (tl' : TypedLove),
       tl'.kind = LoveKind.agape ∧
       tl'.lover = tl.lover ∧
@@ -516,10 +555,11 @@ the universal salvific will combined with the existence of the damned
 
     Denominational scope: ECUMENICAL — all Christians accept Mt 5:44. -/
 theorem agape_not_symmetric :
-  -- If there exists a person who is loved (agape) by another but
+  -- If there exists a free person who is loved (agape) by another but
   -- does not reciprocate, then agape is not symmetric.
   (∃ (a b : Person) (d₁ : Nat),
     d₁ > 0 ∧
+    a.hasFreeWill = true ∧
     ∀ (tl : TypedLove),
       tl.kind = LoveKind.agape →
       tl.lover = b →
@@ -534,13 +574,15 @@ theorem agape_not_symmetric :
         tl'.lover = tl.beloved ∧
         tl'.beloved = tl.lover ∧
         tl'.degree > 0) := by
-  intro ⟨a, b, d₁, hd₁, hno_recip⟩ hsym
-  -- Construct a love instance from a to b with degree d₁
+  intro ⟨a, b, d₁, hd₁, hfree, hno_recip⟩ hsym
+  -- Construct a well-formed love instance from a to b with degree d₁
   let tl_ab : TypedLove := {
     kind := LoveKind.agape
     lover := a
     beloved := b
     degree := d₁
+    wf_selfLove := nofun
+    wf_agape_freedom := fun _ _ => hfree
   }
   -- By symmetry hypothesis, b should love a back
   have ⟨tl', hkind, hlover, hbeloved, hdeg⟩ := hsym tl_ab rfl hd₁

@@ -107,35 +107,104 @@ inductive DivineMode where
   | beatifying
 
 /-- The state of a soul's relationship with God after death.
-    Defined by which divine modes are active.
-    MODELING CHOICE: The CCC does not model the afterlife as a three-field
-    Prop structure. We chose {sustained, inBeatifyingCommunion, purified}
-    to capture the distinctions the CCC draws. The three-state model
-    (heaven/purgatory/hell) emerges from combinations of these fields. -/
-structure SoulState where
-  /-- Is God sustaining this soul in existence? -/
-  sustained : Prop
-  /-- Is this soul in communion with God (beatifying mode)? -/
-  inBeatifyingCommunion : Prop
-  /-- Degree of purification (0 = unpurified, full = ready for vision) -/
-  purified : Prop
+    The CCC teaches exactly three afterlife states, each a distinct
+    combination of communion and purification:
+    - Heaven: chose God, fully purified, has the beatific vision
+    - Purgatory: chose God, not yet purified, being prepared for the vision
+    - Hell: rejected God, no communion, no purification
 
-/-- AXIOM (§301, Col 1:17): God sustains ALL that exists.
+    MODELING CHOICE: We use an inductive with exactly three constructors
+    rather than a free structure with Prop fields. This prevents
+    constructing nonsensical states (e.g., "sustained = False") and
+    makes properties like god_sustains_all provable rather than axiomatic.
+
+    The old structure version had `{sustained, inBeatifyingCommunion, purified}`
+    as Prop fields. That conflated two distinct concepts in one field:
+    - "chose God" (died in grace, salvation assured) — purgatory has this
+    - "beatific vision" (sees God face to face) — only heaven has this
+    The CCC distinguishes these: §1030 says purgatory souls are "assured
+    of their eternal salvation" (chose God) but must undergo purification
+    "to achieve the holiness necessary to enter the joy of heaven" (no
+    beatific vision yet). Rev 21:27: "nothing impure will ever enter."
+
+    The inductive encoding eliminates this conflation: each constructor
+    carries exactly the properties the CCC assigns to that state. -/
+inductive SoulState where
+  /-- Heaven: sustained, chose God, fully purified, has beatific vision.
+      CCC §1023: "those who die in God's grace and friendship and are
+      perfectly purified live for ever with Christ." -/
+  | heaven
+  /-- Purgatory: sustained, chose God, NOT yet purified, NO beatific vision.
+      CCC §1030: "assured of their eternal salvation; but after death they
+      undergo purification, so as to achieve the holiness necessary to
+      enter the joy of heaven." -/
+  | purgatory
+  /-- Hell: sustained, rejected God, no communion, not purified.
+      CCC §1033: "To die in mortal sin without repenting… means remaining
+      separated from him for ever by our own free choice." -/
+  | hell
+
+/-! ### Derived properties of SoulState
+
+These replace the old Prop fields. Each is now a function defined by
+match on the three constructors, so the properties are *provable*
+from the definition rather than *asserted* by axiom. -/
+
+/-- God sustains all souls in existence — this is NOT optional.
+    CCC §301, Col 1:17. True for all three states by definition. -/
+def SoulState.sustained : SoulState → Prop
+  | .heaven | .purgatory | .hell => True
+
+/-- Whether the person chose God (died in grace, salvation assured).
+    True for heaven and purgatory, false for hell.
+    CCC §1030: purgatory souls are "assured of their eternal salvation."
+    CCC §1033: hell is "self-exclusion" — they did NOT choose God. -/
+def SoulState.choseGod : SoulState → Prop
+  | .heaven | .purgatory => True
+  | .hell => False
+
+/-- Whether the person has the beatific vision — sees God face to face.
+    True ONLY for heaven. Purgatory souls are being *prepared* for it.
+    CCC §1023: the blessed "see the divine essence."
+    CCC §1030-1032: purgatory souls undergo purification so they "may
+    attain the beatific vision of God." They don't have it yet. -/
+def SoulState.hasBeatificVision : SoulState → Prop
+  | .heaven => True
+  | .purgatory | .hell => False
+
+/-- Whether the soul is fully purified of all sin effects.
+    True ONLY for heaven. Purgatory is the state of being purified.
+    Rev 21:27: "nothing impure will ever enter" heaven. -/
+def SoulState.purified : SoulState → Prop
+  | .heaven => True
+  | .purgatory | .hell => False
+
+/-! ### Former axioms — now provable theorems
+
+`god_sustains_all` and `beatific_vision_requires_purity` were axioms
+under the old free-structure encoding. The old encoding allowed
+constructing nonsense states like `{ sustained := False, ... }`, making
+these axioms individually inconsistent (each implied `False`).
+
+With the inductive encoding, both are trivially provable by case-split. -/
+
+/-- THEOREM (was axiom): God sustains ALL that exists.
     Provenance: [Scripture] Col 1:17 ("in him all things hold together"),
     Heb 1:3 ("sustaining all things by his powerful word"),
     Acts 17:28 ("in him we live and move and have our being").
-    Denominational scope: Ecumenical — all Christians accept divine
-    conservation of being. Even annihilationists agree God sustains
-    things while they exist; they just think God can withdraw this. -/
-axiom god_sustains_all :
-  ∀ (s : SoulState), s.sustained
+    Now provable: all three constructors define sustained as True. -/
+theorem god_sustains_all (s : SoulState) : s.sustained :=
+  match s with | .heaven | .purgatory | .hell => trivial
 
-/-- AXIOM (§1023-1024): The beatific vision requires full purification.
+/-- THEOREM (was axiom): The beatific vision requires full purification.
     Provenance: [Scripture] Rev 21:27 ("nothing impure will ever enter"),
     1 Jn 3:2 ("we shall see him as he is").
-    Only the fully purified can see God "face to face." -/
-axiom beatific_vision_requires_purity :
-  ∀ (s : SoulState), s.inBeatifyingCommunion → s.purified
+    Now provable: only heaven has hasBeatificVision, and heaven is purified.
+    Note: this uses `hasBeatificVision`, not the old `inBeatifyingCommunion`
+    which conflated "chose God" with "has beatific vision." -/
+theorem beatific_vision_requires_purity (s : SoulState) :
+    s.hasBeatificVision → s.purified :=
+  match s with | .heaven => fun _ => trivial | .purgatory | .hell => nofun
 
 /-! **§1033: Hell is the absence of beatifying mode.**
     CCC §1033: The damned are sustained (they exist) but not in communion.
@@ -151,89 +220,81 @@ axiom beatific_vision_requires_purity :
     sustains them. Why? (See below.) -/
 
 /-!
-## The three afterlife states as combinations of modes
+## The three afterlife states
 
-Heaven, purgatory, and hell are NOT three arbitrary categories.
-They are the three possible combinations of the two modes:
+With the inductive encoding, `heavenState`, `purgatoryState`, and
+`hellState` are simply the three constructors. We provide abbreviations
+for backward compatibility.
 -/
 
 /-- Heaven: sustained AND in full communion (beatified). -/
-def heavenState : SoulState :=
-  { sustained := True, inBeatifyingCommunion := True, purified := True }
+abbrev heavenState : SoulState := .heaven
 
-/-- Purgatory: sustained AND in communion (assured), but not yet
+/-- Purgatory: sustained, chose God (assured), but not yet
     fully purified. The soul is on its way to heaven.
-    NOTE: "in communion" here means the person chose God — they
-    died in grace. They are not yet FULLY in communion (beatific
-    vision) because they need purification first. -/
-def purgatoryState : SoulState :=
-  { sustained := True, inBeatifyingCommunion := True, purified := False }
+    CCC §1030: "assured of their eternal salvation; but after death
+    they undergo purification." -/
+abbrev purgatoryState : SoulState := .purgatory
 
-/-- Hell: sustained but NOT in communion. Exists without any good.
+/-- Hell: sustained but did NOT choose God. Exists without communion.
     The soul is permanently separated from God's friendship. -/
-def hellState : SoulState :=
-  { sustained := True, inBeatifyingCommunion := False, purified := False }
+abbrev hellState : SoulState := .hell
 
-/-- Bridge: the SoulState's inBeatifyingCommunion field corresponds to
-    `inBeatifyingCommunion hp` (Soul.lean) — which is itself defined as
-    `inCommunion hp.toCommunionParty .god` via the personOfHuman bridge.
-    The beatifying mode being active for a person IS what it means to be
-    in communion with God. This is an axiom — the theological claim that
-    communion with God = God's beatifying mode being active.
-    MODELING CHOICE: We identify "beatifying communion" with the global
-    `inCommunion` relation. The CCC does not make this identification
-    explicit — it uses "communion with God" language without specifying
-    whether this is the same relation across all contexts. -/
+/-- Bridge: a SoulState's `choseGod` property corresponds to the
+    person-level `inBeatifyingCommunion hp` (Soul.lean) — which is
+    itself defined as `inCommunion hp.toCommunionParty .god` via
+    the personOfHuman bridge.
+
+    Having chosen God (dying in grace) IS what it means to be in the
+    communion relation with God. The beatific *vision* is a further
+    step that requires purification (beatific_vision_requires_purity).
+
+    MODELING CHOICE: We identify "chose God" with the global `inCommunion`
+    relation. The CCC does not make this identification explicit. -/
 axiom soulstate_communion_bridge :
   ∀ (hp : HumanPerson) (s : SoulState),
-    s.inBeatifyingCommunion ↔ inBeatifyingCommunion hp
+    s.choseGod ↔ inBeatifyingCommunion hp
 
-/-- **Structural lemma (Tier 0):** instantiates god_sustains_all for the
-    three concrete eschatological states. This is definitionally immediate
-    given that heavenState, purgatoryState, and hellState all set
-    `sustained := True`, but it documents the theological claim that God
-    sustains the damned, the purifying, and the blessed alike. -/
+/-- **Structural lemma (Tier 0):** all three afterlife states are sustained.
+    Now a provable theorem rather than an axiom application. -/
 theorem all_states_sustained :
     heavenState.sustained ∧ purgatoryState.sustained ∧ hellState.sustained :=
-  ⟨god_sustains_all heavenState, god_sustains_all purgatoryState, god_sustains_all hellState⟩
+  ⟨trivial, trivial, trivial⟩
 
 /-- The hell paradox resolved: the damned are separated from God's
     communion but NOT from God's sustaining power. Both can be true
-    simultaneously because they are different modes.
-    Derived from god_sustains_all (sustained) + definition of hellState (no communion). -/
+    simultaneously because they are different modes. -/
 theorem hell_paradox_resolved :
     -- The damned exist (sustained)
     hellState.sustained ∧
-    -- The damned are separated from communion
-    ¬hellState.inBeatifyingCommunion :=
-  ⟨god_sustains_all hellState, fun h => absurd h (by simp [hellState])⟩
+    -- The damned did not choose God
+    ¬hellState.choseGod :=
+  ⟨trivial, nofun⟩
 
-/-- Heaven requires full purification — you can't be in communion
-    without being purified. -/
+/-- Heaven requires full purification — you can't have the beatific
+    vision without being purified. -/
 theorem heaven_requires_purity :
-    heavenState.inBeatifyingCommunion → heavenState.purified :=
+    heavenState.hasBeatificVision → heavenState.purified :=
   beatific_vision_requires_purity heavenState
 
 /-- **THEOREM: Hell means loss of communion with God.**
     The hell paradox restated using the global communion relation
-    (Axioms.lean) rather than the SoulState field. For any person hp,
-    if they are in hellState (no beatifying communion), then they are
+    (Axioms.lean) rather than the SoulState property. For any person hp,
+    if they are in hellState (did not choose God), then they are
     NOT in communion with God per the unified relation.
     Derived from soulstate_communion_bridge + hellState definition. -/
 theorem hell_means_no_communion_with_god (hp : HumanPerson) :
-    ¬hellState.inBeatifyingCommunion →
+    ¬hellState.choseGod →
     ¬inBeatifyingCommunion hp :=
-  fun h_no_beat h_comm =>
-    h_no_beat ((soulstate_communion_bridge hp hellState).mpr h_comm)
+  fun h_no_chose h_comm =>
+    h_no_chose ((soulstate_communion_bridge hp hellState).mpr h_comm)
 
-/-- Purgatory is the state of being in communion (chose God) but
+/-- Purgatory is the state of having chosen God but being
     not yet purified. This is why it's temporary — once purified,
     the soul transitions to full beatific vision. -/
 theorem purgatory_is_transitional :
-    purgatoryState.inBeatifyingCommunion ∧ ¬purgatoryState.purified := by
-  constructor
-  · exact trivial
-  · intro h; exact absurd h (by simp [purgatoryState])
+    purgatoryState.choseGod ∧ ¬purgatoryState.purified :=
+  ⟨trivial, nofun⟩
 
 /-!
 ## Why does God sustain the damned?
@@ -521,24 +582,20 @@ def afterlifeToSoulState : AfterlifeOutcome → Option SoulState
 
 /-- The determinate cases map correctly: heaven → heavenState. -/
 theorem afterlife_heaven_is_heavenState :
-    afterlifeToSoulState AfterlifeOutcome.heaven = some heavenState := by
-  rfl
+    afterlifeToSoulState AfterlifeOutcome.heaven = some heavenState := rfl
 
 /-- The determinate cases map correctly: purgatory → purgatoryState. -/
 theorem afterlife_purgatory_is_purgatoryState :
-    afterlifeToSoulState AfterlifeOutcome.purgatory = some purgatoryState := by
-  rfl
+    afterlifeToSoulState AfterlifeOutcome.purgatory = some purgatoryState := rfl
 
 /-- The determinate cases map correctly: hell → hellState. -/
 theorem afterlife_hell_is_hellState :
-    afterlifeToSoulState AfterlifeOutcome.hell = some hellState := by
-  rfl
+    afterlifeToSoulState AfterlifeOutcome.hell = some hellState := rfl
 
 /-- If the outcome is `knownToGodAlone`, we CANNOT determine the divine mode.
     The model preserves the CCC's epistemic humility (§847). -/
 theorem knownToGodAlone_indeterminate :
-    afterlifeToSoulState AfterlifeOutcome.knownToGodAlone = none := by
-  rfl
+    afterlifeToSoulState AfterlifeOutcome.knownToGodAlone = none := rfl
 
 /-- A person whose sin profile determines their afterlife state.
     The afterlife outcome follows entirely from the three-layer sin
@@ -551,25 +608,22 @@ def personAfterlifeFromSin (_p : HumanPerson) (sp : SinProfile)
     and fully purified. That is, the SoulState for heaven has both properties. -/
 theorem heaven_profile_means_heavenState (sp : SinProfile)
     (h : afterlifeFromProfile sp = AfterlifeOutcome.heaven) :
-    afterlifeToSoulState (afterlifeFromProfile sp) = some heavenState := by
-  rw [h]
-  rfl
+    afterlifeToSoulState (afterlifeFromProfile sp) = some heavenState :=
+  h ▸ rfl
 
 /-- If the sin profile yields purgatory, the person is in communion but
     not yet purified (purgatoryState). -/
 theorem purgatory_profile_means_purgatoryState (sp : SinProfile)
     (h : afterlifeFromProfile sp = AfterlifeOutcome.purgatory) :
-    afterlifeToSoulState (afterlifeFromProfile sp) = some purgatoryState := by
-  rw [h]
-  rfl
+    afterlifeToSoulState (afterlifeFromProfile sp) = some purgatoryState :=
+  h ▸ rfl
 
 /-- If the sin profile yields hell, the person is sustained but NOT in
     beatifying communion (hellState). -/
 theorem hell_profile_means_hellState (sp : SinProfile)
     (h : afterlifeFromProfile sp = AfterlifeOutcome.hell) :
-    afterlifeToSoulState (afterlifeFromProfile sp) = some hellState := by
-  rw [h]
-  rfl
+    afterlifeToSoulState (afterlifeFromProfile sp) = some hellState :=
+  h ▸ rfl
 
 /-- The three-layer sin model DETERMINES the afterlife outcome
     (for determinate cases). There is no additional input needed —
@@ -584,7 +638,6 @@ theorem hell_profile_means_hellState (sp : SinProfile)
 theorem sin_profile_determines_divine_mode (sp : SinProfile) :
     (∃ s, afterlifeToSoulState (afterlifeFromProfile sp) = some s) ∨
     afterlifeToSoulState (afterlifeFromProfile sp) = none := by
-  simp [afterlifeToSoulState]
-  cases h : afterlifeFromProfile sp <;> simp [afterlifeToSoulState, h]
+  cases afterlifeFromProfile sp <;> simp [afterlifeToSoulState]
 
 end Catlib.Creed
