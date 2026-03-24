@@ -37,3 +37,5 @@ import Catlib.Creed.HolySpirit
 import Catlib.Creed.CosmicRedemption
 import Catlib.Creed.AnalogyOfBeing
 import Catlib.Creed.EssenceExistence
+import Catlib.Creed.Miracles
+import Catlib.Creed.SaintsIntercession
