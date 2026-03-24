@@ -42,6 +42,9 @@
   --inductive-bg: #201a28;
   --inductive-border: #6a4a8a;
   --inductive-dot: #aa8ad4;
+  --proposition-bg: #2a1420;
+  --proposition-border: #8a3a5a;
+  --proposition-dot: #d46a8a;
   }
 }
 
@@ -566,6 +569,7 @@ h1 {
 .flow-node.kind-opaque { border-left-color: var(--opaque-dot); }
 .flow-node.kind-structure { border-left-color: var(--structure-dot); }
 .flow-node.kind-inductive { border-left-color: var(--inductive-dot); }
+.flow-node.kind-proposition { border-left-color: var(--proposition-dot); }
 
 .flow-node.expanded {
   border-color: var(--accent-gold);
@@ -595,6 +599,7 @@ h1 {
 .flow-node.kind-opaque .flow-node-badge { background: var(--opaque-bg); color: var(--opaque-dot); }
 .flow-node.kind-structure .flow-node-badge { background: var(--structure-bg); color: var(--structure-dot); }
 .flow-node.kind-inductive .flow-node-badge { background: var(--inductive-bg); color: var(--inductive-dot); }
+.flow-node.kind-proposition .flow-node-badge { background: var(--proposition-bg); color: var(--proposition-dot); }
 
 .flow-node-name {
   flex: 1;
@@ -750,7 +755,7 @@ h1 {
   <!-- Interactive Flow Tree -->
   <div class="flow-tree-section">
     <div class="flow-tree-title">Theorem Chains</div>
-    <div class="flow-tree-subtitle">Tap a chain to explore how axioms flow into theorems</div>
+    <div class="flow-tree-subtitle">Tap a chain to explore how axioms flow through propositions into theorems</div>
 
     <div class="chain-selector">
       <button class="chain-btn active" data-chain="marian">Marian Dogma</button>
@@ -789,6 +794,15 @@ h1 {
   <div class="flow-node-detail"></div>
 </div>
 <div class="flow-connector flow-depth-1"></div>
+<div class="flow-node kind-proposition flow-depth-2" data-desc="A person is bodily assumed when they have both corporeal and spiritual aspects and their body is not subject to corruption &amp;mdash; resurrection anticipated." data-ccc="CCC &amp;sect;966" data-link="Creed_MarianDogma.html">
+  <div class="flow-node-header">
+    <span class="flow-node-badge">prop</span>
+    <span class="flow-node-name">bodilyAssumed</span>
+    <span class="flow-node-arrow">&#9654;</span>
+  </div>
+  <div class="flow-node-detail"></div>
+</div>
+<div class="flow-connector flow-depth-2"></div>
 <div class="flow-node kind-theorem flow-depth-2" data-desc="Sinlessness implies bodily integrity: no sin means no corruption. Mary's body was not subject to decay." data-ccc="CCC &amp;sect;966, &amp;sect;974" data-link="Creed_MarianDogma.html">
   <div class="flow-node-header">
     <span class="flow-node-badge">thm</span>
@@ -835,6 +849,15 @@ h1 {
   <div class="flow-node-detail"></div>
 </div>
 <div class="flow-connector flow-depth-1"></div>
+<div class="flow-node kind-proposition flow-depth-2" data-desc="The whole Christ is present when he has both divine and human natures, and the human person has both corporeal and spiritual aspects." data-ccc="CCC &amp;sect;1374" data-link="Creed_Christology.html">
+  <div class="flow-node-header">
+    <span class="flow-node-badge">prop</span>
+    <span class="flow-node-name">wholeChristPresent</span>
+    <span class="flow-node-arrow">&#9654;</span>
+  </div>
+  <div class="flow-node-detail"></div>
+</div>
+<div class="flow-connector flow-depth-2"></div>
 <div class="flow-node kind-theorem flow-depth-2" data-desc="The whole Christ is present &amp;mdash; body, blood, soul, and divinity &amp;mdash; under each species." data-ccc="CCC &amp;sect;1374" data-link="Sacraments_Eucharist.html">
   <div class="flow-node-header">
     <span class="flow-node-badge">thm</span>
