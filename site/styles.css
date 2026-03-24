@@ -516,16 +516,17 @@ a:hover {
 /* ── Illuminated Versals ─────────────────────── */
 .versal {
   font-family: 'UnifrakturMaguntia', 'Cinzel Decorative', serif;
-  font-size: 4rem;
+  font-size: 3.5rem;
   float: left;
-  line-height: 0.8;
-  width: 1.15em;
-  min-width: 1.15em;
-  height: 1.15em;
-  margin: 0.18em 0.12em 0.04em 0;
-  padding: 0.12em 0.1em 0.15em;
+  line-height: 1;
+  width: 1.4em;
+  min-width: 1.4em;
+  margin: 0.05em 0.15em 0.05em 0;
+  padding: 0.15em 0.1em 0.1em;
   shape-outside: margin-box;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: var(--gold);
   background: linear-gradient(145deg, rgba(30, 26, 22, 0.95), rgba(20, 17, 14, 0.98));
   border: 1px solid var(--gold-dim);
@@ -540,6 +541,7 @@ a:hover {
   position: relative;
   overflow: hidden;
   text-align: center;
+  aspect-ratio: 1;
 }
 
 .versal::before,
@@ -563,16 +565,17 @@ a:hover {
 
 .versal-quote {
   font-family: 'UnifrakturMaguntia', 'Cinzel Decorative', serif;
-  font-size: 2.8rem;
+  font-size: 2.5rem;
   float: left;
-  line-height: 0.8;
-  width: 1.1em;
-  min-width: 1.1em;
-  height: 1.1em;
-  margin: 0.14em 0.1em 0.04em 0;
-  padding: 0.1em 0.08em 0.12em;
+  line-height: 1;
+  width: 1.4em;
+  min-width: 1.4em;
+  margin: 0.05em 0.12em 0.05em 0;
+  padding: 0.12em 0.08em 0.08em;
   shape-outside: margin-box;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: var(--gold);
   background: linear-gradient(145deg, rgba(30, 26, 22, 0.9), rgba(20, 17, 14, 0.95));
   border: 1px solid rgba(201, 168, 76, 0.2);
@@ -581,6 +584,7 @@ a:hover {
   text-shadow: 1px 1px 0 rgba(201, 168, 76, 0.2);
   position: relative;
   text-align: center;
+  aspect-ratio: 1;
 }
 
 .versal-quote::after {
@@ -594,16 +598,17 @@ a:hover {
 
 .versal-small {
   font-family: 'UnifrakturMaguntia', 'Cinzel Decorative', serif;
-  font-size: 1.95rem;
+  font-size: 1.8rem;
   float: left;
-  line-height: 0.8;
-  width: 1.08em;
-  min-width: 1.08em;
-  height: 1.08em;
-  margin: 0.2em 0.1em 0.04em 0;
-  padding: 0.08em 0.06em 0.1em;
+  line-height: 1;
+  width: 1.4em;
+  min-width: 1.4em;
+  margin: 0.05em 0.1em 0.05em 0;
+  padding: 0.1em 0.06em 0.06em;
   shape-outside: margin-box;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: var(--gold);
   background: linear-gradient(145deg, rgba(30, 26, 22, 0.88), rgba(22, 19, 15, 0.92));
   border: 1px solid rgba(201, 168, 76, 0.18);
@@ -611,6 +616,7 @@ a:hover {
   box-shadow: inset 0 0 0 1px rgba(201, 168, 76, 0.05);
   position: relative;
   text-align: center;
+  aspect-ratio: 1;
 }
 
 .versal-small::after {
@@ -1004,9 +1010,9 @@ footer a:hover {
     padding: 1.2rem 1rem;
   }
 
-  .versal { font-size: 2.7rem; margin-right: 0.1em; }
-  .versal-quote { font-size: 2rem; }
-  .versal-small { font-size: 1.5rem; }
+  .versal { font-size: 2.5rem; margin-right: 0.1em; }
+  .versal-quote { font-size: 1.8rem; }
+  .versal-small { font-size: 1.3rem; }
 
   footer { padding: 1rem 1rem 2rem; }
 
