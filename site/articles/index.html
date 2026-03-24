@@ -54,11 +54,21 @@
       line-height: 1.6;
       margin: 0;
     }
+    .hero { min-height: auto; padding: 5rem 0 2rem; }
+    .article-list .article-title { color: var(--gold, #c9a84c); }
+    .site-nav-sub { position: relative; background: none; padding: 1rem 0 0; display: flex; justify-content: center; gap: 2rem; font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; }
+    .site-nav-sub a { color: var(--text-secondary, #b0a48e); text-decoration: none; transition: color 0.3s; }
+    .site-nav-sub a:hover { color: var(--gold, #c9a84c); }
   </style>
 </head>
 <body>
+  <nav class="site-nav-sub">
+    <a href="../index.html">Home</a>
+    <a href="../explorer/index.html">Explorer</a>
+    <a href="../axioms/index.html">Axiom Wiki</a>
+  </nav>
+
   <main>
-    <a href="../index.html" class="back-link">Back to Catlib</a>
 
     <section class="hero">
       <div class="ornament">&#10053;</div>

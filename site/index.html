@@ -19,15 +19,25 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel+Decorative:wght@400;700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel+Decorative:wght@400;700&family=UnifrakturMaguntia&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+  <!-- Fixed Navigation -->
+  <nav class="site-nav">
+    <a href="explorer/index.html">Explorer</a>
+    <a href="axioms/index.html">Axiom Wiki</a>
+    <a href="articles/index.html">Articles</a>
+    <a href="https://github.com/ngundotra/catlib">GitHub</a>
+  </nav>
+
   <main>
-    <!-- Hero -->
+    <!-- ═══ Hero ═══ -->
     <section class="hero">
-      <div class="ornament">&#10053;</div>
-      <h1>We took the Catechism's arguments<br>as seriously as it does.</h1>
+      <div class="hero-ornament">&#10053;</div>
+      <div class="hero-label">Lean 4 Formalization of the Catholic Catechism</div>
+      <h1>We took the Catechism's arguments<br>as seriously as <em>it</em> does.</h1>
       <p class="subtitle">
         A proof assistant is a tool that checks reasoning the way a
         calculator checks arithmetic. It won't let you skip steps — it
@@ -35,13 +45,61 @@
       </p>
       <p class="subtitle">
         We pointed one at the Catholic Catechism — not to attack it,
-        but to see what it assumes. The findings surprised us.
+        but to see what it assumes.
       </p>
+      <div class="hero-line"></div>
+      <div class="hero-scroll-hint">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
+      </div>
     </section>
 
-    <!-- What this is — moved up per persona feedback -->
-    <div class="divider">&#8258;</div>
-    <section class="spirit">
+    <!-- ═══ Stats ═══ -->
+    <section class="stats-section reveal">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number" data-target="92">0</div>
+          <div class="stat-label">Modules</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="900">0</div>
+          <div class="stat-label">Theorems</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="0">0</div>
+          <div class="stat-label">Sorrys</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="550">0</div>
+          <div class="stat-label">Axioms</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ Explore the Project ═══ -->
+    <section class="hero-nav reveal">
+      <div class="hero-nav-grid">
+        <a href="axioms/index.html" class="hero-nav-card">
+          <div class="hero-nav-icon">&#128214;</div>
+          <h3>Axiom Wiki</h3>
+          <p>All axioms, grouped by file, with kernel-verified dependency data</p>
+        </a>
+        <a href="explorer/index.html" class="hero-nav-card">
+          <div class="hero-nav-icon">&#128269;</div>
+          <h3>Explorer</h3>
+          <p>Interactive dependency graphs — see how axioms flow into theorems</p>
+        </a>
+        <a href="articles/index.html" class="hero-nav-card">
+          <div class="hero-nav-icon">&#9998;</div>
+          <h3>Articles</h3>
+          <p>Essays on what formal verification reveals about Catholic theology</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- ═══ What This Is ═══ -->
+    <div class="gold-thread"></div>
+    <section class="spirit reveal">
       <p>
         <span class="versal">T</span>his is a love letter to the Catholic intellectual tradition.
         The Church has 2,000 years of rigorous philosophical reasoning —
@@ -56,33 +114,12 @@
       </p>
     </section>
 
-    <!-- Explore the project -->
-    <section class="hero-nav">
-      <div class="hero-nav-grid">
-        <a href="axioms/index.html" class="hero-nav-card">
-          <div class="hero-nav-icon">&#128214;</div>
-          <h3>Axiom Wiki</h3>
-          <p>All 260 axioms, grouped by file, with kernel-verified dependency data</p>
-        </a>
-        <a href="explorer/index.html" class="hero-nav-card">
-          <div class="hero-nav-icon">&#128269;</div>
-          <h3>Explorer</h3>
-          <p>Interactive dependency graphs &mdash; see how axioms flow into theorems</p>
-        </a>
-        <a href="articles/index.html" class="hero-nav-card">
-          <div class="hero-nav-icon">&#9998;</div>
-          <h3>Articles</h3>
-          <p>Essays on what formal verification reveals about Catholic theology</p>
-        </a>
-      </div>
-    </section>
-
-    <!-- Worked example -->
+    <!-- ═══ Worked Example ═══ -->
     <div class="divider">&#10053;</div>
     <section class="worked-example">
-      <h2>A worked example</h2>
+      <h2 class="reveal">A worked example</h2>
 
-      <div class="step">
+      <div class="step reveal">
         <div class="step-number">1</div>
         <div class="step-content">
           <h3>The claim</h3>
@@ -96,7 +133,7 @@
         </div>
       </div>
 
-      <div class="step">
+      <div class="step reveal">
         <div class="step-number">2</div>
         <div class="step-content">
           <h3>We tried to formalize it</h3>
@@ -113,7 +150,7 @@
         </div>
       </div>
 
-      <div class="step">
+      <div class="step reveal">
         <div class="step-number">3</div>
         <div class="step-content">
           <h3>The assumption we were forced to state</h3>
@@ -142,7 +179,7 @@
         </div>
       </div>
 
-      <div class="step">
+      <div class="step reveal">
         <div class="step-number">4</div>
         <div class="step-content">
           <h3>What the computer checked</h3>
@@ -172,7 +209,7 @@
         </div>
       </div>
 
-      <div class="summary-box">
+      <div class="summary-box reveal">
         <h3>You can stop here</h3>
         <p>
           <span class="versal-small">T</span>he Catechism's claim about intrinsically evil acts works —
@@ -184,9 +221,9 @@
       </div>
     </section>
 
-    <!-- Grace bootstrapping — promoted as the strongest finding -->
+    <!-- ═══ Grace Bootstrap ═══ -->
     <div class="divider">&#10053;</div>
-    <section class="finding">
+    <section class="finding reveal">
       <h2>You need grace to prepare for grace</h2>
       <div class="finding-card">
         <p class="finding-claim">
@@ -215,16 +252,16 @@
       </div>
     </section>
 
-    <!-- Browse more -->
+    <!-- ═══ More Findings ═══ -->
     <div class="divider">&#8258;</div>
     <section class="more-findings" id="findings">
-      <h2>More findings</h2>
-      <p class="more-findings-intro">
+      <h2 class="reveal">More findings</h2>
+      <p class="more-findings-intro reveal">
         Every passage we've formalized revealed
         assumptions the text didn't state.
       </p>
 
-      <div class="finding-card compact">
+      <div class="finding-card compact reveal">
         <h3>The mortal sin system only works in binary</h3>
         <p>
           Mortal sin requires grave matter, full knowledge, and complete
@@ -236,7 +273,7 @@
         </p>
       </div>
 
-      <div class="finding-card compact">
+      <div class="finding-card compact reveal">
         <h3>Hell requires a specific model of free will</h3>
         <p>
           The Catechism calls hell "definitive self-exclusion from God."
@@ -249,7 +286,7 @@
         </p>
       </div>
 
-      <div class="finding-card compact">
+      <div class="finding-card compact reveal">
         <h3>The Trinity requires distinguishing two kinds of "same"</h3>
         <p>
           If Father = God and Son = God, then by normal logic, Father = Son.
@@ -262,7 +299,7 @@
         </p>
       </div>
 
-      <div class="finding-card compact">
+      <div class="finding-card compact reveal">
         <h3>If people disagree about morality, someone is reasoning badly</h3>
         <p>
           The Catechism says natural law is universal, immutable, and
@@ -276,7 +313,7 @@
         </p>
       </div>
 
-      <div class="finding-card compact">
+      <div class="finding-card compact reveal">
         <h3>You're wrong either way: the erring conscience paradox</h3>
         <p>
           The Catechism says you must always obey your conscience — but
@@ -289,7 +326,7 @@
         </p>
       </div>
 
-      <div class="finding-card compact">
+      <div class="finding-card compact reveal">
         <h3>God causes good but only permits evil</h3>
         <p>
           The Catechism says God "operates in and through" all creature
@@ -302,7 +339,7 @@
         </p>
       </div>
 
-      <div class="finding-card compact">
+      <div class="finding-card compact reveal">
         <h3>Your soul is not what you think it is</h3>
         <p>
           Most people think the soul is a separate thing living inside
@@ -316,7 +353,7 @@
         </p>
       </div>
 
-      <div class="finding-card compact">
+      <div class="finding-card compact reveal">
         <h3>The freest being cannot sin</h3>
         <p>
           The Catechism says "the more one does what is good, the freer
@@ -330,14 +367,14 @@
       </div>
     </section>
 
-    <!-- CTAs -->
-    <section class="cta-section">
+    <!-- ═══ CTAs ═══ -->
+    <section class="cta-section reveal">
       <div class="cta-group">
         <a href="https://github.com/ngundotra/catlib" class="cta-button primary">
           Read the source
         </a>
-        <a href="https://github.com/ngundotra/catlib/tree/master/Catlib" class="cta-button secondary">
-          Browse all findings
+        <a href="explorer/index.html" class="cta-button secondary">
+          Browse the explorer
         </a>
         <a href="https://github.com/ngundotra/catlib/issues" class="cta-button secondary">
           Check our work
@@ -355,5 +392,56 @@
       <a href="https://www.vatican.va/archive/ENG0015/_INDEX.HTM">Vatican's official English translation</a>.
     </p>
   </footer>
+
+  <script>
+  // ── Scroll reveal with IntersectionObserver ──
+  (function() {
+    var reveals = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) {
+      reveals.forEach(function(el) { el.classList.add('visible'); });
+      return;
+    }
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(function(el) { observer.observe(el); });
+  })();
+
+  // ── Stat counter animation ──
+  (function() {
+    var stats = document.querySelectorAll('.stat-number[data-target]');
+    var animated = false;
+    if (!('IntersectionObserver' in window)) return;
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting && !animated) {
+          animated = true;
+          stats.forEach(function(el) {
+            var target = parseInt(el.getAttribute('data-target'));
+            if (target === 0) { el.textContent = '0'; return; }
+            var duration = 1200;
+            var start = performance.now();
+            function step(now) {
+              var progress = Math.min((now - start) / duration, 1);
+              var eased = 1 - Math.pow(1 - progress, 3);
+              el.textContent = Math.round(target * eased) + (target > 10 ? '+' : '');
+              if (progress < 1) requestAnimationFrame(step);
+            }
+            requestAnimationFrame(step);
+          });
+          observer.disconnect();
+        }
+      });
+    }, { threshold: 0.3 });
+
+    if (stats.length) observer.observe(stats[0].parentElement.parentElement);
+  })();
+  </script>
 </body>
 </html>
