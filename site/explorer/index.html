@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Catlib Explorer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --text: #2a1f14;
+  --text-light: #5c4a3a;
+  --text-muted: #8a7a6a;
+  --bg: #f4ead5;
+  --bg-parchment: #efe3c8;
+  --bg-vellum: #e8d9b8;
+  --accent: #7a2e0e;
+  --accent-gold: #b8860b;
+  --accent-gold-light: #d4a937;
+  --border: #c4a872;
+  --border-dark: #a08050;
+  --code-bg: #1e1a15;
+  --code-text: #e8d9b8;
+
+  /* Node type colors */
+  --axiom-bg: #f5e6d8;
+  --axiom-border: #c4713a;
+  --axiom-dot: #b8510e;
+  --theorem-bg: #dde8f0;
+  --theorem-border: #5a8aaa;
+  --theorem-dot: #2a6a8a;
+  --def-bg: #e4ead4;
+  --def-border: #7a9a5a;
+  --def-dot: #4a7a2a;
+  --opaque-bg: #ebe0d0;
+  --opaque-border: #a08050;
+  --opaque-dot: #7a6030;
+  --structure-bg: #e8daf0;
+  --structure-border: #8a6aaa;
+  --structure-dot: #6a4a8a;
+  --inductive-bg: #e8daf0;
+  --inductive-border: #8a6aaa;
+  --inductive-dot: #6a4a8a;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #e0d5c0;
+    --text-light: #b8a890;
+    --text-muted: #8a7a6a;
+    --bg: #1a1510;
+    --bg-parchment: #221c14;
+    --bg-vellum: #2a2218;
+    --accent: #d4856a;
+    --accent-gold: #d4a937;
+    --accent-gold-light: #e8c050;
+    --border: #4a3a28;
+    --border-dark: #6a5a40;
+    --code-bg: #0e0c08;
+    --code-text: #e8d9b8;
+
+    --axiom-bg: #2a1e14;
+    --axiom-border: #8a4a20;
+    --axiom-dot: #d4856a;
+    --theorem-bg: #14202a;
+    --theorem-border: #3a6a8a;
+    --theorem-dot: #6aaad4;
+    --def-bg: #1a2214;
+    --def-border: #4a6a3a;
+    --def-dot: #8aba6a;
+    --opaque-bg: #221c14;
+    --opaque-border: #6a5030;
+    --opaque-dot: #b8a060;
+    --structure-bg: #201a28;
+    --structure-border: #6a4a8a;
+    --structure-dot: #aa8ad4;
+    --inductive-bg: #201a28;
+    --inductive-border: #6a4a8a;
+    --inductive-dot: #aa8ad4;
+  }
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  font-size: 17px;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.7;
+  min-height: 100vh;
+  -webkit-text-size-adjust: 100%;
+}
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+h1 {
+  font-family: Cinzel, Georgia, serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.3rem;
+  color: var(--text);
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--text-light);
+  font-style: italic;
+  margin-bottom: 1.5rem;
+}
+
+.serve-note {
+  background: var(--code-bg);
+  color: var(--code-text);
+  padding: 0.8rem 1rem;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.75rem;
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+  line-height: 1.6;
+}
+
+/* ── Search ── */
+.search-box {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.05rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--bg-parchment);
+  color: var(--text);
+  margin-bottom: 1.5rem;
+  outline: none;
+}
+
+.search-box:focus {
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 0 2px rgba(184, 134, 11, 0.2);
+}
+
+.search-box::placeholder {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* ── Category sections ── */
+.category-header {
+  font-family: Cinzel, Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-variant: small-caps;
+  margin: 1.8rem 0 0.8rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── File cards ── */
+.file-card {
+  display: block;
+  padding: 1rem 1.1rem;
+  margin-bottom: 0.5rem;
+  background: var(--bg-parchment);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  text-decoration: none;
+  color: var(--text);
+  transition: background 0.15s, border-color 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.file-card:hover, .file-card:active {
+  background: var(--bg-vellum);
+  border-color: var(--accent-gold);
+  text-decoration: none;
+}
+
+.file-card-name {
+  font-family: Cinzel, Georgia, serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.3rem;
+}
+
+.file-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  font-size: 0.82rem;
+  color: var(--text-light);
+}
+
+.file-card-meta .tag {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.75rem;
+  font-family: Cinzel, Georgia, serif;
+  letter-spacing: 0.03em;
+}
+
+.tag-axiom { background: var(--axiom-bg); color: var(--axiom-dot); border: 1px solid var(--axiom-border); }
+.tag-theorem { background: var(--theorem-bg); color: var(--theorem-dot); border: 1px solid var(--theorem-border); }
+.tag-def { background: var(--def-bg); color: var(--def-dot); border: 1px solid var(--def-border); }
+
+.file-card-ccc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 0.3rem;
+}
+
+/* ── Summary stats ── */
+.stats-bar {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--text-light);
+  font-style: italic;
+}
+
+.stats-bar span { white-space: nowrap; }
+
+/* ── Node cards (per-file page) ── */
+.node-card {
+  margin-bottom: 0.4rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  border-left: 4px solid var(--border);
+}
+
+.node-card.kind-axiom { border-left-color: var(--axiom-dot); }
+.node-card.kind-theorem { border-left-color: var(--theorem-dot); }
+.node-card.kind-def { border-left-color: var(--def-dot); }
+.node-card.kind-opaque { border-left-color: var(--opaque-dot); }
+.node-card.kind-structure { border-left-color: var(--structure-dot); }
+.node-card.kind-inductive { border-left-color: var(--inductive-dot); }
+
+.node-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  background: var(--bg-parchment);
+  transition: background 0.15s;
+}
+
+.node-header:active {
+  background: var(--bg-vellum);
+}
+
+.node-kind-badge {
+  flex-shrink: 0;
+  font-family: monospace;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+  font-weight: bold;
+}
+
+.kind-axiom .node-kind-badge { background: var(--axiom-bg); color: var(--axiom-dot); }
+.kind-theorem .node-kind-badge { background: var(--theorem-bg); color: var(--theorem-dot); }
+.kind-def .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
+.kind-opaque .node-kind-badge { background: var(--opaque-bg); color: var(--opaque-dot); }
+.kind-structure .node-kind-badge { background: var(--structure-bg); color: var(--structure-dot); }
+.kind-inductive .node-kind-badge { background: var(--inductive-bg); color: var(--inductive-dot); }
+
+.node-name {
+  flex: 1;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.82rem;
+  word-break: break-all;
+}
+
+.node-chevron {
+  flex-shrink: 0;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  transition: transform 0.2s;
+}
+
+.node-card.open .node-chevron {
+  transform: rotate(90deg);
+}
+
+.node-details {
+  display: none;
+  padding: 0.6rem 1rem 0.8rem;
+  font-size: 0.9rem;
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.node-card.open .node-details {
+  display: block;
+}
+
+.node-prop {
+  margin-bottom: 0.5rem;
+}
+
+.node-prop pre {
+  background: var(--code-bg);
+  color: var(--code-text);
+  padding: 0.6rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  white-space: pre;
+  margin: 0;
+}
+
+.node-prop code {
+  font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', Menlo, monospace;
+  font-size: 0.75rem;
+}
+
+.node-desc {
+  margin-bottom: 0.5rem;
+  font-style: italic;
+  color: var(--text-light);
+  line-height: 1.5;
+}
+
+.node-dep-section {
+  margin-top: 0.4rem;
+}
+
+.node-dep-label {
+  font-family: Cinzel, Georgia, serif;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-bottom: 0.2rem;
+}
+
+.node-dep-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.dep-chip {
+  display: inline-block;
+  font-family: monospace;
+  font-size: 0.72rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  background: var(--bg-vellum);
+  border: 1px solid var(--border);
+  color: var(--text-light);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.dep-chip:active {
+  background: var(--accent-gold);
+  color: var(--code-bg);
+}
+
+.node-scope {
+  margin-top: 0.4rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* ── Flow diagram header ── */
+.flow-summary {
+  display: flex;
+  justify-content: center;
+  gap: 0.3rem;
+  margin-bottom: 1.2rem;
+  flex-wrap: wrap;
+  align-items: center;
+  font-family: Cinzel, Georgia, serif;
+  font-size: 0.85rem;
+  color: var(--text-light);
+}
+
+.flow-count {
+  display: inline-block;
+  padding: 0.3rem 0.7rem;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.flow-arrow { color: var(--accent-gold); padding: 0 0.2rem; }
+
+.flow-count.axioms { background: var(--axiom-bg); color: var(--axiom-dot); }
+.flow-count.theorems { background: var(--theorem-bg); color: var(--theorem-dot); }
+.flow-count.derived { background: var(--def-bg); color: var(--def-dot); }
+
+/* ── Legend ── */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  justify-content: center;
+  margin-bottom: 1.2rem;
+  font-size: 0.78rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--text-light);
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.legend-dot.axiom { background: var(--axiom-dot); }
+.legend-dot.theorem { background: var(--theorem-dot); }
+.legend-dot.def { background: var(--def-dot); }
+.legend-dot.opaque { background: var(--opaque-dot); }
+.legend-dot.structure { background: var(--structure-dot); }
+.legend-dot.inductive { background: var(--inductive-dot); }
+
+/* ── Filter buttons ── */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-bottom: 1rem;
+  justify-content: center;
+}
+
+.filter-btn {
+  font-family: monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.3rem 0.7rem;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text-light);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.filter-btn.active {
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+}
+
+/* ── Back link ── */
+.back-link {
+  display: inline-block;
+  margin-bottom: 1rem;
+  font-family: Cinzel, Georgia, serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+}
+
+/* ── Footer ── */
+.footer {
+  text-align: center;
+  padding-top: 2rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* ── Responsive ── */
+@media (max-width: 500px) {
+  html { font-size: 16px; }
+  .container { padding: 1rem 0.75rem 2rem; }
+  h1 { font-size: 1.35rem; }
+  .node-name { font-size: 0.75rem; }
+}
+
+
+/* ── Flow Tree ── */
+.flow-tree-section {
+  margin-bottom: 2rem;
+}
+
+.flow-tree-title {
+  font-family: Cinzel, Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 400;
+  text-align: center;
+  color: var(--accent-gold);
+  letter-spacing: 0.06em;
+  margin-bottom: 0.3rem;
+}
+
+.flow-tree-subtitle {
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-bottom: 1.2rem;
+}
+
+.chain-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  justify-content: center;
+  margin-bottom: 1.2rem;
+}
+
+.chain-btn {
+  font-family: Cinzel, Georgia, serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.03em;
+  padding: 0.45rem 0.8rem;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  background: var(--bg-parchment);
+  color: var(--text-light);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: all 0.15s;
+}
+
+.chain-btn:active, .chain-btn.active {
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+}
+
+.chain-container {
+  position: relative;
+  padding: 0.5rem 0;
+}
+
+.chain-canvas {
+  display: none;
+}
+
+.chain-canvas.active {
+  display: block;
+}
+
+/* Flow nodes */
+.flow-node {
+  position: relative;
+  margin-left: 1.2rem;
+  padding: 0.7rem 0.9rem;
+  margin-bottom: 0;
+  background: var(--bg-parchment);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: all 0.15s;
+  border-left: 4px solid var(--border);
+}
+
+.flow-node:active {
+  background: var(--bg-vellum);
+}
+
+.flow-node.kind-axiom { border-left-color: var(--axiom-dot); }
+.flow-node.kind-theorem { border-left-color: var(--theorem-dot); }
+.flow-node.kind-def { border-left-color: var(--def-dot); }
+.flow-node.kind-opaque { border-left-color: var(--opaque-dot); }
+.flow-node.kind-structure { border-left-color: var(--structure-dot); }
+.flow-node.kind-inductive { border-left-color: var(--inductive-dot); }
+
+.flow-node.expanded {
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 0 1px var(--accent-gold);
+}
+
+.flow-node-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.flow-node-badge {
+  flex-shrink: 0;
+  font-family: monospace;
+  font-size: 0.58rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.12rem 0.35rem;
+  border-radius: 3px;
+  font-weight: bold;
+}
+
+.flow-node.kind-axiom .flow-node-badge { background: var(--axiom-bg); color: var(--axiom-dot); }
+.flow-node.kind-theorem .flow-node-badge { background: var(--theorem-bg); color: var(--theorem-dot); }
+.flow-node.kind-def .flow-node-badge { background: var(--def-bg); color: var(--def-dot); }
+.flow-node.kind-opaque .flow-node-badge { background: var(--opaque-bg); color: var(--opaque-dot); }
+.flow-node.kind-structure .flow-node-badge { background: var(--structure-bg); color: var(--structure-dot); }
+.flow-node.kind-inductive .flow-node-badge { background: var(--inductive-bg); color: var(--inductive-dot); }
+
+.flow-node-name {
+  flex: 1;
+  font-family: Cinzel, Georgia, serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.flow-node-arrow {
+  flex-shrink: 0;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  transition: transform 0.2s;
+}
+
+.flow-node.expanded .flow-node-arrow {
+  transform: rotate(90deg);
+}
+
+.flow-node-detail {
+  display: none;
+  margin-top: 0.5rem;
+  padding-top: 0.4rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.82rem;
+  color: var(--text-light);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.flow-node.expanded .flow-node-detail {
+  display: block;
+}
+
+.flow-node-ccc {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-style: normal;
+  margin-top: 0.3rem;
+}
+
+.flow-node-link {
+  display: inline-block;
+  margin-top: 0.3rem;
+  font-size: 0.72rem;
+  font-style: normal;
+  color: var(--accent);
+  font-family: Cinzel, Georgia, serif;
+  letter-spacing: 0.03em;
+}
+
+/* Connector lines */
+.flow-connector {
+  position: relative;
+  margin-left: 2.2rem;
+  height: 1.6rem;
+}
+
+.flow-connector::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--accent-gold);
+}
+
+.flow-connector::after {
+  content: '';
+  position: absolute;
+  left: -1px;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid var(--accent-gold);
+  transform: translateX(-4px);
+}
+
+/* Depth indentation */
+.flow-depth-0 { margin-left: 0; }
+.flow-depth-1 { margin-left: 1.2rem; }
+.flow-depth-2 { margin-left: 2.4rem; }
+.flow-depth-3 { margin-left: 3.6rem; }
+.flow-depth-4 { margin-left: 4.8rem; }
+
+.flow-connector.flow-depth-0 { margin-left: 1rem; }
+.flow-connector.flow-depth-1 { margin-left: 2.2rem; }
+.flow-connector.flow-depth-2 { margin-left: 3.4rem; }
+.flow-connector.flow-depth-3 { margin-left: 4.6rem; }
+.flow-connector.flow-depth-4 { margin-left: 5.8rem; }
+
+@media (max-width: 500px) {
+  .flow-depth-1 { margin-left: 0.8rem; }
+  .flow-depth-2 { margin-left: 1.6rem; }
+  .flow-depth-3 { margin-left: 2.4rem; }
+  .flow-depth-4 { margin-left: 3.2rem; }
+  .flow-connector.flow-depth-1 { margin-left: 1.8rem; }
+  .flow-connector.flow-depth-2 { margin-left: 2.6rem; }
+  .flow-connector.flow-depth-3 { margin-left: 3.4rem; }
+  .flow-connector.flow-depth-4 { margin-left: 4.2rem; }
+  .flow-node { padding: 0.6rem 0.7rem; }
+  .flow-node-name { font-size: 0.78rem; }
+}
+
+/* Separator between tree and file list */
+.section-divider {
+  margin: 2rem 0 1.5rem;
+  text-align: center;
+  position: relative;
+}
+
+.section-divider::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: var(--border);
+}
+
+.section-divider span {
+  position: relative;
+  background: var(--bg);
+  padding: 0 1rem;
+  font-family: Cinzel, Georgia, serif;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Catlib Explorer</h1>
+  <div class="subtitle">Browse the formal structure of every formalization</div>
+
+  <div class="stats-bar">
+    <span>54 files</span>
+    <span>1239 declarations</span>
+  </div>
+
+  <!-- Interactive Flow Tree -->
+  <div class="flow-tree-section">
+    <div class="flow-tree-title">Theorem Chains</div>
+    <div class="flow-tree-subtitle">Tap a chain to explore how axioms flow into theorems</div>
+
+    <div class="chain-selector">
+      <button class="chain-btn active" data-chain="marian">Marian Dogma</button>
+<button class="chain-btn" data-chain="eucharist">Eucharist</button>
+<button class="chain-btn" data-chain="science">Scientific Inquiry</button>
+<button class="chain-btn" data-chain="sacraments">Sacrament Layers</button>
+
+    </div>
+
+    <div class="chain-container">
+      <div class="chain-canvas active" id="chain-marian">
+<div class="flow-node kind-axiom flow-depth-0" data-desc="Christ is one divine person with two natures, divine and human, united without confusion or separation." data-ccc="CCC &amp;sect;464-469" data-link="Creed_Christology.html">
+  <div class="flow-node-header">
+    <span class="flow-node-badge">axiom</span>
+    <span class="flow-node-name">Hypostatic Union</span>
+    <span class="flow-node-arrow">&#9654;</span>
+  </div>
+  <div class="flow-node-detail"></div>
+</div>
+<div class="flow-connector flow-depth-0"></div>
+<div class="flow-node kind-theorem flow-depth-0" data-desc="Mary is the Mother of God &amp;mdash; because motherhood targets persons, not natures, and the person she bore is divine." data-ccc="CCC &amp;sect;495, &amp;sect;509" data-link="Creed_MarianDogma.html">
+  <div class="flow-node-header">
+    <span class="flow-node-badge">thm</span>
+    <span class="flow-node-name">Theotokos</span>
+    <span class="flow-node-arrow">&#9654;</span>
+  </div>
+  <div class="flow-node-detail"></div>
+</div>
+<div class="flow-connector flow-depth-0"></div>
+<div class="flow-node kind-theorem flow-depth-1" data-desc="Mary was preserved from original sin at conception. The Theotokos dignity requires the Immaculate Conception." data-ccc="CCC &amp;sect;491-492" data-link="Creed_MarianDogma.html">
+  <div class="flow-node-header">
+    <span class="flow-node-badge">thm</span>
+    <span class="flow-node-name">Immaculate Conception</span>
+    <span class="flow-node-arrow">&#9654;</span>
+  </div>
+  <div class="flow-node-detail"></div>
+</div>
+<div class="flow-connector flow-depth-1"></div>
+<div class="flow-node kind-theorem flow-depth-2" data-desc="Sinlessness implies bodily integrity: no sin means no corruption. Mary's body was not subject to decay." data-ccc="CCC &amp;sect;966, &amp;sect;974" data-link="Creed_MarianDogma.html">
+  <div class="flow-node-header">
+    <span class="flow-node-badge">thm</span>
+    <span class="flow-node-name">Bodily Assumption</span>
+    <span class="flow-node-arrow">&#9654;</span>
+  </div>
+  <div class="flow-node-detail"></div>
+</div>
+<div class="flow-connector flow-depth-2"></div>
+<div class="flow-node kind-theorem flow-depth-3" data-desc="Mary is complete in heaven &amp;mdash; body and soul reunited &amp;mdash; the only human besides the risen Christ who is a complete person in glory." data-ccc="CCC &amp;sect;974" data-link="Creed_MarianDogma.html">
+  <div class="flow-node-header">
+    <span class="flow-node-badge">thm</span>
+    <span class="flow-node-name">Mary Complete in Heaven</span>
+    <span class="flow-node-arrow">&#9654;</span>
+  </div>
+  <div class="flow-node-detail"></div>
+</div>
+</div>
+<div class="chain-canvas" id="chain-eucharist">
+<div class="flow-node kind-axiom flow-depth-0" data-desc="After valid consecration, the substance of bread and wine is converted into the substance of Christ's body and blood." data-ccc="CCC &amp;sect;1376" data-link="Sacraments_Eucharist.html">
+  <div class="flow-node-header">
+    <span class="flow-node-badge">axiom</span>
+    <span class="flow-node-name">Consecration Converts Substance</span>
+    <span class="flow-node-arrow">&#9654;</span>
+  </div>
+  <div class="flow-node-detail"></div>
+</div>
+<div class="flow-connector flow-depth-0"></div>
+<div class="flow-node kind-axiom flow-depth-0" data-desc="Christ's human nature is a body-soul composite (hylomorphism). You cannot have the body without the soul." data-ccc="CCC &amp;sect;365, &amp;sect;1374" data-link="Creed_Christology.html">
+  <div class="flow-node-header">
+    <span class="flow-node-badge">axiom</span>
+    <span class="flow-node-name">Body-Soul Unity</span>
+    <span class="flow-node-arrow">&#9654;</span>
+  </div>
+  <div class="flow-node-detail"></div>
+</div>
+<div class="flow-connector flow-depth-0"></div>
+<div class="flow-node kind-theorem flow-depth-1" data-desc="Transubstantiation: the substance becomes Christ while the accidents of bread and wine remain." data-ccc="CCC &amp;sect;1376-1377" data-link="Sacraments_Eucharist.html">
+  <div class="flow-node-header">
+    <span class="flow-node-badge">thm</span>
+    <span class="flow-node-name">Transubstantiation</span>
+    <span class="flow-node-arrow">&#9654;</span>
+  </div>
+  <div class="flow-node-detail"></div>
+</div>
+<div class="flow-connector flow-depth-1"></div>
+<div class="flow-node kind-theorem flow-depth-2" data-desc="The whole Christ is present &amp;mdash; body, blood, soul, and divinity &amp;mdash; under each species." data-ccc="CCC &amp;sect;1374" data-link="Sacraments_Eucharist.html">
+  <div class="flow-node-header">
+    <span class="flow-node-badge">thm</span>
+    <span class="flow-node-name">Whole Christ Present</span>
+    <span class="flow-node-arrow">&#9654;</span>
+  </div>
+  <div class="flow-node-detail"></div>
+</div>
+<div class="flow-connector flow-depth-2"></div>
+<div class="flow-node kind-theorem flow-depth-3" data-desc="The eucharist contains a complete human nature: body and soul united, not body alone. Hylomorphism resolves the body-soul question." data-ccc="CCC &amp;sect;1374, &amp;sect;365" data-link="Sacraments_Eucharist.html">
+  <div class="flow-node-header">
+    <span class="flow-node-badge">thm</span>
+    <span class="flow-node-name">Body-Soul Resolution</span>
+    <span class="flow-node-arrow">&#9654;</span>
+  </div>
+  <div class="flow-node-detail"></div>
+</div>
+</div>
+<div class="chain-canvas" id="chain-science">
+<div class="flow-node kind-axiom flow-depth-0" data-desc="God creates through wisdom &amp;mdash; not arbitrary will but rational logos. What is made through reason has order." data-ccc="CCC &amp;sect;299" data-link="Creed_ScientificInquiry.html">
+  <div class="flow-node-header">
+    <span class="flow-node-badge">axiom</span>
+    <span class="flow-node-name">God Creates Through Wisdom</span>
+    <span class="flow-node-arrow">&#9654;</span>
+  </div>
+  <div class="flow-node-detail"></div>
+</div>
+<div class="flow-connector flow-depth-0"></div>
+<div class="flow-node kind-axiom flow-depth-0" data-desc="Humans are made in the image of God &amp;mdash; the image of a rational God is itself rational." data-ccc="CCC &amp;sect;1700" data-link="Creed_ScientificInquiry.html">
+  <div class="flow-node-header">
+    <span class="flow-node-badge">axiom</span>
+    <span class="flow-node-name">Imago Dei is Rational</span>
+    <span class="flow-node-arrow">&#9654;</span>
+  </div>
+  <div class="flow-node-detail"></div>
+</div>
+<div class="flow-connector flow-depth-0"></div>
+<div class="flow-node kind-theorem flow-depth-1" data-desc="The world has stable, discoverable order &amp;mdash; it is logical, not chaotic, because it was created through wisdom." data-ccc="CCC &amp;sect;299, &amp;sect;302" data-link="Creed_ScientificInquiry.html">
+  <div class="flow-node-header">
+    <span class="flow-node-badge">thm</span>
+    <span class="flow-node-name">The World Is Logical</span>
+    <span class="flow-node-arrow">&#9654;</span>
+  </div>
+  <div class="flow-node-detail"></div>
+</div>
+<div class="flow-connector flow-depth-1"></div>
+<div class="flow-node kind-theorem flow-depth-2" data-desc="A rational creature in a rational world can understand that world. Humans can do science." data-ccc="CCC &amp;sect;36, &amp;sect;1700" data-link="Creed_ScientificInquiry.html">
+  <div class="flow-node-header">
+    <span class="flow-node-badge">thm</span>
+    <span class="flow-node-name">Humans Understand the World</span>
+    <span class="flow-node-arrow">&#9654;</span>
+  </div>
+  <div class="flow-node-detail"></div>
+</div>
+<div class="flow-connector flow-depth-2"></div>
+<div class="flow-node kind-theorem flow-depth-3" data-desc="Science is grounded: both propositions together &amp;mdash; the world is ordered AND humans are fitted to understand it &amp;mdash; give science its foundation." data-ccc="CCC &amp;sect;36, &amp;sect;299, &amp;sect;306" data-link="Creed_ScientificInquiry.html">
+  <div class="flow-node-header">
+    <span class="flow-node-badge">thm</span>
+    <span class="flow-node-name">Science Is Grounded</span>
+    <span class="flow-node-arrow">&#9654;</span>
+  </div>
+  <div class="flow-node-detail"></div>
+</div>
+</div>
+<div class="chain-canvas" id="chain-sacraments">
+<div class="flow-node kind-structure flow-depth-0" data-desc="The complete sin-effect profile of a person: original sin (Layer 1), guilt (Layer 2), and attachment (Layer 3)." data-ccc="CCC &amp;sect;1263, &amp;sect;1472" data-link="Foundations_SinEffects.html">
+  <div class="flow-node-header">
+    <span class="flow-node-badge">struct</span>
+    <span class="flow-node-name">Sin Profile (3 Layers)</span>
+    <span class="flow-node-arrow">&#9654;</span>
+  </div>
+  <div class="flow-node-detail"></div>
+</div>
+<div class="flow-connector flow-depth-0"></div>
+<div class="flow-node kind-theorem flow-depth-1" data-desc="Baptism removes original sin (Layer 1). The baptized person enters the state of grace." data-ccc="CCC &amp;sect;1263" data-link="Foundations_SinEffects.html">
+  <div class="flow-node-header">
+    <span class="flow-node-badge">thm</span>
+    <span class="flow-node-name">Baptism &rarr; Layer 1</span>
+    <span class="flow-node-arrow">&#9654;</span>
+  </div>
+  <div class="flow-node-detail"></div>
+</div>
+<div class="flow-connector flow-depth-1"></div>
+<div class="flow-node kind-theorem flow-depth-2" data-desc="Reconciliation removes guilt (Layer 2). Absolution restores the state of grace after mortal sin." data-ccc="CCC &amp;sect;1422-1424, &amp;sect;1468" data-link="Sacraments_Reconciliation.html">
+  <div class="flow-node-header">
+    <span class="flow-node-badge">thm</span>
+    <span class="flow-node-name">Reconciliation &rarr; Layer 2</span>
+    <span class="flow-node-arrow">&#9654;</span>
+  </div>
+  <div class="flow-node-detail"></div>
+</div>
+<div class="flow-connector flow-depth-2"></div>
+<div class="flow-node kind-theorem flow-depth-3" data-desc="The Eucharist reduces attachment to sin (Layer 3). Communion progressively purifies the soul." data-ccc="CCC &amp;sect;1394-1395" data-link="Sacraments_Eucharist.html">
+  <div class="flow-node-header">
+    <span class="flow-node-badge">thm</span>
+    <span class="flow-node-name">Eucharist &rarr; Layer 3</span>
+    <span class="flow-node-arrow">&#9654;</span>
+  </div>
+  <div class="flow-node-detail"></div>
+</div>
+<div class="flow-connector flow-depth-3"></div>
+<div class="flow-node kind-theorem flow-depth-4" data-desc="Each sacrament has a distinct domain corresponding to a distinct layer of sin. The three sacraments cover the complete sin profile." data-ccc="CCC &amp;sect;1263, &amp;sect;1468, &amp;sect;1394" data-link="Sacraments_Eucharist.html">
+  <div class="flow-node-header">
+    <span class="flow-node-badge">thm</span>
+    <span class="flow-node-name">Sacraments Have Distinct Domains</span>
+    <span class="flow-node-arrow">&#9654;</span>
+  </div>
+  <div class="flow-node-detail"></div>
+</div>
+</div>
+
+    </div>
+  </div>
+
+  <div class="section-divider"><span>Browse All Files</span></div>
+
+  <input type="text" class="search-box" placeholder="Search by name, CCC &sect;, or keyword..." id="fileSearch">
+
+  <div id="fileList">
+    <h2 class="category-header">Foundations</h2>
+<a href="Foundations_Authority.html" class="file-card" data-search="authority 77 862">
+  <div class="file-card-name">Authority</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">9 axioms</span><span class="tag tag-theorem">9 thms</span><span class="tag tag-def">21 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;77, &sect;862</div>
+</a>
+<a href="Foundations_Axioms.html" class="file-card" data-search="axioms 1024 1033 1037 1127 1730 1733 1790 1855 1861 1954 1999 2002 214 255 3 302 303 306 311 946">
+  <div class="file-card-name">Axioms</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">47 axioms</span><span class="tag tag-def">3 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1024, &sect;1033, &sect;1037, &sect;1127, &sect;1730 +15</div>
+</a>
+<a href="Foundations_Basic.html" class="file-card" data-search="basic 1024 1033 1700 1733 1750 1752 1754 1755 1849 1857 1859 1897 1996 2001 255 946">
+  <div class="file-card-name">Basic</div>
+  <div class="file-card-meta"><span class="tag tag-theorem">2 thms</span><span class="tag tag-def">26 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1024, &sect;1033, &sect;1700, &sect;1733, &sect;1750 +11</div>
+</a>
+<a href="Foundations_HumanNature.html" class="file-card" data-search="humannature 1705 362 363 364 365 405">
+  <div class="file-card-name">HumanNature</div>
+  <div class="file-card-meta"><span class="tag tag-theorem">2 thms</span><span class="tag tag-def">9 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1705, &sect;362, &sect;363, &sect;364, &sect;365 +1</div>
+</a>
+<a href="Foundations_Love.html" class="file-card" data-search="love 1 1264 1822 1827 1855 2264 3 6">
+  <div class="file-card-name">Love</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">11 axioms</span><span class="tag tag-theorem">4 thms</span><span class="tag tag-def">3 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1, &sect;1264, &sect;1822, &sect;1827, &sect;1855 +3</div>
+</a>
+<a href="Foundations_SinEffects.html" class="file-card" data-search="sineffects 1023 1030 1033 1260 1472 405 847">
+  <div class="file-card-name">SinEffects</div>
+  <div class="file-card-meta"><span class="tag tag-theorem">5 thms</span><span class="tag tag-def">11 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1023, &sect;1030, &sect;1033, &sect;1260, &sect;1472 +2</div>
+</a>
+<h2 class="category-header">Creed</h2>
+<a href="Creed_ArgumentGaps.html" class="file-card" data-search="argumentgaps 1374 1376 230 302 311 491 74 80">
+  <div class="file-card-name">ArgumentGaps</div>
+  <div class="file-card-meta"><span class="tag tag-theorem">8 thms</span><span class="tag tag-def">9 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1374, &sect;1376, &sect;230, &sect;302, &sect;311 +3</div>
+</a>
+<a href="Creed_Atonement.html" class="file-card" data-search="atonement 1849 599 601 604 613 615 616">
+  <div class="file-card-name">Atonement</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">18 axioms</span><span class="tag tag-theorem">11 thms</span><span class="tag tag-def">2 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1849, &sect;599, &sect;601, &sect;604, &sect;613 +2</div>
+</a>
+<a href="Creed_Christology.html" class="file-card" data-search="christology 1374 365 464 466 467 470 471 474 475 624 645 650">
+  <div class="file-card-name">Christology</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">14 axioms</span><span class="tag tag-theorem">14 thms</span><span class="tag tag-def">5 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1374, &sect;365, &sect;464, &sect;466, &sect;467 +7</div>
+</a>
+<a href="Creed_ConciliarAuthority.html" class="file-card" data-search="conciliarauthority 120 250 465 76 77 861 862 884 891">
+  <div class="file-card-name">ConciliarAuthority</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">12 axioms</span><span class="tag tag-theorem">6 thms</span><span class="tag tag-def">1 def</span></div>
+  <div class="file-card-ccc">CCC &sect;120, &sect;250, &sect;465, &sect;76, &sect;77 +4</div>
+</a>
+<a href="Creed_CurDeusHomo.html" class="file-card" data-search="curdeushomo 456 457 458 459 460 461">
+  <div class="file-card-name">CurDeusHomo</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">14 axioms</span><span class="tag tag-theorem">12 thms</span><span class="tag tag-def">1 def</span></div>
+  <div class="file-card-ccc">CCC &sect;456, &sect;457, &sect;458, &sect;459, &sect;460 +1</div>
+</a>
+<a href="Creed_DevelopmentOfDoctrine.html" class="file-card" data-search="developmentofdoctrine 66 76 84 88 891 94">
+  <div class="file-card-name">DevelopmentOfDoctrine</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">15 axioms</span><span class="tag tag-theorem">7 thms</span><span class="tag tag-def">1 def</span></div>
+  <div class="file-card-ccc">CCC &sect;66, &sect;76, &sect;84, &sect;88, &sect;891 +1</div>
+</a>
+<a href="Creed_DivineAttributes.html" class="file-card" data-search="divineattributes 198 202 213 268 269 271 272 274 302 365 847">
+  <div class="file-card-name">DivineAttributes</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">17 axioms</span><span class="tag tag-theorem">10 thms</span><span class="tag tag-def">2 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;198, &sect;202, &sect;213, &sect;268, &sect;269 +6</div>
+</a>
+<a href="Creed_DivineModes.html" class="file-card" data-search="divinemodes 1023 1030 1033 1260 1472 301 847 997">
+  <div class="file-card-name">DivineModes</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">6 axioms</span><span class="tag tag-theorem">22 thms</span><span class="tag tag-def">13 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1023, &sect;1030, &sect;1033, &sect;1260, &sect;1472 +3</div>
+</a>
+<a href="Creed_Grace.html" class="file-card" data-search="grace 2001 2002">
+  <div class="file-card-name">Grace</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">3 axioms</span><span class="tag tag-theorem">4 thms</span><span class="tag tag-def">2 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;2001, &sect;2002</div>
+</a>
+<a href="Creed_Hell.html" class="file-card" data-search="hell 1033 1037 1038 1855 366 997">
+  <div class="file-card-name">Hell</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">5 axioms</span><span class="tag tag-theorem">12 thms</span><span class="tag tag-def">3 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1033, &sect;1037, &sect;1038, &sect;1855, &sect;366 +1</div>
+</a>
+<a href="Creed_Heresies.html" class="file-card" data-search="heresies 1374 242 253 254 405 464 466 467 468">
+  <div class="file-card-name">Heresies</div>
+  <div class="file-card-meta"><span class="tag tag-theorem">13 thms</span><span class="tag tag-def">12 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1374, &sect;242, &sect;253, &sect;254, &sect;405 +4</div>
+</a>
+<a href="Creed_HylomorphicFormation.html" class="file-card" data-search="hylomorphicformation 364 365 366 997">
+  <div class="file-card-name">HylomorphicFormation</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">11 axioms</span><span class="tag tag-theorem">11 thms</span></div>
+  <div class="file-card-ccc">CCC &sect;364, &sect;365, &sect;366, &sect;997</div>
+</a>
+<a href="Creed_Intelligibility.html" class="file-card" data-search="intelligibility 1700 286 291 295 299 36">
+  <div class="file-card-name">Intelligibility</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">8 axioms</span><span class="tag tag-theorem">7 thms</span><span class="tag tag-def">1 def</span></div>
+  <div class="file-card-ccc">CCC &sect;1700, &sect;286, &sect;291, &sect;295, &sect;299 +1</div>
+</a>
+<a href="Creed_Intercession.html" class="file-card" data-search="intercession 1023 2634 2683 2692 366 956">
+  <div class="file-card-name">Intercession</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">9 axioms</span><span class="tag tag-theorem">5 thms</span></div>
+  <div class="file-card-ccc">CCC &sect;1023, &sect;2634, &sect;2683, &sect;2692, &sect;366 +1</div>
+</a>
+<a href="Creed_Logos.html" class="file-card" data-search="logos 241 291 292 295 299 320">
+  <div class="file-card-name">Logos</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">8 axioms</span><span class="tag tag-theorem">7 thms</span><span class="tag tag-def">1 def</span></div>
+  <div class="file-card-ccc">CCC &sect;241, &sect;291, &sect;292, &sect;295, &sect;299 +1</div>
+</a>
+<a href="Creed_MarianDogma.html" class="file-card" data-search="mariandogma 1008 404 466 491 493 495 509 966 974">
+  <div class="file-card-name">MarianDogma</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">16 axioms</span><span class="tag tag-theorem">16 thms</span><span class="tag tag-def">2 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1008, &sect;404, &sect;466, &sect;491, &sect;493 +4</div>
+</a>
+<a href="Creed_OriginalSin.html" class="file-card" data-search="originalsin 1708 1999 365 366 374 376 396 397 404 405 416">
+  <div class="file-card-name">OriginalSin</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">9 axioms</span><span class="tag tag-theorem">7 thms</span><span class="tag tag-def">2 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1708, &sect;1999, &sect;365, &sect;366, &sect;374 +6</div>
+</a>
+<a href="Creed_PapalInfallibility.html" class="file-card" data-search="papalinfallibility 552 882 891">
+  <div class="file-card-name">PapalInfallibility</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">19 axioms</span><span class="tag tag-theorem">6 thms</span><span class="tag tag-def">2 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;552, &sect;882, &sect;891</div>
+</a>
+<a href="Creed_Prayer.html" class="file-card" data-search="prayer 2725 2734 2735 2737 2738 2745 307 314">
+  <div class="file-card-name">Prayer</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">6 axioms</span><span class="tag tag-theorem">5 thms</span><span class="tag tag-def">1 def</span></div>
+  <div class="file-card-ccc">CCC &sect;2725, &sect;2734, &sect;2735, &sect;2737, &sect;2738 +3</div>
+</a>
+<a href="Creed_PrivateJudgment.html" class="file-card" data-search="privatejudgment 100 74 76 85 889">
+  <div class="file-card-name">PrivateJudgment</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">13 axioms</span><span class="tag tag-theorem">5 thms</span><span class="tag tag-def">1 def</span></div>
+  <div class="file-card-ccc">CCC &sect;100, &sect;74, &sect;76, &sect;85, &sect;889</div>
+</a>
+<a href="Creed_Providence.html" class="file-card" data-search="providence 302 306 308 311 312">
+  <div class="file-card-name">Providence</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">11 axioms</span><span class="tag tag-theorem">8 thms</span><span class="tag tag-def">4 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;302, &sect;306, &sect;308, &sect;311, &sect;312</div>
+</a>
+<a href="Creed_Purgatory.html" class="file-card" data-search="purgatory 1023 1030 1031 1032 1033 997">
+  <div class="file-card-name">Purgatory</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">19 axioms</span><span class="tag tag-theorem">12 thms</span><span class="tag tag-def">2 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1023, &sect;1030, &sect;1031, &sect;1032, &sect;1033 +1</div>
+</a>
+<a href="Creed_RuleOfFaith.html" class="file-card" data-search="ruleoffaith 120 50 74 75 76 77 80 82 85">
+  <div class="file-card-name">RuleOfFaith</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">14 axioms</span><span class="tag tag-theorem">6 thms</span><span class="tag tag-def">1 def</span></div>
+  <div class="file-card-ccc">CCC &sect;120, &sect;50, &sect;74, &sect;75, &sect;76 +4</div>
+</a>
+<a href="Creed_ScientificInquiry.html" class="file-card" data-search="scientificinquiry 1700 299 302 306 36">
+  <div class="file-card-name">ScientificInquiry</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">10 axioms</span><span class="tag tag-theorem">5 thms</span></div>
+  <div class="file-card-ccc">CCC &sect;1700, &sect;299, &sect;302, &sect;306, &sect;36</div>
+</a>
+<a href="Creed_SeparatedSoul.html" class="file-card" data-search="separatedsoul 1023 1030 1033 1705 365 366 997">
+  <div class="file-card-name">SeparatedSoul</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">6 axioms</span><span class="tag tag-theorem">11 thms</span><span class="tag tag-def">1 def</span></div>
+  <div class="file-card-ccc">CCC &sect;1023, &sect;1030, &sect;1033, &sect;1705, &sect;365 +2</div>
+</a>
+<a href="Creed_Soteriology.html" class="file-card" data-search="soteriology 1213 1257 1258 1814 1861 1987 1989 1996 2001 2007 2008 2016 405 432">
+  <div class="file-card-name">Soteriology</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">19 axioms</span><span class="tag tag-theorem">9 thms</span><span class="tag tag-def">9 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1213, &sect;1257, &sect;1258, &sect;1814, &sect;1861 +9</div>
+</a>
+<a href="Creed_Soul.html" class="file-card" data-search="soul 1015 1023 1705 362 363 364 365 366 405 988 990 997">
+  <div class="file-card-name">Soul</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">11 axioms</span><span class="tag tag-theorem">17 thms</span><span class="tag tag-def">3 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1015, &sect;1023, &sect;1705, &sect;362, &sect;363 +7</div>
+</a>
+<a href="Creed_Trinity.html" class="file-card" data-search="trinity 253 254 255">
+  <div class="file-card-name">Trinity</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">1 axiom</span><span class="tag tag-theorem">10 thms</span><span class="tag tag-def">12 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;253, &sect;254, &sect;255</div>
+</a>
+<h2 class="category-header">Moral Theology</h2>
+<a href="MoralTheology_ConjugalEthics.html" class="file-card" data-search="conjugalethics 11 12 13 14 16 1750 2366 2368 2370 2372 365 37 78">
+  <div class="file-card-name">ConjugalEthics</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">5 axioms</span><span class="tag tag-theorem">7 thms</span><span class="tag tag-def">10 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;11, &sect;12, &sect;13, &sect;14, &sect;16 +8</div>
+</a>
+<a href="MoralTheology_Conscience.html" class="file-card" data-search="conscience 1776 1778 1783 1790 1791">
+  <div class="file-card-name">Conscience</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">5 axioms</span><span class="tag tag-theorem">2 thms</span><span class="tag tag-def">5 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1776, &sect;1778, &sect;1783, &sect;1790, &sect;1791</div>
+</a>
+<a href="MoralTheology_Freedom.html" class="file-card" data-search="freedom 1730 1731 1732 1733 1734">
+  <div class="file-card-name">Freedom</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">1 axiom</span><span class="tag tag-theorem">4 thms</span><span class="tag tag-def">3 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1730, &sect;1731, &sect;1732, &sect;1733, &sect;1734</div>
+</a>
+<a href="MoralTheology_Justification.html" class="file-card" data-search="justification 1987 1989 1990 1991 1992 1993 2001">
+  <div class="file-card-name">Justification</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">4 axioms</span><span class="tag tag-theorem">5 thms</span><span class="tag tag-def">6 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1987, &sect;1989, &sect;1990, &sect;1991, &sect;1992 +2</div>
+</a>
+<a href="MoralTheology_LegitimateDefense.html" class="file-card" data-search="legitimatedefense 2263 2264 2265">
+  <div class="file-card-name">LegitimateDefense</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">3 axioms</span><span class="tag tag-theorem">2 thms</span><span class="tag tag-def">8 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;2263, &sect;2264, &sect;2265</div>
+</a>
+<a href="MoralTheology_LordsDay.html" class="file-card" data-search="lordsday 2168 2174 2175 2176 638">
+  <div class="file-card-name">LordsDay</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">15 axioms</span><span class="tag tag-theorem">8 thms</span><span class="tag tag-def">5 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;2168, &sect;2174, &sect;2175, &sect;2176, &sect;638</div>
+</a>
+<a href="MoralTheology_Marriage.html" class="file-card" data-search="marriage 1 1601 1612 1617 1638 1640 1644 2 2382 796">
+  <div class="file-card-name">Marriage</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">18 axioms</span><span class="tag tag-theorem">11 thms</span><span class="tag tag-def">5 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1, &sect;1601, &sect;1612, &sect;1617, &sect;1638 +5</div>
+</a>
+<a href="MoralTheology_MortalSinThreshold.html" class="file-card" data-search="mortalsinthreshold 1854 1857 1858 1859 1860 1861 1862 1863">
+  <div class="file-card-name">MortalSinThreshold</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">4 axioms</span><span class="tag tag-theorem">8 thms</span><span class="tag tag-def">7 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1854, &sect;1857, &sect;1858, &sect;1859, &sect;1860 +3</div>
+</a>
+<a href="MoralTheology_NaturalLaw.html" class="file-card" data-search="naturallaw 1756 1954 1956 1957">
+  <div class="file-card-name">NaturalLaw</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">8 axioms</span><span class="tag tag-theorem">6 thms</span><span class="tag tag-def">5 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1756, &sect;1954, &sect;1956, &sect;1957</div>
+</a>
+<a href="MoralTheology_Sin.html" class="file-card" data-search="sin 1756 1849 1850 1857 1859 1861 1862">
+  <div class="file-card-name">Sin</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">1 axiom</span><span class="tag tag-theorem">4 thms</span><span class="tag tag-def">4 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1756, &sect;1849, &sect;1850, &sect;1857, &sect;1859 +2</div>
+</a>
+<a href="MoralTheology_SourcesOfMorality.html" class="file-card" data-search="sourcesofmorality 1750 1752 1755 1756">
+  <div class="file-card-name">SourcesOfMorality</div>
+  <div class="file-card-meta"><span class="tag tag-theorem">5 thms</span><span class="tag tag-def">1 def</span></div>
+  <div class="file-card-ccc">CCC &sect;1750, &sect;1752, &sect;1755, &sect;1756</div>
+</a>
+<a href="MoralTheology_Suicide.html" class="file-card" data-search="suicide 2264 2280 2281 2282 2283">
+  <div class="file-card-name">Suicide</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">9 axioms</span><span class="tag tag-theorem">4 thms</span><span class="tag tag-def">1 def</span></div>
+  <div class="file-card-ccc">CCC &sect;2264, &sect;2280, &sect;2281, &sect;2282, &sect;2283</div>
+</a>
+<a href="MoralTheology_TheologyOfBody.html" class="file-card" data-search="theologyofbody 1146 1148 12 1700 1987 1999 2001 2002 2370 374 396 405">
+  <div class="file-card-name">TheologyOfBody</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">17 axioms</span><span class="tag tag-theorem">9 thms</span><span class="tag tag-def">8 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1146, &sect;1148, &sect;12, &sect;1700, &sect;1987 +7</div>
+</a>
+<a href="MoralTheology_Veneration.html" class="file-card" data-search="veneration 2096 2097 2112 2113 2132 828 971">
+  <div class="file-card-name">Veneration</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">9 axioms</span><span class="tag tag-theorem">8 thms</span><span class="tag tag-def">1 def</span></div>
+  <div class="file-card-ccc">CCC &sect;2096, &sect;2097, &sect;2112, &sect;2113, &sect;2132 +2</div>
+</a>
+<h2 class="category-header">Sacraments</h2>
+<a href="Sacraments_Baptism.html" class="file-card" data-search="baptism 1127 1131 1213 1250 1251 1252 1253 1263 1272 1282 405">
+  <div class="file-card-name">Baptism</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">11 axioms</span><span class="tag tag-theorem">5 thms</span><span class="tag tag-def">2 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1127, &sect;1131, &sect;1213, &sect;1250, &sect;1251 +6</div>
+</a>
+<a href="Sacraments_Eucharist.html" class="file-card" data-search="eucharist 1023 1263 1322 1355 1373 1374 1376 1377 1385 1387 1391 1394 1395 1396 1401 1468 365">
+  <div class="file-card-name">Eucharist</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">12 axioms</span><span class="tag tag-theorem">21 thms</span><span class="tag tag-def">15 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1023, &sect;1263, &sect;1322, &sect;1355, &sect;1373 +12</div>
+</a>
+<a href="Sacraments_Exorcism.html" class="file-card" data-search="exorcism 1673 328 391 77 861">
+  <div class="file-card-name">Exorcism</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">7 axioms</span><span class="tag tag-theorem">3 thms</span><span class="tag tag-def">4 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1673, &sect;328, &sect;391, &sect;77, &sect;861</div>
+</a>
+<a href="Sacraments_PriestlyAbsolution.html" class="file-card" data-search="priestlyabsolution 1441 1443 1444 1445 1449 1461 1462 1467">
+  <div class="file-card-name">PriestlyAbsolution</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">11 axioms</span><span class="tag tag-theorem">6 thms</span></div>
+  <div class="file-card-ccc">CCC &sect;1441, &sect;1443, &sect;1444, &sect;1445, &sect;1449 +3</div>
+</a>
+<a href="Sacraments_Reconciliation.html" class="file-card" data-search="reconciliation 1422 1423 1424 1450 1451 1455 1456 1459 1461 1468 1472 1473 1489 1491 2001">
+  <div class="file-card-name">Reconciliation</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">8 axioms</span><span class="tag tag-theorem">11 thms</span><span class="tag tag-def">5 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1422, &sect;1423, &sect;1424, &sect;1450, &sect;1451 +10</div>
+</a>
+<a href="Sacraments_SacramentalCausation.html" class="file-card" data-search="sacramentalcausation 1127 1131 1210 1213 1262 1263 1265 1267 1272 1302 1303 1304 1376 1391 1394 1468 1472 1520 1521 1581 1582 1617 1639">
+  <div class="file-card-name">SacramentalCausation</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">26 axioms</span><span class="tag tag-theorem">20 thms</span><span class="tag tag-def">6 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1127, &sect;1131, &sect;1210, &sect;1213, &sect;1262 +18</div>
+</a>
+
+  </div>
+
+  <div class="footer">
+    Generated by <code>tools/generate-explorer</code>
+  </div>
+</div>
+
+<script>
+// Chain selector
+document.querySelectorAll('.chain-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.chain-btn').forEach(function(b) { b.classList.remove('active'); });
+    this.classList.add('active');
+    var chain = this.getAttribute('data-chain');
+    document.querySelectorAll('.chain-canvas').forEach(function(c) { c.classList.remove('active'); });
+    document.getElementById('chain-' + chain).classList.add('active');
+  });
+});
+
+// Flow node tap
+document.querySelectorAll('.flow-node').forEach(function(node) {
+  node.addEventListener('click', function(e) {
+    e.stopPropagation();
+    var detail = this.querySelector('.flow-node-detail');
+    if (!detail.innerHTML) {
+      var desc = this.getAttribute('data-desc') || '';
+      var ccc = this.getAttribute('data-ccc') || '';
+      var link = this.getAttribute('data-link') || '';
+      var html = '<div>' + desc + '</div>';
+      if (ccc) html += '<div class="flow-node-ccc">' + ccc + '</div>';
+      if (link) html += '<a href="' + link + '" class="flow-node-link">View full file &rarr;</a>';
+      detail.innerHTML = html;
+    }
+    this.classList.toggle('expanded');
+  });
+});
+
+// File search
+document.getElementById('fileSearch').addEventListener('input', function() {
+  var q = this.value.toLowerCase();
+  var cards = document.querySelectorAll('.file-card');
+  var headers = document.querySelectorAll('.category-header');
+
+  for (var i = 0; i < cards.length; i++) {
+    var search = cards[i].getAttribute('data-search') || '';
+    cards[i].style.display = (!q || search.indexOf(q) !== -1) ? '' : 'none';
+  }
+
+  headers.forEach(function(h) {
+    var next = h.nextElementSibling;
+    var anyVisible = false;
+    while (next && !next.classList.contains('category-header')) {
+      if (next.classList.contains('file-card') && next.style.display !== 'none') {
+        anyVisible = true;
+      }
+      next = next.nextElementSibling;
+    }
+    h.style.display = anyVisible ? '' : 'none';
+  });
+});
+</script>
+</body>
+</html>

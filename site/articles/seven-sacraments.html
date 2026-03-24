@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Seven Sacraments, Formalized &mdash; Catlib</title>
+  <meta name="description" content="All seven sacraments of the Catholic Church are now machine-checked in Lean 4. What does the sacramental system look like when every assumption is explicit?">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="The Seven Sacraments, Formalized">
+  <meta property="og:description" content="Every assumption explicit, every inference checked. The CCC's entire sacramental system is now in Lean 4. Here is what the proof assistant found.">
+  <meta property="og:site_name" content="Catlib">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="The Seven Sacraments, Formalized">
+  <meta name="twitter:description" content="All seven sacraments machine-checked. Transubstantiation is the only substance/accident separation. T3 is the single axiom that divides Catholic from Protestant sacramental theology.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel+Decorative:wght@400;700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="articles.css">
+  <style>
+    /* ============================================================
+       The Seven Sacraments — article-specific styles
+       ============================================================ */
+
+    .sacrament-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    @media (max-width: 640px) {
+      .sacrament-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .sacrament-card {
+      background: var(--bg-parchment);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 1.2rem 1.4rem;
+    }
+
+    .sacrament-card h4 {
+      font-family: 'Cinzel', serif;
+      color: var(--accent);
+      font-size: 0.95rem;
+      margin: 0 0 0.5rem 0;
+      letter-spacing: 0.03em;
+    }
+
+    .sacrament-card .change-tags {
+      margin-bottom: 0.5rem;
+    }
+
+    .sacrament-card .change-tag {
+      display: inline-block;
+      font-family: 'JetBrains Mono', 'Fira Code', monospace;
+      font-size: 0.7rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 2px;
+      margin-right: 0.3rem;
+      margin-bottom: 0.2rem;
+      background: var(--bg-vellum);
+      border: 1px solid var(--border);
+      color: var(--text-light);
+    }
+
+    .sacrament-card .change-tag.ontological { border-color: var(--accent); color: var(--accent); }
+    .sacrament-card .change-tag.relational { border-color: var(--accent-gold); color: var(--accent-gold); }
+    .sacrament-card .change-tag.juridical { border-color: #4a7a5c; color: #4a7a5c; }
+    .sacrament-card .change-tag.dispositional { border-color: #5a6a8a; color: #5a6a8a; }
+
+    .sacrament-card p {
+      font-size: 0.95rem;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .layer-map {
+      max-width: 520px;
+      margin: 2rem auto;
+      text-align: center;
+    }
+
+    .layer-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .layer-row:last-child {
+      border-bottom: none;
+    }
+
+    .layer-label {
+      font-family: 'JetBrains Mono', 'Fira Code', monospace;
+      font-size: 0.82rem;
+      color: var(--text-light);
+      min-width: 80px;
+      text-align: right;
+    }
+
+    .layer-arrow {
+      font-size: 1.2rem;
+      color: var(--accent-gold);
+    }
+
+    .layer-sacrament {
+      font-family: 'Cinzel', serif;
+      font-size: 0.92rem;
+      color: var(--accent);
+      min-width: 140px;
+      text-align: left;
+    }
+
+    .full-width-card {
+      grid-column: 1 / -1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar toggle for viewing Lean theorems -->
+  <input type="checkbox" id="sidebar-toggle" class="sidebar-toggle">
+  <label for="sidebar-toggle" class="sidebar-label">Lean Code</label>
+  <div class="sidebar-panel">
+    <h3>Theorem Reference</h3>
+
+    <div class="sidebar-section">
+      <h4>every_sacrament_causes_change</h4>
+<pre>-- Under T3, no sacrament is merely symbolic
+theorem every_sacrament_causes_change :
+    &forall; (s : SacramentKind),
+      &exists; (ct : ChangeType),
+        causesChangeOfType s ct</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>character_iff_not_repeatable</h4>
+<pre>-- Character &hArr; non-repeatable
+-- across all seven sacraments
+theorem character_iff_not_repeatable :
+    &forall; (s : SacramentKind),
+      imprintsCharacter s &harr;
+        &not;isRepeatable s</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>all_sin_layers_have_sacramental_remedy</h4>
+<pre>-- Baptism &rarr; L1, Reconciliation &rarr; L2,
+-- Eucharist &rarr; L3
+theorem all_sin_layers_have_sacramental_remedy :
+    &forall; (layer : SinEffect),
+      &exists; (s : SacramentKind),
+        primarySinLayer s = some layer</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>anointing_uniquely_conditional</h4>
+<pre>-- Anointing is the ONLY sacrament
+-- with a conditional primary effect
+theorem anointing_uniquely_conditional :
+    &forall; (s : SacramentKind),
+      hasConditionalEffect s &harr;
+        s = .anointingOfTheSick</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>t3_is_the_load_bearing_axiom</h4>
+<pre>-- The infant baptism split reduces to T3
+theorem t3_is_the_load_bearing_axiom
+    (infant : Person)
+    (h_human : infant.hasIntellect = true)
+    (h_then_baptized :
+      isBaptized infant &rarr;
+        receivesBaptismalGrace infant) :
+    hasOriginalSin infant
+    &and; (&not;isBaptized infant &rarr;
+        &not;receivesBaptismalGrace infant)
+    &and; (isBaptized infant &rarr;
+        receivesBaptismalGrace infant)</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>priestly_absolution_coherent</h4>
+<pre>-- "Only God forgives" is compatible
+-- with priestly absolution (via P2)
+theorem priestly_absolution_coherent
+    (r : ReconciliationAct)
+    (s : Sacrament) (god : Person)
+    ... :
+    (&forall; q, forgivesAsPrincipalCause q
+      &rarr; q = god)
+    &and; forgivesAsInstrumentalCause
+        r.absolution.priest
+    &and; &not;forgivenessLevelsCompete
+        god r.absolution.priest
+    &and; confers s
+    &and; reconciledWithChurch
+        r.contrition.penitent
+    &and; &not;reconciliationDimensionsCompete</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>The 15 Base Axioms (P/S/T)</h4>
+<pre>-- Philosophical (3)
+P1. Hylomorphism
+P2. Two-tier causation
+P3. Evil is privation
+
+-- Scriptural (9)
+S1. God is love
+S2. Universal salvific will
+S3. Law on hearts
+S4. Universal providence
+S5. Sin separates
+S6. Moral realism
+S7. Teleological freedom
+S8. Grace necessary &amp; transformative
+S9. Conscience binds
+
+-- Tradition (3)
+T1. Libertarian free will
+T2. Grace preserves freedom
+T3. Sacramental efficacy</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>Source Files</h4>
+<pre><a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Sacraments/SacramentalCausation.lean" style="color: var(--accent-gold);">SacramentalCausation.lean</a>
+<a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Sacraments/Baptism.lean" style="color: var(--accent-gold);">Baptism.lean</a>
+<a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Sacraments/Eucharist.lean" style="color: var(--accent-gold);">Eucharist.lean</a>
+<a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Sacraments/Reconciliation.lean" style="color: var(--accent-gold);">Reconciliation.lean</a>
+<a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Sacraments/PriestlyAbsolution.lean" style="color: var(--accent-gold);">PriestlyAbsolution.lean</a>
+<a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Sacraments/Confirmation.lean" style="color: var(--accent-gold);">Confirmation.lean</a>
+<a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Sacraments/Anointing.lean" style="color: var(--accent-gold);">Anointing.lean</a></pre>
+    </div>
+
+    <p class="close-hint">Click the tab again to close</p>
+  </div>
+
+  <main>
+    <a href="../index.html" class="back-link">Back to Catlib</a>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="ornament">&#10053;</div>
+      <h1>The Seven Sacraments, Formalized</h1>
+      <p class="subtitle">Every assumption explicit. Every inference checked.</p>
+      <p class="subtitle">
+        What does the sacramental system look like when you make a proof assistant verify all of it?
+      </p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Introduction -->
+    <section class="article-body">
+      <p>
+        <span class="versal">T</span>he Catholic Church teaches that there are exactly seven
+        sacraments&nbsp;&mdash; no more, no fewer (&sect;1210). They are the hinges of the
+        liturgical life, the channels through which grace flows into the world. Ask a
+        Protestant why they reject five of the seven, and the answer will often come down
+        to a single word: <em>Scripture</em>. Ask a Catholic why they affirm all seven,
+        and the answer will invoke <em>Tradition</em> and the Council of Trent.
+      </p>
+      <p>
+        But beneath the historical arguments, there is a structural question that neither
+        side usually asks: <em>What is each sacrament actually doing?</em> Not
+        &ldquo;which verses support it&rdquo; or &ldquo;which council defined it,&rdquo;
+        but: what kind of change does it cause, what does it presuppose, and how does it
+        relate to the others? If you had to write it all down with enough precision that a
+        computer could check it, what would you discover?
+      </p>
+      <p>
+        We have now done exactly that. All seven sacraments of the Catechism are formalized
+        in Lean 4, machine-checked, and connected to the fifteen base axioms. The proof
+        assistant found things the Catechism never states as principles&nbsp;&mdash; an emergent
+        layer correspondence, a single axiom that divides Catholic from Protestant sacramental
+        theology, and a structural uniqueness in Anointing that no other sacrament shares.
+      </p>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Section: The Seven at a Glance -->
+    <section class="article-body">
+      <h2>The Seven at a Glance</h2>
+
+      <p>
+        <span class="versal">E</span>very sacrament causes at least one type of real change
+        under Catholic axioms. The proof assistant verifies this as
+        <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Sacraments/SacramentalCausation.lean"><code>every_sacrament_causes_change</code></a>&nbsp;&mdash;
+        a theorem that exhausts all seven cases. No sacrament is merely symbolic. That single
+        result encodes the Catholic-Protestant divide more precisely than any catechetical
+        paragraph: under <code>T3</code>, sacraments cause; without <code>T3</code>, they signify.
+      </p>
+
+      <p>
+        The formalization classifies sacramental effects into four types of change:
+        <em>ontological</em> (what you are), <em>relational</em> (how you stand with God),
+        <em>juridical</em> (your status before divine law), and <em>dispositional</em>
+        (what you can now do). This taxonomy is our analytical tool&nbsp;&mdash; the Catechism
+        uses all four modes of language without ever labeling them. Here is each sacrament&rsquo;s
+        profile:
+      </p>
+
+      <div class="sacrament-grid">
+        <div class="sacrament-card">
+          <h4>Baptism</h4>
+          <div class="change-tags">
+            <span class="change-tag ontological">ontological</span>
+            <span class="change-tag relational">relational</span>
+            <span class="change-tag juridical">juridical</span>
+          </div>
+          <p>New creature, adopted child of God, original sin removed. The richest
+            causation profile of any sacrament&nbsp;&mdash; three types. Gateway to all
+            the others (&sect;1213).</p>
+        </div>
+
+        <div class="sacrament-card">
+          <h4>Confirmation</h4>
+          <div class="change-tags">
+            <span class="change-tag ontological">ontological</span>
+            <span class="change-tag dispositional">dispositional</span>
+          </div>
+          <p>Indelible character and full outpouring of the Spirit. Empowers
+            the baptized for mission&nbsp;&mdash; &ldquo;strength to spread and defend the
+            faith&rdquo; (&sect;1303).</p>
+        </div>
+
+        <div class="sacrament-card">
+          <h4>Eucharist</h4>
+          <div class="change-tags">
+            <span class="change-tag ontological">ontological</span>
+            <span class="change-tag relational">relational</span>
+          </div>
+          <p>Transubstantiation of the elements and augmented union with Christ.
+            The only sacrament where the ontological change is in the <em>elements</em>,
+            not the recipient.</p>
+        </div>
+
+        <div class="sacrament-card">
+          <h4>Reconciliation</h4>
+          <div class="change-tags">
+            <span class="change-tag relational">relational</span>
+            <span class="change-tag juridical">juridical</span>
+          </div>
+          <p>Communion with God restored, guilt removed. But temporal punishment
+            remains (&sect;1472)&nbsp;&mdash; the thread that leads to the Reformation.</p>
+        </div>
+
+        <div class="sacrament-card">
+          <h4>Holy Orders</h4>
+          <div class="change-tags">
+            <span class="change-tag ontological">ontological</span>
+            <span class="change-tag dispositional">dispositional</span>
+          </div>
+          <p>Indelible character: &ldquo;a priest forever&rdquo; (Heb 5:6). The ontological
+            mark enables the dispositional capacity to confect sacraments (&sect;1581).</p>
+        </div>
+
+        <div class="sacrament-card">
+          <h4>Marriage</h4>
+          <div class="change-tags">
+            <span class="change-tag relational">relational</span>
+          </div>
+          <p>A bond created between spouses, sealed by God (&sect;1639). The only sacrament
+            whose primary effect is a relation between two persons rather than
+            between a person and God.</p>
+        </div>
+
+        <div class="sacrament-card full-width-card">
+          <h4>Anointing of the Sick</h4>
+          <div class="change-tags">
+            <span class="change-tag dispositional">dispositional</span>
+            <span class="change-tag relational">relational</span>
+          </div>
+          <p>Spiritual strengthening and union with Christ&rsquo;s Passion. Plus a
+            <strong>conditional</strong> physical healing effect&nbsp;&mdash; the only
+            sacrament whose primary effect depends on divine judgment about the
+            recipient&rsquo;s good (&sect;1520).</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Section: The Layer Correspondence -->
+    <section class="article-body">
+      <h2>The Emergent Layer Correspondence</h2>
+
+      <p>
+        <span class="versal">T</span>he Catechism describes each sacrament&rsquo;s effects
+        independently. It never says &ldquo;the three healing sacraments map to three layers
+        of sin.&rdquo; But when you formalize the sin model from <code>SinEffects.lean</code> and
+        then formalize each sacrament&rsquo;s primary target, the correspondence falls out:
+      </p>
+
+      <div class="layer-map">
+        <div class="layer-row">
+          <span class="layer-label">Layer 1: Original wound</span>
+          <span class="layer-arrow">&rarr;</span>
+          <span class="layer-sacrament">Baptism (&sect;1263)</span>
+        </div>
+        <div class="layer-row">
+          <span class="layer-label">Layer 2: Guilt</span>
+          <span class="layer-arrow">&rarr;</span>
+          <span class="layer-sacrament">Reconciliation (&sect;1468)</span>
+        </div>
+        <div class="layer-row">
+          <span class="layer-label">Layer 3: Attachments</span>
+          <span class="layer-arrow">&rarr;</span>
+          <span class="layer-sacrament">Eucharist (&sect;1394)</span>
+        </div>
+      </div>
+
+      <p>
+        The theorem
+        <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Sacraments/SacramentalCausation.lean"><code>all_sin_layers_have_sacramental_remedy</code></a>
+        verifies the completeness claim: every layer of sin has a sacramental remedy. No layer is
+        left unaddressed. And the sacraments themselves create an ordering&nbsp;&mdash; the Eucharist
+        <em>requires</em> what Reconciliation <em>provides</em> (state of grace), and Reconciliation
+        requires what Baptism provides (membership in the Church). The sacramental system is not a
+        menu. It is a sequence.
+      </p>
+
+      <div class="assumption-callout">
+        This layer correspondence is emergent&nbsp;&mdash; nowhere does the Catechism state it as a
+        principle. It was discovered by the formalization, not read off the source text. The CCC
+        describes each sacrament&rsquo;s effects in its own section; the three-layer structure only
+        becomes visible when you model all three simultaneously.
+      </div>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Section: T3 — The Load-Bearing Axiom -->
+    <section class="article-body">
+      <h2>One Axiom to Divide Them</h2>
+
+      <p>
+        <span class="versal">T</span>he single most denominationally divisive axiom in the
+        entire formalization is <code>T3</code>&nbsp;&mdash; sacramental efficacy, or
+        <em>ex opere operato</em>. Under <code>T3</code>, sacraments <em>confer</em> the grace
+        they signify. Without <code>T3</code>, sacraments <em>symbolize</em> grace already
+        received through faith.
+      </p>
+
+      <p>
+        This is not a vague theological claim. It is a precisely verifiable structural fact.
+        The theorem
+        <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Sacraments/Baptism.lean"><code>t3_is_the_load_bearing_axiom</code></a>
+        shows the full chain for infant baptism: the infant has original sin, needs baptism, and
+        <em>if</em> baptism confers grace (T3), the infant receives grace when baptized. Remove T3,
+        and the argument fails at the first operative step.
+      </p>
+
+      <p>
+        The same pattern repeats across all seven sacraments. Every per-sacrament causation
+        axiom in <code>SacramentalCausation.lean</code> is an application of T3 to a specific
+        sacrament. The theorem <code>every_sacrament_causes_change</code> depends on these
+        axioms, which depend on T3. Remove T3, and <em>all seven</em> reduce to symbols.
+      </p>
+
+      <div class="finding-card">
+        <h3>The denominational diagnosis</h3>
+        <p>
+          <span class="tag tag-catholic">Catholic</span>
+          Accept <code>T3</code>: sacraments are <em>effective signs</em>&nbsp;&mdash; they cause
+          what they signify. Baptism removes original sin. The Eucharist makes Christ present.
+          Absolution confers forgiveness. Every sacrament causes real change.
+        </p>
+        <p>
+          <span class="tag tag-lutheran">Protestant</span>
+          Reject <code>T3</code>: sacraments are <em>signs of grace received by faith</em>.
+          Baptism declares what God has done. The Lord&rsquo;s Supper is a memorial. Confession
+          is a practice, not a cause. The &ldquo;causation&rdquo; question does not arise.
+        </p>
+      </div>
+
+      <div class="assumption-callout">
+        A proof assistant cannot tell you whether T3 is true. It can tell you: if you accept T3,
+        all seven sacraments cause real change and the entire Catholic sacramental system follows.
+        If you reject T3, the system dissolves&nbsp;&mdash; not because it is refuted, but because
+        its load-bearing axiom is removed. Both sides reason correctly from their premises.
+      </div>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Section: Transubstantiation's Uniqueness -->
+    <section class="article-body">
+      <h2>Transubstantiation: The Only Substance/Accident Separation</h2>
+
+      <p>
+        <span class="versal">O</span>f the seven sacraments, six change the <em>recipient</em>.
+        The Eucharist is different. Its primary ontological change is in the <em>elements</em>&nbsp;&mdash;
+        bread and wine become the body and blood of Christ. The substance converts while the
+        accidents (appearances) remain.
+      </p>
+
+      <p>
+        The formalization in
+        <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Sacraments/Eucharist.lean"><code>Eucharist.lean</code></a>
+        models this through the <code>EucharisticSubstance</code> enumeration and the
+        <code>real_presence</code> axiom: after valid consecration, the whole Christ is truly,
+        really, and substantially present. The substance/accident distinction&nbsp;&mdash; drawn
+        from <code>P1</code> (hylomorphism)&nbsp;&mdash; is invoked
+        <em>only here</em> among all seven sacraments. Baptism does not separate substance from
+        accident. Neither does Reconciliation, Confirmation, Holy Orders, Marriage, or Anointing.
+        Transubstantiation is structurally unique.
+      </p>
+
+      <p>
+        This gives transubstantiation its special place in ecumenical debate. Lutherans affirm
+        real presence (consubstantiation&nbsp;&mdash; Christ present <em>with</em> the bread) but
+        reject the substance-conversion model. Reformed Christians affirm spiritual presence. Zwinglians
+        hold memorial only. Each position corresponds to a different metaphysical axiom about
+        what happens at consecration. The axiom set is the denomination.
+      </p>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Section: Character and Repeatability -->
+    <section class="article-body">
+      <h2>Character Means Non-Repeatable</h2>
+
+      <p>
+        <span class="versal">T</span>hree sacraments&nbsp;&mdash; Baptism, Confirmation, Holy
+        Orders&nbsp;&mdash; imprint an &ldquo;indelible spiritual mark&rdquo; called a
+        <em>character</em> (&sect;1272, &sect;1304, &sect;1582). These are the three that cannot
+        be repeated. The other four (Eucharist, Reconciliation, Anointing, Marriage) do not
+        imprint a character and <em>can</em> be repeated.
+      </p>
+
+      <p>
+        The theorem
+        <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Sacraments/SacramentalCausation.lean"><code>character_iff_not_repeatable</code></a>
+        establishes the biconditional: a sacrament imprints a character <em>if and only if</em>
+        it is non-repeatable. This is not a coincidence the CCC happened to observe. It is a
+        structural equivalence verified across all seven sacraments. The indelible character
+        <em>is</em> the reason for non-repeatability&nbsp;&mdash; the mark cannot be given twice
+        because it cannot be removed.
+      </p>
+
+      <table class="axiom-table">
+        <thead>
+          <tr>
+            <th>Sacrament</th>
+            <th>Character?</th>
+            <th>Repeatable?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Baptism</td>
+            <td>Yes (&sect;1272)</td>
+            <td>No</td>
+          </tr>
+          <tr>
+            <td>Confirmation</td>
+            <td>Yes (&sect;1304)</td>
+            <td>No</td>
+          </tr>
+          <tr>
+            <td>Holy Orders</td>
+            <td>Yes (&sect;1582)</td>
+            <td>No</td>
+          </tr>
+          <tr>
+            <td>Eucharist</td>
+            <td>No</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>Reconciliation</td>
+            <td>No</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>Anointing of the Sick</td>
+            <td>No</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>Marriage</td>
+            <td>No</td>
+            <td>Yes (after death of spouse)</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Section: Anointing's Uniqueness -->
+    <section class="article-body">
+      <h2>Anointing: The Only Conditional Sacrament</h2>
+
+      <p>
+        <span class="versal">E</span>very other sacrament&rsquo;s primary effects are
+        unconditional&nbsp;&mdash; given valid form and proper disposition, they always occur.
+        Baptism <em>always</em> removes original sin. The Eucharist <em>always</em> makes Christ
+        present. Reconciliation <em>always</em> restores communion. But Anointing of the Sick
+        has one effect conditioned on divine judgment: &ldquo;a restoration of health,
+        <em>if it is conducive to the salvation of his soul</em>&rdquo; (&sect;1520).
+      </p>
+
+      <p>
+        The theorem
+        <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Sacraments/Anointing.lean"><code>anointing_uniquely_conditional</code></a>
+        verifies this as a biconditional across all seven sacraments: a sacrament has a conditional
+        primary effect <em>if and only if</em> it is Anointing of the Sick. The proof exhausts
+        all seven cases.
+      </p>
+
+      <p>
+        The conditionality is not weakness. The spiritual effects&nbsp;&mdash; strengthening, union
+        with Christ&rsquo;s Passion&nbsp;&mdash; are <em>always</em> conferred
+        (<a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Sacraments/Anointing.lean"><code>anointing_always_achieves_spiritual_good</code></a>).
+        The conditional clause encodes a priority: spiritual goods over temporal goods. God might
+        withhold healing <em>because</em> death is better for the person&rsquo;s soul. This is
+        the hidden assumption that gives the &ldquo;if conducive&rdquo; clause real content&nbsp;&mdash;
+        physical health and eternal salvation can be in tension.
+      </p>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Section: P2 Across the Sacraments -->
+    <section class="article-body">
+      <h2>Five Faces of Non-Competition</h2>
+
+      <p>
+        <span class="versal">P</span>2&nbsp;&mdash; two-tier causation, the principle that
+        primary and secondary causes do not compete&nbsp;&mdash; does remarkable work across
+        the sacramental system. It appears in at least five distinct domains:
+      </p>
+
+      <table class="axiom-table">
+        <thead>
+          <tr>
+            <th>Domain</th>
+            <th>Primary Level</th>
+            <th>Secondary Level</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Causation (general)</td>
+            <td>God causes</td>
+            <td>Creatures cause</td>
+          </tr>
+          <tr>
+            <td>Prayer</td>
+            <td>God acts</td>
+            <td>Person prays</td>
+          </tr>
+          <tr>
+            <td>Intercession</td>
+            <td>Christ mediates</td>
+            <td>Saints intercede</td>
+          </tr>
+          <tr>
+            <td>Evil permission</td>
+            <td>God permits</td>
+            <td>Creature causes evil</td>
+          </tr>
+          <tr>
+            <td>Absolution</td>
+            <td>God forgives</td>
+            <td>Priest absolves</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        In each case, the same structural principle resolves the same apparent contradiction:
+        more secondary-level activity does not mean less primary-level activity. The priest&rsquo;s
+        absolution does not diminish God&rsquo;s forgiveness. The saint&rsquo;s intercession does
+        not diminish Christ&rsquo;s mediation. The theorem
+        <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Sacraments/PriestlyAbsolution.lean"><code>priestly_absolution_coherent</code></a>
+        wires together all the components for the absolution case: God is the unique principal
+        forgiver, the priest acts instrumentally, and the two levels do not compete.
+      </p>
+
+      <div class="assumption-callout">
+        The Protestant objection to priestly absolution is not a single rejection but
+        <em>three independent rejections</em>: (1) the scope of the commission at Jn 20:23
+        (authority), (2) T3 / sacramental causation (mechanism), and (3) the ecclesial dimension
+        of sin (purpose). A person can accept any one of these and reject the others. The
+        Catholic position requires all three.
+      </div>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Section: Where They Agree -->
+    <section class="article-body">
+      <h2>Where They Agree</h2>
+
+      <p>
+        <span class="versal">B</span>efore the disagreements, the common ground.
+        It is more than most people on either side expect.
+      </p>
+
+      <div class="agreement-box">
+        <h4>Fully Shared</h4>
+        <ul>
+          <li><strong>Baptism and the Lord&rsquo;s Supper are dominical</strong>&nbsp;&mdash;
+            instituted by Christ himself. Every major Christian tradition practices both.</li>
+          <li><strong>Only God forgives sins</strong> (Mk 2:7)&nbsp;&mdash; no Christian
+            tradition claims a human being forgives by his own power.</li>
+          <li><strong>Grace is necessary for salvation</strong>&nbsp;&mdash; the dispute is over
+            <em>how</em> grace arrives (through sacraments or through faith alone), not
+            <em>whether</em> it is needed.</li>
+          <li><strong>Marriage is sacred</strong>&nbsp;&mdash; even traditions that do not call
+            it a &ldquo;sacrament&rdquo; treat it as a covenant before God.</li>
+          <li><strong>Care for the sick is commanded</strong> (Jas 5:14&ndash;15)&nbsp;&mdash;
+            the debate is whether anointing is a sacrament with <em>ex opere operato</em>
+            effects or a prayer ministry.</li>
+          <li><strong>Ministry exists</strong>&nbsp;&mdash; all traditions ordain or commission
+            ministers. The disagreement is about what ordination <em>does</em> ontologically.</li>
+        </ul>
+      </div>
+
+      <div class="summary-box">
+        <h3>The disagreement, precisely stated</h3>
+        <p>
+          Catholics and Protestants do not disagree about whether grace is real, whether Christ
+          instituted sacred rites, or whether the Church has ministers. They disagree about
+          <code>T3</code>: whether those rites <em>cause</em> grace or <em>signify</em> grace
+          already received by faith. Remove T3 from the Catholic axiom set, and the entire
+          sacramental system reduces to what Protestants already affirm&nbsp;&mdash; sacred signs
+          pointing to divine realities. Add T3, and the signs become causes, the ministers become
+          instruments, and the system acquires its distinctive Catholic architecture.
+        </p>
+      </div>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Section: What Formalization Exposed -->
+    <section class="article-body">
+      <h2>What Formalization Exposed</h2>
+
+      <p>
+        <span class="versal">A</span> proof assistant forces you to write down every assumption.
+        The Catechism does not. Here are the hidden assumptions the formalization brought
+        to the surface:
+      </p>
+
+      <div class="finding-card">
+        <h3>1. The change-type taxonomy</h3>
+        <p>
+          The CCC describes sacramental effects in four modes of language&nbsp;&mdash; relational,
+          ontological, juridical, dispositional&nbsp;&mdash; without ever classifying them. The
+          formalization required us to make these categories explicit. This is our analytical
+          framework, not the Catechism&rsquo;s. But it reveals genuine structure: every change-type
+          has at least one sacrament that instantiates it
+          (<a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Sacraments/SacramentalCausation.lean"><code>every_change_type_has_sacrament</code></a>).
+        </p>
+      </div>
+
+      <div class="finding-card">
+        <h3>2. The sacrament-layer correspondence is nowhere stated</h3>
+        <p>
+          Baptism targets Layer 1, Reconciliation targets Layer 2, the Eucharist targets
+          Layer 3. This mapping is <em>not</em> in the CCC. The Catechism describes each
+          sacrament in its own section and never connects the three healing sacraments to a
+          unified sin model. The structure is real; the principle is silent.
+        </p>
+      </div>
+
+      <div class="finding-card">
+        <h3>3. Anointing&rsquo;s hidden assumption: healing can harm salvation</h3>
+        <p>
+          The &ldquo;if conducive to the salvation of his soul&rdquo; clause (&sect;1520) is
+          only meaningful if there exist cases where healing would <em>not</em> be conducive.
+          The CCC never says this explicitly. It simply says &ldquo;if&rdquo;&nbsp;&mdash; but
+          the &ldquo;if&rdquo; only has force if the condition can fail. The hidden anthropology:
+          continued earthly life brings continued temptation, and a person who dies in grace
+          is <em>safe</em>.
+        </p>
+      </div>
+
+      <div class="finding-card">
+        <h3>4. The Church can act on behalf of a non-consenting member</h3>
+        <p>
+          Infant baptism presupposes that the Church is a corporate body that can act
+          representatively&nbsp;&mdash; not merely a collection of individuals each acting alone.
+          The CCC assumes this (&sect;1251) without arguing for it. A strict individualist
+          ecclesiology would reject it. This is the assumption that makes infant baptism
+          possible <em>after</em> T3 is accepted.
+        </p>
+      </div>
+
+      <div class="finding-card">
+        <h3>5. Confirmation&rsquo;s &ldquo;completion&rdquo; is genuinely ambiguous</h3>
+        <p>
+          The CCC calls Confirmation &ldquo;necessary for the completion of baptismal grace&rdquo;
+          (&sect;1285). But &ldquo;completion&rdquo; admits two readings: constitutive (adds what
+          was missing) or developmental (matures what was planted). The CCC&rsquo;s own language
+          pulls in both directions. The separate indelible character (&sect;1304) is the strongest
+          evidence for the constitutive reading&nbsp;&mdash; if Confirmation merely deepened
+          existing grace, a separate ontological mark would be otiose.
+        </p>
+      </div>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Section: What This Cannot Answer -->
+    <section class="article-body">
+      <h2>What This Cannot Answer</h2>
+
+      <p>
+        <span class="versal">F</span>ormal verification proves logical validity given axioms.
+        It does not prove axioms true. There are questions this formalization cannot touch:
+      </p>
+
+      <ul>
+        <li><strong>Is T3 true?</strong> The proof assistant can show that T3 is the
+          load-bearing axiom separating Catholic from Protestant sacramental theology.
+          It cannot tell you whether to accept it.</li>
+        <li><strong>Does transubstantiation actually occur?</strong> That is an empirical
+          and metaphysical question, not a logical one.</li>
+        <li><strong>Which axiom set is correct?</strong> Both the Catholic and Protestant
+          positions are internally consistent. The disagreement is over premises, not
+          over reasoning.</li>
+        <li><strong>What does &ldquo;indelible character&rdquo; actually consist in?</strong>
+          The CCC says it is &ldquo;spiritual&rdquo; and &ldquo;permanent.&rdquo; We track
+          the claim without defining the metaphysics.</li>
+      </ul>
+
+      <p>
+        Seeing what follows from which axioms is more honest than arguing past each other.
+        A proof assistant cannot tell you which axioms to accept. But it can show you what
+        you are accepting and what follows from it.
+      </p>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Section: The Charitable Conclusion -->
+    <section class="article-body">
+      <h2>The Architecture of Grace</h2>
+
+      <p>
+        <span class="versal">W</span>hat we found, across seven sacraments and eight Lean files,
+        is this: the Catholic sacramental system is not a collection of isolated rituals. It is
+        an architecture. The sacraments form a sequence (Baptism before Reconciliation before
+        Eucharist), a hierarchy of change-types (ontological marks that cannot be undone,
+        relational bonds that can be renewed), and a correspondence with the layers of sin
+        that is nowhere stated in the source text but verified by the proof assistant.
+      </p>
+
+      <p>
+        The disagreement between Catholics and Protestants is not about logic. It is about
+        whether <code>T3</code> is among the axioms. Accept T3, and all seven sacraments cause
+        real change, the priesthood is an instrumental cause of divine action, and the sacramental
+        system acquires its full architecture. Reject T3, and the sacred rites become what
+        Protestants have always said they are: meaningful signs of a grace received by faith
+        alone.
+      </p>
+
+      <p>
+        Neither side is being foolish. Both sides reason correctly from their premises.
+        Seeing that clearly is better than arguing past each other.
+      </p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Source references -->
+    <section class="article-body">
+      <div class="summary-box">
+        <h3>Source Code &amp; Further Reading</h3>
+        <p>
+          The formalizations referenced in this article are machine-checked in Lean 4. The
+          sacramental causation framework is in
+          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Sacraments/SacramentalCausation.lean"><code>SacramentalCausation.lean</code></a>.
+          Individual sacrament files:
+          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Sacraments/Baptism.lean"><code>Baptism.lean</code></a>,
+          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Sacraments/Eucharist.lean"><code>Eucharist.lean</code></a>,
+          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Sacraments/Reconciliation.lean"><code>Reconciliation.lean</code></a>,
+          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Sacraments/PriestlyAbsolution.lean"><code>PriestlyAbsolution.lean</code></a>,
+          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Sacraments/Confirmation.lean"><code>Confirmation.lean</code></a>,
+          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Sacraments/Anointing.lean"><code>Anointing.lean</code></a>.
+          The 15 base axioms are in
+          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Foundations/Axioms.lean"><code>Axioms.lean</code></a>.
+          For related articles, see
+          <a href="forgiveness.html">Forgiveness</a>,
+          <a href="reconciliation.html">Reconciliation</a>,
+          <a href="priestly-authority.html">Priestly Authority</a>, and
+          <a href="luther.html">Luther&rsquo;s Axioms</a>.
+        </p>
+      </div>
+    </section>
+
+    <div class="ornament">&#10053;</div>
+
+    <section class="cta-section">
+      <div class="cta-group">
+        <a href="https://github.com/ngundotra/catlib" class="cta-button primary">View on GitHub</a>
+        <a href="../index.html" class="cta-button secondary">Back to Catlib</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="ornament">&#10053;</div>
+    <p>
+      <a href="https://github.com/ngundotra/catlib">Catlib</a>&nbsp;&mdash;
+      formalizing the Catholic Catechism in Lean 4.
+      A love letter to the Catholic intellectual tradition, written with precision.
+    </p>
+  </footer>
+
+</body>
+</html>

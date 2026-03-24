@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Barth&rsquo;s Objection &mdash; Can We Really Formalize God? &mdash; Catlib</title>
+  <meta name="description" content="Karl Barth called the analogy of being 'the invention of the Antichrist.' If human language about God is only analogical, does formalizing theology in Lean 4 mean anything at all?">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Barth's Objection &mdash; Can We Really Formalize God?">
+  <meta property="og:description" content="The sharpest Protestant challenge to Catholic natural theology, honestly confronted. What a proof assistant reveals about its own limits.">
+  <meta property="og:site_name" content="Catlib">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Barth's Objection &mdash; Can We Really Formalize God?">
+  <meta name="twitter:description" content="If Barth is right, catlib is invalid. We formalized that too.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel+Decorative:wght@400;700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="articles.css">
+</head>
+<body>
+
+  <!-- Sidebar toggle for viewing Lean theorems -->
+  <input type="checkbox" id="sidebar-toggle" class="sidebar-toggle">
+  <label for="sidebar-toggle" class="sidebar-label">Lean Code</label>
+  <div class="sidebar-panel">
+    <h3>Theorem Reference</h3>
+
+    <div class="sidebar-section">
+      <h4>barth_and_catlib_incompatible</h4>
+<pre>theorem barth_and_catlib_incompatible :
+    &not; barthRejectionCorrect :=
+  fun h_barth =&gt;
+    have h_sound := catlib_methodology_is_sound
+    have h_not_sound := barth_challenge h_barth
+    h_not_sound h_sound</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>analogical_truth_is_genuine_but_partial</h4>
+<pre>theorem analogical_truth_is_genuine_but_partial
+    (pred : TheologicalPredicate) :
+    hasGenuineTruthContent pred
+    &and; &not; capturesCompletely pred :=
+  have h_mode := god_talk_is_analogical pred
+  &langle;analogy_carries_truth pred h_mode,
+   human_language_falls_short pred&rangle;</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>catlib_methodology_is_sound</h4>
+<pre>theorem catlib_methodology_is_sound :
+    catlibMethodologySound :=
+  have h_resemble := creatures_resemble_god
+  have h_truth :
+    &forall; pred, hasGenuineTruthContent pred :=
+    fun pred =&gt;
+      resemblance_grounds_all_god_talk pred
+  analogy_grounds_methodology h_truth h_resemble</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>analogy_and_simplicity_complementary</h4>
+<pre>theorem analogy_and_simplicity_complementary
+    (pred : TheologicalPredicate)
+    (e : DivineEssence) :
+    (hasGenuineTruthContent pred
+     &and; &not; capturesCompletely pred) &and;
+    identicalWithEssence godIsLove e</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>barth_challenge (axiom)</h4>
+<pre>axiom barth_challenge :
+  barthRejectionCorrect &rarr;
+  &not; catlibMethodologySound</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>The 15 Base Axioms (P/S/T)</h4>
+<pre>-- Philosophical (3)
+P1. Hylomorphism
+P2. Two-tier causation
+P3. Evil is privation
+
+-- Scriptural (9)
+S1. God is love
+S2. Universal salvific will
+S3. Law on hearts
+S4. Universal providence
+S5. Sin separates
+S6. Moral realism
+S7. Teleological freedom
+S8. Grace necessary &amp; transformative
+S9. Conscience binds
+
+-- Tradition (3)
+T1. Libertarian free will
+T2. Grace preserves freedom
+T3. Sacramental efficacy</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>Source Files</h4>
+<pre><a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/AnalogyOfBeing.lean" style="color: var(--accent-gold);">AnalogyOfBeing.lean</a>
+<a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/DivineAttributes.lean" style="color: var(--accent-gold);">DivineAttributes.lean</a>
+<a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/FaithAndReason.lean" style="color: var(--accent-gold);">FaithAndReason.lean</a></pre>
+    </div>
+
+    <p class="close-hint">Click the tab again to close</p>
+  </div>
+
+  <main>
+    <a href="../index.html" class="back-link">Back to Catlib</a>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="ornament">&#10053;</div>
+      <h1>Barth&rsquo;s Objection</h1>
+      <p class="subtitle">Can we really formalize God?</p>
+      <p class="subtitle">
+        If human language about God is only analogical, does this entire project mean anything?
+      </p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Introduction -->
+    <section class="article-body">
+      <p>
+        <span class="versal">I</span>n 1932, Karl Barth wrote that the
+        <em>analogia entis</em>&nbsp;&mdash; the analogy of being&nbsp;&mdash;
+        was &ldquo;the invention of the Antichrist&rdquo; and &ldquo;the reason
+        why one cannot become Catholic&rdquo; (<em>Church Dogmatics</em> I/1,
+        p. viii). This was not a casual remark. It was the sharpest theological
+        rejection of the last century, aimed at the very foundation of Catholic
+        natural theology: the claim that human reason, working from the created
+        world, can say something genuinely true about God.
+      </p>
+      <p>
+        Barth&rsquo;s objection strikes at the heart of what catlib attempts.
+        Every axiom in this project applies a predicate to God&nbsp;&mdash;
+        <code>godIsLove</code>, <code>godCanBringAbout</code>,
+        <code>knownToGod</code>, <code>godCreatesThruWisdom</code>&nbsp;&mdash;
+        and each of those predicates originates in human experience with
+        creatures. If Barth is right that no analogy from creatures to God is
+        legitimate, then every one of those predicates is a projection of human
+        concepts onto a God who shatters all human concepts. And catlib would
+        be not merely imprecise but fundamentally misconceived.
+      </p>
+      <p>
+        We formalized that finding. In
+        <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/AnalogyOfBeing.lean"><code>AnalogyOfBeing.lean</code></a>,
+        the theorem
+        <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/AnalogyOfBeing.lean"><code>barth_and_catlib_incompatible</code></a>
+        proves: if Barth&rsquo;s rejection of the analogy of being is correct,
+        then catlib&rsquo;s methodology is unsound. We have picked a side. This
+        article explains what that side is, why we picked it, and what we
+        honestly cannot answer.
+      </p>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Section: The Strongest Version of Barth's Argument -->
+    <section class="article-body">
+      <h2>The Strongest Version of the Objection</h2>
+
+      <p>
+        <span class="versal">B</span>arth&rsquo;s objection is not that human
+        language about God is imprecise. Every theologian admits imprecision.
+        The objection is deeper: that any attempt to reason FROM creatures TO
+        God&nbsp;&mdash; to say &ldquo;creatures are good, therefore God must be
+        good in some related sense&rdquo;&nbsp;&mdash; presupposes that human
+        reason has a reliable path to God. And for Barth, it does not.
+      </p>
+
+      <div class="finding-card">
+        <h3>Barth&rsquo;s Core Claim</h3>
+        <p>
+          God is known <strong>only</strong> through God&rsquo;s self-revelation
+          in Jesus Christ. Human reason, no matter how disciplined, cannot reach
+          God from below. The distance between Creator and creature is not a gap
+          that analogy bridges&nbsp;&mdash; it is an abyss that only God can
+          cross, and God crosses it in revelation alone.
+        </p>
+        <p>
+          The <em>analogia entis</em> (analogy of being) claims that because
+          creatures are made by God, they resemble God, and this resemblance
+          grounds our ability to speak truly about God. Barth says this gets the
+          direction exactly backwards: it makes God accessible to human reason
+          rather than making human reason dependent on God&rsquo;s free decision
+          to reveal himself.
+        </p>
+      </div>
+
+      <p>
+        This is not a misunderstanding. It is not a failure to read Aquinas
+        carefully. Barth understood the Catholic position. He rejected it because
+        he believed it domesticated God&nbsp;&mdash; made God an object of human
+        inquiry rather than the free Subject who addresses us when and how he
+        chooses.
+      </p>
+
+      <div class="assumption-callout">
+        If Barth is right, then every <code>axiom</code> in catlib that
+        predicates something of God is a category error. Formal verification
+        of theological claims would be like spell-checking a language that
+        does not exist. The grammar would be perfect. The referent would be
+        empty.
+      </div>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Section: What We Formalized -->
+    <section class="article-body">
+      <h2>What We Formalized</h2>
+
+      <p>
+        <span class="versal">R</span>ather than pretend this objection does not
+        exist, we encoded it. In
+        <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/AnalogyOfBeing.lean"><code>AnalogyOfBeing.lean</code></a>,
+        we built the machinery to reason about how predicates apply to God, and
+        we formalized the Barthian challenge as an axiom:
+      </p>
+
+      <table class="axiom-table">
+        <thead>
+          <tr>
+            <th>Axiom / Theorem</th>
+            <th>What It Says</th>
+            <th>Scope</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>god_talk_is_analogical</code></td>
+            <td>Every predicate applied to God is analogical&nbsp;&mdash; neither univocal nor equivocal</td>
+            <td><span class="tag tag-shared">Ecumenical</span></td>
+          </tr>
+          <tr>
+            <td><code>analogy_carries_truth</code></td>
+            <td>Analogical predicates have genuine truth content (&sect;43)</td>
+            <td><span class="tag tag-shared">Ecumenical</span></td>
+          </tr>
+          <tr>
+            <td><code>human_language_falls_short</code></td>
+            <td>No human predicate captures God completely (&sect;42)</td>
+            <td><span class="tag tag-shared">Ecumenical</span></td>
+          </tr>
+          <tr>
+            <td><code>creatures_resemble_god</code></td>
+            <td>Creatures bear a genuine resemblance to God (&sect;41, Wis 13:5)</td>
+            <td><span class="tag tag-shared">Ecumenical</span></td>
+          </tr>
+          <tr>
+            <td><code>barth_challenge</code></td>
+            <td>If Barth is right, catlib&rsquo;s methodology is unsound</td>
+            <td><span class="tag tag-lutheran">Barthian/Reformed</span></td>
+          </tr>
+          <tr>
+            <td><code>barth_and_catlib_incompatible</code></td>
+            <td><strong>Theorem:</strong> catlib and Barth&rsquo;s rejection cannot both be true</td>
+            <td>&mdash;</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        The theorem <code>barth_and_catlib_incompatible</code> is not a
+        refutation of Barth. It is a proof that catlib has taken a position.
+        The project assumes the CCC&rsquo;s axiom set, which includes the claim
+        that analogy of being works (&sect;40&ndash;43). Barth&rsquo;s axiom
+        set denies this. Both sets are internally consistent. But they cannot
+        both be true.
+      </p>
+
+      <div class="assumption-callout">
+        A proof assistant cannot tell you which axioms to accept. But it can
+        show you what you are accepting and what follows from it. Here it
+        shows: accepting catlib&rsquo;s axioms means rejecting Barth&rsquo;s
+        position on analogy. Seeing that clearly is better than arguing past
+        each other.
+      </div>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Section: The CCC's Response -->
+    <section class="article-body">
+      <h2>The Catechism&rsquo;s Response: Analogy as Middle Way</h2>
+
+      <p>
+        <span class="versal">T</span>he Catechism of the Catholic Church
+        devotes &sect;40&ndash;43 to this question. Its answer charts a middle
+        course between two extremes, and that middle is the ground on which
+        catlib stands.
+      </p>
+
+      <div class="finding-card">
+        <h3>Three Modes of Predication (Aquinas, ST I q.13 a.5)</h3>
+        <p>
+          When we say &ldquo;God is good&rdquo; and &ldquo;this person is
+          good,&rdquo; the word &ldquo;good&rdquo; can mean one of three things:
+        </p>
+        <p>
+          <strong>Univocal</strong>&nbsp;&mdash; exactly the same meaning.
+          &ldquo;Good&rdquo; means for God precisely what it means for creatures.
+          The CCC denies this: &sect;42 says &ldquo;Our human words always fall
+          short of the mystery of God.&rdquo;
+        </p>
+        <p>
+          <strong>Equivocal</strong>&nbsp;&mdash; completely different meaning.
+          &ldquo;Good&rdquo; applied to God has nothing to do with
+          &ldquo;good&rdquo; applied to creatures. Barth&rsquo;s position tends
+          in this direction. The CCC denies this too: &sect;43 says our language
+          &ldquo;really does attain to God himself.&rdquo;
+        </p>
+        <p>
+          <strong>Analogical</strong>&nbsp;&mdash; a related but non-identical
+          meaning, grounded in resemblance. This is the CCC&rsquo;s position.
+          Our language about God carries <em>genuine but partial</em> truth.
+        </p>
+      </div>
+
+      <p>
+        The ground of this analogy is stated in &sect;41: &ldquo;All creatures
+        bear a certain resemblance to God&hellip; &lsquo;For from the greatness
+        and beauty of created things comes a corresponding perception of their
+        Creator&rsquo;&rdquo; (Wis 13:5). Because creatures are made by God,
+        they bear traces of their Maker. The resemblance is real&nbsp;&mdash;
+        not projected by the mind&nbsp;&mdash; and it is the basis for saying
+        something genuinely true about God from the creaturely side.
+      </p>
+
+      <p>
+        But &sect;42 immediately qualifies: &ldquo;Our human words always fall
+        short of the mystery of God.&rdquo; The resemblance is real but limited.
+        God infinitely surpasses every creature, so every analogy limps. We can
+        say &ldquo;God is good&rdquo; and mean something true. We cannot say
+        &ldquo;God is good in exactly the way a person is good.&rdquo;
+      </p>
+
+      <p>
+        And &sect;43 pulls the threads together: &ldquo;In speaking about God
+        like this, our language is using human modes of expression; nevertheless
+        it <em>really does attain to God himself</em>, though unable to express
+        him in his infinite simplicity.&rdquo; The word &ldquo;really&rdquo; is
+        load-bearing. The CCC insists this is not pious fiction. It is not
+        merely useful language. Analogical predication touches the divine
+        reality&nbsp;&mdash; genuinely, though never completely.
+      </p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Section: Where They Agree -->
+    <section class="article-body">
+      <h2>Where They Agree</h2>
+
+      <p>
+        <span class="versal">B</span>efore the disagreement, the common ground.
+        It is more substantial than most people on either side expect.
+      </p>
+
+      <div class="agreement-box">
+        <h4>Fully Shared</h4>
+        <ul>
+          <li><strong>God infinitely transcends all creatures.</strong> Neither Catholics nor Barthians think God is a bigger version of a creature. Both affirm the Creator-creature distinction is absolute.</li>
+          <li><strong>Human language about God is radically inadequate.</strong> The CCC says our words &ldquo;always fall short&rdquo; (&sect;42). Barth agrees, and goes further.</li>
+          <li><strong>God&rsquo;s self-revelation is necessary.</strong> Even the CCC (&sect;38) says revelation is &ldquo;morally necessary&rdquo; for reliable knowledge of God, because sin weakens reason. Barth agrees, but makes it absolutely necessary rather than morally so.</li>
+          <li><strong>Theological language must be used with humility.</strong> No tradition worth its salt thinks we have God figured out.</li>
+          <li><strong>God is known through Jesus Christ.</strong> Both traditions affirm that the definitive revelation of God occurs in the person of Christ. The question is whether reason provides any reliable access <em>prior</em> to that revelation.</li>
+        </ul>
+      </div>
+
+      <div class="summary-box">
+        <h3>The disagreement, precisely stated</h3>
+        <p>
+          The CCC claims that creatures&rsquo; resemblance to God (&sect;41)
+          grounds a genuine&nbsp;&mdash; if limited&nbsp;&mdash; rational path
+          from creation to Creator. Barth claims that no creaturely path reaches
+          God; all genuine knowledge of God flows from God&rsquo;s free
+          self-revelation downward, not from human reason upward. The
+          disagreement is not about whether God transcends creatures (both say
+          yes) but about whether the creature-to-Creator direction carries any
+          reliable truth.
+        </p>
+      </div>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Section: The Permanent Gap -->
+    <section class="article-body">
+      <h2>The Permanent Gap: What Formalization Cannot Capture</h2>
+
+      <p>
+        <span class="versal">E</span>ven granting the CCC&rsquo;s position
+        that analogy works, there remains a gap that formalization cannot close.
+        This is not a temporary limitation awaiting a better proof. It is
+        structural.
+      </p>
+
+      <div class="finding-card">
+        <h3>The Problem</h3>
+        <p>
+          Lean&rsquo;s <code>Prop</code> type is binary: a proposition is true
+          or false. When catlib states <code>axiom godIsLove</code>, this
+          asserts &ldquo;God is love&rdquo; as a <code>Prop</code>&nbsp;&mdash;
+          univocally true, full stop.
+        </p>
+        <p>
+          But the CCC says &ldquo;God is love&rdquo; is true
+          <em>analogically</em>&nbsp;&mdash; genuinely but partially. Our words
+          &ldquo;really do attain to God himself&rdquo; (&sect;43) but
+          &ldquo;always fall short&rdquo; (&sect;42). There is no type in Lean
+          for &ldquo;analogically true.&rdquo; A <code>Prop</code> does not
+          have a mode of truth.
+        </p>
+      </div>
+
+      <p>
+        This means catlib&rsquo;s formal system is <strong>stronger</strong>
+        than what the CCC claims to know. Our axioms assert things about God
+        with univocal precision. The CCC says those same things with analogical
+        humility. The gap between formal truth (binary, univocal) and
+        analogical truth (genuine but partial, non-binary) is a permanent
+        methodological limit of formal theology.
+      </p>
+
+      <p>
+        We documented this honestly in <code>AnalogyOfBeing.lean</code>: every
+        axiom about God (<code>godIsLove</code>, <code>omnipotence</code>,
+        <code>omniscience</code>, and all the rest) implicitly assumes that
+        formal predicates applied to God have genuine truth content. This is
+        the deepest methodological assumption in the project&nbsp;&mdash;
+        deeper than any individual axiom. It is the precondition for all axioms
+        about God, not a consequence of them.
+      </p>
+
+      <div class="assumption-callout">
+        Formal verification does not tell you who is right. It tells you: if
+        you accept these premises, this conclusion follows. Here it tells you
+        something more: the formal system itself rests on a premise it cannot
+        express&nbsp;&mdash; that analogical truth is genuine enough to
+        formalize. If that premise is wrong, everything built on it is a castle
+        in the air.
+      </div>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Section: Divine Simplicity Makes It Worse -->
+    <section class="article-body">
+      <h2>Divine Simplicity Makes the Problem Worse</h2>
+
+      <p>
+        <span class="versal">T</span>here is a second, related problem that
+        cuts even deeper. The CCC (&sect;271) teaches divine simplicity: in
+        God, &ldquo;power, essence, will, intellect, wisdom, and justice are
+        all identical&rdquo; (Lateran Council IV). God does not <em>have</em>
+        goodness the way a person has a quality. God <strong>is</strong> His
+        goodness. His love, power, wisdom, and justice are not separate
+        attributes composed together. They are the single, simple divine
+        essence seen from different angles by our finite intellect.
+      </p>
+
+      <p>
+        Our formalization in
+        <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/DivineAttributes.lean"><code>DivineAttributes.lean</code></a>
+        does the opposite. It decomposes God into separate predicates:
+        <code>godIsLove</code>, <code>godCanBringAbout</code>,
+        <code>knownToGod</code>, <code>godCreatesThruWisdom</code>. Each
+        predicate carries distinct information. That is what makes formal
+        reasoning possible&nbsp;&mdash; you need separate propositions to derive
+        conclusions. But divine simplicity says those predicates are, in God,
+        identical. The decomposition that our methodology
+        <strong>requires</strong> is the decomposition that the doctrine
+        <strong>denies</strong>.
+      </p>
+
+      <p>
+        As we noted in <code>DivineAttributes.lean</code>, the formalization
+        therefore <em>enacts</em> the problem it describes. Our inability to
+        unify the attribute predicates without losing content is the formal
+        analogue of the human intellect&rsquo;s inability to grasp divine unity
+        without multiple concepts. The methodology does not merely fail to
+        capture simplicity&nbsp;&mdash; it demonstrates <em>why</em> simplicity
+        is hard, by being an instance of the very limitation the doctrine
+        describes.
+      </p>
+
+      <div class="assumption-callout">
+        The analogy of being explains why this decomposition is
+        <em>permitted</em>: analogical predication gives genuine but partial
+        access to a reality that is itself simple. Multiple predicates for one
+        simple reality, each capturing a genuine aspect. Without analogy,
+        simplicity would make God entirely unknowable. With univocity,
+        simplicity would be incoherent.
+      </div>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Section: The Epistemological Package -->
+    <section class="article-body">
+      <h2>The Epistemological Package</h2>
+
+      <p>
+        <span class="versal">A</span>nalogy does not stand alone.
+        <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/FaithAndReason.lean"><code>FaithAndReason.lean</code></a>
+        reveals the full structure of the CCC&rsquo;s epistemology, and it is
+        layered rather than competitive:
+      </p>
+
+      <p>
+        First, reason is genuinely reliable (&sect;36, Vatican I)&nbsp;&mdash;
+        grounded in the <em>imago dei</em> and the Logos who made the world
+        intelligible. Second, reason is genuinely limited (&sect;156)&nbsp;&mdash;
+        some truths (Trinity, Incarnation) exceed its grasp. Third, reason is
+        genuinely damaged (&sect;37)&nbsp;&mdash; sin introduces errors. Fourth,
+        faith addresses all three: it confirms reason&rsquo;s reliability
+        (&sect;159), accesses truths beyond reason (&sect;156), and corrects
+        where sin distorts (&sect;37).
+      </p>
+
+      <p>
+        The theorem
+        <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/FaithAndReason.lean"><code>barth_incompatible_with_ccc</code></a>
+        in <code>FaithAndReason.lean</code> proves that Barth&rsquo;s denial
+        of natural theology is formally incompatible with Vatican I&rsquo;s
+        claim that reason can know God from creation. Both cannot hold. The
+        disagreement is real, not merely verbal.
+      </p>
+
+      <p>
+        But Barth does not deny that reason works for science or everyday life.
+        He denies it can reach <em>God</em>. He would accept catlib&rsquo;s
+        formalization of logic, mathematics, even ethics. What he rejects is
+        the step from &ldquo;creatures are intelligible&rdquo; to &ldquo;God
+        is intelligible through creatures.&rdquo; That step is, for Barth, the
+        Antichrist&rsquo;s invention.
+      </p>
+
+      <div class="axis-card">
+        <div class="axis-label">Under Catholic axioms (&sect;36, &sect;40&ndash;43)</div>
+        <div class="axis-side">
+          Creatures resemble God (Wis 13:5). This resemblance grounds analogy.
+          Analogy gives genuine but partial truth about God. Reason, aided by
+          this analogy, can know God exists from the created world. Formal
+          theology is possible, within acknowledged limits.
+        </div>
+      </div>
+
+      <div class="axis-card">
+        <div class="axis-label">Under Barthian axioms (CD I/1)</div>
+        <div class="axis-side">
+          No creaturely path reaches God. All knowledge of God comes from
+          God&rsquo;s self-revelation in Christ. What looks like &ldquo;analogy
+          of being&rdquo; is actually human projection onto God. Formal theology
+          using creaturely predicates is fundamentally misconceived.
+        </div>
+      </div>
+
+      <p>
+        Both readings are internally consistent. The disagreement is not about
+        logic or about whether God transcends creatures&nbsp;&mdash; it is about
+        whether the creature-to-Creator direction of knowledge is reliable.
+        Seeing this precisely is more honest than caricaturing either side.
+      </p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Section: What Formalization Exposed -->
+    <section class="article-body">
+      <h2>What Formalization Exposed</h2>
+
+      <p>
+        <span class="versal">T</span>he proof assistant forced us to make five
+        things explicit that are normally left implicit:
+      </p>
+
+      <div class="finding-card">
+        <h3>1. Analogy is the deepest assumption</h3>
+        <p>
+          Catlib has 15 named base axioms (P1&ndash;P3, S1&ndash;S9,
+          T1&ndash;T3). But the assumption that analogical predication carries
+          genuine truth content is deeper than any of them. It is the
+          precondition for every axiom about God. Without it, <code>S1</code>
+          (&ldquo;God is love&rdquo;) might be meaningless.
+        </p>
+      </div>
+
+      <div class="finding-card">
+        <h3>2. The CCC never argues for analogy</h3>
+        <p>
+          &sect;43 asserts that our language &ldquo;really does attain to God
+          himself&rdquo; but never argues for this claim. The argument is
+          Aquinas&rsquo;s (ST I q.13 a.5&ndash;6): creatures are effects of
+          God, effects resemble their cause, so creaturely perfections say
+          something true about the cause. The CCC states the conclusion without
+          the reasoning. Formalization made this gap visible.
+        </p>
+      </div>
+
+      <div class="finding-card">
+        <h3>3. The three modes are assumed to be exhaustive</h3>
+        <p>
+          Univocal, equivocal, and analogical predication are treated as
+          covering all possibilities (Aquinas, ST I q.13 a.5). If there were a
+          fourth mode of predication, the argument might not apply to all
+          God-talk. This exhaustiveness is never defended; it is assumed.
+        </p>
+      </div>
+
+      <div class="finding-card">
+        <h3>4. Creaturely resemblance is assumed to be real, not projected</h3>
+        <p>
+          &sect;41 says creatures bear &ldquo;a certain resemblance to God.&rdquo;
+          A Kantian could say we impose the resemblance rather than discovering
+          it. The CCC assumes the resemblance is in the things themselves. This
+          is the <em>vestigia Dei</em> tradition, and it is doing more load-bearing
+          work than is usually acknowledged.
+        </p>
+      </div>
+
+      <div class="finding-card">
+        <h3>5. The formal system overshoots the CCC&rsquo;s claims</h3>
+        <p>
+          Every <code>axiom</code> in catlib treats God-predicates as
+          univocally true. The CCC says they are analogically true. Catlib is
+          therefore <em>formally stronger</em> than the CCC&rsquo;s own
+          epistemology. This is an honest methodological limit, not a bug to
+          be fixed.
+        </p>
+      </div>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Section: What This Article Cannot Answer -->
+    <section class="article-body">
+      <h2>What This Article Cannot Answer</h2>
+
+      <p>
+        <span class="versal">H</span>onesty requires naming the limits.
+      </p>
+
+      <p>
+        This article cannot tell you whether Barth or the CCC is right about
+        analogy. The proof assistant shows that both positions are internally
+        consistent and mutually exclusive. It cannot adjudicate between them.
+        The disagreement is about which axioms to accept, and a proof assistant
+        does not tell you which axioms to accept.
+      </p>
+
+      <p>
+        It cannot close the gap between formal truth and analogical truth. Lean
+        has no type for &ldquo;true in an analogical sense.&rdquo; That gap is
+        permanent. If someone builds a formal system with graded truth values
+        or a type for analogical assertion, it would be a genuine advance. We
+        do not have one.
+      </p>
+
+      <p>
+        It cannot prove that creatures genuinely resemble God. The claim in
+        &sect;41 (Wis 13:5) is a scriptural and philosophical commitment, not
+        a formal result. If the resemblance is an illusion, the entire
+        analogical apparatus collapses.
+      </p>
+
+      <p>
+        And it cannot answer whether divine simplicity is coherent. We can
+        state the doctrine and demonstrate that our formalization enacts the
+        difficulty it describes. We cannot resolve the difficulty. The question
+        of whether &ldquo;power, essence, will, intellect, wisdom, and justice
+        are all identical&rdquo; (&sect;271) is ultimately a question about
+        reality, not about logic.
+      </p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Section: The Charitable Conclusion -->
+    <section class="article-body">
+      <h2>A Genuine Humility</h2>
+
+      <p>
+        <span class="versal">C</span>atlib is a love letter to the Catholic
+        intellectual tradition, written with precision. But a love letter is
+        not a proof that the beloved exists. The entire project rests on the
+        assumption that analogical predication carries genuine truth content
+        when applied to God. If that assumption is wrong, the love letter is
+        addressed to the author&rsquo;s own imagination.
+      </p>
+
+      <p>
+        We believe the assumption is right&nbsp;&mdash; that creatures genuinely
+        resemble their Creator, that human language genuinely attains to God
+        even as it always falls short, and that formal theology is therefore
+        possible within acknowledged limits. That is the CCC&rsquo;s position
+        (&sect;40&ndash;43), and it is ours.
+      </p>
+
+      <p>
+        But we believe Barth deserves better than dismissal. His objection is
+        not stupid. It is one of the most serious challenges in modern theology.
+        It comes from a deep reverence for the freedom and transcendence of
+        God&nbsp;&mdash; a reverence Catholics share, even if they draw
+        different conclusions from it. Barth later softened his position,
+        allowing an <em>analogia fidei</em> (analogy of faith)&nbsp;&mdash;
+        that God can be known through God&rsquo;s self-revelation in Christ,
+        even if not through the analogy of being. The distance between
+        <em>analogia fidei</em> and <em>analogia entis</em> may be smaller
+        than Barth&rsquo;s 1932 rhetoric suggests.
+      </p>
+
+      <p>
+        In the meantime, we have formalized what we can. We have been honest
+        about what we cannot. And we have encoded the strongest objection to
+        our own methodology as a theorem in the system itself:
+        <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/AnalogyOfBeing.lean"><code>barth_and_catlib_incompatible</code></a>.
+        If Barth is right, the theorem proves it: catlib falls. That is not
+        triumphalism. That is the kind of intellectual honesty a proof assistant
+        is good at.
+      </p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Source references -->
+    <section class="article-body">
+      <div class="summary-box">
+        <h3>Source Code &amp; Further Reading</h3>
+        <p>
+          The formalizations referenced in this article are machine-checked
+          in Lean 4. See
+          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/AnalogyOfBeing.lean"><code>AnalogyOfBeing.lean</code></a>
+          for the analogy of being, the three modes of predication, and the
+          Barthian challenge. See
+          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/DivineAttributes.lean"><code>DivineAttributes.lean</code></a>
+          for divine simplicity and the methodological tension it creates. See
+          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/FaithAndReason.lean"><code>FaithAndReason.lean</code></a>
+          for the full epistemological package (faith perfects reason, the
+          Barthian counter, the layered CCC epistemology). The 15 base axioms
+          are in
+          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Foundations/Axioms.lean"><code>Axioms.lean</code></a>.
+          See also <a href="limits.html">Where Formalization Stops</a> for the
+          broader methodological picture.
+        </p>
+      </div>
+    </section>
+
+    <div class="ornament">&#10053;</div>
+
+    <section class="cta-section">
+      <div class="cta-group">
+        <a href="https://github.com/ngundotra/catlib" class="cta-button primary">View on GitHub</a>
+        <a href="../index.html" class="cta-button secondary">Back to Catlib</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="ornament">&#10053;</div>
+    <p>
+      <a href="https://github.com/ngundotra/catlib">Catlib</a>&nbsp;&mdash;
+      formalizing the Catholic Catechism in Lean 4.
+      A love letter to the Catholic intellectual tradition, written with precision.
+    </p>
+  </footer>
+
+</body>
+</html>

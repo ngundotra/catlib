@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Deepest Hidden Assumption &mdash; Essence and Existence &mdash; Catlib</title>
+  <meta name="description" content="The Catholic Catechism never names the essence/existence distinction, but creation, contingency, divine simplicity, and sustaining providence all presuppose it. This is the deepest hidden assumption in the CCC.">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="The Deepest Hidden Assumption: Essence and Existence">
+  <meta property="og:description" content="In every creature, what it IS (essence) is distinct from THAT it is (existence). Only in God are they identical. The CCC never names this, but everything stands on it.">
+  <meta property="og:site_name" content="Catlib">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="The Deepest Hidden Assumption: Essence and Existence">
+  <meta name="twitter:description" content="The single most important philosophical assumption the Catholic Catechism never names &mdash; and why everything depends on it.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel+Decorative:wght@400;700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="articles.css">
+  <style>
+    /* ============================================================
+       Essence & Existence — article-specific styles
+       ============================================================ */
+
+    /* Dependency chain visualization */
+    .dependency-chain {
+      background: var(--bg-parchment);
+      border: 2px solid var(--border);
+      border-radius: 2px;
+      padding: 1.5rem 2rem;
+      margin: 2rem 0;
+      text-align: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      line-height: 2.2;
+    }
+
+    .dependency-chain .chain-arrow {
+      color: var(--accent);
+      font-weight: 600;
+      display: block;
+      font-size: 1.2rem;
+    }
+
+    .dependency-chain .chain-node {
+      display: block;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .dependency-chain .chain-label {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      font-style: italic;
+    }
+
+    /* "What breaks" table */
+    .breaks-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      font-size: 0.92rem;
+      border: 2px solid var(--border-dark);
+    }
+
+    .breaks-table th {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--bg);
+      background: var(--accent);
+      padding: 0.7rem 0.8rem;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    .breaks-table td {
+      padding: 0.65rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    .breaks-table tbody tr:nth-child(even) {
+      background: rgba(184, 134, 11, 0.06);
+    }
+
+    .breaks-table tbody tr:hover {
+      background: rgba(184, 134, 11, 0.12);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar toggle for viewing Lean theorems -->
+  <input type="checkbox" id="sidebar-toggle" class="sidebar-toggle">
+  <label for="sidebar-toggle" class="sidebar-label">Lean Code</label>
+  <div class="sidebar-panel">
+    <h3>Theorem Reference</h3>
+
+    <div class="sidebar-section">
+      <h4>real_distinction</h4>
+<pre>-- In every creature, essence does NOT
+-- entail existence (De Ente ch. 4-5)
+axiom real_distinction :
+  &forall; (b : Being),
+    isCreature b &rarr;
+    &not; essenceEntailsExistence b</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>divine_essence_is_existence</h4>
+<pre>-- In God alone, essence = existence
+-- (ST I q.3 a.4; CCC &sect;213; Ex 3:14)
+axiom divine_essence_is_existence :
+  &forall; (b : Being),
+    isDivine b &rarr;
+    essenceEntailsExistence b</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>god_unique_essence_existence_identity</h4>
+<pre>-- Only divine beings have
+-- essence = existence
+theorem god_unique_essence_existence_identity
+    (b : Being) :
+    essenceEntailsExistence b &rarr;
+    isDivine b</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>creatures_need_sustaining</h4>
+<pre>-- Every creature needs divine sustaining
+-- because its essence &ne; existence
+theorem creatures_need_sustaining
+    (b : Being) (h : isCreature b) :
+    divinelyGoverned (actuallyExists b)</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>divine_simplicity_from_essence_existence</h4>
+<pre>-- The divine identity grounds simplicity:
+-- essence = existence &rarr; no composition
+-- &rarr; all attributes = essence
+theorem divine_simplicity_from_essence_existence
+    (b : Being) (e : DivineEssence)
+    (h : isDivine b) :
+    identicalWithEssence (essenceOf b) e</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>total_creator_creature_distinction</h4>
+<pre>-- Every being falls on exactly one side
+theorem total_creator_creature_distinction
+    (b : Being) :
+    (isCreature b &and;
+      &not; essenceEntailsExistence b) &or;
+    (isDivine b &and;
+      essenceEntailsExistence b)</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>creation_presupposes_distinction</h4>
+<pre>-- Creation through wisdom requires
+-- the real distinction
+theorem creation_presupposes_distinction
+    (b : Being) (h : isCreature b) :
+    godCreatesThruWisdom &and;
+    receivesExistence b</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>The 15 Base Axioms (P/S/T)</h4>
+<pre>-- Philosophical (3)
+P1. Hylomorphism
+P2. Two-tier causation
+P3. Evil is privation
+
+-- Scriptural (9)
+S1. God is love
+S2. Universal salvific will
+S3. Law on hearts
+S4. Universal providence
+S5. Sin separates
+S6. Moral realism
+S7. Teleological freedom
+S8. Grace necessary &amp; transformative
+S9. Conscience binds
+
+-- Tradition (3)
+T1. Libertarian free will
+T2. Grace preserves freedom
+T3. Sacramental efficacy</pre>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>Source Files</h4>
+<pre><a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/EssenceExistence.lean" style="color: var(--accent-gold);">EssenceExistence.lean</a>
+<a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/DivineAttributes.lean" style="color: var(--accent-gold);">DivineAttributes.lean</a>
+<a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/Providence.lean" style="color: var(--accent-gold);">Providence.lean</a>
+<a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/ScientificInquiry.lean" style="color: var(--accent-gold);">ScientificInquiry.lean</a></pre>
+    </div>
+
+    <p class="close-hint">Click the tab again to close</p>
+  </div>
+
+  <main>
+    <a href="../index.html" class="back-link">Back to Catlib</a>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="ornament">&#10053;</div>
+      <h1>The Deepest Hidden Assumption</h1>
+      <p class="subtitle">Essence and Existence in the Catholic Catechism</p>
+      <p class="subtitle">
+        What is the single most important philosophical assumption
+        the Catechism never names?
+      </p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Introduction -->
+    <section class="article-body">
+      <p>
+        <span class="versal">T</span>he Catholic Catechism is a 2,865-paragraph document.
+        It names God, Christ, the sacraments, the moral law, and prayer. It quotes Scripture
+        thousands of times. It cites councils from Nicaea to Vatican II. And yet the single
+        most important philosophical claim on which the entire structure depends&nbsp;&mdash;
+        the claim that makes creation, contingency, divine simplicity, and sustaining
+        providence coherent&nbsp;&mdash; is never stated anywhere in its pages.
+      </p>
+      <p>
+        That claim is the <em>real distinction between essence and existence</em>. In every
+        creature, <em>what</em> it is (its essence, its nature) is distinct from <em>that</em>
+        it is (its existence, its act of being). A horse&rsquo;s &ldquo;what it is to be a
+        horse&rdquo; does not include &ldquo;actually existing.&rdquo; Existence is something
+        the horse <em>receives</em>, not something it has by nature.
+      </p>
+      <p>
+        Only in God are essence and existence identical. God does not <em>have</em>
+        existence&nbsp;&mdash; God <em>is</em> existence itself. This is what &ldquo;I AM WHO
+        I AM&rdquo; (Ex 3:14) means at its deepest metaphysical level: God&rsquo;s essence is
+        to exist.
+      </p>
+      <p>
+        When we formalized the Catechism in Lean 4, this distinction kept appearing as the
+        invisible foundation beneath every major doctrine. Creation, contingency, simplicity,
+        providence&nbsp;&mdash; all of them presuppose it, and none of them name it. The proof
+        assistant forced us to make explicit what the Catechism treats as obvious. The result
+        is in
+        <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/EssenceExistence.lean"><code>EssenceExistence.lean</code></a>,
+        and the finding is striking: this single distinction is to Catholic metaphysics what
+        foundations are to a building&nbsp;&mdash; invisible, never mentioned in the upper
+        stories, but everything stands on it.
+      </p>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Section: The Scriptural and Philosophical Case -->
+    <section class="article-body">
+      <h2>The Claim and Its Sources</h2>
+
+      <p>
+        <span class="versal">T</span>his is not primarily a scriptural claim. It comes from
+        Aquinas, specifically from <em>De Ente et Essentia</em> (chapters 4&ndash;5) and the
+        <em>Summa Theologiae</em> (I, q.3, a.4). It is the deepest piece of
+        Aristotelian-Thomistic machinery in the entire Catechism&nbsp;&mdash; and the CCC
+        inherited it without citing it.
+      </p>
+
+      <div class="finding-card">
+        <h3>&ldquo;I AM WHO I AM&rdquo; (Ex 3:14)</h3>
+        <p>
+          <span class="tag tag-shared">Ecumenical</span>
+          Every Christian tradition reads God&rsquo;s self-naming as a claim about
+          divine aseity&nbsp;&mdash; God exists by nature, not by participation. God
+          does not depend on anything else for being.
+        </p>
+        <p>
+          <span class="tag tag-catholic">Catholic reading</span>
+          Aquinas takes this further: &ldquo;I AM&rdquo; reveals that God&rsquo;s
+          <em>essence is existence itself</em> (<em>ipsum esse subsistens</em>).
+          God is not a being among beings who happens to exist necessarily. God is
+          the act of being itself, in which all other beings participate. This is
+          what &sect;213 means when it says God &ldquo;IS&rdquo;&nbsp;&mdash; not
+          just that God exists, but that God&rsquo;s nature is <em>to exist</em>.
+        </p>
+      </div>
+
+      <div class="finding-card">
+        <h3>CCC &sect;213: &ldquo;God IS&rdquo;</h3>
+        <p>
+          &ldquo;God IS. He who is the fullness of Being and of every perfection,
+          without beginning and without end.&rdquo; The Catechism states the conclusion
+          without giving the argument. The argument is Aquinas&rsquo;s: if God&rsquo;s
+          essence is existence, then God is pure act, without potency, without beginning
+          or end, the fullness of being. The CCC says &ldquo;fullness of Being&rdquo;
+          and expects you to hear the metaphysics behind it.
+        </p>
+      </div>
+
+      <div class="finding-card">
+        <h3>CCC &sect;271: Divine Simplicity</h3>
+        <p>
+          &ldquo;In God, power, essence, will, intellect, wisdom, and justice are all
+          identical.&rdquo; (Lateran Council IV, cited in &sect;271.) Why are they
+          identical? Because God&rsquo;s essence <em>is</em> existence, and pure
+          existence admits of no internal differentiation. If there were parts in God,
+          God would be composed&nbsp;&mdash; and composition requires a composer.
+          The simplicity axioms in
+          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/DivineAttributes.lean"><code>DivineAttributes.lean</code></a>
+          are downstream of the essence/existence identity.
+        </p>
+      </div>
+
+      <div class="finding-card">
+        <h3>CCC &sect;290&ndash;301: Creation and Providence</h3>
+        <p>
+          &ldquo;In the beginning God created the heavens and the earth.&rdquo;
+          Creation is the <em>giving</em> of existence to essences. But this only
+          makes sense if essences and existence are really distinct in creatures.
+          If a horse&rsquo;s essence already included existence, creation would be
+          tautological&nbsp;&mdash; existence giving existence to existences. The
+          real distinction explains <em>what creation is</em>: the bestowal of
+          existence on natures that do not have it on their own.
+        </p>
+        <p>
+          Similarly, &sect;301 says God &ldquo;upholds and sustains [creatures] in
+          being&rdquo; at every moment. Why do creatures need continuous sustaining?
+          Because their essences do not include existence. If they did, creatures would
+          be self-sustaining. The real distinction explains why
+          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/Providence.lean"><code>Providence.lean</code></a>&rsquo;s
+          <code>S4</code> (universal providence) is not optional but necessary.
+        </p>
+      </div>
+
+      <div class="assumption-callout">
+        The CCC never names the essence/existence distinction. But &sect;213 (divine being),
+        &sect;271 (simplicity), &sect;290&ndash;301 (creation and providence) all presuppose
+        it. Every time the Catechism says a creature &ldquo;receives&rdquo; being or grace,
+        it is assuming that creatures are the kind of things that <em>receive</em> existence
+        rather than having it intrinsically. This is Aquinas, not Scripture&nbsp;&mdash; and
+        the CCC inherited it without acknowledgment.
+      </div>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Section: The Formal Model -->
+    <section class="article-body">
+      <h2>What the Proof Assistant Found</h2>
+
+      <p>
+        <span class="versal">W</span>hen we formalized the Catechism&rsquo;s doctrines of
+        creation, simplicity, and providence in separate Lean files, we kept encountering
+        the same gap: each file presupposed something about the relationship between essence
+        and existence that none of them stated. The proof assistant would not let us proceed
+        without making it explicit.
+      </p>
+
+      <p>
+        The result is
+        <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/EssenceExistence.lean"><code>EssenceExistence.lean</code></a>,
+        which introduces 10 axioms and 8 theorems connecting the real distinction to three
+        other formalization files. The key theorems show the dependency chains:
+      </p>
+
+      <div class="dependency-chain">
+        <span class="chain-node">Essence &ne; Existence in creatures</span>
+        <span class="chain-label">(<a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/EssenceExistence.lean"><code>real_distinction</code></a>)</span>
+        <span class="chain-arrow">&darr;</span>
+        <span class="chain-node">Creatures are contingent</span>
+        <span class="chain-label">(<a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/EssenceExistence.lean"><code>distinction_implies_contingency</code></a>)</span>
+        <span class="chain-arrow">&darr;</span>
+        <span class="chain-node">Creatures need divine sustaining</span>
+        <span class="chain-label">(<a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/EssenceExistence.lean"><code>creatures_need_sustaining</code></a> &rarr; Providence.lean)</span>
+        <span class="chain-arrow">&darr;</span>
+        <span class="chain-node">Universal providence is necessary, not optional</span>
+        <span class="chain-label">(<code>S4</code>: <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/Providence.lean"><code>Providence.lean</code></a>)</span>
+      </div>
+
+      <div class="dependency-chain">
+        <span class="chain-node">Essence = Existence in God</span>
+        <span class="chain-label">(<a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/EssenceExistence.lean"><code>divine_essence_is_existence</code></a>)</span>
+        <span class="chain-arrow">&darr;</span>
+        <span class="chain-node">God has no composition</span>
+        <span class="chain-label">(pure act, no potency)</span>
+        <span class="chain-arrow">&darr;</span>
+        <span class="chain-node">All divine attributes = divine essence</span>
+        <span class="chain-label">(<a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/EssenceExistence.lean"><code>divine_simplicity_from_essence_existence</code></a> &rarr; DivineAttributes.lean)</span>
+      </div>
+
+      <table class="axiom-table">
+        <thead>
+          <tr>
+            <th>Axiom / Theorem</th>
+            <th>What It Says</th>
+            <th>CCC Doctrine It Grounds</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>real_distinction</code></td>
+            <td>In creatures, essence does not entail existence</td>
+            <td>Creation (&sect;290&ndash;301), contingency (&sect;302)</td>
+          </tr>
+          <tr>
+            <td><code>divine_essence_is_existence</code></td>
+            <td>In God, essence = existence</td>
+            <td>Divine being (&sect;213), simplicity (&sect;271)</td>
+          </tr>
+          <tr>
+            <td><code>creatures_need_sustaining</code></td>
+            <td>Contingent beings need continuous divine sustaining</td>
+            <td>Providence (&sect;301)</td>
+          </tr>
+          <tr>
+            <td><code>divine_simplicity_from_essence_existence</code></td>
+            <td>Essence/existence identity &rarr; all attributes = essence</td>
+            <td>Simplicity (&sect;271)</td>
+          </tr>
+          <tr>
+            <td><code>creation_presupposes_distinction</code></td>
+            <td>Creation through wisdom requires the real distinction</td>
+            <td>Creation (&sect;299), ordered world</td>
+          </tr>
+          <tr>
+            <td><code>total_creator_creature_distinction</code></td>
+            <td>Every being is on exactly one side of the divide</td>
+            <td>Creator/creature distinction (&sect;42&ndash;43)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="assumption-callout">
+        The formalization confirmed the prediction: the essence/existence distinction is
+        the hidden foundation beneath multiple existing formalizations. Divine simplicity
+        (<a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/DivineAttributes.lean"><code>DivineAttributes.lean</code></a>),
+        sustaining providence
+        (<a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/Providence.lean"><code>Providence.lean</code></a>),
+        and ordered creation
+        (<a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/ScientificInquiry.lean"><code>ScientificInquiry.lean</code></a>)
+        all presuppose that creatures receive existence from God. The real distinction
+        explains <em>why</em>.
+      </div>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Section: Where They Agree -->
+    <section class="article-body">
+      <h2>Where They Agree</h2>
+
+      <p>
+        <span class="versal">B</span>efore the disagreement, the common ground.
+        It is more than most people on either side expect.
+      </p>
+
+      <div class="agreement-box">
+        <h4>Fully Shared</h4>
+        <ul>
+          <li><strong>God is self-existent.</strong> All classical Christian traditions affirm divine aseity&nbsp;&mdash; God exists by nature, not by participation or by the action of another. <span class="tag tag-shared">Ecumenical</span></li>
+          <li><strong>Creatures are contingent.</strong> Everything that is not God could have failed to exist. No creature has being by its own right. <span class="tag tag-shared">Ecumenical</span></li>
+          <li><strong>Creation is a free gift.</strong> God was not compelled to create. The world exists because God freely chose to give it being. <span class="tag tag-shared">Ecumenical</span></li>
+          <li><strong>God sustains creation.</strong> Creatures depend on God not only for their origin but for their continued existence. <span class="tag tag-shared">Ecumenical</span></li>
+          <li><strong>&ldquo;I AM WHO I AM&rdquo; is the deepest divine self-revelation.</strong> Exodus 3:14 reveals something fundamental about God&rsquo;s nature. <span class="tag tag-shared">Ecumenical</span></li>
+        </ul>
+      </div>
+
+      <p>
+        The agreement is striking. Every consequence of the essence/existence distinction
+        is shared across traditions. The dispute is about the <em>metaphysical mechanism</em>
+        that explains these shared beliefs&nbsp;&mdash; not about the beliefs themselves.
+      </p>
+
+      <div class="summary-box">
+        <h3>The disagreement, precisely stated</h3>
+        <p>
+          All classical Christians affirm contingency, creation, divine self-existence,
+          and sustaining providence. The question is: <em>what metaphysical framework
+          best explains why these are true?</em> The Catholic-Thomistic answer is the
+          real distinction between essence and existence. Most Protestants affirm the
+          same consequences without committing to this specific metaphysical account.
+          The disagreement is not about what we believe, but about how deep the
+          philosophical explanation goes.
+        </p>
+      </div>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Section: Hidden Assumptions -->
+    <section class="article-body">
+      <h2>The Hidden Assumptions Formalization Exposed</h2>
+
+      <p>
+        <span class="versal">F</span>ormalization does not merely encode what a text says.
+        It forces you to state what the text assumes. Here are the assumptions the proof
+        assistant would not let us avoid:
+      </p>
+
+      <div class="finding-card">
+        <h3>1. The distinction is real, not merely conceptual</h3>
+        <p>
+          The claim is not just that we can <em>think about</em> essence without thinking
+          about existence (even Kant accepted that). It is a <em>metaphysical</em> claim:
+          in the creature itself, the principle by which it is <em>what</em> it is and the
+          principle by which it <em>is</em> are distinct components. This is the Thomistic
+          position against Scotus (who held the distinction is merely formal) and Suarez
+          (who held it is merely conceptual with a foundation in reality). The CCC implicitly
+          sides with Aquinas without acknowledging the alternatives.
+        </p>
+      </div>
+
+      <div class="finding-card">
+        <h3>2. Existence is received, not self-originating</h3>
+        <p>
+          Creatures do not bootstrap themselves into being. If a creature&rsquo;s essence
+          does not include existence, then its existence must come from <em>outside</em>
+          its own nature. &ldquo;Received&rdquo; implies a giver. The real distinction
+          does not just say creatures lack self-existence&nbsp;&mdash; it implies they have
+          existence <em>from another</em>. The axiom
+          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/EssenceExistence.lean"><code>creatures_receive_existence</code></a>
+          makes this explicit.
+        </p>
+      </div>
+
+      <div class="finding-card">
+        <h3>3. Only one being can have essence = existence</h3>
+        <p>
+          If two beings both had essence = existence, they would be indistinguishable&nbsp;&mdash;
+          existence itself is not individuated. Therefore God is unique. The theorem
+          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/EssenceExistence.lean"><code>god_unique_essence_existence_identity</code></a>
+          proves that any being whose essence entails its existence must be divine. There
+          cannot be two such beings.
+        </p>
+      </div>
+
+      <div class="finding-card">
+        <h3>4. Sustaining is continuous, not one-time</h3>
+        <p>
+          The CCC says God sustains creatures &ldquo;at every moment&rdquo; (&sect;301).
+          This means creation is not a past event but an ongoing act. If God stopped
+          sustaining, creatures would not merely die&nbsp;&mdash; they would <em>cease to
+          exist entirely</em>. The real distinction explains why: existence was never
+          theirs intrinsically.
+        </p>
+      </div>
+
+      <div class="finding-card">
+        <h3>5. The creature/creator binary is exhaustive</h3>
+        <p>
+          Everything is either God or a creature. There is no third category&nbsp;&mdash;
+          no being that is neither created nor divine. The axiom
+          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/EssenceExistence.lean"><code>creature_or_divine</code></a>
+          makes this explicit. The Incarnation is not a counterexample: Christ has two
+          natures, divine and human, in one person&nbsp;&mdash; the natures remain distinct
+          per Chalcedon.
+        </p>
+      </div>
+
+      <div class="assumption-callout">
+        A philosopher who rejects the essence/existence distinction would need to rebuild
+        Catholic metaphysics from scratch. Every doctrine that depends on creatures
+        &ldquo;receiving&rdquo; being, on God being &ldquo;simple,&rdquo; on the world
+        being &ldquo;contingent&rdquo;&nbsp;&mdash; all of these would need new
+        foundations. The proof assistant makes the cost of rejection visible.
+      </div>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Section: What Breaks Without It -->
+    <section class="article-body">
+      <h2>What Breaks Without It</h2>
+
+      <p>
+        <span class="versal">T</span>he easiest way to see why the real distinction matters
+        is to see what happens without it. If you deny that essence and existence are distinct
+        in creatures, four central doctrines lose their metaphysical grounding:
+      </p>
+
+      <table class="breaks-table">
+        <thead>
+          <tr>
+            <th>Doctrine</th>
+            <th>What the CCC Claims</th>
+            <th>What Breaks Without the Distinction</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Contingency</strong></td>
+            <td>Creatures could fail to exist (&sect;302)</td>
+            <td>If essence includes existence, creatures exist by nature and cannot fail to be. Contingency is unexplained.</td>
+          </tr>
+          <tr>
+            <td><strong>Divine simplicity</strong></td>
+            <td>All attributes = essence in God (&sect;271)</td>
+            <td>Simplicity follows from essence = existence in God. Without the distinction, there is no argument for why God has no composition.</td>
+          </tr>
+          <tr>
+            <td><strong>Creation</strong></td>
+            <td>God gives existence to creatures (&sect;290&ndash;301)</td>
+            <td>If creatures&rsquo; essences already include existence, &ldquo;giving existence&rdquo; is tautological. Creation has no metaphysical content.</td>
+          </tr>
+          <tr>
+            <td><strong>Sustaining providence</strong></td>
+            <td>God upholds creatures at every moment (&sect;301)</td>
+            <td>If creatures have existence by nature, they are self-sustaining. Providence becomes optional or ceremonial.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        The pattern is clear: without the real distinction, the CCC&rsquo;s claims about
+        creation and God&rsquo;s relationship to creatures become assertions without
+        metaphysical grounding. They remain true as statements of faith, but the
+        philosophical architecture that connects them collapses.
+      </p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Section: Denominational Comparison -->
+    <section class="article-body">
+      <h2>Across Traditions</h2>
+
+      <p>
+        <span class="versal">T</span>he essence/existence distinction has a complicated
+        ecumenical status. Its <em>consequences</em> are shared by virtually all Christians.
+        Its <em>metaphysical formulation</em> is distinctively Thomistic. Understanding this
+        gap is essential for honest ecumenical dialogue.
+      </p>
+
+      <div class="axis-card">
+        <div class="axis-label">Under Catholic-Thomistic axioms</div>
+        <div class="axis-side">
+          The real distinction is the deepest metaphysical truth about creatures.
+          It explains <em>why</em> creation, contingency, simplicity, and providence
+          hold. The CCC inherits this framework from Aquinas, though it never names
+          it. Within Catholic theology, Scotists and Suarezians offer modified versions
+          of the distinction, but the Thomistic account is the one the CCC implicitly
+          assumes.
+        </div>
+      </div>
+
+      <div class="axis-card">
+        <div class="axis-label">Under Protestant axioms</div>
+        <div class="axis-side">
+          Most Protestant theologians affirm contingency, creation, and divine
+          self-existence without committing to the Thomistic metaphysical mechanism.
+          The tendency is to ground these doctrines directly in Scripture and divine
+          sovereignty rather than in a specific account of the internal structure of
+          beings. Some Reformed philosophers (e.g., Alvin Plantinga) even question
+          whether divine simplicity is coherent. The consequences are shared; the
+          metaphysical scaffolding is not.
+        </div>
+      </div>
+
+      <div class="axis-card">
+        <div class="axis-label">Under Orthodox axioms</div>
+        <div class="axis-side">
+          The Orthodox tradition has a related but distinct framework: the Palamite
+          essence/energies distinction. God&rsquo;s essence is unknowable, but God&rsquo;s
+          energies (uncreated grace, divine activity in the world) are knowable and
+          participable. This is not the same as the essence/existence distinction, but
+          it serves a similar structural role&nbsp;&mdash; explaining how creatures
+          participate in God without being identical with God.
+        </div>
+      </div>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Section: What This Article Cannot Answer -->
+    <section class="article-body">
+      <h2>What This Article Cannot Answer</h2>
+
+      <p>
+        <span class="versal">A</span> proof assistant cannot tell you which axioms to accept.
+        But it can show you what you are accepting and what follows from it.
+        This article cannot answer:
+      </p>
+
+      <ul>
+        <li><strong>Whether the real distinction is true.</strong> That is a metaphysical
+          question, not a formal one. The formalization shows what follows <em>if</em> you
+          accept it and what breaks <em>if</em> you reject it.</li>
+        <li><strong>Whether Thomism is the only viable framework.</strong> Scotism, Suarezianism,
+          and the Palamite tradition offer alternatives. The CCC happens to presuppose Thomism,
+          but the question of which metaphysical framework is correct is not settled by
+          formal verification.</li>
+        <li><strong>Whether Scripture alone can ground these doctrines.</strong> The Protestant
+          strategy of grounding contingency and creation in Scripture without Thomistic
+          metaphysics may work. Whether it provides the same explanatory depth is a
+          philosophical judgment, not a logical one.</li>
+      </ul>
+
+      <p>
+        Formal verification does not tell you who is right. It tells you: <em>if</em> you
+        accept these premises, <em>this</em> conclusion follows. And it tells you what
+        happens if you remove a premise. Seeing that clearly is better than arguing past
+        each other.
+      </p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Section: The Charitable Conclusion -->
+    <section class="article-body">
+      <h2>The Invisible Foundation</h2>
+
+      <p>
+        <span class="versal">T</span>he essence/existence distinction is to the Catechism
+        what foundations are to a building: invisible from every floor, never mentioned in
+        the text, but everything stands on it. The CCC says creatures are contingent, that
+        God is simple, that creation is a gift, that providence sustains&nbsp;&mdash; and
+        behind every one of these claims stands a single metaphysical principle it never names.
+      </p>
+
+      <p>
+        Both readings are internally consistent. The disagreement is not
+        about whether creatures are contingent or whether God is
+        self-existent&nbsp;&mdash; it is about how deep the philosophical
+        explanation should go and which metaphysical framework best accounts
+        for these shared convictions.
+        Seeing this precisely is more honest than caricaturing either side.
+      </p>
+
+      <p>
+        The formalization revealed something else as well. The real distinction is to
+        <em>metaphysics</em> what hylomorphism (<code>P1</code>) is to
+        <em>anthropology</em> and simplicity is to <em>theology</em>&nbsp;&mdash; a claim
+        about the internal structure of beings. All three say &ldquo;this thing has a
+        composition that <em>that</em> thing lacks.&rdquo; Creatures: essence &ne; existence.
+        Humans: body + soul. God: neither composition. The pattern is unmistakable: the more
+        fundamental the being, the less composition it has. The CCC assumes this pattern
+        throughout. The proof assistant makes it visible.
+      </p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Source references -->
+    <section class="article-body">
+      <div class="summary-box">
+        <h3>Source Code &amp; Further Reading</h3>
+        <p>
+          The formalizations referenced in this article are machine-checked
+          in Lean 4. See
+          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/EssenceExistence.lean"><code>EssenceExistence.lean</code></a>
+          for the real distinction, divine identity, and bridge theorems.
+          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/DivineAttributes.lean"><code>DivineAttributes.lean</code></a>
+          formalizes simplicity as a consequence.
+          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/Providence.lean"><code>Providence.lean</code></a>
+          formalizes sustaining governance.
+          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/ScientificInquiry.lean"><code>ScientificInquiry.lean</code></a>
+          shows that creation through wisdom presupposes the real distinction.
+          The 15 base axioms are in
+          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Foundations/Axioms.lean"><code>Axioms.lean</code></a>.
+          See also
+          <a href="body-and-soul.html">Body &amp; Soul</a> for the parallel finding about
+          hylomorphism and irreducible unity, and
+          <a href="divine-modes.html">Divine Modes</a> for how the distinction connects
+          to the two modes of God&rsquo;s presence.
+        </p>
+      </div>
+    </section>
+
+    <div class="ornament">&#10053;</div>
+
+    <section class="cta-section">
+      <div class="cta-group">
+        <a href="https://github.com/ngundotra/catlib" class="cta-button primary">View on GitHub</a>
+        <a href="../index.html" class="cta-button secondary">Back to Catlib</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="ornament">&#10053;</div>
+    <p>
+      <a href="https://github.com/ngundotra/catlib">Catlib</a>&nbsp;&mdash;
+      formalizing the Catholic Catechism in Lean 4.
+      A love letter to the Catholic intellectual tradition, written with precision.
+    </p>
+  </footer>
+
+</body>
+</html>

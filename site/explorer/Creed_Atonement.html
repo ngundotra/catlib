@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Atonement — Catlib Explorer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --text: #2a1f14;
+  --text-light: #5c4a3a;
+  --text-muted: #8a7a6a;
+  --bg: #f4ead5;
+  --bg-parchment: #efe3c8;
+  --bg-vellum: #e8d9b8;
+  --accent: #7a2e0e;
+  --accent-gold: #b8860b;
+  --accent-gold-light: #d4a937;
+  --border: #c4a872;
+  --border-dark: #a08050;
+  --code-bg: #1e1a15;
+  --code-text: #e8d9b8;
+
+  /* Node type colors */
+  --axiom-bg: #f5e6d8;
+  --axiom-border: #c4713a;
+  --axiom-dot: #b8510e;
+  --theorem-bg: #dde8f0;
+  --theorem-border: #5a8aaa;
+  --theorem-dot: #2a6a8a;
+  --def-bg: #e4ead4;
+  --def-border: #7a9a5a;
+  --def-dot: #4a7a2a;
+  --opaque-bg: #ebe0d0;
+  --opaque-border: #a08050;
+  --opaque-dot: #7a6030;
+  --structure-bg: #e8daf0;
+  --structure-border: #8a6aaa;
+  --structure-dot: #6a4a8a;
+  --inductive-bg: #e8daf0;
+  --inductive-border: #8a6aaa;
+  --inductive-dot: #6a4a8a;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #e0d5c0;
+    --text-light: #b8a890;
+    --text-muted: #8a7a6a;
+    --bg: #1a1510;
+    --bg-parchment: #221c14;
+    --bg-vellum: #2a2218;
+    --accent: #d4856a;
+    --accent-gold: #d4a937;
+    --accent-gold-light: #e8c050;
+    --border: #4a3a28;
+    --border-dark: #6a5a40;
+    --code-bg: #0e0c08;
+    --code-text: #e8d9b8;
+
+    --axiom-bg: #2a1e14;
+    --axiom-border: #8a4a20;
+    --axiom-dot: #d4856a;
+    --theorem-bg: #14202a;
+    --theorem-border: #3a6a8a;
+    --theorem-dot: #6aaad4;
+    --def-bg: #1a2214;
+    --def-border: #4a6a3a;
+    --def-dot: #8aba6a;
+    --opaque-bg: #221c14;
+    --opaque-border: #6a5030;
+    --opaque-dot: #b8a060;
+    --structure-bg: #201a28;
+    --structure-border: #6a4a8a;
+    --structure-dot: #aa8ad4;
+    --inductive-bg: #201a28;
+    --inductive-border: #6a4a8a;
+    --inductive-dot: #aa8ad4;
+  }
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  font-size: 17px;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.7;
+  min-height: 100vh;
+  -webkit-text-size-adjust: 100%;
+}
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+h1 {
+  font-family: Cinzel, Georgia, serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.3rem;
+  color: var(--text);
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--text-light);
+  font-style: italic;
+  margin-bottom: 1.5rem;
+}
+
+.serve-note {
+  background: var(--code-bg);
+  color: var(--code-text);
+  padding: 0.8rem 1rem;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.75rem;
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+  line-height: 1.6;
+}
+
+/* ── Search ── */
+.search-box {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.05rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--bg-parchment);
+  color: var(--text);
+  margin-bottom: 1.5rem;
+  outline: none;
+}
+
+.search-box:focus {
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 0 2px rgba(184, 134, 11, 0.2);
+}
+
+.search-box::placeholder {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* ── Category sections ── */
+.category-header {
+  font-family: Cinzel, Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-variant: small-caps;
+  margin: 1.8rem 0 0.8rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── File cards ── */
+.file-card {
+  display: block;
+  padding: 1rem 1.1rem;
+  margin-bottom: 0.5rem;
+  background: var(--bg-parchment);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  text-decoration: none;
+  color: var(--text);
+  transition: background 0.15s, border-color 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.file-card:hover, .file-card:active {
+  background: var(--bg-vellum);
+  border-color: var(--accent-gold);
+  text-decoration: none;
+}
+
+.file-card-name {
+  font-family: Cinzel, Georgia, serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.3rem;
+}
+
+.file-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  font-size: 0.82rem;
+  color: var(--text-light);
+}
+
+.file-card-meta .tag {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.75rem;
+  font-family: Cinzel, Georgia, serif;
+  letter-spacing: 0.03em;
+}
+
+.tag-axiom { background: var(--axiom-bg); color: var(--axiom-dot); border: 1px solid var(--axiom-border); }
+.tag-theorem { background: var(--theorem-bg); color: var(--theorem-dot); border: 1px solid var(--theorem-border); }
+.tag-def { background: var(--def-bg); color: var(--def-dot); border: 1px solid var(--def-border); }
+
+.file-card-ccc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 0.3rem;
+}
+
+/* ── Summary stats ── */
+.stats-bar {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--text-light);
+  font-style: italic;
+}
+
+.stats-bar span { white-space: nowrap; }
+
+/* ── Node cards (per-file page) ── */
+.node-card {
+  margin-bottom: 0.4rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  border-left: 4px solid var(--border);
+}
+
+.node-card.kind-axiom { border-left-color: var(--axiom-dot); }
+.node-card.kind-theorem { border-left-color: var(--theorem-dot); }
+.node-card.kind-def { border-left-color: var(--def-dot); }
+.node-card.kind-opaque { border-left-color: var(--opaque-dot); }
+.node-card.kind-structure { border-left-color: var(--structure-dot); }
+.node-card.kind-inductive { border-left-color: var(--inductive-dot); }
+
+.node-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  background: var(--bg-parchment);
+  transition: background 0.15s;
+}
+
+.node-header:active {
+  background: var(--bg-vellum);
+}
+
+.node-kind-badge {
+  flex-shrink: 0;
+  font-family: monospace;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+  font-weight: bold;
+}
+
+.kind-axiom .node-kind-badge { background: var(--axiom-bg); color: var(--axiom-dot); }
+.kind-theorem .node-kind-badge { background: var(--theorem-bg); color: var(--theorem-dot); }
+.kind-def .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
+.kind-opaque .node-kind-badge { background: var(--opaque-bg); color: var(--opaque-dot); }
+.kind-structure .node-kind-badge { background: var(--structure-bg); color: var(--structure-dot); }
+.kind-inductive .node-kind-badge { background: var(--inductive-bg); color: var(--inductive-dot); }
+
+.node-name {
+  flex: 1;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.82rem;
+  word-break: break-all;
+}
+
+.node-chevron {
+  flex-shrink: 0;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  transition: transform 0.2s;
+}
+
+.node-card.open .node-chevron {
+  transform: rotate(90deg);
+}
+
+.node-details {
+  display: none;
+  padding: 0.6rem 1rem 0.8rem;
+  font-size: 0.9rem;
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.node-card.open .node-details {
+  display: block;
+}
+
+.node-prop {
+  margin-bottom: 0.5rem;
+}
+
+.node-prop pre {
+  background: var(--code-bg);
+  color: var(--code-text);
+  padding: 0.6rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  white-space: pre;
+  margin: 0;
+}
+
+.node-prop code {
+  font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', Menlo, monospace;
+  font-size: 0.75rem;
+}
+
+.node-desc {
+  margin-bottom: 0.5rem;
+  font-style: italic;
+  color: var(--text-light);
+  line-height: 1.5;
+}
+
+.node-dep-section {
+  margin-top: 0.4rem;
+}
+
+.node-dep-label {
+  font-family: Cinzel, Georgia, serif;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-bottom: 0.2rem;
+}
+
+.node-dep-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.dep-chip {
+  display: inline-block;
+  font-family: monospace;
+  font-size: 0.72rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  background: var(--bg-vellum);
+  border: 1px solid var(--border);
+  color: var(--text-light);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.dep-chip:active {
+  background: var(--accent-gold);
+  color: var(--code-bg);
+}
+
+.node-scope {
+  margin-top: 0.4rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* ── Flow diagram header ── */
+.flow-summary {
+  display: flex;
+  justify-content: center;
+  gap: 0.3rem;
+  margin-bottom: 1.2rem;
+  flex-wrap: wrap;
+  align-items: center;
+  font-family: Cinzel, Georgia, serif;
+  font-size: 0.85rem;
+  color: var(--text-light);
+}
+
+.flow-count {
+  display: inline-block;
+  padding: 0.3rem 0.7rem;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.flow-arrow { color: var(--accent-gold); padding: 0 0.2rem; }
+
+.flow-count.axioms { background: var(--axiom-bg); color: var(--axiom-dot); }
+.flow-count.theorems { background: var(--theorem-bg); color: var(--theorem-dot); }
+.flow-count.derived { background: var(--def-bg); color: var(--def-dot); }
+
+/* ── Legend ── */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  justify-content: center;
+  margin-bottom: 1.2rem;
+  font-size: 0.78rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--text-light);
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.legend-dot.axiom { background: var(--axiom-dot); }
+.legend-dot.theorem { background: var(--theorem-dot); }
+.legend-dot.def { background: var(--def-dot); }
+.legend-dot.opaque { background: var(--opaque-dot); }
+.legend-dot.structure { background: var(--structure-dot); }
+.legend-dot.inductive { background: var(--inductive-dot); }
+
+/* ── Filter buttons ── */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-bottom: 1rem;
+  justify-content: center;
+}
+
+.filter-btn {
+  font-family: monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.3rem 0.7rem;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text-light);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.filter-btn.active {
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+}
+
+/* ── Back link ── */
+.back-link {
+  display: inline-block;
+  margin-bottom: 1rem;
+  font-family: Cinzel, Georgia, serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+}
+
+/* ── Footer ── */
+.footer {
+  text-align: center;
+  padding-top: 2rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* ── Responsive ── */
+@media (max-width: 500px) {
+  html { font-size: 16px; }
+  .container { padding: 1rem 0.75rem 2rem; }
+  h1 { font-size: 1.35rem; }
+  .node-name { font-size: 0.75rem; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <a href="index.html" class="back-link">&larr; All files</a>
+  <h1>Atonement</h1>
+  <div class="subtitle">Creed &middot; 31 declarations</div>
+
+  
+  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1849, &sect;599, &sect;601, &sect;604, &sect;613, &sect;615, &sect;616</div>
+
+  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
+
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (8)</button><button class="filter-btn" data-filter="def">def (2)</button><button class="filter-btn" data-filter="opaque">opaque (10)</button><button class="filter-btn" data-filter="theorem">theorem (11)</button></div>
+
+  <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
+
+  <div id="nodeList">
+    <div class="node-card kind-opaque" data-kind="opaque" data-name="orderOfJusticeIntact">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">opaque</span>
+    <span class="node-name">orderOfJusticeIntact</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>opaque orderOfJusticeIntact : Prop
+</code></pre></div>
+<div class="node-desc">Whether the order of justice between God and creation is intact.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="sin_ruptures_order">sin_ruptures_order</span><span class="dep-chip" data-target="sin_breaks_order">sin_breaks_order</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-opaque" data-kind="opaque" data-name="addressesOffense">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">opaque</span>
+    <span class="node-name">addressesOffense</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>opaque addressesOffense : Prop → Prop
+</code></pre></div>
+<div class="node-desc">Whether a given act addresses the OFFENSE of sin (the insult or</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="bare_pardon_insufficient">bare_pardon_insufficient</span><span class="dep-chip" data-target="satisfaction_addresses_both">satisfaction_addresses_both</span><span class="dep-chip" data-target="cross_addresses_both">cross_addresses_both</span><span class="dep-chip" data-target="atonement_summary">atonement_summary</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-opaque" data-kind="opaque" data-name="addressesRupture">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">opaque</span>
+    <span class="node-name">addressesRupture</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>opaque addressesRupture : Prop → Prop
+</code></pre></div>
+<div class="node-desc">Whether a given act addresses the RUPTURE in the order of justice</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="bare_pardon_insufficient">bare_pardon_insufficient</span><span class="dep-chip" data-target="satisfaction_addresses_both">satisfaction_addresses_both</span><span class="dep-chip" data-target="pardon_insufficient_satisfaction_needed">pardon_insufficient_satisfaction_needed</span><span class="dep-chip" data-target="cross_addresses_both">cross_addresses_both</span><span class="dep-chip" data-target="cross_not_redundant">cross_not_redundant</span><span class="dep-chip" data-target="atonement_summary">atonement_summary</span><span class="dep-chip" data-target="fall_grounds_need_for_cross">fall_grounds_need_for_cross</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-opaque" data-kind="opaque" data-name="isBarePardon">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">opaque</span>
+    <span class="node-name">isBarePardon</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>opaque isBarePardon : Prop → Prop
+</code></pre></div>
+<div class="node-desc">Whether a given act is a bare pardon — a divine declaration of</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="bare_pardon_insufficient">bare_pardon_insufficient</span><span class="dep-chip" data-target="pardon_insufficient_satisfaction_needed">pardon_insufficient_satisfaction_needed</span><span class="dep-chip" data-target="cross_not_redundant">cross_not_redundant</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-opaque" data-kind="opaque" data-name="isSatisfaction">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">opaque</span>
+    <span class="node-name">isSatisfaction</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>opaque isSatisfaction : Prop → Prop
+</code></pre></div>
+<div class="node-desc">Whether a given act constitutes satisfaction in Aquinas's sense:</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="satisfaction_addresses_both">satisfaction_addresses_both</span><span class="dep-chip" data-target="cross_is_satisfaction">cross_is_satisfaction</span><span class="dep-chip" data-target="cross_incorporates_all_models">cross_incorporates_all_models</span><span class="dep-chip" data-target="pardon_insufficient_satisfaction_needed">pardon_insufficient_satisfaction_needed</span><span class="dep-chip" data-target="cross_works_on_all_three_levels">cross_works_on_all_three_levels</span><span class="dep-chip" data-target="atonement_summary">atonement_summary</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-opaque" data-kind="opaque" data-name="isPenalSubstitution">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">opaque</span>
+    <span class="node-name">isPenalSubstitution</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>opaque isPenalSubstitution : Prop → Prop
+</code></pre></div>
+<div class="node-desc">Whether a given act constitutes penal substitution: the mediator</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="cross_incorporates_all_models">cross_incorporates_all_models</span><span class="dep-chip" data-target="cross_works_on_all_three_levels">cross_works_on_all_three_levels</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-opaque" data-kind="opaque" data-name="isMoralExemplar">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">opaque</span>
+    <span class="node-name">isMoralExemplar</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>opaque isMoralExemplar : Prop → Prop
+</code></pre></div>
+<div class="node-desc">Whether a given act constitutes a moral exemplar: the act inspires</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="cross_incorporates_all_models">cross_incorporates_all_models</span><span class="dep-chip" data-target="cross_works_on_all_three_levels">cross_works_on_all_three_levels</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-opaque" data-kind="opaque" data-name="canProvideAdequateSatisfaction">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">opaque</span>
+    <span class="node-name">canProvideAdequateSatisfaction</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>opaque canProvideAdequateSatisfaction : IncarnateSubject → Prop
+</code></pre></div>
+<div class="node-desc">Whether a person can provide ADEQUATE satisfaction — satisfaction</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="IncarnateSubject">IncarnateSubject</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="adequate_satisfaction_requires_divine">adequate_satisfaction_requires_divine</span><span class="dep-chip" data-target="adequate_satisfaction_requires_human">adequate_satisfaction_requires_human</span><span class="dep-chip" data-target="christ_can_satisfy">christ_can_satisfy</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-opaque" data-kind="opaque" data-name="representsHumanity">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">opaque</span>
+    <span class="node-name">representsHumanity</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>opaque representsHumanity : IncarnateSubject → Prop
+</code></pre></div>
+<div class="node-desc">Whether a person represents humanity in an act (acts ON BEHALF OF</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="IncarnateSubject">IncarnateSubject</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="adequate_satisfaction_requires_human">adequate_satisfaction_requires_human</span><span class="dep-chip" data-target="christ_can_satisfy">christ_can_satisfy</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-opaque" data-kind="opaque" data-name="theCross">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">opaque</span>
+    <span class="node-name">theCross</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>opaque theCross : Prop
+</code></pre></div>
+<div class="node-desc">The Cross — Christ's sacrificial death, modeled as a proposition.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="cross_is_satisfaction">cross_is_satisfaction</span><span class="dep-chip" data-target="cross_incorporates_all_models">cross_incorporates_all_models</span><span class="dep-chip" data-target="pardon_insufficient_satisfaction_needed">pardon_insufficient_satisfaction_needed</span><span class="dep-chip" data-target="cross_addresses_both">cross_addresses_both</span><span class="dep-chip" data-target="cross_not_redundant">cross_not_redundant</span><span class="dep-chip" data-target="cross_works_on_all_three_levels">cross_works_on_all_three_levels</span><span class="dep-chip" data-target="atonement_summary">atonement_summary</span><span class="dep-chip" data-target="fall_grounds_need_for_cross">fall_grounds_need_for_cross</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="sin_ruptures_order">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">sin_ruptures_order</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom sin_ruptures_order :
+  ∀ (p : Person) (s : Sin),
+    s.action.agent = p →
+    ¬ orderOfJusticeIntact
+</code></pre></div>
+<div class="node-desc">1 (CCC §615, §1849; ST III q.46 a.3): SIN RUPTURES ORDER. │   Source: [Scripture] Rom 5:12 (&quot;sin entered the world through | Scope: ECUMENICAL — all Christians accept that sin | [...</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="orderOfJusticeIntact">orderOfJusticeIntact</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="cross_not_redundant">cross_not_redundant</span><span class="dep-chip" data-target="sin_breaks_order">sin_breaks_order</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span><span class="dep-chip" data-target="orderOfJusticeIntact">orderOfJusticeIntact</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="bare_pardon_insufficient">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">bare_pardon_insufficient</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom bare_pardon_insufficient :
+  ∀ (act : Prop),
+    isBarePardon act →
+    addressesOffense act ∧ ¬ addressesRupture act
+</code></pre></div>
+<div class="node-desc">2 (implicit in CCC §615; Aquinas ST III q.46 a.3): │   Source: [Philosophy] Aquinas ST III q.46 a.3; implicit in | Scope: CATHOLIC (Thomistic). Protestant traditions │   ⚠ HIDDEN ASSUMPTION: This is the deepest hidden assumption in the</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="addressesOffense">addressesOffense</span><span class="dep-chip" data-target="addressesRupture">addressesRupture</span><span class="dep-chip" data-target="isBarePardon">isBarePardon</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="pardon_insufficient_satisfaction_needed">pardon_insufficient_satisfaction_needed</span><span class="dep-chip" data-target="cross_addresses_both">cross_addresses_both</span><span class="dep-chip" data-target="cross_not_redundant">cross_not_redundant</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span><span class="dep-chip" data-target="addressesOffense">addressesOffense</span><span class="dep-chip" data-target="addressesRupture">addressesRupture</span><span class="dep-chip" data-target="isBarePardon">isBarePardon</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="satisfaction_addresses_both">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">satisfaction_addresses_both</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom satisfaction_addresses_both :
+  ∀ (act : Prop),
+    isSatisfaction act →
+    addressesOffense act ∧ addressesRupture act
+</code></pre></div>
+<div class="node-desc">3 (CCC §615; Aquinas ST III q.48 a.2): │   Source: [Definition] CCC §615; [Philosophy] Aquinas ST III q.48 a.2. | Scope: CATHOLIC — this is the satisfaction the...</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="addressesOffense">addressesOffense</span><span class="dep-chip" data-target="addressesRupture">addressesRupture</span><span class="dep-chip" data-target="isSatisfaction">isSatisfaction</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="pardon_insufficient_satisfaction_needed">pardon_insufficient_satisfaction_needed</span><span class="dep-chip" data-target="cross_addresses_both">cross_addresses_both</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span><span class="dep-chip" data-target="addressesOffense">addressesOffense</span><span class="dep-chip" data-target="addressesRupture">addressesRupture</span><span class="dep-chip" data-target="isSatisfaction">isSatisfaction</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="adequate_satisfaction_requires_divine">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">adequate_satisfaction_requires_divine</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom adequate_satisfaction_requires_divine :
+  ∀ (s : IncarnateSubject),
+    canProvideAdequateSatisfaction s →
+    s.hasNature Nature.divine
+</code></pre></div>
+<div class="node-desc">4 (CCC §616; Anselm, Cur Deus Homo I.11; ST III q.1 a.2): │   Source: [Tradition] Anselm, Cur Deus Homo I.11; Aquinas | Scope: ECUMENICAL for the claim that Christ's divine | [Def... │   ⚠ HIDDEN ASSUMPTION: Proportionality of satisfaction. Aquinas and</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="IncarnateSubject">IncarnateSubject</span><span class="dep-chip" data-target="Nature">Nature</span><span class="dep-chip" data-target="canProvideAdequateSatisfaction">canProvideAdequateSatisfaction</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="cross_works_on_all_three_levels">cross_works_on_all_three_levels</span><span class="dep-chip" data-target="cross_requires_divine_nature">cross_requires_divine_nature</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span><span class="dep-chip" data-target="canProvideAdequateSatisfaction">canProvideAdequateSatisfaction</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="adequate_satisfaction_requires_human">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">adequate_satisfaction_requires_human</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom adequate_satisfaction_requires_human :
+  ∀ (s : IncarnateSubject),
+    canProvideAdequateSatisfaction s →
+    representsHumanity s →
+    s.hasNature Nature.human
+</code></pre></div>
+<div class="node-desc">5 (CCC §615; Rom 5:19; ST III q.48 a.2): │   Source: [Scripture] Rom 5:19; [Definition] CCC §615; | Scope: ECUMENICAL — all Christians affirm Christ's</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="IncarnateSubject">IncarnateSubject</span><span class="dep-chip" data-target="Nature">Nature</span><span class="dep-chip" data-target="canProvideAdequateSatisfaction">canProvideAdequateSatisfaction</span><span class="dep-chip" data-target="representsHumanity">representsHumanity</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="cross_requires_divine_nature">cross_requires_divine_nature</span><span class="dep-chip" data-target="cross_requires_human_nature">cross_requires_human_nature</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span><span class="dep-chip" data-target="canProvideAdequateSatisfaction">canProvideAdequateSatisfaction</span><span class="dep-chip" data-target="representsHumanity">representsHumanity</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="cross_is_satisfaction">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">cross_is_satisfaction</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom cross_is_satisfaction : isSatisfaction theCross
+</code></pre></div>
+<div class="node-desc">6 (CCC §613-615; §601): │   Source: [Scripture] 1 Cor 15:3 (§601); Jn 10:18; | Scope: ECUMENICAL that the Cross saves. The specific | [Definition]</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isSatisfaction">isSatisfaction</span><span class="dep-chip" data-target="theCross">theCross</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="pardon_insufficient_satisfaction_needed">pardon_insufficient_satisfaction_needed</span><span class="dep-chip" data-target="cross_addresses_both">cross_addresses_both</span><span class="dep-chip" data-target="hypostatic_union_grounds_atonement">hypostatic_union_grounds_atonement</span><span class="dep-chip" data-target="atonement_summary">atonement_summary</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span><span class="dep-chip" data-target="isSatisfaction">isSatisfaction</span><span class="dep-chip" data-target="theCross">theCross</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="christ_can_satisfy">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">christ_can_satisfy</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom christ_can_satisfy :
+  canProvideAdequateSatisfaction christ ∧ representsHumanity christ
+</code></pre></div>
+<div class="node-desc">7 (CCC §616; §604): │   Source: [Scripture] Rom 5:8 (§604); [Definition] CCC §616. | Scope: ECUMENICAL — all Christians affirm Christ's</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="canProvideAdequateSatisfaction">canProvideAdequateSatisfaction</span><span class="dep-chip" data-target="christ">christ</span><span class="dep-chip" data-target="representsHumanity">representsHumanity</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="cross_works_on_all_three_levels">cross_works_on_all_three_levels</span><span class="dep-chip" data-target="cross_requires_divine_nature">cross_requires_divine_nature</span><span class="dep-chip" data-target="cross_requires_human_nature">cross_requires_human_nature</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span><span class="dep-chip" data-target="canProvideAdequateSatisfaction">canProvideAdequateSatisfaction</span><span class="dep-chip" data-target="representsHumanity">representsHumanity</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="cross_incorporates_all_models">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">cross_incorporates_all_models</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom cross_incorporates_all_models :
+  isSatisfaction theCross ∧
+  isPenalSubstitution theCross ∧
+  isMoralExemplar theCross
+</code></pre></div>
+<div class="node-desc">8 (CCC §601, §613, §615): │   Source: [Definition] CCC §601, §613, §615. | Scope: CATHOLIC for the specific synthesis.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isMoralExemplar">isMoralExemplar</span><span class="dep-chip" data-target="isPenalSubstitution">isPenalSubstitution</span><span class="dep-chip" data-target="isSatisfaction">isSatisfaction</span><span class="dep-chip" data-target="theCross">theCross</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="sin_breaks_order">sin_breaks_order</span><span class="dep-chip" data-target="cross_works_on_all_three_levels">cross_works_on_all_three_levels</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span><span class="dep-chip" data-target="isMoralExemplar">isMoralExemplar</span><span class="dep-chip" data-target="isPenalSubstitution">isPenalSubstitution</span><span class="dep-chip" data-target="isSatisfaction">isSatisfaction</span><span class="dep-chip" data-target="theCross">theCross</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="pardon_insufficient_satisfaction_needed">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">pardon_insufficient_satisfaction_needed</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem pardon_insufficient_satisfaction_needed
+    (pardon_act : Prop)
+    (sat_act : Prop)
+    (h_pardon : isBarePardon pardon_act)
+    (h_sat : isSatisfaction sat_act) :
+    -- Pardon does NOT address the rupture
+    ¬ addressesRupture pardon_act
+    -- BUT satisfaction DOES address the rupture
+    ∧ addressesRupture sat_act</code></pre></div>
+<div class="node-desc">Bare pardon is INSUFFICIENT for full restoration.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="addressesRupture">addressesRupture</span><span class="dep-chip" data-target="bare_pardon_insufficient">bare_pardon_insufficient</span><span class="dep-chip" data-target="cross_is_satisfaction">cross_is_satisfaction</span><span class="dep-chip" data-target="isBarePardon">isBarePardon</span><span class="dep-chip" data-target="isSatisfaction">isSatisfaction</span><span class="dep-chip" data-target="satisfaction_addresses_both">satisfaction_addresses_both</span><span class="dep-chip" data-target="theCross">theCross</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span><span class="dep-chip" data-target="addressesRupture">addressesRupture</span><span class="dep-chip" data-target="isBarePardon">isBarePardon</span><span class="dep-chip" data-target="isSatisfaction">isSatisfaction</span><span class="dep-chip" data-target="theCross">theCross</span><span class="dep-chip" data-target="bare_pardon_insufficient">bare_pardon_insufficient</span><span class="dep-chip" data-target="cross_is_satisfaction">cross_is_satisfaction</span><span class="dep-chip" data-target="satisfaction_addresses_both">satisfaction_addresses_both</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="cross_addresses_both">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">cross_addresses_both</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem cross_addresses_both :
+    addressesOffense theCross ∧ addressesRupture theCross</code></pre></div>
+<div class="node-desc">The Cross addresses BOTH offense and rupture.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="addressesOffense">addressesOffense</span><span class="dep-chip" data-target="addressesRupture">addressesRupture</span><span class="dep-chip" data-target="bare_pardon_insufficient">bare_pardon_insufficient</span><span class="dep-chip" data-target="cross_is_satisfaction">cross_is_satisfaction</span><span class="dep-chip" data-target="satisfaction_addresses_both">satisfaction_addresses_both</span><span class="dep-chip" data-target="theCross">theCross</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="cross_not_redundant">cross_not_redundant</span><span class="dep-chip" data-target="hypostatic_union_grounds_atonement">hypostatic_union_grounds_atonement</span><span class="dep-chip" data-target="atonement_summary">atonement_summary</span><span class="dep-chip" data-target="fall_grounds_need_for_cross">fall_grounds_need_for_cross</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span><span class="dep-chip" data-target="addressesOffense">addressesOffense</span><span class="dep-chip" data-target="addressesRupture">addressesRupture</span><span class="dep-chip" data-target="theCross">theCross</span><span class="dep-chip" data-target="bare_pardon_insufficient">bare_pardon_insufficient</span><span class="dep-chip" data-target="cross_is_satisfaction">cross_is_satisfaction</span><span class="dep-chip" data-target="satisfaction_addresses_both">satisfaction_addresses_both</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="cross_not_redundant">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">cross_not_redundant</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem cross_not_redundant
+    (pardon_act : Prop)
+    (h_pardon : isBarePardon pardon_act) :
+    -- The Cross addresses the rupture
+    addressesRupture theCross
+    -- But bare pardon does NOT
+    ∧ ¬ addressesRupture pardon_act</code></pre></div>
+<div class="node-desc">The Cross does what bare pardon cannot.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="addressesRupture">addressesRupture</span><span class="dep-chip" data-target="bare_pardon_insufficient">bare_pardon_insufficient</span><span class="dep-chip" data-target="cross_addresses_both">cross_addresses_both</span><span class="dep-chip" data-target="isBarePardon">isBarePardon</span><span class="dep-chip" data-target="sin_ruptures_order">sin_ruptures_order</span><span class="dep-chip" data-target="theCross">theCross</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span><span class="dep-chip" data-target="addressesRupture">addressesRupture</span><span class="dep-chip" data-target="isBarePardon">isBarePardon</span><span class="dep-chip" data-target="theCross">theCross</span><span class="dep-chip" data-target="bare_pardon_insufficient">bare_pardon_insufficient</span><span class="dep-chip" data-target="sin_ruptures_order">sin_ruptures_order</span><span class="dep-chip" data-target="cross_addresses_both">cross_addresses_both</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="sin_breaks_order">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">sin_breaks_order</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem sin_breaks_order
+    (p : Person) (s : Sin)
+    (h_agent : s.action.agent = p) :
+    ¬ orderOfJusticeIntact</code></pre></div>
+<div class="node-desc">Sin destroys the order of justice.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="cross_incorporates_all_models">cross_incorporates_all_models</span><span class="dep-chip" data-target="orderOfJusticeIntact">orderOfJusticeIntact</span><span class="dep-chip" data-target="sin_ruptures_order">sin_ruptures_order</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span><span class="dep-chip" data-target="orderOfJusticeIntact">orderOfJusticeIntact</span><span class="dep-chip" data-target="cross_incorporates_all_models">cross_incorporates_all_models</span><span class="dep-chip" data-target="sin_ruptures_order">sin_ruptures_order</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="cross_works_on_all_three_levels">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">cross_works_on_all_three_levels</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem cross_works_on_all_three_levels :
+    isSatisfaction theCross
+    ∧ isPenalSubstitution theCross
+    ∧ isMoralExemplar theCross</code></pre></div>
+<div class="node-desc">The Cross is simultaneously satisfaction, substitution,</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="adequate_satisfaction_requires_divine">adequate_satisfaction_requires_divine</span><span class="dep-chip" data-target="christ_can_satisfy">christ_can_satisfy</span><span class="dep-chip" data-target="cross_incorporates_all_models">cross_incorporates_all_models</span><span class="dep-chip" data-target="isMoralExemplar">isMoralExemplar</span><span class="dep-chip" data-target="isPenalSubstitution">isPenalSubstitution</span><span class="dep-chip" data-target="isSatisfaction">isSatisfaction</span><span class="dep-chip" data-target="theCross">theCross</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span><span class="dep-chip" data-target="isMoralExemplar">isMoralExemplar</span><span class="dep-chip" data-target="isPenalSubstitution">isPenalSubstitution</span><span class="dep-chip" data-target="isSatisfaction">isSatisfaction</span><span class="dep-chip" data-target="theCross">theCross</span><span class="dep-chip" data-target="adequate_satisfaction_requires_divine">adequate_satisfaction_requires_divine</span><span class="dep-chip" data-target="christ_can_satisfy">christ_can_satisfy</span><span class="dep-chip" data-target="cross_incorporates_all_models">cross_incorporates_all_models</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="cross_requires_divine_nature">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">cross_requires_divine_nature</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem cross_requires_divine_nature :
+    christ.hasNature Nature.divine</code></pre></div>
+<div class="node-desc">Christ's divine nature is necessary for the Cross.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Nature">Nature</span><span class="dep-chip" data-target="adequate_satisfaction_requires_divine">adequate_satisfaction_requires_divine</span><span class="dep-chip" data-target="adequate_satisfaction_requires_human">adequate_satisfaction_requires_human</span><span class="dep-chip" data-target="christ">christ</span><span class="dep-chip" data-target="christ_can_satisfy">christ_can_satisfy</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="cross_requires_human_nature">cross_requires_human_nature</span><span class="dep-chip" data-target="incarnation_necessary_for_atonement">incarnation_necessary_for_atonement</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span><span class="dep-chip" data-target="adequate_satisfaction_requires_divine">adequate_satisfaction_requires_divine</span><span class="dep-chip" data-target="adequate_satisfaction_requires_human">adequate_satisfaction_requires_human</span><span class="dep-chip" data-target="christ_can_satisfy">christ_can_satisfy</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="cross_requires_human_nature">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">cross_requires_human_nature</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem cross_requires_human_nature :
+    christ.hasNature Nature.human</code></pre></div>
+<div class="node-desc">Christ's human nature is necessary for the Cross.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Nature">Nature</span><span class="dep-chip" data-target="adequate_satisfaction_requires_human">adequate_satisfaction_requires_human</span><span class="dep-chip" data-target="christ">christ</span><span class="dep-chip" data-target="christ_can_satisfy">christ_can_satisfy</span><span class="dep-chip" data-target="cross_requires_divine_nature">cross_requires_divine_nature</span><span class="dep-chip" data-target="participation">participation</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="incarnation_necessary_for_atonement">incarnation_necessary_for_atonement</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span><span class="dep-chip" data-target="adequate_satisfaction_requires_human">adequate_satisfaction_requires_human</span><span class="dep-chip" data-target="christ_can_satisfy">christ_can_satisfy</span><span class="dep-chip" data-target="cross_requires_divine_nature">cross_requires_divine_nature</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="incarnation_necessary_for_atonement">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">incarnation_necessary_for_atonement</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem incarnation_necessary_for_atonement :
+    christ.hasNature Nature.divine ∧ christ.hasNature Nature.human</code></pre></div>
+<div class="node-desc">The Incarnation is necessary for the Atonement.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Nature">Nature</span><span class="dep-chip" data-target="christ">christ</span><span class="dep-chip" data-target="cross_requires_divine_nature">cross_requires_divine_nature</span><span class="dep-chip" data-target="cross_requires_human_nature">cross_requires_human_nature</span><span class="dep-chip" data-target="hypostatic_union">hypostatic_union</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hypostatic_union_grounds_atonement">hypostatic_union_grounds_atonement</span><span class="dep-chip" data-target="atonement_summary">atonement_summary</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span><span class="dep-chip" data-target="cross_requires_divine_nature">cross_requires_divine_nature</span><span class="dep-chip" data-target="cross_requires_human_nature">cross_requires_human_nature</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="hypostatic_union_grounds_atonement">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">hypostatic_union_grounds_atonement</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem hypostatic_union_grounds_atonement :
+    christ.hasNature Nature.divine ∧ christ.hasNature Nature.human</code></pre></div>
+<div class="node-desc">The hypostatic union grounds the atonement.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Nature">Nature</span><span class="dep-chip" data-target="Satisfaction">Satisfaction</span><span class="dep-chip" data-target="christ">christ</span><span class="dep-chip" data-target="cross_addresses_both">cross_addresses_both</span><span class="dep-chip" data-target="cross_is_satisfaction">cross_is_satisfaction</span><span class="dep-chip" data-target="hypostatic_union">hypostatic_union</span><span class="dep-chip" data-target="incarnation_necessary_for_atonement">incarnation_necessary_for_atonement</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span><span class="dep-chip" data-target="cross_is_satisfaction">cross_is_satisfaction</span><span class="dep-chip" data-target="cross_addresses_both">cross_addresses_both</span><span class="dep-chip" data-target="incarnation_necessary_for_atonement">incarnation_necessary_for_atonement</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="atonement_summary">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">atonement_summary</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem atonement_summary :
+    -- The Cross is satisfaction
+    isSatisfaction theCross
+    -- The Cross addresses both offense and rupture
+    ∧ (addressesOffense theCross ∧ addressesRupture theCross)
+    -- The mediator has both natures
+    ∧ (christ.hasNature Nature.divine ∧ christ.hasNature Nature.human)</code></pre></div>
+<div class="node-desc">The satisfaction model shows why the Cross restores</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Nature">Nature</span><span class="dep-chip" data-target="addressesOffense">addressesOffense</span><span class="dep-chip" data-target="addressesRupture">addressesRupture</span><span class="dep-chip" data-target="christ">christ</span><span class="dep-chip" data-target="cross_addresses_both">cross_addresses_both</span><span class="dep-chip" data-target="cross_is_satisfaction">cross_is_satisfaction</span><span class="dep-chip" data-target="grace_is_the_healing">grace_is_the_healing</span><span class="dep-chip" data-target="incarnation_necessary_for_atonement">incarnation_necessary_for_atonement</span><span class="dep-chip" data-target="isSatisfaction">isSatisfaction</span><span class="dep-chip" data-target="natureIsWounded">natureIsWounded</span><span class="dep-chip" data-target="theCross">theCross</span><span class="dep-chip" data-target="the_fall">the_fall</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span><span class="dep-chip" data-target="addressesOffense">addressesOffense</span><span class="dep-chip" data-target="addressesRupture">addressesRupture</span><span class="dep-chip" data-target="isSatisfaction">isSatisfaction</span><span class="dep-chip" data-target="theCross">theCross</span><span class="dep-chip" data-target="cross_is_satisfaction">cross_is_satisfaction</span><span class="dep-chip" data-target="cross_addresses_both">cross_addresses_both</span><span class="dep-chip" data-target="incarnation_necessary_for_atonement">incarnation_necessary_for_atonement</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="fall_grounds_need_for_cross">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">fall_grounds_need_for_cross</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem fall_grounds_need_for_cross
+    (p : Person)
+    (h_intellect : p.hasIntellect = true) :
+    -- The wound exists (from OriginalSin.lean)
+    natureIsWounded p
+    -- AND the Cross addresses the rupture
+    ∧ addressesRupture theCross</code></pre></div>
+<div class="node-desc">The Fall grounds the NEED for the Cross.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="addressesRupture">addressesRupture</span><span class="dep-chip" data-target="confers">confers</span><span class="dep-chip" data-target="cross_addresses_both">cross_addresses_both</span><span class="dep-chip" data-target="natureIsWounded">natureIsWounded</span><span class="dep-chip" data-target="theCross">theCross</span><span class="dep-chip" data-target="the_fall">the_fall</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span><span class="dep-chip" data-target="addressesRupture">addressesRupture</span><span class="dep-chip" data-target="theCross">theCross</span><span class="dep-chip" data-target="cross_addresses_both">cross_addresses_both</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="protestantPenalSubstitution">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">protestantPenalSubstitution</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def protestantPenalSubstitution : DenominationalTag</code></pre></div>
+<div class="node-desc">The Protestant penal substitution model as a denominational</div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="moralExemplarModel">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">moralExemplarModel</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def moralExemplarModel : DenominationalTag</code></pre></div>
+<div class="node-desc">The moral exemplar model as a denominational alternative.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="addressesOffense">addressesOffense</span><span class="dep-chip" data-target="addressesRupture">addressesRupture</span><span class="dep-chip" data-target="adequate_satisfaction_requires_divine">adequate_satisfaction_requires_divine</span><span class="dep-chip" data-target="adequate_satisfaction_requires_human">adequate_satisfaction_requires_human</span><span class="dep-chip" data-target="atonement_summary">atonement_summary</span><span class="dep-chip" data-target="bare_pardon_insufficient">bare_pardon_insufficient</span><span class="dep-chip" data-target="canProvideAdequateSatisfaction">canProvideAdequateSatisfaction</span><span class="dep-chip" data-target="christ_can_satisfy">christ_can_satisfy</span><span class="dep-chip" data-target="cross_addresses_both">cross_addresses_both</span><span class="dep-chip" data-target="cross_incorporates_all_models">cross_incorporates_all_models</span><span class="dep-chip" data-target="cross_is_satisfaction">cross_is_satisfaction</span><span class="dep-chip" data-target="cross_not_redundant">cross_not_redundant</span><span class="dep-chip" data-target="cross_requires_divine_nature">cross_requires_divine_nature</span><span class="dep-chip" data-target="cross_requires_human_nature">cross_requires_human_nature</span><span class="dep-chip" data-target="cross_works_on_all_three_levels">cross_works_on_all_three_levels</span><span class="dep-chip" data-target="fall_grounds_need_for_cross">fall_grounds_need_for_cross</span><span class="dep-chip" data-target="hypostatic_union">hypostatic_union</span><span class="dep-chip" data-target="hypostatic_union_grounds_atonement">hypostatic_union_grounds_atonement</span><span class="dep-chip" data-target="incarnation_necessary_for_atonement">incarnation_necessary_for_atonement</span><span class="dep-chip" data-target="isBarePardon">isBarePardon</span><span class="dep-chip" data-target="isMoralExemplar">isMoralExemplar</span><span class="dep-chip" data-target="isPenalSubstitution">isPenalSubstitution</span><span class="dep-chip" data-target="isSatisfaction">isSatisfaction</span><span class="dep-chip" data-target="orderOfJusticeIntact">orderOfJusticeIntact</span><span class="dep-chip" data-target="pardon_insufficient_satisfaction_needed">pardon_insufficient_satisfaction_needed</span><span class="dep-chip" data-target="representsHumanity">representsHumanity</span><span class="dep-chip" data-target="satisfaction_addresses_both">satisfaction_addresses_both</span><span class="dep-chip" data-target="sin_breaks_order">sin_breaks_order</span><span class="dep-chip" data-target="sin_ruptures_order">sin_ruptures_order</span><span class="dep-chip" data-target="theCross">theCross</span><span class="dep-chip" data-target="the_fall">the_fall</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="addressesOffense">addressesOffense</span><span class="dep-chip" data-target="addressesRupture">addressesRupture</span><span class="dep-chip" data-target="canProvideAdequateSatisfaction">canProvideAdequateSatisfaction</span><span class="dep-chip" data-target="isBarePardon">isBarePardon</span><span class="dep-chip" data-target="isMoralExemplar">isMoralExemplar</span><span class="dep-chip" data-target="isPenalSubstitution">isPenalSubstitution</span><span class="dep-chip" data-target="isSatisfaction">isSatisfaction</span><span class="dep-chip" data-target="orderOfJusticeIntact">orderOfJusticeIntact</span><span class="dep-chip" data-target="representsHumanity">representsHumanity</span><span class="dep-chip" data-target="theCross">theCross</span><span class="dep-chip" data-target="adequate_satisfaction_requires_divine">adequate_satisfaction_requires_divine</span><span class="dep-chip" data-target="adequate_satisfaction_requires_human">adequate_satisfaction_requires_human</span><span class="dep-chip" data-target="bare_pardon_insufficient">bare_pardon_insufficient</span><span class="dep-chip" data-target="christ_can_satisfy">christ_can_satisfy</span><span class="dep-chip" data-target="cross_incorporates_all_models">cross_incorporates_all_models</span><span class="dep-chip" data-target="cross_is_satisfaction">cross_is_satisfaction</span><span class="dep-chip" data-target="satisfaction_addresses_both">satisfaction_addresses_both</span><span class="dep-chip" data-target="sin_ruptures_order">sin_ruptures_order</span><span class="dep-chip" data-target="cross_addresses_both">cross_addresses_both</span><span class="dep-chip" data-target="cross_requires_divine_nature">cross_requires_divine_nature</span><span class="dep-chip" data-target="cross_works_on_all_three_levels">cross_works_on_all_three_levels</span><span class="dep-chip" data-target="pardon_insufficient_satisfaction_needed">pardon_insufficient_satisfaction_needed</span><span class="dep-chip" data-target="sin_breaks_order">sin_breaks_order</span><span class="dep-chip" data-target="cross_not_redundant">cross_not_redundant</span><span class="dep-chip" data-target="cross_requires_human_nature">cross_requires_human_nature</span><span class="dep-chip" data-target="fall_grounds_need_for_cross">fall_grounds_need_for_cross</span><span class="dep-chip" data-target="incarnation_necessary_for_atonement">incarnation_necessary_for_atonement</span><span class="dep-chip" data-target="atonement_summary">atonement_summary</span><span class="dep-chip" data-target="hypostatic_union_grounds_atonement">hypostatic_union_grounds_atonement</span></div></div>
+  </div>
+</div>
+  </div>
+
+  <div class="footer">
+    Generated from <code>Catlib/Creed/Atonement.lean</code>
+  </div>
+</div>
+
+<script>
+function toggleNode(header) {
+  header.parentElement.classList.toggle('open');
+}
+
+// Tap a dep chip to scroll to that node
+document.addEventListener('click', function(e) {
+  if (e.target.classList.contains('dep-chip')) {
+    var target = e.target.getAttribute('data-target');
+    var cards = document.querySelectorAll('.node-card');
+    for (var i = 0; i < cards.length; i++) {
+      if (cards[i].getAttribute('data-name') === target) {
+        cards[i].classList.add('open');
+        cards[i].scrollIntoView({ behavior: 'smooth', block: 'center' });
+        cards[i].style.boxShadow = '0 0 0 3px var(--accent-gold)';
+        setTimeout(function(c) { c.style.boxShadow = ''; }, 1500, cards[i]);
+        break;
+      }
+    }
+  }
+});
+
+// Search
+document.getElementById('nodeSearch').addEventListener('input', function() {
+  var q = this.value.toLowerCase();
+  var cards = document.querySelectorAll('.node-card');
+  for (var i = 0; i < cards.length; i++) {
+    var name = cards[i].getAttribute('data-name').toLowerCase();
+    var desc = (cards[i].querySelector('.node-desc') || {}).textContent || '';
+    var show = !q || name.indexOf(q) !== -1 || desc.toLowerCase().indexOf(q) !== -1;
+    cards[i].style.display = show ? '' : 'none';
+  }
+});
+
+// Filter buttons
+document.querySelectorAll('.filter-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+    this.classList.add('active');
+    var filter = this.getAttribute('data-filter');
+    var cards = document.querySelectorAll('.node-card');
+    for (var i = 0; i < cards.length; i++) {
+      if (filter === 'all' || cards[i].getAttribute('data-kind') === filter) {
+        cards[i].style.display = '';
+      } else {
+        cards[i].style.display = 'none';
+      }
+    }
+  });
+});
+</script>
+</body>
+</html>

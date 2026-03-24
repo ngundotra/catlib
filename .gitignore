@@ -7,3 +7,4 @@ build/
 *.c
 .claude/
 specs/
+tools/ca-indexer
