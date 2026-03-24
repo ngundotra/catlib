@@ -534,6 +534,63 @@ blockquote cite {
   font-style: italic;
 }
 
+/* Hero navigation cards */
+.hero-nav {
+  padding: 1rem 0 0.5rem;
+}
+
+.hero-nav-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+  max-width: 54rem;
+  margin: 0 auto;
+}
+
+.hero-nav-card {
+  display: block;
+  text-decoration: none;
+  padding: 1.6rem 1.4rem;
+  border: 1px solid var(--border);
+  background: var(--bg-parchment);
+  border-radius: 2px;
+  transition: all 0.3s;
+  text-align: center;
+}
+
+.hero-nav-card:hover {
+  background: var(--bg-vellum);
+  border-color: var(--accent);
+  box-shadow: 0 2px 12px rgba(122, 46, 14, 0.12);
+}
+
+.hero-nav-icon {
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero-nav-card h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  color: var(--accent);
+  margin: 0 0 0.4rem;
+  letter-spacing: 0.04em;
+}
+
+.hero-nav-card p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.95rem;
+  color: var(--text-light);
+  margin: 0;
+  line-height: 1.4;
+}
+
+@media (max-width: 700px) {
+  .hero-nav-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* CTAs — restrained, manuscript-like */
 .cta-section {
   text-align: center;

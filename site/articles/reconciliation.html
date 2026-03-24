@@ -470,12 +470,12 @@ T3. Sacramental efficacy</pre>
 
     <div class="sidebar-section">
       <h4>Source Files</h4>
-<pre><a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Sacraments/Reconciliation.lean" style="color: var(--accent-gold);">Reconciliation.lean</a>
-<a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Foundations/Love.lean" style="color: var(--accent-gold);">Love.lean</a>
-<a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/DivineModes.lean" style="color: var(--accent-gold);">DivineModes.lean</a>
-<a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/Grace.lean" style="color: var(--accent-gold);">Grace.lean</a>
-<a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/Purgatory.lean" style="color: var(--accent-gold);">Purgatory.lean</a>
-<a href="https://github.com/ngundotra/catlib/blob/main/Catlib/MoralTheology/Sin.lean" style="color: var(--accent-gold);">Sin.lean</a></pre>
+<pre><a href="https://github.com/ngundotra/catlib/blob/master/Catlib/Sacraments/Reconciliation.lean" style="color: var(--accent-gold);">Reconciliation.lean</a>
+<a href="https://github.com/ngundotra/catlib/blob/master/Catlib/Foundations/Love.lean" style="color: var(--accent-gold);">Love.lean</a>
+<a href="https://github.com/ngundotra/catlib/blob/master/Catlib/Creed/DivineModes.lean" style="color: var(--accent-gold);">DivineModes.lean</a>
+<a href="https://github.com/ngundotra/catlib/blob/master/Catlib/Creed/Grace.lean" style="color: var(--accent-gold);">Grace.lean</a>
+<a href="https://github.com/ngundotra/catlib/blob/master/Catlib/Creed/Purgatory.lean" style="color: var(--accent-gold);">Purgatory.lean</a>
+<a href="https://github.com/ngundotra/catlib/blob/master/Catlib/MoralTheology/Sin.lean" style="color: var(--accent-gold);">Sin.lean</a></pre>
     </div>
 
     <p class="close-hint">Click the tab again to close</p>
@@ -517,7 +517,7 @@ T3. Sacramental efficacy</pre>
       <h2>The Four Kinds of Love</h2>
 
       <p>
-        <span class="versal">T</span>he full treatment is in <a href="love-math.html">The Mathematics of Love</a>. Here is the summary. The Catechism uses &ldquo;love&rdquo; in at least four distinct senses, and <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Foundations/Love.lean"><code>Love.lean</code></a> formalizes them as the four constructors of <code>LoveKind</code>.
+        <span class="versal">T</span>he full treatment is in <a href="love-math.html">The Mathematics of Love</a>. Here is the summary. The Catechism uses &ldquo;love&rdquo; in at least four distinct senses, and <a href="https://github.com/ngundotra/catlib/blob/master/Catlib/Foundations/Love.lean"><code>Love.lean</code></a> formalizes them as the four constructors of <code>LoveKind</code>.
       </p>
 
       <table class="survival-table">
@@ -553,7 +553,7 @@ T3. Sacramental efficacy</pre>
       </table>
 
       <p>
-        The Catechism says mortal sin &ldquo;destroys charity&rdquo; (&sect;1855). It does not say mortal sin destroys love. The formalization makes the distinction load-bearing: <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Foundations/Love.lean"><code>mortal_sin_can_destroy_charity</code></a> reduces agape to degree zero, while <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Foundations/Love.lean"><code>mortal_sin_preserves_eros</code></a> and <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Foundations/Love.lean"><code>mortal_sin_preserves_philia</code></a> prove that eros and philia remain intact.
+        The Catechism says mortal sin &ldquo;destroys charity&rdquo; (&sect;1855). It does not say mortal sin destroys love. The formalization makes the distinction load-bearing: <a href="https://github.com/ngundotra/catlib/blob/master/Catlib/Foundations/Love.lean"><code>mortal_sin_can_destroy_charity</code></a> reduces agape to degree zero, while <a href="https://github.com/ngundotra/catlib/blob/master/Catlib/Foundations/Love.lean"><code>mortal_sin_preserves_eros</code></a> and <a href="https://github.com/ngundotra/catlib/blob/master/Catlib/Foundations/Love.lean"><code>mortal_sin_preserves_philia</code></a> prove that eros and philia remain intact.
       </p>
 
       <div class="assumption-callout">
@@ -729,7 +729,7 @@ T3. Sacramental efficacy</pre>
       </div>
 
       <p>
-        The theorem <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Sacraments/Reconciliation.lean"><code>destruction_asymmetric_to_restoration</code></a> proves both directions formally: part (a) shows that one sinful act suffices for destruction, and part (b) shows that restoration requires all four components of the <code>ReconciliationAct</code>.
+        The theorem <a href="https://github.com/ngundotra/catlib/blob/master/Catlib/Sacraments/Reconciliation.lean"><code>destruction_asymmetric_to_restoration</code></a> proves both directions formally: part (a) shows that one sinful act suffices for destruction, and part (b) shows that restoration requires all four components of the <code>ReconciliationAct</code>.
       </p>
 
       <div class="assumption-callout">
@@ -755,7 +755,7 @@ T3. Sacramental efficacy</pre>
       </ol>
 
       <p>
-        This is the same circularity that appears in CCC &sect;2001, formalized in <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/Grace.lean"><code>Grace.lean</code></a> as the <code>grace_bootstrapping_resolved</code> theorem. The resolution is identical: <em>prevenient grace</em> (<code>GraceType.prevenient</code>) is unconditionally available. It precedes any human response. God moves first.
+        This is the same circularity that appears in CCC &sect;2001, formalized in <a href="https://github.com/ngundotra/catlib/blob/master/Catlib/Creed/Grace.lean"><code>Grace.lean</code></a> as the <code>grace_bootstrapping_resolved</code> theorem. The resolution is identical: <em>prevenient grace</em> (<code>GraceType.prevenient</code>) is unconditionally available. It precedes any human response. God moves first.
       </p>
 
       <p>
@@ -763,7 +763,7 @@ T3. Sacramental efficacy</pre>
       </p>
 
       <p>
-        The theorem <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Sacraments/Reconciliation.lean"><code>grace_bootstrapping_in_reconciliation</code></a> resolves the circle by calling <code>prevenient_grace_unconditioned</code>&nbsp;&mdash; the same axiom from <code>Grace.lean</code> that resolves the &sect;2001 bootstrapping problem. The proof is literally identical: the same function call, the same axiom, the same resolution. This is not a coincidence. It reflects a deep structural principle: God always initiates.
+        The theorem <a href="https://github.com/ngundotra/catlib/blob/master/Catlib/Sacraments/Reconciliation.lean"><code>grace_bootstrapping_in_reconciliation</code></a> resolves the circle by calling <code>prevenient_grace_unconditioned</code>&nbsp;&mdash; the same axiom from <code>Grace.lean</code> that resolves the &sect;2001 bootstrapping problem. The proof is literally identical: the same function call, the same axiom, the same resolution. This is not a coincidence. It reflects a deep structural principle: God always initiates.
       </p>
 
       <div class="assumption-callout">
@@ -778,27 +778,27 @@ T3. Sacramental efficacy</pre>
       <h2>What Mortal Sin Does Not Destroy</h2>
 
       <p>
-        <span class="versal">T</span>his is pastorally important. A person hearing &ldquo;mortal sin destroys love&rdquo; might conclude that a mortal sinner is incapable of any love at all. The formalization shows this is false. The theorem <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Foundations/Love.lean"><code>mortal_sin_destroys_charity_not_eros</code></a> proves both halves: agape can be destroyed, and eros survives.
+        <span class="versal">T</span>his is pastorally important. A person hearing &ldquo;mortal sin destroys love&rdquo; might conclude that a mortal sinner is incapable of any love at all. The formalization shows this is false. The theorem <a href="https://github.com/ngundotra/catlib/blob/master/Catlib/Foundations/Love.lean"><code>mortal_sin_destroys_charity_not_eros</code></a> proves both halves: agape can be destroyed, and eros survives.
       </p>
 
       <div class="finding-card">
         <h3>Eros Survives Mortal Sin</h3>
         <p>
-          A person in mortal sin can still feel attraction to beauty, goodness, and truth. Eros is involuntary&nbsp;&mdash; you do not choose your attractions&nbsp;&mdash; and mortal sin, which is a free act against charity, does not extinguish involuntary responses. The axiom <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Foundations/Love.lean"><code>mortal_sin_preserves_eros</code></a> states this directly. A sinner watching a sunset still finds it beautiful.
+          A person in mortal sin can still feel attraction to beauty, goodness, and truth. Eros is involuntary&nbsp;&mdash; you do not choose your attractions&nbsp;&mdash; and mortal sin, which is a free act against charity, does not extinguish involuntary responses. The axiom <a href="https://github.com/ngundotra/catlib/blob/master/Catlib/Foundations/Love.lean"><code>mortal_sin_preserves_eros</code></a> states this directly. A sinner watching a sunset still finds it beautiful.
         </p>
       </div>
 
       <div class="finding-card">
         <h3>Philia Survives Mortal Sin</h3>
         <p>
-          A person in mortal sin can still have genuine friendships. Philia is mutual benevolence between persons, and the axiom <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Foundations/Love.lean"><code>mortal_sin_preserves_philia</code></a> preserves it. This resolves a real pastoral puzzle: how can mortal sinners still love their families? They love with eros and philia, not with supernatural charity.
+          A person in mortal sin can still have genuine friendships. Philia is mutual benevolence between persons, and the axiom <a href="https://github.com/ngundotra/catlib/blob/master/Catlib/Foundations/Love.lean"><code>mortal_sin_preserves_philia</code></a> preserves it. This resolves a real pastoral puzzle: how can mortal sinners still love their families? They love with eros and philia, not with supernatural charity.
         </p>
       </div>
 
       <div class="finding-card">
         <h3>Self-Love Survives Mortal Sin</h3>
         <p>
-          CCC &sect;2264 declares that &ldquo;love toward oneself remains a fundamental principle of morality.&rdquo; Self-love grounds the right to legitimate defense. Since mortal sin does not destroy self-love, a person in mortal sin retains the right to self-defense. The theorem <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Foundations/Love.lean"><code>self_love_grounds_self_defense</code></a> connects self-love to the defense right; nothing in the model removes self-love upon mortal sin.
+          CCC &sect;2264 declares that &ldquo;love toward oneself remains a fundamental principle of morality.&rdquo; Self-love grounds the right to legitimate defense. Since mortal sin does not destroy self-love, a person in mortal sin retains the right to self-defense. The theorem <a href="https://github.com/ngundotra/catlib/blob/master/Catlib/Foundations/Love.lean"><code>self_love_grounds_self_defense</code></a> connects self-love to the defense right; nothing in the model removes self-love upon mortal sin.
         </p>
       </div>
 
@@ -871,7 +871,7 @@ T3. Sacramental efficacy</pre>
       </p>
 
       <p>
-        Under Protestant axioms, Christ&rsquo;s atonement covers everything. There is no residual temporal punishment, therefore no purgatory, therefore no coherent role for indulgences. The theorem <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Sacraments/Reconciliation.lean"><code>temporal_punishment_survives_absolution</code></a> is the hinge: accept it, and the Catholic sacramental system is coherent; reject it, and indulgences become incoherent.
+        Under Protestant axioms, Christ&rsquo;s atonement covers everything. There is no residual temporal punishment, therefore no purgatory, therefore no coherent role for indulgences. The theorem <a href="https://github.com/ngundotra/catlib/blob/master/Catlib/Sacraments/Reconciliation.lean"><code>temporal_punishment_survives_absolution</code></a> is the hinge: accept it, and the Catholic sacramental system is coherent; reject it, and indulgences become incoherent.
       </p>
 
       <p>
@@ -981,15 +981,15 @@ T3. Sacramental efficacy</pre>
         <h3>Source Code &amp; Further Reading</h3>
         <p>
           The formalizations referenced in this article are machine-checked in Lean 4. See
-          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Sacraments/Reconciliation.lean"><code>Reconciliation.lean</code></a>
+          <a href="https://github.com/ngundotra/catlib/blob/master/Catlib/Sacraments/Reconciliation.lean"><code>Reconciliation.lean</code></a>
           for the complete sacramental model (7 theorems, 10 cross-references). See
-          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Foundations/Love.lean"><code>Love.lean</code></a>
+          <a href="https://github.com/ngundotra/catlib/blob/master/Catlib/Foundations/Love.lean"><code>Love.lean</code></a>
           for the four-fold love taxonomy and the survival/destruction axioms. See
-          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/DivineModes.lean"><code>DivineModes.lean</code></a>
+          <a href="https://github.com/ngundotra/catlib/blob/master/Catlib/Creed/DivineModes.lean"><code>DivineModes.lean</code></a>
           for sustaining vs. beatifying modes of divine relation. See
-          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/Grace.lean"><code>Grace.lean</code></a>
+          <a href="https://github.com/ngundotra/catlib/blob/master/Catlib/Creed/Grace.lean"><code>Grace.lean</code></a>
           for the prevenient grace bootstrapping resolution. The 14 base axioms are in
-          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Foundations/Axioms.lean"><code>Axioms.lean</code></a>.
+          <a href="https://github.com/ngundotra/catlib/blob/master/Catlib/Foundations/Axioms.lean"><code>Axioms.lean</code></a>.
           For the love taxonomy in detail, see the companion article <a href="love-math.html">The Mathematics of Love</a>.
         </p>
       </div>

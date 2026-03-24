@@ -198,10 +198,10 @@ T3. Sacramental efficacy</pre>
 
     <div class="sidebar-section">
       <h4>Source Files</h4>
-<pre><a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/EssenceExistence.lean" style="color: var(--accent-gold);">EssenceExistence.lean</a>
-<a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/DivineAttributes.lean" style="color: var(--accent-gold);">DivineAttributes.lean</a>
-<a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/Providence.lean" style="color: var(--accent-gold);">Providence.lean</a>
-<a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/ScientificInquiry.lean" style="color: var(--accent-gold);">ScientificInquiry.lean</a></pre>
+<pre><a href="https://github.com/ngundotra/catlib/blob/master/Catlib/Creed/EssenceExistence.lean" style="color: var(--accent-gold);">EssenceExistence.lean</a>
+<a href="https://github.com/ngundotra/catlib/blob/master/Catlib/Creed/DivineAttributes.lean" style="color: var(--accent-gold);">DivineAttributes.lean</a>
+<a href="https://github.com/ngundotra/catlib/blob/master/Catlib/Creed/Providence.lean" style="color: var(--accent-gold);">Providence.lean</a>
+<a href="https://github.com/ngundotra/catlib/blob/master/Catlib/Creed/ScientificInquiry.lean" style="color: var(--accent-gold);">ScientificInquiry.lean</a></pre>
     </div>
 
     <p class="close-hint">Click the tab again to close</p>
@@ -252,7 +252,7 @@ T3. Sacramental efficacy</pre>
         providence&nbsp;&mdash; all of them presuppose it, and none of them name it. The proof
         assistant forced us to make explicit what the Catechism treats as obvious. The result
         is in
-        <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/EssenceExistence.lean"><code>EssenceExistence.lean</code></a>,
+        <a href="https://github.com/ngundotra/catlib/blob/master/Catlib/Creed/EssenceExistence.lean"><code>EssenceExistence.lean</code></a>,
         and the finding is striking: this single distinction is to Catholic metaphysics what
         foundations are to a building&nbsp;&mdash; invisible, never mentioned in the upper
         stories, but everything stands on it.
@@ -313,7 +313,7 @@ T3. Sacramental efficacy</pre>
           existence admits of no internal differentiation. If there were parts in God,
           God would be composed&nbsp;&mdash; and composition requires a composer.
           The simplicity axioms in
-          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/DivineAttributes.lean"><code>DivineAttributes.lean</code></a>
+          <a href="https://github.com/ngundotra/catlib/blob/master/Catlib/Creed/DivineAttributes.lean"><code>DivineAttributes.lean</code></a>
           are downstream of the essence/existence identity.
         </p>
       </div>
@@ -334,7 +334,7 @@ T3. Sacramental efficacy</pre>
           being&rdquo; at every moment. Why do creatures need continuous sustaining?
           Because their essences do not include existence. If they did, creatures would
           be self-sustaining. The real distinction explains why
-          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/Providence.lean"><code>Providence.lean</code></a>&rsquo;s
+          <a href="https://github.com/ngundotra/catlib/blob/master/Catlib/Creed/Providence.lean"><code>Providence.lean</code></a>&rsquo;s
           <code>S4</code> (universal providence) is not optional but necessary.
         </p>
       </div>
@@ -365,34 +365,34 @@ T3. Sacramental efficacy</pre>
 
       <p>
         The result is
-        <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/EssenceExistence.lean"><code>EssenceExistence.lean</code></a>,
+        <a href="https://github.com/ngundotra/catlib/blob/master/Catlib/Creed/EssenceExistence.lean"><code>EssenceExistence.lean</code></a>,
         which introduces 10 axioms and 8 theorems connecting the real distinction to three
         other formalization files. The key theorems show the dependency chains:
       </p>
 
       <div class="dependency-chain">
         <span class="chain-node">Essence &ne; Existence in creatures</span>
-        <span class="chain-label">(<a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/EssenceExistence.lean"><code>real_distinction</code></a>)</span>
+        <span class="chain-label">(<a href="https://github.com/ngundotra/catlib/blob/master/Catlib/Creed/EssenceExistence.lean"><code>real_distinction</code></a>)</span>
         <span class="chain-arrow">&darr;</span>
         <span class="chain-node">Creatures are contingent</span>
-        <span class="chain-label">(<a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/EssenceExistence.lean"><code>distinction_implies_contingency</code></a>)</span>
+        <span class="chain-label">(<a href="https://github.com/ngundotra/catlib/blob/master/Catlib/Creed/EssenceExistence.lean"><code>distinction_implies_contingency</code></a>)</span>
         <span class="chain-arrow">&darr;</span>
         <span class="chain-node">Creatures need divine sustaining</span>
-        <span class="chain-label">(<a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/EssenceExistence.lean"><code>creatures_need_sustaining</code></a> &rarr; Providence.lean)</span>
+        <span class="chain-label">(<a href="https://github.com/ngundotra/catlib/blob/master/Catlib/Creed/EssenceExistence.lean"><code>creatures_need_sustaining</code></a> &rarr; Providence.lean)</span>
         <span class="chain-arrow">&darr;</span>
         <span class="chain-node">Universal providence is necessary, not optional</span>
-        <span class="chain-label">(<code>S4</code>: <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/Providence.lean"><code>Providence.lean</code></a>)</span>
+        <span class="chain-label">(<code>S4</code>: <a href="https://github.com/ngundotra/catlib/blob/master/Catlib/Creed/Providence.lean"><code>Providence.lean</code></a>)</span>
       </div>
 
       <div class="dependency-chain">
         <span class="chain-node">Essence = Existence in God</span>
-        <span class="chain-label">(<a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/EssenceExistence.lean"><code>divine_essence_is_existence</code></a>)</span>
+        <span class="chain-label">(<a href="https://github.com/ngundotra/catlib/blob/master/Catlib/Creed/EssenceExistence.lean"><code>divine_essence_is_existence</code></a>)</span>
         <span class="chain-arrow">&darr;</span>
         <span class="chain-node">God has no composition</span>
         <span class="chain-label">(pure act, no potency)</span>
         <span class="chain-arrow">&darr;</span>
         <span class="chain-node">All divine attributes = divine essence</span>
-        <span class="chain-label">(<a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/EssenceExistence.lean"><code>divine_simplicity_from_essence_existence</code></a> &rarr; DivineAttributes.lean)</span>
+        <span class="chain-label">(<a href="https://github.com/ngundotra/catlib/blob/master/Catlib/Creed/EssenceExistence.lean"><code>divine_simplicity_from_essence_existence</code></a> &rarr; DivineAttributes.lean)</span>
       </div>
 
       <table class="axiom-table">
@@ -440,11 +440,11 @@ T3. Sacramental efficacy</pre>
       <div class="assumption-callout">
         The formalization confirmed the prediction: the essence/existence distinction is
         the hidden foundation beneath multiple existing formalizations. Divine simplicity
-        (<a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/DivineAttributes.lean"><code>DivineAttributes.lean</code></a>),
+        (<a href="https://github.com/ngundotra/catlib/blob/master/Catlib/Creed/DivineAttributes.lean"><code>DivineAttributes.lean</code></a>),
         sustaining providence
-        (<a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/Providence.lean"><code>Providence.lean</code></a>),
+        (<a href="https://github.com/ngundotra/catlib/blob/master/Catlib/Creed/Providence.lean"><code>Providence.lean</code></a>),
         and ordered creation
-        (<a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/ScientificInquiry.lean"><code>ScientificInquiry.lean</code></a>)
+        (<a href="https://github.com/ngundotra/catlib/blob/master/Catlib/Creed/ScientificInquiry.lean"><code>ScientificInquiry.lean</code></a>)
         all presuppose that creatures receive existence from God. The real distinction
         explains <em>why</em>.
       </div>
@@ -525,7 +525,7 @@ T3. Sacramental efficacy</pre>
           its own nature. &ldquo;Received&rdquo; implies a giver. The real distinction
           does not just say creatures lack self-existence&nbsp;&mdash; it implies they have
           existence <em>from another</em>. The axiom
-          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/EssenceExistence.lean"><code>creatures_receive_existence</code></a>
+          <a href="https://github.com/ngundotra/catlib/blob/master/Catlib/Creed/EssenceExistence.lean"><code>creatures_receive_existence</code></a>
           makes this explicit.
         </p>
       </div>
@@ -535,7 +535,7 @@ T3. Sacramental efficacy</pre>
         <p>
           If two beings both had essence = existence, they would be indistinguishable&nbsp;&mdash;
           existence itself is not individuated. Therefore God is unique. The theorem
-          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/EssenceExistence.lean"><code>god_unique_essence_existence_identity</code></a>
+          <a href="https://github.com/ngundotra/catlib/blob/master/Catlib/Creed/EssenceExistence.lean"><code>god_unique_essence_existence_identity</code></a>
           proves that any being whose essence entails its existence must be divine. There
           cannot be two such beings.
         </p>
@@ -557,7 +557,7 @@ T3. Sacramental efficacy</pre>
         <p>
           Everything is either God or a creature. There is no third category&nbsp;&mdash;
           no being that is neither created nor divine. The axiom
-          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/EssenceExistence.lean"><code>creature_or_divine</code></a>
+          <a href="https://github.com/ngundotra/catlib/blob/master/Catlib/Creed/EssenceExistence.lean"><code>creature_or_divine</code></a>
           makes this explicit. The Incarnation is not a counterexample: Christ has two
           natures, divine and human, in one person&nbsp;&mdash; the natures remain distinct
           per Chalcedon.
@@ -754,16 +754,16 @@ T3. Sacramental efficacy</pre>
         <p>
           The formalizations referenced in this article are machine-checked
           in Lean 4. See
-          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/EssenceExistence.lean"><code>EssenceExistence.lean</code></a>
+          <a href="https://github.com/ngundotra/catlib/blob/master/Catlib/Creed/EssenceExistence.lean"><code>EssenceExistence.lean</code></a>
           for the real distinction, divine identity, and bridge theorems.
-          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/DivineAttributes.lean"><code>DivineAttributes.lean</code></a>
+          <a href="https://github.com/ngundotra/catlib/blob/master/Catlib/Creed/DivineAttributes.lean"><code>DivineAttributes.lean</code></a>
           formalizes simplicity as a consequence.
-          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/Providence.lean"><code>Providence.lean</code></a>
+          <a href="https://github.com/ngundotra/catlib/blob/master/Catlib/Creed/Providence.lean"><code>Providence.lean</code></a>
           formalizes sustaining governance.
-          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Creed/ScientificInquiry.lean"><code>ScientificInquiry.lean</code></a>
+          <a href="https://github.com/ngundotra/catlib/blob/master/Catlib/Creed/ScientificInquiry.lean"><code>ScientificInquiry.lean</code></a>
           shows that creation through wisdom presupposes the real distinction.
           The 15 base axioms are in
-          <a href="https://github.com/ngundotra/catlib/blob/main/Catlib/Foundations/Axioms.lean"><code>Axioms.lean</code></a>.
+          <a href="https://github.com/ngundotra/catlib/blob/master/Catlib/Foundations/Axioms.lean"><code>Axioms.lean</code></a>.
           See also
           <a href="body-and-soul.html">Body &amp; Soul</a> for the parallel finding about
           hylomorphism and irreducible unity, and
