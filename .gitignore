@@ -11,3 +11,6 @@ tools/ca-indexer
 .playwright-mcp/
 .surfpool/
 **/.surfpool/
+__pycache__/
+tools/generate-explorer
+*.DS_Store
