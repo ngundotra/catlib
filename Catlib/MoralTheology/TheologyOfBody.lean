@@ -639,6 +639,27 @@ def cooperation_required_tag : DenominationalTag :=
   { acceptedBy := [Denomination.catholic],
     note := "Catholic synergism: grace + free cooperation. Against monergism." }
 
+/-- **Bridge: cooperation_required + T2 = synergism preserves freedom.**
+    cooperation_required says restoration needs free cooperation with grace.
+    T2 (grace preserves freedom) says grace never overrides free will.
+    Together: the person who cooperates with grace COULD have refused —
+    their cooperation is genuine, not coerced.
+
+    This connects TOB's sexual ethics (cooperation_required) to the
+    foundational grace theology (T2), showing synergism is one principle
+    applied across domains: grace + freedom in general (T2) and grace +
+    freedom in nuptial capacity specifically (cooperation_required). -/
+theorem cooperation_is_genuinely_free
+    (p : Person) (g : Grace) (nc : NuptialCapacity)
+    (h_grace : graceGiven p g) (h_cap : nc.level > 0)
+    (h_coop : cooperatesWithGrace p g) :
+    -- Cooperation restores nuptial capacity...
+    nc.canChooseSelfGift
+    -- ...AND the person could have chosen otherwise (T2)
+    ∧ couldChooseOtherwise p :=
+  ⟨cooperation_required p g nc h_grace h_cap h_coop,
+   t2_grace_preserves_freedom p g h_grace⟩
+
 /-- **Theorem: The Fallen state is BETWEEN Pelagianism and total depravity.**
 
     Pelagianism: the Fall caused no damage to nuptial capacity.
@@ -751,6 +772,9 @@ def body_as_sign_tag : DenominationalTag :=
 
     CONNECTS TO: T3 (sacramental efficacy — if material signs are the
     ONLY channel, then sacraments are necessary, not optional). -/
+-- TODO [island]: material_mediation is only used within this file (by body_sign_grounds_sacraments).
+-- Future: connect cross-file to Sacrament.lean or Eucharist.lean to ground sacramental
+-- necessity in the body-as-sign anthropology.
 axiom material_mediation :
   ∀ (spiritualReality : Prop),
     -- If a spiritual reality is made accessible...
@@ -782,6 +806,9 @@ def material_mediation_tag : DenominationalTag :=
 
     CONNECTS TO: PERSONALIST_NORM (body-lies instrumentalize the other
     person), ConjugalEthics.lean inseparability_principle. -/
+-- TODO [island]: sign_truthfulness is only used within this file (by contraception_is_body_lie).
+-- Future: connect to ConjugalEthics.lean inseparability_principle to show
+-- two independent derivations of contraception's immorality converge.
 axiom sign_truthfulness :
   ∀ (bodilyAct agentAction : Prop),
     -- If the body's inherent meaning is contradicted by the agent's action...

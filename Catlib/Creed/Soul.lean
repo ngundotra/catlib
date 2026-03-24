@@ -628,6 +628,39 @@ infrastructure (CommunionParty), unifying the two type systems.
 -/
 
 /-!
+### Bridge: personOfHuman_capacities connects to moral agency
+
+The personOfHuman_capacities axiom says every HumanPerson has intellect,
+free will, and moral agency. This bridges to:
+- S3 (law on hearts): intellect → moral law is inscribed
+- T2 (grace preserves freedom): free will → could choose otherwise under grace
+- Moral agency: the person is a genuine moral agent (Conscience.lean, Sin.lean)
+-/
+
+/-- Every human person has the moral law inscribed on their heart.
+    Bridge: personOfHuman_capacities (intellect) → S3 (law on hearts).
+
+    This connects the hylomorphic anthropology (Soul.lean) to the
+    moral theology (Conscience.lean, NaturalLaw.lean). The bridge:
+    1. personOfHuman_capacities: every HumanPerson has intellect
+    2. S3 (s3_law_on_hearts): intellect → moral law inscribed
+    3. Therefore: every HumanPerson has the moral law inscribed -/
+theorem human_person_has_moral_law (hp : HumanPerson) :
+    moralLawInscribed (personOfHuman hp) :=
+  s3_law_on_hearts (personOfHuman hp) (personOfHuman_capacities hp).1
+
+/-- Every human person could choose otherwise under grace.
+    Bridge: personOfHuman_capacities (free will) → T2 (grace preserves freedom).
+
+    This connects the body-soul anthropology to the grace theology:
+    grace does not override the freedom that human persons have
+    by virtue of their spiritual nature. -/
+theorem human_person_free_under_grace (hp : HumanPerson) (g : Grace)
+    (h_grace : graceGiven (personOfHuman hp) g) :
+    couldChooseOtherwise (personOfHuman hp) :=
+  t2_grace_preserves_freedom (personOfHuman hp) g h_grace
+
+/-!
 ## Bridge: connecting HumanPerson to HumanNature
 
 The `PersonWithNature` structure ties HumanPerson to HumanNature:

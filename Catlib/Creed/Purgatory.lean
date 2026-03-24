@@ -75,9 +75,15 @@ opaque HolinessDegree : Type
 /-- Ordering on holiness degrees — some are higher than others. -/
 opaque holinessLt : HolinessDegree → HolinessDegree → Prop
 
+-- TODO [island]: heavenThreshold has no downstream consumers. Future: connect
+-- to afterlifeFromProfile (SinEffects.lean) by bridging HolinessDegree to
+-- EffectState, or use in a theorem relating holiness degree to afterlife outcome.
 /-- The threshold of holiness required for heaven. -/
 axiom heavenThreshold : HolinessDegree
 
+-- TODO [island]: personHoliness has no downstream consumers. Future: connect
+-- to fullyPurified (define fullyPurified p ↔ holinessLt heavenThreshold (personHoliness p) is false)
+-- to make the holiness ordering do real work.
 /-- The holiness degree of a given person. -/
 axiom personHoliness : Person → HolinessDegree
 
@@ -504,5 +510,37 @@ theorem attachment_without_guilt_means_purgatory (sp : SinProfile)
     · next h_guilt_present =>
       exact absurd h_guilt_present (by rw [h_no_guilt]; decide)
     · rfl
+
+/-!
+### Bridge: imperfect_purification_exists witnesses the purgatory outcome
+
+The imperfect_purification_exists axiom (§1030) says there exists a person
+who died in grace but is not fully purified. Combined with post_mortem_purification,
+this witnesses that purgatory is INHABITED — the purgatory outcome from
+afterlifeFromProfile (SinEffects.lean) is not vacuously true.
+-/
+
+/-- The purgatory state is inhabited: there exists a person in purgatory.
+    Bridge: imperfect_purification_exists → post_mortem_purification.
+
+    This connects the existential axiom (some die imperfectly purified)
+    to the purgatory mechanism (such persons enter purgatory), proving
+    purgatory is not an empty set. -/
+theorem purgatory_is_inhabited :
+    ∃ (p : Person), inPurgatory p :=
+  let ⟨p, h_grace, h_not_purified⟩ := imperfect_purification_exists
+  ⟨p, post_mortem_purification p h_grace h_not_purified⟩
+
+/-- Every person in purgatory will be fully purified AND see God.
+    Bridge: imperfect_purification_exists → purgatory_achieves_holiness +
+    purgatory_guarantees_vision.
+
+    This is the FULL purgatory promise: those imperfectly purified at death
+    will both achieve holiness and attain the beatific vision. -/
+theorem purgatory_full_promise :
+    ∃ (p : Person), inPurgatory p ∧ fullyPurified p ∧ attainsBeatificVision p :=
+  let ⟨p, h_purg⟩ := purgatory_is_inhabited
+  ⟨p, h_purg, purgatory_achieves_holiness p h_purg,
+   purgatory_guarantees_vision p h_purg⟩
 
 end Catlib.Creed

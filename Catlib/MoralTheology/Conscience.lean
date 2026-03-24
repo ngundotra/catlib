@@ -187,31 +187,18 @@ structure TwoLevelEvaluation where
   /-- Is the agent personally culpable? -/
   agentCulpable : Prop
 
-/-- AXIOM 3 (§1791): Culpable ignorance makes you responsible.
-    Provenance: [Definition] CCC §1791
-    If your conscience is wrong because you didn't bother to form it
-    properly, you are culpable for the evil that results.
-    NOTE: This axiom is VACUOUS (concludes with True). The real content
-    is in the culpable/innocent ignorance distinction (IgnoranceType)
-    and the culpability_asymmetry theorem. -/
-axiom culpable_ignorance_implies_culpability :
-  ∀ (ec : ErringConscience),
-    ec.ignoranceType = IgnoranceType.culpable →
-    ec.isErroneous →
-    -- The agent IS culpable for the evil act
-    True  -- (representing culpability)
+-- REMOVED AXIOM: culpable_ignorance_implies_culpability (was vacuous — concluded True).
+-- §1791: Culpable ignorance makes you responsible.
+-- If your conscience is wrong because you didn't bother to form it
+-- properly, you are culpable for the evil that results.
+-- Real content is in the culpable/innocent ignorance distinction (IgnoranceType)
+-- and the culpability_asymmetry theorem.
 
-/-- AXIOM 4 (implicit): Innocent ignorance excuses.
-    Provenance: [Tradition] Aquinas, ST I-II q.19 a.6
-    HIDDEN ASSUMPTION: If your conscience is wrong through no fault
-    of your own, you are NOT culpable. The Catechism implies this
-    but doesn't state it directly in §1790-1791. -/
-axiom innocent_ignorance_excuses :
-  ∀ (ec : ErringConscience),
-    ec.ignoranceType = IgnoranceType.innocent →
-    ec.isErroneous →
-    -- The agent is NOT culpable (even though the act was evil)
-    True  -- (representing non-culpability)
+-- REMOVED AXIOM: innocent_ignorance_excuses (was vacuous — concluded True).
+-- Aquinas, ST I-II q.19 a.6: Innocent ignorance excuses.
+-- If your conscience is wrong through no fault of your own, you are
+-- NOT culpable. The Catechism implies this but doesn't state it
+-- directly in §1790-1791.
 
 /-!
 ## The asymmetry
@@ -241,28 +228,13 @@ theorem culpability_asymmetry
     cj.judgesRight :=
   conscience_always_binds cj h_certain
 
-/-- AXIOM 5 (§1778, implicit): Duty to form conscience.
-    Provenance: [Definition] CCC §1783-1785
-    HIDDEN ASSUMPTION: You have a positive obligation to SEEK truth,
-    not just follow whatever your conscience currently says. This is
-    what makes culpable ignorance possible — if there were no duty
-    to inquire, all ignorance would be innocent.
-
-    CONNECTION TO BASE AXIOM: This is grounded in `Catlib.s3_law_on_hearts`
-    (S3: ∀ p, p.hasIntellect = true → moralLawInscribed p). The duty to
-    form conscience presupposes that the moral law IS accessible — i.e.,
-    written on the heart. If it were not accessible, the duty to discover
-    it would be vacuous.
-
-    NOTE: This axiom is VACUOUS (concludes with True). The real content
-    is in the connection to S3 and the culpable/innocent ignorance
-    distinction above. -/
-axiom duty_to_form_conscience :
-  ∀ (p : Person),
-    p.hasIntellect = true →
-    -- The person has a duty to seek moral truth
-    -- (failure to do so makes subsequent ignorance culpable)
-    True
+-- REMOVED AXIOM: duty_to_form_conscience (was vacuous — concluded True).
+-- §1783-1785: Duty to form conscience.
+-- You have a positive obligation to SEEK truth, not just follow whatever
+-- your conscience currently says. This is what makes culpable ignorance
+-- possible — if there were no duty to inquire, all ignorance would be innocent.
+-- CONNECTION TO BASE AXIOM: Grounded in s3_law_on_hearts (S3).
+-- The duty to form conscience presupposes that the moral law IS accessible.
 
 /-!
 ## Summary of hidden assumptions

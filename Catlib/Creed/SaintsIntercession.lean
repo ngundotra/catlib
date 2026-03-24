@@ -765,6 +765,43 @@ theorem protestant_restriction_blocks_prayer_to_saints
   (h_restrict living saint _ _ h_living h_saint h_comm).2
 
 -- ============================================================================
+-- § 8b. Bridge: prayer for the dead (Purgatory.lean → SaintsIntercession)
+-- ============================================================================
+
+/-!
+### Bridge: prayer_aids_dead connects communion of saints to purgatory
+
+The communion of saints spans all three states (communion_spans_all_states).
+Purgatory.lean declares prayer_aids_dead: prayer for the dead aids their
+purification. Combined, the living in communion with the suffering can
+efficaciously pray for their purification.
+
+This makes explicit the pastoral practice: praying for the dead is not
+superstition but a CONSEQUENCE of the communion spanning death + prayer
+efficacy crossing that boundary.
+-/
+
+/-- The living can efficaciously pray for those in purgatory because
+    (a) the communion spans all states, and (b) prayer aids the dead.
+
+    Bridge: communion_spans_all_states + prayer_aids_dead (Purgatory.lean).
+
+    This connects the ecclesiology (communion of saints) to the
+    eschatology (purgatory) via the prayer mechanism. -/
+theorem living_prayer_aids_suffering
+    (living : HumanPerson) (suffering : HumanPerson)
+    (h_m : churchStateOf living ChurchState.militant)
+    (h_s : churchStateOf suffering ChurchState.suffering)
+    (h_prays : praysFor (personOfHuman living) (personOfHuman suffering))
+    (h_purg : inPurgatory (personOfHuman suffering)) :
+    -- They are in communion...
+    inCommunion (living : CommunionParty) (suffering : CommunionParty)
+    -- ...AND prayer aids the suffering person's purification
+    ∧ prayerAidsPurification (personOfHuman suffering) :=
+  ⟨communion_spans_all_states living suffering _ _ h_m h_s,
+   prayer_aids_dead (personOfHuman living) (personOfHuman suffering) h_prays h_purg⟩
+
+-- ============================================================================
 -- § 9. The P2 quintuple-duty finding
 -- ============================================================================
 

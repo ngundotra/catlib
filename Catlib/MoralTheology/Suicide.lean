@@ -72,6 +72,7 @@ namespace Catlib.MoralTheology.Suicide
 
 open Catlib
 open Catlib.MoralTheology
+open Catlib.Foundations.Love
 
 -- ============================================================================
 -- § Core Types
@@ -407,6 +408,46 @@ def hope_mechanism_tag : DenominationalTag :=
 def hope_conclusion_tag : DenominationalTag :=
   { acceptedBy := [Denomination.ecumenical],
     note := "CCC §2283; the conclusion — do not despair — is broadly shared" }
+
+-- ============================================================================
+-- § Bridge: Suicide axioms → Love.lean self-love chain
+-- ============================================================================
+
+/-!
+### Bridge: suicide contradicts the self-love that grounds legitimate defense
+
+The connection:
+1. self_preservation_is_natural_law: self-preservation is a natural inclination
+2. suicide_contradicts_self_love_and_natural_law: suicide contradicts self-love
+3. self_love_grounds_self_defense (Love.lean): self-love grounds legitimate defense
+
+Together: the same self-love that GROUNDS the right to self-defense is what
+suicide CONTRADICTS. Defense and suicide are moral opposites — both deriving
+their moral valence from the same principle (self-love as fundamental).
+-/
+
+/-- Suicide contradicts the same self-love that grounds legitimate defense.
+    Bridge: suicide_contradicts_self_love_and_natural_law (this file) +
+    self_love_grounds_self_defense (Love.lean).
+
+    For any act of self-love (TypedLove with kind = selfLove):
+    - Self-love makes the lover their own beloved (reflexive, Love.lean)
+    - Suicide contradicts this self-love
+    - Therefore: suicide opposes the very principle that makes self-defense moral
+
+    This connects the Suicide formalization to the Love taxonomy,
+    showing both doctrines share a common axiological root. -/
+theorem suicide_opposes_defense_ground
+    (a : Action) (tl : TypedLove)
+    (h_suicide : isSuicideAct a)
+    (h_self_love : tl.kind = LoveKind.selfLove)
+    (_h_pos : tl.degree > 0) :
+    -- Suicide contradicts self-love...
+    contradictsSelfLove a
+    -- ...and self-love is reflexive (the ground of defense)
+    ∧ tl.lover = tl.beloved := by
+  exact ⟨(suicide_contradicts_self_love_and_natural_law a h_suicide).1,
+         self_love_reflexive tl h_self_love⟩
 
 -- ============================================================================
 -- § Protestant axiom-swap documentation

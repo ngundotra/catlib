@@ -459,6 +459,43 @@ theorem contrition_requires_prevenient_grace
 -- ============================================================================
 
 /-!
+### Bridge: contrition_requires_sincerity → valid reconciliation
+
+contrition_requires_sincerity says genuine sorrow + firm purpose → free act.
+This connects to reconciliation_restores_grace: one of the conditions for
+valid reconciliation is that contrition is free (c.isFree). The bridge:
+sincerity PROVIDES the freedom condition that reconciliation REQUIRES.
+-/
+
+/-- Sincere contrition satisfies the freedom condition for valid reconciliation.
+    Bridge: contrition_requires_sincerity → reconciliation_restores_grace.
+
+    If the penitent has genuine sorrow and firm purpose, then by
+    contrition_requires_sincerity their contrition is free. Combined
+    with the other conditions (complete confession, authoritative
+    absolution, penance), this yields restoration of grace.
+
+    This makes explicit the chain: sincerity → freedom → valid sacrament. -/
+theorem sincere_contrition_enables_reconciliation
+    (r : ReconciliationAct) (state : SpiritualState)
+    (h_sorrow : r.contrition.genuineSorrow)
+    (h_purpose : r.contrition.firmPurpose)
+    (h_complete : r.confession.isComplete)
+    (h_auth : r.absolution.hasAuthority)
+    (h_pronounced : r.absolution.isPronounced)
+    (h_penance : r.satisfaction.penancePerformed)
+    (h_person : state.person = r.contrition.penitent)
+    (h_lost : state.graceState = GraceState.notInGrace) :
+    ∃ (newState : SpiritualState),
+      newState.person = state.person ∧
+      newState.graceState = GraceState.inGrace := by
+  -- sincerity → freedom (contrition_requires_sincerity)
+  have h_free := contrition_requires_sincerity r.contrition ⟨h_sorrow, h_purpose⟩
+  -- freedom + other conditions → grace restored
+  exact reconciliation_restores_grace r state h_sorrow h_purpose h_free
+    h_complete h_auth h_pronounced h_penance h_person h_lost
+
+/-!
 ### Theorem 1: Reconciliation restores charity
 
 If all conditions of a valid reconciliation are met, agape (which mortal
@@ -524,6 +561,9 @@ Denominational scope: CATHOLIC + ORTHODOX.
 
     This theorem connects Love.lean (agape > 0) to DivineModes.lean
     (choseGod = True). -/
+-- TODO [island]: charity_implies_communion is only used within this file
+-- (by reconciliation_restores_communion). Future: connect to DivineModes.lean
+-- or SaintsIntercession.lean to bridge the Love taxonomy to communion states.
 axiom charity_implies_communion :
   ∀ (p : Person) (tl : TypedLove),
     tl.kind = LoveKind.agape →

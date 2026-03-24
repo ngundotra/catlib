@@ -101,16 +101,12 @@ def DoubleEffectConditions.isPermissible (dec : DoubleEffectConditions) : Prop :
   dec.badNotMeansToGood ∧
   dec.proportionate
 
-/-- AXIOM 1 (§2263): Self-defense has double effect.
-    Provenance: [Tradition] Aquinas ST II-II q.64 a.7
-    "The act of self-defense can have a double effect: the preservation
-    of one's own life; and the killing of the aggressor." -/
-axiom self_defense_double_effect :
-  ∀ (act : DoubleEffectAct),
-    act.goodEffect → act.badEffect →
-    act.intendsGood →
-    -- The act has genuine double effect
-    act.intendsGood
+-- REMOVED AXIOM: self_defense_double_effect (was tautological — concluded act.intendsGood from act.intendsGood).
+-- §2263, Aquinas ST II-II q.64 a.7: Self-defense has double effect.
+-- "The act of self-defense can have a double effect: the preservation
+-- of one's own life; and the killing of the aggressor."
+-- The double effect principle is structurally captured by DoubleEffectAct
+-- and doubleEffectJustified (which checks all four conditions).
 
 /-- AXIOM 2 (§2264): Proportionality is required.
     Provenance: [Definition] CCC §2264; [Tradition] Aquinas

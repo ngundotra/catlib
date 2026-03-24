@@ -163,6 +163,9 @@ any one moves you closer to a different denomination's position.
 
     NOTE: This local axiom is VACUOUS. S8 from Axioms.lean carries the
     actual logical content for the transformative claim. -/
+-- TODO [island]: grace_is_transformative is vacuous (concludes True). Future: either
+-- delete (content lives in S8) or give it a non-trivial body connecting to
+-- JustificationType.transformative.
 axiom grace_is_transformative :
   ∀ (p : Person),
     p.hasFreeWill = true →
@@ -181,6 +184,9 @@ axiom grace_is_transformative :
     not purely a gift. The Catholic answer: the cooperation itself is
     a gift of grace. But this is exactly the §2001 bootstrapping
     problem again. -/
+-- TODO [island]: human_cooperation_in_justification is vacuous (concludes True). Future:
+-- delete (content lives in T2 + cooperation_required) or give non-trivial body
+-- bridging to cooperatesWithGrace.
 axiom human_cooperation_in_justification :
   ∀ (p : Person),
     p.hasFreeWill = true →
@@ -204,24 +210,23 @@ axiom human_cooperation_in_justification :
     content is in T3's non-trivial implication.
 
     NOTE: This local axiom is VACUOUS. T3 carries the actual content. -/
+-- TODO [island]: baptism_confers_justification is vacuous (concludes True). Future:
+-- delete (content lives in T3 via sacramental_efficacy_from_t3) or give non-trivial
+-- body connecting Baptism to the justification state change.
 axiom baptism_confers_justification :
   -- Baptism is the sacramental instrument of justification
   -- (not faith alone, not works, but a Church-administered rite)
   True
 
-/-- AXIOM 4 (§1989-1990): Justification is a process.
-    Provenance: [Definition] CCC §1989-1990
-    "The first work of grace is conversion" (§1989) followed by
-    purification, reconciliation, freedom, and healing (§1990).
-    HIDDEN ASSUMPTION: Justification unfolds over time — it's not
-    a single moment of being declared righteous. This is why
-    Catholics talk about "being justified" as an ongoing state,
-    while Protestants talk about "the moment of justification." -/
-axiom justification_is_process :
-  -- Justification involves multiple stages:
-  -- conversion → forgiveness → purification → healing
-  -- (not a single event but an unfolding transformation)
-  True
+-- REMOVED AXIOM: justification_is_process (was vacuous — body was True).
+-- §1989-1990: Justification is a process, not a single event.
+-- "The first work of grace is conversion" (§1989) followed by
+-- purification, reconciliation, freedom, and healing (§1990).
+-- HIDDEN ASSUMPTION: Justification unfolds over time — it's not
+-- a single moment of being declared righteous. This is why
+-- Catholics talk about "being justified" as an ongoing state,
+-- while Protestants talk about "the moment of justification."
+-- Real content lives in S8 (grace is transformative) via grace_transforms_from_s8.
 
 /-!
 ## Bridge theorems to base axioms

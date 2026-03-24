@@ -207,17 +207,14 @@ structure Demon where
 axiom demons_exist :
   ∃ (d : Demon), d.isPersonal ∧ d.isFinite ∧ d.respondsToAuthority
 
-/-- AXIOM 6 (§1673): Possession is distinguishable from illness.
-    "Illness, especially psychological illness, is a very different
-    matter; treating this is the concern of medical science."
-    HIDDEN ASSUMPTION: There exists a reliable way to distinguish
-    demonic possession from mental illness. The Catechism asserts
-    the distinction but gives NO diagnostic criteria. This is
-    perhaps the biggest epistemic gap in the exorcism teaching. -/
-axiom possession_distinguishable_from_illness :
-  -- There exists a way to tell the difference
-  -- (the Catechism never says what that way is)
-  True
+-- REMOVED AXIOM: possession_distinguishable_from_illness (was vacuous — body was True).
+-- §1673: Possession is distinguishable from illness.
+-- "Illness, especially psychological illness, is a very different
+-- matter; treating this is the concern of medical science."
+-- HIDDEN ASSUMPTION: There exists a reliable way to distinguish
+-- demonic possession from mental illness. The Catechism asserts
+-- the distinction but gives NO diagnostic criteria. This is
+-- perhaps the biggest epistemic gap in the exorcism teaching.
 
 /-!
 ## Summary of hidden assumptions
