@@ -517,17 +517,15 @@ a:hover {
 .versal {
   font-family: 'UnifrakturMaguntia', 'Cinzel Decorative', serif;
   font-size: 4rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   float: left;
-  line-height: 1;
-  width: 1.14em;
-  min-width: 1.14em;
-  height: 1.14em;
-  margin-right: 0.16em;
-  margin-top: 0.08em;
-  padding: 0.02em 0.08em 0.08em;
+  line-height: 0.8;
+  width: 1.15em;
+  min-width: 1.15em;
+  height: 1.15em;
+  margin: 0.18em 0.12em 0.04em 0;
+  padding: 0.12em 0.1em 0.15em;
+  shape-outside: margin-box;
+  display: block;
   color: var(--gold);
   background: linear-gradient(145deg, rgba(30, 26, 22, 0.95), rgba(20, 17, 14, 0.98));
   border: 1px solid var(--gold-dim);
@@ -566,17 +564,15 @@ a:hover {
 .versal-quote {
   font-family: 'UnifrakturMaguntia', 'Cinzel Decorative', serif;
   font-size: 2.8rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   float: left;
-  line-height: 1;
+  line-height: 0.8;
   width: 1.1em;
   min-width: 1.1em;
   height: 1.1em;
-  margin-right: 0.14em;
-  margin-top: 0.04em;
-  padding: 0.02em 0.08em 0.08em;
+  margin: 0.14em 0.1em 0.04em 0;
+  padding: 0.1em 0.08em 0.12em;
+  shape-outside: margin-box;
+  display: block;
   color: var(--gold);
   background: linear-gradient(145deg, rgba(30, 26, 22, 0.9), rgba(20, 17, 14, 0.95));
   border: 1px solid rgba(201, 168, 76, 0.2);
@@ -599,17 +595,15 @@ a:hover {
 .versal-small {
   font-family: 'UnifrakturMaguntia', 'Cinzel Decorative', serif;
   font-size: 1.95rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   float: left;
-  line-height: 1;
+  line-height: 0.8;
   width: 1.08em;
   min-width: 1.08em;
   height: 1.08em;
-  margin-right: 0.12em;
-  margin-top: 0.08em;
-  padding: 0.02em 0.06em 0.08em;
+  margin: 0.2em 0.1em 0.04em 0;
+  padding: 0.08em 0.06em 0.1em;
+  shape-outside: margin-box;
+  display: block;
   color: var(--gold);
   background: linear-gradient(145deg, rgba(30, 26, 22, 0.88), rgba(22, 19, 15, 0.92));
   border: 1px solid rgba(201, 168, 76, 0.18);
@@ -1010,9 +1004,9 @@ footer a:hover {
     padding: 1.2rem 1rem;
   }
 
-  .versal { font-size: 2.7rem; margin-right: 0.12em; }
-  .versal-quote { font-size: 2.2rem; }
-  .versal-small { font-size: 1.65rem; }
+  .versal { font-size: 2.7rem; margin-right: 0.1em; }
+  .versal-quote { font-size: 2rem; }
+  .versal-small { font-size: 1.5rem; }
 
   footer { padding: 1rem 1rem 2rem; }
 
