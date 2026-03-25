@@ -267,6 +267,8 @@ h1 {
 .node-card.kind-structure { border-left-color: var(--structure-dot); }
 .node-card.kind-inductive { border-left-color: var(--inductive-dot); }
 .node-card.kind-proposition { border-left-color: var(--proposition-dot); }
+.node-card.kind-instance { border-left-color: var(--def-dot); }
+.node-card.kind-abbrev { border-left-color: var(--def-dot); }
 
 .node-header {
   display: flex;
@@ -302,6 +304,8 @@ h1 {
 .kind-structure .node-kind-badge { background: var(--structure-bg); color: var(--structure-dot); }
 .kind-inductive .node-kind-badge { background: var(--inductive-bg); color: var(--inductive-dot); }
 .kind-proposition .node-kind-badge { background: var(--proposition-bg); color: var(--proposition-dot); }
+.kind-instance .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
+.kind-abbrev .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
 
 .node-name {
   flex: 1;
@@ -462,6 +466,8 @@ h1 {
 .legend-dot.structure { background: var(--structure-dot); }
 .legend-dot.inductive { background: var(--inductive-dot); }
 .legend-dot.proposition { background: var(--proposition-dot); }
+.legend-dot.instance { background: var(--def-dot); }
+.legend-dot.abbrev { background: var(--def-dot); }
 
 /* ── Filter buttons ── */
 .filter-bar {
@@ -523,14 +529,13 @@ h1 {
 <div class="container">
   <a href="index.html" class="back-link">&larr; All files</a>
   <h1>Exorcism</h1>
-  <div class="subtitle">Sacraments &middot; 14 declarations</div>
-
+  <div class="subtitle">Sacraments &middot; 13 declarations</div>
   
-  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1673, &sect;328, &sect;391, &sect;77, &sect;861</div>
+  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;77, &sect;391, &sect;861, &sect;1673</div>
 
-  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span><span class="legend-item"><span class="legend-dot structure"></span>structure</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
+  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot structure"></span>structure</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span></div>
 
-  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (7)</button><button class="filter-btn" data-filter="def">def (1)</button><button class="filter-btn" data-filter="inductive">inductive (1)</button><button class="filter-btn" data-filter="structure">structure (2)</button><button class="filter-btn" data-filter="theorem">theorem (3)</button></div>
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (6)</button><button class="filter-btn" data-filter="theorem">theorem (3)</button><button class="filter-btn" data-filter="def">def (1)</button><button class="filter-btn" data-filter="structure">structure (2)</button><button class="filter-btn" data-filter="inductive">inductive (1)</button></div>
 
   <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
 
@@ -544,8 +549,6 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>inductive ChurchRole where</code></pre></div>
 <div class="node-desc">A role in the Church hierarchy.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="christ">christ</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="SpiritualAuthority">SpiritualAuthority</span><span class="dep-chip" data-target="exorcismAuthority">exorcismAuthority</span><span class="dep-chip" data-target="christ_has_exorcism_authority">christ_has_exorcism_authority</span><span class="dep-chip" data-target="christ_delegated_to_apostles">christ_delegated_to_apostles</span><span class="dep-chip" data-target="apostolic_succession">apostolic_succession</span><span class="dep-chip" data-target="bishop_delegates_to_priest">bishop_delegates_to_priest</span><span class="dep-chip" data-target="exorcism_authority_chain">exorcism_authority_chain</span><span class="dep-chip" data-target="laypersons_cannot_exorcize">laypersons_cannot_exorcize</span></div></div>
   </div>
 </div>
 <div class="node-card kind-structure" data-kind="structure" data-name="SpiritualAuthority">
@@ -557,8 +560,6 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>structure SpiritualAuthority where</code></pre></div>
 <div class="node-desc">An authority — a specific power to act in a domain.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ChurchRole">ChurchRole</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="exorcismAuthority">exorcismAuthority</span><span class="dep-chip" data-target="christ_has_exorcism_authority">christ_has_exorcism_authority</span><span class="dep-chip" data-target="christ_delegated_to_apostles">christ_delegated_to_apostles</span><span class="dep-chip" data-target="apostolic_succession">apostolic_succession</span><span class="dep-chip" data-target="bishop_delegates_to_priest">bishop_delegates_to_priest</span><span class="dep-chip" data-target="exorcism_authority_chain">exorcism_authority_chain</span><span class="dep-chip" data-target="authority_requires_higher_source">authority_requires_higher_source</span><span class="dep-chip" data-target="laypersons_cannot_exorcize">laypersons_cannot_exorcize</span><span class="dep-chip" data-target="ChurchRole">ChurchRole</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="exorcismAuthority">
@@ -571,8 +572,6 @@ h1 {
     <div class="node-prop"><pre><code>def exorcismAuthority (holder : ChurchRole) (source : ChurchRole) :
     SpiritualAuthority</code></pre></div>
 <div class="node-desc">The exorcism authority.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ChurchRole">ChurchRole</span><span class="dep-chip" data-target="SpiritualAuthority">SpiritualAuthority</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ChurchRole">ChurchRole</span><span class="dep-chip" data-target="SpiritualAuthority">SpiritualAuthority</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="christ_has_exorcism_authority">
@@ -584,11 +583,11 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom christ_has_exorcism_authority :
   ∃ (a : SpiritualAuthority),
-    a.domain = &quot;exorcism&quot; ∧ a.holder = ChurchRole.christ
-</code></pre></div>
-<div class="node-desc">1 (Scripture): Jesus has authority over demons. │   Source: [Scripture] Mk 1:27 (&quot;He commands even the unclean</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ChurchRole">ChurchRole</span><span class="dep-chip" data-target="SpiritualAuthority">SpiritualAuthority</span><span class="dep-chip" data-target="christ">christ</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="exorcism_authority_chain">exorcism_authority_chain</span><span class="dep-chip" data-target="ChurchRole">ChurchRole</span><span class="dep-chip" data-target="SpiritualAuthority">SpiritualAuthority</span></div></div>
+    a.domain = &quot;exorcism&quot; ∧ a.holder = ChurchRole.christ</code></pre></div>
+<div class="node-desc">AXIOM 1 (Scripture): Jesus has authority over demons.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="exorcism_authority_chain">exorcism_authority_chain</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="christ_delegated_to_apostles">
@@ -602,11 +601,11 @@ h1 {
   ∃ (a : SpiritualAuthority),
     a.domain = &quot;exorcism&quot; ∧
     a.holder = ChurchRole.apostle ∧
-    a.source = ChurchRole.christ
-</code></pre></div>
-<div class="node-desc">2 (Scripture): Jesus delegated authority to the Apostles. │   Source: [Scripture] Mk 6:7 (&quot;He gave them authority over</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ChurchRole">ChurchRole</span><span class="dep-chip" data-target="SpiritualAuthority">SpiritualAuthority</span><span class="dep-chip" data-target="christ">christ</span><span class="dep-chip" data-target="christ_delegates_exorcism">christ_delegates_exorcism</span><span class="dep-chip" data-target="exorcismDomain">exorcismDomain</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="exorcism_authority_chain">exorcism_authority_chain</span><span class="dep-chip" data-target="ChurchRole">ChurchRole</span><span class="dep-chip" data-target="SpiritualAuthority">SpiritualAuthority</span></div></div>
+    a.source = ChurchRole.christ</code></pre></div>
+<div class="node-desc">AXIOM 2 (Scripture): Jesus delegated authority to the Apostles.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="exorcism_authority_chain">exorcism_authority_chain</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="apostolic_succession">
@@ -620,11 +619,11 @@ h1 {
   ∃ (a : SpiritualAuthority),
     a.domain = &quot;exorcism&quot; ∧
     a.holder = ChurchRole.bishop ∧
-    a.source = ChurchRole.apostle
-</code></pre></div>
-<div class="node-desc">3 (Tradition): Apostolic succession — the Apostles' │   Source: [Tradition] CCC §77, §861-862. This is the core │   ⚠ HIDDEN ASSUMPTION: Authority transfer is valid across generations</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ChurchRole">ChurchRole</span><span class="dep-chip" data-target="SpiritualAuthority">SpiritualAuthority</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="exorcism_authority_chain">exorcism_authority_chain</span><span class="dep-chip" data-target="ChurchRole">ChurchRole</span><span class="dep-chip" data-target="SpiritualAuthority">SpiritualAuthority</span></div></div>
+    a.source = ChurchRole.apostle</code></pre></div>
+<div class="node-desc">AXIOM 3 (Tradition): Apostolic succession — the Apostles&#x27;</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="exorcism_authority_chain">exorcism_authority_chain</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="bishop_delegates_to_priest">
@@ -638,11 +637,11 @@ h1 {
   ∃ (a : SpiritualAuthority),
     a.domain = &quot;exorcism&quot; ∧
     a.holder = ChurchRole.priest ∧
-    a.source = ChurchRole.bishop
-</code></pre></div>
-<div class="node-desc">4 (§1673): Bishops can delegate exorcism to priests. │   ⚠ HIDDEN ASSUMPTION: Two-tier permission model. Ordination gives</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ChurchRole">ChurchRole</span><span class="dep-chip" data-target="SpiritualAuthority">SpiritualAuthority</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="exorcism_authority_chain">exorcism_authority_chain</span><span class="dep-chip" data-target="ChurchRole">ChurchRole</span><span class="dep-chip" data-target="SpiritualAuthority">SpiritualAuthority</span></div></div>
+    a.source = ChurchRole.bishop</code></pre></div>
+<div class="node-desc">AXIOM 4 (§1673): Bishops can delegate exorcism to priests.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="exorcism_authority_chain">exorcism_authority_chain</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="exorcism_delegated_from_authority_lean">
@@ -655,7 +654,6 @@ h1 {
     <div class="node-prop"><pre><code>theorem exorcism_delegated_from_authority_lean :
     exorcismDomain.christHasIt ∧ exorcismDomain.christDelegatedIt</code></pre></div>
 <div class="node-desc">Bridge to Authority.lean: Christ has exorcism authority and</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="exorcismDomain">exorcismDomain</span><span class="dep-chip" data-target="exorcism_authority">exorcism_authority</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="exorcism_authority_chain">
@@ -675,8 +673,12 @@ h1 {
     -- Delegated to priests
     (∃ a : SpiritualAuthority, a.domain = &quot;exorcism&quot; ∧ a.holder = ChurchRole.priest)</code></pre></div>
 <div class="node-desc">The complete authority chain: Christ → Apostles → Bishops → Priests.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ChurchRole">ChurchRole</span><span class="dep-chip" data-target="SpiritualAuthority">SpiritualAuthority</span><span class="dep-chip" data-target="apostolic_succession">apostolic_succession</span><span class="dep-chip" data-target="bishop_delegates_to_priest">bishop_delegates_to_priest</span><span class="dep-chip" data-target="christ">christ</span><span class="dep-chip" data-target="christ_delegated_to_apostles">christ_delegated_to_apostles</span><span class="dep-chip" data-target="christ_has_exorcism_authority">christ_has_exorcism_authority</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ChurchRole">ChurchRole</span><span class="dep-chip" data-target="SpiritualAuthority">SpiritualAuthority</span><span class="dep-chip" data-target="apostolic_succession">apostolic_succession</span><span class="dep-chip" data-target="bishop_delegates_to_priest">bishop_delegates_to_priest</span><span class="dep-chip" data-target="christ_delegated_to_apostles">christ_delegated_to_apostles</span><span class="dep-chip" data-target="christ_has_exorcism_authority">christ_has_exorcism_authority</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="apostolic_succession">apostolic_succession</span>
+<span class="dep-chip" data-target="bishop_delegates_to_priest">bishop_delegates_to_priest</span>
+<span class="dep-chip" data-target="christ_has_exorcism_authority">christ_has_exorcism_authority</span>
+<span class="dep-chip" data-target="christ_delegated_to_apostles">christ_delegated_to_apostles</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="authority_requires_higher_source">
@@ -688,11 +690,11 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom authority_requires_higher_source :
   ∀ (a : SpiritualAuthority),
-    a.domain = &quot;exorcism&quot; → a.holder = a.source → False
-</code></pre></div>
-<div class="node-desc">Spiritual authority must come from above — you cannot │   Source: [Scripture] Jn 15:5 (&quot;without me you can do nothing&quot;), │   ⚠ HIDDEN ASSUMPTION: Authority is not democratically distributed.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SpiritualAuthority">SpiritualAuthority</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="laypersons_cannot_exorcize">laypersons_cannot_exorcize</span><span class="dep-chip" data-target="SpiritualAuthority">SpiritualAuthority</span></div></div>
+    a.domain = &quot;exorcism&quot; → a.holder = a.source → False</code></pre></div>
+<div class="node-desc">AXIOM: Spiritual authority must come from above — you cannot</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="laypersons_cannot_exorcize">laypersons_cannot_exorcize</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="laypersons_cannot_exorcize">
@@ -707,8 +709,9 @@ h1 {
       a.domain = &quot;exorcism&quot; ∧
       a.holder = ChurchRole.layperson ∧
       a.source = ChurchRole.layperson)</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ChurchRole">ChurchRole</span><span class="dep-chip" data-target="SpiritualAuthority">SpiritualAuthority</span><span class="dep-chip" data-target="authority_requires_higher_source">authority_requires_higher_source</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ChurchRole">ChurchRole</span><span class="dep-chip" data-target="SpiritualAuthority">SpiritualAuthority</span><span class="dep-chip" data-target="authority_requires_higher_source">authority_requires_higher_source</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="authority_requires_higher_source">authority_requires_higher_source</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-structure" data-kind="structure" data-name="Demon">
@@ -720,7 +723,6 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>structure Demon where</code></pre></div>
 <div class="node-desc">A demon — a fallen angel, personal spiritual being.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="demons_exist">demons_exist</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="demons_exist">
@@ -732,25 +734,16 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom demons_exist :
   ∃ (d : Demon), d.isPersonal ∧ d.isFinite ∧ d.respondsToAuthority
-</code></pre></div>
-<div class="node-desc">5 (§391-395): Demons exist as personal spiritual beings. │   Source: [Scripture] Mt 4:1-11 (temptation), Mk 5:1-20 | [Tradition] │   ⚠ HIDDEN ASSUMPTION: This is a literal ontological claim, not a</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Demon">Demon</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="Demon">Demon</span></div></div>
-  </div>
-</div>
-<div class="node-card kind-axiom" data-kind="axiom" data-name="possession_distinguishable_from_illness">
-  <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">axiom</span>
-    <span class="node-name">possession_distinguishable_from_illness</span>
-    <span class="node-chevron">&#9654;</span>
-  </div>
-  <div class="node-details">
-    <div class="node-prop"><pre><code>axiom possession_distinguishable_from_illness :
-  -- There exists a way to tell the difference
-  -- (the Catechism never says what that way is)
-  True
-</code></pre></div>
-<div class="node-desc">6 (§1673): Possession is distinguishable from illness. ⚠ HIDDEN ASSUMPTION: There exists a reliable way to distinguish</div>
+
+-- REMOVED AXIOM: possession_distinguishable_from_illness (was vacuous — body was True).
+-- §1673: Possession is distinguishable from illness.
+-- &quot;Illness, especially psychological illness, is a very different
+-- matter; treating this is the concern of medical science.&quot;
+-- HIDDEN ASSUMPTION: There exists a reliable way to distinguish
+-- demonic possession from mental illness. The Catechism asserts
+-- the distinction but gives NO diagnostic criteria. This is
+-- perhaps the biggest epistemic gap in the exorcism teaching.</code></pre></div>
+<div class="node-desc">AXIOM 5 (§391-395): Demons exist as personal spiritual beings.</div>
   </div>
 </div>
   </div>

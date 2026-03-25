@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>HumanNature — Catlib Explorer</title>
+  <title>HolyOrders — Catlib Explorer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -528,173 +528,375 @@ h1 {
 <body>
 <div class="container">
   <a href="index.html" class="back-link">&larr; All files</a>
-  <h1>HumanNature</h1>
-  <div class="subtitle">Foundations &middot; 11 declarations</div>
+  <h1>HolyOrders</h1>
+  <div class="subtitle">Sacraments &middot; 24 declarations</div>
   
-  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;362, &sect;365, &sect;405, &sect;1705</div>
+  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1536, &sect;1546, &sect;1547, &sect;1548, &sect;1554, &sect;1555, &sect;1557, &sect;1562, &sect;1566, &sect;1569, &sect;1576, &sect;1582</div>
 
-  <div class="legend"><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span><span class="legend-item"><span class="legend-dot proposition"></span>proposition</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot structure"></span>structure</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span></div>
+  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span></div>
 
-  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="theorem">theorem (2)</button><button class="filter-btn" data-filter="proposition">proposition (1)</button><button class="filter-btn" data-filter="def">def (3)</button><button class="filter-btn" data-filter="structure">structure (3)</button><button class="filter-btn" data-filter="inductive">inductive (2)</button></div>
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (6)</button><button class="filter-btn" data-filter="theorem">theorem (7)</button><button class="filter-btn" data-filter="def">def (3)</button><button class="filter-btn" data-filter="opaque">opaque (7)</button><button class="filter-btn" data-filter="inductive">inductive (1)</button></div>
 
   <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
 
   <div id="nodeList">
-    <div class="node-card kind-inductive" data-kind="inductive" data-name="PersonAspect">
+    <div class="node-card kind-inductive" data-kind="inductive" data-name="OrderDegree">
   <div class="node-header" onclick="toggleNode(this)">
     <span class="node-kind-badge">inductive</span>
-    <span class="node-name">PersonAspect</span>
+    <span class="node-name">OrderDegree</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>inductive PersonAspect where</code></pre></div>
-<div class="node-desc">The two aspects of a human person (§362).</div>
+    <div class="node-prop"><pre><code>inductive OrderDegree where</code></pre></div>
+<div class="node-desc">The three degrees of the sacrament of holy orders.</div>
   </div>
 </div>
-<div class="node-card kind-inductive" data-kind="inductive" data-name="SpiritualPower">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="isOrdained">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">inductive</span>
-    <span class="node-name">SpiritualPower</span>
+    <span class="node-kind-badge">opaque</span>
+    <span class="node-name">isOrdained</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>inductive SpiritualPower where</code></pre></div>
-<div class="node-desc">The two spiritual powers of the soul (§1705).</div>
+    <div class="node-prop"><pre><code>opaque isOrdained : Person → OrderDegree → Prop</code></pre></div>
+<div class="node-desc">Whether a person has been ordained to a specific degree of holy orders.</div>
   </div>
 </div>
-<div class="node-card kind-structure" data-kind="structure" data-name="PowerState">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="hasMinisterialPriesthood">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">structure</span>
-    <span class="node-name">PowerState</span>
+    <span class="node-kind-badge">opaque</span>
+    <span class="node-name">hasMinisterialPriesthood</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>structure PowerState where</code></pre></div>
-<div class="node-desc">The state of a spiritual power — how wounded or healed it is.</div>
+    <div class="node-prop"><pre><code>opaque hasMinisterialPriesthood : Person → Prop</code></pre></div>
+<div class="node-desc">Whether a person participates in the MINISTERIAL (ordained) priesthood.</div>
   </div>
 </div>
-<div class="node-card kind-structure" data-kind="structure" data-name="OriginalWounds">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="hasCommonPriesthood">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">structure</span>
-    <span class="node-name">OriginalWounds</span>
+    <span class="node-kind-badge">opaque</span>
+    <span class="node-name">hasCommonPriesthood</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>structure OriginalWounds where</code></pre></div>
-<div class="node-desc">The wounds of original sin, as the CCC describes them (§405).</div>
+    <div class="node-prop"><pre><code>opaque hasCommonPriesthood : Person → Prop</code></pre></div>
+<div class="node-desc">Whether a person participates in the COMMON (baptismal) priesthood.</div>
   </div>
 </div>
-<div class="node-card kind-structure" data-kind="structure" data-name="HumanNature">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="differInEssence">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">structure</span>
-    <span class="node-name">HumanNature</span>
+    <span class="node-kind-badge">opaque</span>
+    <span class="node-name">differInEssence</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>structure HumanNature where</code></pre></div>
-<div class="node-desc">Human nature as the CCC describes it.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="fall_diminishes_freedom_from_nature">fall_diminishes_freedom_from_nature</span>
-<span class="dep-chip" data-target="freedom_survives_fall">freedom_survives_fall</span>
-</div></div>
+    <div class="node-prop"><pre><code>opaque differInEssence : Prop</code></pre></div>
+<div class="node-desc">Whether two kinds of priesthood differ &quot;in essence and not only in degree.&quot;</div>
   </div>
 </div>
-<div class="node-card kind-def" data-kind="def" data-name="HumanNature.freedomLevel">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="canConfectEucharist">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">def</span>
-    <span class="node-name">HumanNature.freedomLevel</span>
+    <span class="node-kind-badge">opaque</span>
+    <span class="node-name">canConfectEucharist</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def HumanNature.freedomLevel (hn : HumanNature) : Nat</code></pre></div>
-<div class="node-desc">Freedom level is derived from intellect + will states.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="fall_diminishes_freedom_from_nature">fall_diminishes_freedom_from_nature</span>
-</div></div>
+    <div class="node-prop"><pre><code>opaque canConfectEucharist : Person → Prop</code></pre></div>
+<div class="node-desc">Whether a person can confect the Eucharist — the central</div>
   </div>
 </div>
-<div class="node-card kind-proposition" data-kind="proposition" data-name="HumanNature.hasFreedom">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="canOrdain">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
-    <span class="node-name">HumanNature.hasFreedom</span>
+    <span class="node-kind-badge">opaque</span>
+    <span class="node-name">canOrdain</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def HumanNature.hasFreedom (hn : HumanNature) : Prop</code></pre></div>
-<div class="node-desc">A person with unwounded intellect and will has full freedom.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="freedom_survives_fall">freedom_survives_fall</span>
-</div></div>
+    <div class="node-prop"><pre><code>opaque canOrdain : Person → Prop
+
+-- ============================================================================
+-- § 3. Denominational Tags
+-- ============================================================================</code></pre></div>
+<div class="node-desc">Whether a person can ordain others — the power to transmit holy orders.</div>
   </div>
 </div>
-<div class="node-card kind-def" data-kind="def" data-name="originalIntegrity">
+<div class="node-card kind-def" data-kind="def" data-name="holyOrdersOntologicalTag">
   <div class="node-header" onclick="toggleNode(this)">
     <span class="node-kind-badge">def</span>
-    <span class="node-name">originalIntegrity</span>
+    <span class="node-name">holyOrdersOntologicalTag</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def originalIntegrity (p : Person) : HumanNature</code></pre></div>
-<div class="node-desc">The state of human nature before the Fall.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="fall_diminishes_freedom_from_nature">fall_diminishes_freedom_from_nature</span>
-</div></div>
+    <div class="node-prop"><pre><code>def holyOrdersOntologicalTag : DenominationalTag</code></pre></div>
+<div class="node-desc">The three-degree structure and ontological priesthood are CATHOLIC</div>
   </div>
 </div>
-<div class="node-card kind-def" data-kind="def" data-name="fallenNature">
+<div class="node-card kind-def" data-kind="def" data-name="commonPriesthoodTag">
   <div class="node-header" onclick="toggleNode(this)">
     <span class="node-kind-badge">def</span>
-    <span class="node-name">fallenNature</span>
+    <span class="node-name">commonPriesthoodTag</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def fallenNature (p : Person) : HumanNature</code></pre></div>
-<div class="node-desc">The state of human nature after the Fall (§405).</div>
+    <div class="node-prop"><pre><code>def commonPriesthoodTag : DenominationalTag</code></pre></div>
+<div class="node-desc">The common priesthood of all believers is ECUMENICAL — all</div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="essenceNotDegreeTag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">essenceNotDegreeTag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def essenceNotDegreeTag : DenominationalTag</code></pre></div>
+<div class="node-desc">The &quot;in essence not degree&quot; distinction is CATHOLIC (+ Orthodox).</div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="bishop_has_fullness">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">bishop_has_fullness</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom bishop_has_fullness :
+  ∀ (p : Person), isOrdained p .bishop →
+    hasMinisterialPriesthood p ∧ canConfectEucharist p ∧ canOrdain p</code></pre></div>
+<div class="node-desc">The bishop has the fullness of the sacrament of</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="fall_diminishes_freedom_from_nature">fall_diminishes_freedom_from_nature</span>
-<span class="dep-chip" data-target="freedom_survives_fall">freedom_survives_fall</span>
+<span class="dep-chip" data-target="bishop_exceeds_priest">bishop_exceeds_priest</span>
+<span class="dep-chip" data-target="three_degree_hierarchy">three_degree_hierarchy</span>
 </div></div>
   </div>
 </div>
-<div class="node-card kind-theorem" data-kind="theorem" data-name="fall_diminishes_freedom_from_nature">
+<div class="node-card kind-axiom" data-kind="axiom" data-name="priest_has_sacerdotal">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">priest_has_sacerdotal</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom priest_has_sacerdotal :
+  ∀ (p : Person), isOrdained p .priest →
+    hasMinisterialPriesthood p ∧ canConfectEucharist p ∧ ¬canOrdain p</code></pre></div>
+<div class="node-desc">The priest shares in the ministerial priesthood</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="only_bishops_ordain">only_bishops_ordain</span>
+<span class="dep-chip" data-target="three_degree_hierarchy">three_degree_hierarchy</span>
+</div></div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="deacon_serves_not_priesthood">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">deacon_serves_not_priesthood</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom deacon_serves_not_priesthood :
+  ∀ (p : Person), isOrdained p .deacon →
+    ¬hasMinisterialPriesthood p ∧ ¬canConfectEucharist p ∧ ¬canOrdain p</code></pre></div>
+<div class="node-desc">The deacon is ordained for service, not for</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="deacon_no_priestly_powers">deacon_no_priestly_powers</span>
+<span class="dep-chip" data-target="essence_not_degree_witness">essence_not_degree_witness</span>
+<span class="dep-chip" data-target="three_degree_hierarchy">three_degree_hierarchy</span>
+</div></div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="ministerial_common_differ_in_essence">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">ministerial_common_differ_in_essence</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom ministerial_common_differ_in_essence :
+  differInEssence</code></pre></div>
+<div class="node-desc">The ministerial and common priesthoods differ</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="essence_not_degree_witness">essence_not_degree_witness</span>
+</div></div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="baptism_confers_common_priesthood">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">baptism_confers_common_priesthood</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom baptism_confers_common_priesthood :
+  ∀ (p : Person), hasCommonPriesthood p</code></pre></div>
+<div class="node-desc">Every baptized person has the common priesthood.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="essence_not_degree_witness">essence_not_degree_witness</span>
+</div></div>
+  </div>
+</div>
+<div class="node-card kind-opaque" data-kind="opaque" data-name="functionalOrdinationOnly">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">opaque</span>
+    <span class="node-name">functionalOrdinationOnly</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>opaque functionalOrdinationOnly : Prop</code></pre></div>
+<div class="node-desc">Whether ordination is understood as purely functional — a community</div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="functional_ordination_no_character">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">functional_ordination_no_character</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom functional_ordination_no_character :
+  functionalOrdinationOnly →
+    ¬ imprintsCharacter .holyOrders
+
+-- ============================================================================
+-- § 5. Theorems
+-- ============================================================================</code></pre></div>
+<div class="node-desc">Under functional ordination, ordination</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="ordination_denominational_split">ordination_denominational_split</span>
+</div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="only_bishops_ordain">
   <div class="node-header" onclick="toggleNode(this)">
     <span class="node-kind-badge">theorem</span>
-    <span class="node-name">fall_diminishes_freedom_from_nature</span>
+    <span class="node-name">only_bishops_ordain</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>theorem fall_diminishes_freedom_from_nature (p : Person) :
-    (originalIntegrity p).freedomLevel &gt; (fallenNature p).freedomLevel</code></pre></div>
-<div class="node-desc">Freedom is diminished after the Fall — because both intellect</div>
+    <div class="node-prop"><pre><code>theorem only_bishops_ordain
+    (p : Person) (h_priest : isOrdained p .priest) :
+    ¬canOrdain p</code></pre></div>
+<div class="node-desc">THEOREM: Only bishops can ordain — the episcopate is the source of</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="HumanNature">HumanNature</span>
-<span class="dep-chip" data-target="originalIntegrity">originalIntegrity</span>
-<span class="dep-chip" data-target="fallenNature">fallenNature</span>
-<span class="dep-chip" data-target="HumanNature.freedomLevel">HumanNature.freedomLevel</span>
+<span class="dep-chip" data-target="priest_has_sacerdotal">priest_has_sacerdotal</span>
 </div></div>
   </div>
 </div>
-<div class="node-card kind-theorem" data-kind="theorem" data-name="freedom_survives_fall">
+<div class="node-card kind-theorem" data-kind="theorem" data-name="bishop_exceeds_priest">
   <div class="node-header" onclick="toggleNode(this)">
     <span class="node-kind-badge">theorem</span>
-    <span class="node-name">freedom_survives_fall</span>
+    <span class="node-name">bishop_exceeds_priest</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>theorem freedom_survives_fall (p : Person) :
-    (fallenNature p).hasFreedom</code></pre></div>
-<div class="node-desc">But freedom is NOT destroyed — the CCC says nature is wounded,</div>
+    <div class="node-prop"><pre><code>theorem bishop_exceeds_priest
+    (b : Person) (h_bishop : isOrdained b .bishop) :
+    hasMinisterialPriesthood b
+    ∧ canConfectEucharist b
+    ∧ canOrdain b</code></pre></div>
+<div class="node-desc">THEOREM: Bishops have strictly more sacramental power than priests.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="HumanNature.hasFreedom">HumanNature.hasFreedom</span>
-<span class="dep-chip" data-target="HumanNature">HumanNature</span>
-<span class="dep-chip" data-target="fallenNature">fallenNature</span>
+<span class="dep-chip" data-target="bishop_has_fullness">bishop_has_fullness</span>
+</div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="deacon_no_priestly_powers">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">deacon_no_priestly_powers</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem deacon_no_priestly_powers
+    (p : Person) (h_deacon : isOrdained p .deacon) :
+    ¬hasMinisterialPriesthood p ∧ ¬canConfectEucharist p</code></pre></div>
+<div class="node-desc">THEOREM: Deacons have neither the ministerial priesthood nor</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="deacon_serves_not_priesthood">deacon_serves_not_priesthood</span>
+</div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="essence_not_degree_witness">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">essence_not_degree_witness</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem essence_not_degree_witness
+    (p : Person) (h_deacon : isOrdained p .deacon) :
+    hasCommonPriesthood p
+    ∧ ¬hasMinisterialPriesthood p
+    ∧ differInEssence</code></pre></div>
+<div class="node-desc">THEOREM: The ministerial and common priesthoods are both real but</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="deacon_serves_not_priesthood">deacon_serves_not_priesthood</span>
+<span class="dep-chip" data-target="ministerial_common_differ_in_essence">ministerial_common_differ_in_essence</span>
+<span class="dep-chip" data-target="baptism_confers_common_priesthood">baptism_confers_common_priesthood</span>
+</div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="holyOrders_non_repeatable">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">holyOrders_non_repeatable</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem holyOrders_non_repeatable :
+    ¬isRepeatable .holyOrders</code></pre></div>
+<div class="node-desc">THEOREM: Holy orders is non-repeatable — connecting to</div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="three_degree_hierarchy">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">three_degree_hierarchy</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem three_degree_hierarchy
+    (b : Person) (pr : Person) (d : Person)
+    (h_b : isOrdained b .bishop)
+    (h_pr : isOrdained pr .priest)
+    (h_d : isOrdained d .deacon) :
+    -- Bishop: all three powers
+    (hasMinisterialPriesthood b ∧ canConfectEucharist b ∧ canOrdain b)
+    -- Priest: two of three, not ordination
+    ∧ (hasMinisterialPriesthood pr ∧ canConfectEucharist pr ∧ ¬canOrdain pr)
+    -- Deacon: none of the three
+    ∧ (¬hasMinisterialPriesthood d ∧ ¬canConfectEucharist d ∧ ¬canOrdain d)</code></pre></div>
+<div class="node-desc">THEOREM: The three degrees form a hierarchy of sacramental power.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="priest_has_sacerdotal">priest_has_sacerdotal</span>
+<span class="dep-chip" data-target="bishop_has_fullness">bishop_has_fullness</span>
+<span class="dep-chip" data-target="deacon_serves_not_priesthood">deacon_serves_not_priesthood</span>
+</div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="ordination_denominational_split">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">ordination_denominational_split</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem ordination_denominational_split :
+    -- Catholic: character → non-repeatable
+    (imprintsCharacter .holyOrders ∧ ¬isRepeatable .holyOrders)
+    -- Protestant (given functional-only): no character
+    ∧ (functionalOrdinationOnly → ¬imprintsCharacter .holyOrders)</code></pre></div>
+<div class="node-desc">THEOREM (denominational diagnosis): The split over ordination reduces</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="functional_ordination_no_character">functional_ordination_no_character</span>
 </div></div>
   </div>
 </div>
   </div>
 
   <div class="footer">
-    Generated from <code>Catlib/Foundations/HumanNature.lean</code>
+    Generated from <code>Catlib/Sacraments/HolyOrders.lean</code>
   </div>
 </div>
 

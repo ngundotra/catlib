@@ -267,6 +267,8 @@ h1 {
 .node-card.kind-structure { border-left-color: var(--structure-dot); }
 .node-card.kind-inductive { border-left-color: var(--inductive-dot); }
 .node-card.kind-proposition { border-left-color: var(--proposition-dot); }
+.node-card.kind-instance { border-left-color: var(--def-dot); }
+.node-card.kind-abbrev { border-left-color: var(--def-dot); }
 
 .node-header {
   display: flex;
@@ -302,6 +304,8 @@ h1 {
 .kind-structure .node-kind-badge { background: var(--structure-bg); color: var(--structure-dot); }
 .kind-inductive .node-kind-badge { background: var(--inductive-bg); color: var(--inductive-dot); }
 .kind-proposition .node-kind-badge { background: var(--proposition-bg); color: var(--proposition-dot); }
+.kind-instance .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
+.kind-abbrev .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
 
 .node-name {
   flex: 1;
@@ -462,6 +466,8 @@ h1 {
 .legend-dot.structure { background: var(--structure-dot); }
 .legend-dot.inductive { background: var(--inductive-dot); }
 .legend-dot.proposition { background: var(--proposition-dot); }
+.legend-dot.instance { background: var(--def-dot); }
+.legend-dot.abbrev { background: var(--def-dot); }
 
 /* ── Filter buttons ── */
 .filter-bar {
@@ -524,13 +530,10 @@ h1 {
   <a href="index.html" class="back-link">&larr; All files</a>
   <h1>Authority</h1>
   <div class="subtitle">Foundations &middot; 39 declarations</div>
-
   
-  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;77, &sect;862</div>
+  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot structure"></span>structure</span></div>
 
-  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot structure"></span>structure</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
-
-  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (9)</button><button class="filter-btn" data-filter="def">def (16)</button><button class="filter-btn" data-filter="structure">structure (5)</button><button class="filter-btn" data-filter="theorem">theorem (9)</button></div>
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (9)</button><button class="filter-btn" data-filter="theorem">theorem (9)</button><button class="filter-btn" data-filter="def">def (16)</button><button class="filter-btn" data-filter="structure">structure (5)</button></div>
 
   <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
 
@@ -544,7 +547,6 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>structure DelegationScope where</code></pre></div>
 <div class="node-desc">Which denominations accept a specific authority delegation.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="delegationEcumenical">delegationEcumenical</span><span class="dep-chip" data-target="delegationCatholicOrthodox">delegationCatholicOrthodox</span><span class="dep-chip" data-target="delegationCatholicSpecific">delegationCatholicSpecific</span><span class="dep-chip" data-target="SpecificDelegation">SpecificDelegation</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="delegationEcumenical">
@@ -556,8 +558,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def delegationEcumenical : DelegationScope</code></pre></div>
 <div class="node-desc">Accepted by all major Christian traditions.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DelegationScope">DelegationScope</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="specificDelegations">specificDelegations</span><span class="dep-chip" data-target="DelegationScope">DelegationScope</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="specificDelegations">specificDelegations</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="delegationCatholicOrthodox">
@@ -569,8 +572,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def delegationCatholicOrthodox : DelegationScope</code></pre></div>
 <div class="node-desc">Accepted by Catholic and Orthodox but contested by Protestants.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DelegationScope">DelegationScope</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="specificDelegations">specificDelegations</span><span class="dep-chip" data-target="DelegationScope">DelegationScope</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="specificDelegations">specificDelegations</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="delegationCatholicSpecific">
@@ -582,8 +586,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def delegationCatholicSpecific : DelegationScope</code></pre></div>
 <div class="node-desc">Accepted only under Catholic interpretation.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DelegationScope">DelegationScope</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="specificDelegations">specificDelegations</span><span class="dep-chip" data-target="DelegationScope">DelegationScope</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="specificDelegations">specificDelegations</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-structure" data-kind="structure" data-name="AuthorityDomain">
@@ -595,7 +600,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>structure AuthorityDomain where</code></pre></div>
 <div class="node-desc">A domain of spiritual authority -- what the authority covers.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="SpecificDelegation">SpecificDelegation</span><span class="dep-chip" data-target="ChainLink">ChainLink</span><span class="dep-chip" data-target="teachingDomain">teachingDomain</span><span class="dep-chip" data-target="baptismDomain">baptismDomain</span><span class="dep-chip" data-target="absolutionDomain">absolutionDomain</span><span class="dep-chip" data-target="eucharistDomain">eucharistDomain</span><span class="dep-chip" data-target="bindingLoosingDomain">bindingLoosingDomain</span><span class="dep-chip" data-target="anointingDomain">anointingDomain</span><span class="dep-chip" data-target="exorcismDomain">exorcismDomain</span><span class="dep-chip" data-target="ordinationDomain">ordinationDomain</span><span class="dep-chip" data-target="christ_has_all_authority">christ_has_all_authority</span><span class="dep-chip" data-target="authority_chain_specific">authority_chain_specific</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="ChainLink">ChainLink</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-structure" data-kind="structure" data-name="SpecificDelegation">
@@ -607,8 +614,6 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>structure SpecificDelegation where</code></pre></div>
 <div class="node-desc">A specific delegation of authority from Christ to the Apostles.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="AuthorityDomain">AuthorityDomain</span><span class="dep-chip" data-target="DelegationScope">DelegationScope</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="specificDelegations">specificDelegations</span><span class="dep-chip" data-target="AuthorityDomain">AuthorityDomain</span><span class="dep-chip" data-target="DelegationScope">DelegationScope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-structure" data-kind="structure" data-name="ChainLink">
@@ -620,8 +625,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>structure ChainLink where</code></pre></div>
 <div class="node-desc">A link in the authority chain.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="AuthorityDomain">AuthorityDomain</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="AuthorityDomain">AuthorityDomain</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="AuthorityDomain">AuthorityDomain</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="teachingDomain">
@@ -633,8 +639,10 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def teachingDomain : AuthorityDomain</code></pre></div>
 <div class="node-desc">The domain of teaching with authority.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="AuthorityDomain">AuthorityDomain</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="christ_delegates_teaching">christ_delegates_teaching</span><span class="dep-chip" data-target="specificDelegations">specificDelegations</span><span class="dep-chip" data-target="teaching_authority">teaching_authority</span><span class="dep-chip" data-target="AuthorityDomain">AuthorityDomain</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="specificDelegations">specificDelegations</span>
+<span class="dep-chip" data-target="teaching_authority">teaching_authority</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="baptismDomain">
@@ -646,8 +654,10 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def baptismDomain : AuthorityDomain</code></pre></div>
 <div class="node-desc">The domain of baptism.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="AuthorityDomain">AuthorityDomain</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="christ_delegates_baptism">christ_delegates_baptism</span><span class="dep-chip" data-target="specificDelegations">specificDelegations</span><span class="dep-chip" data-target="baptism_authority">baptism_authority</span><span class="dep-chip" data-target="AuthorityDomain">AuthorityDomain</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="specificDelegations">specificDelegations</span>
+<span class="dep-chip" data-target="baptism_authority">baptism_authority</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="absolutionDomain">
@@ -659,8 +669,10 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def absolutionDomain : AuthorityDomain</code></pre></div>
 <div class="node-desc">The domain of forgiving sins (absolution).</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="AuthorityDomain">AuthorityDomain</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="christ_delegates_absolution">christ_delegates_absolution</span><span class="dep-chip" data-target="specificDelegations">specificDelegations</span><span class="dep-chip" data-target="absolution_authority">absolution_authority</span><span class="dep-chip" data-target="AuthorityDomain">AuthorityDomain</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="specificDelegations">specificDelegations</span>
+<span class="dep-chip" data-target="absolution_authority">absolution_authority</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="eucharistDomain">
@@ -671,9 +683,11 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>def eucharistDomain : AuthorityDomain</code></pre></div>
-<div class="node-desc">The domain of the Eucharist (the Lord's Supper).</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="AuthorityDomain">AuthorityDomain</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="christ_delegates_eucharist">christ_delegates_eucharist</span><span class="dep-chip" data-target="specificDelegations">specificDelegations</span><span class="dep-chip" data-target="eucharist_authority">eucharist_authority</span><span class="dep-chip" data-target="AuthorityDomain">AuthorityDomain</span></div></div>
+<div class="node-desc">The domain of the Eucharist (the Lord&#x27;s Supper).</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="specificDelegations">specificDelegations</span>
+<span class="dep-chip" data-target="eucharist_authority">eucharist_authority</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="bindingLoosingDomain">
@@ -685,8 +699,10 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def bindingLoosingDomain : AuthorityDomain</code></pre></div>
 <div class="node-desc">The domain of binding and loosing.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="AuthorityDomain">AuthorityDomain</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="christ_delegates_binding_loosing">christ_delegates_binding_loosing</span><span class="dep-chip" data-target="specificDelegations">specificDelegations</span><span class="dep-chip" data-target="binding_loosing_authority">binding_loosing_authority</span><span class="dep-chip" data-target="AuthorityDomain">AuthorityDomain</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="specificDelegations">specificDelegations</span>
+<span class="dep-chip" data-target="binding_loosing_authority">binding_loosing_authority</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="anointingDomain">
@@ -698,8 +714,10 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def anointingDomain : AuthorityDomain</code></pre></div>
 <div class="node-desc">The domain of anointing the sick.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="AuthorityDomain">AuthorityDomain</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="christ_delegates_anointing">christ_delegates_anointing</span><span class="dep-chip" data-target="specificDelegations">specificDelegations</span><span class="dep-chip" data-target="anointing_authority">anointing_authority</span><span class="dep-chip" data-target="AuthorityDomain">AuthorityDomain</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="specificDelegations">specificDelegations</span>
+<span class="dep-chip" data-target="anointing_authority">anointing_authority</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="exorcismDomain">
@@ -711,8 +729,10 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def exorcismDomain : AuthorityDomain</code></pre></div>
 <div class="node-desc">The domain of exorcism.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="AuthorityDomain">AuthorityDomain</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="christ_delegates_exorcism">christ_delegates_exorcism</span><span class="dep-chip" data-target="specificDelegations">specificDelegations</span><span class="dep-chip" data-target="exorcism_authority">exorcism_authority</span><span class="dep-chip" data-target="AuthorityDomain">AuthorityDomain</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="specificDelegations">specificDelegations</span>
+<span class="dep-chip" data-target="exorcism_authority">exorcism_authority</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="ordinationDomain">
@@ -724,8 +744,10 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def ordinationDomain : AuthorityDomain</code></pre></div>
 <div class="node-desc">The domain of ordination (laying on of hands).</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="AuthorityDomain">AuthorityDomain</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="christ_delegates_ordination">christ_delegates_ordination</span><span class="dep-chip" data-target="specificDelegations">specificDelegations</span><span class="dep-chip" data-target="ordination_authority">ordination_authority</span><span class="dep-chip" data-target="AuthorityDomain">AuthorityDomain</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="specificDelegations">specificDelegations</span>
+<span class="dep-chip" data-target="ordination_authority">ordination_authority</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="christ_has_all_authority">
@@ -736,11 +758,11 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom christ_has_all_authority :
-  ∀ (d : AuthorityDomain), d.christHasIt
-</code></pre></div>
-<div class="node-desc">Christ has all authority. │   Source: [Scripture] Mt 28:18 (&quot;All authority in heaven and on | Scope: Ecumenical -- all Christians accept this.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="AuthorityDomain">AuthorityDomain</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="authority_chain_specific">authority_chain_specific</span><span class="dep-chip" data-target="AuthorityDomain">AuthorityDomain</span></div></div>
+  ∀ (d : AuthorityDomain), d.christHasIt</code></pre></div>
+<div class="node-desc">Christ has all authority.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="authority_chain_specific">authority_chain_specific</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="christ_delegates_teaching">
@@ -751,11 +773,11 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom christ_delegates_teaching :
-  teachingDomain.christDelegatedIt
-</code></pre></div>
-<div class="node-desc">Christ delegates TEACHING authority to the Apostles. │   Source: [Scripture] Mt 28:19-20 (&quot;Go therefore and make | Scope: ECUMENICAL -- virtually all Christians</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="teachingDomain">teachingDomain</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="teaching_authority">teaching_authority</span><span class="dep-chip" data-target="teachingDomain">teachingDomain</span></div></div>
+  teachingDomain.christDelegatedIt</code></pre></div>
+<div class="node-desc">AXIOM: Christ delegates TEACHING authority to the Apostles.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="teaching_authority">teaching_authority</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="christ_delegates_baptism">
@@ -766,11 +788,11 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom christ_delegates_baptism :
-  baptismDomain.christDelegatedIt
-</code></pre></div>
-<div class="node-desc">Christ delegates BAPTISM authority to the Apostles. │   Source: [Scripture] Mt 28:19 (&quot;Go therefore and make disciples | Scope: ECUMENICAL -- virtually all Christians</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="baptismDomain">baptismDomain</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="christ_delegates_ordination">christ_delegates_ordination</span><span class="dep-chip" data-target="baptism_authority">baptism_authority</span><span class="dep-chip" data-target="baptismDomain">baptismDomain</span></div></div>
+  baptismDomain.christDelegatedIt</code></pre></div>
+<div class="node-desc">AXIOM: Christ delegates BAPTISM authority to the Apostles.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="baptism_authority">baptism_authority</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="christ_delegates_absolution">
@@ -781,11 +803,11 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom christ_delegates_absolution :
-  absolutionDomain.christDelegatedIt
-</code></pre></div>
-<div class="node-desc">Christ delegates authority to FORGIVE SINS to the Apostles. │   Source: [Scripture] Jn 20:21-23 (&quot;Receive the Holy Spirit. | Scope: Catholic + Orthodox accept this as a</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="absolutionDomain">absolutionDomain</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="christ_delegates_ordination">christ_delegates_ordination</span><span class="dep-chip" data-target="absolution_authority">absolution_authority</span><span class="dep-chip" data-target="absolutionDomain">absolutionDomain</span></div></div>
+  absolutionDomain.christDelegatedIt</code></pre></div>
+<div class="node-desc">AXIOM: Christ delegates authority to FORGIVE SINS to the Apostles.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="absolution_authority">absolution_authority</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="christ_delegates_eucharist">
@@ -796,11 +818,11 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom christ_delegates_eucharist :
-  eucharistDomain.christDelegatedIt
-</code></pre></div>
-<div class="node-desc">Christ delegates the EUCHARISTIC authority to the Apostles. │   Source: [Scripture] Lk 22:19 (&quot;Do this in remembrance of me&quot;); | Scope: Catholic + Orthodox read &quot;do this&quot; as</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="eucharistDomain">eucharistDomain</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="eucharist_authority">eucharist_authority</span><span class="dep-chip" data-target="eucharistDomain">eucharistDomain</span></div></div>
+  eucharistDomain.christDelegatedIt</code></pre></div>
+<div class="node-desc">AXIOM: Christ delegates the EUCHARISTIC authority to the Apostles.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="eucharist_authority">eucharist_authority</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="christ_delegates_binding_loosing">
@@ -811,11 +833,11 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom christ_delegates_binding_loosing :
-  bindingLoosingDomain.christDelegatedIt
-</code></pre></div>
-<div class="node-desc">Christ delegates BINDING AND LOOSING authority. │   Source: [Scripture] Mt 16:19 (&quot;I will give you the keys of | Scope: Catholics read this as judicial authority</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="bindingLoosingDomain">bindingLoosingDomain</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="binding_loosing_authority">binding_loosing_authority</span><span class="dep-chip" data-target="bindingLoosingDomain">bindingLoosingDomain</span></div></div>
+  bindingLoosingDomain.christDelegatedIt</code></pre></div>
+<div class="node-desc">AXIOM: Christ delegates BINDING AND LOOSING authority.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="binding_loosing_authority">binding_loosing_authority</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="christ_delegates_anointing">
@@ -826,11 +848,11 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom christ_delegates_anointing :
-  anointingDomain.christDelegatedIt
-</code></pre></div>
-<div class="node-desc">Christ delegates authority to ANOINT THE SICK. │   Source: [Scripture] Mk 6:13 (&quot;They cast out many demons and | Scope: Catholic + Orthodox accept this as a</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="anointingDomain">anointingDomain</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="anointing_authority">anointing_authority</span><span class="dep-chip" data-target="anointingDomain">anointingDomain</span></div></div>
+  anointingDomain.christDelegatedIt</code></pre></div>
+<div class="node-desc">AXIOM: Christ delegates authority to ANOINT THE SICK.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="anointing_authority">anointing_authority</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="christ_delegates_exorcism">
@@ -841,11 +863,11 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom christ_delegates_exorcism :
-  exorcismDomain.christDelegatedIt
-</code></pre></div>
-<div class="node-desc">Christ delegates EXORCISM authority to the Apostles. │   Source: [Scripture] Mk 6:7 (&quot;He gave them authority over | Scope: Catholic + Orthodox accept this. Some</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="exorcismDomain">exorcismDomain</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="exorcism_authority">exorcism_authority</span><span class="dep-chip" data-target="exorcismDomain">exorcismDomain</span></div></div>
+  exorcismDomain.christDelegatedIt</code></pre></div>
+<div class="node-desc">AXIOM: Christ delegates EXORCISM authority to the Apostles.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="exorcism_authority">exorcism_authority</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="christ_delegates_ordination">
@@ -856,11 +878,11 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom christ_delegates_ordination :
-  ordinationDomain.christDelegatedIt
-</code></pre></div>
-<div class="node-desc">Christ delegates ORDINATION authority (the power to │   Source: [Scripture] 2 Tim 1:6 (&quot;the gift of God that is in | Scope: Catholic + Orthodox accept this as</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="apostolic_succession">apostolic_succession</span><span class="dep-chip" data-target="christ_delegates_absolution">christ_delegates_absolution</span><span class="dep-chip" data-target="christ_delegates_baptism">christ_delegates_baptism</span><span class="dep-chip" data-target="ordinationDomain">ordinationDomain</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ordination_authority">ordination_authority</span><span class="dep-chip" data-target="ordinationDomain">ordinationDomain</span><span class="dep-chip" data-target="christ_delegates_absolution">christ_delegates_absolution</span><span class="dep-chip" data-target="christ_delegates_baptism">christ_delegates_baptism</span></div></div>
+  ordinationDomain.christDelegatedIt</code></pre></div>
+<div class="node-desc">AXIOM: Christ delegates ORDINATION authority (the power to</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="ordination_authority">ordination_authority</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="specificDelegations">
@@ -872,8 +894,19 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def specificDelegations : List SpecificDelegation</code></pre></div>
 <div class="node-desc">The complete registry of specific delegations from Christ.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SpecificDelegation">SpecificDelegation</span><span class="dep-chip" data-target="absolutionDomain">absolutionDomain</span><span class="dep-chip" data-target="anointingDomain">anointingDomain</span><span class="dep-chip" data-target="baptismDomain">baptismDomain</span><span class="dep-chip" data-target="bindingLoosingDomain">bindingLoosingDomain</span><span class="dep-chip" data-target="delegationCatholicOrthodox">delegationCatholicOrthodox</span><span class="dep-chip" data-target="delegationCatholicSpecific">delegationCatholicSpecific</span><span class="dep-chip" data-target="delegationEcumenical">delegationEcumenical</span><span class="dep-chip" data-target="eucharistDomain">eucharistDomain</span><span class="dep-chip" data-target="exorcismDomain">exorcismDomain</span><span class="dep-chip" data-target="ordinationDomain">ordinationDomain</span><span class="dep-chip" data-target="teachingDomain">teachingDomain</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="SpecificDelegation">SpecificDelegation</span><span class="dep-chip" data-target="absolutionDomain">absolutionDomain</span><span class="dep-chip" data-target="anointingDomain">anointingDomain</span><span class="dep-chip" data-target="baptismDomain">baptismDomain</span><span class="dep-chip" data-target="bindingLoosingDomain">bindingLoosingDomain</span><span class="dep-chip" data-target="delegationCatholicOrthodox">delegationCatholicOrthodox</span><span class="dep-chip" data-target="delegationCatholicSpecific">delegationCatholicSpecific</span><span class="dep-chip" data-target="delegationEcumenical">delegationEcumenical</span><span class="dep-chip" data-target="eucharistDomain">eucharistDomain</span><span class="dep-chip" data-target="exorcismDomain">exorcismDomain</span><span class="dep-chip" data-target="ordinationDomain">ordinationDomain</span><span class="dep-chip" data-target="teachingDomain">teachingDomain</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="delegationCatholicOrthodox">delegationCatholicOrthodox</span>
+<span class="dep-chip" data-target="eucharistDomain">eucharistDomain</span>
+<span class="dep-chip" data-target="baptismDomain">baptismDomain</span>
+<span class="dep-chip" data-target="exorcismDomain">exorcismDomain</span>
+<span class="dep-chip" data-target="bindingLoosingDomain">bindingLoosingDomain</span>
+<span class="dep-chip" data-target="teachingDomain">teachingDomain</span>
+<span class="dep-chip" data-target="delegationEcumenical">delegationEcumenical</span>
+<span class="dep-chip" data-target="anointingDomain">anointingDomain</span>
+<span class="dep-chip" data-target="ordinationDomain">ordinationDomain</span>
+<span class="dep-chip" data-target="absolutionDomain">absolutionDomain</span>
+<span class="dep-chip" data-target="delegationCatholicSpecific">delegationCatholicSpecific</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="authority_chain_specific">
@@ -887,8 +920,19 @@ h1 {
     (h_delegated : d.christDelegatedIt) :
     d.christHasIt ∧ d.christDelegatedIt</code></pre></div>
 <div class="node-desc">The specific authority chain theorem: for a domain where Christ</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="AuthorityDomain">AuthorityDomain</span><span class="dep-chip" data-target="Teaching">Teaching</span><span class="dep-chip" data-target="christ_has_all_authority">christ_has_all_authority</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="teaching_authority">teaching_authority</span><span class="dep-chip" data-target="baptism_authority">baptism_authority</span><span class="dep-chip" data-target="absolution_authority">absolution_authority</span><span class="dep-chip" data-target="eucharist_authority">eucharist_authority</span><span class="dep-chip" data-target="binding_loosing_authority">binding_loosing_authority</span><span class="dep-chip" data-target="anointing_authority">anointing_authority</span><span class="dep-chip" data-target="exorcism_authority">exorcism_authority</span><span class="dep-chip" data-target="ordination_authority">ordination_authority</span><span class="dep-chip" data-target="AuthorityDomain">AuthorityDomain</span><span class="dep-chip" data-target="christ_has_all_authority">christ_has_all_authority</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="christ_has_all_authority">christ_has_all_authority</span>
+</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="teaching_authority">teaching_authority</span>
+<span class="dep-chip" data-target="baptism_authority">baptism_authority</span>
+<span class="dep-chip" data-target="absolution_authority">absolution_authority</span>
+<span class="dep-chip" data-target="eucharist_authority">eucharist_authority</span>
+<span class="dep-chip" data-target="binding_loosing_authority">binding_loosing_authority</span>
+<span class="dep-chip" data-target="anointing_authority">anointing_authority</span>
+<span class="dep-chip" data-target="exorcism_authority">exorcism_authority</span>
+<span class="dep-chip" data-target="ordination_authority">ordination_authority</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="teaching_authority">
@@ -901,8 +945,11 @@ h1 {
     <div class="node-prop"><pre><code>theorem teaching_authority :
     teachingDomain.christHasIt ∧ teachingDomain.christDelegatedIt</code></pre></div>
 <div class="node-desc">Teaching authority chain -- ECUMENICAL.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="authority_chain_specific">authority_chain_specific</span><span class="dep-chip" data-target="christ_delegates_teaching">christ_delegates_teaching</span><span class="dep-chip" data-target="teachingDomain">teachingDomain</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="teachingDomain">teachingDomain</span><span class="dep-chip" data-target="authority_chain_specific">authority_chain_specific</span><span class="dep-chip" data-target="christ_delegates_teaching">christ_delegates_teaching</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="teachingDomain">teachingDomain</span>
+<span class="dep-chip" data-target="authority_chain_specific">authority_chain_specific</span>
+<span class="dep-chip" data-target="christ_delegates_teaching">christ_delegates_teaching</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="baptism_authority">
@@ -915,8 +962,11 @@ h1 {
     <div class="node-prop"><pre><code>theorem baptism_authority :
     baptismDomain.christHasIt ∧ baptismDomain.christDelegatedIt</code></pre></div>
 <div class="node-desc">Baptism authority chain -- ECUMENICAL.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Absolution">Absolution</span><span class="dep-chip" data-target="authority_chain_specific">authority_chain_specific</span><span class="dep-chip" data-target="baptismDomain">baptismDomain</span><span class="dep-chip" data-target="christ_delegates_baptism">christ_delegates_baptism</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="baptismDomain">baptismDomain</span><span class="dep-chip" data-target="authority_chain_specific">authority_chain_specific</span><span class="dep-chip" data-target="christ_delegates_baptism">christ_delegates_baptism</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="baptismDomain">baptismDomain</span>
+<span class="dep-chip" data-target="authority_chain_specific">authority_chain_specific</span>
+<span class="dep-chip" data-target="christ_delegates_baptism">christ_delegates_baptism</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="absolution_authority">
@@ -929,8 +979,11 @@ h1 {
     <div class="node-prop"><pre><code>theorem absolution_authority :
     absolutionDomain.christHasIt ∧ absolutionDomain.christDelegatedIt</code></pre></div>
 <div class="node-desc">Absolution authority chain -- Catholic + Orthodox.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="absolutionDomain">absolutionDomain</span><span class="dep-chip" data-target="authority_chain_specific">authority_chain_specific</span><span class="dep-chip" data-target="christ_delegates_absolution">christ_delegates_absolution</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="absolutionDomain">absolutionDomain</span><span class="dep-chip" data-target="authority_chain_specific">authority_chain_specific</span><span class="dep-chip" data-target="christ_delegates_absolution">christ_delegates_absolution</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="christ_delegates_absolution">christ_delegates_absolution</span>
+<span class="dep-chip" data-target="authority_chain_specific">authority_chain_specific</span>
+<span class="dep-chip" data-target="absolutionDomain">absolutionDomain</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="eucharist_authority">
@@ -943,8 +996,11 @@ h1 {
     <div class="node-prop"><pre><code>theorem eucharist_authority :
     eucharistDomain.christHasIt ∧ eucharistDomain.christDelegatedIt</code></pre></div>
 <div class="node-desc">Eucharist authority chain -- Catholic + Orthodox.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="authority_chain_specific">authority_chain_specific</span><span class="dep-chip" data-target="christ_delegates_eucharist">christ_delegates_eucharist</span><span class="dep-chip" data-target="eucharistDomain">eucharistDomain</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="eucharistDomain">eucharistDomain</span><span class="dep-chip" data-target="authority_chain_specific">authority_chain_specific</span><span class="dep-chip" data-target="christ_delegates_eucharist">christ_delegates_eucharist</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="christ_delegates_eucharist">christ_delegates_eucharist</span>
+<span class="dep-chip" data-target="eucharistDomain">eucharistDomain</span>
+<span class="dep-chip" data-target="authority_chain_specific">authority_chain_specific</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="binding_loosing_authority">
@@ -957,8 +1013,11 @@ h1 {
     <div class="node-prop"><pre><code>theorem binding_loosing_authority :
     bindingLoosingDomain.christHasIt ∧ bindingLoosingDomain.christDelegatedIt</code></pre></div>
 <div class="node-desc">Binding/loosing authority chain -- Catholic distinctive.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="authority_chain_specific">authority_chain_specific</span><span class="dep-chip" data-target="bindingLoosingDomain">bindingLoosingDomain</span><span class="dep-chip" data-target="christ_delegates_binding_loosing">christ_delegates_binding_loosing</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="bindingLoosingDomain">bindingLoosingDomain</span><span class="dep-chip" data-target="authority_chain_specific">authority_chain_specific</span><span class="dep-chip" data-target="christ_delegates_binding_loosing">christ_delegates_binding_loosing</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="bindingLoosingDomain">bindingLoosingDomain</span>
+<span class="dep-chip" data-target="authority_chain_specific">authority_chain_specific</span>
+<span class="dep-chip" data-target="christ_delegates_binding_loosing">christ_delegates_binding_loosing</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="anointing_authority">
@@ -971,8 +1030,11 @@ h1 {
     <div class="node-prop"><pre><code>theorem anointing_authority :
     anointingDomain.christHasIt ∧ anointingDomain.christDelegatedIt</code></pre></div>
 <div class="node-desc">Anointing the sick authority chain -- Catholic + Orthodox.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="anointingDomain">anointingDomain</span><span class="dep-chip" data-target="authority_chain_specific">authority_chain_specific</span><span class="dep-chip" data-target="christ_delegates_anointing">christ_delegates_anointing</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="anointingDomain">anointingDomain</span><span class="dep-chip" data-target="authority_chain_specific">authority_chain_specific</span><span class="dep-chip" data-target="christ_delegates_anointing">christ_delegates_anointing</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="authority_chain_specific">authority_chain_specific</span>
+<span class="dep-chip" data-target="anointingDomain">anointingDomain</span>
+<span class="dep-chip" data-target="christ_delegates_anointing">christ_delegates_anointing</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="exorcism_authority">
@@ -985,8 +1047,11 @@ h1 {
     <div class="node-prop"><pre><code>theorem exorcism_authority :
     exorcismDomain.christHasIt ∧ exorcismDomain.christDelegatedIt</code></pre></div>
 <div class="node-desc">Exorcism authority chain -- Catholic + Orthodox.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="authority_chain_specific">authority_chain_specific</span><span class="dep-chip" data-target="christ_delegates_exorcism">christ_delegates_exorcism</span><span class="dep-chip" data-target="exorcismDomain">exorcismDomain</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="exorcismDomain">exorcismDomain</span><span class="dep-chip" data-target="authority_chain_specific">authority_chain_specific</span><span class="dep-chip" data-target="christ_delegates_exorcism">christ_delegates_exorcism</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="christ_delegates_exorcism">christ_delegates_exorcism</span>
+<span class="dep-chip" data-target="exorcismDomain">exorcismDomain</span>
+<span class="dep-chip" data-target="authority_chain_specific">authority_chain_specific</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="ordination_authority">
@@ -999,8 +1064,11 @@ h1 {
     <div class="node-prop"><pre><code>theorem ordination_authority :
     ordinationDomain.christHasIt ∧ ordinationDomain.christDelegatedIt</code></pre></div>
 <div class="node-desc">Ordination authority chain -- Catholic + Orthodox.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="authority_chain_specific">authority_chain_specific</span><span class="dep-chip" data-target="christ_delegates_ordination">christ_delegates_ordination</span><span class="dep-chip" data-target="ordinationDomain">ordinationDomain</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ordinationDomain">ordinationDomain</span><span class="dep-chip" data-target="authority_chain_specific">authority_chain_specific</span><span class="dep-chip" data-target="christ_delegates_ordination">christ_delegates_ordination</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="authority_chain_specific">authority_chain_specific</span>
+<span class="dep-chip" data-target="christ_delegates_ordination">christ_delegates_ordination</span>
+<span class="dep-chip" data-target="ordinationDomain">ordinationDomain</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-structure" data-kind="structure" data-name="UndelegatedAuthority">
@@ -1012,8 +1080,6 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>structure UndelegatedAuthority where</code></pre></div>
 <div class="node-desc">An undelegated authority -- something Christ has but did not give</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Nature">Nature</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="natureMiracles">natureMiracles</span><span class="dep-chip" data-target="selfOriginatedForgiveness">selfOriginatedForgiveness</span><span class="dep-chip" data-target="sourceOfGrace">sourceOfGrace</span><span class="dep-chip" data-target="undelegatedAuthorities">undelegatedAuthorities</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="natureMiracles">
@@ -1025,8 +1091,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def natureMiracles : UndelegatedAuthority</code></pre></div>
 <div class="node-desc">Nature miracles -- Christ commands creation but did not delegate</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="UndelegatedAuthority">UndelegatedAuthority</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="undelegatedAuthorities">undelegatedAuthorities</span><span class="dep-chip" data-target="UndelegatedAuthority">UndelegatedAuthority</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="undelegatedAuthorities">undelegatedAuthorities</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="selfOriginatedForgiveness">
@@ -1038,8 +1105,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def selfOriginatedForgiveness : UndelegatedAuthority</code></pre></div>
 <div class="node-desc">Self-originated forgiveness -- Christ forgives by His own authority;</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="UndelegatedAuthority">UndelegatedAuthority</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="undelegatedAuthorities">undelegatedAuthorities</span><span class="dep-chip" data-target="UndelegatedAuthority">UndelegatedAuthority</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="undelegatedAuthorities">undelegatedAuthorities</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="sourceOfGrace">
@@ -1051,8 +1119,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def sourceOfGrace : UndelegatedAuthority</code></pre></div>
 <div class="node-desc">Being the source of grace -- priests are channels of grace, not</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="UndelegatedAuthority">UndelegatedAuthority</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="undelegatedAuthorities">undelegatedAuthorities</span><span class="dep-chip" data-target="UndelegatedAuthority">UndelegatedAuthority</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="undelegatedAuthorities">undelegatedAuthorities</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="undelegatedAuthorities">
@@ -1064,8 +1133,11 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def undelegatedAuthorities : List UndelegatedAuthority</code></pre></div>
 <div class="node-desc">Registry of undelegated authorities, for contrast.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="UndelegatedAuthority">UndelegatedAuthority</span><span class="dep-chip" data-target="natureMiracles">natureMiracles</span><span class="dep-chip" data-target="selfOriginatedForgiveness">selfOriginatedForgiveness</span><span class="dep-chip" data-target="sourceOfGrace">sourceOfGrace</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="UndelegatedAuthority">UndelegatedAuthority</span><span class="dep-chip" data-target="natureMiracles">natureMiracles</span><span class="dep-chip" data-target="selfOriginatedForgiveness">selfOriginatedForgiveness</span><span class="dep-chip" data-target="sourceOfGrace">sourceOfGrace</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="natureMiracles">natureMiracles</span>
+<span class="dep-chip" data-target="selfOriginatedForgiveness">selfOriginatedForgiveness</span>
+<span class="dep-chip" data-target="sourceOfGrace">sourceOfGrace</span>
+</div></div>
   </div>
 </div>
   </div>

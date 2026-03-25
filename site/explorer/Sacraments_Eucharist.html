@@ -267,6 +267,8 @@ h1 {
 .node-card.kind-structure { border-left-color: var(--structure-dot); }
 .node-card.kind-inductive { border-left-color: var(--inductive-dot); }
 .node-card.kind-proposition { border-left-color: var(--proposition-dot); }
+.node-card.kind-instance { border-left-color: var(--def-dot); }
+.node-card.kind-abbrev { border-left-color: var(--def-dot); }
 
 .node-header {
   display: flex;
@@ -302,6 +304,8 @@ h1 {
 .kind-structure .node-kind-badge { background: var(--structure-bg); color: var(--structure-dot); }
 .kind-inductive .node-kind-badge { background: var(--inductive-bg); color: var(--inductive-dot); }
 .kind-proposition .node-kind-badge { background: var(--proposition-bg); color: var(--proposition-dot); }
+.kind-instance .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
+.kind-abbrev .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
 
 .node-name {
   flex: 1;
@@ -462,6 +466,8 @@ h1 {
 .legend-dot.structure { background: var(--structure-dot); }
 .legend-dot.inductive { background: var(--inductive-dot); }
 .legend-dot.proposition { background: var(--proposition-dot); }
+.legend-dot.instance { background: var(--def-dot); }
+.legend-dot.abbrev { background: var(--def-dot); }
 
 /* ── Filter buttons ── */
 .filter-bar {
@@ -524,13 +530,12 @@ h1 {
   <a href="index.html" class="back-link">&larr; All files</a>
   <h1>Eucharist</h1>
   <div class="subtitle">Sacraments &middot; 48 declarations</div>
-
   
-  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1023, &sect;1263, &sect;1322, &sect;1355, &sect;1373, &sect;1374, &sect;1376, &sect;1377, &sect;1385, &sect;1387, &sect;1391, &sect;1394, &sect;1395, &sect;1396, &sect;1401 +2 more</div>
+  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;365, &sect;1023, &sect;1263, &sect;1355, &sect;1373, &sect;1374, &sect;1376, &sect;1385, &sect;1387, &sect;1391, &sect;1394, &sect;1395, &sect;1401</div>
 
-  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot proposition"></span>proposition</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot structure"></span>structure</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
+  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span><span class="legend-item"><span class="legend-dot proposition"></span>proposition</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot structure"></span>structure</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span></div>
 
-  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (8)</button><button class="filter-btn" data-filter="def">def (7)</button><button class="filter-btn" data-filter="proposition">proposition (2)</button><button class="filter-btn" data-filter="inductive">inductive (4)</button><button class="filter-btn" data-filter="opaque">opaque (4)</button><button class="filter-btn" data-filter="structure">structure (2)</button><button class="filter-btn" data-filter="theorem">theorem (21)</button></div>
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (8)</button><button class="filter-btn" data-filter="theorem">theorem (21)</button><button class="filter-btn" data-filter="proposition">proposition (2)</button><button class="filter-btn" data-filter="def">def (7)</button><button class="filter-btn" data-filter="opaque">opaque (4)</button><button class="filter-btn" data-filter="structure">structure (2)</button><button class="filter-btn" data-filter="inductive">inductive (4)</button></div>
 
   <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
 
@@ -543,7 +548,7 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>inductive TeachingKind where</code></pre></div>
-<div class="node-desc">Whether a teaching is doctrine (from revelation, unchangeable) or │   Scope: ECUMENICAL in principle — all traditions</div>
+<div class="node-desc">Whether a teaching is doctrine (from revelation, unchangeable) or</div>
   </div>
 </div>
 <div class="node-card kind-inductive" data-kind="inductive" data-name="EucharisticPresence">
@@ -554,7 +559,7 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>inductive EucharisticPresence where</code></pre></div>
-<div class="node-desc">Models of Christ's presence in the Eucharist.</div>
+<div class="node-desc">Models of Christ&#x27;s presence in the Eucharist.</div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="isConsecratedEucharist">
@@ -564,11 +569,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque isConsecratedEucharist : Prop
-</code></pre></div>
-<div class="node-desc">The consequence of consecration: the eucharistic species IS Christ. │   Scope: CATHOLIC — specifically transubstantiation.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Teaching">Teaching</span><span class="dep-chip" data-target="wholeChristPresent">wholeChristPresent</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="real_presence">real_presence</span><span class="dep-chip" data-target="eucharist_contains_divine_person">eucharist_contains_divine_person</span><span class="dep-chip" data-target="eucharist_contains_complete_human_nature">eucharist_contains_complete_human_nature</span></div></div>
+    <div class="node-prop"><pre><code>opaque isConsecratedEucharist : Prop</code></pre></div>
+<div class="node-desc">The consequence of consecration: the eucharistic species IS Christ.</div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="real_presence">
@@ -579,11 +581,12 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom real_presence :
-  isConsecratedEucharist → Christology.wholeChristPresent
-</code></pre></div>
-<div class="node-desc">After valid consecration, the │   Source: [Tradition] Council of Trent, Session XIII, Canon 1; | Scope: CATHOLIC. | [Definition]</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isConsecratedEucharist">isConsecratedEucharist</span><span class="dep-chip" data-target="wholeChristPresent">wholeChristPresent</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="communion_cannot_save_mortal_sinner">communion_cannot_save_mortal_sinner</span><span class="dep-chip" data-target="eucharist_contains_divine_person">eucharist_contains_divine_person</span><span class="dep-chip" data-target="eucharist_contains_complete_human_nature">eucharist_contains_complete_human_nature</span><span class="dep-chip" data-target="grave_necessity_still_requires_grace">grave_necessity_still_requires_grace</span><span class="dep-chip" data-target="isConsecratedEucharist">isConsecratedEucharist</span></div></div>
+  isConsecratedEucharist → Christology.wholeChristPresent</code></pre></div>
+<div class="node-desc">After valid consecration, the</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="eucharist_contains_divine_person">eucharist_contains_divine_person</span>
+<span class="dep-chip" data-target="eucharist_contains_complete_human_nature">eucharist_contains_complete_human_nature</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="realPresenceTag">
@@ -595,7 +598,6 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def realPresenceTag : DenominationalTag</code></pre></div>
 <div class="node-desc">The denominational tag for real presence.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="corporeal_requires_spiritual">corporeal_requires_spiritual</span></div></div>
   </div>
 </div>
 <div class="node-card kind-inductive" data-kind="inductive" data-name="EucharisticSubstance">
@@ -607,8 +609,6 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>inductive EucharisticSubstance where</code></pre></div>
 <div class="node-desc">What a eucharistic element IS — its substance.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="christ">christ</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="EucharisticSpecies">EucharisticSpecies</span><span class="dep-chip" data-target="consecration_converts_substance">consecration_converts_substance</span><span class="dep-chip" data-target="consecration_preserves_accidents">consecration_preserves_accidents</span><span class="dep-chip" data-target="christ_substance_is_whole_christ">christ_substance_is_whole_christ</span><span class="dep-chip" data-target="consecrated_bread_has_correct_form">consecrated_bread_has_correct_form</span><span class="dep-chip" data-target="transubstantiation_full_picture">transubstantiation_full_picture</span></div></div>
   </div>
 </div>
 <div class="node-card kind-inductive" data-kind="inductive" data-name="EucharisticAccidents">
@@ -620,7 +620,6 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>inductive EucharisticAccidents where</code></pre></div>
 <div class="node-desc">What a eucharistic element APPEARS to be — its accidents.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="EucharisticSpecies">EucharisticSpecies</span><span class="dep-chip" data-target="consecrated_bread_has_correct_form">consecrated_bread_has_correct_form</span></div></div>
   </div>
 </div>
 <div class="node-card kind-structure" data-kind="structure" data-name="EucharisticSpecies">
@@ -632,8 +631,6 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>structure EucharisticSpecies where</code></pre></div>
 <div class="node-desc">A eucharistic species — a combination of substance and accidents.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EucharisticAccidents">EucharisticAccidents</span><span class="dep-chip" data-target="EucharisticSubstance">EucharisticSubstance</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="unconsecratedBread">unconsecratedBread</span><span class="dep-chip" data-target="unconsecratedWine">unconsecratedWine</span><span class="dep-chip" data-target="consecratedHost">consecratedHost</span><span class="dep-chip" data-target="consecratedChalice">consecratedChalice</span><span class="dep-chip" data-target="consecration_converts_substance">consecration_converts_substance</span><span class="dep-chip" data-target="consecration_preserves_accidents">consecration_preserves_accidents</span><span class="dep-chip" data-target="christ_substance_is_whole_christ">christ_substance_is_whole_christ</span><span class="dep-chip" data-target="consecration_yields_whole_christ">consecration_yields_whole_christ</span><span class="dep-chip" data-target="transubstantiation_respects_body_soul_unity">transubstantiation_respects_body_soul_unity</span><span class="dep-chip" data-target="consecrated_substance_has_body_and_soul">consecrated_substance_has_body_and_soul</span><span class="dep-chip" data-target="transubstantiation_full_picture">transubstantiation_full_picture</span><span class="dep-chip" data-target="EucharisticAccidents">EucharisticAccidents</span><span class="dep-chip" data-target="EucharisticSubstance">EucharisticSubstance</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="unconsecratedBread">
@@ -645,8 +642,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def unconsecratedBread : EucharisticSpecies</code></pre></div>
 <div class="node-desc">Bread before consecration: IS bread, LOOKS like bread.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EucharisticSpecies">EucharisticSpecies</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="consecrated_bread_has_correct_form">consecrated_bread_has_correct_form</span><span class="dep-chip" data-target="EucharisticSpecies">EucharisticSpecies</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="consecrated_bread_has_correct_form">consecrated_bread_has_correct_form</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="unconsecratedWine">
@@ -658,8 +656,6 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def unconsecratedWine : EucharisticSpecies</code></pre></div>
 <div class="node-desc">Wine before consecration: IS wine, LOOKS like wine.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EucharisticSpecies">EucharisticSpecies</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="EucharisticSpecies">EucharisticSpecies</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="consecratedHost">
@@ -671,8 +667,6 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def consecratedHost : EucharisticSpecies</code></pre></div>
 <div class="node-desc">The consecrated host: IS Christ, LOOKS like bread.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EucharisticSpecies">EucharisticSpecies</span><span class="dep-chip" data-target="christ">christ</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="consecratedChalice">consecratedChalice</span><span class="dep-chip" data-target="christ_substance_is_whole_christ">christ_substance_is_whole_christ</span><span class="dep-chip" data-target="EucharisticSpecies">EucharisticSpecies</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="consecratedChalice">
@@ -684,8 +678,6 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def consecratedChalice : EucharisticSpecies</code></pre></div>
 <div class="node-desc">The consecrated chalice: IS Christ, LOOKS like wine.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EucharisticSpecies">EucharisticSpecies</span><span class="dep-chip" data-target="Teaching">Teaching</span><span class="dep-chip" data-target="christ">christ</span><span class="dep-chip" data-target="consecratedHost">consecratedHost</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="EucharisticSpecies">EucharisticSpecies</span><span class="dep-chip" data-target="consecratedHost">consecratedHost</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="consecration_converts_substance">
@@ -697,11 +689,14 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom consecration_converts_substance :
   ∀ (species : EucharisticSpecies),
-    (consecrate species).substance = EucharisticSubstance.christ
-</code></pre></div>
-<div class="node-desc">Consecration changes the substance │   Source: [Tradition] Council of Trent, Session XIII, Canon 2; | Scope: CATHOLIC. | [Definition]</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EucharisticSpecies">EucharisticSpecies</span><span class="dep-chip" data-target="EucharisticSubstance">EucharisticSubstance</span><span class="dep-chip" data-target="Teaching">Teaching</span><span class="dep-chip" data-target="christ">christ</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="christ_substance_is_whole_christ">christ_substance_is_whole_christ</span><span class="dep-chip" data-target="consecrated_bread_has_correct_form">consecrated_bread_has_correct_form</span><span class="dep-chip" data-target="consecration_yields_whole_christ">consecration_yields_whole_christ</span><span class="dep-chip" data-target="transubstantiation_respects_body_soul_unity">transubstantiation_respects_body_soul_unity</span><span class="dep-chip" data-target="consecrated_substance_has_body_and_soul">consecrated_substance_has_body_and_soul</span><span class="dep-chip" data-target="transubstantiation_full_picture">transubstantiation_full_picture</span><span class="dep-chip" data-target="EucharisticSubstance">EucharisticSubstance</span><span class="dep-chip" data-target="EucharisticSpecies">EucharisticSpecies</span></div></div>
+    (consecrate species).substance = EucharisticSubstance.christ</code></pre></div>
+<div class="node-desc">Consecration changes the substance</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="consecrated_bread_has_correct_form">consecrated_bread_has_correct_form</span>
+<span class="dep-chip" data-target="consecration_yields_whole_christ">consecration_yields_whole_christ</span>
+<span class="dep-chip" data-target="consecrated_substance_has_body_and_soul">consecrated_substance_has_body_and_soul</span>
+<span class="dep-chip" data-target="transubstantiation_full_picture">transubstantiation_full_picture</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="consecration_preserves_accidents">
@@ -713,11 +708,12 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom consecration_preserves_accidents :
   ∀ (species : EucharisticSpecies),
-    (consecrate species).accidents = species.accidents
-</code></pre></div>
-<div class="node-desc">Consecration does NOT change the │   Source: [Tradition] Council of Trent, Session XIII, Chapter 4; | Scope: CATHOLIC. | [Definition]</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EucharisticSpecies">EucharisticSpecies</span><span class="dep-chip" data-target="EucharisticSubstance">EucharisticSubstance</span><span class="dep-chip" data-target="Teaching">Teaching</span><span class="dep-chip" data-target="christ">christ</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="christ_substance_is_whole_christ">christ_substance_is_whole_christ</span><span class="dep-chip" data-target="consecrated_bread_has_correct_form">consecrated_bread_has_correct_form</span><span class="dep-chip" data-target="transubstantiation_full_picture">transubstantiation_full_picture</span><span class="dep-chip" data-target="EucharisticSubstance">EucharisticSubstance</span><span class="dep-chip" data-target="EucharisticSpecies">EucharisticSpecies</span></div></div>
+    (consecrate species).accidents = species.accidents</code></pre></div>
+<div class="node-desc">Consecration does NOT change the</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="consecrated_bread_has_correct_form">consecrated_bread_has_correct_form</span>
+<span class="dep-chip" data-target="transubstantiation_full_picture">transubstantiation_full_picture</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="christ_substance_is_whole_christ">
@@ -731,10 +727,14 @@ h1 {
   ∀ (species : EucharisticSpecies),
     species.substance = EucharisticSubstance.christ →
     Christology.wholeChristPresent
-</code></pre></div>
-<div class="node-desc">When the substance is Christ, the WHOLE Christ │   Source: [Tradition] Council of Trent, Session XIII, Canon 1; | Scope: CATHOLIC. | [Definition]</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EucharisticSpecies">EucharisticSpecies</span><span class="dep-chip" data-target="EucharisticSubstance">EucharisticSubstance</span><span class="dep-chip" data-target="christ">christ</span><span class="dep-chip" data-target="consecratedHost">consecratedHost</span><span class="dep-chip" data-target="consecration_converts_substance">consecration_converts_substance</span><span class="dep-chip" data-target="consecration_preserves_accidents">consecration_preserves_accidents</span><span class="dep-chip" data-target="wholeChristPresent">wholeChristPresent</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="consecrated_bread_has_correct_form">consecrated_bread_has_correct_form</span><span class="dep-chip" data-target="consecration_yields_whole_christ">consecration_yields_whole_christ</span><span class="dep-chip" data-target="transubstantiation_respects_body_soul_unity">transubstantiation_respects_body_soul_unity</span><span class="dep-chip" data-target="consecrated_substance_has_body_and_soul">consecrated_substance_has_body_and_soul</span><span class="dep-chip" data-target="transubstantiation_full_picture">transubstantiation_full_picture</span><span class="dep-chip" data-target="EucharisticSubstance">EucharisticSubstance</span><span class="dep-chip" data-target="EucharisticSpecies">EucharisticSpecies</span><span class="dep-chip" data-target="consecratedHost">consecratedHost</span><span class="dep-chip" data-target="consecration_converts_substance">consecration_converts_substance</span><span class="dep-chip" data-target="consecration_preserves_accidents">consecration_preserves_accidents</span></div></div>
+
+-- ── Theorems ────────────────────────────────────────────────────────────</code></pre></div>
+<div class="node-desc">When the substance is Christ, the WHOLE Christ</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="consecration_yields_whole_christ">consecration_yields_whole_christ</span>
+<span class="dep-chip" data-target="consecrated_substance_has_body_and_soul">consecrated_substance_has_body_and_soul</span>
+<span class="dep-chip" data-target="transubstantiation_full_picture">transubstantiation_full_picture</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="consecrated_bread_has_correct_form">
@@ -747,9 +747,12 @@ h1 {
     <div class="node-prop"><pre><code>theorem consecrated_bread_has_correct_form :
     (consecrate unconsecratedBread).substance = EucharisticSubstance.christ ∧
     (consecrate unconsecratedBread).accidents = EucharisticAccidents.breadlike</code></pre></div>
-<div class="node-desc">The consecrated host IS the `consecratedHost` model —</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EucharisticAccidents">EucharisticAccidents</span><span class="dep-chip" data-target="EucharisticSubstance">EucharisticSubstance</span><span class="dep-chip" data-target="christ">christ</span><span class="dep-chip" data-target="christ_substance_is_whole_christ">christ_substance_is_whole_christ</span><span class="dep-chip" data-target="consecration_converts_substance">consecration_converts_substance</span><span class="dep-chip" data-target="consecration_preserves_accidents">consecration_preserves_accidents</span><span class="dep-chip" data-target="unconsecratedBread">unconsecratedBread</span><span class="dep-chip" data-target="wholeChristPresent">wholeChristPresent</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="EucharisticAccidents">EucharisticAccidents</span><span class="dep-chip" data-target="EucharisticSubstance">EucharisticSubstance</span><span class="dep-chip" data-target="consecration_converts_substance">consecration_converts_substance</span><span class="dep-chip" data-target="consecration_preserves_accidents">consecration_preserves_accidents</span><span class="dep-chip" data-target="unconsecratedBread">unconsecratedBread</span><span class="dep-chip" data-target="christ_substance_is_whole_christ">christ_substance_is_whole_christ</span></div></div>
+<div class="node-desc">THEOREM: The consecrated host IS the `consecratedHost` model —</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="consecration_converts_substance">consecration_converts_substance</span>
+<span class="dep-chip" data-target="unconsecratedBread">unconsecratedBread</span>
+<span class="dep-chip" data-target="consecration_preserves_accidents">consecration_preserves_accidents</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="consecration_yields_whole_christ">
@@ -762,9 +765,11 @@ h1 {
     <div class="node-prop"><pre><code>theorem consecration_yields_whole_christ :
     ∀ (_ : EucharisticSpecies),
       Christology.wholeChristPresent</code></pre></div>
-<div class="node-desc">Consecration yields the whole Christ present.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EucharisticSpecies">EucharisticSpecies</span><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="christHumanPerson">christHumanPerson</span><span class="dep-chip" data-target="christ_has_full_human_nature">christ_has_full_human_nature</span><span class="dep-chip" data-target="christ_substance_is_whole_christ">christ_substance_is_whole_christ</span><span class="dep-chip" data-target="consecration_converts_substance">consecration_converts_substance</span><span class="dep-chip" data-target="corporeal_requires_spiritual">corporeal_requires_spiritual</span><span class="dep-chip" data-target="wholeChristPresent">wholeChristPresent</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="EucharisticSpecies">EucharisticSpecies</span><span class="dep-chip" data-target="consecration_converts_substance">consecration_converts_substance</span><span class="dep-chip" data-target="christ_substance_is_whole_christ">christ_substance_is_whole_christ</span></div></div>
+<div class="node-desc">THEOREM: Consecration yields the whole Christ present.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="christ_substance_is_whole_christ">christ_substance_is_whole_christ</span>
+<span class="dep-chip" data-target="consecration_converts_substance">consecration_converts_substance</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="transubstantiation_respects_body_soul_unity">
@@ -777,12 +782,10 @@ h1 {
     <div class="node-prop"><pre><code>theorem transubstantiation_respects_body_soul_unity :
     ∀ (_ : EucharisticSpecies),
       -- After consecration, the substance present (Christ) satisfies
-      -- corporeal_requires_spiritual: Christ's body HAS a soul.
+      -- corporeal_requires_spiritual: Christ&#x27;s body HAS a soul.
       hasCorporealAspect Christology.christHumanPerson →
       hasSpiritualAspect Christology.christHumanPerson</code></pre></div>
-<div class="node-desc">`corporeal_requires_spiritual` is NOT violated by</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EucharisticSpecies">EucharisticSpecies</span><span class="dep-chip" data-target="christHumanPerson">christHumanPerson</span><span class="dep-chip" data-target="christ_substance_is_whole_christ">christ_substance_is_whole_christ</span><span class="dep-chip" data-target="consecration_converts_substance">consecration_converts_substance</span><span class="dep-chip" data-target="corporeal_requires_spiritual">corporeal_requires_spiritual</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="wholeChristPresent">wholeChristPresent</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="EucharisticSpecies">EucharisticSpecies</span><span class="dep-chip" data-target="consecration_converts_substance">consecration_converts_substance</span><span class="dep-chip" data-target="christ_substance_is_whole_christ">christ_substance_is_whole_christ</span></div></div>
+<div class="node-desc">THEOREM: `corporeal_requires_spiritual` is NOT violated by</div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="consecrated_substance_has_body_and_soul">
@@ -796,9 +799,11 @@ h1 {
     ∀ (_ : EucharisticSpecies),
       hasCorporealAspect Christology.christHumanPerson ∧
       hasSpiritualAspect Christology.christHumanPerson</code></pre></div>
-<div class="node-desc">Stronger form — after consecration, the substance present</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EucharisticSpecies">EucharisticSpecies</span><span class="dep-chip" data-target="christHumanPerson">christHumanPerson</span><span class="dep-chip" data-target="christ_substance_is_whole_christ">christ_substance_is_whole_christ</span><span class="dep-chip" data-target="consecration_converts_substance">consecration_converts_substance</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="EucharisticSpecies">EucharisticSpecies</span><span class="dep-chip" data-target="consecration_converts_substance">consecration_converts_substance</span><span class="dep-chip" data-target="christ_substance_is_whole_christ">christ_substance_is_whole_christ</span></div></div>
+<div class="node-desc">THEOREM: Stronger form — after consecration, the substance present</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="christ_substance_is_whole_christ">christ_substance_is_whole_christ</span>
+<span class="dep-chip" data-target="consecration_converts_substance">consecration_converts_substance</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="transubstantiation_full_picture">
@@ -818,9 +823,12 @@ h1 {
       hasSpiritualAspect Christology.christHumanPerson ∧
       -- Christ (the substance) has a body
       hasCorporealAspect Christology.christHumanPerson</code></pre></div>
-<div class="node-desc">The substance/accident separation is what makes</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EucharisticSpecies">EucharisticSpecies</span><span class="dep-chip" data-target="EucharisticSubstance">EucharisticSubstance</span><span class="dep-chip" data-target="christ">christ</span><span class="dep-chip" data-target="christHumanPerson">christHumanPerson</span><span class="dep-chip" data-target="christ_substance_is_whole_christ">christ_substance_is_whole_christ</span><span class="dep-chip" data-target="consecration_converts_substance">consecration_converts_substance</span><span class="dep-chip" data-target="consecration_preserves_accidents">consecration_preserves_accidents</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="EucharisticSubstance">EucharisticSubstance</span><span class="dep-chip" data-target="EucharisticSpecies">EucharisticSpecies</span><span class="dep-chip" data-target="consecration_converts_substance">consecration_converts_substance</span><span class="dep-chip" data-target="consecration_preserves_accidents">consecration_preserves_accidents</span><span class="dep-chip" data-target="christ_substance_is_whole_christ">christ_substance_is_whole_christ</span></div></div>
+<div class="node-desc">THEOREM: The substance/accident separation is what makes</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="christ_substance_is_whole_christ">christ_substance_is_whole_christ</span>
+<span class="dep-chip" data-target="consecration_converts_substance">consecration_converts_substance</span>
+<span class="dep-chip" data-target="consecration_preserves_accidents">consecration_preserves_accidents</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="transubstantiationTag">
@@ -843,7 +851,6 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def substanceAccidentTag : DenominationalTag</code></pre></div>
 <div class="node-desc">Denominational tag for the substance/accident distinction.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Sacrament">Sacrament</span><span class="dep-chip" data-target="SinProfile">SinProfile</span></div></div>
   </div>
 </div>
 <div class="node-card kind-structure" data-kind="structure" data-name="CommunionDisposition">
@@ -855,8 +862,6 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>structure CommunionDisposition where</code></pre></div>
 <div class="node-desc">The complete set of conditions for worthy reception of communion.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SinProfile">SinProfile</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="isWorthyToReceive">isWorthyToReceive</span><span class="dep-chip" data-target="grave_necessity_exception">grave_necessity_exception</span><span class="dep-chip" data-target="protestant_in_grave_necessity">protestant_in_grave_necessity</span><span class="dep-chip" data-target="grave_necessity_still_requires_grace">grave_necessity_still_requires_grace</span></div></div>
   </div>
 </div>
 <div class="node-card kind-proposition" data-kind="proposition" data-name="sinProfilePermitsCommunion">
@@ -867,9 +872,13 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>def sinProfilePermitsCommunion (sp : SinProfile) : Prop</code></pre></div>
-<div class="node-desc">Whether a person's sin profile permits communion.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EffectState">EffectState</span><span class="dep-chip" data-target="SinProfile">SinProfile</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="isWorthyToReceive">isWorthyToReceive</span><span class="dep-chip" data-target="eucharist_reduces_attachment">eucharist_reduces_attachment</span><span class="dep-chip" data-target="guilt_bars_communion">guilt_bars_communion</span><span class="dep-chip" data-target="unbaptized_cannot_receive">unbaptized_cannot_receive</span><span class="dep-chip" data-target="baptized_in_grace_can_receive">baptized_in_grace_can_receive</span><span class="dep-chip" data-target="reconciled_can_receive">reconciled_can_receive</span><span class="dep-chip" data-target="mortal_sinner_cannot_receive">mortal_sinner_cannot_receive</span><span class="dep-chip" data-target="unevangelized_communion_indeterminate">unevangelized_communion_indeterminate</span><span class="dep-chip" data-target="reconciliation_enables_communion">reconciliation_enables_communion</span><span class="dep-chip" data-target="communion_leads_to_full_purification">communion_leads_to_full_purification</span><span class="dep-chip" data-target="communion_points_to_heaven">communion_points_to_heaven</span><span class="dep-chip" data-target="sacraments_have_distinct_domains">sacraments_have_distinct_domains</span><span class="dep-chip" data-target="graveNecessityExists">graveNecessityExists</span><span class="dep-chip" data-target="grave_necessity_exception">grave_necessity_exception</span><span class="dep-chip" data-target="protestant_in_grave_necessity">protestant_in_grave_necessity</span><span class="dep-chip" data-target="grave_necessity_still_requires_grace">grave_necessity_still_requires_grace</span></div></div>
+<div class="node-desc">Whether a person&#x27;s sin profile permits communion.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="isWorthyToReceive">isWorthyToReceive</span>
+<span class="dep-chip" data-target="baptized_in_grace_can_receive">baptized_in_grace_can_receive</span>
+<span class="dep-chip" data-target="reconciled_can_receive">reconciled_can_receive</span>
+<span class="dep-chip" data-target="sacraments_have_distinct_domains">sacraments_have_distinct_domains</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-proposition" data-kind="proposition" data-name="isWorthyToReceive">
@@ -881,8 +890,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def isWorthyToReceive (cd : CommunionDisposition) : Prop</code></pre></div>
 <div class="node-desc">Whether all conditions for worthy reception are met.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CommunionDisposition">CommunionDisposition</span><span class="dep-chip" data-target="SinProfile">SinProfile</span><span class="dep-chip" data-target="Teaching">Teaching</span><span class="dep-chip" data-target="sinProfilePermitsCommunion">sinProfilePermitsCommunion</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="CommunionDisposition">CommunionDisposition</span><span class="dep-chip" data-target="sinProfilePermitsCommunion">sinProfilePermitsCommunion</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="sinProfilePermitsCommunion">sinProfilePermitsCommunion</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="eucharist_reduces_attachment">
@@ -895,11 +905,11 @@ h1 {
     <div class="node-prop"><pre><code>axiom eucharist_reduces_attachment :
   ∀ (sp : SinProfile),
     sinProfilePermitsCommunion sp →
-    (eucharistEffectOnProfile sp).attachment = EffectState.removed
-</code></pre></div>
-<div class="node-desc">Communion reduces attachments (Layer 3). │   Source: [Definition] CCC §1394. | Scope: CATHOLIC.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EffectState">EffectState</span><span class="dep-chip" data-target="SinProfile">SinProfile</span><span class="dep-chip" data-target="Teaching">Teaching</span><span class="dep-chip" data-target="sinProfilePermitsCommunion">sinProfilePermitsCommunion</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="reconciliation_enables_communion">reconciliation_enables_communion</span><span class="dep-chip" data-target="communion_leads_to_full_purification">communion_leads_to_full_purification</span><span class="dep-chip" data-target="grave_necessity_still_requires_grace">grave_necessity_still_requires_grace</span><span class="dep-chip" data-target="sinProfilePermitsCommunion">sinProfilePermitsCommunion</span></div></div>
+    (eucharistEffectOnProfile sp).attachment = EffectState.removed</code></pre></div>
+<div class="node-desc">Communion reduces attachments (Layer 3).</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="communion_leads_to_full_purification">communion_leads_to_full_purification</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="eucharist_preserves_guilt_state">
@@ -911,11 +921,12 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom eucharist_preserves_guilt_state :
   ∀ (sp : SinProfile),
-    (eucharistEffectOnProfile sp).guilt = sp.guilt
-</code></pre></div>
-<div class="node-desc">Communion does NOT remove guilt (Layer 2). │   Source: [Definition] CCC §1395. | Scope: CATHOLIC.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SinProfile">SinProfile</span><span class="dep-chip" data-target="Teaching">Teaching</span><span class="dep-chip" data-target="confers">confers</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="reconciliation_enables_communion">reconciliation_enables_communion</span><span class="dep-chip" data-target="communion_leads_to_full_purification">communion_leads_to_full_purification</span><span class="dep-chip" data-target="communion_points_to_heaven">communion_points_to_heaven</span><span class="dep-chip" data-target="communion_cannot_save_mortal_sinner">communion_cannot_save_mortal_sinner</span><span class="dep-chip" data-target="grave_necessity_still_requires_grace">grave_necessity_still_requires_grace</span></div></div>
+    (eucharistEffectOnProfile sp).guilt = sp.guilt</code></pre></div>
+<div class="node-desc">Communion does NOT remove guilt (Layer 2).</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="communion_leads_to_full_purification">communion_leads_to_full_purification</span>
+<span class="dep-chip" data-target="communion_cannot_save_mortal_sinner">communion_cannot_save_mortal_sinner</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="eucharist_preserves_baptism_state">
@@ -928,10 +939,14 @@ h1 {
     <div class="node-prop"><pre><code>axiom eucharist_preserves_baptism_state :
   ∀ (sp : SinProfile),
     (eucharistEffectOnProfile sp).originalWound = sp.originalWound
-</code></pre></div>
-<div class="node-desc">Communion does not change baptismal status (Layer 1). │   Source: [Definition] CCC §1263 (baptism is once-for-all); | Scope: ECUMENICAL.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Doctrine">Doctrine</span><span class="dep-chip" data-target="SinProfile">SinProfile</span><span class="dep-chip" data-target="corporeal_requires_spiritual">corporeal_requires_spiritual</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="reconciliation_enables_communion">reconciliation_enables_communion</span><span class="dep-chip" data-target="communion_leads_to_full_purification">communion_leads_to_full_purification</span><span class="dep-chip" data-target="communion_points_to_heaven">communion_points_to_heaven</span><span class="dep-chip" data-target="grave_necessity_still_requires_grace">grave_necessity_still_requires_grace</span></div></div>
+
+-- ============================================================================
+-- § 7. The §1387 Fast — Discipline, not Doctrine
+-- ============================================================================</code></pre></div>
+<div class="node-desc">AXIOM: Communion does not change baptismal status (Layer 1).</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="communion_leads_to_full_purification">communion_leads_to_full_purification</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="bodily_preparation_is_spiritual">
@@ -944,9 +959,7 @@ h1 {
     <div class="node-prop"><pre><code>theorem bodily_preparation_is_spiritual :
     ∀ (p : HumanPerson),
       hasCorporealAspect p → hasSpiritualAspect p</code></pre></div>
-<div class="node-desc">Bodily preparation serves spiritual preparation</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="corporeal_requires_spiritual">corporeal_requires_spiritual</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="grave_necessity_still_requires_grace">grave_necessity_still_requires_grace</span></div></div>
+<div class="node-desc">THEOREM (§1387, §365): Bodily preparation serves spiritual preparation</div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="guilt_bars_communion">
@@ -960,8 +973,9 @@ h1 {
     (h_guilt : sp.guilt = EffectState.present) :
     ¬sinProfilePermitsCommunion sp</code></pre></div>
 <div class="node-desc">Mortal sin bars communion: if guilt is present, the sin profile</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EffectState">EffectState</span><span class="dep-chip" data-target="SinProfile">SinProfile</span><span class="dep-chip" data-target="sinProfilePermitsCommunion">sinProfilePermitsCommunion</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="grave_necessity_still_requires_grace">grave_necessity_still_requires_grace</span><span class="dep-chip" data-target="sinProfilePermitsCommunion">sinProfilePermitsCommunion</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="grave_necessity_still_requires_grace">grave_necessity_still_requires_grace</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="unbaptized_cannot_receive">
@@ -975,8 +989,6 @@ h1 {
     (h_not_baptized : sp.originalWound ≠ EffectState.removed) :
     ¬sinProfilePermitsCommunion sp</code></pre></div>
 <div class="node-desc">The unbaptized cannot receive.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EffectState">EffectState</span><span class="dep-chip" data-target="SinProfile">SinProfile</span><span class="dep-chip" data-target="sinProfilePermitsCommunion">sinProfilePermitsCommunion</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="grave_necessity_still_requires_grace">grave_necessity_still_requires_grace</span><span class="dep-chip" data-target="sinProfilePermitsCommunion">sinProfilePermitsCommunion</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="baptized_in_grace_can_receive">
@@ -989,8 +1001,9 @@ h1 {
     <div class="node-prop"><pre><code>theorem baptized_in_grace_can_receive :
     sinProfilePermitsCommunion baptizedInGrace</code></pre></div>
 <div class="node-desc">A baptized person in grace CAN receive. Layer 3 being present</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="baptizedInGrace">baptizedInGrace</span><span class="dep-chip" data-target="sinProfilePermitsCommunion">sinProfilePermitsCommunion</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="grave_necessity_still_requires_grace">grave_necessity_still_requires_grace</span><span class="dep-chip" data-target="sinProfilePermitsCommunion">sinProfilePermitsCommunion</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="sinProfilePermitsCommunion">sinProfilePermitsCommunion</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="reconciled_can_receive">
@@ -1003,8 +1016,12 @@ h1 {
     <div class="node-prop"><pre><code>theorem reconciled_can_receive :
     sinProfilePermitsCommunion afterReconciliation</code></pre></div>
 <div class="node-desc">After reconciliation, communion is permitted.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="afterReconciliation">afterReconciliation</span><span class="dep-chip" data-target="sinProfilePermitsCommunion">sinProfilePermitsCommunion</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="reconciliation_enables_communion">reconciliation_enables_communion</span><span class="dep-chip" data-target="grave_necessity_still_requires_grace">grave_necessity_still_requires_grace</span><span class="dep-chip" data-target="sinProfilePermitsCommunion">sinProfilePermitsCommunion</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="sinProfilePermitsCommunion">sinProfilePermitsCommunion</span>
+</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="reconciliation_enables_communion">reconciliation_enables_communion</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="mortal_sinner_cannot_receive">
@@ -1017,8 +1034,9 @@ h1 {
     <div class="node-prop"><pre><code>theorem mortal_sinner_cannot_receive :
     ¬sinProfilePermitsCommunion baptizedInMortalSin</code></pre></div>
 <div class="node-desc">A person in mortal sin CANNOT receive — even though baptized.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="baptizedInMortalSin">baptizedInMortalSin</span><span class="dep-chip" data-target="sinProfilePermitsCommunion">sinProfilePermitsCommunion</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="reconciliation_enables_communion">reconciliation_enables_communion</span><span class="dep-chip" data-target="grave_necessity_still_requires_grace">grave_necessity_still_requires_grace</span><span class="dep-chip" data-target="sinProfilePermitsCommunion">sinProfilePermitsCommunion</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="reconciliation_enables_communion">reconciliation_enables_communion</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="unevangelized_communion_indeterminate">
@@ -1031,8 +1049,6 @@ h1 {
     <div class="node-prop"><pre><code>theorem unevangelized_communion_indeterminate :
     ¬sinProfilePermitsCommunion unevangelized</code></pre></div>
 <div class="node-desc">The unevangelized cannot be determined — unknownToUs propagates.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="sinProfilePermitsCommunion">sinProfilePermitsCommunion</span><span class="dep-chip" data-target="unevangelized">unevangelized</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="grave_necessity_still_requires_grace">grave_necessity_still_requires_grace</span><span class="dep-chip" data-target="sinProfilePermitsCommunion">sinProfilePermitsCommunion</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="reconciliation_enables_communion">
@@ -1046,8 +1062,10 @@ h1 {
     ¬sinProfilePermitsCommunion baptizedInMortalSin ∧
     sinProfilePermitsCommunion afterReconciliation</code></pre></div>
 <div class="node-desc">The Eucharist REQUIRES what Reconciliation PROVIDES.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="afterReconciliation">afterReconciliation</span><span class="dep-chip" data-target="baptizedInMortalSin">baptizedInMortalSin</span><span class="dep-chip" data-target="eucharist_preserves_baptism_state">eucharist_preserves_baptism_state</span><span class="dep-chip" data-target="eucharist_preserves_guilt_state">eucharist_preserves_guilt_state</span><span class="dep-chip" data-target="eucharist_reduces_attachment">eucharist_reduces_attachment</span><span class="dep-chip" data-target="fullyPurified">fullyPurified</span><span class="dep-chip" data-target="mortal_sinner_cannot_receive">mortal_sinner_cannot_receive</span><span class="dep-chip" data-target="reconciled_can_receive">reconciled_can_receive</span><span class="dep-chip" data-target="sinProfilePermitsCommunion">sinProfilePermitsCommunion</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="grave_necessity_still_requires_grace">grave_necessity_still_requires_grace</span><span class="dep-chip" data-target="eucharist_preserves_baptism_state">eucharist_preserves_baptism_state</span><span class="dep-chip" data-target="eucharist_preserves_guilt_state">eucharist_preserves_guilt_state</span><span class="dep-chip" data-target="sinProfilePermitsCommunion">sinProfilePermitsCommunion</span><span class="dep-chip" data-target="eucharist_reduces_attachment">eucharist_reduces_attachment</span><span class="dep-chip" data-target="mortal_sinner_cannot_receive">mortal_sinner_cannot_receive</span><span class="dep-chip" data-target="reconciled_can_receive">reconciled_can_receive</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="reconciled_can_receive">reconciled_can_receive</span>
+<span class="dep-chip" data-target="mortal_sinner_cannot_receive">mortal_sinner_cannot_receive</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="communion_leads_to_full_purification">
@@ -1059,13 +1077,16 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem communion_leads_to_full_purification (sp : SinProfile)
     (h_worthy : sinProfilePermitsCommunion sp) :
-    let result := eucharistEffectOnProfile sp
-    result.originalWound = EffectState.removed ∧
-    result.guilt = EffectState.removed ∧
-    result.attachment = EffectState.removed</code></pre></div>
-<div class="node-desc">After worthy communion, the person is fully purified.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EffectState">EffectState</span><span class="dep-chip" data-target="SinProfile">SinProfile</span><span class="dep-chip" data-target="eucharist_preserves_baptism_state">eucharist_preserves_baptism_state</span><span class="dep-chip" data-target="eucharist_preserves_guilt_state">eucharist_preserves_guilt_state</span><span class="dep-chip" data-target="eucharist_reduces_attachment">eucharist_reduces_attachment</span><span class="dep-chip" data-target="purified_go_to_heaven">purified_go_to_heaven</span><span class="dep-chip" data-target="sinProfilePermitsCommunion">sinProfilePermitsCommunion</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="communion_points_to_heaven">communion_points_to_heaven</span><span class="dep-chip" data-target="grave_necessity_still_requires_grace">grave_necessity_still_requires_grace</span><span class="dep-chip" data-target="eucharist_preserves_baptism_state">eucharist_preserves_baptism_state</span><span class="dep-chip" data-target="eucharist_preserves_guilt_state">eucharist_preserves_guilt_state</span><span class="dep-chip" data-target="sinProfilePermitsCommunion">sinProfilePermitsCommunion</span><span class="dep-chip" data-target="eucharist_reduces_attachment">eucharist_reduces_attachment</span></div></div>
+    let result</code></pre></div>
+<div class="node-desc">THEOREM: After worthy communion, the person is fully purified.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="eucharist_preserves_guilt_state">eucharist_preserves_guilt_state</span>
+<span class="dep-chip" data-target="eucharist_preserves_baptism_state">eucharist_preserves_baptism_state</span>
+<span class="dep-chip" data-target="eucharist_reduces_attachment">eucharist_reduces_attachment</span>
+</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="communion_points_to_heaven">communion_points_to_heaven</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="communion_points_to_heaven">
@@ -1078,9 +1099,10 @@ h1 {
     <div class="node-prop"><pre><code>theorem communion_points_to_heaven (sp : SinProfile)
     (h_worthy : sinProfilePermitsCommunion sp) :
     afterlifeFromProfile (eucharistEffectOnProfile sp) = AfterlifeOutcome.heaven</code></pre></div>
-<div class="node-desc">After worthy communion, the person's afterlife outcome</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="AfterlifeOutcome">AfterlifeOutcome</span><span class="dep-chip" data-target="SinProfile">SinProfile</span><span class="dep-chip" data-target="afterlifeFromProfile">afterlifeFromProfile</span><span class="dep-chip" data-target="communion_leads_to_full_purification">communion_leads_to_full_purification</span><span class="dep-chip" data-target="eucharist_preserves_baptism_state">eucharist_preserves_baptism_state</span><span class="dep-chip" data-target="eucharist_preserves_guilt_state">eucharist_preserves_guilt_state</span><span class="dep-chip" data-target="sinProfilePermitsCommunion">sinProfilePermitsCommunion</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="grave_necessity_still_requires_grace">grave_necessity_still_requires_grace</span><span class="dep-chip" data-target="eucharist_preserves_baptism_state">eucharist_preserves_baptism_state</span><span class="dep-chip" data-target="eucharist_preserves_guilt_state">eucharist_preserves_guilt_state</span><span class="dep-chip" data-target="sinProfilePermitsCommunion">sinProfilePermitsCommunion</span><span class="dep-chip" data-target="communion_leads_to_full_purification">communion_leads_to_full_purification</span></div></div>
+<div class="node-desc">THEOREM: After worthy communion, the person&#x27;s afterlife outcome</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="communion_leads_to_full_purification">communion_leads_to_full_purification</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="communion_cannot_save_mortal_sinner">
@@ -1092,9 +1114,10 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem communion_cannot_save_mortal_sinner :
     (eucharistEffectOnProfile baptizedInMortalSin).guilt = EffectState.present</code></pre></div>
-<div class="node-desc">Communion cannot change a mortal sinner's afterlife outcome.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EffectState">EffectState</span><span class="dep-chip" data-target="baptizedInMortalSin">baptizedInMortalSin</span><span class="dep-chip" data-target="eucharist_preserves_guilt_state">eucharist_preserves_guilt_state</span><span class="dep-chip" data-target="real_presence">real_presence</span><span class="dep-chip" data-target="wholeChristPresent">wholeChristPresent</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="grave_necessity_still_requires_grace">grave_necessity_still_requires_grace</span><span class="dep-chip" data-target="eucharist_preserves_guilt_state">eucharist_preserves_guilt_state</span><span class="dep-chip" data-target="real_presence">real_presence</span></div></div>
+<div class="node-desc">THEOREM: Communion cannot change a mortal sinner&#x27;s afterlife outcome.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="eucharist_preserves_guilt_state">eucharist_preserves_guilt_state</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="eucharist_contains_divine_person">
@@ -1107,9 +1130,10 @@ h1 {
     <div class="node-prop"><pre><code>theorem eucharist_contains_divine_person
     (h_consecrated : isConsecratedEucharist) :
     Christology.christ.hasNature Christology.Nature.divine</code></pre></div>
-<div class="node-desc">After consecration, the Eucharist contains a person with</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Nature">Nature</span><span class="dep-chip" data-target="christ">christ</span><span class="dep-chip" data-target="isConsecratedEucharist">isConsecratedEucharist</span><span class="dep-chip" data-target="real_presence">real_presence</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="isConsecratedEucharist">isConsecratedEucharist</span><span class="dep-chip" data-target="real_presence">real_presence</span></div></div>
+<div class="node-desc">THEOREM: After consecration, the Eucharist contains a person with</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="real_presence">real_presence</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="eucharist_contains_complete_human_nature">
@@ -1123,9 +1147,10 @@ h1 {
     (h_consecrated : isConsecratedEucharist) :
     hasCorporealAspect Christology.christHumanPerson ∧
     hasSpiritualAspect Christology.christHumanPerson</code></pre></div>
-<div class="node-desc">After consecration, the Eucharist contains a COMPLETE</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="christHumanPerson">christHumanPerson</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="isConsecratedEucharist">isConsecratedEucharist</span><span class="dep-chip" data-target="real_presence">real_presence</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="isConsecratedEucharist">isConsecratedEucharist</span><span class="dep-chip" data-target="real_presence">real_presence</span></div></div>
+<div class="node-desc">THEOREM: After consecration, the Eucharist contains a COMPLETE</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="real_presence">real_presence</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="sacraments_have_distinct_domains">
@@ -1138,22 +1163,11 @@ h1 {
     <div class="node-prop"><pre><code>theorem sacraments_have_distinct_domains :
     -- Eucharist permits L3 to be present (acts on it)
     sinProfilePermitsCommunion
-      { originalWound := EffectState.removed
-        guilt := EffectState.removed
-        attachment := EffectState.present } ∧
-    -- But Eucharist requires L2 resolved
-    ¬sinProfilePermitsCommunion
-      { originalWound := EffectState.removed
-        guilt := EffectState.present
-        attachment := EffectState.present } ∧
-    -- And Eucharist requires L1 resolved
-    ¬sinProfilePermitsCommunion
-      { originalWound := EffectState.present
-        guilt := EffectState.removed
-        attachment := EffectState.present }</code></pre></div>
-<div class="node-desc">The sacrament-layer correspondence.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EffectState">EffectState</span><span class="dep-chip" data-target="sinProfilePermitsCommunion">sinProfilePermitsCommunion</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="grave_necessity_still_requires_grace">grave_necessity_still_requires_grace</span><span class="dep-chip" data-target="sinProfilePermitsCommunion">sinProfilePermitsCommunion</span></div></div>
+      { originalWound</code></pre></div>
+<div class="node-desc">THEOREM: The sacrament-layer correspondence.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="sinProfilePermitsCommunion">sinProfilePermitsCommunion</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="inFullCommunionWithChurch">
@@ -1163,8 +1177,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque inFullCommunionWithChurch : Person → Prop
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque inFullCommunionWithChurch : Person → Prop</code></pre></div>
 <div class="node-desc">Whether a person is in full ecclesial communion with the Catholic Church.</div>
   </div>
 </div>
@@ -1175,11 +1188,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque graveNecessityExists : Prop
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque graveNecessityExists : Prop</code></pre></div>
 <div class="node-desc">Whether grave necessity exists (danger of death, persecution, etc.).</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="sinProfilePermitsCommunion">sinProfilePermitsCommunion</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="grave_necessity_exception">grave_necessity_exception</span><span class="dep-chip" data-target="protestant_in_grave_necessity">protestant_in_grave_necessity</span><span class="dep-chip" data-target="sinProfilePermitsCommunion">sinProfilePermitsCommunion</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="mayLicitlyReceive">
@@ -1189,11 +1199,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque mayLicitlyReceive : Person → Prop
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque mayLicitlyReceive : Person → Prop</code></pre></div>
 <div class="node-desc">Whether a person may licitly receive communion.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Teaching">Teaching</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="grave_necessity_exception">grave_necessity_exception</span><span class="dep-chip" data-target="protestant_in_grave_necessity">protestant_in_grave_necessity</span><span class="dep-chip" data-target="grave_necessity_still_requires_grace">grave_necessity_still_requires_grace</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="grave_necessity_exception">
@@ -1210,11 +1217,11 @@ h1 {
     cd.believesChurchTeaching →
     cd.hasExaminedConscience →
     -- Even without full ecclesial communion, they may receive
-    mayLicitlyReceive cd.recipient
-</code></pre></div>
-<div class="node-desc">In grave necessity, a non-Catholic who believes and │   Source: [Definition] CCC §1401. | Scope: CATHOLIC.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CommunionDisposition">CommunionDisposition</span><span class="dep-chip" data-target="graveNecessityExists">graveNecessityExists</span><span class="dep-chip" data-target="mayLicitlyReceive">mayLicitlyReceive</span><span class="dep-chip" data-target="sinProfilePermitsCommunion">sinProfilePermitsCommunion</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="protestant_in_grave_necessity">protestant_in_grave_necessity</span><span class="dep-chip" data-target="grave_necessity_still_requires_grace">grave_necessity_still_requires_grace</span><span class="dep-chip" data-target="CommunionDisposition">CommunionDisposition</span><span class="dep-chip" data-target="mayLicitlyReceive">mayLicitlyReceive</span><span class="dep-chip" data-target="sinProfilePermitsCommunion">sinProfilePermitsCommunion</span><span class="dep-chip" data-target="graveNecessityExists">graveNecessityExists</span></div></div>
+    mayLicitlyReceive cd.recipient</code></pre></div>
+<div class="node-desc">In grave necessity, a non-Catholic who believes and</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="protestant_in_grave_necessity">protestant_in_grave_necessity</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="protestant_in_grave_necessity">
@@ -1231,9 +1238,10 @@ h1 {
     (h_believes : cd.believesChurchTeaching)
     (h_conscience : cd.hasExaminedConscience) :
     mayLicitlyReceive cd.recipient</code></pre></div>
-<div class="node-desc">A baptized Protestant in grace who believes in the</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CommunionDisposition">CommunionDisposition</span><span class="dep-chip" data-target="graveNecessityExists">graveNecessityExists</span><span class="dep-chip" data-target="grave_necessity_exception">grave_necessity_exception</span><span class="dep-chip" data-target="mayLicitlyReceive">mayLicitlyReceive</span><span class="dep-chip" data-target="sinProfilePermitsCommunion">sinProfilePermitsCommunion</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="CommunionDisposition">CommunionDisposition</span><span class="dep-chip" data-target="mayLicitlyReceive">mayLicitlyReceive</span><span class="dep-chip" data-target="sinProfilePermitsCommunion">sinProfilePermitsCommunion</span><span class="dep-chip" data-target="graveNecessityExists">graveNecessityExists</span><span class="dep-chip" data-target="grave_necessity_exception">grave_necessity_exception</span></div></div>
+<div class="node-desc">THEOREM (§1401): A baptized Protestant in grace who believes in the</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="grave_necessity_exception">grave_necessity_exception</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="grave_necessity_still_requires_grace">
@@ -1247,9 +1255,10 @@ h1 {
     (cd : CommunionDisposition)
     (h_guilt : cd.sinProfile.guilt = EffectState.present) :
     ¬sinProfilePermitsCommunion cd.sinProfile</code></pre></div>
-<div class="node-desc">Even in grave necessity, mortal sin still bars communion.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CommunionDisposition">CommunionDisposition</span><span class="dep-chip" data-target="EffectState">EffectState</span><span class="dep-chip" data-target="baptized_in_grace_can_receive">baptized_in_grace_can_receive</span><span class="dep-chip" data-target="bodily_preparation_is_spiritual">bodily_preparation_is_spiritual</span><span class="dep-chip" data-target="communion_cannot_save_mortal_sinner">communion_cannot_save_mortal_sinner</span><span class="dep-chip" data-target="communion_leads_to_full_purification">communion_leads_to_full_purification</span><span class="dep-chip" data-target="communion_points_to_heaven">communion_points_to_heaven</span><span class="dep-chip" data-target="corporeal_requires_spiritual">corporeal_requires_spiritual</span><span class="dep-chip" data-target="eucharist_preserves_baptism_state">eucharist_preserves_baptism_state</span><span class="dep-chip" data-target="eucharist_preserves_guilt_state">eucharist_preserves_guilt_state</span><span class="dep-chip" data-target="eucharist_reduces_attachment">eucharist_reduces_attachment</span><span class="dep-chip" data-target="grave_necessity_exception">grave_necessity_exception</span><span class="dep-chip" data-target="guilt_bars_communion">guilt_bars_communion</span><span class="dep-chip" data-target="mayLicitlyReceive">mayLicitlyReceive</span><span class="dep-chip" data-target="mortal_sinner_cannot_receive">mortal_sinner_cannot_receive</span><span class="dep-chip" data-target="real_presence">real_presence</span><span class="dep-chip" data-target="reconciled_can_receive">reconciled_can_receive</span><span class="dep-chip" data-target="reconciliation_enables_communion">reconciliation_enables_communion</span><span class="dep-chip" data-target="sacraments_have_distinct_domains">sacraments_have_distinct_domains</span><span class="dep-chip" data-target="sinProfilePermitsCommunion">sinProfilePermitsCommunion</span><span class="dep-chip" data-target="unbaptized_cannot_receive">unbaptized_cannot_receive</span><span class="dep-chip" data-target="unevangelized_communion_indeterminate">unevangelized_communion_indeterminate</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="CommunionDisposition">CommunionDisposition</span><span class="dep-chip" data-target="bodily_preparation_is_spiritual">bodily_preparation_is_spiritual</span><span class="dep-chip" data-target="eucharist_preserves_baptism_state">eucharist_preserves_baptism_state</span><span class="dep-chip" data-target="eucharist_preserves_guilt_state">eucharist_preserves_guilt_state</span><span class="dep-chip" data-target="mayLicitlyReceive">mayLicitlyReceive</span><span class="dep-chip" data-target="sinProfilePermitsCommunion">sinProfilePermitsCommunion</span><span class="dep-chip" data-target="baptized_in_grace_can_receive">baptized_in_grace_can_receive</span><span class="dep-chip" data-target="eucharist_reduces_attachment">eucharist_reduces_attachment</span><span class="dep-chip" data-target="guilt_bars_communion">guilt_bars_communion</span><span class="dep-chip" data-target="mortal_sinner_cannot_receive">mortal_sinner_cannot_receive</span><span class="dep-chip" data-target="real_presence">real_presence</span><span class="dep-chip" data-target="reconciled_can_receive">reconciled_can_receive</span><span class="dep-chip" data-target="sacraments_have_distinct_domains">sacraments_have_distinct_domains</span><span class="dep-chip" data-target="unbaptized_cannot_receive">unbaptized_cannot_receive</span><span class="dep-chip" data-target="unevangelized_communion_indeterminate">unevangelized_communion_indeterminate</span><span class="dep-chip" data-target="communion_cannot_save_mortal_sinner">communion_cannot_save_mortal_sinner</span><span class="dep-chip" data-target="communion_leads_to_full_purification">communion_leads_to_full_purification</span><span class="dep-chip" data-target="grave_necessity_exception">grave_necessity_exception</span><span class="dep-chip" data-target="reconciliation_enables_communion">reconciliation_enables_communion</span><span class="dep-chip" data-target="communion_points_to_heaven">communion_points_to_heaven</span></div></div>
+<div class="node-desc">THEOREM: Even in grave necessity, mortal sin still bars communion.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="guilt_bars_communion">guilt_bars_communion</span>
+</div></div>
   </div>
 </div>
   </div>

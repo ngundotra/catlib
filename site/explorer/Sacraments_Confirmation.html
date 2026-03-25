@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Reconciliation — Catlib Explorer</title>
+  <title>Confirmation — Catlib Explorer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -528,529 +528,482 @@ h1 {
 <body>
 <div class="container">
   <a href="index.html" class="back-link">&larr; All files</a>
-  <h1>Reconciliation</h1>
+  <h1>Confirmation</h1>
   <div class="subtitle">Sacraments &middot; 30 declarations</div>
   
-  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1451, &sect;1456, &sect;1459, &sect;1461, &sect;1468, &sect;1472, &sect;1473, &sect;1489, &sect;1491, &sect;2001</div>
+  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1212, &sect;1266, &sect;1285, &sect;1290, &sect;1292, &sect;1302, &sect;1303, &sect;1304, &sect;1306</div>
 
-  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot structure"></span>structure</span></div>
+  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span><span class="legend-item"><span class="legend-dot proposition"></span>proposition</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span></div>
 
-  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (6)</button><button class="filter-btn" data-filter="theorem">theorem (12)</button><button class="filter-btn" data-filter="def">def (5)</button><button class="filter-btn" data-filter="opaque">opaque (2)</button><button class="filter-btn" data-filter="structure">structure (5)</button></div>
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (8)</button><button class="filter-btn" data-filter="theorem">theorem (12)</button><button class="filter-btn" data-filter="proposition">proposition (1)</button><button class="filter-btn" data-filter="def">def (2)</button><button class="filter-btn" data-filter="opaque">opaque (6)</button><button class="filter-btn" data-filter="inductive">inductive (1)</button></div>
 
   <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
 
   <div id="nodeList">
-    <div class="node-card kind-structure" data-kind="structure" data-name="Contrition">
+    <div class="node-card kind-opaque" data-kind="opaque" data-name="isConfirmed">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">structure</span>
-    <span class="node-name">Contrition</span>
+    <span class="node-kind-badge">opaque</span>
+    <span class="node-name">isConfirmed</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>structure Contrition where</code></pre></div>
-<div class="node-desc">Contrition — genuine sorrow for sin with a firm purpose of amendment.</div>
+    <div class="node-prop"><pre><code>opaque isConfirmed : Person → Prop</code></pre></div>
+<div class="node-desc">Whether a person has received the sacrament of Confirmation.</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="contrition_requires_prevenient_grace">contrition_requires_prevenient_grace</span>
+<span class="dep-chip" data-target="constitutiveReading">constitutiveReading</span>
 </div></div>
   </div>
 </div>
-<div class="node-card kind-structure" data-kind="structure" data-name="Confession">
-  <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">structure</span>
-    <span class="node-name">Confession</span>
-    <span class="node-chevron">&#9654;</span>
-  </div>
-  <div class="node-details">
-    <div class="node-prop"><pre><code>structure Confession where</code></pre></div>
-<div class="node-desc">Confession — the disclosure of sins to a priest.</div>
-  </div>
-</div>
-<div class="node-card kind-structure" data-kind="structure" data-name="Satisfaction">
-  <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">structure</span>
-    <span class="node-name">Satisfaction</span>
-    <span class="node-chevron">&#9654;</span>
-  </div>
-  <div class="node-details">
-    <div class="node-prop"><pre><code>structure Satisfaction where</code></pre></div>
-<div class="node-desc">Satisfaction — the penance assigned by the priest.</div>
-  </div>
-</div>
-<div class="node-card kind-structure" data-kind="structure" data-name="Absolution">
-  <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">structure</span>
-    <span class="node-name">Absolution</span>
-    <span class="node-chevron">&#9654;</span>
-  </div>
-  <div class="node-details">
-    <div class="node-prop"><pre><code>structure Absolution where</code></pre></div>
-<div class="node-desc">Absolution — the priest&#x27;s act of forgiving sins in persona Christi.</div>
-  </div>
-</div>
-<div class="node-card kind-structure" data-kind="structure" data-name="ReconciliationAct">
-  <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">structure</span>
-    <span class="node-name">ReconciliationAct</span>
-    <span class="node-chevron">&#9654;</span>
-  </div>
-  <div class="node-details">
-    <div class="node-prop"><pre><code>structure ReconciliationAct where</code></pre></div>
-<div class="node-desc">The complete sacramental act of Reconciliation, comprising all four</div>
-  </div>
-</div>
-<div class="node-card kind-opaque" data-kind="opaque" data-name="hasTemporalPunishment">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="hasFullOutpouringOfSpirit">
   <div class="node-header" onclick="toggleNode(this)">
     <span class="node-kind-badge">opaque</span>
-    <span class="node-name">hasTemporalPunishment</span>
+    <span class="node-name">hasFullOutpouringOfSpirit</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque hasTemporalPunishment : Person → Prop</code></pre></div>
-<div class="node-desc">Whether a person carries temporal punishment from past sins.</div>
+    <div class="node-prop"><pre><code>opaque hasFullOutpouringOfSpirit : Person → Prop</code></pre></div>
+<div class="node-desc">Whether a person has received the FULL outpouring of the Holy Spirit</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="constitutiveReading">constitutiveReading</span>
+</div></div>
   </div>
 </div>
-<div class="node-card kind-opaque" data-kind="opaque" data-name="eternalPunishmentRemitted">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="hasStrengthForWitness">
   <div class="node-header" onclick="toggleNode(this)">
     <span class="node-kind-badge">opaque</span>
-    <span class="node-name">eternalPunishmentRemitted</span>
+    <span class="node-name">hasStrengthForWitness</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque eternalPunishmentRemitted : Person → Prop
+    <div class="node-prop"><pre><code>opaque hasStrengthForWitness : Person → Prop</code></pre></div>
+<div class="node-desc">Whether a person has the STRENGTHENING for mission that Confirmation</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="constitutiveReading">constitutiveReading</span>
+</div></div>
+  </div>
+</div>
+<div class="node-card kind-opaque" data-kind="opaque" data-name="baptismalGraceComplete">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">opaque</span>
+    <span class="node-name">baptismalGraceComplete</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>opaque baptismalGraceComplete : Person → Prop</code></pre></div>
+<div class="node-desc">Whether a person&#x27;s baptismal grace is &quot;complete&quot; in the sense the</div>
+  </div>
+</div>
+<div class="node-card kind-opaque" data-kind="opaque" data-name="isFullyInitiated">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">opaque</span>
+    <span class="node-name">isFullyInitiated</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>opaque isFullyInitiated : Person → Prop
 
 -- ============================================================================
--- § 3. Axioms
+-- § 2. Liturgical practice: East vs. West
 -- ============================================================================</code></pre></div>
-<div class="node-desc">Whether a person&#x27;s eternal punishment (guilt) has been removed.</div>
+<div class="node-desc">Whether a person is FULLY INITIATED into the Catholic Church —</div>
   </div>
 </div>
-<div class="node-card kind-axiom" data-kind="axiom" data-name="contrition_requires_sincerity">
+<div class="node-card kind-inductive" data-kind="inductive" data-name="InitiationPractice">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">axiom</span>
-    <span class="node-name">contrition_requires_sincerity</span>
+    <span class="node-kind-badge">inductive</span>
+    <span class="node-name">InitiationPractice</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>axiom contrition_requires_sincerity :
-  ∀ (c : Contrition), c.genuineSorrow ∧ c.firmPurpose → c.isFree</code></pre></div>
-<div class="node-desc">Genuine contrition is a free act of the will.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="sincere_contrition_enables_reconciliation">sincere_contrition_enables_reconciliation</span>
-</div></div>
+    <div class="node-prop"><pre><code>inductive InitiationPractice where</code></pre></div>
+<div class="node-desc">Whether all three initiation sacraments are conferred together</div>
   </div>
 </div>
-<div class="node-card kind-axiom" data-kind="axiom" data-name="absolution_requires_authority">
+<div class="node-card kind-axiom" data-kind="axiom" data-name="confirmation_requires_baptism">
   <div class="node-header" onclick="toggleNode(this)">
     <span class="node-kind-badge">axiom</span>
-    <span class="node-name">absolution_requires_authority</span>
+    <span class="node-name">confirmation_requires_baptism</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>axiom absolution_requires_authority :
-  ∀ (a : Absolution), a.isPronounced → a.hasAuthority</code></pre></div>
-<div class="node-desc">Valid absolution requires the delegation chain.</div>
+    <div class="node-prop"><pre><code>axiom confirmation_requires_baptism :
+  ∀ (p : Person), isConfirmed p → isBaptized p</code></pre></div>
+<div class="node-desc">Confirmation presupposes baptism. A person</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="reconciliation_requires_authority">reconciliation_requires_authority</span>
+<span class="dep-chip" data-target="confirmation_presupposes_grace">confirmation_presupposes_grace</span>
 </div></div>
   </div>
 </div>
-<div class="node-card kind-axiom" data-kind="axiom" data-name="reconciliation_restores_grace">
+<div class="node-card kind-axiom" data-kind="axiom" data-name="confirmation_confers_full_spirit">
   <div class="node-header" onclick="toggleNode(this)">
     <span class="node-kind-badge">axiom</span>
-    <span class="node-name">reconciliation_restores_grace</span>
+    <span class="node-name">confirmation_confers_full_spirit</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>axiom reconciliation_restores_grace :
-  ∀ (r : ReconciliationAct) (state : SpiritualState),
-    r.contrition.genuineSorrow →
-    r.contrition.firmPurpose →
-    r.contrition.isFree →
-    r.confession.isComplete →
-    r.absolution.hasAuthority →
-    r.absolution.isPronounced →
-    r.satisfaction.penancePerformed →
-    state.person = r.contrition.penitent →
-    state.graceState = GraceState.notInGrace →
-    ∃ (newState : SpiritualState),
-      newState.person = state.person ∧
-      newState.graceState = GraceState.inGrace</code></pre></div>
-<div class="node-desc">Valid reconciliation restores the state of grace.</div>
+    <div class="node-prop"><pre><code>axiom confirmation_confers_full_spirit :
+  ∀ (p : Person), isConfirmed p → hasFullOutpouringOfSpirit p</code></pre></div>
+<div class="node-desc">Confirmation confers the full outpouring of the Holy Spirit.</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="sincere_contrition_enables_reconciliation">sincere_contrition_enables_reconciliation</span>
-<span class="dep-chip" data-target="destruction_asymmetric_to_restoration">destruction_asymmetric_to_restoration</span>
+<span class="dep-chip" data-target="confirmation_full_effects">confirmation_full_effects</span>
 </div></div>
   </div>
 </div>
-<div class="node-card kind-axiom" data-kind="axiom" data-name="reconciliation_restores_agape">
+<div class="node-card kind-axiom" data-kind="axiom" data-name="confirmation_confers_witness_strength">
   <div class="node-header" onclick="toggleNode(this)">
     <span class="node-kind-badge">axiom</span>
-    <span class="node-name">reconciliation_restores_agape</span>
+    <span class="node-name">confirmation_confers_witness_strength</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>axiom reconciliation_restores_agape :
-  ∀ (r : ReconciliationAct) (tl : TypedLove),
-    r.contrition.genuineSorrow →
-    r.contrition.firmPurpose →
-    r.absolution.hasAuthority →
-    r.absolution.isPronounced →
-    tl.kind = LoveKind.agape →
-    tl.lover = r.contrition.penitent →
-    tl.degree = 0 →
-    ∃ (tl&#x27; : TypedLove),
-      tl&#x27;.kind = LoveKind.agape ∧
-      tl&#x27;.lover = tl.lover ∧
-      tl&#x27;.beloved = tl.beloved ∧
-      tl&#x27;.degree &gt; 0</code></pre></div>
-<div class="node-desc">Reconciliation restores charity (agape).</div>
+    <div class="node-prop"><pre><code>axiom confirmation_confers_witness_strength :
+  ∀ (p : Person), isConfirmed p → hasStrengthForWitness p</code></pre></div>
+<div class="node-desc">Confirmation confers strength to spread and defend the faith.</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="reconciliation_restores_charity">reconciliation_restores_charity</span>
+<span class="dep-chip" data-target="confirmation_full_effects">confirmation_full_effects</span>
 </div></div>
   </div>
 </div>
-<div class="node-card kind-axiom" data-kind="axiom" data-name="absolution_remits_eternal_not_temporal">
+<div class="node-card kind-axiom" data-kind="axiom" data-name="confirmation_completes_baptism">
   <div class="node-header" onclick="toggleNode(this)">
     <span class="node-kind-badge">axiom</span>
-    <span class="node-name">absolution_remits_eternal_not_temporal</span>
+    <span class="node-name">confirmation_completes_baptism</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>axiom absolution_remits_eternal_not_temporal :
-  ∀ (r : ReconciliationAct),
-    r.contrition.genuineSorrow →
-    r.absolution.hasAuthority →
-    r.absolution.isPronounced →
-    -- Eternal punishment (guilt) IS removed
-    eternalPunishmentRemitted r.contrition.penitent ∧
-    -- Temporal punishment MAY remain
-    -- (satisfaction/penance partially addresses it, but may not fully resolve it)
-    True  -- temporal punishment&#x27;s persistence is possible, not guaranteed</code></pre></div>
-<div class="node-desc">Eternal punishment is remitted by absolution, but</div>
+    <div class="node-prop"><pre><code>axiom confirmation_completes_baptism :
+  ∀ (p : Person), isConfirmed p → baptismalGraceComplete p</code></pre></div>
+<div class="node-desc">Confirmation is necessary for the completion of</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="temporal_punishment_survives_absolution">temporal_punishment_survives_absolution</span>
+<span class="dep-chip" data-target="confirmed_has_full_grace">confirmed_has_full_grace</span>
+<span class="dep-chip" data-target="confirmation_full_effects">confirmation_full_effects</span>
+<span class="dep-chip" data-target="full_initiation_has_complete_grace">full_initiation_has_complete_grace</span>
+<span class="dep-chip" data-target="east_west_both_complete">east_west_both_complete</span>
 </div></div>
   </div>
 </div>
-<div class="node-card kind-theorem" data-kind="theorem" data-name="contrition_requires_prevenient_grace">
+<div class="node-card kind-axiom" data-kind="axiom" data-name="confirmation_necessary_for_completion">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">confirmation_necessary_for_completion</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom confirmation_necessary_for_completion :
+  ∀ (p : Person), isBaptized p → ¬isConfirmed p → ¬baptismalGraceComplete p</code></pre></div>
+<div class="node-desc">Confirmation is NECESSARY for the completion of</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="baptized_but_incomplete">baptized_but_incomplete</span>
+</div></div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="full_initiation_iff">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">full_initiation_iff</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom full_initiation_iff :
+  ∀ (p : Person), isFullyInitiated p ↔ (isBaptized p ∧ isConfirmed p)</code></pre></div>
+<div class="node-desc">Full initiation requires both baptism and</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="full_initiation_has_complete_grace">full_initiation_has_complete_grace</span>
+<span class="dep-chip" data-target="unconfirmed_not_fully_initiated">unconfirmed_not_fully_initiated</span>
+</div></div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="temporal_separation_irrelevant">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">temporal_separation_irrelevant</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom temporal_separation_irrelevant :
+  ∀ (p : Person) (_practice : InitiationPractice),
+    isConfirmed p → hasFullOutpouringOfSpirit p ∧ hasStrengthForWitness p
+
+-- ============================================================================
+-- § 4. Theorems — what the structure reveals
+-- ============================================================================</code></pre></div>
+<div class="node-desc">The sacramental content of Confirmation is the</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="east_west_same_effects">east_west_same_effects</span>
+</div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="baptized_but_incomplete">
   <div class="node-header" onclick="toggleNode(this)">
     <span class="node-kind-badge">theorem</span>
-    <span class="node-name">contrition_requires_prevenient_grace</span>
+    <span class="node-name">baptized_but_incomplete</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>theorem contrition_requires_prevenient_grace
-    (c : Contrition)
-    (h_sorrow : c.genuineSorrow)
-    (h_purpose : c.firmPurpose)
-    (h_free : c.penitent.hasFreeWill = true) :
-    ∃ (g : Grace),
-      g.graceType = GraceType.prevenient ∧
-      g.recipient = c.penitent ∧
-      g.isFree</code></pre></div>
-<div class="node-desc">THEOREM (§1489): Contrition requires prevenient grace.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="Contrition">Contrition</span>
-</div></div>
-  </div>
-</div>
-<div class="node-card kind-theorem" data-kind="theorem" data-name="sincere_contrition_enables_reconciliation">
-  <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">theorem</span>
-    <span class="node-name">sincere_contrition_enables_reconciliation</span>
-    <span class="node-chevron">&#9654;</span>
-  </div>
-  <div class="node-details">
-    <div class="node-prop"><pre><code>theorem sincere_contrition_enables_reconciliation
-    (r : ReconciliationAct) (state : SpiritualState)
-    (h_sorrow : r.contrition.genuineSorrow)
-    (h_purpose : r.contrition.firmPurpose)
-    (h_complete : r.confession.isComplete)
-    (h_auth : r.absolution.hasAuthority)
-    (h_pronounced : r.absolution.isPronounced)
-    (h_penance : r.satisfaction.penancePerformed)
-    (h_person : state.person = r.contrition.penitent)
-    (h_lost : state.graceState = GraceState.notInGrace) :
-    ∃ (newState : SpiritualState),
-      newState.person = state.person ∧
-      newState.graceState = GraceState.inGrace</code></pre></div>
-<div class="node-desc">Sincere contrition satisfies the freedom condition for valid reconciliation.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="reconciliation_restores_grace">reconciliation_restores_grace</span>
-<span class="dep-chip" data-target="contrition_requires_sincerity">contrition_requires_sincerity</span>
-</div></div>
-  </div>
-</div>
-<div class="node-card kind-theorem" data-kind="theorem" data-name="reconciliation_restores_charity">
-  <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">theorem</span>
-    <span class="node-name">reconciliation_restores_charity</span>
-    <span class="node-chevron">&#9654;</span>
-  </div>
-  <div class="node-details">
-    <div class="node-prop"><pre><code>theorem reconciliation_restores_charity
-    (r : ReconciliationAct) (tl : TypedLove)
-    (h_sorrow : r.contrition.genuineSorrow)
-    (h_purpose : r.contrition.firmPurpose)
-    (h_auth : r.absolution.hasAuthority)
-    (h_pronounced : r.absolution.isPronounced)
-    (h_agape : tl.kind = LoveKind.agape)
-    (h_lover : tl.lover = r.contrition.penitent)
-    (h_destroyed : tl.degree = 0) :
-    ∃ (tl&#x27; : TypedLove),
-      tl&#x27;.kind = LoveKind.agape ∧
-      tl&#x27;.lover = tl.lover ∧
-      tl&#x27;.beloved = tl.beloved ∧
-      tl&#x27;.degree &gt; 0</code></pre></div>
-<div class="node-desc">Reconciliation restores charity (agape) from zero to positive.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="reconciliation_restores_agape">reconciliation_restores_agape</span>
-</div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="reconciliation_restores_communion">reconciliation_restores_communion</span>
-</div></div>
-  </div>
-</div>
-<div class="node-card kind-axiom" data-kind="axiom" data-name="charity_implies_communion">
-  <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">axiom</span>
-    <span class="node-name">charity_implies_communion</span>
-    <span class="node-chevron">&#9654;</span>
-  </div>
-  <div class="node-details">
-    <div class="node-prop"><pre><code>axiom charity_implies_communion :
-  ∀ (p : Person) (tl : TypedLove),
-    tl.kind = LoveKind.agape →
-    tl.lover = p →
-    tl.degree &gt; 0 →
-    ∃ (s : SoulState), s.sustained ∧ s.choseGod</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="reconciliation_restores_communion">reconciliation_restores_communion</span>
-</div></div>
-  </div>
-</div>
-<div class="node-card kind-theorem" data-kind="theorem" data-name="reconciliation_restores_communion">
-  <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">theorem</span>
-    <span class="node-name">reconciliation_restores_communion</span>
-    <span class="node-chevron">&#9654;</span>
-  </div>
-  <div class="node-details">
-    <div class="node-prop"><pre><code>theorem reconciliation_restores_communion
-    (r : ReconciliationAct) (tl : TypedLove)
-    (h_sorrow : r.contrition.genuineSorrow)
-    (h_purpose : r.contrition.firmPurpose)
-    (h_auth : r.absolution.hasAuthority)
-    (h_pronounced : r.absolution.isPronounced)
-    (h_agape : tl.kind = LoveKind.agape)
-    (h_lover : tl.lover = r.contrition.penitent)
-    (h_destroyed : tl.degree = 0) :
-    ∃ (s : SoulState), s.sustained ∧ s.choseGod</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="reconciliation_restores_charity">reconciliation_restores_charity</span>
-<span class="dep-chip" data-target="charity_implies_communion">charity_implies_communion</span>
-</div></div>
-  </div>
-</div>
-<div class="node-card kind-theorem" data-kind="theorem" data-name="grace_bootstrapping_in_reconciliation">
-  <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">theorem</span>
-    <span class="node-name">grace_bootstrapping_in_reconciliation</span>
-    <span class="node-chevron">&#9654;</span>
-  </div>
-  <div class="node-details">
-    <div class="node-prop"><pre><code>theorem grace_bootstrapping_in_reconciliation
+    <div class="node-prop"><pre><code>theorem baptized_but_incomplete
     (p : Person)
-    (h_free : p.hasFreeWill = true) :
-    ∃ (g : Grace),
-      g.graceType = GraceType.prevenient ∧
-      g.recipient = p ∧
-      g.isFree</code></pre></div>
-<div class="node-desc">The grace bootstrapping problem appears in reconciliation:</div>
-  </div>
-</div>
-<div class="node-card kind-theorem" data-kind="theorem" data-name="temporal_punishment_survives_absolution">
-  <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">theorem</span>
-    <span class="node-name">temporal_punishment_survives_absolution</span>
-    <span class="node-chevron">&#9654;</span>
-  </div>
-  <div class="node-details">
-    <div class="node-prop"><pre><code>theorem temporal_punishment_survives_absolution
-    (r : ReconciliationAct)
-    (h_sorrow : r.contrition.genuineSorrow)
-    (h_auth : r.absolution.hasAuthority)
-    (h_pronounced : r.absolution.isPronounced) :
-    -- Eternal punishment is remitted
-    eternalPunishmentRemitted r.contrition.penitent</code></pre></div>
-<div class="node-desc">Temporal punishment survives absolution. Guilt (eternal punishment)</div>
+    (h_baptized : isBaptized p)
+    (h_not_confirmed : ¬isConfirmed p) :
+    receivesBaptismalGrace p ∧ ¬baptismalGraceComplete p</code></pre></div>
+<div class="node-desc">THEOREM: An unconfirmed baptized person has genuine baptismal grace</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="absolution_remits_eternal_not_temporal">absolution_remits_eternal_not_temporal</span>
+<span class="dep-chip" data-target="confirmation_necessary_for_completion">confirmation_necessary_for_completion</span>
 </div></div>
   </div>
 </div>
-<div class="node-card kind-theorem" data-kind="theorem" data-name="destruction_asymmetric_to_restoration">
+<div class="node-card kind-theorem" data-kind="theorem" data-name="confirmation_presupposes_grace">
   <div class="node-header" onclick="toggleNode(this)">
     <span class="node-kind-badge">theorem</span>
-    <span class="node-name">destruction_asymmetric_to_restoration</span>
+    <span class="node-name">confirmation_presupposes_grace</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>theorem destruction_asymmetric_to_restoration
-    (sa : Sin)
-    (state : SpiritualState)
-    (h_mortal : sa.isMortal)
-    (h_in_grace : state.graceState = GraceState.inGrace) :
-    -- (a) ONE sinful act suffices for destruction
-    (∃ (newState : SpiritualState),
-      newState.person = state.person ∧
-      newState.graceState = GraceState.notInGrace) ∧
-    -- (b) restoration requires a full ReconciliationAct (existentially)
-    (∀ (r : ReconciliationAct) (lostState : SpiritualState),
-      lostState.person = state.person →
-      lostState.graceState = GraceState.notInGrace →
-      r.contrition.genuineSorrow →
-      r.contrition.firmPurpose →
-      r.contrition.isFree →
-      r.confession.isComplete →
-      r.absolution.hasAuthority →
-      r.absolution.isPronounced →
-      r.satisfaction.penancePerformed →
-      lostState.person = r.contrition.penitent →
-      ∃ (restoredState : SpiritualState),
-        restoredState.person = state.person ∧
-        restoredState.graceState = GraceState.inGrace)</code></pre></div>
-<div class="node-desc">The asymmetry between destruction and restoration.</div>
+    <div class="node-prop"><pre><code>theorem confirmation_presupposes_grace
+    (p : Person)
+    (h_confirmed : isConfirmed p) :
+    receivesBaptismalGrace p</code></pre></div>
+<div class="node-desc">THEOREM: Confirmation presupposes baptismal grace — you must already</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="reconciliation_restores_grace">reconciliation_restores_grace</span>
+<span class="dep-chip" data-target="confirmation_requires_baptism">confirmation_requires_baptism</span>
+</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="confirmed_has_full_grace">confirmed_has_full_grace</span>
 </div></div>
   </div>
 </div>
-<div class="node-card kind-theorem" data-kind="theorem" data-name="reconciliation_requires_authority">
+<div class="node-card kind-theorem" data-kind="theorem" data-name="confirmed_has_full_grace">
   <div class="node-header" onclick="toggleNode(this)">
     <span class="node-kind-badge">theorem</span>
-    <span class="node-name">reconciliation_requires_authority</span>
+    <span class="node-name">confirmed_has_full_grace</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>theorem reconciliation_requires_authority
-    (r : ReconciliationAct)
-    (h_pronounced : r.absolution.isPronounced) :
-    r.absolution.hasAuthority</code></pre></div>
-<div class="node-desc">Reconciliation requires the authority chain.</div>
+    <div class="node-prop"><pre><code>theorem confirmed_has_full_grace
+    (p : Person)
+    (h_confirmed : isConfirmed p) :
+    receivesBaptismalGrace p ∧ baptismalGraceComplete p</code></pre></div>
+<div class="node-desc">THEOREM: A confirmed person has BOTH baptismal grace and complete</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="absolution_requires_authority">absolution_requires_authority</span>
+<span class="dep-chip" data-target="confirmation_completes_baptism">confirmation_completes_baptism</span>
+<span class="dep-chip" data-target="confirmation_presupposes_grace">confirmation_presupposes_grace</span>
 </div></div>
   </div>
 </div>
-<div class="node-card kind-theorem" data-kind="theorem" data-name="absolution_has_delegation_chain">
+<div class="node-card kind-theorem" data-kind="theorem" data-name="confirmation_full_effects">
   <div class="node-header" onclick="toggleNode(this)">
     <span class="node-kind-badge">theorem</span>
-    <span class="node-name">absolution_has_delegation_chain</span>
+    <span class="node-name">confirmation_full_effects</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>theorem absolution_has_delegation_chain :
-    absolutionDomain.christHasIt ∧ absolutionDomain.christDelegatedIt</code></pre></div>
-<div class="node-desc">The absolution authority is specifically grounded in Christ&#x27;s</div>
+    <div class="node-prop"><pre><code>theorem confirmation_full_effects
+    (p : Person)
+    (h_confirmed : isConfirmed p) :
+    hasFullOutpouringOfSpirit p ∧ hasStrengthForWitness p ∧ baptismalGraceComplete p</code></pre></div>
+<div class="node-desc">THEOREM: A confirmed person has the full outpouring of the Spirit</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="confirmation_completes_baptism">confirmation_completes_baptism</span>
+<span class="dep-chip" data-target="confirmation_confers_full_spirit">confirmation_confers_full_spirit</span>
+<span class="dep-chip" data-target="confirmation_confers_witness_strength">confirmation_confers_witness_strength</span>
+</div></div>
   </div>
 </div>
-<div class="node-card kind-theorem" data-kind="theorem" data-name="sin_separates_bridge">
+<div class="node-card kind-theorem" data-kind="theorem" data-name="full_initiation_has_complete_grace">
   <div class="node-header" onclick="toggleNode(this)">
     <span class="node-kind-badge">theorem</span>
-    <span class="node-name">sin_separates_bridge</span>
+    <span class="node-name">full_initiation_has_complete_grace</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>theorem sin_separates_bridge (p : Person) (s : Sin)
-    (h_grave : isGraveSin s) (h_agent : s.action.agent = p) :
-    ¬ inCommunion (.person p) .god</code></pre></div>
-<div class="node-desc">Bridge to S5: sin separates from communion with God.</div>
+    <div class="node-prop"><pre><code>theorem full_initiation_has_complete_grace
+    (p : Person)
+    (h_init : isFullyInitiated p) :
+    receivesBaptismalGrace p ∧ baptismalGraceComplete p</code></pre></div>
+<div class="node-desc">THEOREM: Full initiation implies both baptismal grace and complete</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="confirmation_completes_baptism">confirmation_completes_baptism</span>
+<span class="dep-chip" data-target="full_initiation_iff">full_initiation_iff</span>
+</div></div>
   </div>
 </div>
-<div class="node-card kind-theorem" data-kind="theorem" data-name="grace_transforms_bridge">
+<div class="node-card kind-theorem" data-kind="theorem" data-name="unconfirmed_not_fully_initiated">
   <div class="node-header" onclick="toggleNode(this)">
     <span class="node-kind-badge">theorem</span>
-    <span class="node-name">grace_transforms_bridge</span>
+    <span class="node-name">unconfirmed_not_fully_initiated</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>theorem grace_transforms_bridge (p : Person) (g : Grace)
-    (h : graceGiven p g) : graceTransforms g p</code></pre></div>
-<div class="node-desc">Bridge to S8: grace is transformative, not merely forensic.</div>
+    <div class="node-prop"><pre><code>theorem unconfirmed_not_fully_initiated
+    (p : Person)
+    (h_not_confirmed : ¬isConfirmed p) :
+    ¬isFullyInitiated p</code></pre></div>
+<div class="node-desc">THEOREM: An unconfirmed baptized person is NOT fully initiated.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="full_initiation_iff">full_initiation_iff</span>
+</div></div>
   </div>
 </div>
-<div class="node-card kind-theorem" data-kind="theorem" data-name="sacramental_efficacy_bridge">
+<div class="node-card kind-proposition" data-kind="proposition" data-name="constitutiveReading">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">proposition</span>
+    <span class="node-name">constitutiveReading</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def constitutiveReading (p : Person) : Prop</code></pre></div>
+<div class="node-desc">The CONSTITUTIVE reading: Confirmation supplies something baptism</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="hasStrengthForWitness">hasStrengthForWitness</span>
+<span class="dep-chip" data-target="isConfirmed">isConfirmed</span>
+<span class="dep-chip" data-target="hasFullOutpouringOfSpirit">hasFullOutpouringOfSpirit</span>
+</div></div>
+  </div>
+</div>
+<div class="node-card kind-opaque" data-kind="opaque" data-name="hasSpiritFromBaptism">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">opaque</span>
+    <span class="node-name">hasSpiritFromBaptism</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>opaque hasSpiritFromBaptism : Person → Prop</code></pre></div>
+<div class="node-desc">The DEVELOPMENTAL reading: Baptism gives the Spirit fully in KIND</div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="baptism_gives_spirit">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">baptism_gives_spirit</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom baptism_gives_spirit :
+  ∀ (p : Person), isBaptized p → hasSpiritFromBaptism p</code></pre></div>
+<div class="node-desc">Under the developmental reading, every baptized person already has</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="developmental_unconfirmed_has_spirit">developmental_unconfirmed_has_spirit</span>
+</div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="developmental_unconfirmed_has_spirit">
   <div class="node-header" onclick="toggleNode(this)">
     <span class="node-kind-badge">theorem</span>
-    <span class="node-name">sacramental_efficacy_bridge</span>
+    <span class="node-name">developmental_unconfirmed_has_spirit</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>theorem sacramental_efficacy_bridge (s : Sacrament)
-    (h : signifies s) : confers s</code></pre></div>
-<div class="node-desc">Bridge to T3: sacraments confer what they signify (ex opere operato).</div>
+    <div class="node-prop"><pre><code>theorem developmental_unconfirmed_has_spirit
+    (p : Person)
+    (h_baptized : isBaptized p) :
+    hasSpiritFromBaptism p</code></pre></div>
+<div class="node-desc">THEOREM: Under the developmental reading, even an unconfirmed</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="baptism_gives_spirit">baptism_gives_spirit</span>
+</div></div>
   </div>
 </div>
-<div class="node-card kind-def" data-kind="def" data-name="three_acts_tag">
+<div class="node-card kind-theorem" data-kind="theorem" data-name="constitutive_shows_distinct_content">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">def</span>
-    <span class="node-name">three_acts_tag</span>
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">constitutive_shows_distinct_content</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def three_acts_tag : DenominationalTag</code></pre></div>
-<div class="node-desc">The three acts of the penitent: Catholic + Orthodox.</div>
+    <div class="node-prop"><pre><code>theorem constitutive_shows_distinct_content
+    (p : Person)
+    (h_constitutive : constitutiveReading p)
+    (h_baptized : isBaptized p)
+    (h_not_confirmed : ¬isConfirmed p) :
+    ¬hasFullOutpouringOfSpirit p ∧ ¬hasStrengthForWitness p</code></pre></div>
+<div class="node-desc">THEOREM: Under the constitutive reading, Confirmation adds something</div>
   </div>
 </div>
-<div class="node-card kind-def" data-kind="def" data-name="absolution_tag">
+<div class="node-card kind-theorem" data-kind="theorem" data-name="confirmation_character_blocks_repetition">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">def</span>
-    <span class="node-name">absolution_tag</span>
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">confirmation_character_blocks_repetition</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def absolution_tag : DenominationalTag</code></pre></div>
-<div class="node-desc">Absolution by a priest: Catholic + Orthodox.</div>
+    <div class="node-prop"><pre><code>theorem confirmation_character_blocks_repetition :
+    imprintsCharacter .confirmation ∧ ¬isRepeatable .confirmation</code></pre></div>
+<div class="node-desc">THEOREM: Confirmation is non-repeatable because it imprints an</div>
   </div>
 </div>
-<div class="node-card kind-def" data-kind="def" data-name="temporal_punishment_tag">
+<div class="node-card kind-theorem" data-kind="theorem" data-name="separate_character_implies_distinct_contribution">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">def</span>
-    <span class="node-name">temporal_punishment_tag</span>
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">separate_character_implies_distinct_contribution</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def temporal_punishment_tag : DenominationalTag</code></pre></div>
-<div class="node-desc">Temporal punishment remaining after absolution: Catholic.</div>
+    <div class="node-prop"><pre><code>theorem separate_character_implies_distinct_contribution :
+    imprintsCharacter .confirmation
+    ∧ causesChangeOfType .confirmation .ontological
+    ∧ causesChangeOfType .confirmation .dispositional</code></pre></div>
+<div class="node-desc">THEOREM: The separate character is evidence for the constitutive reading.</div>
   </div>
 </div>
-<div class="node-card kind-def" data-kind="def" data-name="prevenient_grace_contrition_tag">
+<div class="node-card kind-theorem" data-kind="theorem" data-name="east_west_same_effects">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">def</span>
-    <span class="node-name">prevenient_grace_contrition_tag</span>
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">east_west_same_effects</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def prevenient_grace_contrition_tag : DenominationalTag</code></pre></div>
-<div class="node-desc">Prevenient grace enabling contrition: Ecumenical.</div>
+    <div class="node-prop"><pre><code>theorem east_west_same_effects
+    (p : Person)
+    (h_confirmed : isConfirmed p) :
+    hasFullOutpouringOfSpirit p ∧ hasStrengthForWitness p</code></pre></div>
+<div class="node-desc">THEOREM: Under both Eastern and Western practice, a confirmed person</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="temporal_separation_irrelevant">temporal_separation_irrelevant</span>
+</div></div>
   </div>
 </div>
-<div class="node-card kind-def" data-kind="def" data-name="asymmetry_tag">
+<div class="node-card kind-theorem" data-kind="theorem" data-name="east_west_both_complete">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">def</span>
-    <span class="node-name">asymmetry_tag</span>
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">east_west_both_complete</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def asymmetry_tag : DenominationalTag</code></pre></div>
-<div class="node-desc">The asymmetry (destruction easier than restoration): broadly shared.</div>
+    <div class="node-prop"><pre><code>theorem east_west_both_complete
+    (p : Person)
+    (h_confirmed : isConfirmed p) :
+    baptismalGraceComplete p</code></pre></div>
+<div class="node-desc">THEOREM: The East/West difference does not affect the completion</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="confirmation_completes_baptism">confirmation_completes_baptism</span>
+</div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="confirmationTag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">confirmationTag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def confirmationTag : DenominationalTag</code></pre></div>
+<div class="node-desc">Denominational tag for the Confirmation doctrine.</div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="eastWestTag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">eastWestTag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def eastWestTag : DenominationalTag</code></pre></div>
+<div class="node-desc">Denominational tag for the East/West invariance.</div>
   </div>
 </div>
   </div>
 
   <div class="footer">
-    Generated from <code>Catlib/Sacraments/Reconciliation.lean</code>
+    Generated from <code>Catlib/Sacraments/Confirmation.lean</code>
   </div>
 </div>
 

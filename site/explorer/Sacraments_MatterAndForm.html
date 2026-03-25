@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Basic — Catlib Explorer</title>
+  <title>MatterAndForm — Catlib Explorer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -528,370 +528,413 @@ h1 {
 <body>
 <div class="container">
   <a href="index.html" class="back-link">&larr; All files</a>
-  <h1>Basic</h1>
-  <div class="subtitle">Foundations &middot; 28 declarations</div>
+  <h1>MatterAndForm</h1>
+  <div class="subtitle">Sacraments &middot; 25 declarations</div>
   
-  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;255, &sect;946, &sect;1024, &sect;1033, &sect;1700, &sect;1733, &sect;1750, &sect;1755, &sect;1849, &sect;1857, &sect;1859, &sect;1897, &sect;1996, &sect;2001</div>
+  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1127, &sect;1131, &sect;1239, &sect;1240, &sect;1300, &sect;1333, &sect;1449, &sect;1519, &sect;1573, &sect;1626, &sect;1627</div>
 
-  <div class="legend"><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span><span class="legend-item"><span class="legend-dot proposition"></span>proposition</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot structure"></span>structure</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span></div>
+  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span></div>
 
-  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="theorem">theorem (2)</button><button class="filter-btn" data-filter="proposition">proposition (3)</button><button class="filter-btn" data-filter="def">def (5)</button><button class="filter-btn" data-filter="structure">structure (9)</button><button class="filter-btn" data-filter="inductive">inductive (9)</button></div>
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (7)</button><button class="filter-btn" data-filter="theorem">theorem (10)</button><button class="filter-btn" data-filter="def">def (2)</button><button class="filter-btn" data-filter="opaque">opaque (6)</button></div>
 
   <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
 
   <div id="nodeList">
-    <div class="node-card kind-structure" data-kind="structure" data-name="Person">
+    <div class="node-card kind-opaque" data-kind="opaque" data-name="hasMatter">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">structure</span>
-    <span class="node-name">Person</span>
+    <span class="node-kind-badge">opaque</span>
+    <span class="node-name">hasMatter</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>structure Person where</code></pre></div>
-<div class="node-desc">A person — human or divine. The Catechism&#x27;s anthropology distinguishes</div>
+    <div class="node-prop"><pre><code>opaque hasMatter : SacramentKind → Prop</code></pre></div>
+<div class="node-desc">Whether the appropriate MATTER (physical/sensible element) is present</div>
   </div>
 </div>
-<div class="node-card kind-def" data-kind="def" data-name="Person.human">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="hasForm">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">opaque</span>
+    <span class="node-name">hasForm</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>opaque hasForm : SacramentKind → Prop</code></pre></div>
+<div class="node-desc">Whether the appropriate FORM (verbal/ritual words) is present</div>
+  </div>
+</div>
+<div class="node-card kind-opaque" data-kind="opaque" data-name="isValidlyCelebrated">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">opaque</span>
+    <span class="node-name">isValidlyCelebrated</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>opaque isValidlyCelebrated : SacramentKind → Prop</code></pre></div>
+<div class="node-desc">Whether a sacrament is validly celebrated — the sacrament achieves</div>
+  </div>
+</div>
+<div class="node-card kind-opaque" data-kind="opaque" data-name="isDeterminateSign">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">opaque</span>
+    <span class="node-name">isDeterminateSign</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>opaque isDeterminateSign : SacramentKind → Prop
+
+-- ============================================================================
+-- § 2. Marriage: The Anomalous Case
+-- ============================================================================</code></pre></div>
+<div class="node-desc">Whether a sacramental sign is DETERMINATE — i.e., it unambiguously</div>
+  </div>
+</div>
+<div class="node-card kind-opaque" data-kind="opaque" data-name="hasExternalMatter">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">opaque</span>
+    <span class="node-name">hasExternalMatter</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>opaque hasExternalMatter : SacramentKind → Prop
+
+-- ============================================================================
+-- § 3. Denominational Tags
+-- ============================================================================</code></pre></div>
+<div class="node-desc">Whether the matter of a sacrament is an EXTERNAL physical element</div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="hylomorphicSignTag">
   <div class="node-header" onclick="toggleNode(this)">
     <span class="node-kind-badge">def</span>
-    <span class="node-name">Person.human</span>
+    <span class="node-name">hylomorphicSignTag</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def Person.human : Person</code></pre></div>
-<div class="node-desc">A human person: has intellect, free will, and moral agency.</div>
+    <div class="node-prop"><pre><code>def hylomorphicSignTag : DenominationalTag</code></pre></div>
+<div class="node-desc">The hylomorphic analysis of sacraments is Thomistic philosophical</div>
   </div>
 </div>
-<div class="node-card kind-structure" data-kind="structure" data-name="Action">
+<div class="node-card kind-def" data-kind="def" data-name="matterFormSpecificsTag">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">structure</span>
-    <span class="node-name">Action</span>
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">matterFormSpecificsTag</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>structure Action where</code></pre></div>
-<div class="node-desc">An action that a moral agent can perform.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="MoralEvaluation">MoralEvaluation</span>
-</div></div>
+    <div class="node-prop"><pre><code>def matterFormSpecificsTag : DenominationalTag</code></pre></div>
+<div class="node-desc">The specific matter and form for each sacrament is CATHOLIC</div>
   </div>
 </div>
-<div class="node-card kind-structure" data-kind="structure" data-name="MoralEvaluation">
+<div class="node-card kind-axiom" data-kind="axiom" data-name="every_sacrament_has_matter">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">structure</span>
-    <span class="node-name">MoralEvaluation</span>
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">every_sacrament_has_matter</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>structure MoralEvaluation where</code></pre></div>
-<div class="node-desc">The three sources of morality (CCC §1750).</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="Action">Action</span>
-</div></div>
+    <div class="node-prop"><pre><code>axiom every_sacrament_has_matter :
+  ∀ (s : SacramentKind), hasMatter s</code></pre></div>
+<div class="node-desc">Every sacrament has matter —</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="good_iff_not_evil">good_iff_not_evil</span>
+<span class="dep-chip" data-target="every_sacrament_is_composite">every_sacrament_is_composite</span>
+<span class="dep-chip" data-target="every_sacrament_is_determinate">every_sacrament_is_determinate</span>
+<span class="dep-chip" data-target="marriage_still_hylomorphic">marriage_still_hylomorphic</span>
+<span class="dep-chip" data-target="form_is_essential">form_is_essential</span>
+<span class="dep-chip" data-target="hylomorphic_analogy">hylomorphic_analogy</span>
 </div></div>
   </div>
 </div>
-<div class="node-card kind-proposition" data-kind="proposition" data-name="MoralEvaluation.isGood">
+<div class="node-card kind-axiom" data-kind="axiom" data-name="every_sacrament_has_form">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
-    <span class="node-name">MoralEvaluation.isGood</span>
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">every_sacrament_has_form</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def MoralEvaluation.isGood (eval : MoralEvaluation) : Prop</code></pre></div>
-<div class="node-desc">An action is morally good when all three sources are good.</div>
+    <div class="node-prop"><pre><code>axiom every_sacrament_has_form :
+  ∀ (s : SacramentKind), hasForm s</code></pre></div>
+<div class="node-desc">Every sacrament has form —</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="good_iff_not_evil">good_iff_not_evil</span>
+<span class="dep-chip" data-target="every_sacrament_is_composite">every_sacrament_is_composite</span>
+<span class="dep-chip" data-target="every_sacrament_is_determinate">every_sacrament_is_determinate</span>
+<span class="dep-chip" data-target="marriage_still_hylomorphic">marriage_still_hylomorphic</span>
+<span class="dep-chip" data-target="hylomorphic_analogy">hylomorphic_analogy</span>
 </div></div>
   </div>
 </div>
-<div class="node-card kind-proposition" data-kind="proposition" data-name="MoralEvaluation.isEvil">
+<div class="node-card kind-axiom" data-kind="axiom" data-name="validity_requires_both">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
-    <span class="node-name">MoralEvaluation.isEvil</span>
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">validity_requires_both</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def MoralEvaluation.isEvil (eval : MoralEvaluation) : Prop</code></pre></div>
-<div class="node-desc">An action is morally evil if any source is evil.</div>
+    <div class="node-prop"><pre><code>axiom validity_requires_both :
+  ∀ (s : SacramentKind), isValidlyCelebrated s → hasMatter s ∧ hasForm s</code></pre></div>
+<div class="node-desc">A sacrament is</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="good_iff_not_evil">good_iff_not_evil</span>
+<span class="dep-chip" data-target="valid_sacrament_is_determinate">valid_sacrament_is_determinate</span>
+<span class="dep-chip" data-target="matter_without_form_invalid">matter_without_form_invalid</span>
+<span class="dep-chip" data-target="form_without_matter_invalid">form_without_matter_invalid</span>
 </div></div>
   </div>
 </div>
-<div class="node-card kind-theorem" data-kind="theorem" data-name="good_iff_not_evil">
+<div class="node-card kind-axiom" data-kind="axiom" data-name="matter_alone_indeterminate">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">matter_alone_indeterminate</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom matter_alone_indeterminate :
+  ∀ (s : SacramentKind), hasMatter s → ¬hasForm s → ¬isDeterminateSign s</code></pre></div>
+<div class="node-desc">Matter without form does not produce a</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="form_is_essential">form_is_essential</span>
+</div></div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="matter_and_form_determine">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">matter_and_form_determine</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom matter_and_form_determine :
+  ∀ (s : SacramentKind), hasMatter s → hasForm s → isDeterminateSign s</code></pre></div>
+<div class="node-desc">Matter and form together produce a</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="valid_sacrament_is_determinate">valid_sacrament_is_determinate</span>
+<span class="dep-chip" data-target="every_sacrament_is_determinate">every_sacrament_is_determinate</span>
+</div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="valid_sacrament_is_determinate">
   <div class="node-header" onclick="toggleNode(this)">
     <span class="node-kind-badge">theorem</span>
-    <span class="node-name">good_iff_not_evil</span>
+    <span class="node-name">valid_sacrament_is_determinate</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>theorem good_iff_not_evil (eval : MoralEvaluation) :
-    eval.isGood ↔ ¬eval.isEvil</code></pre></div>
-<div class="node-desc">Good and evil are contradictory (for the same evaluation).</div>
+    <div class="node-prop"><pre><code>theorem valid_sacrament_is_determinate :
+    ∀ (s : SacramentKind), isValidlyCelebrated s → isDeterminateSign s</code></pre></div>
+<div class="node-desc">THEOREM (§1127-1131): A validly celebrated sacrament is a determinate sign.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="MoralEvaluation.isGood">MoralEvaluation.isGood</span>
-<span class="dep-chip" data-target="MoralEvaluation">MoralEvaluation</span>
-<span class="dep-chip" data-target="MoralEvaluation.isEvil">MoralEvaluation.isEvil</span>
+<span class="dep-chip" data-target="validity_requires_both">validity_requires_both</span>
+<span class="dep-chip" data-target="matter_and_form_determine">matter_and_form_determine</span>
 </div></div>
   </div>
 </div>
-<div class="node-card kind-inductive" data-kind="inductive" data-name="GraceType">
+<div class="node-card kind-axiom" data-kind="axiom" data-name="marriage_matter_is_persons">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">inductive</span>
-    <span class="node-name">GraceType</span>
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">marriage_matter_is_persons</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>inductive GraceType where</code></pre></div>
-<div class="node-desc">The type of grace — prevenient (preparing) vs sanctifying.</div>
+    <div class="node-prop"><pre><code>axiom marriage_matter_is_persons :
+  ¬hasExternalMatter .marriage</code></pre></div>
+<div class="node-desc">Six sacraments</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="marriage_uniquely_non_external">marriage_uniquely_non_external</span>
+</div></div>
   </div>
 </div>
-<div class="node-card kind-structure" data-kind="structure" data-name="Grace">
+<div class="node-card kind-axiom" data-kind="axiom" data-name="six_sacraments_have_external_matter">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">structure</span>
-    <span class="node-name">Grace</span>
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">six_sacraments_have_external_matter</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>structure Grace where</code></pre></div>
-<div class="node-desc">Grace — God&#x27;s free and undeserved help.</div>
+    <div class="node-prop"><pre><code>axiom six_sacraments_have_external_matter :
+  hasExternalMatter .baptism
+  ∧ hasExternalMatter .eucharist
+  ∧ hasExternalMatter .confirmation
+  ∧ hasExternalMatter .reconciliation
+  ∧ hasExternalMatter .anointingOfTheSick
+  ∧ hasExternalMatter .holyOrders
+
+-- ============================================================================
+-- § 5. Theorems — What the Structure Reveals
+-- ============================================================================</code></pre></div>
+<div class="node-desc">The other six</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="marriage_uniquely_non_external">marriage_uniquely_non_external</span>
+</div></div>
   </div>
 </div>
-<div class="node-card kind-inductive" data-kind="inductive" data-name="MoralKnowledge">
-  <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">inductive</span>
-    <span class="node-name">MoralKnowledge</span>
-    <span class="node-chevron">&#9654;</span>
-  </div>
-  <div class="node-details">
-    <div class="node-prop"><pre><code>inductive MoralKnowledge where</code></pre></div>
-<div class="node-desc">Knowledge in the context of moral action.</div>
-  </div>
-</div>
-<div class="node-card kind-inductive" data-kind="inductive" data-name="MoralConsent">
-  <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">inductive</span>
-    <span class="node-name">MoralConsent</span>
-    <span class="node-chevron">&#9654;</span>
-  </div>
-  <div class="node-details">
-    <div class="node-prop"><pre><code>inductive MoralConsent where</code></pre></div>
-<div class="node-desc">Consent in the context of moral action.</div>
-  </div>
-</div>
-<div class="node-card kind-inductive" data-kind="inductive" data-name="MatterGravity">
-  <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">inductive</span>
-    <span class="node-name">MatterGravity</span>
-    <span class="node-chevron">&#9654;</span>
-  </div>
-  <div class="node-details">
-    <div class="node-prop"><pre><code>inductive MatterGravity where</code></pre></div>
-<div class="node-desc">The gravity of the matter of an act.</div>
-  </div>
-</div>
-<div class="node-card kind-structure" data-kind="structure" data-name="Sin">
-  <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">structure</span>
-    <span class="node-name">Sin</span>
-    <span class="node-chevron">&#9654;</span>
-  </div>
-  <div class="node-details">
-    <div class="node-prop"><pre><code>structure Sin where</code></pre></div>
-<div class="node-desc">Sin — an offense against reason, truth, and right conscience.</div>
-  </div>
-</div>
-<div class="node-card kind-theorem" data-kind="theorem" data-name="sin_requires_freedom">
+<div class="node-card kind-theorem" data-kind="theorem" data-name="every_sacrament_is_composite">
   <div class="node-header" onclick="toggleNode(this)">
     <span class="node-kind-badge">theorem</span>
-    <span class="node-name">sin_requires_freedom</span>
+    <span class="node-name">every_sacrament_is_composite</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>theorem sin_requires_freedom (s : Sin) (h : s.isFree) :
-    s.action.agent.hasFreeWill = true → s.isFree</code></pre></div>
-<div class="node-desc">Sin requires free will — you cannot sin without choosing to.</div>
+    <div class="node-prop"><pre><code>theorem every_sacrament_is_composite :
+    ∀ (s : SacramentKind), hasMatter s ∧ hasForm s</code></pre></div>
+<div class="node-desc">THEOREM: Every sacrament is a composite of matter and form.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="every_sacrament_has_form">every_sacrament_has_form</span>
+<span class="dep-chip" data-target="every_sacrament_has_matter">every_sacrament_has_matter</span>
+</div></div>
   </div>
 </div>
-<div class="node-card kind-inductive" data-kind="inductive" data-name="Provenance">
+<div class="node-card kind-theorem" data-kind="theorem" data-name="every_sacrament_is_determinate">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">inductive</span>
-    <span class="node-name">Provenance</span>
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">every_sacrament_is_determinate</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>inductive Provenance where</code></pre></div>
-<div class="node-desc">Axiom provenance tags — every axiom should declare its source.</div>
-  </div>
-</div>
-<div class="node-card kind-inductive" data-kind="inductive" data-name="Denomination">
-  <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">inductive</span>
-    <span class="node-name">Denomination</span>
-    <span class="node-chevron">&#9654;</span>
-  </div>
-  <div class="node-details">
-    <div class="node-prop"><pre><code>inductive Denomination where</code></pre></div>
-<div class="node-desc">Which denominations accept a given axiom or theorem.</div>
+    <div class="node-prop"><pre><code>theorem every_sacrament_is_determinate :
+    ∀ (s : SacramentKind), isDeterminateSign s</code></pre></div>
+<div class="node-desc">THEOREM: Every sacrament is a determinate sign — it signifies</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="every_sacrament_has_form">every_sacrament_has_form</span>
+<span class="dep-chip" data-target="every_sacrament_has_matter">every_sacrament_has_matter</span>
+<span class="dep-chip" data-target="matter_and_form_determine">matter_and_form_determine</span>
+</div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="ecumenical">ecumenical</span>
-<span class="dep-chip" data-target="catholicOnly">catholicOnly</span>
-<span class="dep-chip" data-target="catholicAndLutheran">catholicAndLutheran</span>
-<span class="dep-chip" data-target="lutheranOnly">lutheranOnly</span>
+<span class="dep-chip" data-target="efficacious_sign">efficacious_sign</span>
+<span class="dep-chip" data-target="form_is_essential">form_is_essential</span>
 </div></div>
   </div>
 </div>
-<div class="node-card kind-structure" data-kind="structure" data-name="DenominationalTag">
+<div class="node-card kind-theorem" data-kind="theorem" data-name="matter_without_form_invalid">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">structure</span>
-    <span class="node-name">DenominationalTag</span>
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">matter_without_form_invalid</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>structure DenominationalTag where</code></pre></div>
-<div class="node-desc">A denominational tag — which traditions accept this claim.</div>
-  </div>
-</div>
-<div class="node-card kind-def" data-kind="def" data-name="ecumenical">
-  <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">def</span>
-    <span class="node-name">ecumenical</span>
-    <span class="node-chevron">&#9654;</span>
-  </div>
-  <div class="node-details">
-    <div class="node-prop"><pre><code>def ecumenical : DenominationalTag</code></pre></div>
-<div class="node-desc">Shared across all major Christian denominations.</div>
+    <div class="node-prop"><pre><code>theorem matter_without_form_invalid :
+    ∀ (s : SacramentKind), hasMatter s → ¬hasForm s →
+      ¬isValidlyCelebrated s</code></pre></div>
+<div class="node-desc">THEOREM: Matter without form never produces a valid sacrament.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="Denomination">Denomination</span>
+<span class="dep-chip" data-target="validity_requires_both">validity_requires_both</span>
 </div></div>
   </div>
 </div>
-<div class="node-card kind-def" data-kind="def" data-name="catholicOnly">
+<div class="node-card kind-theorem" data-kind="theorem" data-name="form_without_matter_invalid">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">def</span>
-    <span class="node-name">catholicOnly</span>
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">form_without_matter_invalid</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def catholicOnly : DenominationalTag</code></pre></div>
-<div class="node-desc">Specifically Catholic — other denominations may reject.</div>
+    <div class="node-prop"><pre><code>theorem form_without_matter_invalid :
+    ∀ (s : SacramentKind), hasForm s → ¬hasMatter s →
+      ¬isValidlyCelebrated s</code></pre></div>
+<div class="node-desc">THEOREM: Form without matter never produces a valid sacrament.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="Denomination">Denomination</span>
+<span class="dep-chip" data-target="validity_requires_both">validity_requires_both</span>
 </div></div>
   </div>
 </div>
-<div class="node-card kind-def" data-kind="def" data-name="catholicAndLutheran">
+<div class="node-card kind-theorem" data-kind="theorem" data-name="marriage_uniquely_non_external">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">def</span>
-    <span class="node-name">catholicAndLutheran</span>
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">marriage_uniquely_non_external</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def catholicAndLutheran : DenominationalTag</code></pre></div>
-<div class="node-desc">Shared by Catholic and Lutheran but not all denominations.</div>
+    <div class="node-prop"><pre><code>theorem marriage_uniquely_non_external :
+    ∀ (s : SacramentKind), hasExternalMatter s ↔ s ≠ .marriage</code></pre></div>
+<div class="node-desc">THEOREM: Marriage is the unique sacrament without external matter.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="Denomination">Denomination</span>
+<span class="dep-chip" data-target="marriage_matter_is_persons">marriage_matter_is_persons</span>
+<span class="dep-chip" data-target="six_sacraments_have_external_matter">six_sacraments_have_external_matter</span>
 </div></div>
   </div>
 </div>
-<div class="node-card kind-def" data-kind="def" data-name="lutheranOnly">
+<div class="node-card kind-theorem" data-kind="theorem" data-name="marriage_still_hylomorphic">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">def</span>
-    <span class="node-name">lutheranOnly</span>
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">marriage_still_hylomorphic</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def lutheranOnly : DenominationalTag</code></pre></div>
-<div class="node-desc">Specifically Lutheran — Catholics would reject.</div>
+    <div class="node-prop"><pre><code>theorem marriage_still_hylomorphic :
+    hasMatter .marriage ∧ hasForm .marriage</code></pre></div>
+<div class="node-desc">THEOREM: Despite marriage&#x27;s anomalous matter, it still satisfies the</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="Denomination">Denomination</span>
+<span class="dep-chip" data-target="every_sacrament_has_form">every_sacrament_has_form</span>
+<span class="dep-chip" data-target="every_sacrament_has_matter">every_sacrament_has_matter</span>
 </div></div>
   </div>
 </div>
-<div class="node-card kind-inductive" data-kind="inductive" data-name="AuthoritySource">
+<div class="node-card kind-theorem" data-kind="theorem" data-name="efficacious_sign">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">inductive</span>
-    <span class="node-name">AuthoritySource</span>
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">efficacious_sign</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>inductive AuthoritySource where</code></pre></div>
-<div class="node-desc">The source from which authority derives.</div>
+    <div class="node-prop"><pre><code>theorem efficacious_sign :
+    ∀ (s : SacramentKind),
+      isDeterminateSign s ∧ ∃ (ct : ChangeType), causesChangeOfType s ct</code></pre></div>
+<div class="node-desc">THEOREM: Every sacrament is both a determinate sign AND a cause of</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="every_sacrament_is_determinate">every_sacrament_is_determinate</span>
+</div></div>
   </div>
 </div>
-<div class="node-card kind-structure" data-kind="structure" data-name="Authority">
+<div class="node-card kind-theorem" data-kind="theorem" data-name="form_is_essential">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">structure</span>
-    <span class="node-name">Authority</span>
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">form_is_essential</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>structure Authority where</code></pre></div>
-<div class="node-desc">Authority — the quality by virtue of which persons or institutions</div>
+    <div class="node-prop"><pre><code>theorem form_is_essential :
+    ∀ (s : SacramentKind),
+      -- The sacrament IS determinate...
+      isDeterminateSign s
+      -- ...but would NOT be without its form
+      ∧ (¬hasForm s → ¬isDeterminateSign s)</code></pre></div>
+<div class="node-desc">THEOREM: Matter alone is never a determinate sacramental sign AND</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="every_sacrament_is_determinate">every_sacrament_is_determinate</span>
+<span class="dep-chip" data-target="matter_alone_indeterminate">matter_alone_indeterminate</span>
+<span class="dep-chip" data-target="every_sacrament_has_matter">every_sacrament_has_matter</span>
+</div></div>
   </div>
 </div>
-<div class="node-card kind-inductive" data-kind="inductive" data-name="FreedomModel">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="hylomorphicAnalogyHolds">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">inductive</span>
-    <span class="node-name">FreedomModel</span>
+    <span class="node-kind-badge">opaque</span>
+    <span class="node-name">hylomorphicAnalogyHolds</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>inductive FreedomModel where</code></pre></div>
-<div class="node-desc">A model of free will. The Catechism assumes libertarian free will —</div>
+    <div class="node-prop"><pre><code>opaque hylomorphicAnalogyHolds : Prop</code></pre></div>
+<div class="node-desc">Whether the hylomorphic analogy holds: sacramental signs have the</div>
   </div>
 </div>
-<div class="node-card kind-structure" data-kind="structure" data-name="FreeChoice">
+<div class="node-card kind-theorem" data-kind="theorem" data-name="hylomorphic_analogy">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">structure</span>
-    <span class="node-name">FreeChoice</span>
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">hylomorphic_analogy</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>structure FreeChoice (α : Type) where</code></pre></div>
-<div class="node-desc">A free choice — models the act of choosing with a specific freedom model.</div>
-  </div>
-</div>
-<div class="node-card kind-inductive" data-kind="inductive" data-name="CommunionParty">
-  <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">inductive</span>
-    <span class="node-name">CommunionParty</span>
-    <span class="node-chevron">&#9654;</span>
-  </div>
-  <div class="node-details">
-    <div class="node-prop"><pre><code>inductive CommunionParty where</code></pre></div>
-<div class="node-desc">A party that can participate in communion.</div>
-  </div>
-</div>
-<div class="node-card kind-structure" data-kind="structure" data-name="FreedomDegree">
-  <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">structure</span>
-    <span class="node-name">FreedomDegree</span>
-    <span class="node-chevron">&#9654;</span>
-  </div>
-  <div class="node-details">
-    <div class="node-prop"><pre><code>structure FreedomDegree where</code></pre></div>
-<div class="node-desc">The degree of freedom a person has.</div>
-  </div>
-</div>
-<div class="node-card kind-proposition" data-kind="proposition" data-name="freedomLt">
-  <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
-    <span class="node-name">freedomLt</span>
-    <span class="node-chevron">&#9654;</span>
-  </div>
-  <div class="node-details">
-    <div class="node-prop"><pre><code>def freedomLt (a b : FreedomDegree) : Prop</code></pre></div>
-<div class="node-desc">A strict ordering on freedom degrees, by level.</div>
+    <div class="node-prop"><pre><code>theorem hylomorphic_analogy :
+    hylomorphicAnalogyHolds →
+      ∀ (s : SacramentKind), hasMatter s ∧ hasForm s</code></pre></div>
+<div class="node-desc">THEOREM: IF the hylomorphic analogy holds (the Thomistic claim that</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="every_sacrament_has_form">every_sacrament_has_form</span>
+<span class="dep-chip" data-target="every_sacrament_has_matter">every_sacrament_has_matter</span>
+</div></div>
   </div>
 </div>
   </div>
 
   <div class="footer">
-    Generated from <code>Catlib/Foundations/Basic.lean</code>
+    Generated from <code>Catlib/Sacraments/MatterAndForm.lean</code>
   </div>
 </div>
 

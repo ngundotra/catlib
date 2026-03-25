@@ -267,6 +267,8 @@ h1 {
 .node-card.kind-structure { border-left-color: var(--structure-dot); }
 .node-card.kind-inductive { border-left-color: var(--inductive-dot); }
 .node-card.kind-proposition { border-left-color: var(--proposition-dot); }
+.node-card.kind-instance { border-left-color: var(--def-dot); }
+.node-card.kind-abbrev { border-left-color: var(--def-dot); }
 
 .node-header {
   display: flex;
@@ -302,6 +304,8 @@ h1 {
 .kind-structure .node-kind-badge { background: var(--structure-bg); color: var(--structure-dot); }
 .kind-inductive .node-kind-badge { background: var(--inductive-bg); color: var(--inductive-dot); }
 .kind-proposition .node-kind-badge { background: var(--proposition-bg); color: var(--proposition-dot); }
+.kind-instance .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
+.kind-abbrev .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
 
 .node-name {
   flex: 1;
@@ -462,6 +466,8 @@ h1 {
 .legend-dot.structure { background: var(--structure-dot); }
 .legend-dot.inductive { background: var(--inductive-dot); }
 .legend-dot.proposition { background: var(--proposition-dot); }
+.legend-dot.instance { background: var(--def-dot); }
+.legend-dot.abbrev { background: var(--def-dot); }
 
 /* ── Filter buttons ── */
 .filter-bar {
@@ -524,13 +530,12 @@ h1 {
   <a href="index.html" class="back-link">&larr; All files</a>
   <h1>SacramentalCausation</h1>
   <div class="subtitle">Sacraments &middot; 52 declarations</div>
-
   
-  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1127, &sect;1131, &sect;1210, &sect;1213, &sect;1262, &sect;1263, &sect;1265, &sect;1267, &sect;1272, &sect;1302, &sect;1303, &sect;1304, &sect;1376, &sect;1391, &sect;1394 +8 more</div>
+  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1210, &sect;1213, &sect;1263, &sect;1265, &sect;1267, &sect;1272, &sect;1303, &sect;1304, &sect;1376, &sect;1391, &sect;1394, &sect;1468, &sect;1472, &sect;1520, &sect;1521, &sect;1581, &sect;1582, &sect;1639</div>
 
-  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
+  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span></div>
 
-  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (23)</button><button class="filter-btn" data-filter="def">def (4)</button><button class="filter-btn" data-filter="inductive">inductive (2)</button><button class="filter-btn" data-filter="opaque">opaque (3)</button><button class="filter-btn" data-filter="theorem">theorem (20)</button></div>
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (23)</button><button class="filter-btn" data-filter="theorem">theorem (20)</button><button class="filter-btn" data-filter="def">def (4)</button><button class="filter-btn" data-filter="opaque">opaque (3)</button><button class="filter-btn" data-filter="inductive">inductive (2)</button></div>
 
   <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
 
@@ -544,7 +549,6 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>inductive SacramentKind where</code></pre></div>
 <div class="node-desc">The seven sacraments of the Catholic Church.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="causesChangeOfType">causesChangeOfType</span><span class="dep-chip" data-target="imprintsCharacter">imprintsCharacter</span><span class="dep-chip" data-target="isRepeatable">isRepeatable</span><span class="dep-chip" data-target="character_blocks_repetition">character_blocks_repetition</span><span class="dep-chip" data-target="no_character_allows_repetition">no_character_allows_repetition</span><span class="dep-chip" data-target="character_iff_not_repeatable">character_iff_not_repeatable</span><span class="dep-chip" data-target="every_sacrament_causes_change">every_sacrament_causes_change</span><span class="dep-chip" data-target="every_change_type_has_sacrament">every_change_type_has_sacrament</span><span class="dep-chip" data-target="primarySinLayer">primarySinLayer</span><span class="dep-chip" data-target="all_sin_layers_have_sacramental_remedy">all_sin_layers_have_sacramental_remedy</span></div></div>
   </div>
 </div>
 <div class="node-card kind-inductive" data-kind="inductive" data-name="ChangeType">
@@ -556,7 +560,6 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>inductive ChangeType where</code></pre></div>
 <div class="node-desc">The kinds of change a sacrament can cause in a person.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="causesChangeOfType">causesChangeOfType</span><span class="dep-chip" data-target="every_sacrament_causes_change">every_sacrament_causes_change</span><span class="dep-chip" data-target="every_change_type_has_sacrament">every_change_type_has_sacrament</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="causesChangeOfType">
@@ -566,11 +569,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque causesChangeOfType : SacramentKind → ChangeType → Prop
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque causesChangeOfType : SacramentKind → ChangeType → Prop</code></pre></div>
 <div class="node-desc">Whether a sacrament causes a given type of change.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ChangeType">ChangeType</span><span class="dep-chip" data-target="SacramentKind">SacramentKind</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="baptism_causes_ontological">baptism_causes_ontological</span><span class="dep-chip" data-target="baptism_causes_relational">baptism_causes_relational</span><span class="dep-chip" data-target="baptism_causes_juridical">baptism_causes_juridical</span><span class="dep-chip" data-target="confirmation_causes_dispositional">confirmation_causes_dispositional</span><span class="dep-chip" data-target="confirmation_causes_ontological">confirmation_causes_ontological</span><span class="dep-chip" data-target="eucharist_causes_ontological">eucharist_causes_ontological</span><span class="dep-chip" data-target="eucharist_causes_relational">eucharist_causes_relational</span><span class="dep-chip" data-target="reconciliation_causes_relational">reconciliation_causes_relational</span><span class="dep-chip" data-target="reconciliation_causes_juridical">reconciliation_causes_juridical</span><span class="dep-chip" data-target="holyOrders_causes_ontological">holyOrders_causes_ontological</span><span class="dep-chip" data-target="holyOrders_causes_dispositional">holyOrders_causes_dispositional</span><span class="dep-chip" data-target="marriage_causes_relational">marriage_causes_relational</span><span class="dep-chip" data-target="anointing_causes_dispositional">anointing_causes_dispositional</span><span class="dep-chip" data-target="anointing_causes_relational">anointing_causes_relational</span><span class="dep-chip" data-target="every_sacrament_causes_change">every_sacrament_causes_change</span><span class="dep-chip" data-target="every_change_type_has_sacrament">every_change_type_has_sacrament</span><span class="dep-chip" data-target="baptism_triple_causation">baptism_triple_causation</span><span class="dep-chip" data-target="holyOrders_dual_causation">holyOrders_dual_causation</span><span class="dep-chip" data-target="confirmation_dual_causation">confirmation_dual_causation</span><span class="dep-chip" data-target="reconciliation_dual_causation">reconciliation_dual_causation</span><span class="dep-chip" data-target="eucharist_dual_causation">eucharist_dual_causation</span><span class="dep-chip" data-target="anointing_dual_causation">anointing_dual_causation</span><span class="dep-chip" data-target="ChangeType">ChangeType</span><span class="dep-chip" data-target="SacramentKind">SacramentKind</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="imprintsCharacter">
@@ -580,11 +580,11 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque imprintsCharacter : SacramentKind → Prop
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque imprintsCharacter : SacramentKind → Prop</code></pre></div>
 <div class="node-desc">Whether a sacrament imprints an indelible character — a permanent</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SacramentKind">SacramentKind</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="baptism_imprints_character">baptism_imprints_character</span><span class="dep-chip" data-target="confirmation_imprints_character">confirmation_imprints_character</span><span class="dep-chip" data-target="holyOrders_imprints_character">holyOrders_imprints_character</span><span class="dep-chip" data-target="eucharist_no_character">eucharist_no_character</span><span class="dep-chip" data-target="reconciliation_no_character">reconciliation_no_character</span><span class="dep-chip" data-target="marriage_no_character">marriage_no_character</span><span class="dep-chip" data-target="anointing_no_character">anointing_no_character</span><span class="dep-chip" data-target="character_blocks_repetition">character_blocks_repetition</span><span class="dep-chip" data-target="no_character_allows_repetition">no_character_allows_repetition</span><span class="dep-chip" data-target="character_iff_not_repeatable">character_iff_not_repeatable</span><span class="dep-chip" data-target="SacramentKind">SacramentKind</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="character_iff_not_repeatable">character_iff_not_repeatable</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="isRepeatable">
@@ -595,10 +595,14 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque isRepeatable : SacramentKind → Prop
-</code></pre></div>
+
+-- ============================================================================
+-- § 3b. Denominational Tags
+-- ============================================================================</code></pre></div>
 <div class="node-desc">Whether a sacrament can be repeated.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SacramentKind">SacramentKind</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="character_blocks_repetition">character_blocks_repetition</span><span class="dep-chip" data-target="no_character_allows_repetition">no_character_allows_repetition</span><span class="dep-chip" data-target="baptism_not_repeatable">baptism_not_repeatable</span><span class="dep-chip" data-target="confirmation_not_repeatable">confirmation_not_repeatable</span><span class="dep-chip" data-target="holyOrders_not_repeatable">holyOrders_not_repeatable</span><span class="dep-chip" data-target="eucharist_repeatable">eucharist_repeatable</span><span class="dep-chip" data-target="reconciliation_repeatable">reconciliation_repeatable</span><span class="dep-chip" data-target="marriage_repeatable">marriage_repeatable</span><span class="dep-chip" data-target="anointing_repeatable">anointing_repeatable</span><span class="dep-chip" data-target="character_iff_not_repeatable">character_iff_not_repeatable</span><span class="dep-chip" data-target="SacramentKind">SacramentKind</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="character_iff_not_repeatable">character_iff_not_repeatable</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="causationAxiomsTag">
@@ -642,11 +646,13 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom baptism_causes_ontological :
-  causesChangeOfType .baptism .ontological
-</code></pre></div>
-<div class="node-desc">Baptism causes ontological change — the person becomes │   Source: [Scripture] 2 Cor 5:17 (&quot;a new creation&quot;); [Tradition] §1265, §1272. | Scope: CATHOLIC.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="causesChangeOfType">causesChangeOfType</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="every_sacrament_causes_change">every_sacrament_causes_change</span><span class="dep-chip" data-target="every_change_type_has_sacrament">every_change_type_has_sacrament</span><span class="dep-chip" data-target="baptism_triple_causation">baptism_triple_causation</span><span class="dep-chip" data-target="causesChangeOfType">causesChangeOfType</span></div></div>
+  causesChangeOfType .baptism .ontological</code></pre></div>
+<div class="node-desc">Baptism causes ontological change — the person becomes</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="every_sacrament_causes_change">every_sacrament_causes_change</span>
+<span class="dep-chip" data-target="every_change_type_has_sacrament">every_change_type_has_sacrament</span>
+<span class="dep-chip" data-target="baptism_triple_causation">baptism_triple_causation</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="baptism_causes_relational">
@@ -657,11 +663,12 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom baptism_causes_relational :
-  causesChangeOfType .baptism .relational
-</code></pre></div>
-<div class="node-desc">Baptism causes relational change — the person is adopted as │   Source: [Scripture] Gal 4:5 (&quot;adoption as sons&quot;); [Definition] §1267. | Scope: CATHOLIC.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="causesChangeOfType">causesChangeOfType</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="every_change_type_has_sacrament">every_change_type_has_sacrament</span><span class="dep-chip" data-target="baptism_triple_causation">baptism_triple_causation</span><span class="dep-chip" data-target="causesChangeOfType">causesChangeOfType</span></div></div>
+  causesChangeOfType .baptism .relational</code></pre></div>
+<div class="node-desc">Baptism causes relational change — the person is adopted as</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="every_change_type_has_sacrament">every_change_type_has_sacrament</span>
+<span class="dep-chip" data-target="baptism_triple_causation">baptism_triple_causation</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="baptism_causes_juridical">
@@ -672,11 +679,12 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom baptism_causes_juridical :
-  causesChangeOfType .baptism .juridical
-</code></pre></div>
-<div class="node-desc">Baptism causes juridical change — original sin and all personal │   Source: [Scripture] Acts 2:38 (&quot;for the forgiveness of sins&quot;); [Definition] §1263. | Scope: CATHOLIC.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="causesChangeOfType">causesChangeOfType</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="every_change_type_has_sacrament">every_change_type_has_sacrament</span><span class="dep-chip" data-target="baptism_triple_causation">baptism_triple_causation</span><span class="dep-chip" data-target="causesChangeOfType">causesChangeOfType</span></div></div>
+  causesChangeOfType .baptism .juridical</code></pre></div>
+<div class="node-desc">Baptism causes juridical change — original sin and all personal</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="every_change_type_has_sacrament">every_change_type_has_sacrament</span>
+<span class="dep-chip" data-target="baptism_triple_causation">baptism_triple_causation</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="confirmation_causes_dispositional">
@@ -687,11 +695,13 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom confirmation_causes_dispositional :
-  causesChangeOfType .confirmation .dispositional
-</code></pre></div>
-<div class="node-desc">Confirmation causes dispositional change — the person is sealed │   Source: [Scripture] Acts 1:8 (&quot;you will receive power&quot;); [Definition] §1303. | Scope: CATHOLIC.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="causesChangeOfType">causesChangeOfType</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="every_sacrament_causes_change">every_sacrament_causes_change</span><span class="dep-chip" data-target="every_change_type_has_sacrament">every_change_type_has_sacrament</span><span class="dep-chip" data-target="confirmation_dual_causation">confirmation_dual_causation</span><span class="dep-chip" data-target="causesChangeOfType">causesChangeOfType</span></div></div>
+  causesChangeOfType .confirmation .dispositional</code></pre></div>
+<div class="node-desc">Confirmation causes dispositional change — the person is sealed</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="every_sacrament_causes_change">every_sacrament_causes_change</span>
+<span class="dep-chip" data-target="every_change_type_has_sacrament">every_change_type_has_sacrament</span>
+<span class="dep-chip" data-target="confirmation_dual_causation">confirmation_dual_causation</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="confirmation_causes_ontological">
@@ -702,11 +712,11 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom confirmation_causes_ontological :
-  causesChangeOfType .confirmation .ontological
-</code></pre></div>
-<div class="node-desc">Confirmation causes ontological change — an indelible │   Source: [Tradition] §1304. | Scope: CATHOLIC.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="causesChangeOfType">causesChangeOfType</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="confirmation_dual_causation">confirmation_dual_causation</span><span class="dep-chip" data-target="causesChangeOfType">causesChangeOfType</span></div></div>
+  causesChangeOfType .confirmation .ontological</code></pre></div>
+<div class="node-desc">Confirmation causes ontological change — an indelible</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="confirmation_dual_causation">confirmation_dual_causation</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="eucharist_causes_ontological">
@@ -717,11 +727,12 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom eucharist_causes_ontological :
-  causesChangeOfType .eucharist .ontological
-</code></pre></div>
-<div class="node-desc">The Eucharist involves ontological change — transubstantiation │   Source: [Tradition] Council of Trent, Session XIII; [Definition] §1376. | Scope: CATHOLIC.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="causesChangeOfType">causesChangeOfType</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="every_sacrament_causes_change">every_sacrament_causes_change</span><span class="dep-chip" data-target="eucharist_dual_causation">eucharist_dual_causation</span><span class="dep-chip" data-target="causesChangeOfType">causesChangeOfType</span></div></div>
+  causesChangeOfType .eucharist .ontological</code></pre></div>
+<div class="node-desc">The Eucharist involves ontological change — transubstantiation</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="every_sacrament_causes_change">every_sacrament_causes_change</span>
+<span class="dep-chip" data-target="eucharist_dual_causation">eucharist_dual_causation</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="eucharist_causes_relational">
@@ -732,11 +743,11 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom eucharist_causes_relational :
-  causesChangeOfType .eucharist .relational
-</code></pre></div>
-<div class="node-desc">The Eucharist causes relational change in the recipient — │   Source: [Scripture] Jn 6:56 (&quot;remains in me and I in him&quot;); [Definition] §1391. | Scope: CATHOLIC.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="causesChangeOfType">causesChangeOfType</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="eucharist_dual_causation">eucharist_dual_causation</span><span class="dep-chip" data-target="causesChangeOfType">causesChangeOfType</span></div></div>
+  causesChangeOfType .eucharist .relational</code></pre></div>
+<div class="node-desc">The Eucharist causes relational change in the recipient —</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="eucharist_dual_causation">eucharist_dual_causation</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="reconciliation_causes_relational">
@@ -747,11 +758,12 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom reconciliation_causes_relational :
-  causesChangeOfType .reconciliation .relational
-</code></pre></div>
-<div class="node-desc">Reconciliation causes relational change — communion with God │   Source: [Definition] §1468. | Scope: CATHOLIC.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="causesChangeOfType">causesChangeOfType</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="every_sacrament_causes_change">every_sacrament_causes_change</span><span class="dep-chip" data-target="reconciliation_dual_causation">reconciliation_dual_causation</span><span class="dep-chip" data-target="causesChangeOfType">causesChangeOfType</span></div></div>
+  causesChangeOfType .reconciliation .relational</code></pre></div>
+<div class="node-desc">Reconciliation causes relational change — communion with God</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="every_sacrament_causes_change">every_sacrament_causes_change</span>
+<span class="dep-chip" data-target="reconciliation_dual_causation">reconciliation_dual_causation</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="reconciliation_causes_juridical">
@@ -762,11 +774,11 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom reconciliation_causes_juridical :
-  causesChangeOfType .reconciliation .juridical
-</code></pre></div>
-<div class="node-desc">Reconciliation causes juridical change — the guilt (eternal │   Source: [Definition] §1472. | Scope: CATHOLIC.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="causesChangeOfType">causesChangeOfType</span><span class="dep-chip" data-target="confers">confers</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="reconciliation_dual_causation">reconciliation_dual_causation</span><span class="dep-chip" data-target="causesChangeOfType">causesChangeOfType</span></div></div>
+  causesChangeOfType .reconciliation .juridical</code></pre></div>
+<div class="node-desc">Reconciliation causes juridical change — the guilt (eternal</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="reconciliation_dual_causation">reconciliation_dual_causation</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="holyOrders_causes_ontological">
@@ -777,11 +789,12 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom holyOrders_causes_ontological :
-  causesChangeOfType .holyOrders .ontological
-</code></pre></div>
-<div class="node-desc">Holy orders causes ontological change — the ordained receives │   Source: [Scripture] Heb 5:6; [Tradition] §1582. | Scope: CATHOLIC.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="causesChangeOfType">causesChangeOfType</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="every_sacrament_causes_change">every_sacrament_causes_change</span><span class="dep-chip" data-target="holyOrders_dual_causation">holyOrders_dual_causation</span><span class="dep-chip" data-target="causesChangeOfType">causesChangeOfType</span></div></div>
+  causesChangeOfType .holyOrders .ontological</code></pre></div>
+<div class="node-desc">Holy orders causes ontological change — the ordained receives</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="every_sacrament_causes_change">every_sacrament_causes_change</span>
+<span class="dep-chip" data-target="holyOrders_dual_causation">holyOrders_dual_causation</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="holyOrders_causes_dispositional">
@@ -792,11 +805,11 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom holyOrders_causes_dispositional :
-  causesChangeOfType .holyOrders .dispositional
-</code></pre></div>
-<div class="node-desc">Holy orders causes dispositional change — the ordained can │   Source: [Tradition] §1581. | Scope: CATHOLIC.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="causesChangeOfType">causesChangeOfType</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="holyOrders_dual_causation">holyOrders_dual_causation</span><span class="dep-chip" data-target="causesChangeOfType">causesChangeOfType</span></div></div>
+  causesChangeOfType .holyOrders .dispositional</code></pre></div>
+<div class="node-desc">Holy orders causes dispositional change — the ordained can</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="holyOrders_dual_causation">holyOrders_dual_causation</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="marriage_causes_relational">
@@ -807,11 +820,11 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom marriage_causes_relational :
-  causesChangeOfType .marriage .relational
-</code></pre></div>
-<div class="node-desc">Marriage causes relational change — a bond is created between │   Source: [Scripture] Mt 19:6 (&quot;what God has joined together&quot;); [Definition] §1639. | Scope: CATHOLIC.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="causesChangeOfType">causesChangeOfType</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="every_sacrament_causes_change">every_sacrament_causes_change</span><span class="dep-chip" data-target="causesChangeOfType">causesChangeOfType</span></div></div>
+  causesChangeOfType .marriage .relational</code></pre></div>
+<div class="node-desc">Marriage causes relational change — a bond is created between</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="every_sacrament_causes_change">every_sacrament_causes_change</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="anointing_causes_dispositional">
@@ -822,11 +835,12 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom anointing_causes_dispositional :
-  causesChangeOfType .anointingOfTheSick .dispositional
-</code></pre></div>
-<div class="node-desc">Anointing of the sick causes dispositional change — the person │   Source: [Scripture] Jas 5:14-15 (&quot;the prayer of faith will save the sick | Scope: CATHOLIC. | [Definition]</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="causesChangeOfType">causesChangeOfType</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="every_sacrament_causes_change">every_sacrament_causes_change</span><span class="dep-chip" data-target="anointing_dual_causation">anointing_dual_causation</span><span class="dep-chip" data-target="causesChangeOfType">causesChangeOfType</span></div></div>
+  causesChangeOfType .anointingOfTheSick .dispositional</code></pre></div>
+<div class="node-desc">Anointing of the sick causes dispositional change — the person</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="every_sacrament_causes_change">every_sacrament_causes_change</span>
+<span class="dep-chip" data-target="anointing_dual_causation">anointing_dual_causation</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="anointing_causes_relational">
@@ -838,10 +852,14 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom anointing_causes_relational :
   causesChangeOfType .anointingOfTheSick .relational
-</code></pre></div>
-<div class="node-desc">Anointing of the sick causes relational change — the person │   Source: [Definition] §1521. | Scope: CATHOLIC.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="causesChangeOfType">causesChangeOfType</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="anointing_dual_causation">anointing_dual_causation</span><span class="dep-chip" data-target="causesChangeOfType">causesChangeOfType</span></div></div>
+
+-- ============================================================================
+-- § 5. Indelible Character — which sacraments imprint it
+-- ============================================================================</code></pre></div>
+<div class="node-desc">Anointing of the sick causes relational change — the person</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="anointing_dual_causation">anointing_dual_causation</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="baptism_imprints_character">
@@ -852,11 +870,11 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom baptism_imprints_character :
-  imprintsCharacter .baptism
-</code></pre></div>
-<div class="node-desc">Baptism imprints an indelible character. │   Source: [Tradition] §1272.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="imprintsCharacter">imprintsCharacter</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="baptism_not_repeatable">baptism_not_repeatable</span><span class="dep-chip" data-target="imprintsCharacter">imprintsCharacter</span></div></div>
+  imprintsCharacter .baptism</code></pre></div>
+<div class="node-desc">Baptism imprints an indelible character.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="baptism_not_repeatable">baptism_not_repeatable</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="confirmation_imprints_character">
@@ -867,11 +885,11 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom confirmation_imprints_character :
-  imprintsCharacter .confirmation
-</code></pre></div>
-<div class="node-desc">Confirmation imprints an indelible character. │   Source: [Tradition] §1304.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="imprintsCharacter">imprintsCharacter</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="confirmation_not_repeatable">confirmation_not_repeatable</span><span class="dep-chip" data-target="imprintsCharacter">imprintsCharacter</span></div></div>
+  imprintsCharacter .confirmation</code></pre></div>
+<div class="node-desc">Confirmation imprints an indelible character.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="confirmation_not_repeatable">confirmation_not_repeatable</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="holyOrders_imprints_character">
@@ -882,11 +900,11 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom holyOrders_imprints_character :
-  imprintsCharacter .holyOrders
-</code></pre></div>
-<div class="node-desc">Holy orders imprints an indelible character. │   Source: [Tradition] §1582.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="imprintsCharacter">imprintsCharacter</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="holyOrders_not_repeatable">holyOrders_not_repeatable</span><span class="dep-chip" data-target="imprintsCharacter">imprintsCharacter</span></div></div>
+  imprintsCharacter .holyOrders</code></pre></div>
+<div class="node-desc">Holy orders imprints an indelible character.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="holyOrders_not_repeatable">holyOrders_not_repeatable</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="eucharist_no_character">
@@ -897,11 +915,11 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom eucharist_no_character :
-  ¬imprintsCharacter .eucharist
-</code></pre></div>
-<div class="node-desc">The Eucharist does NOT imprint a character on the recipient. │   Source: [Definition] §1272 (only three sacraments listed).</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="imprintsCharacter">imprintsCharacter</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="eucharist_repeatable">eucharist_repeatable</span><span class="dep-chip" data-target="imprintsCharacter">imprintsCharacter</span></div></div>
+  ¬imprintsCharacter .eucharist</code></pre></div>
+<div class="node-desc">AXIOM: The Eucharist does NOT imprint a character on the recipient.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="eucharist_repeatable">eucharist_repeatable</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="reconciliation_no_character">
@@ -912,11 +930,11 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom reconciliation_no_character :
-  ¬imprintsCharacter .reconciliation
-</code></pre></div>
-<div class="node-desc">Reconciliation does not imprint a character. │   Source: [Definition] §1272.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="imprintsCharacter">imprintsCharacter</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="reconciliation_repeatable">reconciliation_repeatable</span><span class="dep-chip" data-target="imprintsCharacter">imprintsCharacter</span></div></div>
+  ¬imprintsCharacter .reconciliation</code></pre></div>
+<div class="node-desc">AXIOM: Reconciliation does not imprint a character.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="reconciliation_repeatable">reconciliation_repeatable</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="marriage_no_character">
@@ -927,11 +945,11 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom marriage_no_character :
-  ¬imprintsCharacter .marriage
-</code></pre></div>
-<div class="node-desc">Marriage does not imprint a character. │   Source: [Definition] §1272.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="imprintsCharacter">imprintsCharacter</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="marriage_repeatable">marriage_repeatable</span><span class="dep-chip" data-target="imprintsCharacter">imprintsCharacter</span></div></div>
+  ¬imprintsCharacter .marriage</code></pre></div>
+<div class="node-desc">AXIOM: Marriage does not imprint a character.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="marriage_repeatable">marriage_repeatable</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="anointing_no_character">
@@ -943,10 +961,14 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom anointing_no_character :
   ¬imprintsCharacter .anointingOfTheSick
-</code></pre></div>
-<div class="node-desc">Anointing does not imprint a character. │   Source: [Definition] §1272.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="imprintsCharacter">imprintsCharacter</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="anointing_repeatable">anointing_repeatable</span><span class="dep-chip" data-target="imprintsCharacter">imprintsCharacter</span></div></div>
+
+-- ============================================================================
+-- § 6. Repeatability — character blocks repetition
+-- ============================================================================</code></pre></div>
+<div class="node-desc">AXIOM: Anointing does not imprint a character.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="anointing_repeatable">anointing_repeatable</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="character_blocks_repetition">
@@ -957,11 +979,14 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom character_blocks_repetition :
-  ∀ (s : SacramentKind), imprintsCharacter s → ¬isRepeatable s
-</code></pre></div>
-<div class="node-desc">Sacraments that imprint a character cannot be repeated. │   Source: [Tradition] §1272, §1304, §1582. | Scope: CATHOLIC.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SacramentKind">SacramentKind</span><span class="dep-chip" data-target="imprintsCharacter">imprintsCharacter</span><span class="dep-chip" data-target="isRepeatable">isRepeatable</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="baptism_not_repeatable">baptism_not_repeatable</span><span class="dep-chip" data-target="confirmation_not_repeatable">confirmation_not_repeatable</span><span class="dep-chip" data-target="holyOrders_not_repeatable">holyOrders_not_repeatable</span><span class="dep-chip" data-target="character_iff_not_repeatable">character_iff_not_repeatable</span><span class="dep-chip" data-target="SacramentKind">SacramentKind</span><span class="dep-chip" data-target="imprintsCharacter">imprintsCharacter</span><span class="dep-chip" data-target="isRepeatable">isRepeatable</span></div></div>
+  ∀ (s : SacramentKind), imprintsCharacter s → ¬isRepeatable s</code></pre></div>
+<div class="node-desc">AXIOM: Sacraments that imprint a character cannot be repeated.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="baptism_not_repeatable">baptism_not_repeatable</span>
+<span class="dep-chip" data-target="confirmation_not_repeatable">confirmation_not_repeatable</span>
+<span class="dep-chip" data-target="holyOrders_not_repeatable">holyOrders_not_repeatable</span>
+<span class="dep-chip" data-target="character_iff_not_repeatable">character_iff_not_repeatable</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="no_character_allows_repetition">
@@ -973,10 +998,18 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom no_character_allows_repetition :
   ∀ (s : SacramentKind), ¬imprintsCharacter s → isRepeatable s
-</code></pre></div>
-<div class="node-desc">Sacraments without a character can be repeated. │   Source: [Definition] implied by §1272 (only character sacraments are | Scope: CATHOLIC.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SacramentKind">SacramentKind</span><span class="dep-chip" data-target="imprintsCharacter">imprintsCharacter</span><span class="dep-chip" data-target="isRepeatable">isRepeatable</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="eucharist_repeatable">eucharist_repeatable</span><span class="dep-chip" data-target="reconciliation_repeatable">reconciliation_repeatable</span><span class="dep-chip" data-target="marriage_repeatable">marriage_repeatable</span><span class="dep-chip" data-target="anointing_repeatable">anointing_repeatable</span><span class="dep-chip" data-target="character_iff_not_repeatable">character_iff_not_repeatable</span><span class="dep-chip" data-target="SacramentKind">SacramentKind</span><span class="dep-chip" data-target="imprintsCharacter">imprintsCharacter</span><span class="dep-chip" data-target="isRepeatable">isRepeatable</span></div></div>
+
+-- ============================================================================
+-- § 7. Theorems — what the structure reveals
+-- ============================================================================</code></pre></div>
+<div class="node-desc">AXIOM: Sacraments without a character can be repeated.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="eucharist_repeatable">eucharist_repeatable</span>
+<span class="dep-chip" data-target="reconciliation_repeatable">reconciliation_repeatable</span>
+<span class="dep-chip" data-target="marriage_repeatable">marriage_repeatable</span>
+<span class="dep-chip" data-target="anointing_repeatable">anointing_repeatable</span>
+<span class="dep-chip" data-target="character_iff_not_repeatable">character_iff_not_repeatable</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="baptism_not_repeatable">
@@ -988,8 +1021,10 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem baptism_not_repeatable : ¬isRepeatable .baptism</code></pre></div>
 <div class="node-desc">Baptism is not repeatable — it imprints an indelible character.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="baptism_imprints_character">baptism_imprints_character</span><span class="dep-chip" data-target="character_blocks_repetition">character_blocks_repetition</span><span class="dep-chip" data-target="isRepeatable">isRepeatable</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="isRepeatable">isRepeatable</span><span class="dep-chip" data-target="baptism_imprints_character">baptism_imprints_character</span><span class="dep-chip" data-target="character_blocks_repetition">character_blocks_repetition</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="baptism_imprints_character">baptism_imprints_character</span>
+<span class="dep-chip" data-target="character_blocks_repetition">character_blocks_repetition</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="confirmation_not_repeatable">
@@ -1001,8 +1036,10 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem confirmation_not_repeatable : ¬isRepeatable .confirmation</code></pre></div>
 <div class="node-desc">Confirmation is not repeatable. CCC §1304.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="character_blocks_repetition">character_blocks_repetition</span><span class="dep-chip" data-target="confirmation_imprints_character">confirmation_imprints_character</span><span class="dep-chip" data-target="isRepeatable">isRepeatable</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="isRepeatable">isRepeatable</span><span class="dep-chip" data-target="character_blocks_repetition">character_blocks_repetition</span><span class="dep-chip" data-target="confirmation_imprints_character">confirmation_imprints_character</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="confirmation_imprints_character">confirmation_imprints_character</span>
+<span class="dep-chip" data-target="character_blocks_repetition">character_blocks_repetition</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="holyOrders_not_repeatable">
@@ -1014,8 +1051,10 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem holyOrders_not_repeatable : ¬isRepeatable .holyOrders</code></pre></div>
 <div class="node-desc">Holy orders is not repeatable. CCC §1582.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="character_blocks_repetition">character_blocks_repetition</span><span class="dep-chip" data-target="holyOrders_imprints_character">holyOrders_imprints_character</span><span class="dep-chip" data-target="isRepeatable">isRepeatable</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="isRepeatable">isRepeatable</span><span class="dep-chip" data-target="character_blocks_repetition">character_blocks_repetition</span><span class="dep-chip" data-target="holyOrders_imprints_character">holyOrders_imprints_character</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="holyOrders_imprints_character">holyOrders_imprints_character</span>
+<span class="dep-chip" data-target="character_blocks_repetition">character_blocks_repetition</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="eucharist_repeatable">
@@ -1027,8 +1066,10 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem eucharist_repeatable : isRepeatable .eucharist</code></pre></div>
 <div class="node-desc">The Eucharist is repeatable — no indelible character on the recipient.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="eucharist_no_character">eucharist_no_character</span><span class="dep-chip" data-target="isRepeatable">isRepeatable</span><span class="dep-chip" data-target="no_character_allows_repetition">no_character_allows_repetition</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="isRepeatable">isRepeatable</span><span class="dep-chip" data-target="eucharist_no_character">eucharist_no_character</span><span class="dep-chip" data-target="no_character_allows_repetition">no_character_allows_repetition</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="no_character_allows_repetition">no_character_allows_repetition</span>
+<span class="dep-chip" data-target="eucharist_no_character">eucharist_no_character</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="reconciliation_repeatable">
@@ -1040,8 +1081,10 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem reconciliation_repeatable : isRepeatable .reconciliation</code></pre></div>
 <div class="node-desc">Reconciliation is repeatable.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isRepeatable">isRepeatable</span><span class="dep-chip" data-target="no_character_allows_repetition">no_character_allows_repetition</span><span class="dep-chip" data-target="reconciliation_no_character">reconciliation_no_character</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="isRepeatable">isRepeatable</span><span class="dep-chip" data-target="no_character_allows_repetition">no_character_allows_repetition</span><span class="dep-chip" data-target="reconciliation_no_character">reconciliation_no_character</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="reconciliation_no_character">reconciliation_no_character</span>
+<span class="dep-chip" data-target="no_character_allows_repetition">no_character_allows_repetition</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="marriage_repeatable">
@@ -1053,8 +1096,10 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem marriage_repeatable : isRepeatable .marriage</code></pre></div>
 <div class="node-desc">Marriage is repeatable (after death of spouse).</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isRepeatable">isRepeatable</span><span class="dep-chip" data-target="marriage_no_character">marriage_no_character</span><span class="dep-chip" data-target="no_character_allows_repetition">no_character_allows_repetition</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="isRepeatable">isRepeatable</span><span class="dep-chip" data-target="marriage_no_character">marriage_no_character</span><span class="dep-chip" data-target="no_character_allows_repetition">no_character_allows_repetition</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="marriage_no_character">marriage_no_character</span>
+<span class="dep-chip" data-target="no_character_allows_repetition">no_character_allows_repetition</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="anointing_repeatable">
@@ -1066,8 +1111,10 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem anointing_repeatable : isRepeatable .anointingOfTheSick</code></pre></div>
 <div class="node-desc">Anointing of the sick is repeatable.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="anointing_no_character">anointing_no_character</span><span class="dep-chip" data-target="isRepeatable">isRepeatable</span><span class="dep-chip" data-target="no_character_allows_repetition">no_character_allows_repetition</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="isRepeatable">isRepeatable</span><span class="dep-chip" data-target="anointing_no_character">anointing_no_character</span><span class="dep-chip" data-target="no_character_allows_repetition">no_character_allows_repetition</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="no_character_allows_repetition">no_character_allows_repetition</span>
+<span class="dep-chip" data-target="anointing_no_character">anointing_no_character</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="character_iff_not_repeatable">
@@ -1080,8 +1127,12 @@ h1 {
     <div class="node-prop"><pre><code>theorem character_iff_not_repeatable :
     ∀ (s : SacramentKind), imprintsCharacter s ↔ ¬isRepeatable s</code></pre></div>
 <div class="node-desc">The character/repeatability biconditional: a sacrament imprints a character</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SacramentKind">SacramentKind</span><span class="dep-chip" data-target="character_blocks_repetition">character_blocks_repetition</span><span class="dep-chip" data-target="imprintsCharacter">imprintsCharacter</span><span class="dep-chip" data-target="isRepeatable">isRepeatable</span><span class="dep-chip" data-target="no_character_allows_repetition">no_character_allows_repetition</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="all_sin_layers_have_sacramental_remedy">all_sin_layers_have_sacramental_remedy</span><span class="dep-chip" data-target="SacramentKind">SacramentKind</span><span class="dep-chip" data-target="imprintsCharacter">imprintsCharacter</span><span class="dep-chip" data-target="isRepeatable">isRepeatable</span><span class="dep-chip" data-target="character_blocks_repetition">character_blocks_repetition</span><span class="dep-chip" data-target="no_character_allows_repetition">no_character_allows_repetition</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="no_character_allows_repetition">no_character_allows_repetition</span>
+<span class="dep-chip" data-target="isRepeatable">isRepeatable</span>
+<span class="dep-chip" data-target="imprintsCharacter">imprintsCharacter</span>
+<span class="dep-chip" data-target="character_blocks_repetition">character_blocks_repetition</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="every_sacrament_causes_change">
@@ -1094,8 +1145,15 @@ h1 {
     <div class="node-prop"><pre><code>theorem every_sacrament_causes_change :
     ∀ (s : SacramentKind), ∃ (ct : ChangeType), causesChangeOfType s ct</code></pre></div>
 <div class="node-desc">Every sacrament causes at least one type of change.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ChangeType">ChangeType</span><span class="dep-chip" data-target="SacramentKind">SacramentKind</span><span class="dep-chip" data-target="anointing_causes_dispositional">anointing_causes_dispositional</span><span class="dep-chip" data-target="baptism_causes_ontological">baptism_causes_ontological</span><span class="dep-chip" data-target="causesChangeOfType">causesChangeOfType</span><span class="dep-chip" data-target="confirmation_causes_dispositional">confirmation_causes_dispositional</span><span class="dep-chip" data-target="eucharist_causes_ontological">eucharist_causes_ontological</span><span class="dep-chip" data-target="holyOrders_causes_ontological">holyOrders_causes_ontological</span><span class="dep-chip" data-target="marriage_causes_relational">marriage_causes_relational</span><span class="dep-chip" data-target="reconciliation_causes_relational">reconciliation_causes_relational</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="all_sin_layers_have_sacramental_remedy">all_sin_layers_have_sacramental_remedy</span><span class="dep-chip" data-target="ChangeType">ChangeType</span><span class="dep-chip" data-target="SacramentKind">SacramentKind</span><span class="dep-chip" data-target="causesChangeOfType">causesChangeOfType</span><span class="dep-chip" data-target="anointing_causes_dispositional">anointing_causes_dispositional</span><span class="dep-chip" data-target="baptism_causes_ontological">baptism_causes_ontological</span><span class="dep-chip" data-target="confirmation_causes_dispositional">confirmation_causes_dispositional</span><span class="dep-chip" data-target="eucharist_causes_ontological">eucharist_causes_ontological</span><span class="dep-chip" data-target="holyOrders_causes_ontological">holyOrders_causes_ontological</span><span class="dep-chip" data-target="marriage_causes_relational">marriage_causes_relational</span><span class="dep-chip" data-target="reconciliation_causes_relational">reconciliation_causes_relational</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="reconciliation_causes_relational">reconciliation_causes_relational</span>
+<span class="dep-chip" data-target="anointing_causes_dispositional">anointing_causes_dispositional</span>
+<span class="dep-chip" data-target="baptism_causes_ontological">baptism_causes_ontological</span>
+<span class="dep-chip" data-target="holyOrders_causes_ontological">holyOrders_causes_ontological</span>
+<span class="dep-chip" data-target="marriage_causes_relational">marriage_causes_relational</span>
+<span class="dep-chip" data-target="eucharist_causes_ontological">eucharist_causes_ontological</span>
+<span class="dep-chip" data-target="confirmation_causes_dispositional">confirmation_causes_dispositional</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="every_change_type_has_sacrament">
@@ -1108,8 +1166,12 @@ h1 {
     <div class="node-prop"><pre><code>theorem every_change_type_has_sacrament :
     ∀ (ct : ChangeType), ∃ (s : SacramentKind), causesChangeOfType s ct</code></pre></div>
 <div class="node-desc">Every change-type is caused by at least one sacrament.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ChangeType">ChangeType</span><span class="dep-chip" data-target="SacramentKind">SacramentKind</span><span class="dep-chip" data-target="baptism_causes_juridical">baptism_causes_juridical</span><span class="dep-chip" data-target="baptism_causes_ontological">baptism_causes_ontological</span><span class="dep-chip" data-target="baptism_causes_relational">baptism_causes_relational</span><span class="dep-chip" data-target="causesChangeOfType">causesChangeOfType</span><span class="dep-chip" data-target="confirmation_causes_dispositional">confirmation_causes_dispositional</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ChangeType">ChangeType</span><span class="dep-chip" data-target="SacramentKind">SacramentKind</span><span class="dep-chip" data-target="causesChangeOfType">causesChangeOfType</span><span class="dep-chip" data-target="baptism_causes_juridical">baptism_causes_juridical</span><span class="dep-chip" data-target="baptism_causes_ontological">baptism_causes_ontological</span><span class="dep-chip" data-target="baptism_causes_relational">baptism_causes_relational</span><span class="dep-chip" data-target="confirmation_causes_dispositional">confirmation_causes_dispositional</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="baptism_causes_juridical">baptism_causes_juridical</span>
+<span class="dep-chip" data-target="baptism_causes_relational">baptism_causes_relational</span>
+<span class="dep-chip" data-target="baptism_causes_ontological">baptism_causes_ontological</span>
+<span class="dep-chip" data-target="confirmation_causes_dispositional">confirmation_causes_dispositional</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="baptism_triple_causation">
@@ -1124,8 +1186,11 @@ h1 {
     ∧ causesChangeOfType .baptism .relational
     ∧ causesChangeOfType .baptism .juridical</code></pre></div>
 <div class="node-desc">Baptism causes three types of change: ontological, relational, and juridical.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="baptism_causes_juridical">baptism_causes_juridical</span><span class="dep-chip" data-target="baptism_causes_ontological">baptism_causes_ontological</span><span class="dep-chip" data-target="baptism_causes_relational">baptism_causes_relational</span><span class="dep-chip" data-target="causesChangeOfType">causesChangeOfType</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="causesChangeOfType">causesChangeOfType</span><span class="dep-chip" data-target="baptism_causes_juridical">baptism_causes_juridical</span><span class="dep-chip" data-target="baptism_causes_ontological">baptism_causes_ontological</span><span class="dep-chip" data-target="baptism_causes_relational">baptism_causes_relational</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="baptism_causes_juridical">baptism_causes_juridical</span>
+<span class="dep-chip" data-target="baptism_causes_relational">baptism_causes_relational</span>
+<span class="dep-chip" data-target="baptism_causes_ontological">baptism_causes_ontological</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="holyOrders_dual_causation">
@@ -1139,8 +1204,10 @@ h1 {
     causesChangeOfType .holyOrders .ontological
     ∧ causesChangeOfType .holyOrders .dispositional</code></pre></div>
 <div class="node-desc">Holy orders causes both ontological and dispositional change.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="causesChangeOfType">causesChangeOfType</span><span class="dep-chip" data-target="holyOrders_causes_dispositional">holyOrders_causes_dispositional</span><span class="dep-chip" data-target="holyOrders_causes_ontological">holyOrders_causes_ontological</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="causesChangeOfType">causesChangeOfType</span><span class="dep-chip" data-target="holyOrders_causes_dispositional">holyOrders_causes_dispositional</span><span class="dep-chip" data-target="holyOrders_causes_ontological">holyOrders_causes_ontological</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="holyOrders_causes_dispositional">holyOrders_causes_dispositional</span>
+<span class="dep-chip" data-target="holyOrders_causes_ontological">holyOrders_causes_ontological</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="confirmation_dual_causation">
@@ -1154,8 +1221,10 @@ h1 {
     causesChangeOfType .confirmation .dispositional
     ∧ causesChangeOfType .confirmation .ontological</code></pre></div>
 <div class="node-desc">Confirmation causes both dispositional and ontological change.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="causesChangeOfType">causesChangeOfType</span><span class="dep-chip" data-target="confirmation_causes_dispositional">confirmation_causes_dispositional</span><span class="dep-chip" data-target="confirmation_causes_ontological">confirmation_causes_ontological</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="causesChangeOfType">causesChangeOfType</span><span class="dep-chip" data-target="confirmation_causes_dispositional">confirmation_causes_dispositional</span><span class="dep-chip" data-target="confirmation_causes_ontological">confirmation_causes_ontological</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="confirmation_causes_ontological">confirmation_causes_ontological</span>
+<span class="dep-chip" data-target="confirmation_causes_dispositional">confirmation_causes_dispositional</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="reconciliation_dual_causation">
@@ -1169,8 +1238,10 @@ h1 {
     causesChangeOfType .reconciliation .relational
     ∧ causesChangeOfType .reconciliation .juridical</code></pre></div>
 <div class="node-desc">Reconciliation causes both relational and juridical change.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="causesChangeOfType">causesChangeOfType</span><span class="dep-chip" data-target="reconciliation_causes_juridical">reconciliation_causes_juridical</span><span class="dep-chip" data-target="reconciliation_causes_relational">reconciliation_causes_relational</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="causesChangeOfType">causesChangeOfType</span><span class="dep-chip" data-target="reconciliation_causes_juridical">reconciliation_causes_juridical</span><span class="dep-chip" data-target="reconciliation_causes_relational">reconciliation_causes_relational</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="reconciliation_causes_relational">reconciliation_causes_relational</span>
+<span class="dep-chip" data-target="reconciliation_causes_juridical">reconciliation_causes_juridical</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="eucharist_dual_causation">
@@ -1184,8 +1255,10 @@ h1 {
     causesChangeOfType .eucharist .ontological
     ∧ causesChangeOfType .eucharist .relational</code></pre></div>
 <div class="node-desc">The Eucharist causes both ontological and relational change.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="causesChangeOfType">causesChangeOfType</span><span class="dep-chip" data-target="eucharist_causes_ontological">eucharist_causes_ontological</span><span class="dep-chip" data-target="eucharist_causes_relational">eucharist_causes_relational</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="causesChangeOfType">causesChangeOfType</span><span class="dep-chip" data-target="eucharist_causes_ontological">eucharist_causes_ontological</span><span class="dep-chip" data-target="eucharist_causes_relational">eucharist_causes_relational</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="eucharist_causes_ontological">eucharist_causes_ontological</span>
+<span class="dep-chip" data-target="eucharist_causes_relational">eucharist_causes_relational</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="anointing_dual_causation">
@@ -1199,8 +1272,10 @@ h1 {
     causesChangeOfType .anointingOfTheSick .dispositional
     ∧ causesChangeOfType .anointingOfTheSick .relational</code></pre></div>
 <div class="node-desc">Anointing of the sick causes both dispositional and relational change.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Sacrament">Sacrament</span><span class="dep-chip" data-target="anointing_causes_dispositional">anointing_causes_dispositional</span><span class="dep-chip" data-target="anointing_causes_relational">anointing_causes_relational</span><span class="dep-chip" data-target="causesChangeOfType">causesChangeOfType</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="causesChangeOfType">causesChangeOfType</span><span class="dep-chip" data-target="anointing_causes_dispositional">anointing_causes_dispositional</span><span class="dep-chip" data-target="anointing_causes_relational">anointing_causes_relational</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="anointing_causes_dispositional">anointing_causes_dispositional</span>
+<span class="dep-chip" data-target="anointing_causes_relational">anointing_causes_relational</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="primarySinLayer">
@@ -1214,11 +1289,8 @@ h1 {
   | .baptism        =&gt; some .originalWound  -- Layer 1: §1263
   | .reconciliation =&gt; some .guilt          -- Layer 2: §1468
   | .eucharist      =&gt; some .attachment     -- Layer 3: §1394
-  | _               =&gt; none                 -- Other sacraments don't primarily address sin layers
-</code></pre></div>
+  | _               =&gt; none                 -- Other sacraments don&#x27;t primarily address sin layers</code></pre></div>
 <div class="node-desc">Which layer of sin a sacrament primarily addresses.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SacramentKind">SacramentKind</span><span class="dep-chip" data-target="SinEffect">SinEffect</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="baptism_addresses_layer1">baptism_addresses_layer1</span><span class="dep-chip" data-target="reconciliation_addresses_layer2">reconciliation_addresses_layer2</span><span class="dep-chip" data-target="eucharist_addresses_layer3">eucharist_addresses_layer3</span><span class="dep-chip" data-target="all_sin_layers_have_sacramental_remedy">all_sin_layers_have_sacramental_remedy</span><span class="dep-chip" data-target="SacramentKind">SacramentKind</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="baptism_addresses_layer1">
@@ -1231,8 +1303,6 @@ h1 {
     <div class="node-prop"><pre><code>theorem baptism_addresses_layer1 :
     primarySinLayer .baptism = some SinEffect.originalWound</code></pre></div>
 <div class="node-desc">Baptism addresses Layer 1 (original wound).</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SinEffect">SinEffect</span><span class="dep-chip" data-target="primarySinLayer">primarySinLayer</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="primarySinLayer">primarySinLayer</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="reconciliation_addresses_layer2">
@@ -1245,8 +1315,6 @@ h1 {
     <div class="node-prop"><pre><code>theorem reconciliation_addresses_layer2 :
     primarySinLayer .reconciliation = some SinEffect.guilt</code></pre></div>
 <div class="node-desc">Reconciliation addresses Layer 2 (guilt).</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SinEffect">SinEffect</span><span class="dep-chip" data-target="primarySinLayer">primarySinLayer</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="primarySinLayer">primarySinLayer</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="eucharist_addresses_layer3">
@@ -1259,8 +1327,6 @@ h1 {
     <div class="node-prop"><pre><code>theorem eucharist_addresses_layer3 :
     primarySinLayer .eucharist = some SinEffect.attachment</code></pre></div>
 <div class="node-desc">The Eucharist addresses Layer 3 (attachments / temporal punishment).</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SinEffect">SinEffect</span><span class="dep-chip" data-target="primarySinLayer">primarySinLayer</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="primarySinLayer">primarySinLayer</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="all_sin_layers_have_sacramental_remedy">
@@ -1274,8 +1340,6 @@ h1 {
     ∀ (layer : SinEffect),
       ∃ (s : SacramentKind), primarySinLayer s = some layer</code></pre></div>
 <div class="node-desc">The three healing sacraments cover ALL three layers — no layer is left</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SacramentKind">SacramentKind</span><span class="dep-chip" data-target="SinEffect">SinEffect</span><span class="dep-chip" data-target="character_iff_not_repeatable">character_iff_not_repeatable</span><span class="dep-chip" data-target="every_sacrament_causes_change">every_sacrament_causes_change</span><span class="dep-chip" data-target="primarySinLayer">primarySinLayer</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="SacramentKind">SacramentKind</span><span class="dep-chip" data-target="primarySinLayer">primarySinLayer</span><span class="dep-chip" data-target="character_iff_not_repeatable">character_iff_not_repeatable</span><span class="dep-chip" data-target="every_sacrament_causes_change">every_sacrament_causes_change</span></div></div>
   </div>
 </div>
   </div>

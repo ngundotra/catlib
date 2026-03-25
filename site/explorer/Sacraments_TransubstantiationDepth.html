@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>HumanNature — Catlib Explorer</title>
+  <title>TransubstantiationDepth — Catlib Explorer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -528,173 +528,332 @@ h1 {
 <body>
 <div class="container">
   <a href="index.html" class="back-link">&larr; All files</a>
-  <h1>HumanNature</h1>
-  <div class="subtitle">Foundations &middot; 11 declarations</div>
+  <h1>TransubstantiationDepth</h1>
+  <div class="subtitle">Sacraments &middot; 21 declarations</div>
   
-  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;362, &sect;365, &sect;405, &sect;1705</div>
+  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1374, &sect;1376, &sect;1399</div>
 
-  <div class="legend"><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span><span class="legend-item"><span class="legend-dot proposition"></span>proposition</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot structure"></span>structure</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span></div>
+  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot structure"></span>structure</span></div>
 
-  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="theorem">theorem (2)</button><button class="filter-btn" data-filter="proposition">proposition (1)</button><button class="filter-btn" data-filter="def">def (3)</button><button class="filter-btn" data-filter="structure">structure (3)</button><button class="filter-btn" data-filter="inductive">inductive (2)</button></div>
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (6)</button><button class="filter-btn" data-filter="theorem">theorem (7)</button><button class="filter-btn" data-filter="def">def (2)</button><button class="filter-btn" data-filter="opaque">opaque (5)</button><button class="filter-btn" data-filter="structure">structure (1)</button></div>
 
   <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
 
   <div id="nodeList">
-    <div class="node-card kind-inductive" data-kind="inductive" data-name="PersonAspect">
+    <div class="node-card kind-opaque" data-kind="opaque" data-name="affirmsRealPresence">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">inductive</span>
-    <span class="node-name">PersonAspect</span>
+    <span class="node-kind-badge">opaque</span>
+    <span class="node-name">affirmsRealPresence</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>inductive PersonAspect where</code></pre></div>
-<div class="node-desc">The two aspects of a human person (§362).</div>
+    <div class="node-prop"><pre><code>opaque affirmsRealPresence : Prop</code></pre></div>
+<div class="node-desc">Whether a tradition affirms that Christ is truly, really, and</div>
   </div>
 </div>
-<div class="node-card kind-inductive" data-kind="inductive" data-name="SpiritualPower">
-  <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">inductive</span>
-    <span class="node-name">SpiritualPower</span>
-    <span class="node-chevron">&#9654;</span>
-  </div>
-  <div class="node-details">
-    <div class="node-prop"><pre><code>inductive SpiritualPower where</code></pre></div>
-<div class="node-desc">The two spiritual powers of the soul (§1705).</div>
-  </div>
-</div>
-<div class="node-card kind-structure" data-kind="structure" data-name="PowerState">
+<div class="node-card kind-structure" data-kind="structure" data-name="because">
   <div class="node-header" onclick="toggleNode(this)">
     <span class="node-kind-badge">structure</span>
-    <span class="node-name">PowerState</span>
+    <span class="node-name">because</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>structure PowerState where</code></pre></div>
-<div class="node-desc">The state of a spiritual power — how wounded or healed it is.</div>
+    <div class="node-prop"><pre><code>structure because we are interested in the logical relationship</code></pre></div>
   </div>
 </div>
-<div class="node-card kind-structure" data-kind="structure" data-name="OriginalWounds">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="holdsTransubstantiation">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">structure</span>
-    <span class="node-name">OriginalWounds</span>
+    <span class="node-kind-badge">opaque</span>
+    <span class="node-name">holdsTransubstantiation</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>structure OriginalWounds where</code></pre></div>
-<div class="node-desc">The wounds of original sin, as the CCC describes them (§405).</div>
+    <div class="node-prop"><pre><code>opaque holdsTransubstantiation : Prop
+
+-- ============================================================================
+-- § 2. The Explanation: Transubstantiation Implies Real Presence
+-- ============================================================================</code></pre></div>
+<div class="node-desc">Whether a tradition holds the specific Aristotelian explanation:</div>
   </div>
 </div>
-<div class="node-card kind-structure" data-kind="structure" data-name="HumanNature">
+<div class="node-card kind-axiom" data-kind="axiom" data-name="transubstantiation_implies_real_presence">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">structure</span>
-    <span class="node-name">HumanNature</span>
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">transubstantiation_implies_real_presence</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>structure HumanNature where</code></pre></div>
-<div class="node-desc">Human nature as the CCC describes it.</div>
+    <div class="node-prop"><pre><code>axiom transubstantiation_implies_real_presence :
+  holdsTransubstantiation → affirmsRealPresence</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="fall_diminishes_freedom_from_nature">fall_diminishes_freedom_from_nature</span>
-<span class="dep-chip" data-target="freedom_survives_fall">freedom_survives_fall</span>
+<span class="dep-chip" data-target="belief_explanation_gap">belief_explanation_gap</span>
+<span class="dep-chip" data-target="eucharist_lean_models_catholic_position">eucharist_lean_models_catholic_position</span>
 </div></div>
   </div>
 </div>
-<div class="node-card kind-def" data-kind="def" data-name="HumanNature.freedomLevel">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="isMostSuitableExplanation">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">def</span>
-    <span class="node-name">HumanNature.freedomLevel</span>
+    <span class="node-kind-badge">opaque</span>
+    <span class="node-name">isMostSuitableExplanation</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def HumanNature.freedomLevel (hn : HumanNature) : Nat</code></pre></div>
-<div class="node-desc">Freedom level is derived from intellect + will states.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="fall_diminishes_freedom_from_nature">fall_diminishes_freedom_from_nature</span>
-</div></div>
+    <div class="node-prop"><pre><code>opaque isMostSuitableExplanation : Prop</code></pre></div>
+<div class="node-desc">Transubstantiation is the</div>
   </div>
 </div>
-<div class="node-card kind-proposition" data-kind="proposition" data-name="HumanNature.hasFreedom">
+<div class="node-card kind-axiom" data-kind="axiom" data-name="transubstantiation_is_most_suitable">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
-    <span class="node-name">HumanNature.hasFreedom</span>
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">transubstantiation_is_most_suitable</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def HumanNature.hasFreedom (hn : HumanNature) : Prop</code></pre></div>
-<div class="node-desc">A person with unwounded intellect and will has full freedom.</div>
+    <div class="node-prop"><pre><code>axiom transubstantiation_is_most_suitable :
+  holdsTransubstantiation → isMostSuitableExplanation
+
+-- ============================================================================
+-- § 3. The Gap: Belief Without Explanation
+-- ============================================================================</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="freedom_survives_fall">freedom_survives_fall</span>
+<span class="dep-chip" data-target="most_suitable_compatible_with_alternatives">most_suitable_compatible_with_alternatives</span>
 </div></div>
   </div>
 </div>
-<div class="node-card kind-def" data-kind="def" data-name="originalIntegrity">
+<div class="node-card kind-axiom" data-kind="axiom" data-name="real_presence_without_transubstantiation">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">def</span>
-    <span class="node-name">originalIntegrity</span>
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">real_presence_without_transubstantiation</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def originalIntegrity (p : Person) : HumanNature</code></pre></div>
-<div class="node-desc">The state of human nature before the Fall.</div>
+    <div class="node-prop"><pre><code>axiom real_presence_without_transubstantiation :
+  ∃ (_ : affirmsRealPresence), ¬holdsTransubstantiation</code></pre></div>
+<div class="node-desc">Real presence can be affirmed</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="fall_diminishes_freedom_from_nature">fall_diminishes_freedom_from_nature</span>
+<span class="dep-chip" data-target="belief_explanation_gap">belief_explanation_gap</span>
+<span class="dep-chip" data-target="orthodox_avoids_metaphysical_cost">orthodox_avoids_metaphysical_cost</span>
+<span class="dep-chip" data-target="most_suitable_compatible_with_alternatives">most_suitable_compatible_with_alternatives</span>
 </div></div>
   </div>
 </div>
-<div class="node-card kind-def" data-kind="def" data-name="fallenNature">
-  <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">def</span>
-    <span class="node-name">fallenNature</span>
-    <span class="node-chevron">&#9654;</span>
-  </div>
-  <div class="node-details">
-    <div class="node-prop"><pre><code>def fallenNature (p : Person) : HumanNature</code></pre></div>
-<div class="node-desc">The state of human nature after the Fall (§405).</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="fall_diminishes_freedom_from_nature">fall_diminishes_freedom_from_nature</span>
-<span class="dep-chip" data-target="freedom_survives_fall">freedom_survives_fall</span>
-</div></div>
-  </div>
-</div>
-<div class="node-card kind-theorem" data-kind="theorem" data-name="fall_diminishes_freedom_from_nature">
+<div class="node-card kind-theorem" data-kind="theorem" data-name="belief_explanation_gap">
   <div class="node-header" onclick="toggleNode(this)">
     <span class="node-kind-badge">theorem</span>
-    <span class="node-name">fall_diminishes_freedom_from_nature</span>
+    <span class="node-name">belief_explanation_gap</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>theorem fall_diminishes_freedom_from_nature (p : Person) :
-    (originalIntegrity p).freedomLevel &gt; (fallenNature p).freedomLevel</code></pre></div>
-<div class="node-desc">Freedom is diminished after the Fall — because both intellect</div>
+    <div class="node-prop"><pre><code>theorem belief_explanation_gap :
+    -- Sufficient: transubstantiation → real presence
+    (holdsTransubstantiation → affirmsRealPresence) ∧
+    -- Not necessary: real presence does not require transubstantiation
+    ∃ (_ : affirmsRealPresence), ¬holdsTransubstantiation</code></pre></div>
+<div class="node-desc">THEOREM: The belief/explanation gap is real — transubstantiation</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="HumanNature">HumanNature</span>
-<span class="dep-chip" data-target="originalIntegrity">originalIntegrity</span>
-<span class="dep-chip" data-target="fallenNature">fallenNature</span>
-<span class="dep-chip" data-target="HumanNature.freedomLevel">HumanNature.freedomLevel</span>
+<span class="dep-chip" data-target="transubstantiation_implies_real_presence">transubstantiation_implies_real_presence</span>
+<span class="dep-chip" data-target="real_presence_without_transubstantiation">real_presence_without_transubstantiation</span>
 </div></div>
   </div>
 </div>
-<div class="node-card kind-theorem" data-kind="theorem" data-name="freedom_survives_fall">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="accidentsInhereInSubstance">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">theorem</span>
-    <span class="node-name">freedom_survives_fall</span>
+    <span class="node-kind-badge">opaque</span>
+    <span class="node-name">accidentsInhereInSubstance</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>theorem freedom_survives_fall (p : Person) :
-    (fallenNature p).hasFreedom</code></pre></div>
-<div class="node-desc">But freedom is NOT destroyed — the CCC says nature is wounded,</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="HumanNature.hasFreedom">HumanNature.hasFreedom</span>
-<span class="dep-chip" data-target="HumanNature">HumanNature</span>
-<span class="dep-chip" data-target="fallenNature">fallenNature</span>
+    <div class="node-prop"><pre><code>opaque accidentsInhereInSubstance : Prop</code></pre></div>
+<div class="node-desc">Whether a set of accidents inheres in some substance (the normal case).</div>
+  </div>
+</div>
+<div class="node-card kind-opaque" data-kind="opaque" data-name="accidentsWithoutSubject">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">opaque</span>
+    <span class="node-name">accidentsWithoutSubject</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>opaque accidentsWithoutSubject : Prop</code></pre></div>
+<div class="node-desc">Whether accidents can exist without inhering in any created substance,</div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="normal_metaphysics_accidents_inhere">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">normal_metaphysics_accidents_inhere</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom normal_metaphysics_accidents_inhere :
+  ¬accidentsWithoutSubject → accidentsInhereInSubstance</code></pre></div>
+<div class="node-desc">In ordinary cases,</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="without_transubstantiation_normal_metaphysics">without_transubstantiation_normal_metaphysics</span>
 </div></div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="eucharistic_accidents_without_subject">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">eucharistic_accidents_without_subject</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom eucharistic_accidents_without_subject :
+  holdsTransubstantiation → accidentsWithoutSubject</code></pre></div>
+<div class="node-desc">In the Eucharist, accidents exist without</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="transubstantiation_iff_accidents_without_subject">transubstantiation_iff_accidents_without_subject</span>
+<span class="dep-chip" data-target="transubstantiation_creates_metaphysical_exception">transubstantiation_creates_metaphysical_exception</span>
+<span class="dep-chip" data-target="eucharist_lean_models_catholic_position">eucharist_lean_models_catholic_position</span>
+</div></div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="accidents_without_subject_is_unique">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">accidents_without_subject_is_unique</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom accidents_without_subject_is_unique :
+  accidentsWithoutSubject → holdsTransubstantiation
+
+-- ============================================================================
+-- § 5. Theorems
+-- ============================================================================</code></pre></div>
+<div class="node-desc">The Eucharist is the ONLY</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="transubstantiation_iff_accidents_without_subject">transubstantiation_iff_accidents_without_subject</span>
+<span class="dep-chip" data-target="without_transubstantiation_normal_metaphysics">without_transubstantiation_normal_metaphysics</span>
+<span class="dep-chip" data-target="orthodox_avoids_metaphysical_cost">orthodox_avoids_metaphysical_cost</span>
+</div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="transubstantiation_iff_accidents_without_subject">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">transubstantiation_iff_accidents_without_subject</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem transubstantiation_iff_accidents_without_subject :
+    holdsTransubstantiation ↔ accidentsWithoutSubject</code></pre></div>
+<div class="node-desc">THEOREM: Transubstantiation and accidents-without-subject are equivalent.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="accidents_without_subject_is_unique">accidents_without_subject_is_unique</span>
+<span class="dep-chip" data-target="eucharistic_accidents_without_subject">eucharistic_accidents_without_subject</span>
+</div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="transubstantiation_creates_metaphysical_exception">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">transubstantiation_creates_metaphysical_exception</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem transubstantiation_creates_metaphysical_exception :
+    holdsTransubstantiation → accidentsWithoutSubject</code></pre></div>
+<div class="node-desc">THEOREM: If transubstantiation holds, the normal metaphysical rule</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="eucharistic_accidents_without_subject">eucharistic_accidents_without_subject</span>
+</div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="without_transubstantiation_normal_metaphysics">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">without_transubstantiation_normal_metaphysics</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem without_transubstantiation_normal_metaphysics :
+    ¬holdsTransubstantiation → accidentsInhereInSubstance</code></pre></div>
+<div class="node-desc">THEOREM: Without transubstantiation, accidents inhere in substances</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="normal_metaphysics_accidents_inhere">normal_metaphysics_accidents_inhere</span>
+<span class="dep-chip" data-target="accidents_without_subject_is_unique">accidents_without_subject_is_unique</span>
+</div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="eucharist_lean_models_catholic_position">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">eucharist_lean_models_catholic_position</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem eucharist_lean_models_catholic_position :
+    holdsTransubstantiation →
+    affirmsRealPresence ∧ accidentsWithoutSubject</code></pre></div>
+<div class="node-desc">THEOREM: The existing Eucharist.lean formalization models specifically</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="transubstantiation_implies_real_presence">transubstantiation_implies_real_presence</span>
+<span class="dep-chip" data-target="eucharistic_accidents_without_subject">eucharistic_accidents_without_subject</span>
+</div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="orthodox_avoids_metaphysical_cost">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">orthodox_avoids_metaphysical_cost</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem orthodox_avoids_metaphysical_cost :
+    ∃ (_ : affirmsRealPresence), ¬accidentsWithoutSubject</code></pre></div>
+<div class="node-desc">THEOREM: The Orthodox position is logically coherent — real presence</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="real_presence_without_transubstantiation">real_presence_without_transubstantiation</span>
+<span class="dep-chip" data-target="accidents_without_subject_is_unique">accidents_without_subject_is_unique</span>
+</div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="most_suitable_compatible_with_alternatives">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">most_suitable_compatible_with_alternatives</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem most_suitable_compatible_with_alternatives :
+    (holdsTransubstantiation → isMostSuitableExplanation) ∧
+    (∃ (_ : affirmsRealPresence), ¬holdsTransubstantiation)</code></pre></div>
+<div class="node-desc">THEOREM: &quot;Most suitable&quot; means transubstantiation is at least as</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="transubstantiation_is_most_suitable">transubstantiation_is_most_suitable</span>
+<span class="dep-chip" data-target="real_presence_without_transubstantiation">real_presence_without_transubstantiation</span>
+</div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="beliefExplanationTag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">beliefExplanationTag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def beliefExplanationTag : DenominationalTag</code></pre></div>
+<div class="node-desc">Denominational tag for the belief/explanation distinction.</div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="accidentsWithoutSubjectTag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">accidentsWithoutSubjectTag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def accidentsWithoutSubjectTag : DenominationalTag</code></pre></div>
+<div class="node-desc">Denominational tag for accidents without a subject.</div>
   </div>
 </div>
   </div>
 
   <div class="footer">
-    Generated from <code>Catlib/Foundations/HumanNature.lean</code>
+    Generated from <code>Catlib/Sacraments/TransubstantiationDepth.lean</code>
   </div>
 </div>
 

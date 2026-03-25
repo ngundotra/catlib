@@ -267,6 +267,8 @@ h1 {
 .node-card.kind-structure { border-left-color: var(--structure-dot); }
 .node-card.kind-inductive { border-left-color: var(--inductive-dot); }
 .node-card.kind-proposition { border-left-color: var(--proposition-dot); }
+.node-card.kind-instance { border-left-color: var(--def-dot); }
+.node-card.kind-abbrev { border-left-color: var(--def-dot); }
 
 .node-header {
   display: flex;
@@ -302,6 +304,8 @@ h1 {
 .kind-structure .node-kind-badge { background: var(--structure-bg); color: var(--structure-dot); }
 .kind-inductive .node-kind-badge { background: var(--inductive-bg); color: var(--inductive-dot); }
 .kind-proposition .node-kind-badge { background: var(--proposition-bg); color: var(--proposition-dot); }
+.kind-instance .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
+.kind-abbrev .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
 
 .node-name {
   flex: 1;
@@ -462,6 +466,8 @@ h1 {
 .legend-dot.structure { background: var(--structure-dot); }
 .legend-dot.inductive { background: var(--inductive-dot); }
 .legend-dot.proposition { background: var(--proposition-dot); }
+.legend-dot.instance { background: var(--def-dot); }
+.legend-dot.abbrev { background: var(--def-dot); }
 
 /* ── Filter buttons ── */
 .filter-bar {
@@ -524,13 +530,12 @@ h1 {
   <a href="index.html" class="back-link">&larr; All files</a>
   <h1>Baptism</h1>
   <div class="subtitle">Sacraments &middot; 18 declarations</div>
-
   
-  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1127, &sect;1131, &sect;1213, &sect;1250, &sect;1251, &sect;1252, &sect;1253, &sect;1263, &sect;1272, &sect;1282, &sect;405</div>
+  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;405, &sect;1127, &sect;1250, &sect;1251, &sect;1263, &sect;1272</div>
 
-  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
+  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span></div>
 
-  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (5)</button><button class="filter-btn" data-filter="def">def (2)</button><button class="filter-btn" data-filter="opaque">opaque (6)</button><button class="filter-btn" data-filter="theorem">theorem (5)</button></div>
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (5)</button><button class="filter-btn" data-filter="theorem">theorem (5)</button><button class="filter-btn" data-filter="def">def (2)</button><button class="filter-btn" data-filter="opaque">opaque (6)</button></div>
 
   <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
 
@@ -542,10 +547,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque canProfessFaith : Person → Prop
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque canProfessFaith : Person → Prop</code></pre></div>
 <div class="node-desc">Whether a person can currently profess faith — exercise rational assent</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ecclesial_presentation_enables_baptism">ecclesial_presentation_enables_baptism</span><span class="dep-chip" data-target="credobaptist_requires_faith">credobaptist_requires_faith</span><span class="dep-chip" data-target="infant_receives_grace">infant_receives_grace</span><span class="dep-chip" data-target="credobaptist_excludes_infants">credobaptist_excludes_infants</span><span class="dep-chip" data-target="t3_is_the_load_bearing_axiom">t3_is_the_load_bearing_axiom</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="isBaptized">
@@ -555,10 +558,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque isBaptized : Person → Prop
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque isBaptized : Person → Prop</code></pre></div>
 <div class="node-desc">Whether a person has been validly baptized.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="original_sin_requires_baptism">original_sin_requires_baptism</span><span class="dep-chip" data-target="baptism_confers_grace">baptism_confers_grace</span><span class="dep-chip" data-target="ecclesial_presentation_enables_baptism">ecclesial_presentation_enables_baptism</span><span class="dep-chip" data-target="infant_needs_baptism">infant_needs_baptism</span><span class="dep-chip" data-target="t3_is_the_load_bearing_axiom">t3_is_the_load_bearing_axiom</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="ecclesialPresentation">
@@ -568,10 +569,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque ecclesialPresentation : Person → Prop
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque ecclesialPresentation : Person → Prop</code></pre></div>
 <div class="node-desc">Whether the Church (through parents, godparents, or community)</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ecclesial_presentation_enables_baptism">ecclesial_presentation_enables_baptism</span><span class="dep-chip" data-target="infant_receives_grace">infant_receives_grace</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="hasOriginalSin">
@@ -581,11 +580,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque hasOriginalSin : Person → Prop
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque hasOriginalSin : Person → Prop</code></pre></div>
 <div class="node-desc">Whether a person has original sin (Layer 1 present).</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SinProfile">SinProfile</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="universal_original_sin">universal_original_sin</span><span class="dep-chip" data-target="original_sin_requires_baptism">original_sin_requires_baptism</span><span class="dep-chip" data-target="t3_is_the_load_bearing_axiom">t3_is_the_load_bearing_axiom</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="receivesBaptismalGrace">
@@ -596,10 +592,11 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque receivesBaptismalGrace : Person → Prop
-</code></pre></div>
+
+-- ============================================================================
+-- § 2. Axioms — the Catholic case for infant baptism
+-- ============================================================================</code></pre></div>
 <div class="node-desc">Whether a person has received baptismal grace — the specific grace</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Teaching">Teaching</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="original_sin_requires_baptism">original_sin_requires_baptism</span><span class="dep-chip" data-target="baptism_confers_grace">baptism_confers_grace</span><span class="dep-chip" data-target="infant_receives_grace">infant_receives_grace</span><span class="dep-chip" data-target="infant_needs_baptism">infant_needs_baptism</span><span class="dep-chip" data-target="t3_is_the_load_bearing_axiom">t3_is_the_load_bearing_axiom</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="universal_original_sin">
@@ -610,11 +607,12 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom universal_original_sin :
-  ∀ (p : Person), p.hasIntellect = true → hasOriginalSin p
-</code></pre></div>
-<div class="node-desc">Every human person is born with original sin. │   Source: [Scripture] Rom 5:12 (&quot;sin came into the world through | Scope: ECUMENICAL (among those accepting original si...</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Teaching">Teaching</span><span class="dep-chip" data-target="hasOriginalSin">hasOriginalSin</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="credobaptist_requires_faith">credobaptist_requires_faith</span><span class="dep-chip" data-target="infant_needs_baptism">infant_needs_baptism</span><span class="dep-chip" data-target="t3_is_the_load_bearing_axiom">t3_is_the_load_bearing_axiom</span><span class="dep-chip" data-target="credobaptismTag">credobaptismTag</span><span class="dep-chip" data-target="hasOriginalSin">hasOriginalSin</span></div></div>
+  ∀ (p : Person), p.hasIntellect = true → hasOriginalSin p</code></pre></div>
+<div class="node-desc">Every human person is born with original sin.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="infant_needs_baptism">infant_needs_baptism</span>
+<span class="dep-chip" data-target="t3_is_the_load_bearing_axiom">t3_is_the_load_bearing_axiom</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="original_sin_requires_baptism">
@@ -625,11 +623,12 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom original_sin_requires_baptism :
-  ∀ (p : Person), hasOriginalSin p → ¬isBaptized p → ¬receivesBaptismalGrace p
-</code></pre></div>
-<div class="node-desc">Original sin creates a NEED for baptism — not merely │   Source: [Scripture] Jn 3:5 (&quot;unless one is born of water and | Scope: ECUMENICAL (baptism is universally practiced). ...</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Teaching">Teaching</span><span class="dep-chip" data-target="confers">confers</span><span class="dep-chip" data-target="hasOriginalSin">hasOriginalSin</span><span class="dep-chip" data-target="isBaptized">isBaptized</span><span class="dep-chip" data-target="receivesBaptismalGrace">receivesBaptismalGrace</span><span class="dep-chip" data-target="t3_sacramental_efficacy">t3_sacramental_efficacy</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="credobaptist_requires_faith">credobaptist_requires_faith</span><span class="dep-chip" data-target="infant_needs_baptism">infant_needs_baptism</span><span class="dep-chip" data-target="t3_is_the_load_bearing_axiom">t3_is_the_load_bearing_axiom</span><span class="dep-chip" data-target="credobaptismTag">credobaptismTag</span><span class="dep-chip" data-target="hasOriginalSin">hasOriginalSin</span><span class="dep-chip" data-target="isBaptized">isBaptized</span><span class="dep-chip" data-target="receivesBaptismalGrace">receivesBaptismalGrace</span></div></div>
+  ∀ (p : Person), hasOriginalSin p → ¬isBaptized p → ¬receivesBaptismalGrace p</code></pre></div>
+<div class="node-desc">Original sin creates a NEED for baptism — not merely</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="infant_needs_baptism">infant_needs_baptism</span>
+<span class="dep-chip" data-target="t3_is_the_load_bearing_axiom">t3_is_the_load_bearing_axiom</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="baptism_confers_grace">
@@ -640,11 +639,11 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom baptism_confers_grace :
-  ∀ (p : Person), isBaptized p → receivesBaptismalGrace p
-</code></pre></div>
-<div class="node-desc">Baptism CONFERS grace — │   Source: [Tradition] Council of Trent, Session 7, Canon 8; | Scope: CATHOLIC (Baptists deny this — baptism is | [Defin...</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Teaching">Teaching</span><span class="dep-chip" data-target="isBaptized">isBaptized</span><span class="dep-chip" data-target="receivesBaptismalGrace">receivesBaptismalGrace</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ecclesial_presentation_enables_baptism">ecclesial_presentation_enables_baptism</span><span class="dep-chip" data-target="credobaptist_requires_faith">credobaptist_requires_faith</span><span class="dep-chip" data-target="infant_receives_grace">infant_receives_grace</span><span class="dep-chip" data-target="credobaptist_excludes_infants">credobaptist_excludes_infants</span><span class="dep-chip" data-target="t3_is_the_load_bearing_axiom">t3_is_the_load_bearing_axiom</span><span class="dep-chip" data-target="credobaptismTag">credobaptismTag</span><span class="dep-chip" data-target="isBaptized">isBaptized</span><span class="dep-chip" data-target="receivesBaptismalGrace">receivesBaptismalGrace</span></div></div>
+  ∀ (p : Person), isBaptized p → receivesBaptismalGrace p</code></pre></div>
+<div class="node-desc">Baptism CONFERS grace —</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="infant_receives_grace">infant_receives_grace</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="ecclesial_presentation_enables_baptism">
@@ -657,10 +656,14 @@ h1 {
     <div class="node-prop"><pre><code>axiom ecclesial_presentation_enables_baptism :
   ∀ (p : Person), ¬canProfessFaith p → ecclesialPresentation p →
     isBaptized p
-</code></pre></div>
-<div class="node-desc">The Church can bring an infant to baptism │   Source: [Tradition] Immemorial practice, attested 2nd century | Scope: CATHOLIC + ORTHODOX + LUTHERAN + ANGLICAN. | [... │   ⚠ HIDDEN ASSUMPTION: This presupposes that the Church is a corporate</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="baptism_confers_grace">baptism_confers_grace</span><span class="dep-chip" data-target="canProfessFaith">canProfessFaith</span><span class="dep-chip" data-target="confers">confers</span><span class="dep-chip" data-target="ecclesialPresentation">ecclesialPresentation</span><span class="dep-chip" data-target="isBaptized">isBaptized</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="credobaptist_requires_faith">credobaptist_requires_faith</span><span class="dep-chip" data-target="infant_receives_grace">infant_receives_grace</span><span class="dep-chip" data-target="credobaptismTag">credobaptismTag</span><span class="dep-chip" data-target="canProfessFaith">canProfessFaith</span><span class="dep-chip" data-target="ecclesialPresentation">ecclesialPresentation</span><span class="dep-chip" data-target="isBaptized">isBaptized</span><span class="dep-chip" data-target="baptism_confers_grace">baptism_confers_grace</span></div></div>
+
+-- ============================================================================
+-- § 3. The credobaptist position
+-- ============================================================================</code></pre></div>
+<div class="node-desc">The Church can bring an infant to baptism</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="infant_receives_grace">infant_receives_grace</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="credobaptistRequirement">
@@ -670,10 +673,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque credobaptistRequirement : Person → Prop
-</code></pre></div>
-<div class="node-desc">The credobaptist axiom: baptism requires prior personal faith. │   Scope: BAPTIST + many EVANGELICAL.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="credobaptist_requires_faith">credobaptist_requires_faith</span><span class="dep-chip" data-target="credobaptist_excludes_infants">credobaptist_excludes_infants</span></div></div>
+    <div class="node-prop"><pre><code>opaque credobaptistRequirement : Person → Prop</code></pre></div>
+<div class="node-desc">The credobaptist axiom: baptism requires prior personal faith.</div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="credobaptist_requires_faith">
@@ -685,10 +686,14 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom credobaptist_requires_faith :
   ∀ (p : Person), credobaptistRequirement p → canProfessFaith p
-</code></pre></div>
+
+-- ============================================================================
+-- § 4. Theorems — what follows from each axiom set
+-- ============================================================================</code></pre></div>
 <div class="node-desc">Under the credobaptist view, only those who can profess faith</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="baptism_confers_grace">baptism_confers_grace</span><span class="dep-chip" data-target="canProfessFaith">canProfessFaith</span><span class="dep-chip" data-target="confers">confers</span><span class="dep-chip" data-target="credobaptistRequirement">credobaptistRequirement</span><span class="dep-chip" data-target="ecclesial_presentation_enables_baptism">ecclesial_presentation_enables_baptism</span><span class="dep-chip" data-target="original_sin_requires_baptism">original_sin_requires_baptism</span><span class="dep-chip" data-target="universal_original_sin">universal_original_sin</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="credobaptist_excludes_infants">credobaptist_excludes_infants</span><span class="dep-chip" data-target="canProfessFaith">canProfessFaith</span><span class="dep-chip" data-target="credobaptistRequirement">credobaptistRequirement</span><span class="dep-chip" data-target="baptism_confers_grace">baptism_confers_grace</span><span class="dep-chip" data-target="original_sin_requires_baptism">original_sin_requires_baptism</span><span class="dep-chip" data-target="universal_original_sin">universal_original_sin</span><span class="dep-chip" data-target="ecclesial_presentation_enables_baptism">ecclesial_presentation_enables_baptism</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
+<span class="dep-chip" data-target="credobaptist_excludes_infants">credobaptist_excludes_infants</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="infant_receives_grace">
@@ -703,9 +708,11 @@ h1 {
     (h_cannot : ¬canProfessFaith infant)
     (h_presented : ecclesialPresentation infant) :
     receivesBaptismalGrace infant</code></pre></div>
-<div class="node-desc">An infant who is presented by the Church receives │   Scope: CATHOLIC + ORTHODOX + LUTHERAN + ANGLICAN.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="baptism_confers_grace">baptism_confers_grace</span><span class="dep-chip" data-target="canProfessFaith">canProfessFaith</span><span class="dep-chip" data-target="ecclesialPresentation">ecclesialPresentation</span><span class="dep-chip" data-target="ecclesial_presentation_enables_baptism">ecclesial_presentation_enables_baptism</span><span class="dep-chip" data-target="receivesBaptismalGrace">receivesBaptismalGrace</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="canProfessFaith">canProfessFaith</span><span class="dep-chip" data-target="ecclesialPresentation">ecclesialPresentation</span><span class="dep-chip" data-target="receivesBaptismalGrace">receivesBaptismalGrace</span><span class="dep-chip" data-target="baptism_confers_grace">baptism_confers_grace</span><span class="dep-chip" data-target="ecclesial_presentation_enables_baptism">ecclesial_presentation_enables_baptism</span></div></div>
+<div class="node-desc">THEOREM: An infant who is presented by the Church receives</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="baptism_confers_grace">baptism_confers_grace</span>
+<span class="dep-chip" data-target="ecclesial_presentation_enables_baptism">ecclesial_presentation_enables_baptism</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="infant_needs_baptism">
@@ -720,9 +727,11 @@ h1 {
     (h_human : infant.hasIntellect = true)
     (h_not_baptized : ¬isBaptized infant) :
     ¬receivesBaptismalGrace infant</code></pre></div>
-<div class="node-desc">An infant has original sin and therefore needs baptism. │   Scope: ECUMENICAL (among those accepting original sin).</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isBaptized">isBaptized</span><span class="dep-chip" data-target="original_sin_requires_baptism">original_sin_requires_baptism</span><span class="dep-chip" data-target="receivesBaptismalGrace">receivesBaptismalGrace</span><span class="dep-chip" data-target="universal_original_sin">universal_original_sin</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="isBaptized">isBaptized</span><span class="dep-chip" data-target="receivesBaptismalGrace">receivesBaptismalGrace</span><span class="dep-chip" data-target="original_sin_requires_baptism">original_sin_requires_baptism</span><span class="dep-chip" data-target="universal_original_sin">universal_original_sin</span></div></div>
+<div class="node-desc">THEOREM: An infant has original sin and therefore needs baptism.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="universal_original_sin">universal_original_sin</span>
+<span class="dep-chip" data-target="original_sin_requires_baptism">original_sin_requires_baptism</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="credobaptist_excludes_infants">
@@ -737,9 +746,10 @@ h1 {
     (h_credo : credobaptistRequirement infant)
     (h_cannot : ¬canProfessFaith infant) :
     False</code></pre></div>
-<div class="node-desc">Under credobaptist axioms, an infant who cannot profess │   Scope: BAPTIST + EVANGELICAL.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="baptism_confers_grace">baptism_confers_grace</span><span class="dep-chip" data-target="canProfessFaith">canProfessFaith</span><span class="dep-chip" data-target="confers">confers</span><span class="dep-chip" data-target="credobaptistRequirement">credobaptistRequirement</span><span class="dep-chip" data-target="credobaptist_requires_faith">credobaptist_requires_faith</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="canProfessFaith">canProfessFaith</span><span class="dep-chip" data-target="credobaptistRequirement">credobaptistRequirement</span><span class="dep-chip" data-target="baptism_confers_grace">baptism_confers_grace</span><span class="dep-chip" data-target="credobaptist_requires_faith">credobaptist_requires_faith</span></div></div>
+<div class="node-desc">THEOREM: Under credobaptist axioms, an infant who cannot profess</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="credobaptist_requires_faith">credobaptist_requires_faith</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="t3_is_the_load_bearing_axiom">
@@ -759,13 +769,15 @@ h1 {
     :
     -- The infant has original sin...
     hasOriginalSin infant
-    -- ...needs baptism (won't get grace without it)...
+    -- ...needs baptism (won&#x27;t get grace without it)...
     ∧ (¬isBaptized infant → ¬receivesBaptismalGrace infant)
     -- ...and IF baptized, WILL receive grace (by T3)
     ∧ (isBaptized infant → receivesBaptismalGrace infant)</code></pre></div>
-<div class="node-desc">The split over infant │   Scope: ANALYSIS — shows the structure of the</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SinProfile">SinProfile</span><span class="dep-chip" data-target="baptism_confers_grace">baptism_confers_grace</span><span class="dep-chip" data-target="baptizedInGrace">baptizedInGrace</span><span class="dep-chip" data-target="canProfessFaith">canProfessFaith</span><span class="dep-chip" data-target="hasOriginalSin">hasOriginalSin</span><span class="dep-chip" data-target="isBaptized">isBaptized</span><span class="dep-chip" data-target="original_sin_requires_baptism">original_sin_requires_baptism</span><span class="dep-chip" data-target="receivesBaptismalGrace">receivesBaptismalGrace</span><span class="dep-chip" data-target="universal_original_sin">universal_original_sin</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="canProfessFaith">canProfessFaith</span><span class="dep-chip" data-target="hasOriginalSin">hasOriginalSin</span><span class="dep-chip" data-target="isBaptized">isBaptized</span><span class="dep-chip" data-target="receivesBaptismalGrace">receivesBaptismalGrace</span><span class="dep-chip" data-target="baptism_confers_grace">baptism_confers_grace</span><span class="dep-chip" data-target="original_sin_requires_baptism">original_sin_requires_baptism</span><span class="dep-chip" data-target="universal_original_sin">universal_original_sin</span></div></div>
+<div class="node-desc">THEOREM (the denominational diagnosis): The split over infant</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
+<span class="dep-chip" data-target="universal_original_sin">universal_original_sin</span>
+<span class="dep-chip" data-target="original_sin_requires_baptism">original_sin_requires_baptism</span>
+</div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="baptismal_grace_removes_layer1">
@@ -777,8 +789,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem baptismal_grace_removes_layer1 :
     baptizedInGrace.originalWound = EffectState.removed</code></pre></div>
-<div class="node-desc">Baptism connects to the SinProfile model. │   Scope: CATHOLIC.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EffectState">EffectState</span><span class="dep-chip" data-target="baptizedInGrace">baptizedInGrace</span></div></div>
+<div class="node-desc">THEOREM: Baptism connects to the SinProfile model.</div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="infantBaptismTag">
@@ -801,8 +812,6 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def credobaptismTag : DenominationalTag</code></pre></div>
 <div class="node-desc">Denominational tag for the credobaptist position.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="baptism_confers_grace">baptism_confers_grace</span><span class="dep-chip" data-target="confers">confers</span><span class="dep-chip" data-target="ecclesial_presentation_enables_baptism">ecclesial_presentation_enables_baptism</span><span class="dep-chip" data-target="original_sin_requires_baptism">original_sin_requires_baptism</span><span class="dep-chip" data-target="universal_original_sin">universal_original_sin</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="baptism_confers_grace">baptism_confers_grace</span><span class="dep-chip" data-target="original_sin_requires_baptism">original_sin_requires_baptism</span><span class="dep-chip" data-target="universal_original_sin">universal_original_sin</span><span class="dep-chip" data-target="ecclesial_presentation_enables_baptism">ecclesial_presentation_enables_baptism</span></div></div>
   </div>
 </div>
   </div>
