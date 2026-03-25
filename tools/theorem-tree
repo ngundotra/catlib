@@ -16,6 +16,9 @@ Regex mode — fast, approximate:
     ./tools/theorem-tree --flow <path>              # Sankey-style dependency flow
     ./tools/theorem-tree --trace NAME <path>        # Trace dependencies of a theorem
     ./tools/theorem-tree --defs <path>              # Definitions and their connections
+    ./tools/theorem-tree --consistency <path>        # Catholic consistency analysis
+    ./tools/theorem-tree --consistency lutheran <path>  # Lutheran consistency analysis
+    ./tools/theorem-tree --consistency compare <path>   # Catholic vs Lutheran comparison
 
 Kernel mode — slow, exact (requires `lake build`):
     ./tools/theorem-tree --true-islands <path>      # Kernel-verified unused axioms
@@ -1747,6 +1750,345 @@ def _run_kernel_mode(kernel_mode, kernel_name, kernel_json, root_path):
 
 
 # ---------------------------------------------------------------------------
+# Consistency analysis
+# ---------------------------------------------------------------------------
+
+def _parse_axiom_denominational_scope(axioms_path):
+    """Parse axiomDenominationalScope from Axioms.lean.
+
+    Returns a list of (axiom_name, tag_str) tuples, where tag_str is the
+    raw Lean expression for the denominational tag.
+    """
+    text = Path(axioms_path).read_text()
+    # Find the axiomDenominationalScope block
+    m = re.search(r'def axiomDenominationalScope.*?:=\s*\n(.*?)\n\s*\]', text, re.DOTALL)
+    if not m:
+        return []
+    block = m.group(0)
+    results = []
+    # Match entries like ("P2_TWO_TIER_CAUSATION",  ecumenical)
+    # or multi-line entries with { acceptedBy := ... }
+    for entry in re.finditer(
+        r'\("([^"]+)"\s*,\s*'           # axiom name
+        r'((?:\{[^}]+\})|(?:\S+))'      # tag: either {...} or single word
+        r'\s*\)',
+        block
+    ):
+        name = entry.group(1)
+        tag_raw = entry.group(2).strip()
+        results.append((name, tag_raw))
+    return results
+
+
+def _parse_lutheran_modifications(axioms_path):
+    """Parse lutheranModifications from Axioms.lean.
+
+    Returns a list of (label, description) tuples.
+    """
+    text = Path(axioms_path).read_text()
+    m = re.search(r'def lutheranModifications.*?:=\s*\n(.*?)\n\s*\]', text, re.DOTALL)
+    if not m:
+        return []
+    results = []
+    for entry in re.finditer(r'\("([^"]+)"\s*,\s*"([^"]+)"\)', m.group(0)):
+        results.append((entry.group(1), entry.group(2)))
+    return results
+
+
+def _parse_model_theorems(model_path):
+    """Scan Model.lean for theorem M.xxx names.
+
+    Returns a set of theorem names (lowercase, e.g. 'p2_two_tier_causation').
+    """
+    text = Path(model_path).read_text()
+    names = set()
+    for m in re.finditer(r'theorem\s+M\.(\S+)\s*', text):
+        names.add(m.group(1).lower())
+    return names
+
+
+def _tag_accepts_denomination(tag_raw, denomination):
+    """Check whether a raw tag string means this denomination accepts the axiom."""
+    tag = tag_raw.strip()
+    if tag == "ecumenical":
+        return True
+    if denomination == "catholic":
+        return tag in ("catholicOnly", "catholicAndLutheran") or "Denomination.catholic" in tag
+    if denomination == "lutheran":
+        if tag == "catholicOnly":
+            return False
+        if tag == "catholicAndLutheran":
+            return True
+        if "Denomination.catholic" in tag and "Denomination.lutheran" not in tag:
+            return False
+        # lutheranOnly would be True
+        if tag == "lutheranOnly":
+            return True
+    return tag == "ecumenical"
+
+
+def _axiom_name_to_model_key(axiom_name):
+    """Convert an axiom name like P2_TWO_TIER_CAUSATION to the Model.lean theorem key."""
+    return axiom_name.lower()
+
+
+def _get_tag_label(tag_raw):
+    """Return a human-readable label for a denominational tag."""
+    tag = tag_raw.strip()
+    if tag == "ecumenical":
+        return "ecumenical"
+    if tag == "catholicOnly":
+        return "Catholic only"
+    if tag == "catholicAndLutheran":
+        return "Catholic & Lutheran"
+    if tag == "lutheranOnly":
+        return "Lutheran only"
+    if "acceptedBy" in tag:
+        if "Denomination.catholic" in tag:
+            return "Catholic only"
+    return tag
+
+
+def print_consistency(root_path, denomination):
+    """Print denominational consistency analysis."""
+    axioms_path = os.path.join(root_path, "Catlib", "Foundations", "Axioms.lean")
+    model_path = os.path.join(root_path, "Catlib", "Audit", "Model.lean")
+
+    if not os.path.exists(axioms_path):
+        # Try treating root_path as the Catlib/ directory itself
+        axioms_path = os.path.join(root_path, "Foundations", "Axioms.lean")
+        model_path = os.path.join(root_path, "Audit", "Model.lean")
+
+    if not os.path.exists(axioms_path):
+        print(f"Error: cannot find Axioms.lean under {root_path}", file=sys.stderr)
+        sys.exit(1)
+
+    scope = _parse_axiom_denominational_scope(axioms_path)
+    lutheran_mods = _parse_lutheran_modifications(axioms_path)
+
+    model_theorems = set()
+    has_model = os.path.exists(model_path)
+    if has_model:
+        model_theorems = _parse_model_theorems(model_path)
+
+    # Count total model theorems (all M.xxx)
+    total_model_proofs = len(model_theorems) if has_model else 0
+
+    if denomination == "compare":
+        _print_compare(scope, lutheran_mods, model_theorems, has_model, total_model_proofs)
+    else:
+        _print_single_denomination(denomination, scope, lutheran_mods, model_theorems,
+                                   has_model, total_model_proofs)
+
+
+def _print_single_denomination(denomination, scope, lutheran_mods, model_theorems,
+                                has_model, total_model_proofs):
+    """Print consistency report for a single denomination."""
+    print("Denominational Consistency Analysis")
+    print("=" * 36)
+    print()
+
+    accepted = []
+    rejected = []
+    for name, tag_raw in scope:
+        if _tag_accepts_denomination(tag_raw, denomination):
+            accepted.append((name, tag_raw))
+        else:
+            rejected.append((name, tag_raw))
+
+    denom_label = denomination.capitalize()
+    print(f"{denom_label} axiom set: {len(accepted)} base axioms")
+
+    # Check model coverage
+    covered = []
+    uncovered = []
+    for name, tag_raw in accepted:
+        key = _axiom_name_to_model_key(name)
+        if key in model_theorems:
+            covered.append((name, tag_raw))
+        else:
+            uncovered.append((name, tag_raw))
+
+    if has_model and denomination == "catholic":
+        print(f"  Covered by consistency model (Model.lean): {len(covered)}/{len(accepted)}")
+    elif has_model:
+        if covered:
+            print(f"  Covered by consistency model (Model.lean): {len(covered)}/{len(accepted)}")
+        else:
+            print(f"  Consistency model: untested (no Model.lean proofs for {denom_label} set)")
+
+    for name, tag_raw in covered:
+        tag_label = _get_tag_label(tag_raw)
+        print(f"  \u2713 {name} ({tag_label})")
+
+    if uncovered:
+        print(f"  Uncovered: {len(uncovered)}")
+        for name, tag_raw in uncovered:
+            tag_label = _get_tag_label(tag_raw)
+            print(f"  \u2717 {name} ({tag_label})")
+    elif covered:
+        print("  Uncovered: none")
+
+    # Additional consistency proofs beyond base axioms
+    if has_model and denomination == "catholic":
+        base_keys = {_axiom_name_to_model_key(name) for name, _ in scope}
+        additional = [t for t in model_theorems if t not in base_keys]
+        if additional:
+            # Group additional proofs for a summary
+            categories = set()
+            for t in additional:
+                # Extract a category hint from the theorem name
+                parts = t.split("_")
+                if len(parts) >= 1:
+                    first = parts[0]
+                    if first in ("communion", "soul", "both", "corporeal", "death",
+                                 "resurrection", "person", "beatific", "philia",
+                                 "charity", "mortal", "eros", "ordo", "god", "church"):
+                        categories.add(first)
+                    else:
+                        categories.add(first)
+            cat_list = ", ".join(sorted(categories))
+            print(f"\n  Additional consistency proofs: {len(additional)} ({cat_list})")
+            print(f"  Total: {total_model_proofs} proven consistent")
+    print()
+
+    # If Lutheran, show modifications
+    if denomination == "lutheran" and lutheran_mods:
+        print(f"  Lutheran modifications from Catholic base:")
+        for label, desc in lutheran_mods:
+            print(f"    {label}: {desc}")
+        print()
+
+
+def _print_compare(scope, lutheran_mods, model_theorems, has_model, total_model_proofs):
+    """Print a comparison of Catholic vs Lutheran axiom sets."""
+    print("Denominational Consistency Analysis")
+    print("=" * 36)
+    print()
+
+    # Partition axioms
+    catholic_axioms = [(n, t) for n, t in scope if _tag_accepts_denomination(t, "catholic")]
+    lutheran_axioms = [(n, t) for n, t in scope if _tag_accepts_denomination(t, "lutheran")]
+
+    catholic_names = {n for n, _ in catholic_axioms}
+    lutheran_names = {n for n, _ in lutheran_axioms}
+    shared = catholic_names & lutheran_names
+    catholic_only = catholic_names - lutheran_names
+    lutheran_only = lutheran_names - catholic_names
+
+    # --- Catholic section ---
+    cath_covered = []
+    cath_uncovered = []
+    for name, tag_raw in catholic_axioms:
+        key = _axiom_name_to_model_key(name)
+        if key in model_theorems:
+            cath_covered.append((name, tag_raw))
+        else:
+            cath_uncovered.append((name, tag_raw))
+
+    print(f"Catholic axiom set: {len(catholic_axioms)} base axioms")
+    if has_model:
+        print(f"  Covered by consistency model (Model.lean): {len(cath_covered)}/{len(catholic_axioms)}")
+    for name, tag_raw in cath_covered:
+        tag_label = _get_tag_label(tag_raw)
+        print(f"  \u2713 {name} ({tag_label})")
+    if cath_uncovered:
+        print(f"  Uncovered: {len(cath_uncovered)}")
+        for name, _ in cath_uncovered:
+            print(f"  \u2717 {name}")
+    else:
+        print("  Uncovered: none")
+
+    # Additional proofs
+    if has_model:
+        base_keys = {_axiom_name_to_model_key(n) for n, _ in scope}
+        additional = [t for t in model_theorems if t not in base_keys]
+        if additional:
+            categories = set()
+            for t in additional:
+                parts = t.split("_")
+                if parts:
+                    categories.add(parts[0])
+            cat_list = ", ".join(sorted(categories))
+            print(f"\n  Additional consistency proofs: {len(additional)} ({cat_list})")
+            print(f"  Total: {total_model_proofs} proven consistent")
+
+    print()
+
+    # --- Lutheran section ---
+    # Determine swapped axioms from lutheranModifications
+    swap_map = {}  # axiom prefix -> modification description
+    added_axioms = []
+    for label, desc in lutheran_mods:
+        # Labels like "S8 MODIFIED", "T1 REPLACED", "ADDED: SOLA_SCRIPTURA"
+        if label.startswith("ADDED:"):
+            added_axioms.append((label.replace("ADDED: ", "").strip(), desc))
+        else:
+            # Extract prefix like "S8", "T1", "T2", "T3"
+            prefix = label.split()[0]  # "S8", "T1", etc.
+            swap_map[prefix] = (label, desc)
+
+    n_swapped = len(catholic_only)
+    luth_base = len(lutheran_axioms)
+    print(f"Lutheran axiom set: {luth_base} base axioms ({n_swapped} swapped from Catholic)")
+    print(f"  Shared with Catholic: {len(shared)}/{len(catholic_axioms)}")
+
+    if catholic_only:
+        print("  Swapped axioms:")
+        for name in sorted(catholic_only):
+            # Find the prefix (e.g. S8, T1)
+            prefix = name.split("_")[0]
+            if prefix in swap_map:
+                label, desc = swap_map[prefix]
+                # Extract short descriptions
+                short_desc = desc.split(" \u2014 ")[0] if " \u2014 " in desc else desc.split(" — ")[0] if " — " in desc else desc[:60]
+                # Get Catholic short name
+                cath_short = name.split("_", 1)[1].lower().replace("_", " ") if "_" in name else name
+                print(f"    {prefix}: {cath_short} \u2192 {short_desc.lower()}")
+            else:
+                print(f"    {name} (Catholic only)")
+
+    if added_axioms:
+        for ax_name, desc in added_axioms:
+            print(f"  Added: {ax_name}")
+
+    # Lutheran model coverage
+    luth_covered = [n for n, _ in lutheran_axioms if _axiom_name_to_model_key(n) in model_theorems]
+    if luth_covered:
+        print(f"  Consistency model: {len(luth_covered)}/{luth_base} proven")
+    else:
+        print("  Consistency model: untested (no Model.lean proofs)")
+
+    print()
+
+    # --- Incompatibility section ---
+    if catholic_only:
+        print("Incompatibility: Catholic \u2227 Lutheran \u2192 \u22a5")
+        for name in sorted(catholic_only):
+            prefix = name.split("_")[0]
+            if prefix in swap_map:
+                label, desc = swap_map[prefix]
+                cath_short = name.split("_", 1)[1].lower().replace("_", " ") if "_" in name else name
+                luth_short = desc.split(" — ")[0] if " — " in desc else desc.split(",")[0]
+                # Infer contradiction domain
+                domain = ""
+                lower = desc.lower()
+                if "grace" in lower:
+                    domain = "grace nature"
+                elif "free" in lower or "will" in lower or "bondage" in lower:
+                    domain = "free will"
+                elif "monergis" in lower or "synergis" in lower or "cooperat" in lower:
+                    domain = "cooperation"
+                elif "sacrament" in lower:
+                    domain = "sacramental theology"
+                if domain:
+                    print(f"  {prefix} ({cath_short}) \u2227 {prefix}' ({luth_short.lower().strip()}) \u2192 contradiction on {domain}")
+                else:
+                    print(f"  {prefix} ({cath_short}) \u2227 {prefix}' ({luth_short.lower().strip()}) \u2192 contradiction")
+        print()
+
+
+# ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
 
@@ -1766,6 +2108,7 @@ def main():
         print("  --flow               Sankey-style left-to-right dependency flow")
         print("  --trace NAME         Trace all dependencies of a declaration")
         print("  --defs               Show definitions and their theorem connections")
+        print("  --consistency [DENOM] Denominational consistency analysis (catholic/lutheran/compare)")
         print()
         print("Kernel mode (slow, requires `lake build`):")
         print("  --true-islands       Kernel-verified unused axioms (axiom-only)")
@@ -1784,6 +2127,7 @@ def main():
     flow_mode = False
     trace_name = None
     defs_mode = False
+    consistency_mode = None  # None, or denomination string
     # Kernel mode flags
     kernel_mode = None   # "true-islands", "kernel", "compare", "full"
     kernel_name = None
@@ -1814,6 +2158,13 @@ def main():
             trace_name = args[i]
         elif arg == "--defs":
             defs_mode = True
+        elif arg == "--consistency":
+            # Optional next arg: denomination or "compare"
+            if i + 1 < len(args) and not args[i + 1].startswith("-") and not args[i + 1].endswith("/") and not os.path.exists(args[i + 1]):
+                i += 1
+                consistency_mode = args[i]
+            else:
+                consistency_mode = "catholic"
         # Kernel mode flags
         elif arg == "--true-islands":
             kernel_mode = "true-islands"
@@ -1846,6 +2197,22 @@ def main():
     if not os.path.exists(target_path):
         print(f"Error: path not found: {target_path}", file=sys.stderr)
         sys.exit(1)
+
+    # Consistency mode: dispatch early (no need for regex parsing)
+    if consistency_mode:
+        # Find project root from target_path
+        root = os.getcwd()
+        check = target_path if os.path.isdir(target_path) else os.path.dirname(target_path)
+        for _ in range(10):
+            if os.path.exists(os.path.join(check, "lakefile.lean")):
+                root = check
+                break
+            parent = os.path.dirname(check)
+            if parent == check:
+                break
+            check = parent
+        print_consistency(root, consistency_mode)
+        return
 
     # Kernel mode: dispatch early (no need for regex parsing)
     if kernel_mode:
