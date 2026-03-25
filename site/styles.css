@@ -229,13 +229,13 @@ main .summary-box, main .code-toggle {
 
 /* ── Hero ────────────────────────────────────── */
 .hero {
-  min-height: 100vh;
+  min-height: 60vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 6rem 0 4rem;
+  padding: 4rem 0 2rem;
   position: relative;
 }
 
@@ -279,7 +279,7 @@ main .summary-box, main .code-toggle {
   color: var(--text-secondary);
   margin-bottom: 0.8rem;
   font-weight: 400;
-  font-style: italic;
+  font-style: normal;
   max-width: 560px;
   animation: fadeInUp 1.2s ease-out;
 }
@@ -456,7 +456,7 @@ main .summary-box, main .code-toggle {
 .spirit p {
   font-size: 1.1rem;
   text-align: center;
-  font-style: italic;
+  font-style: normal;
   color: var(--text-secondary);
   line-height: 1.9;
 }
@@ -670,7 +670,7 @@ blockquote {
   padding: 1.2rem 1.5rem;
   background: var(--bg-surface);
   margin: 0.5rem 0 1rem;
-  font-style: italic;
+  font-style: normal;
   font-size: 1.05rem;
   border-radius: 0 4px 4px 0;
 }
@@ -692,7 +692,7 @@ blockquote cite {
   border-left: 3px solid var(--gold);
   padding: 1.2rem 1.5rem;
   margin: 1.2rem 0;
-  font-style: italic;
+  font-style: normal;
   font-size: 1.1rem;
   line-height: 1.6;
   border-radius: 0 4px 4px 0;
@@ -725,7 +725,7 @@ blockquote cite {
   font-size: 0.9rem;
   color: var(--text-muted);
   margin: 0.8rem 0;
-  font-style: italic;
+  font-style: normal;
 }
 
 .lean-code {
@@ -963,8 +963,8 @@ footer a:hover {
   }
 
   .hero {
-    min-height: 90vh;
-    padding: 5rem 0 3rem;
+    min-height: 50vh;
+    padding: 3rem 0 2rem;
   }
 
   .hero h1 {
