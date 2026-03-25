@@ -143,7 +143,7 @@ h1 {
   line-height: 1.6;
 }
 
-/* ── Search ── */
+/* -- Search -- */
 .search-box {
   width: 100%;
   padding: 0.8rem 1rem;
@@ -167,91 +167,7 @@ h1 {
   font-style: italic;
 }
 
-/* ── Category sections ── */
-.category-header {
-  font-family: Cinzel, Georgia, serif;
-  font-size: 1.1rem;
-  font-weight: 400;
-  color: var(--accent);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  font-variant: small-caps;
-  margin: 1.8rem 0 0.8rem;
-  padding-bottom: 0.4rem;
-  border-bottom: 1px solid var(--border);
-}
-
-/* ── File cards ── */
-.file-card {
-  display: block;
-  padding: 1rem 1.1rem;
-  margin-bottom: 0.5rem;
-  background: var(--bg-parchment);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  text-decoration: none;
-  color: var(--text);
-  transition: background 0.15s, border-color 0.15s;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.file-card:hover, .file-card:active {
-  background: var(--bg-vellum);
-  border-color: var(--accent-gold);
-  text-decoration: none;
-}
-
-.file-card-name {
-  font-family: Cinzel, Georgia, serif;
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  margin-bottom: 0.3rem;
-}
-
-.file-card-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  font-size: 0.82rem;
-  color: var(--text-light);
-}
-
-.file-card-meta .tag {
-  display: inline-block;
-  padding: 0.15rem 0.5rem;
-  border-radius: 3px;
-  font-size: 0.75rem;
-  font-family: Cinzel, Georgia, serif;
-  letter-spacing: 0.03em;
-}
-
-.tag-axiom { background: var(--axiom-bg); color: var(--axiom-dot); border: 1px solid var(--axiom-border); }
-.tag-theorem { background: var(--theorem-bg); color: var(--theorem-dot); border: 1px solid var(--theorem-border); }
-.tag-def { background: var(--def-bg); color: var(--def-dot); border: 1px solid var(--def-border); }
-.tag-proposition { background: var(--proposition-bg); color: var(--proposition-dot); border: 1px solid var(--proposition-border); }
-
-.file-card-ccc {
-  font-size: 0.78rem;
-  color: var(--text-muted);
-  margin-top: 0.3rem;
-}
-
-/* ── Summary stats ── */
-.stats-bar {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-  margin-bottom: 1.5rem;
-  font-size: 0.9rem;
-  color: var(--text-light);
-  font-style: italic;
-}
-
-.stats-bar span { white-space: nowrap; }
-
-/* ── Node cards (per-file page) ── */
+/* -- Node cards -- */
 .node-card {
   margin-bottom: 0.4rem;
   border: 1px solid var(--border);
@@ -405,7 +321,7 @@ h1 {
   color: var(--text-muted);
 }
 
-/* ── Flow diagram header ── */
+/* -- Flow diagram header -- */
 .flow-summary {
   display: flex;
   justify-content: center;
@@ -431,7 +347,7 @@ h1 {
 .flow-count.theorems { background: var(--theorem-bg); color: var(--theorem-dot); }
 .flow-count.derived { background: var(--def-bg); color: var(--def-dot); }
 
-/* ── Legend ── */
+/* -- Legend -- */
 .legend {
   display: flex;
   flex-wrap: wrap;
@@ -463,7 +379,7 @@ h1 {
 .legend-dot.inductive { background: var(--inductive-dot); }
 .legend-dot.proposition { background: var(--proposition-dot); }
 
-/* ── Filter buttons ── */
+/* -- Filter buttons -- */
 .filter-bar {
   display: flex;
   flex-wrap: wrap;
@@ -492,7 +408,7 @@ h1 {
   border-color: var(--accent);
 }
 
-/* ── Back link ── */
+/* -- Back link -- */
 .back-link {
   display: inline-block;
   margin-bottom: 1rem;
@@ -501,7 +417,7 @@ h1 {
   letter-spacing: 0.04em;
 }
 
-/* ── Footer ── */
+/* -- Footer -- */
 .footer {
   text-align: center;
   padding-top: 2rem;
@@ -510,7 +426,7 @@ h1 {
   font-style: italic;
 }
 
-/* ── Responsive ── */
+/* -- Responsive -- */
 @media (max-width: 500px) {
   html { font-size: 16px; }
   .container { padding: 1rem 0.75rem 2rem; }
@@ -523,14 +439,13 @@ h1 {
 <div class="container">
   <a href="index.html" class="back-link">&larr; All files</a>
   <h1>Soul</h1>
-  <div class="subtitle">Creed &middot; 31 declarations</div>
+  <div class="subtitle">Creed &middot; 35 declarations</div>
 
   
-  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1015, &sect;1023, &sect;1705, &sect;362, &sect;363, &sect;364, &sect;365, &sect;366, &sect;405, &sect;988, &sect;990, &sect;997</div>
+  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;362, &sect;363, &sect;364, &sect;365, &sect;366, &sect;405, &sect;988, &sect;990, &sect;997, &sect;1015, &sect;1023, &sect;1700 (+1 more)</div>
+  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot proposition"></span>proposition</span><span class="legend-item"><span class="legend-dot structure"></span>structure</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
 
-  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot proposition"></span>proposition</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot structure"></span>structure</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
-
-  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (5)</button><button class="filter-btn" <button class="filter-btn" data-filter="proposition">proposition (2)</button><button class="filter-btn" data-filter="opaque">opaque (6)</button><button class="filter-btn" data-filter="structure">structure (1)</button><button class="filter-btn" data-filter="theorem">theorem (17)</button></div>
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (7)</button><button class="filter-btn" data-filter="opaque">opaque (5)</button><button class="filter-btn" data-filter="proposition">proposition (3)</button><button class="filter-btn" data-filter="structure">structure (1)</button><button class="filter-btn" data-filter="theorem">theorem (19)</button></div>
 
   <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
 
@@ -542,10 +457,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque HumanPerson : Type
-</code></pre></div>
-<div class="node-desc">A human person — one indivisible nature (§365).</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="isRisen">isRisen</span><span class="dep-chip" data-target="both_aspects_in_life">both_aspects_in_life</span><span class="dep-chip" data-target="corporeal_requires_spiritual">corporeal_requires_spiritual</span><span class="dep-chip" data-target="soul_is_immortal">soul_is_immortal</span><span class="dep-chip" data-target="death_separates">death_separates</span><span class="dep-chip" data-target="resurrection_reunites">resurrection_reunites</span><span class="dep-chip" data-target="living_person_is_complete">living_person_is_complete</span><span class="dep-chip" data-target="dead_person_is_incomplete">dead_person_is_incomplete</span><span class="dep-chip" data-target="dead_person_still_exists">dead_person_still_exists</span><span class="dep-chip" data-target="risen_person_is_complete">risen_person_is_complete</span><span class="dep-chip" data-target="no_body_without_soul">no_body_without_soul</span><span class="dep-chip" data-target="soul_body_asymmetry">soul_body_asymmetry</span><span class="dep-chip" data-target="rejects_cartesian_dualism">rejects_cartesian_dualism</span><span class="dep-chip" data-target="rejects_materialism">rejects_materialism</span><span class="dep-chip" data-target="rejects_annihilationism">rejects_annihilationism</span><span class="dep-chip" data-target="isCompletePerson">isCompletePerson</span><span class="dep-chip" data-target="inBeatifyingCommunion">inBeatifyingCommunion</span><span class="dep-chip" data-target="fullHumanBeatitude">fullHumanBeatitude</span><span class="dep-chip" data-target="separated_soul_is_incomplete">separated_soul_is_incomplete</span><span class="dep-chip" data-target="intermediate_state_lacks_full_beatitude">intermediate_state_lacks_full_beatitude</span><span class="dep-chip" data-target="risen_person_is_complete_person">risen_person_is_complete_person</span><span class="dep-chip" data-target="risen_in_communion_has_full_beatitude">risen_in_communion_has_full_beatitude</span><span class="dep-chip" data-target="resurrection_necessary_for_full_beatitude">resurrection_necessary_for_full_beatitude</span><span class="dep-chip" data-target="dualist_says_resurrection_ornamental">dualist_says_resurrection_ornamental</span><span class="dep-chip" data-target="hylomorphism_requires_resurrection">hylomorphism_requires_resurrection</span><span class="dep-chip" data-target="PersonWithNature">PersonWithNature</span></div></div>
+    <div class="node-prop"><pre><code>opaque HumanPerson : Type</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="PersonWithNature">PersonWithNature</span><span class="dep-chip" data-target="both_aspects_in_life">both_aspects_in_life</span><span class="dep-chip" data-target="corporeal_requires_spiritual">corporeal_requires_spiritual</span><span class="dep-chip" data-target="dead_person_is_incomplete">dead_person_is_incomplete</span><span class="dep-chip" data-target="dead_person_still_exists">dead_person_still_exists</span><span class="dep-chip" data-target="death_separates">death_separates</span><span class="dep-chip" data-target="dualist_says_resurrection_ornamental">dualist_says_resurrection_ornamental</span><span class="dep-chip" data-target="fullHumanBeatitude">fullHumanBeatitude</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="human_person_free_under_grace">human_person_free_under_grace</span><span class="dep-chip" data-target="human_person_has_moral_law">human_person_has_moral_law</span><span class="dep-chip" data-target="hylomorphism_requires_resurrection">hylomorphism_requires_resurrection</span><span class="dep-chip" data-target="inBeatifyingCommunion">inBeatifyingCommunion</span><span class="dep-chip" data-target="intermediate_state_lacks_full_beatitude">intermediate_state_lacks_full_beatitude</span><span class="dep-chip" data-target="isCompletePerson">isCompletePerson</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="isRisen">isRisen</span><span class="dep-chip" data-target="living_person_is_complete">living_person_is_complete</span><span class="dep-chip" data-target="no_body_without_soul">no_body_without_soul</span><span class="dep-chip" data-target="personOfHuman">personOfHuman</span><span class="dep-chip" data-target="personOfHuman_capacities">personOfHuman_capacities</span><span class="dep-chip" data-target="rejects_annihilationism">rejects_annihilationism</span><span class="dep-chip" data-target="rejects_cartesian_dualism">rejects_cartesian_dualism</span><span class="dep-chip" data-target="rejects_materialism">rejects_materialism</span><span class="dep-chip" data-target="resurrection_necessary_for_full_beatitude">resurrection_necessary_for_full_beatitude</span><span class="dep-chip" data-target="resurrection_reunites">resurrection_reunites</span><span class="dep-chip" data-target="risen_in_communion_has_full_beatitude">risen_in_communion_has_full_beatitude</span><span class="dep-chip" data-target="risen_person_is_complete">risen_person_is_complete</span><span class="dep-chip" data-target="risen_person_is_complete_person">risen_person_is_complete_person</span><span class="dep-chip" data-target="separated_soul_is_incomplete">separated_soul_is_incomplete</span><span class="dep-chip" data-target="soul_body_asymmetry">soul_body_asymmetry</span><span class="dep-chip" data-target="soul_is_immortal">soul_is_immortal</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="hasCorporealAspect">
@@ -555,11 +468,9 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque hasCorporealAspect : HumanPerson → Prop
-</code></pre></div>
-<div class="node-desc">Whether a person's corporeal aspect is present.</div>
+    <div class="node-prop"><pre><code>opaque hasCorporealAspect : HumanPerson → Prop</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="both_aspects_in_life">both_aspects_in_life</span><span class="dep-chip" data-target="corporeal_requires_spiritual">corporeal_requires_spiritual</span><span class="dep-chip" data-target="death_separates">death_separates</span><span class="dep-chip" data-target="resurrection_reunites">resurrection_reunites</span><span class="dep-chip" data-target="living_person_is_complete">living_person_is_complete</span><span class="dep-chip" data-target="dead_person_is_incomplete">dead_person_is_incomplete</span><span class="dep-chip" data-target="risen_person_is_complete">risen_person_is_complete</span><span class="dep-chip" data-target="no_body_without_soul">no_body_without_soul</span><span class="dep-chip" data-target="soul_body_asymmetry">soul_body_asymmetry</span><span class="dep-chip" data-target="rejects_cartesian_dualism">rejects_cartesian_dualism</span><span class="dep-chip" data-target="rejects_materialism">rejects_materialism</span><span class="dep-chip" data-target="rejects_annihilationism">rejects_annihilationism</span><span class="dep-chip" data-target="isCompletePerson">isCompletePerson</span><span class="dep-chip" data-target="hylomorphism_requires_resurrection">hylomorphism_requires_resurrection</span><span class="dep-chip" data-target="HumanPerson">HumanPerson</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="both_aspects_in_life">both_aspects_in_life</span><span class="dep-chip" data-target="corporeal_requires_spiritual">corporeal_requires_spiritual</span><span class="dep-chip" data-target="dead_person_is_incomplete">dead_person_is_incomplete</span><span class="dep-chip" data-target="death_separates">death_separates</span><span class="dep-chip" data-target="isCompletePerson">isCompletePerson</span><span class="dep-chip" data-target="living_person_is_complete">living_person_is_complete</span><span class="dep-chip" data-target="no_body_without_soul">no_body_without_soul</span><span class="dep-chip" data-target="rejects_annihilationism">rejects_annihilationism</span><span class="dep-chip" data-target="rejects_cartesian_dualism">rejects_cartesian_dualism</span><span class="dep-chip" data-target="rejects_materialism">rejects_materialism</span><span class="dep-chip" data-target="resurrection_reunites">resurrection_reunites</span><span class="dep-chip" data-target="risen_person_is_complete">risen_person_is_complete</span><span class="dep-chip" data-target="soul_body_asymmetry">soul_body_asymmetry</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="hasSpiritualAspect">
@@ -569,11 +480,9 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque hasSpiritualAspect : HumanPerson → Prop
-</code></pre></div>
-<div class="node-desc">Whether a person's spiritual aspect is present.</div>
+    <div class="node-prop"><pre><code>opaque hasSpiritualAspect : HumanPerson → Prop</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="both_aspects_in_life">both_aspects_in_life</span><span class="dep-chip" data-target="corporeal_requires_spiritual">corporeal_requires_spiritual</span><span class="dep-chip" data-target="soul_is_immortal">soul_is_immortal</span><span class="dep-chip" data-target="death_separates">death_separates</span><span class="dep-chip" data-target="resurrection_reunites">resurrection_reunites</span><span class="dep-chip" data-target="living_person_is_complete">living_person_is_complete</span><span class="dep-chip" data-target="dead_person_still_exists">dead_person_still_exists</span><span class="dep-chip" data-target="risen_person_is_complete">risen_person_is_complete</span><span class="dep-chip" data-target="no_body_without_soul">no_body_without_soul</span><span class="dep-chip" data-target="soul_body_asymmetry">soul_body_asymmetry</span><span class="dep-chip" data-target="rejects_cartesian_dualism">rejects_cartesian_dualism</span><span class="dep-chip" data-target="rejects_materialism">rejects_materialism</span><span class="dep-chip" data-target="rejects_annihilationism">rejects_annihilationism</span><span class="dep-chip" data-target="isCompletePerson">isCompletePerson</span><span class="dep-chip" data-target="dualist_says_resurrection_ornamental">dualist_says_resurrection_ornamental</span><span class="dep-chip" data-target="hylomorphism_requires_resurrection">hylomorphism_requires_resurrection</span><span class="dep-chip" data-target="spiritual_powers_exist">spiritual_powers_exist</span><span class="dep-chip" data-target="HumanPerson">HumanPerson</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="both_aspects_in_life">both_aspects_in_life</span><span class="dep-chip" data-target="corporeal_requires_spiritual">corporeal_requires_spiritual</span><span class="dep-chip" data-target="dead_person_still_exists">dead_person_still_exists</span><span class="dep-chip" data-target="death_separates">death_separates</span><span class="dep-chip" data-target="dualist_says_resurrection_ornamental">dualist_says_resurrection_ornamental</span><span class="dep-chip" data-target="isCompletePerson">isCompletePerson</span><span class="dep-chip" data-target="living_person_is_complete">living_person_is_complete</span><span class="dep-chip" data-target="no_body_without_soul">no_body_without_soul</span><span class="dep-chip" data-target="rejects_annihilationism">rejects_annihilationism</span><span class="dep-chip" data-target="rejects_cartesian_dualism">rejects_cartesian_dualism</span><span class="dep-chip" data-target="rejects_materialism">rejects_materialism</span><span class="dep-chip" data-target="resurrection_reunites">resurrection_reunites</span><span class="dep-chip" data-target="risen_person_is_complete">risen_person_is_complete</span><span class="dep-chip" data-target="soul_body_asymmetry">soul_body_asymmetry</span><span class="dep-chip" data-target="soul_is_immortal">soul_is_immortal</span><span class="dep-chip" data-target="spiritual_powers_exist">spiritual_powers_exist</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="isDead">
@@ -583,11 +492,9 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque isDead : HumanPerson → Prop
-</code></pre></div>
-<div class="node-desc">Whether a person is in the state of death — soul separated</div>
+    <div class="node-prop"><pre><code>opaque isDead : HumanPerson → Prop</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="both_aspects_in_life">both_aspects_in_life</span><span class="dep-chip" data-target="death_separates">death_separates</span><span class="dep-chip" data-target="living_person_is_complete">living_person_is_complete</span><span class="dep-chip" data-target="dead_person_is_incomplete">dead_person_is_incomplete</span><span class="dep-chip" data-target="dead_person_still_exists">dead_person_still_exists</span><span class="dep-chip" data-target="soul_body_asymmetry">soul_body_asymmetry</span><span class="dep-chip" data-target="rejects_cartesian_dualism">rejects_cartesian_dualism</span><span class="dep-chip" data-target="rejects_materialism">rejects_materialism</span><span class="dep-chip" data-target="separated_soul_is_incomplete">separated_soul_is_incomplete</span><span class="dep-chip" data-target="intermediate_state_lacks_full_beatitude">intermediate_state_lacks_full_beatitude</span><span class="dep-chip" data-target="resurrection_necessary_for_full_beatitude">resurrection_necessary_for_full_beatitude</span><span class="dep-chip" data-target="dualist_says_resurrection_ornamental">dualist_says_resurrection_ornamental</span><span class="dep-chip" data-target="hylomorphism_requires_resurrection">hylomorphism_requires_resurrection</span><span class="dep-chip" data-target="HumanPerson">HumanPerson</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="both_aspects_in_life">both_aspects_in_life</span><span class="dep-chip" data-target="dead_person_is_incomplete">dead_person_is_incomplete</span><span class="dep-chip" data-target="dead_person_still_exists">dead_person_still_exists</span><span class="dep-chip" data-target="death_separates">death_separates</span><span class="dep-chip" data-target="dualist_says_resurrection_ornamental">dualist_says_resurrection_ornamental</span><span class="dep-chip" data-target="hylomorphism_requires_resurrection">hylomorphism_requires_resurrection</span><span class="dep-chip" data-target="intermediate_state_lacks_full_beatitude">intermediate_state_lacks_full_beatitude</span><span class="dep-chip" data-target="living_person_is_complete">living_person_is_complete</span><span class="dep-chip" data-target="rejects_cartesian_dualism">rejects_cartesian_dualism</span><span class="dep-chip" data-target="rejects_materialism">rejects_materialism</span><span class="dep-chip" data-target="resurrection_necessary_for_full_beatitude">resurrection_necessary_for_full_beatitude</span><span class="dep-chip" data-target="separated_soul_is_incomplete">separated_soul_is_incomplete</span><span class="dep-chip" data-target="soul_body_asymmetry">soul_body_asymmetry</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="isRisen">
@@ -597,11 +504,9 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque isRisen : HumanPerson → Prop
-</code></pre></div>
-<div class="node-desc">Whether a person has been resurrected — body and soul</div>
+    <div class="node-prop"><pre><code>opaque isRisen : HumanPerson → Prop</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="both_aspects_in_life">both_aspects_in_life</span><span class="dep-chip" data-target="resurrection_reunites">resurrection_reunites</span><span class="dep-chip" data-target="living_person_is_complete">living_person_is_complete</span><span class="dep-chip" data-target="risen_person_is_complete">risen_person_is_complete</span><span class="dep-chip" data-target="rejects_cartesian_dualism">rejects_cartesian_dualism</span><span class="dep-chip" data-target="risen_person_is_complete_person">risen_person_is_complete_person</span><span class="dep-chip" data-target="risen_in_communion_has_full_beatitude">risen_in_communion_has_full_beatitude</span><span class="dep-chip" data-target="resurrection_necessary_for_full_beatitude">resurrection_necessary_for_full_beatitude</span><span class="dep-chip" data-target="HumanPerson">HumanPerson</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="both_aspects_in_life">both_aspects_in_life</span><span class="dep-chip" data-target="living_person_is_complete">living_person_is_complete</span><span class="dep-chip" data-target="rejects_cartesian_dualism">rejects_cartesian_dualism</span><span class="dep-chip" data-target="resurrection_necessary_for_full_beatitude">resurrection_necessary_for_full_beatitude</span><span class="dep-chip" data-target="resurrection_reunites">resurrection_reunites</span><span class="dep-chip" data-target="risen_in_communion_has_full_beatitude">risen_in_communion_has_full_beatitude</span><span class="dep-chip" data-target="risen_person_is_complete">risen_person_is_complete</span><span class="dep-chip" data-target="risen_person_is_complete_person">risen_person_is_complete_person</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="both_aspects_in_life">
@@ -615,11 +520,9 @@ h1 {
   ∀ (p : HumanPerson),
     ¬isDead p →
     ¬isRisen p →
-    hasCorporealAspect p ∧ hasSpiritualAspect p
-</code></pre></div>
-<div class="node-desc">1 (§362): A living person has BOTH aspects. │   Source: [Scripture] Gen 2:7; [Definition] CCC §362. | Scope: Ecumenical.</div>
+    hasCorporealAspect p ∧ hasSpiritualAspect p</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="isRisen">isRisen</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="living_person_is_complete">living_person_is_complete</span><span class="dep-chip" data-target="rejects_cartesian_dualism">rejects_cartesian_dualism</span><span class="dep-chip" data-target="rejects_annihilationism">rejects_annihilationism</span><span class="dep-chip" data-target="hylomorphism_requires_resurrection">hylomorphism_requires_resurrection</span><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="isRisen">isRisen</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hylomorphism_requires_resurrection">hylomorphism_requires_resurrection</span><span class="dep-chip" data-target="living_person_is_complete">living_person_is_complete</span><span class="dep-chip" data-target="rejects_annihilationism">rejects_annihilationism</span><span class="dep-chip" data-target="rejects_cartesian_dualism">rejects_cartesian_dualism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="corporeal_requires_spiritual">
@@ -631,11 +534,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom corporeal_requires_spiritual :
   ∀ (p : HumanPerson),
-    hasCorporealAspect p → hasSpiritualAspect p
-</code></pre></div>
-<div class="node-desc">2 (§365): Body and soul form ONE nature, not two. │   Source: [Tradition] Council of Vienne (1312); [Definition] CCC §365. | Scope: Catholic (Aristotelian framework).</div>
+    hasCorporealAspect p → hasSpiritualAspect p</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="no_body_without_soul">no_body_without_soul</span><span class="dep-chip" data-target="soul_body_asymmetry">soul_body_asymmetry</span><span class="dep-chip" data-target="rejects_annihilationism">rejects_annihilationism</span><span class="dep-chip" data-target="hylomorphism_requires_resurrection">hylomorphism_requires_resurrection</span><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hylomorphism_requires_resurrection">hylomorphism_requires_resurrection</span><span class="dep-chip" data-target="no_body_without_soul">no_body_without_soul</span><span class="dep-chip" data-target="rejects_annihilationism">rejects_annihilationism</span><span class="dep-chip" data-target="soul_body_asymmetry">soul_body_asymmetry</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="soul_is_immortal">
@@ -646,11 +547,9 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom soul_is_immortal :
-  ∀ (p : HumanPerson), hasSpiritualAspect p
-</code></pre></div>
-<div class="node-desc">3 (§366): The soul is immortal. │   Source: [Scripture] Wis 3:1 (&quot;the souls of the righteous are | Scope: Ecumenical. | [Definition]</div>
+  ∀ (p : HumanPerson), hasSpiritualAspect p</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="dead_person_still_exists">dead_person_still_exists</span><span class="dep-chip" data-target="soul_body_asymmetry">soul_body_asymmetry</span><span class="dep-chip" data-target="rejects_cartesian_dualism">rejects_cartesian_dualism</span><span class="dep-chip" data-target="rejects_materialism">rejects_materialism</span><span class="dep-chip" data-target="rejects_annihilationism">rejects_annihilationism</span><span class="dep-chip" data-target="dualist_says_resurrection_ornamental">dualist_says_resurrection_ornamental</span><span class="dep-chip" data-target="PersonWithNature">PersonWithNature</span><span class="dep-chip" data-target="spiritual_powers_exist">spiritual_powers_exist</span><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="PersonWithNature">PersonWithNature</span><span class="dep-chip" data-target="dead_person_still_exists">dead_person_still_exists</span><span class="dep-chip" data-target="dualist_says_resurrection_ornamental">dualist_says_resurrection_ornamental</span><span class="dep-chip" data-target="rejects_annihilationism">rejects_annihilationism</span><span class="dep-chip" data-target="rejects_cartesian_dualism">rejects_cartesian_dualism</span><span class="dep-chip" data-target="rejects_materialism">rejects_materialism</span><span class="dep-chip" data-target="soul_body_asymmetry">soul_body_asymmetry</span><span class="dep-chip" data-target="spiritual_powers_exist">spiritual_powers_exist</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="death_separates">
@@ -663,11 +562,9 @@ h1 {
     <div class="node-prop"><pre><code>axiom death_separates :
   ∀ (p : HumanPerson),
     isDead p →
-    ¬hasCorporealAspect p ∧ hasSpiritualAspect p
-</code></pre></div>
-<div class="node-desc">4 (§997): Death separates body from soul. │   Source: [Definition] CCC §997. | Scope: Ecumenical.</div>
+    ¬hasCorporealAspect p ∧ hasSpiritualAspect p</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="isDead">isDead</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="dead_person_is_incomplete">dead_person_is_incomplete</span><span class="dep-chip" data-target="rejects_materialism">rejects_materialism</span><span class="dep-chip" data-target="rejects_annihilationism">rejects_annihilationism</span><span class="dep-chip" data-target="separated_soul_is_incomplete">separated_soul_is_incomplete</span><span class="dep-chip" data-target="risen_in_communion_has_full_beatitude">risen_in_communion_has_full_beatitude</span><span class="dep-chip" data-target="hylomorphism_requires_resurrection">hylomorphism_requires_resurrection</span><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="isDead">isDead</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="dead_person_is_incomplete">dead_person_is_incomplete</span><span class="dep-chip" data-target="hylomorphism_requires_resurrection">hylomorphism_requires_resurrection</span><span class="dep-chip" data-target="rejects_annihilationism">rejects_annihilationism</span><span class="dep-chip" data-target="rejects_materialism">rejects_materialism</span><span class="dep-chip" data-target="risen_in_communion_has_full_beatitude">risen_in_communion_has_full_beatitude</span><span class="dep-chip" data-target="separated_soul_is_incomplete">separated_soul_is_incomplete</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="resurrection_reunites">
@@ -680,11 +577,9 @@ h1 {
     <div class="node-prop"><pre><code>axiom resurrection_reunites :
   ∀ (p : HumanPerson),
     isRisen p →
-    hasCorporealAspect p ∧ hasSpiritualAspect p
-</code></pre></div>
-<div class="node-desc">5 (§997): Resurrection reunites body and soul. │   Source: [Scripture] 1 Cor 15:42-44; [Definition] CCC §997. | Scope: Ecumenical (Nicene Creed).</div>
+    hasCorporealAspect p ∧ hasSpiritualAspect p</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="isRisen">isRisen</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="risen_person_is_complete">risen_person_is_complete</span><span class="dep-chip" data-target="rejects_annihilationism">rejects_annihilationism</span><span class="dep-chip" data-target="risen_person_is_complete_person">risen_person_is_complete_person</span><span class="dep-chip" data-target="risen_in_communion_has_full_beatitude">risen_in_communion_has_full_beatitude</span><span class="dep-chip" data-target="resurrection_necessary_for_full_beatitude">resurrection_necessary_for_full_beatitude</span><span class="dep-chip" data-target="hylomorphism_requires_resurrection">hylomorphism_requires_resurrection</span><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="isRisen">isRisen</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hylomorphism_requires_resurrection">hylomorphism_requires_resurrection</span><span class="dep-chip" data-target="rejects_annihilationism">rejects_annihilationism</span><span class="dep-chip" data-target="resurrection_necessary_for_full_beatitude">resurrection_necessary_for_full_beatitude</span><span class="dep-chip" data-target="risen_in_communion_has_full_beatitude">risen_in_communion_has_full_beatitude</span><span class="dep-chip" data-target="risen_person_is_complete">risen_person_is_complete</span><span class="dep-chip" data-target="risen_person_is_complete_person">risen_person_is_complete_person</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="living_person_is_complete">
@@ -696,10 +591,10 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem living_person_is_complete (p : HumanPerson)
     (h_alive : ¬isDead p) (h_not_risen : ¬isRisen p) :
-    hasCorporealAspect p ∧ hasSpiritualAspect p</code></pre></div>
-<div class="node-desc">A living person is complete — both aspects present.</div>
+    hasCorporealAspect p ∧ hasSpiritualAspect p :=
+  both_aspects_in_life p h_alive h_not_risen</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="both_aspects_in_life">both_aspects_in_life</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="isRisen">isRisen</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejects_annihilationism">rejects_annihilationism</span><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="isRisen">isRisen</span><span class="dep-chip" data-target="both_aspects_in_life">both_aspects_in_life</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejects_annihilationism">rejects_annihilationism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="dead_person_is_incomplete">
@@ -711,10 +606,10 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem dead_person_is_incomplete (p : HumanPerson)
     (h_dead : isDead p) :
-    ¬hasCorporealAspect p</code></pre></div>
-<div class="node-desc">A dead person is INCOMPLETE — spiritual yes, corporeal no.</div>
+    ¬hasCorporealAspect p :=
+  (death_separates p h_dead).1</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="death_separates">death_separates</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="isDead">isDead</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejects_annihilationism">rejects_annihilationism</span><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="death_separates">death_separates</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejects_annihilationism">rejects_annihilationism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="dead_person_still_exists">
@@ -726,10 +621,10 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem dead_person_still_exists (p : HumanPerson)
     (h_dead : isDead p) :
-    hasSpiritualAspect p</code></pre></div>
-<div class="node-desc">But a dead person still EXISTS — the soul persists.</div>
+    hasSpiritualAspect p :=
+  soul_is_immortal p</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="soul_is_immortal">soul_is_immortal</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejects_annihilationism">rejects_annihilationism</span><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="soul_is_immortal">soul_is_immortal</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejects_annihilationism">rejects_annihilationism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="risen_person_is_complete">
@@ -741,10 +636,10 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem risen_person_is_complete (p : HumanPerson)
     (h_risen : isRisen p) :
-    hasCorporealAspect p ∧ hasSpiritualAspect p</code></pre></div>
-<div class="node-desc">A risen person is RESTORED to completeness.</div>
+    hasCorporealAspect p ∧ hasSpiritualAspect p :=
+  resurrection_reunites p h_risen</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="isRisen">isRisen</span><span class="dep-chip" data-target="resurrection_reunites">resurrection_reunites</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejects_annihilationism">rejects_annihilationism</span><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="isRisen">isRisen</span><span class="dep-chip" data-target="resurrection_reunites">resurrection_reunites</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejects_annihilationism">rejects_annihilationism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="no_body_without_soul">
@@ -756,10 +651,10 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem no_body_without_soul (p : HumanPerson)
     (h_corp : hasCorporealAspect p) :
-    hasSpiritualAspect p</code></pre></div>
-<div class="node-desc">You can never have a body without a soul (§365).</div>
+    hasSpiritualAspect p :=
+  corporeal_requires_spiritual p h_corp</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="corporeal_requires_spiritual">corporeal_requires_spiritual</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejects_annihilationism">rejects_annihilationism</span><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="corporeal_requires_spiritual">corporeal_requires_spiritual</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejects_annihilationism">rejects_annihilationism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="soul_body_asymmetry">
@@ -773,10 +668,10 @@ h1 {
     -- Soul persists without body...
     (hasSpiritualAspect p) ∧
     -- ...but body cannot exist without soul
-    (∀ (q : HumanPerson), hasCorporealAspect q → hasSpiritualAspect q)</code></pre></div>
-<div class="node-desc">The soul can exist without the body (after death), but the</div>
+    (∀ (q : HumanPerson), hasCorporealAspect q → hasSpiritualAspect q) :=
+  ⟨soul_is_immortal p, fun q h =&gt; corporeal_requires_spiritual q h⟩</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="corporeal_requires_spiritual">corporeal_requires_spiritual</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="soul_is_immortal">soul_is_immortal</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejects_annihilationism">rejects_annihilationism</span><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="corporeal_requires_spiritual">corporeal_requires_spiritual</span><span class="dep-chip" data-target="soul_is_immortal">soul_is_immortal</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejects_annihilationism">rejects_annihilationism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="rejects_cartesian_dualism">
@@ -790,10 +685,10 @@ h1 {
     -- A living person always has BOTH aspects (§362)
     -- You can't have just a body or just a soul while alive
     ∀ (p : HumanPerson), ¬isDead p → ¬isRisen p →
-      hasCorporealAspect p ∧ hasSpiritualAspect p</code></pre></div>
-<div class="node-desc">Cartesian dualism: body and soul are two SEPARATE substances</div>
+      hasCorporealAspect p ∧ hasSpiritualAspect p :=
+  fun p h1 h2 =&gt; both_aspects_in_life p h1 h2</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="both_aspects_in_life">both_aspects_in_life</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="isRisen">isRisen</span><span class="dep-chip" data-target="soul_is_immortal">soul_is_immortal</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejects_annihilationism">rejects_annihilationism</span><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="isRisen">isRisen</span><span class="dep-chip" data-target="both_aspects_in_life">both_aspects_in_life</span><span class="dep-chip" data-target="soul_is_immortal">soul_is_immortal</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejects_annihilationism">rejects_annihilationism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="rejects_materialism">
@@ -806,10 +701,10 @@ h1 {
     <div class="node-prop"><pre><code>theorem rejects_materialism :
     -- The spiritual aspect persists even when corporeal doesn't
     ∀ (p : HumanPerson), isDead p →
-      hasSpiritualAspect p ∧ ¬hasCorporealAspect p</code></pre></div>
-<div class="node-desc">Materialism: there is no soul; the body is all there is.</div>
+      hasSpiritualAspect p ∧ ¬hasCorporealAspect p :=
+  fun p h =&gt; ⟨soul_is_immortal p, (death_separates p h).1⟩</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="death_separates">death_separates</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="soul_is_immortal">soul_is_immortal</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejects_annihilationism">rejects_annihilationism</span><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="death_separates">death_separates</span><span class="dep-chip" data-target="soul_is_immortal">soul_is_immortal</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejects_annihilationism">rejects_annihilationism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="rejects_annihilationism">
@@ -821,10 +716,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem rejects_annihilationism :
     -- The soul NEVER ceases, not even at death
-    ∀ (p : HumanPerson), hasSpiritualAspect p</code></pre></div>
-<div class="node-desc">Annihilationism: the soul ceases to exist at death.</div>
+    ∀ (p : HumanPerson), hasSpiritualAspect p :=
+  soul_is_immortal</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="both_aspects_in_life">both_aspects_in_life</span><span class="dep-chip" data-target="corporeal_requires_spiritual">corporeal_requires_spiritual</span><span class="dep-chip" data-target="dead_person_is_incomplete">dead_person_is_incomplete</span><span class="dep-chip" data-target="dead_person_still_exists">dead_person_still_exists</span><span class="dep-chip" data-target="death_separates">death_separates</span><span class="dep-chip" data-target="dualist_says_resurrection_ornamental">dualist_says_resurrection_ornamental</span><span class="dep-chip" data-target="fullHumanBeatitude">fullHumanBeatitude</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="hylomorphism_requires_resurrection">hylomorphism_requires_resurrection</span><span class="dep-chip" data-target="intermediate_state_lacks_full_beatitude">intermediate_state_lacks_full_beatitude</span><span class="dep-chip" data-target="isCompletePerson">isCompletePerson</span><span class="dep-chip" data-target="living_person_is_complete">living_person_is_complete</span><span class="dep-chip" data-target="no_body_without_soul">no_body_without_soul</span><span class="dep-chip" data-target="rejects_cartesian_dualism">rejects_cartesian_dualism</span><span class="dep-chip" data-target="rejects_materialism">rejects_materialism</span><span class="dep-chip" data-target="resurrection_necessary_for_full_beatitude">resurrection_necessary_for_full_beatitude</span><span class="dep-chip" data-target="resurrection_reunites">resurrection_reunites</span><span class="dep-chip" data-target="risen_in_communion_has_full_beatitude">risen_in_communion_has_full_beatitude</span><span class="dep-chip" data-target="risen_person_is_complete">risen_person_is_complete</span><span class="dep-chip" data-target="risen_person_is_complete_person">risen_person_is_complete_person</span><span class="dep-chip" data-target="separated_soul_is_incomplete">separated_soul_is_incomplete</span><span class="dep-chip" data-target="soul_body_asymmetry">soul_body_asymmetry</span><span class="dep-chip" data-target="soul_is_immortal">soul_is_immortal</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="both_aspects_in_life">both_aspects_in_life</span><span class="dep-chip" data-target="corporeal_requires_spiritual">corporeal_requires_spiritual</span><span class="dep-chip" data-target="death_separates">death_separates</span><span class="dep-chip" data-target="resurrection_reunites">resurrection_reunites</span><span class="dep-chip" data-target="soul_is_immortal">soul_is_immortal</span><span class="dep-chip" data-target="dead_person_is_incomplete">dead_person_is_incomplete</span><span class="dep-chip" data-target="dead_person_still_exists">dead_person_still_exists</span><span class="dep-chip" data-target="living_person_is_complete">living_person_is_complete</span><span class="dep-chip" data-target="no_body_without_soul">no_body_without_soul</span><span class="dep-chip" data-target="rejects_cartesian_dualism">rejects_cartesian_dualism</span><span class="dep-chip" data-target="rejects_materialism">rejects_materialism</span><span class="dep-chip" data-target="risen_person_is_complete">risen_person_is_complete</span><span class="dep-chip" data-target="soul_body_asymmetry">soul_body_asymmetry</span><span class="dep-chip" data-target="dualist_says_resurrection_ornamental">dualist_says_resurrection_ornamental</span><span class="dep-chip" data-target="fullHumanBeatitude">fullHumanBeatitude</span><span class="dep-chip" data-target="hylomorphism_requires_resurrection">hylomorphism_requires_resurrection</span><span class="dep-chip" data-target="intermediate_state_lacks_full_beatitude">intermediate_state_lacks_full_beatitude</span><span class="dep-chip" data-target="isCompletePerson">isCompletePerson</span><span class="dep-chip" data-target="resurrection_necessary_for_full_beatitude">resurrection_necessary_for_full_beatitude</span><span class="dep-chip" data-target="risen_in_communion_has_full_beatitude">risen_in_communion_has_full_beatitude</span><span class="dep-chip" data-target="risen_person_is_complete_person">risen_person_is_complete_person</span><span class="dep-chip" data-target="separated_soul_is_incomplete">separated_soul_is_incomplete</span></div></div>
   </div>
 </div>
 <div class="node-card kind-proposition" data-kind="proposition" data-name="isCompletePerson">
@@ -834,24 +728,49 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def isCompletePerson (p : HumanPerson) : Prop</code></pre></div>
-<div class="node-desc">Whether a person is complete — both corporeal and spiritual aspects</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="fullHumanBeatitude">fullHumanBeatitude</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="inBeatifyingCommunionPerson">inBeatifyingCommunionPerson</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejects_annihilationism">rejects_annihilationism</span><span class="dep-chip" data-target="fullHumanBeatitude">fullHumanBeatitude</span><span class="dep-chip" data-target="separated_soul_is_incomplete">separated_soul_is_incomplete</span><span class="dep-chip" data-target="risen_person_is_complete_person">risen_person_is_complete_person</span><span class="dep-chip" data-target="dualist_says_resurrection_ornamental">dualist_says_resurrection_ornamental</span><span class="dep-chip" data-target="hylomorphism_requires_resurrection">hylomorphism_requires_resurrection</span><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span></div></div>
+    <div class="node-prop"><pre><code>def isCompletePerson (p : HumanPerson) : Prop :=
+  hasCorporealAspect p ∧ hasSpiritualAspect p</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="personOfHuman">personOfHuman</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="dualist_says_resurrection_ornamental">dualist_says_resurrection_ornamental</span><span class="dep-chip" data-target="fullHumanBeatitude">fullHumanBeatitude</span><span class="dep-chip" data-target="hylomorphism_requires_resurrection">hylomorphism_requires_resurrection</span><span class="dep-chip" data-target="rejects_annihilationism">rejects_annihilationism</span><span class="dep-chip" data-target="risen_person_is_complete_person">risen_person_is_complete_person</span><span class="dep-chip" data-target="separated_soul_is_incomplete">separated_soul_is_incomplete</span></div></div>
   </div>
 </div>
-<div class="node-card kind-opaque" data-kind="opaque" data-name="inBeatifyingCommunion">
+<div class="node-card kind-axiom" data-kind="axiom" data-name="personOfHuman">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">opaque</span>
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">personOfHuman</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom personOfHuman : HumanPerson → Person</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="human_person_free_under_grace">human_person_free_under_grace</span><span class="dep-chip" data-target="human_person_has_moral_law">human_person_has_moral_law</span><span class="dep-chip" data-target="hylomorphism_requires_resurrection">hylomorphism_requires_resurrection</span><span class="dep-chip" data-target="inBeatifyingCommunion">inBeatifyingCommunion</span><span class="dep-chip" data-target="isCompletePerson">isCompletePerson</span><span class="dep-chip" data-target="personOfHuman_capacities">personOfHuman_capacities</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="personOfHuman_capacities">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">personOfHuman_capacities</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom personOfHuman_capacities : ∀ (hp : HumanPerson),
+  let p := personOfHuman hp
+  p.hasIntellect = true ∧ p.hasFreeWill = true ∧ p.isMoralAgent = true</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="fullHumanBeatitude">fullHumanBeatitude</span><span class="dep-chip" data-target="personOfHuman">personOfHuman</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="human_person_has_moral_law">human_person_has_moral_law</span><span class="dep-chip" data-target="hylomorphism_requires_resurrection">hylomorphism_requires_resurrection</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-proposition" data-kind="proposition" data-name="inBeatifyingCommunion">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">proposition</span>
     <span class="node-name">inBeatifyingCommunion</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque inBeatifyingCommunion : HumanPerson → Prop
-</code></pre></div>
-<div class="node-desc">Whether a human person is in beatifying communion with God — │   ⚠ HIDDEN ASSUMPTION: The CCC never says &quot;beatitude requires a body</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="fullHumanBeatitude">fullHumanBeatitude</span><span class="dep-chip" data-target="intermediate_state_lacks_full_beatitude">intermediate_state_lacks_full_beatitude</span><span class="dep-chip" data-target="risen_in_communion_has_full_beatitude">risen_in_communion_has_full_beatitude</span><span class="dep-chip" data-target="resurrection_necessary_for_full_beatitude">resurrection_necessary_for_full_beatitude</span><span class="dep-chip" data-target="dualist_says_resurrection_ornamental">dualist_says_resurrection_ornamental</span><span class="dep-chip" data-target="hylomorphism_requires_resurrection">hylomorphism_requires_resurrection</span><span class="dep-chip" data-target="HumanPerson">HumanPerson</span></div></div>
+    <div class="node-prop"><pre><code>def inBeatifyingCommunion (hp : HumanPerson) : Prop :=
+  inCommunion (.person (personOfHuman hp)) .god</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="personOfHuman">personOfHuman</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="dualist_says_resurrection_ornamental">dualist_says_resurrection_ornamental</span><span class="dep-chip" data-target="fullHumanBeatitude">fullHumanBeatitude</span><span class="dep-chip" data-target="hylomorphism_requires_resurrection">hylomorphism_requires_resurrection</span><span class="dep-chip" data-target="intermediate_state_lacks_full_beatitude">intermediate_state_lacks_full_beatitude</span><span class="dep-chip" data-target="resurrection_necessary_for_full_beatitude">resurrection_necessary_for_full_beatitude</span><span class="dep-chip" data-target="risen_in_communion_has_full_beatitude">risen_in_communion_has_full_beatitude</span></div></div>
   </div>
 </div>
 <div class="node-card kind-proposition" data-kind="proposition" data-name="fullHumanBeatitude">
@@ -861,10 +780,10 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def fullHumanBeatitude (p : HumanPerson) : Prop</code></pre></div>
-<div class="node-desc">Full human beatitude — the person has BOTH completeness (body + soul)</div>
+    <div class="node-prop"><pre><code>def fullHumanBeatitude (p : HumanPerson) : Prop :=
+  isCompletePerson p ∧ inBeatifyingCommunion p</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="inBeatifyingCommunion">inBeatifyingCommunion</span><span class="dep-chip" data-target="isCompletePerson">isCompletePerson</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejects_annihilationism">rejects_annihilationism</span><span class="dep-chip" data-target="isCompletePerson">isCompletePerson</span><span class="dep-chip" data-target="intermediate_state_lacks_full_beatitude">intermediate_state_lacks_full_beatitude</span><span class="dep-chip" data-target="risen_in_communion_has_full_beatitude">risen_in_communion_has_full_beatitude</span><span class="dep-chip" data-target="resurrection_necessary_for_full_beatitude">resurrection_necessary_for_full_beatitude</span><span class="dep-chip" data-target="dualist_says_resurrection_ornamental">dualist_says_resurrection_ornamental</span><span class="dep-chip" data-target="hylomorphism_requires_resurrection">hylomorphism_requires_resurrection</span><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="inBeatifyingCommunion">inBeatifyingCommunion</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="dualist_says_resurrection_ornamental">dualist_says_resurrection_ornamental</span><span class="dep-chip" data-target="hylomorphism_requires_resurrection">hylomorphism_requires_resurrection</span><span class="dep-chip" data-target="intermediate_state_lacks_full_beatitude">intermediate_state_lacks_full_beatitude</span><span class="dep-chip" data-target="personOfHuman_capacities">personOfHuman_capacities</span><span class="dep-chip" data-target="rejects_annihilationism">rejects_annihilationism</span><span class="dep-chip" data-target="resurrection_necessary_for_full_beatitude">resurrection_necessary_for_full_beatitude</span><span class="dep-chip" data-target="risen_in_communion_has_full_beatitude">risen_in_communion_has_full_beatitude</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="separated_soul_is_incomplete">
@@ -876,10 +795,11 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem separated_soul_is_incomplete (p : HumanPerson)
     (h_dead : isDead p) :
-    ¬isCompletePerson p</code></pre></div>
-<div class="node-desc">A separated soul (dead person) is NOT a complete person.</div>
+    ¬isCompletePerson p := by
+  intro ⟨h_corp, _⟩
+  exact absurd h_corp (death_separates p h_dead).1</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="death_separates">death_separates</span><span class="dep-chip" data-target="isCompletePerson">isCompletePerson</span><span class="dep-chip" data-target="isDead">isDead</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejects_annihilationism">rejects_annihilationism</span><span class="dep-chip" data-target="intermediate_state_lacks_full_beatitude">intermediate_state_lacks_full_beatitude</span><span class="dep-chip" data-target="resurrection_necessary_for_full_beatitude">resurrection_necessary_for_full_beatitude</span><span class="dep-chip" data-target="hylomorphism_requires_resurrection">hylomorphism_requires_resurrection</span><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="death_separates">death_separates</span><span class="dep-chip" data-target="isCompletePerson">isCompletePerson</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hylomorphism_requires_resurrection">hylomorphism_requires_resurrection</span><span class="dep-chip" data-target="intermediate_state_lacks_full_beatitude">intermediate_state_lacks_full_beatitude</span><span class="dep-chip" data-target="rejects_annihilationism">rejects_annihilationism</span><span class="dep-chip" data-target="resurrection_necessary_for_full_beatitude">resurrection_necessary_for_full_beatitude</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="intermediate_state_lacks_full_beatitude">
@@ -891,10 +811,11 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem intermediate_state_lacks_full_beatitude (p : HumanPerson)
     (h_dead : isDead p) (_h_comm : inBeatifyingCommunion p) :
-    ¬fullHumanBeatitude p</code></pre></div>
-<div class="node-desc">A separated soul in communion with God does NOT have full beatitude.</div>
+    ¬fullHumanBeatitude p := by
+  intro ⟨h_complete, _⟩
+  exact separated_soul_is_incomplete p h_dead h_complete</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="fullHumanBeatitude">fullHumanBeatitude</span><span class="dep-chip" data-target="inBeatifyingCommunion">inBeatifyingCommunion</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="separated_soul_is_incomplete">separated_soul_is_incomplete</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejects_annihilationism">rejects_annihilationism</span><span class="dep-chip" data-target="hylomorphism_requires_resurrection">hylomorphism_requires_resurrection</span><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="inBeatifyingCommunion">inBeatifyingCommunion</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="fullHumanBeatitude">fullHumanBeatitude</span><span class="dep-chip" data-target="separated_soul_is_incomplete">separated_soul_is_incomplete</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hylomorphism_requires_resurrection">hylomorphism_requires_resurrection</span><span class="dep-chip" data-target="rejects_annihilationism">rejects_annihilationism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="risen_person_is_complete_person">
@@ -906,10 +827,10 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem risen_person_is_complete_person (p : HumanPerson)
     (h_risen : isRisen p) :
-    isCompletePerson p</code></pre></div>
-<div class="node-desc">A risen person IS complete — resurrection restores what death broke.</div>
+    isCompletePerson p :=
+  resurrection_reunites p h_risen</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="isCompletePerson">isCompletePerson</span><span class="dep-chip" data-target="isRisen">isRisen</span><span class="dep-chip" data-target="resurrection_reunites">resurrection_reunites</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejects_annihilationism">rejects_annihilationism</span><span class="dep-chip" data-target="hylomorphism_requires_resurrection">hylomorphism_requires_resurrection</span><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="isRisen">isRisen</span><span class="dep-chip" data-target="resurrection_reunites">resurrection_reunites</span><span class="dep-chip" data-target="isCompletePerson">isCompletePerson</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hylomorphism_requires_resurrection">hylomorphism_requires_resurrection</span><span class="dep-chip" data-target="rejects_annihilationism">rejects_annihilationism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="risen_in_communion_has_full_beatitude">
@@ -921,10 +842,10 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem risen_in_communion_has_full_beatitude (p : HumanPerson)
     (h_risen : isRisen p) (h_comm : inBeatifyingCommunion p) :
-    fullHumanBeatitude p</code></pre></div>
-<div class="node-desc">A risen person in communion with God HAS full beatitude.</div>
+    fullHumanBeatitude p :=
+  ⟨resurrection_reunites p h_risen, h_comm⟩</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="death_separates">death_separates</span><span class="dep-chip" data-target="fullHumanBeatitude">fullHumanBeatitude</span><span class="dep-chip" data-target="inBeatifyingCommunion">inBeatifyingCommunion</span><span class="dep-chip" data-target="isRisen">isRisen</span><span class="dep-chip" data-target="resurrection_reunites">resurrection_reunites</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejects_annihilationism">rejects_annihilationism</span><span class="dep-chip" data-target="hylomorphism_requires_resurrection">hylomorphism_requires_resurrection</span><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="inBeatifyingCommunion">inBeatifyingCommunion</span><span class="dep-chip" data-target="isRisen">isRisen</span><span class="dep-chip" data-target="death_separates">death_separates</span><span class="dep-chip" data-target="resurrection_reunites">resurrection_reunites</span><span class="dep-chip" data-target="fullHumanBeatitude">fullHumanBeatitude</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hylomorphism_requires_resurrection">hylomorphism_requires_resurrection</span><span class="dep-chip" data-target="rejects_annihilationism">rejects_annihilationism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="resurrection_necessary_for_full_beatitude">
@@ -938,10 +859,11 @@ h1 {
     -- A dead person cannot have full beatitude (even with communion)
     (isDead p → ¬fullHumanBeatitude p) ∧
     -- A risen person with communion DOES have full beatitude
-    (isRisen p → inBeatifyingCommunion p → fullHumanBeatitude p)</code></pre></div>
-<div class="node-desc">THE KEY THEOREM: Resurrection is necessary for full beatitude.</div>
+    (isRisen p → inBeatifyingCommunion p → fullHumanBeatitude p) :=
+  ⟨fun h_dead h_beat =&gt; separated_soul_is_incomplete p h_dead h_beat.1,
+   fun h_risen h_comm =&gt; ⟨resurrection_reunites p h_risen, h_comm⟩⟩</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="fullHumanBeatitude">fullHumanBeatitude</span><span class="dep-chip" data-target="inBeatifyingCommunion">inBeatifyingCommunion</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="isRisen">isRisen</span><span class="dep-chip" data-target="resurrection_reunites">resurrection_reunites</span><span class="dep-chip" data-target="separated_soul_is_incomplete">separated_soul_is_incomplete</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejects_annihilationism">rejects_annihilationism</span><span class="dep-chip" data-target="hylomorphism_requires_resurrection">hylomorphism_requires_resurrection</span><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="inBeatifyingCommunion">inBeatifyingCommunion</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="isRisen">isRisen</span><span class="dep-chip" data-target="resurrection_reunites">resurrection_reunites</span><span class="dep-chip" data-target="fullHumanBeatitude">fullHumanBeatitude</span><span class="dep-chip" data-target="separated_soul_is_incomplete">separated_soul_is_incomplete</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hylomorphism_requires_resurrection">hylomorphism_requires_resurrection</span><span class="dep-chip" data-target="rejects_annihilationism">rejects_annihilationism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="dualist_says_resurrection_ornamental">
@@ -954,10 +876,10 @@ h1 {
     <div class="node-prop"><pre><code>theorem dualist_says_resurrection_ornamental
     (dualist_premise : ∀ (p : HumanPerson), hasSpiritualAspect p → isCompletePerson p)
     (p : HumanPerson) (_h_dead : isDead p) (h_comm : inBeatifyingCommunion p) :
-    fullHumanBeatitude p</code></pre></div>
-<div class="node-desc">Under dualism: if the soul alone constitutes the complete person,</div>
+    fullHumanBeatitude p :=
+  ⟨dualist_premise p (soul_is_immortal p), h_comm⟩</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="fullHumanBeatitude">fullHumanBeatitude</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="inBeatifyingCommunion">inBeatifyingCommunion</span><span class="dep-chip" data-target="isCompletePerson">isCompletePerson</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="soul_is_immortal">soul_is_immortal</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejects_annihilationism">rejects_annihilationism</span><span class="dep-chip" data-target="hylomorphism_requires_resurrection">hylomorphism_requires_resurrection</span><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="inBeatifyingCommunion">inBeatifyingCommunion</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="soul_is_immortal">soul_is_immortal</span><span class="dep-chip" data-target="fullHumanBeatitude">fullHumanBeatitude</span><span class="dep-chip" data-target="isCompletePerson">isCompletePerson</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hylomorphism_requires_resurrection">hylomorphism_requires_resurrection</span><span class="dep-chip" data-target="rejects_annihilationism">rejects_annihilationism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="hylomorphism_requires_resurrection">
@@ -969,10 +891,38 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem hylomorphism_requires_resurrection (p : HumanPerson)
     (h_dead : isDead p) (_h_comm : inBeatifyingCommunion p) :
-    ¬isCompletePerson p ∧ ¬fullHumanBeatitude p</code></pre></div>
-<div class="node-desc">Under hylomorphism (§365, the CCC's actual position): the soul</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanNature">HumanNature</span><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="PersonWithNature">PersonWithNature</span><span class="dep-chip" data-target="both_aspects_in_life">both_aspects_in_life</span><span class="dep-chip" data-target="christHumanPerson">christHumanPerson</span><span class="dep-chip" data-target="christ_is_risen">christ_is_risen</span><span class="dep-chip" data-target="christ_risen_is_complete">christ_risen_is_complete</span><span class="dep-chip" data-target="corporeal_requires_spiritual">corporeal_requires_spiritual</span><span class="dep-chip" data-target="death_separates">death_separates</span><span class="dep-chip" data-target="dualist_says_resurrection_ornamental">dualist_says_resurrection_ornamental</span><span class="dep-chip" data-target="fullHumanBeatitude">fullHumanBeatitude</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="inBeatifyingCommunion">inBeatifyingCommunion</span><span class="dep-chip" data-target="inBeatifyingCommunionPerson">inBeatifyingCommunionPerson</span><span class="dep-chip" data-target="intermediate_state_lacks_full_beatitude">intermediate_state_lacks_full_beatitude</span><span class="dep-chip" data-target="isCompletePerson">isCompletePerson</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="resurrection_necessary_for_full_beatitude">resurrection_necessary_for_full_beatitude</span><span class="dep-chip" data-target="resurrection_reunites">resurrection_reunites</span><span class="dep-chip" data-target="risen_in_communion_has_full_beatitude">risen_in_communion_has_full_beatitude</span><span class="dep-chip" data-target="risen_person_is_complete_person">risen_person_is_complete_person</span><span class="dep-chip" data-target="separated_soul_is_incomplete">separated_soul_is_incomplete</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejects_annihilationism">rejects_annihilationism</span><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="inBeatifyingCommunion">inBeatifyingCommunion</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="both_aspects_in_life">both_aspects_in_life</span><span class="dep-chip" data-target="corporeal_requires_spiritual">corporeal_requires_spiritual</span><span class="dep-chip" data-target="death_separates">death_separates</span><span class="dep-chip" data-target="resurrection_reunites">resurrection_reunites</span><span class="dep-chip" data-target="PersonWithNature">PersonWithNature</span><span class="dep-chip" data-target="dualist_says_resurrection_ornamental">dualist_says_resurrection_ornamental</span><span class="dep-chip" data-target="fullHumanBeatitude">fullHumanBeatitude</span><span class="dep-chip" data-target="intermediate_state_lacks_full_beatitude">intermediate_state_lacks_full_beatitude</span><span class="dep-chip" data-target="isCompletePerson">isCompletePerson</span><span class="dep-chip" data-target="resurrection_necessary_for_full_beatitude">resurrection_necessary_for_full_beatitude</span><span class="dep-chip" data-target="risen_in_communion_has_full_beatitude">risen_in_communion_has_full_beatitude</span><span class="dep-chip" data-target="risen_person_is_complete_person">risen_person_is_complete_person</span><span class="dep-chip" data-target="separated_soul_is_incomplete">separated_soul_is_incomplete</span></div></div>
+    ¬isCompletePerson p ∧ ¬fullHumanBeatitude p :=
+  ⟨separated_soul_is_incomplete p h_dead,
+   fun h_beat =&gt; separated_soul_is_incomplete p h_dead h_beat.1⟩</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="both_aspects_in_life">both_aspects_in_life</span><span class="dep-chip" data-target="corporeal_requires_spiritual">corporeal_requires_spiritual</span><span class="dep-chip" data-target="death_separates">death_separates</span><span class="dep-chip" data-target="dualist_says_resurrection_ornamental">dualist_says_resurrection_ornamental</span><span class="dep-chip" data-target="fullHumanBeatitude">fullHumanBeatitude</span><span class="dep-chip" data-target="inBeatifyingCommunion">inBeatifyingCommunion</span><span class="dep-chip" data-target="intermediate_state_lacks_full_beatitude">intermediate_state_lacks_full_beatitude</span><span class="dep-chip" data-target="isCompletePerson">isCompletePerson</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="personOfHuman">personOfHuman</span><span class="dep-chip" data-target="personOfHuman_capacities">personOfHuman_capacities</span><span class="dep-chip" data-target="resurrection_necessary_for_full_beatitude">resurrection_necessary_for_full_beatitude</span><span class="dep-chip" data-target="resurrection_reunites">resurrection_reunites</span><span class="dep-chip" data-target="risen_in_communion_has_full_beatitude">risen_in_communion_has_full_beatitude</span><span class="dep-chip" data-target="risen_person_is_complete_person">risen_person_is_complete_person</span><span class="dep-chip" data-target="separated_soul_is_incomplete">separated_soul_is_incomplete</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejects_annihilationism">rejects_annihilationism</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="human_person_has_moral_law">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">human_person_has_moral_law</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem human_person_has_moral_law (hp : HumanPerson) :
+    moralLawInscribed (personOfHuman hp) :=
+  s3_law_on_hearts (personOfHuman hp) (personOfHuman_capacities hp).1</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="personOfHuman">personOfHuman</span><span class="dep-chip" data-target="personOfHuman_capacities">personOfHuman_capacities</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="human_person_free_under_grace">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">human_person_free_under_grace</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem human_person_free_under_grace (hp : HumanPerson) (g : Grace)
+    (h_grace : graceGiven (personOfHuman hp) g) :
+    couldChooseOtherwise (personOfHuman hp) :=
+  t2_grace_preserves_freedom (personOfHuman hp) g h_grace</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="PersonWithNature">PersonWithNature</span><span class="dep-chip" data-target="personOfHuman">personOfHuman</span></div></div>
   </div>
 </div>
 <div class="node-card kind-structure" data-kind="structure" data-name="PersonWithNature">
@@ -983,9 +933,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>structure PersonWithNature where</code></pre></div>
-<div class="node-desc">Bridge connecting the indivisible HumanPerson (body-soul composite)</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanNature">HumanNature</span><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="soul_is_immortal">soul_is_immortal</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hylomorphism_requires_resurrection">hylomorphism_requires_resurrection</span><span class="dep-chip" data-target="spiritual_powers_exist">spiritual_powers_exist</span><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="soul_is_immortal">soul_is_immortal</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="soul_is_immortal">soul_is_immortal</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="human_person_free_under_grace">human_person_free_under_grace</span><span class="dep-chip" data-target="spiritual_powers_exist">spiritual_powers_exist</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="spiritual_powers_exist">
@@ -996,10 +945,9 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem spiritual_powers_exist (pwn : PersonWithNature) :
-    hasSpiritualAspect pwn.humanPerson</code></pre></div>
-<div class="node-desc">A HumanPerson always has a spiritual aspect (soul_is_immortal),</div>
+    hasSpiritualAspect pwn.humanPerson :=
+  soul_is_immortal pwn.humanPerson</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="PersonWithNature">PersonWithNature</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="soul_is_immortal">soul_is_immortal</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="soul_is_immortal">soul_is_immortal</span><span class="dep-chip" data-target="PersonWithNature">PersonWithNature</span></div></div>
   </div>
 </div>
   </div>

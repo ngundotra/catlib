@@ -143,7 +143,7 @@ h1 {
   line-height: 1.6;
 }
 
-/* ── Search ── */
+/* -- Search -- */
 .search-box {
   width: 100%;
   padding: 0.8rem 1rem;
@@ -167,91 +167,7 @@ h1 {
   font-style: italic;
 }
 
-/* ── Category sections ── */
-.category-header {
-  font-family: Cinzel, Georgia, serif;
-  font-size: 1.1rem;
-  font-weight: 400;
-  color: var(--accent);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  font-variant: small-caps;
-  margin: 1.8rem 0 0.8rem;
-  padding-bottom: 0.4rem;
-  border-bottom: 1px solid var(--border);
-}
-
-/* ── File cards ── */
-.file-card {
-  display: block;
-  padding: 1rem 1.1rem;
-  margin-bottom: 0.5rem;
-  background: var(--bg-parchment);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  text-decoration: none;
-  color: var(--text);
-  transition: background 0.15s, border-color 0.15s;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.file-card:hover, .file-card:active {
-  background: var(--bg-vellum);
-  border-color: var(--accent-gold);
-  text-decoration: none;
-}
-
-.file-card-name {
-  font-family: Cinzel, Georgia, serif;
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  margin-bottom: 0.3rem;
-}
-
-.file-card-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  font-size: 0.82rem;
-  color: var(--text-light);
-}
-
-.file-card-meta .tag {
-  display: inline-block;
-  padding: 0.15rem 0.5rem;
-  border-radius: 3px;
-  font-size: 0.75rem;
-  font-family: Cinzel, Georgia, serif;
-  letter-spacing: 0.03em;
-}
-
-.tag-axiom { background: var(--axiom-bg); color: var(--axiom-dot); border: 1px solid var(--axiom-border); }
-.tag-theorem { background: var(--theorem-bg); color: var(--theorem-dot); border: 1px solid var(--theorem-border); }
-.tag-def { background: var(--def-bg); color: var(--def-dot); border: 1px solid var(--def-border); }
-.tag-proposition { background: var(--proposition-bg); color: var(--proposition-dot); border: 1px solid var(--proposition-border); }
-
-.file-card-ccc {
-  font-size: 0.78rem;
-  color: var(--text-muted);
-  margin-top: 0.3rem;
-}
-
-/* ── Summary stats ── */
-.stats-bar {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-  margin-bottom: 1.5rem;
-  font-size: 0.9rem;
-  color: var(--text-light);
-  font-style: italic;
-}
-
-.stats-bar span { white-space: nowrap; }
-
-/* ── Node cards (per-file page) ── */
+/* -- Node cards -- */
 .node-card {
   margin-bottom: 0.4rem;
   border: 1px solid var(--border);
@@ -405,7 +321,7 @@ h1 {
   color: var(--text-muted);
 }
 
-/* ── Flow diagram header ── */
+/* -- Flow diagram header -- */
 .flow-summary {
   display: flex;
   justify-content: center;
@@ -431,7 +347,7 @@ h1 {
 .flow-count.theorems { background: var(--theorem-bg); color: var(--theorem-dot); }
 .flow-count.derived { background: var(--def-bg); color: var(--def-dot); }
 
-/* ── Legend ── */
+/* -- Legend -- */
 .legend {
   display: flex;
   flex-wrap: wrap;
@@ -463,7 +379,7 @@ h1 {
 .legend-dot.inductive { background: var(--inductive-dot); }
 .legend-dot.proposition { background: var(--proposition-dot); }
 
-/* ── Filter buttons ── */
+/* -- Filter buttons -- */
 .filter-bar {
   display: flex;
   flex-wrap: wrap;
@@ -492,7 +408,7 @@ h1 {
   border-color: var(--accent);
 }
 
-/* ── Back link ── */
+/* -- Back link -- */
 .back-link {
   display: inline-block;
   margin-bottom: 1rem;
@@ -501,7 +417,7 @@ h1 {
   letter-spacing: 0.04em;
 }
 
-/* ── Footer ── */
+/* -- Footer -- */
 .footer {
   text-align: center;
   padding-top: 2rem;
@@ -510,7 +426,7 @@ h1 {
   font-style: italic;
 }
 
-/* ── Responsive ── */
+/* -- Responsive -- */
 @media (max-width: 500px) {
   html { font-size: 16px; }
   .container { padding: 1rem 0.75rem 2rem; }
@@ -523,14 +439,13 @@ h1 {
 <div class="container">
   <a href="index.html" class="back-link">&larr; All files</a>
   <h1>Atonement</h1>
-  <div class="subtitle">Creed &middot; 31 declarations</div>
+  <div class="subtitle">Creed &middot; 39 declarations</div>
 
   
-  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1849, &sect;599, &sect;601, &sect;604, &sect;613, &sect;615, &sect;616</div>
-
+  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;599, &sect;601, &sect;604, &sect;613, &sect;615, &sect;616, &sect;1849</div>
   <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
 
-  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (8)</button><button class="filter-btn" data-filter="def">def (2)</button><button class="filter-btn" data-filter="opaque">opaque (10)</button><button class="filter-btn" data-filter="theorem">theorem (11)</button></div>
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (8)</button><button class="filter-btn" data-filter="def">def (10)</button><button class="filter-btn" data-filter="opaque">opaque (10)</button><button class="filter-btn" data-filter="theorem">theorem (11)</button></div>
 
   <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
 
@@ -542,10 +457,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque orderOfJusticeIntact : Prop
-</code></pre></div>
-<div class="node-desc">Whether the order of justice between God and creation is intact.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="sin_ruptures_order">sin_ruptures_order</span><span class="dep-chip" data-target="sin_breaks_order">sin_breaks_order</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span></div></div>
+    <div class="node-prop"><pre><code>opaque orderOfJusticeIntact : Prop</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span><span class="dep-chip" data-target="sin_breaks_order">sin_breaks_order</span><span class="dep-chip" data-target="sin_ruptures_order">sin_ruptures_order</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="addressesOffense">
@@ -555,10 +468,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque addressesOffense : Prop → Prop
-</code></pre></div>
-<div class="node-desc">Whether a given act addresses the OFFENSE of sin (the insult or</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="bare_pardon_insufficient">bare_pardon_insufficient</span><span class="dep-chip" data-target="satisfaction_addresses_both">satisfaction_addresses_both</span><span class="dep-chip" data-target="cross_addresses_both">cross_addresses_both</span><span class="dep-chip" data-target="atonement_summary">atonement_summary</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span></div></div>
+    <div class="node-prop"><pre><code>opaque addressesOffense : Prop → Prop</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="atonement_summary">atonement_summary</span><span class="dep-chip" data-target="bare_pardon_insufficient">bare_pardon_insufficient</span><span class="dep-chip" data-target="cross_addresses_both">cross_addresses_both</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span><span class="dep-chip" data-target="satisfaction_addresses_both">satisfaction_addresses_both</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="addressesRupture">
@@ -568,10 +479,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque addressesRupture : Prop → Prop
-</code></pre></div>
-<div class="node-desc">Whether a given act addresses the RUPTURE in the order of justice</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="bare_pardon_insufficient">bare_pardon_insufficient</span><span class="dep-chip" data-target="satisfaction_addresses_both">satisfaction_addresses_both</span><span class="dep-chip" data-target="pardon_insufficient_satisfaction_needed">pardon_insufficient_satisfaction_needed</span><span class="dep-chip" data-target="cross_addresses_both">cross_addresses_both</span><span class="dep-chip" data-target="cross_not_redundant">cross_not_redundant</span><span class="dep-chip" data-target="atonement_summary">atonement_summary</span><span class="dep-chip" data-target="fall_grounds_need_for_cross">fall_grounds_need_for_cross</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span></div></div>
+    <div class="node-prop"><pre><code>opaque addressesRupture : Prop → Prop</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="atonement_summary">atonement_summary</span><span class="dep-chip" data-target="bare_pardon_insufficient">bare_pardon_insufficient</span><span class="dep-chip" data-target="cross_addresses_both">cross_addresses_both</span><span class="dep-chip" data-target="cross_not_redundant">cross_not_redundant</span><span class="dep-chip" data-target="fall_grounds_need_for_cross">fall_grounds_need_for_cross</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span><span class="dep-chip" data-target="pardon_insufficient_satisfaction_needed">pardon_insufficient_satisfaction_needed</span><span class="dep-chip" data-target="satisfaction_addresses_both">satisfaction_addresses_both</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="isBarePardon">
@@ -581,10 +490,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque isBarePardon : Prop → Prop
-</code></pre></div>
-<div class="node-desc">Whether a given act is a bare pardon — a divine declaration of</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="bare_pardon_insufficient">bare_pardon_insufficient</span><span class="dep-chip" data-target="pardon_insufficient_satisfaction_needed">pardon_insufficient_satisfaction_needed</span><span class="dep-chip" data-target="cross_not_redundant">cross_not_redundant</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span></div></div>
+    <div class="node-prop"><pre><code>opaque isBarePardon : Prop → Prop</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="bare_pardon_insufficient">bare_pardon_insufficient</span><span class="dep-chip" data-target="cross_not_redundant">cross_not_redundant</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span><span class="dep-chip" data-target="pardon_insufficient_satisfaction_needed">pardon_insufficient_satisfaction_needed</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="isSatisfaction">
@@ -594,10 +501,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque isSatisfaction : Prop → Prop
-</code></pre></div>
-<div class="node-desc">Whether a given act constitutes satisfaction in Aquinas's sense:</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="satisfaction_addresses_both">satisfaction_addresses_both</span><span class="dep-chip" data-target="cross_is_satisfaction">cross_is_satisfaction</span><span class="dep-chip" data-target="cross_incorporates_all_models">cross_incorporates_all_models</span><span class="dep-chip" data-target="pardon_insufficient_satisfaction_needed">pardon_insufficient_satisfaction_needed</span><span class="dep-chip" data-target="cross_works_on_all_three_levels">cross_works_on_all_three_levels</span><span class="dep-chip" data-target="atonement_summary">atonement_summary</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span></div></div>
+    <div class="node-prop"><pre><code>opaque isSatisfaction : Prop → Prop</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="atonement_summary">atonement_summary</span><span class="dep-chip" data-target="cross_incorporates_all_models">cross_incorporates_all_models</span><span class="dep-chip" data-target="cross_is_satisfaction">cross_is_satisfaction</span><span class="dep-chip" data-target="cross_works_on_all_three_levels">cross_works_on_all_three_levels</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span><span class="dep-chip" data-target="pardon_insufficient_satisfaction_needed">pardon_insufficient_satisfaction_needed</span><span class="dep-chip" data-target="satisfaction_addresses_both">satisfaction_addresses_both</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="isPenalSubstitution">
@@ -607,9 +512,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque isPenalSubstitution : Prop → Prop
-</code></pre></div>
-<div class="node-desc">Whether a given act constitutes penal substitution: the mediator</div>
+    <div class="node-prop"><pre><code>opaque isPenalSubstitution : Prop → Prop</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="cross_incorporates_all_models">cross_incorporates_all_models</span><span class="dep-chip" data-target="cross_works_on_all_three_levels">cross_works_on_all_three_levels</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span></div></div>
   </div>
 </div>
@@ -620,9 +523,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque isMoralExemplar : Prop → Prop
-</code></pre></div>
-<div class="node-desc">Whether a given act constitutes a moral exemplar: the act inspires</div>
+    <div class="node-prop"><pre><code>opaque isMoralExemplar : Prop → Prop</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="cross_incorporates_all_models">cross_incorporates_all_models</span><span class="dep-chip" data-target="cross_works_on_all_three_levels">cross_works_on_all_three_levels</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span></div></div>
   </div>
 </div>
@@ -633,10 +534,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque canProvideAdequateSatisfaction : IncarnateSubject → Prop
-</code></pre></div>
-<div class="node-desc">Whether a person can provide ADEQUATE satisfaction — satisfaction</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="IncarnateSubject">IncarnateSubject</span></div></div>
+    <div class="node-prop"><pre><code>opaque canProvideAdequateSatisfaction : IncarnateSubject → Prop</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="adequate_satisfaction_requires_divine">adequate_satisfaction_requires_divine</span><span class="dep-chip" data-target="adequate_satisfaction_requires_human">adequate_satisfaction_requires_human</span><span class="dep-chip" data-target="christ_can_satisfy">christ_can_satisfy</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span></div></div>
   </div>
 </div>
@@ -647,10 +545,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque representsHumanity : IncarnateSubject → Prop
-</code></pre></div>
-<div class="node-desc">Whether a person represents humanity in an act (acts ON BEHALF OF</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="IncarnateSubject">IncarnateSubject</span></div></div>
+    <div class="node-prop"><pre><code>opaque representsHumanity : IncarnateSubject → Prop</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="adequate_satisfaction_requires_human">adequate_satisfaction_requires_human</span><span class="dep-chip" data-target="christ_can_satisfy">christ_can_satisfy</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span></div></div>
   </div>
 </div>
@@ -661,10 +556,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque theCross : Prop
-</code></pre></div>
-<div class="node-desc">The Cross — Christ's sacrificial death, modeled as a proposition.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="cross_is_satisfaction">cross_is_satisfaction</span><span class="dep-chip" data-target="cross_incorporates_all_models">cross_incorporates_all_models</span><span class="dep-chip" data-target="pardon_insufficient_satisfaction_needed">pardon_insufficient_satisfaction_needed</span><span class="dep-chip" data-target="cross_addresses_both">cross_addresses_both</span><span class="dep-chip" data-target="cross_not_redundant">cross_not_redundant</span><span class="dep-chip" data-target="cross_works_on_all_three_levels">cross_works_on_all_three_levels</span><span class="dep-chip" data-target="atonement_summary">atonement_summary</span><span class="dep-chip" data-target="fall_grounds_need_for_cross">fall_grounds_need_for_cross</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span></div></div>
+    <div class="node-prop"><pre><code>opaque theCross : Prop</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="atonement_summary">atonement_summary</span><span class="dep-chip" data-target="cross_addresses_both">cross_addresses_both</span><span class="dep-chip" data-target="cross_incorporates_all_models">cross_incorporates_all_models</span><span class="dep-chip" data-target="cross_is_satisfaction">cross_is_satisfaction</span><span class="dep-chip" data-target="cross_not_redundant">cross_not_redundant</span><span class="dep-chip" data-target="cross_works_on_all_three_levels">cross_works_on_all_three_levels</span><span class="dep-chip" data-target="fall_grounds_need_for_cross">fall_grounds_need_for_cross</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span><span class="dep-chip" data-target="pardon_insufficient_satisfaction_needed">pardon_insufficient_satisfaction_needed</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="sin_ruptures_order">
@@ -677,11 +570,21 @@ h1 {
     <div class="node-prop"><pre><code>axiom sin_ruptures_order :
   ∀ (p : Person) (s : Sin),
     s.action.agent = p →
-    ¬ orderOfJusticeIntact
-</code></pre></div>
-<div class="node-desc">1 (CCC §615, §1849; ST III q.46 a.3): SIN RUPTURES ORDER. │   Source: [Scripture] Rom 5:12 (&quot;sin entered the world through | Scope: ECUMENICAL — all Christians accept that sin | [...</div>
+    ¬ orderOfJusticeIntact</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="orderOfJusticeIntact">orderOfJusticeIntact</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="cross_not_redundant">cross_not_redundant</span><span class="dep-chip" data-target="sin_breaks_order">sin_breaks_order</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span><span class="dep-chip" data-target="orderOfJusticeIntact">orderOfJusticeIntact</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="cross_not_redundant">cross_not_redundant</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span><span class="dep-chip" data-target="sin_breaks_order">sin_breaks_order</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="sin_ruptures_order_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">sin_ruptures_order_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def sin_ruptures_order_tag : DenominationalTag :=
+  { acceptedBy := [Denomination.ecumenical],
+    note := &quot;All Christians: sin is a real problem. 'Order of justice' model is Thomistic/Catholic&quot; }</code></pre></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="bare_pardon_insufficient">
@@ -694,11 +597,21 @@ h1 {
     <div class="node-prop"><pre><code>axiom bare_pardon_insufficient :
   ∀ (act : Prop),
     isBarePardon act →
-    addressesOffense act ∧ ¬ addressesRupture act
-</code></pre></div>
-<div class="node-desc">2 (implicit in CCC §615; Aquinas ST III q.46 a.3): │   Source: [Philosophy] Aquinas ST III q.46 a.3; implicit in | Scope: CATHOLIC (Thomistic). Protestant traditions │   ⚠ HIDDEN ASSUMPTION: This is the deepest hidden assumption in the</div>
+    addressesOffense act ∧ ¬ addressesRupture act</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="addressesOffense">addressesOffense</span><span class="dep-chip" data-target="addressesRupture">addressesRupture</span><span class="dep-chip" data-target="isBarePardon">isBarePardon</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="pardon_insufficient_satisfaction_needed">pardon_insufficient_satisfaction_needed</span><span class="dep-chip" data-target="cross_addresses_both">cross_addresses_both</span><span class="dep-chip" data-target="cross_not_redundant">cross_not_redundant</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span><span class="dep-chip" data-target="addressesOffense">addressesOffense</span><span class="dep-chip" data-target="addressesRupture">addressesRupture</span><span class="dep-chip" data-target="isBarePardon">isBarePardon</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="cross_addresses_both">cross_addresses_both</span><span class="dep-chip" data-target="cross_incorporates_all_models_tag">cross_incorporates_all_models_tag</span><span class="dep-chip" data-target="cross_not_redundant">cross_not_redundant</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span><span class="dep-chip" data-target="pardon_insufficient_satisfaction_needed">pardon_insufficient_satisfaction_needed</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="bare_pardon_insufficient_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">bare_pardon_insufficient_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def bare_pardon_insufficient_tag : DenominationalTag :=
+  { acceptedBy := [Denomination.catholic],
+    note := &quot;Catholic/Thomistic: pardon ≠ repair. Protestant PSub: analogous (punishment must be borne)&quot; }</code></pre></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="satisfaction_addresses_both">
@@ -711,11 +624,21 @@ h1 {
     <div class="node-prop"><pre><code>axiom satisfaction_addresses_both :
   ∀ (act : Prop),
     isSatisfaction act →
-    addressesOffense act ∧ addressesRupture act
-</code></pre></div>
-<div class="node-desc">3 (CCC §615; Aquinas ST III q.48 a.2): │   Source: [Definition] CCC §615; [Philosophy] Aquinas ST III q.48 a.2. | Scope: CATHOLIC — this is the satisfaction the...</div>
+    addressesOffense act ∧ addressesRupture act</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="addressesOffense">addressesOffense</span><span class="dep-chip" data-target="addressesRupture">addressesRupture</span><span class="dep-chip" data-target="isSatisfaction">isSatisfaction</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="pardon_insufficient_satisfaction_needed">pardon_insufficient_satisfaction_needed</span><span class="dep-chip" data-target="cross_addresses_both">cross_addresses_both</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span><span class="dep-chip" data-target="addressesOffense">addressesOffense</span><span class="dep-chip" data-target="addressesRupture">addressesRupture</span><span class="dep-chip" data-target="isSatisfaction">isSatisfaction</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="cross_addresses_both">cross_addresses_both</span><span class="dep-chip" data-target="cross_incorporates_all_models_tag">cross_incorporates_all_models_tag</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span><span class="dep-chip" data-target="pardon_insufficient_satisfaction_needed">pardon_insufficient_satisfaction_needed</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="satisfaction_addresses_both_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">satisfaction_addresses_both_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def satisfaction_addresses_both_tag : DenominationalTag :=
+  { acceptedBy := [Denomination.catholic],
+    note := &quot;Catholic: satisfaction restores order AND cancels debt; CCC §615&quot; }</code></pre></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="adequate_satisfaction_requires_divine">
@@ -728,11 +651,21 @@ h1 {
     <div class="node-prop"><pre><code>axiom adequate_satisfaction_requires_divine :
   ∀ (s : IncarnateSubject),
     canProvideAdequateSatisfaction s →
-    s.hasNature Nature.divine
-</code></pre></div>
-<div class="node-desc">4 (CCC §616; Anselm, Cur Deus Homo I.11; ST III q.1 a.2): │   Source: [Tradition] Anselm, Cur Deus Homo I.11; Aquinas | Scope: ECUMENICAL for the claim that Christ's divine | [Def... │   ⚠ HIDDEN ASSUMPTION: Proportionality of satisfaction. Aquinas and</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="IncarnateSubject">IncarnateSubject</span><span class="dep-chip" data-target="Nature">Nature</span><span class="dep-chip" data-target="canProvideAdequateSatisfaction">canProvideAdequateSatisfaction</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="cross_works_on_all_three_levels">cross_works_on_all_three_levels</span><span class="dep-chip" data-target="cross_requires_divine_nature">cross_requires_divine_nature</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span><span class="dep-chip" data-target="canProvideAdequateSatisfaction">canProvideAdequateSatisfaction</span></div></div>
+    s.hasNature Nature.divine</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="canProvideAdequateSatisfaction">canProvideAdequateSatisfaction</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="cross_requires_divine_nature">cross_requires_divine_nature</span><span class="dep-chip" data-target="cross_works_on_all_three_levels">cross_works_on_all_three_levels</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="adequate_satisfaction_requires_divine_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">adequate_satisfaction_requires_divine_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def adequate_satisfaction_requires_divine_tag : DenominationalTag :=
+  { acceptedBy := [Denomination.ecumenical],
+    note := &quot;All: Christ's divinity necessary. Proportionality argument is Anselmian&quot; }</code></pre></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="adequate_satisfaction_requires_human">
@@ -746,11 +679,21 @@ h1 {
   ∀ (s : IncarnateSubject),
     canProvideAdequateSatisfaction s →
     representsHumanity s →
-    s.hasNature Nature.human
-</code></pre></div>
-<div class="node-desc">5 (CCC §615; Rom 5:19; ST III q.48 a.2): │   Source: [Scripture] Rom 5:19; [Definition] CCC §615; | Scope: ECUMENICAL — all Christians affirm Christ's</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="IncarnateSubject">IncarnateSubject</span><span class="dep-chip" data-target="Nature">Nature</span><span class="dep-chip" data-target="canProvideAdequateSatisfaction">canProvideAdequateSatisfaction</span><span class="dep-chip" data-target="representsHumanity">representsHumanity</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="cross_requires_divine_nature">cross_requires_divine_nature</span><span class="dep-chip" data-target="cross_requires_human_nature">cross_requires_human_nature</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span><span class="dep-chip" data-target="canProvideAdequateSatisfaction">canProvideAdequateSatisfaction</span><span class="dep-chip" data-target="representsHumanity">representsHumanity</span></div></div>
+    s.hasNature Nature.human</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="canProvideAdequateSatisfaction">canProvideAdequateSatisfaction</span><span class="dep-chip" data-target="representsHumanity">representsHumanity</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="cross_requires_divine_nature">cross_requires_divine_nature</span><span class="dep-chip" data-target="cross_requires_human_nature">cross_requires_human_nature</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="adequate_satisfaction_requires_human_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">adequate_satisfaction_requires_human_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def adequate_satisfaction_requires_human_tag : DenominationalTag :=
+  { acceptedBy := [Denomination.ecumenical],
+    note := &quot;All Christians: Christ's humanity essential to salvation; Rom 5:19&quot; }</code></pre></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="cross_is_satisfaction">
@@ -760,11 +703,21 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>axiom cross_is_satisfaction : isSatisfaction theCross
-</code></pre></div>
-<div class="node-desc">6 (CCC §613-615; §601): │   Source: [Scripture] 1 Cor 15:3 (§601); Jn 10:18; | Scope: ECUMENICAL that the Cross saves. The specific | [Definition]</div>
+    <div class="node-prop"><pre><code>axiom cross_is_satisfaction : isSatisfaction theCross</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isSatisfaction">isSatisfaction</span><span class="dep-chip" data-target="theCross">theCross</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="pardon_insufficient_satisfaction_needed">pardon_insufficient_satisfaction_needed</span><span class="dep-chip" data-target="cross_addresses_both">cross_addresses_both</span><span class="dep-chip" data-target="hypostatic_union_grounds_atonement">hypostatic_union_grounds_atonement</span><span class="dep-chip" data-target="atonement_summary">atonement_summary</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span><span class="dep-chip" data-target="isSatisfaction">isSatisfaction</span><span class="dep-chip" data-target="theCross">theCross</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="atonement_summary">atonement_summary</span><span class="dep-chip" data-target="cross_addresses_both">cross_addresses_both</span><span class="dep-chip" data-target="hypostatic_union_grounds_atonement">hypostatic_union_grounds_atonement</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span><span class="dep-chip" data-target="pardon_insufficient_satisfaction_needed">pardon_insufficient_satisfaction_needed</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="cross_is_satisfaction_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">cross_is_satisfaction_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def cross_is_satisfaction_tag : DenominationalTag :=
+  { acceptedBy := [Denomination.catholic],
+    note := &quot;Catholic: Cross is satisfaction (Aquinas). Protestant: Cross is penal substitution (Calvin)&quot; }</code></pre></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="christ_can_satisfy">
@@ -775,11 +728,21 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom christ_can_satisfy :
-  canProvideAdequateSatisfaction christ ∧ representsHumanity christ
-</code></pre></div>
-<div class="node-desc">7 (CCC §616; §604): │   Source: [Scripture] Rom 5:8 (§604); [Definition] CCC §616. | Scope: ECUMENICAL — all Christians affirm Christ's</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="canProvideAdequateSatisfaction">canProvideAdequateSatisfaction</span><span class="dep-chip" data-target="christ">christ</span><span class="dep-chip" data-target="representsHumanity">representsHumanity</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="cross_works_on_all_three_levels">cross_works_on_all_three_levels</span><span class="dep-chip" data-target="cross_requires_divine_nature">cross_requires_divine_nature</span><span class="dep-chip" data-target="cross_requires_human_nature">cross_requires_human_nature</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span><span class="dep-chip" data-target="canProvideAdequateSatisfaction">canProvideAdequateSatisfaction</span><span class="dep-chip" data-target="representsHumanity">representsHumanity</span></div></div>
+  canProvideAdequateSatisfaction christ ∧ representsHumanity christ</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="canProvideAdequateSatisfaction">canProvideAdequateSatisfaction</span><span class="dep-chip" data-target="representsHumanity">representsHumanity</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="cross_requires_divine_nature">cross_requires_divine_nature</span><span class="dep-chip" data-target="cross_requires_human_nature">cross_requires_human_nature</span><span class="dep-chip" data-target="cross_works_on_all_three_levels">cross_works_on_all_three_levels</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="christ_can_satisfy_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">christ_can_satisfy_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def christ_can_satisfy_tag : DenominationalTag :=
+  { acceptedBy := [Denomination.ecumenical],
+    note := &quot;All Christians: Christ uniquely adequate as savior; CCC §616&quot; }</code></pre></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="cross_incorporates_all_models">
@@ -792,11 +755,22 @@ h1 {
     <div class="node-prop"><pre><code>axiom cross_incorporates_all_models :
   isSatisfaction theCross ∧
   isPenalSubstitution theCross ∧
-  isMoralExemplar theCross
-</code></pre></div>
-<div class="node-desc">8 (CCC §601, §613, §615): │   Source: [Definition] CCC §601, §613, §615. | Scope: CATHOLIC for the specific synthesis.</div>
+  isMoralExemplar theCross</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isMoralExemplar">isMoralExemplar</span><span class="dep-chip" data-target="isPenalSubstitution">isPenalSubstitution</span><span class="dep-chip" data-target="isSatisfaction">isSatisfaction</span><span class="dep-chip" data-target="theCross">theCross</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="sin_breaks_order">sin_breaks_order</span><span class="dep-chip" data-target="cross_works_on_all_three_levels">cross_works_on_all_three_levels</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span><span class="dep-chip" data-target="isMoralExemplar">isMoralExemplar</span><span class="dep-chip" data-target="isPenalSubstitution">isPenalSubstitution</span><span class="dep-chip" data-target="isSatisfaction">isSatisfaction</span><span class="dep-chip" data-target="theCross">theCross</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="cross_works_on_all_three_levels">cross_works_on_all_three_levels</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span><span class="dep-chip" data-target="sin_breaks_order">sin_breaks_order</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="cross_incorporates_all_models_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">cross_incorporates_all_models_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def cross_incorporates_all_models_tag : DenominationalTag :=
+  { acceptedBy := [Denomination.catholic],
+    note := &quot;Catholic: satisfaction primary, incorporates substitution + exemplar. Protestant: PSub primary&quot; }</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="bare_pardon_insufficient">bare_pardon_insufficient</span><span class="dep-chip" data-target="satisfaction_addresses_both">satisfaction_addresses_both</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="pardon_insufficient_satisfaction_needed">
@@ -814,10 +788,11 @@ h1 {
     -- Pardon does NOT address the rupture
     ¬ addressesRupture pardon_act
     -- BUT satisfaction DOES address the rupture
-    ∧ addressesRupture sat_act</code></pre></div>
-<div class="node-desc">Bare pardon is INSUFFICIENT for full restoration.</div>
+    ∧ addressesRupture sat_act := by
+  exact ⟨(bare_pardon_insufficient pardon_act h_pardon).2,
+         (satisfaction_addresses_both sat_act h_sat).2⟩</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="addressesRupture">addressesRupture</span><span class="dep-chip" data-target="bare_pardon_insufficient">bare_pardon_insufficient</span><span class="dep-chip" data-target="cross_is_satisfaction">cross_is_satisfaction</span><span class="dep-chip" data-target="isBarePardon">isBarePardon</span><span class="dep-chip" data-target="isSatisfaction">isSatisfaction</span><span class="dep-chip" data-target="satisfaction_addresses_both">satisfaction_addresses_both</span><span class="dep-chip" data-target="theCross">theCross</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span><span class="dep-chip" data-target="addressesRupture">addressesRupture</span><span class="dep-chip" data-target="isBarePardon">isBarePardon</span><span class="dep-chip" data-target="isSatisfaction">isSatisfaction</span><span class="dep-chip" data-target="theCross">theCross</span><span class="dep-chip" data-target="bare_pardon_insufficient">bare_pardon_insufficient</span><span class="dep-chip" data-target="cross_is_satisfaction">cross_is_satisfaction</span><span class="dep-chip" data-target="satisfaction_addresses_both">satisfaction_addresses_both</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="cross_addresses_both">
@@ -828,10 +803,10 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem cross_addresses_both :
-    addressesOffense theCross ∧ addressesRupture theCross</code></pre></div>
-<div class="node-desc">The Cross addresses BOTH offense and rupture.</div>
+    addressesOffense theCross ∧ addressesRupture theCross := by
+  exact satisfaction_addresses_both theCross cross_is_satisfaction</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="addressesOffense">addressesOffense</span><span class="dep-chip" data-target="addressesRupture">addressesRupture</span><span class="dep-chip" data-target="bare_pardon_insufficient">bare_pardon_insufficient</span><span class="dep-chip" data-target="cross_is_satisfaction">cross_is_satisfaction</span><span class="dep-chip" data-target="satisfaction_addresses_both">satisfaction_addresses_both</span><span class="dep-chip" data-target="theCross">theCross</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="cross_not_redundant">cross_not_redundant</span><span class="dep-chip" data-target="hypostatic_union_grounds_atonement">hypostatic_union_grounds_atonement</span><span class="dep-chip" data-target="atonement_summary">atonement_summary</span><span class="dep-chip" data-target="fall_grounds_need_for_cross">fall_grounds_need_for_cross</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span><span class="dep-chip" data-target="addressesOffense">addressesOffense</span><span class="dep-chip" data-target="addressesRupture">addressesRupture</span><span class="dep-chip" data-target="theCross">theCross</span><span class="dep-chip" data-target="bare_pardon_insufficient">bare_pardon_insufficient</span><span class="dep-chip" data-target="cross_is_satisfaction">cross_is_satisfaction</span><span class="dep-chip" data-target="satisfaction_addresses_both">satisfaction_addresses_both</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="atonement_summary">atonement_summary</span><span class="dep-chip" data-target="cross_not_redundant">cross_not_redundant</span><span class="dep-chip" data-target="fall_grounds_need_for_cross">fall_grounds_need_for_cross</span><span class="dep-chip" data-target="hypostatic_union_grounds_atonement">hypostatic_union_grounds_atonement</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="cross_not_redundant">
@@ -847,10 +822,11 @@ h1 {
     -- The Cross addresses the rupture
     addressesRupture theCross
     -- But bare pardon does NOT
-    ∧ ¬ addressesRupture pardon_act</code></pre></div>
-<div class="node-desc">The Cross does what bare pardon cannot.</div>
+    ∧ ¬ addressesRupture pardon_act := by
+  exact ⟨cross_addresses_both.2,
+         (bare_pardon_insufficient pardon_act h_pardon).2⟩</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="addressesRupture">addressesRupture</span><span class="dep-chip" data-target="bare_pardon_insufficient">bare_pardon_insufficient</span><span class="dep-chip" data-target="cross_addresses_both">cross_addresses_both</span><span class="dep-chip" data-target="isBarePardon">isBarePardon</span><span class="dep-chip" data-target="sin_ruptures_order">sin_ruptures_order</span><span class="dep-chip" data-target="theCross">theCross</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span><span class="dep-chip" data-target="addressesRupture">addressesRupture</span><span class="dep-chip" data-target="isBarePardon">isBarePardon</span><span class="dep-chip" data-target="theCross">theCross</span><span class="dep-chip" data-target="bare_pardon_insufficient">bare_pardon_insufficient</span><span class="dep-chip" data-target="sin_ruptures_order">sin_ruptures_order</span><span class="dep-chip" data-target="cross_addresses_both">cross_addresses_both</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="sin_breaks_order">
@@ -863,10 +839,10 @@ h1 {
     <div class="node-prop"><pre><code>theorem sin_breaks_order
     (p : Person) (s : Sin)
     (h_agent : s.action.agent = p) :
-    ¬ orderOfJusticeIntact</code></pre></div>
-<div class="node-desc">Sin destroys the order of justice.</div>
+    ¬ orderOfJusticeIntact := by
+  exact sin_ruptures_order p s h_agent</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="cross_incorporates_all_models">cross_incorporates_all_models</span><span class="dep-chip" data-target="orderOfJusticeIntact">orderOfJusticeIntact</span><span class="dep-chip" data-target="sin_ruptures_order">sin_ruptures_order</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span><span class="dep-chip" data-target="orderOfJusticeIntact">orderOfJusticeIntact</span><span class="dep-chip" data-target="cross_incorporates_all_models">cross_incorporates_all_models</span><span class="dep-chip" data-target="sin_ruptures_order">sin_ruptures_order</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="cross_works_on_all_three_levels">
@@ -879,10 +855,10 @@ h1 {
     <div class="node-prop"><pre><code>theorem cross_works_on_all_three_levels :
     isSatisfaction theCross
     ∧ isPenalSubstitution theCross
-    ∧ isMoralExemplar theCross</code></pre></div>
-<div class="node-desc">The Cross is simultaneously satisfaction, substitution,</div>
+    ∧ isMoralExemplar theCross := by
+  exact cross_incorporates_all_models</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="adequate_satisfaction_requires_divine">adequate_satisfaction_requires_divine</span><span class="dep-chip" data-target="christ_can_satisfy">christ_can_satisfy</span><span class="dep-chip" data-target="cross_incorporates_all_models">cross_incorporates_all_models</span><span class="dep-chip" data-target="isMoralExemplar">isMoralExemplar</span><span class="dep-chip" data-target="isPenalSubstitution">isPenalSubstitution</span><span class="dep-chip" data-target="isSatisfaction">isSatisfaction</span><span class="dep-chip" data-target="theCross">theCross</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span><span class="dep-chip" data-target="isMoralExemplar">isMoralExemplar</span><span class="dep-chip" data-target="isPenalSubstitution">isPenalSubstitution</span><span class="dep-chip" data-target="isSatisfaction">isSatisfaction</span><span class="dep-chip" data-target="theCross">theCross</span><span class="dep-chip" data-target="adequate_satisfaction_requires_divine">adequate_satisfaction_requires_divine</span><span class="dep-chip" data-target="christ_can_satisfy">christ_can_satisfy</span><span class="dep-chip" data-target="cross_incorporates_all_models">cross_incorporates_all_models</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="cross_requires_divine_nature">
@@ -893,10 +869,11 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem cross_requires_divine_nature :
-    christ.hasNature Nature.divine</code></pre></div>
-<div class="node-desc">Christ's divine nature is necessary for the Cross.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Nature">Nature</span><span class="dep-chip" data-target="adequate_satisfaction_requires_divine">adequate_satisfaction_requires_divine</span><span class="dep-chip" data-target="adequate_satisfaction_requires_human">adequate_satisfaction_requires_human</span><span class="dep-chip" data-target="christ">christ</span><span class="dep-chip" data-target="christ_can_satisfy">christ_can_satisfy</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="cross_requires_human_nature">cross_requires_human_nature</span><span class="dep-chip" data-target="incarnation_necessary_for_atonement">incarnation_necessary_for_atonement</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span><span class="dep-chip" data-target="adequate_satisfaction_requires_divine">adequate_satisfaction_requires_divine</span><span class="dep-chip" data-target="adequate_satisfaction_requires_human">adequate_satisfaction_requires_human</span><span class="dep-chip" data-target="christ_can_satisfy">christ_can_satisfy</span></div></div>
+    christ.hasNature Nature.divine := by
+  exact adequate_satisfaction_requires_divine christ
+    christ_can_satisfy.1</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="adequate_satisfaction_requires_divine">adequate_satisfaction_requires_divine</span><span class="dep-chip" data-target="adequate_satisfaction_requires_human">adequate_satisfaction_requires_human</span><span class="dep-chip" data-target="christ_can_satisfy">christ_can_satisfy</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="cross_requires_human_nature">cross_requires_human_nature</span><span class="dep-chip" data-target="incarnation_necessary_for_atonement">incarnation_necessary_for_atonement</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="cross_requires_human_nature">
@@ -907,10 +884,11 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem cross_requires_human_nature :
-    christ.hasNature Nature.human</code></pre></div>
-<div class="node-desc">Christ's human nature is necessary for the Cross.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Nature">Nature</span><span class="dep-chip" data-target="adequate_satisfaction_requires_human">adequate_satisfaction_requires_human</span><span class="dep-chip" data-target="christ">christ</span><span class="dep-chip" data-target="christ_can_satisfy">christ_can_satisfy</span><span class="dep-chip" data-target="cross_requires_divine_nature">cross_requires_divine_nature</span><span class="dep-chip" data-target="participation">participation</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="incarnation_necessary_for_atonement">incarnation_necessary_for_atonement</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span><span class="dep-chip" data-target="adequate_satisfaction_requires_human">adequate_satisfaction_requires_human</span><span class="dep-chip" data-target="christ_can_satisfy">christ_can_satisfy</span><span class="dep-chip" data-target="cross_requires_divine_nature">cross_requires_divine_nature</span></div></div>
+    christ.hasNature Nature.human := by
+  exact adequate_satisfaction_requires_human christ
+    christ_can_satisfy.1 christ_can_satisfy.2</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="adequate_satisfaction_requires_human">adequate_satisfaction_requires_human</span><span class="dep-chip" data-target="christ_can_satisfy">christ_can_satisfy</span><span class="dep-chip" data-target="cross_requires_divine_nature">cross_requires_divine_nature</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="incarnation_necessary_for_atonement">incarnation_necessary_for_atonement</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="incarnation_necessary_for_atonement">
@@ -921,10 +899,10 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem incarnation_necessary_for_atonement :
-    christ.hasNature Nature.divine ∧ christ.hasNature Nature.human</code></pre></div>
-<div class="node-desc">The Incarnation is necessary for the Atonement.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Nature">Nature</span><span class="dep-chip" data-target="christ">christ</span><span class="dep-chip" data-target="cross_requires_divine_nature">cross_requires_divine_nature</span><span class="dep-chip" data-target="cross_requires_human_nature">cross_requires_human_nature</span><span class="dep-chip" data-target="hypostatic_union">hypostatic_union</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hypostatic_union_grounds_atonement">hypostatic_union_grounds_atonement</span><span class="dep-chip" data-target="atonement_summary">atonement_summary</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span><span class="dep-chip" data-target="cross_requires_divine_nature">cross_requires_divine_nature</span><span class="dep-chip" data-target="cross_requires_human_nature">cross_requires_human_nature</span></div></div>
+    christ.hasNature Nature.divine ∧ christ.hasNature Nature.human := by
+  exact ⟨cross_requires_divine_nature, cross_requires_human_nature⟩</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="cross_requires_divine_nature">cross_requires_divine_nature</span><span class="dep-chip" data-target="cross_requires_human_nature">cross_requires_human_nature</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="atonement_summary">atonement_summary</span><span class="dep-chip" data-target="hypostatic_union_grounds_atonement">hypostatic_union_grounds_atonement</span><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="hypostatic_union_grounds_atonement">
@@ -935,10 +913,10 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem hypostatic_union_grounds_atonement :
-    christ.hasNature Nature.divine ∧ christ.hasNature Nature.human</code></pre></div>
-<div class="node-desc">The hypostatic union grounds the atonement.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Nature">Nature</span><span class="dep-chip" data-target="Satisfaction">Satisfaction</span><span class="dep-chip" data-target="christ">christ</span><span class="dep-chip" data-target="cross_addresses_both">cross_addresses_both</span><span class="dep-chip" data-target="cross_is_satisfaction">cross_is_satisfaction</span><span class="dep-chip" data-target="hypostatic_union">hypostatic_union</span><span class="dep-chip" data-target="incarnation_necessary_for_atonement">incarnation_necessary_for_atonement</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span><span class="dep-chip" data-target="cross_is_satisfaction">cross_is_satisfaction</span><span class="dep-chip" data-target="cross_addresses_both">cross_addresses_both</span><span class="dep-chip" data-target="incarnation_necessary_for_atonement">incarnation_necessary_for_atonement</span></div></div>
+    christ.hasNature Nature.divine ∧ christ.hasNature Nature.human :=
+  ⟨hypostatic_union.2.1, hypostatic_union.2.2⟩</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="cross_addresses_both">cross_addresses_both</span><span class="dep-chip" data-target="cross_is_satisfaction">cross_is_satisfaction</span><span class="dep-chip" data-target="incarnation_necessary_for_atonement">incarnation_necessary_for_atonement</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="atonement_summary">
@@ -954,10 +932,12 @@ h1 {
     -- The Cross addresses both offense and rupture
     ∧ (addressesOffense theCross ∧ addressesRupture theCross)
     -- The mediator has both natures
-    ∧ (christ.hasNature Nature.divine ∧ christ.hasNature Nature.human)</code></pre></div>
-<div class="node-desc">The satisfaction model shows why the Cross restores</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Nature">Nature</span><span class="dep-chip" data-target="addressesOffense">addressesOffense</span><span class="dep-chip" data-target="addressesRupture">addressesRupture</span><span class="dep-chip" data-target="christ">christ</span><span class="dep-chip" data-target="cross_addresses_both">cross_addresses_both</span><span class="dep-chip" data-target="cross_is_satisfaction">cross_is_satisfaction</span><span class="dep-chip" data-target="grace_is_the_healing">grace_is_the_healing</span><span class="dep-chip" data-target="incarnation_necessary_for_atonement">incarnation_necessary_for_atonement</span><span class="dep-chip" data-target="isSatisfaction">isSatisfaction</span><span class="dep-chip" data-target="natureIsWounded">natureIsWounded</span><span class="dep-chip" data-target="theCross">theCross</span><span class="dep-chip" data-target="the_fall">the_fall</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span><span class="dep-chip" data-target="addressesOffense">addressesOffense</span><span class="dep-chip" data-target="addressesRupture">addressesRupture</span><span class="dep-chip" data-target="isSatisfaction">isSatisfaction</span><span class="dep-chip" data-target="theCross">theCross</span><span class="dep-chip" data-target="cross_is_satisfaction">cross_is_satisfaction</span><span class="dep-chip" data-target="cross_addresses_both">cross_addresses_both</span><span class="dep-chip" data-target="incarnation_necessary_for_atonement">incarnation_necessary_for_atonement</span></div></div>
+    ∧ (christ.hasNature Nature.divine ∧ christ.hasNature Nature.human) := by
+  exact ⟨cross_is_satisfaction,
+         cross_addresses_both,
+         incarnation_necessary_for_atonement⟩</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="addressesOffense">addressesOffense</span><span class="dep-chip" data-target="addressesRupture">addressesRupture</span><span class="dep-chip" data-target="cross_addresses_both">cross_addresses_both</span><span class="dep-chip" data-target="cross_is_satisfaction">cross_is_satisfaction</span><span class="dep-chip" data-target="incarnation_necessary_for_atonement">incarnation_necessary_for_atonement</span><span class="dep-chip" data-target="isSatisfaction">isSatisfaction</span><span class="dep-chip" data-target="theCross">theCross</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="fall_grounds_need_for_cross">
@@ -973,10 +953,10 @@ h1 {
     -- The wound exists (from OriginalSin.lean)
     natureIsWounded p
     -- AND the Cross addresses the rupture
-    ∧ addressesRupture theCross</code></pre></div>
-<div class="node-desc">The Fall grounds the NEED for the Cross.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="addressesRupture">addressesRupture</span><span class="dep-chip" data-target="confers">confers</span><span class="dep-chip" data-target="cross_addresses_both">cross_addresses_both</span><span class="dep-chip" data-target="natureIsWounded">natureIsWounded</span><span class="dep-chip" data-target="theCross">theCross</span><span class="dep-chip" data-target="the_fall">the_fall</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span><span class="dep-chip" data-target="addressesRupture">addressesRupture</span><span class="dep-chip" data-target="theCross">theCross</span><span class="dep-chip" data-target="cross_addresses_both">cross_addresses_both</span></div></div>
+    ∧ addressesRupture theCross := by
+  exact ⟨(the_fall p h_intellect).1, cross_addresses_both.2⟩</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="addressesRupture">addressesRupture</span><span class="dep-chip" data-target="cross_addresses_both">cross_addresses_both</span><span class="dep-chip" data-target="theCross">theCross</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="moralExemplarModel">moralExemplarModel</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="protestantPenalSubstitution">
@@ -986,8 +966,9 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def protestantPenalSubstitution : DenominationalTag</code></pre></div>
-<div class="node-desc">The Protestant penal substitution model as a denominational</div>
+    <div class="node-prop"><pre><code>def protestantPenalSubstitution : DenominationalTag :=
+  { acceptedBy := [Denomination.reformed],
+    note := &quot;Reformed: Cross primarily bears punishment (penal substitution); Calvin, Institutes II.16&quot; }</code></pre></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="moralExemplarModel">
@@ -997,10 +978,10 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def moralExemplarModel : DenominationalTag</code></pre></div>
-<div class="node-desc">The moral exemplar model as a denominational alternative.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="addressesOffense">addressesOffense</span><span class="dep-chip" data-target="addressesRupture">addressesRupture</span><span class="dep-chip" data-target="adequate_satisfaction_requires_divine">adequate_satisfaction_requires_divine</span><span class="dep-chip" data-target="adequate_satisfaction_requires_human">adequate_satisfaction_requires_human</span><span class="dep-chip" data-target="atonement_summary">atonement_summary</span><span class="dep-chip" data-target="bare_pardon_insufficient">bare_pardon_insufficient</span><span class="dep-chip" data-target="canProvideAdequateSatisfaction">canProvideAdequateSatisfaction</span><span class="dep-chip" data-target="christ_can_satisfy">christ_can_satisfy</span><span class="dep-chip" data-target="cross_addresses_both">cross_addresses_both</span><span class="dep-chip" data-target="cross_incorporates_all_models">cross_incorporates_all_models</span><span class="dep-chip" data-target="cross_is_satisfaction">cross_is_satisfaction</span><span class="dep-chip" data-target="cross_not_redundant">cross_not_redundant</span><span class="dep-chip" data-target="cross_requires_divine_nature">cross_requires_divine_nature</span><span class="dep-chip" data-target="cross_requires_human_nature">cross_requires_human_nature</span><span class="dep-chip" data-target="cross_works_on_all_three_levels">cross_works_on_all_three_levels</span><span class="dep-chip" data-target="fall_grounds_need_for_cross">fall_grounds_need_for_cross</span><span class="dep-chip" data-target="hypostatic_union">hypostatic_union</span><span class="dep-chip" data-target="hypostatic_union_grounds_atonement">hypostatic_union_grounds_atonement</span><span class="dep-chip" data-target="incarnation_necessary_for_atonement">incarnation_necessary_for_atonement</span><span class="dep-chip" data-target="isBarePardon">isBarePardon</span><span class="dep-chip" data-target="isMoralExemplar">isMoralExemplar</span><span class="dep-chip" data-target="isPenalSubstitution">isPenalSubstitution</span><span class="dep-chip" data-target="isSatisfaction">isSatisfaction</span><span class="dep-chip" data-target="orderOfJusticeIntact">orderOfJusticeIntact</span><span class="dep-chip" data-target="pardon_insufficient_satisfaction_needed">pardon_insufficient_satisfaction_needed</span><span class="dep-chip" data-target="representsHumanity">representsHumanity</span><span class="dep-chip" data-target="satisfaction_addresses_both">satisfaction_addresses_both</span><span class="dep-chip" data-target="sin_breaks_order">sin_breaks_order</span><span class="dep-chip" data-target="sin_ruptures_order">sin_ruptures_order</span><span class="dep-chip" data-target="theCross">theCross</span><span class="dep-chip" data-target="the_fall">the_fall</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="addressesOffense">addressesOffense</span><span class="dep-chip" data-target="addressesRupture">addressesRupture</span><span class="dep-chip" data-target="canProvideAdequateSatisfaction">canProvideAdequateSatisfaction</span><span class="dep-chip" data-target="isBarePardon">isBarePardon</span><span class="dep-chip" data-target="isMoralExemplar">isMoralExemplar</span><span class="dep-chip" data-target="isPenalSubstitution">isPenalSubstitution</span><span class="dep-chip" data-target="isSatisfaction">isSatisfaction</span><span class="dep-chip" data-target="orderOfJusticeIntact">orderOfJusticeIntact</span><span class="dep-chip" data-target="representsHumanity">representsHumanity</span><span class="dep-chip" data-target="theCross">theCross</span><span class="dep-chip" data-target="adequate_satisfaction_requires_divine">adequate_satisfaction_requires_divine</span><span class="dep-chip" data-target="adequate_satisfaction_requires_human">adequate_satisfaction_requires_human</span><span class="dep-chip" data-target="bare_pardon_insufficient">bare_pardon_insufficient</span><span class="dep-chip" data-target="christ_can_satisfy">christ_can_satisfy</span><span class="dep-chip" data-target="cross_incorporates_all_models">cross_incorporates_all_models</span><span class="dep-chip" data-target="cross_is_satisfaction">cross_is_satisfaction</span><span class="dep-chip" data-target="satisfaction_addresses_both">satisfaction_addresses_both</span><span class="dep-chip" data-target="sin_ruptures_order">sin_ruptures_order</span><span class="dep-chip" data-target="cross_addresses_both">cross_addresses_both</span><span class="dep-chip" data-target="cross_requires_divine_nature">cross_requires_divine_nature</span><span class="dep-chip" data-target="cross_works_on_all_three_levels">cross_works_on_all_three_levels</span><span class="dep-chip" data-target="pardon_insufficient_satisfaction_needed">pardon_insufficient_satisfaction_needed</span><span class="dep-chip" data-target="sin_breaks_order">sin_breaks_order</span><span class="dep-chip" data-target="cross_not_redundant">cross_not_redundant</span><span class="dep-chip" data-target="cross_requires_human_nature">cross_requires_human_nature</span><span class="dep-chip" data-target="fall_grounds_need_for_cross">fall_grounds_need_for_cross</span><span class="dep-chip" data-target="incarnation_necessary_for_atonement">incarnation_necessary_for_atonement</span><span class="dep-chip" data-target="atonement_summary">atonement_summary</span><span class="dep-chip" data-target="hypostatic_union_grounds_atonement">hypostatic_union_grounds_atonement</span></div></div>
+    <div class="node-prop"><pre><code>def moralExemplarModel : DenominationalTag :=
+  { acceptedBy := [],
+    note := &quot;Liberal Protestant: Cross primarily inspires (moral influence); Abelard. CCC considers this insufficient alone&quot; }</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="addressesOffense">addressesOffense</span><span class="dep-chip" data-target="addressesRupture">addressesRupture</span><span class="dep-chip" data-target="adequate_satisfaction_requires_divine">adequate_satisfaction_requires_divine</span><span class="dep-chip" data-target="adequate_satisfaction_requires_human">adequate_satisfaction_requires_human</span><span class="dep-chip" data-target="atonement_summary">atonement_summary</span><span class="dep-chip" data-target="bare_pardon_insufficient">bare_pardon_insufficient</span><span class="dep-chip" data-target="canProvideAdequateSatisfaction">canProvideAdequateSatisfaction</span><span class="dep-chip" data-target="christ_can_satisfy">christ_can_satisfy</span><span class="dep-chip" data-target="cross_addresses_both">cross_addresses_both</span><span class="dep-chip" data-target="cross_incorporates_all_models">cross_incorporates_all_models</span><span class="dep-chip" data-target="cross_is_satisfaction">cross_is_satisfaction</span><span class="dep-chip" data-target="cross_not_redundant">cross_not_redundant</span><span class="dep-chip" data-target="cross_requires_divine_nature">cross_requires_divine_nature</span><span class="dep-chip" data-target="cross_requires_human_nature">cross_requires_human_nature</span><span class="dep-chip" data-target="cross_works_on_all_three_levels">cross_works_on_all_three_levels</span><span class="dep-chip" data-target="fall_grounds_need_for_cross">fall_grounds_need_for_cross</span><span class="dep-chip" data-target="hypostatic_union_grounds_atonement">hypostatic_union_grounds_atonement</span><span class="dep-chip" data-target="incarnation_necessary_for_atonement">incarnation_necessary_for_atonement</span><span class="dep-chip" data-target="isBarePardon">isBarePardon</span><span class="dep-chip" data-target="isMoralExemplar">isMoralExemplar</span><span class="dep-chip" data-target="isPenalSubstitution">isPenalSubstitution</span><span class="dep-chip" data-target="isSatisfaction">isSatisfaction</span><span class="dep-chip" data-target="orderOfJusticeIntact">orderOfJusticeIntact</span><span class="dep-chip" data-target="pardon_insufficient_satisfaction_needed">pardon_insufficient_satisfaction_needed</span><span class="dep-chip" data-target="representsHumanity">representsHumanity</span><span class="dep-chip" data-target="satisfaction_addresses_both">satisfaction_addresses_both</span><span class="dep-chip" data-target="sin_breaks_order">sin_breaks_order</span><span class="dep-chip" data-target="sin_ruptures_order">sin_ruptures_order</span><span class="dep-chip" data-target="theCross">theCross</span></div></div>
   </div>
 </div>
   </div>

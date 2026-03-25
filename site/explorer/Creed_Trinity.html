@@ -143,7 +143,7 @@ h1 {
   line-height: 1.6;
 }
 
-/* ── Search ── */
+/* -- Search -- */
 .search-box {
   width: 100%;
   padding: 0.8rem 1rem;
@@ -167,91 +167,7 @@ h1 {
   font-style: italic;
 }
 
-/* ── Category sections ── */
-.category-header {
-  font-family: Cinzel, Georgia, serif;
-  font-size: 1.1rem;
-  font-weight: 400;
-  color: var(--accent);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  font-variant: small-caps;
-  margin: 1.8rem 0 0.8rem;
-  padding-bottom: 0.4rem;
-  border-bottom: 1px solid var(--border);
-}
-
-/* ── File cards ── */
-.file-card {
-  display: block;
-  padding: 1rem 1.1rem;
-  margin-bottom: 0.5rem;
-  background: var(--bg-parchment);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  text-decoration: none;
-  color: var(--text);
-  transition: background 0.15s, border-color 0.15s;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.file-card:hover, .file-card:active {
-  background: var(--bg-vellum);
-  border-color: var(--accent-gold);
-  text-decoration: none;
-}
-
-.file-card-name {
-  font-family: Cinzel, Georgia, serif;
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  margin-bottom: 0.3rem;
-}
-
-.file-card-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  font-size: 0.82rem;
-  color: var(--text-light);
-}
-
-.file-card-meta .tag {
-  display: inline-block;
-  padding: 0.15rem 0.5rem;
-  border-radius: 3px;
-  font-size: 0.75rem;
-  font-family: Cinzel, Georgia, serif;
-  letter-spacing: 0.03em;
-}
-
-.tag-axiom { background: var(--axiom-bg); color: var(--axiom-dot); border: 1px solid var(--axiom-border); }
-.tag-theorem { background: var(--theorem-bg); color: var(--theorem-dot); border: 1px solid var(--theorem-border); }
-.tag-def { background: var(--def-bg); color: var(--def-dot); border: 1px solid var(--def-border); }
-.tag-proposition { background: var(--proposition-bg); color: var(--proposition-dot); border: 1px solid var(--proposition-border); }
-
-.file-card-ccc {
-  font-size: 0.78rem;
-  color: var(--text-muted);
-  margin-top: 0.3rem;
-}
-
-/* ── Summary stats ── */
-.stats-bar {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-  margin-bottom: 1.5rem;
-  font-size: 0.9rem;
-  color: var(--text-light);
-  font-style: italic;
-}
-
-.stats-bar span { white-space: nowrap; }
-
-/* ── Node cards (per-file page) ── */
+/* -- Node cards -- */
 .node-card {
   margin-bottom: 0.4rem;
   border: 1px solid var(--border);
@@ -405,7 +321,7 @@ h1 {
   color: var(--text-muted);
 }
 
-/* ── Flow diagram header ── */
+/* -- Flow diagram header -- */
 .flow-summary {
   display: flex;
   justify-content: center;
@@ -431,7 +347,7 @@ h1 {
 .flow-count.theorems { background: var(--theorem-bg); color: var(--theorem-dot); }
 .flow-count.derived { background: var(--def-bg); color: var(--def-dot); }
 
-/* ── Legend ── */
+/* -- Legend -- */
 .legend {
   display: flex;
   flex-wrap: wrap;
@@ -463,7 +379,7 @@ h1 {
 .legend-dot.inductive { background: var(--inductive-dot); }
 .legend-dot.proposition { background: var(--proposition-dot); }
 
-/* ── Filter buttons ── */
+/* -- Filter buttons -- */
 .filter-bar {
   display: flex;
   flex-wrap: wrap;
@@ -492,7 +408,7 @@ h1 {
   border-color: var(--accent);
 }
 
-/* ── Back link ── */
+/* -- Back link -- */
 .back-link {
   display: inline-block;
   margin-bottom: 1rem;
@@ -501,7 +417,7 @@ h1 {
   letter-spacing: 0.04em;
 }
 
-/* ── Footer ── */
+/* -- Footer -- */
 .footer {
   text-align: center;
   padding-top: 2rem;
@@ -510,7 +426,7 @@ h1 {
   font-style: italic;
 }
 
-/* ── Responsive ── */
+/* -- Responsive -- */
 @media (max-width: 500px) {
   html { font-size: 16px; }
   .container { padding: 1rem 0.75rem 2rem; }
@@ -525,18 +441,11 @@ h1 {
   <h1>Trinity</h1>
   <div class="subtitle">Creed &middot; 23 declarations</div>
 
-  <div class="flow-summary">
-  <span class="flow-count axioms">4 axioms</span>
-  <span class="flow-arrow">&#10142;</span>
-  <span class="flow-count theorems">6 theorems</span>
-  <span class="flow-arrow">&#10142;</span>
-  <span class="flow-count derived">13 derived</span>
-</div>
+  
   <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;253, &sect;254, &sect;255</div>
+  <div class="legend"><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot proposition"></span>proposition</span><span class="legend-item"><span class="legend-dot structure"></span>structure</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
 
-  <div class="legend"><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot proposition"></span>proposition</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot structure"></span>structure</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
-
-  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="def">def (7)</button><button class="filter-btn" data-filter="proposition">proposition (1)</button><button class="filter-btn" data-filter="inductive">inductive (2)</button><button class="filter-btn" data-filter="opaque">opaque (1)</button><button class="filter-btn" data-filter="structure">structure (2)</button><button class="filter-btn" data-filter="theorem">theorem (10)</button></div>
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="def">def (7)</button><button class="filter-btn" data-filter="inductive">inductive (2)</button><button class="filter-btn" data-filter="opaque">opaque (1)</button><button class="filter-btn" data-filter="proposition">proposition (1)</button><button class="filter-btn" data-filter="structure">structure (2)</button><button class="filter-btn" data-filter="theorem">theorem (10)</button></div>
 
   <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
 
@@ -548,9 +457,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque DivineSubstance : Type := Unit
-</code></pre></div>
-<div class="node-desc">The divine substance — what all three persons share.</div>
+    <div class="node-prop"><pre><code>opaque DivineSubstance : Type := Unit</code></pre></div>
   </div>
 </div>
 <div class="node-card kind-structure" data-kind="structure" data-name="DivinePerson">
@@ -561,8 +468,7 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>structure DivinePerson where</code></pre></div>
-<div class="node-desc">A divine person. In Trinitarian theology, a person is NOT an</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="father">father</span><span class="dep-chip" data-target="son">son</span><span class="dep-chip" data-target="holySpirit">holySpirit</span><span class="dep-chip" data-target="persons_are_distinct">persons_are_distinct</span><span class="dep-chip" data-target="standard_identity_problem">standard_identity_problem</span><span class="dep-chip" data-target="relativelySame">relativelySame</span><span class="dep-chip" data-target="different_person_father_son">different_person_father_son</span><span class="dep-chip" data-target="different_person_father_spirit">different_person_father_spirit</span><span class="dep-chip" data-target="different_person_son_spirit">different_person_son_spirit</span><span class="dep-chip" data-target="relative_identity_breaks_leibniz">relative_identity_breaks_leibniz</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="different_person_father_son">different_person_father_son</span><span class="dep-chip" data-target="different_person_father_spirit">different_person_father_spirit</span><span class="dep-chip" data-target="different_person_son_spirit">different_person_son_spirit</span><span class="dep-chip" data-target="father">father</span><span class="dep-chip" data-target="holySpirit">holySpirit</span><span class="dep-chip" data-target="persons_are_distinct">persons_are_distinct</span><span class="dep-chip" data-target="relative_identity_breaks_leibniz">relative_identity_breaks_leibniz</span><span class="dep-chip" data-target="relativelySame">relativelySame</span><span class="dep-chip" data-target="son">son</span><span class="dep-chip" data-target="standard_identity_problem">standard_identity_problem</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="father">
@@ -573,9 +479,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>def father : DivinePerson := { name := &quot;Father&quot;, isDivineSubstance := True }</code></pre></div>
-<div class="node-desc">§253: The three persons</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DivinePerson">DivinePerson</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="persons_are_distinct">persons_are_distinct</span><span class="dep-chip" data-target="standard_identity_problem">standard_identity_problem</span><span class="dep-chip" data-target="same_god_father_son">same_god_father_son</span><span class="dep-chip" data-target="same_god_father_spirit">same_god_father_spirit</span><span class="dep-chip" data-target="different_person_father_son">different_person_father_son</span><span class="dep-chip" data-target="different_person_father_spirit">different_person_father_spirit</span><span class="dep-chip" data-target="relative_identity_breaks_leibniz">relative_identity_breaks_leibniz</span><span class="dep-chip" data-target="DivinePerson">DivinePerson</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="different_person_father_son">different_person_father_son</span><span class="dep-chip" data-target="different_person_father_spirit">different_person_father_spirit</span><span class="dep-chip" data-target="persons_are_distinct">persons_are_distinct</span><span class="dep-chip" data-target="relative_identity_breaks_leibniz">relative_identity_breaks_leibniz</span><span class="dep-chip" data-target="same_god_father_son">same_god_father_son</span><span class="dep-chip" data-target="same_god_father_spirit">same_god_father_spirit</span><span class="dep-chip" data-target="standard_identity_problem">standard_identity_problem</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="son">
@@ -587,7 +492,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def son : DivinePerson := { name := &quot;Son&quot;, isDivineSubstance := True }</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DivinePerson">DivinePerson</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="DivinePerson">DivinePerson</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="different_person_father_son">different_person_father_son</span><span class="dep-chip" data-target="different_person_son_spirit">different_person_son_spirit</span><span class="dep-chip" data-target="persons_are_distinct">persons_are_distinct</span><span class="dep-chip" data-target="relative_identity_breaks_leibniz">relative_identity_breaks_leibniz</span><span class="dep-chip" data-target="same_god_father_son">same_god_father_son</span><span class="dep-chip" data-target="same_god_son_spirit">same_god_son_spirit</span><span class="dep-chip" data-target="standard_identity_problem">standard_identity_problem</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="holySpirit">
@@ -597,10 +502,9 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def holySpirit : DivinePerson := { name := &quot;Holy Spirit&quot;, isDivineSubstance := True }
-</code></pre></div>
+    <div class="node-prop"><pre><code>def holySpirit : DivinePerson := { name := &quot;Holy Spirit&quot;, isDivineSubstance := True }</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DivinePerson">DivinePerson</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="persons_are_distinct">persons_are_distinct</span><span class="dep-chip" data-target="same_god_father_spirit">same_god_father_spirit</span><span class="dep-chip" data-target="same_god_son_spirit">same_god_son_spirit</span><span class="dep-chip" data-target="different_person_father_spirit">different_person_father_spirit</span><span class="dep-chip" data-target="different_person_son_spirit">different_person_son_spirit</span><span class="dep-chip" data-target="DivinePerson">DivinePerson</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="different_person_father_spirit">different_person_father_spirit</span><span class="dep-chip" data-target="different_person_son_spirit">different_person_son_spirit</span><span class="dep-chip" data-target="persons_are_distinct">persons_are_distinct</span><span class="dep-chip" data-target="same_god_father_spirit">same_god_father_spirit</span><span class="dep-chip" data-target="same_god_son_spirit">same_god_son_spirit</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="persons_are_distinct">
@@ -611,10 +515,9 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem persons_are_distinct :
-    father ≠ son ∧ son ≠ holySpirit ∧ father ≠ holySpirit</code></pre></div>
-<div class="node-desc">§254: The persons are really distinct.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DivinePerson">DivinePerson</span><span class="dep-chip" data-target="father">father</span><span class="dep-chip" data-target="holySpirit">holySpirit</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="DivinePerson">DivinePerson</span><span class="dep-chip" data-target="father">father</span><span class="dep-chip" data-target="holySpirit">holySpirit</span></div></div>
+    father ≠ son ∧ son ≠ holySpirit ∧ father ≠ holySpirit := by
+  refine ⟨?_, ?_, ?_⟩ &lt;;&gt; intro h &lt;;&gt; simp [father, son, holySpirit, DivinePerson.mk.injEq] at h</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DivinePerson">DivinePerson</span><span class="dep-chip" data-target="father">father</span><span class="dep-chip" data-target="holySpirit">holySpirit</span><span class="dep-chip" data-target="son">son</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="standard_identity_problem">
@@ -629,10 +532,9 @@ h1 {
     -- Then by transitivity: father = son
     -- But we proved father ≠ son
     -- So we CANNOT use standard identity for &quot;is God&quot;
-    father ≠ son</code></pre></div>
-<div class="node-desc">Standard identity problem: if two persons are both &quot;the divine</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DivinePerson">DivinePerson</span><span class="dep-chip" data-target="father">father</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="DivinePerson">DivinePerson</span><span class="dep-chip" data-target="father">father</span></div></div>
+    father ≠ son := by
+  simp [father, son, DivinePerson.mk.injEq]</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DivinePerson">DivinePerson</span><span class="dep-chip" data-target="father">father</span><span class="dep-chip" data-target="son">son</span></div></div>
   </div>
 </div>
 <div class="node-card kind-inductive" data-kind="inductive" data-name="Sortal">
@@ -643,8 +545,7 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>inductive Sortal where</code></pre></div>
-<div class="node-desc">A sortal — a way of classifying entities.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="relativelySame">relativelySame</span><span class="dep-chip" data-target="same_god_father_son">same_god_father_son</span><span class="dep-chip" data-target="same_god_father_spirit">same_god_father_spirit</span><span class="dep-chip" data-target="same_god_son_spirit">same_god_son_spirit</span><span class="dep-chip" data-target="different_person_father_son">different_person_father_son</span><span class="dep-chip" data-target="different_person_father_spirit">different_person_father_spirit</span><span class="dep-chip" data-target="different_person_son_spirit">different_person_son_spirit</span><span class="dep-chip" data-target="relative_identity_breaks_leibniz">relative_identity_breaks_leibniz</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="different_person_father_son">different_person_father_son</span><span class="dep-chip" data-target="different_person_father_spirit">different_person_father_spirit</span><span class="dep-chip" data-target="different_person_son_spirit">different_person_son_spirit</span><span class="dep-chip" data-target="relative_identity_breaks_leibniz">relative_identity_breaks_leibniz</span><span class="dep-chip" data-target="relativelySame">relativelySame</span><span class="dep-chip" data-target="same_god_father_son">same_god_father_son</span><span class="dep-chip" data-target="same_god_father_spirit">same_god_father_spirit</span><span class="dep-chip" data-target="same_god_son_spirit">same_god_son_spirit</span></div></div>
   </div>
 </div>
 <div class="node-card kind-proposition" data-kind="proposition" data-name="relativelySame">
@@ -654,10 +555,12 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def relativelySame (s : Sortal) (x y : DivinePerson) : Prop</code></pre></div>
-<div class="node-desc">Relative identity: X and Y can be &quot;the same F&quot; without being</div>
+    <div class="node-prop"><pre><code>def relativelySame (s : Sortal) (x y : DivinePerson) : Prop :=
+  match s with
+  | Sortal.god =&gt; x.isDivineSubstance ∧ y.isDivineSubstance
+  | Sortal.person =&gt; x = y</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DivinePerson">DivinePerson</span><span class="dep-chip" data-target="Sortal">Sortal</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="same_god_father_son">same_god_father_son</span><span class="dep-chip" data-target="same_god_father_spirit">same_god_father_spirit</span><span class="dep-chip" data-target="same_god_son_spirit">same_god_son_spirit</span><span class="dep-chip" data-target="different_person_father_son">different_person_father_son</span><span class="dep-chip" data-target="different_person_father_spirit">different_person_father_spirit</span><span class="dep-chip" data-target="different_person_son_spirit">different_person_son_spirit</span><span class="dep-chip" data-target="relative_identity_breaks_leibniz">relative_identity_breaks_leibniz</span><span class="dep-chip" data-target="DivinePerson">DivinePerson</span><span class="dep-chip" data-target="Sortal">Sortal</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="different_person_father_son">different_person_father_son</span><span class="dep-chip" data-target="different_person_father_spirit">different_person_father_spirit</span><span class="dep-chip" data-target="different_person_son_spirit">different_person_son_spirit</span><span class="dep-chip" data-target="relative_identity_breaks_leibniz">relative_identity_breaks_leibniz</span><span class="dep-chip" data-target="same_god_father_son">same_god_father_son</span><span class="dep-chip" data-target="same_god_father_spirit">same_god_father_spirit</span><span class="dep-chip" data-target="same_god_son_spirit">same_god_son_spirit</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="same_god_father_son">
@@ -668,10 +571,9 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem same_god_father_son :
-    relativelySame Sortal.god father son</code></pre></div>
-<div class="node-desc">§253: Father, Son, and Holy Spirit are the same GOD.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Sortal">Sortal</span><span class="dep-chip" data-target="father">father</span><span class="dep-chip" data-target="relativelySame">relativelySame</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="Sortal">Sortal</span><span class="dep-chip" data-target="father">father</span><span class="dep-chip" data-target="relativelySame">relativelySame</span></div></div>
+    relativelySame Sortal.god father son := by
+  simp [relativelySame, father, son]</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Sortal">Sortal</span><span class="dep-chip" data-target="father">father</span><span class="dep-chip" data-target="relativelySame">relativelySame</span><span class="dep-chip" data-target="son">son</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="same_god_father_spirit">
@@ -682,9 +584,9 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem same_god_father_spirit :
-    relativelySame Sortal.god father holySpirit</code></pre></div>
+    relativelySame Sortal.god father holySpirit := by
+  simp [relativelySame, father, holySpirit]</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Sortal">Sortal</span><span class="dep-chip" data-target="father">father</span><span class="dep-chip" data-target="holySpirit">holySpirit</span><span class="dep-chip" data-target="relativelySame">relativelySame</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="Sortal">Sortal</span><span class="dep-chip" data-target="father">father</span><span class="dep-chip" data-target="holySpirit">holySpirit</span><span class="dep-chip" data-target="relativelySame">relativelySame</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="same_god_son_spirit">
@@ -695,9 +597,9 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem same_god_son_spirit :
-    relativelySame Sortal.god son holySpirit</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Sortal">Sortal</span><span class="dep-chip" data-target="holySpirit">holySpirit</span><span class="dep-chip" data-target="relativelySame">relativelySame</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="Sortal">Sortal</span><span class="dep-chip" data-target="holySpirit">holySpirit</span><span class="dep-chip" data-target="relativelySame">relativelySame</span></div></div>
+    relativelySame Sortal.god son holySpirit := by
+  simp [relativelySame, son, holySpirit]</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Sortal">Sortal</span><span class="dep-chip" data-target="holySpirit">holySpirit</span><span class="dep-chip" data-target="relativelySame">relativelySame</span><span class="dep-chip" data-target="son">son</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="different_person_father_son">
@@ -708,10 +610,9 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem different_person_father_son :
-    ¬relativelySame Sortal.person father son</code></pre></div>
-<div class="node-desc">§254: Father, Son, and Holy Spirit are different PERSONS.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DivinePerson">DivinePerson</span><span class="dep-chip" data-target="Sortal">Sortal</span><span class="dep-chip" data-target="father">father</span><span class="dep-chip" data-target="relativelySame">relativelySame</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="DivinePerson">DivinePerson</span><span class="dep-chip" data-target="Sortal">Sortal</span><span class="dep-chip" data-target="father">father</span><span class="dep-chip" data-target="relativelySame">relativelySame</span></div></div>
+    ¬relativelySame Sortal.person father son := by
+  simp [relativelySame, father, son, DivinePerson.mk.injEq]</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DivinePerson">DivinePerson</span><span class="dep-chip" data-target="Sortal">Sortal</span><span class="dep-chip" data-target="father">father</span><span class="dep-chip" data-target="relativelySame">relativelySame</span><span class="dep-chip" data-target="son">son</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="different_person_father_spirit">
@@ -722,9 +623,9 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem different_person_father_spirit :
-    ¬relativelySame Sortal.person father holySpirit</code></pre></div>
+    ¬relativelySame Sortal.person father holySpirit := by
+  simp [relativelySame, father, holySpirit, DivinePerson.mk.injEq]</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DivinePerson">DivinePerson</span><span class="dep-chip" data-target="Sortal">Sortal</span><span class="dep-chip" data-target="father">father</span><span class="dep-chip" data-target="holySpirit">holySpirit</span><span class="dep-chip" data-target="relativelySame">relativelySame</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="DivinePerson">DivinePerson</span><span class="dep-chip" data-target="Sortal">Sortal</span><span class="dep-chip" data-target="father">father</span><span class="dep-chip" data-target="holySpirit">holySpirit</span><span class="dep-chip" data-target="relativelySame">relativelySame</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="different_person_son_spirit">
@@ -735,9 +636,9 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem different_person_son_spirit :
-    ¬relativelySame Sortal.person son holySpirit</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DivinePerson">DivinePerson</span><span class="dep-chip" data-target="Sortal">Sortal</span><span class="dep-chip" data-target="holySpirit">holySpirit</span><span class="dep-chip" data-target="relativelySame">relativelySame</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="DivinePerson">DivinePerson</span><span class="dep-chip" data-target="Sortal">Sortal</span><span class="dep-chip" data-target="holySpirit">holySpirit</span><span class="dep-chip" data-target="relativelySame">relativelySame</span></div></div>
+    ¬relativelySame Sortal.person son holySpirit := by
+  simp [relativelySame, son, holySpirit, DivinePerson.mk.injEq]</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DivinePerson">DivinePerson</span><span class="dep-chip" data-target="Sortal">Sortal</span><span class="dep-chip" data-target="holySpirit">holySpirit</span><span class="dep-chip" data-target="relativelySame">relativelySame</span><span class="dep-chip" data-target="son">son</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="relative_identity_breaks_leibniz">
@@ -751,10 +652,11 @@ h1 {
     -- Same God...
     relativelySame Sortal.god father son ∧
     -- ...but different persons
-    ¬relativelySame Sortal.person father son</code></pre></div>
-<div class="node-desc">THE KEY FINDING: Relative identity breaks Leibniz's law.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DivinePerson">DivinePerson</span><span class="dep-chip" data-target="Sortal">Sortal</span><span class="dep-chip" data-target="father">father</span><span class="dep-chip" data-target="relativelySame">relativelySame</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="DivinePerson">DivinePerson</span><span class="dep-chip" data-target="Sortal">Sortal</span><span class="dep-chip" data-target="father">father</span><span class="dep-chip" data-target="relativelySame">relativelySame</span></div></div>
+    ¬relativelySame Sortal.person father son := by
+  constructor
+  · simp [relativelySame, father, son]
+  · simp [relativelySame, father, son, DivinePerson.mk.injEq]</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DivinePerson">DivinePerson</span><span class="dep-chip" data-target="Sortal">Sortal</span><span class="dep-chip" data-target="father">father</span><span class="dep-chip" data-target="relativelySame">relativelySame</span><span class="dep-chip" data-target="son">son</span></div></div>
   </div>
 </div>
 <div class="node-card kind-inductive" data-kind="inductive" data-name="TrinRelation">
@@ -765,8 +667,7 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>inductive TrinRelation where</code></pre></div>
-<div class="node-desc">A trinitarian relation — the basis of personal distinction.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="RelationalPerson">RelationalPerson</span><span class="dep-chip" data-target="fatherAsRelation">fatherAsRelation</span><span class="dep-chip" data-target="sonAsRelation">sonAsRelation</span><span class="dep-chip" data-target="spiritAsRelation">spiritAsRelation</span><span class="dep-chip" data-target="relationsOppose">relationsOppose</span><span class="dep-chip" data-target="no_opposition_no_distinction">no_opposition_no_distinction</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="RelationalPerson">RelationalPerson</span><span class="dep-chip" data-target="fatherAsRelation">fatherAsRelation</span><span class="dep-chip" data-target="no_opposition_no_distinction">no_opposition_no_distinction</span><span class="dep-chip" data-target="relationsOppose">relationsOppose</span><span class="dep-chip" data-target="sonAsRelation">sonAsRelation</span><span class="dep-chip" data-target="spiritAsRelation">spiritAsRelation</span></div></div>
   </div>
 </div>
 <div class="node-card kind-structure" data-kind="structure" data-name="RelationalPerson">
@@ -777,9 +678,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>structure RelationalPerson where</code></pre></div>
-<div class="node-desc">§255: A divine person IS a relation, not a substance that has one.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="TrinRelation">TrinRelation</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="fatherAsRelation">fatherAsRelation</span><span class="dep-chip" data-target="sonAsRelation">sonAsRelation</span><span class="dep-chip" data-target="spiritAsRelation">spiritAsRelation</span><span class="dep-chip" data-target="TrinRelation">TrinRelation</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="fatherAsRelation">fatherAsRelation</span><span class="dep-chip" data-target="sonAsRelation">sonAsRelation</span><span class="dep-chip" data-target="spiritAsRelation">spiritAsRelation</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="fatherAsRelation">
@@ -789,10 +689,9 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def fatherAsRelation : RelationalPerson</code></pre></div>
-<div class="node-desc">The persons defined as relations</div>
+    <div class="node-prop"><pre><code>def fatherAsRelation : RelationalPerson :=
+  { relation := TrinRelation.paternity, isDivineSubstance := True }</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="RelationalPerson">RelationalPerson</span><span class="dep-chip" data-target="TrinRelation">TrinRelation</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="TrinRelation">TrinRelation</span><span class="dep-chip" data-target="RelationalPerson">RelationalPerson</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="sonAsRelation">
@@ -802,9 +701,9 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def sonAsRelation : RelationalPerson</code></pre></div>
+    <div class="node-prop"><pre><code>def sonAsRelation : RelationalPerson :=
+  { relation := TrinRelation.filiation, isDivineSubstance := True }</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="RelationalPerson">RelationalPerson</span><span class="dep-chip" data-target="TrinRelation">TrinRelation</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="TrinRelation">TrinRelation</span><span class="dep-chip" data-target="RelationalPerson">RelationalPerson</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="spiritAsRelation">
@@ -814,9 +713,9 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def spiritAsRelation : RelationalPerson</code></pre></div>
+    <div class="node-prop"><pre><code>def spiritAsRelation : RelationalPerson :=
+  { relation := TrinRelation.procession, isDivineSubstance := True }</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="RelationalPerson">RelationalPerson</span><span class="dep-chip" data-target="TrinRelation">TrinRelation</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="TrinRelation">TrinRelation</span><span class="dep-chip" data-target="RelationalPerson">RelationalPerson</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="relationsOppose">
@@ -826,10 +725,15 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def relationsOppose (r1 r2 : TrinRelation) : Bool</code></pre></div>
-<div class="node-desc">§255: &quot;Everything in them is one where there is no opposition</div>
+    <div class="node-prop"><pre><code>def relationsOppose (r1 r2 : TrinRelation) : Bool :=
+  match r1, r2 with
+  | .paternity, .filiation =&gt; true   -- Father-Son opposition
+  | .filiation, .paternity =&gt; true
+  | .spiration, .procession =&gt; true  -- Spirit procession opposition
+  | .procession, .spiration =&gt; true
+  | _, _ =&gt; false</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="TrinRelation">TrinRelation</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="no_opposition_no_distinction">no_opposition_no_distinction</span><span class="dep-chip" data-target="TrinRelation">TrinRelation</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="no_opposition_no_distinction">no_opposition_no_distinction</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="no_opposition_no_distinction">
@@ -843,10 +747,9 @@ h1 {
     (h : relationsOppose r1 r2 = false) :
     -- The relations don't generate distinct persons
     -- (they're aspects of the same reality)
-    relationsOppose r1 r2 = false</code></pre></div>
-<div class="node-desc">Where there is no opposition, there is no distinction.</div>
+    relationsOppose r1 r2 = false :=
+  h</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="TrinRelation">TrinRelation</span><span class="dep-chip" data-target="relationsOppose">relationsOppose</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="TrinRelation">TrinRelation</span><span class="dep-chip" data-target="relationsOppose">relationsOppose</span></div></div>
   </div>
 </div>
   </div>

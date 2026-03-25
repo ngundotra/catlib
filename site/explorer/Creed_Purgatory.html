@@ -143,7 +143,7 @@ h1 {
   line-height: 1.6;
 }
 
-/* ── Search ── */
+/* -- Search -- */
 .search-box {
   width: 100%;
   padding: 0.8rem 1rem;
@@ -167,91 +167,7 @@ h1 {
   font-style: italic;
 }
 
-/* ── Category sections ── */
-.category-header {
-  font-family: Cinzel, Georgia, serif;
-  font-size: 1.1rem;
-  font-weight: 400;
-  color: var(--accent);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  font-variant: small-caps;
-  margin: 1.8rem 0 0.8rem;
-  padding-bottom: 0.4rem;
-  border-bottom: 1px solid var(--border);
-}
-
-/* ── File cards ── */
-.file-card {
-  display: block;
-  padding: 1rem 1.1rem;
-  margin-bottom: 0.5rem;
-  background: var(--bg-parchment);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  text-decoration: none;
-  color: var(--text);
-  transition: background 0.15s, border-color 0.15s;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.file-card:hover, .file-card:active {
-  background: var(--bg-vellum);
-  border-color: var(--accent-gold);
-  text-decoration: none;
-}
-
-.file-card-name {
-  font-family: Cinzel, Georgia, serif;
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  margin-bottom: 0.3rem;
-}
-
-.file-card-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  font-size: 0.82rem;
-  color: var(--text-light);
-}
-
-.file-card-meta .tag {
-  display: inline-block;
-  padding: 0.15rem 0.5rem;
-  border-radius: 3px;
-  font-size: 0.75rem;
-  font-family: Cinzel, Georgia, serif;
-  letter-spacing: 0.03em;
-}
-
-.tag-axiom { background: var(--axiom-bg); color: var(--axiom-dot); border: 1px solid var(--axiom-border); }
-.tag-theorem { background: var(--theorem-bg); color: var(--theorem-dot); border: 1px solid var(--theorem-border); }
-.tag-def { background: var(--def-bg); color: var(--def-dot); border: 1px solid var(--def-border); }
-.tag-proposition { background: var(--proposition-bg); color: var(--proposition-dot); border: 1px solid var(--proposition-border); }
-
-.file-card-ccc {
-  font-size: 0.78rem;
-  color: var(--text-muted);
-  margin-top: 0.3rem;
-}
-
-/* ── Summary stats ── */
-.stats-bar {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-  margin-bottom: 1.5rem;
-  font-size: 0.9rem;
-  color: var(--text-light);
-  font-style: italic;
-}
-
-.stats-bar span { white-space: nowrap; }
-
-/* ── Node cards (per-file page) ── */
+/* -- Node cards -- */
 .node-card {
   margin-bottom: 0.4rem;
   border: 1px solid var(--border);
@@ -405,7 +321,7 @@ h1 {
   color: var(--text-muted);
 }
 
-/* ── Flow diagram header ── */
+/* -- Flow diagram header -- */
 .flow-summary {
   display: flex;
   justify-content: center;
@@ -431,7 +347,7 @@ h1 {
 .flow-count.theorems { background: var(--theorem-bg); color: var(--theorem-dot); }
 .flow-count.derived { background: var(--def-bg); color: var(--def-dot); }
 
-/* ── Legend ── */
+/* -- Legend -- */
 .legend {
   display: flex;
   flex-wrap: wrap;
@@ -463,7 +379,7 @@ h1 {
 .legend-dot.inductive { background: var(--inductive-dot); }
 .legend-dot.proposition { background: var(--proposition-dot); }
 
-/* ── Filter buttons ── */
+/* -- Filter buttons -- */
 .filter-bar {
   display: flex;
   flex-wrap: wrap;
@@ -492,7 +408,7 @@ h1 {
   border-color: var(--accent);
 }
 
-/* ── Back link ── */
+/* -- Back link -- */
 .back-link {
   display: inline-block;
   margin-bottom: 1rem;
@@ -501,7 +417,7 @@ h1 {
   letter-spacing: 0.04em;
 }
 
-/* ── Footer ── */
+/* -- Footer -- */
 .footer {
   text-align: center;
   padding-top: 2rem;
@@ -510,7 +426,7 @@ h1 {
   font-style: italic;
 }
 
-/* ── Responsive ── */
+/* -- Responsive -- */
 @media (max-width: 500px) {
   html { font-size: 16px; }
   .container { padding: 1rem 0.75rem 2rem; }
@@ -523,20 +439,13 @@ h1 {
 <div class="container">
   <a href="index.html" class="back-link">&larr; All files</a>
   <h1>Purgatory</h1>
-  <div class="subtitle">Creed &middot; 33 declarations</div>
+  <div class="subtitle">Creed &middot; 51 declarations</div>
 
-  <div class="flow-summary">
-  <span class="flow-count axioms">15 axioms</span>
-  <span class="flow-arrow">&#10142;</span>
-  <span class="flow-count theorems">12 theorems</span>
-  <span class="flow-arrow">&#10142;</span>
-  <span class="flow-count derived">6 derived</span>
-</div>
-  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1023, &sect;1030, &sect;1031, &sect;1032, &sect;1033, &sect;997</div>
-
+  
+  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;997, &sect;1023, &sect;1030, &sect;1031, &sect;1032, &sect;1033</div>
   <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
 
-  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (10)</button><button class="filter-btn" data-filter="def">def (2)</button><button class="filter-btn" data-filter="opaque">opaque (9)</button><button class="filter-btn" data-filter="theorem">theorem (12)</button></div>
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (10)</button><button class="filter-btn" data-filter="def">def (18)</button><button class="filter-btn" data-filter="opaque">opaque (9)</button><button class="filter-btn" data-filter="theorem">theorem (14)</button></div>
 
   <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
 
@@ -548,10 +457,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque HolinessDegree : Type
-</code></pre></div>
-<div class="node-desc">The degree of holiness a person possesses. │   ⚠ HIDDEN ASSUMPTION: Holiness is a spectrum, not binary.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="holinessLt">holinessLt</span><span class="dep-chip" data-target="heavenThreshold">heavenThreshold</span><span class="dep-chip" data-target="personHoliness">personHoliness</span></div></div>
+    <div class="node-prop"><pre><code>opaque HolinessDegree : Type</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="heavenThreshold">heavenThreshold</span><span class="dep-chip" data-target="holinessLt">holinessLt</span><span class="dep-chip" data-target="personHoliness">personHoliness</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="holinessLt">
@@ -561,11 +468,9 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque holinessLt : HolinessDegree → HolinessDegree → Prop
-</code></pre></div>
-<div class="node-desc">Ordering on holiness degrees — some are higher than others.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HolinessDegree">HolinessDegree</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="HolinessDegree">HolinessDegree</span></div></div>
+    <div class="node-prop"><pre><code>opaque holinessLt : HolinessDegree → HolinessDegree → Prop</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HolinessDegree">HolinessDegree</span><span class="dep-chip" data-target="heavenThreshold">heavenThreshold</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="heavenThreshold">heavenThreshold</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="heavenThreshold">
@@ -575,11 +480,9 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>axiom heavenThreshold : HolinessDegree
-</code></pre></div>
-<div class="node-desc">The threshold of holiness required for heaven.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HolinessDegree">HolinessDegree</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="HolinessDegree">HolinessDegree</span></div></div>
+    <div class="node-prop"><pre><code>axiom heavenThreshold : HolinessDegree</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HolinessDegree">HolinessDegree</span><span class="dep-chip" data-target="fullyPurified">fullyPurified</span><span class="dep-chip" data-target="holinessLt">holinessLt</span><span class="dep-chip" data-target="personHoliness">personHoliness</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="holinessLt">holinessLt</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="personHoliness">
@@ -589,11 +492,9 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>axiom personHoliness : Person → HolinessDegree
-</code></pre></div>
-<div class="node-desc">The holiness degree of a given person.</div>
+    <div class="node-prop"><pre><code>axiom personHoliness : Person → HolinessDegree</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HolinessDegree">HolinessDegree</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="HolinessDegree">HolinessDegree</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="heavenThreshold">heavenThreshold</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="diedInGrace">
@@ -603,10 +504,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque diedInGrace : Person → Prop
-</code></pre></div>
-<div class="node-desc">Whether a person died in God's grace (chose God, even if imperfectly purified).</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="imperfect_purification_exists">imperfect_purification_exists</span><span class="dep-chip" data-target="post_mortem_purification">post_mortem_purification</span><span class="dep-chip" data-target="purified_in_grace_sees_god">purified_in_grace_sees_god</span><span class="dep-chip" data-target="grace_at_death_guarantees_heaven">grace_at_death_guarantees_heaven</span><span class="dep-chip" data-target="death_finalizes_choice_not_state">death_finalizes_choice_not_state</span><span class="dep-chip" data-target="grace_and_mortal_sin_exclusive">grace_and_mortal_sin_exclusive</span></div></div>
+    <div class="node-prop"><pre><code>opaque diedInGrace : Person → Prop</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="death_finalizes_choice_not_state">death_finalizes_choice_not_state</span><span class="dep-chip" data-target="grace_and_mortal_sin_exclusive">grace_and_mortal_sin_exclusive</span><span class="dep-chip" data-target="grace_at_death_guarantees_heaven">grace_at_death_guarantees_heaven</span><span class="dep-chip" data-target="imperfect_purification_exists">imperfect_purification_exists</span><span class="dep-chip" data-target="post_mortem_purification">post_mortem_purification</span><span class="dep-chip" data-target="purified_in_grace_sees_god">purified_in_grace_sees_god</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="diedInMortalSin">
@@ -616,10 +515,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque diedInMortalSin : Person → Prop
-</code></pre></div>
-<div class="node-desc">Whether a person died in mortal sin (chose against God).</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="mortal_sin_excludes_purgatory">mortal_sin_excludes_purgatory</span><span class="dep-chip" data-target="death_finalizes_choice_not_state">death_finalizes_choice_not_state</span><span class="dep-chip" data-target="hell_purgatory_boundary">hell_purgatory_boundary</span><span class="dep-chip" data-target="grace_and_mortal_sin_exclusive">grace_and_mortal_sin_exclusive</span></div></div>
+    <div class="node-prop"><pre><code>opaque diedInMortalSin : Person → Prop</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="death_finalizes_choice_not_state">death_finalizes_choice_not_state</span><span class="dep-chip" data-target="grace_and_mortal_sin_exclusive">grace_and_mortal_sin_exclusive</span><span class="dep-chip" data-target="hell_purgatory_boundary">hell_purgatory_boundary</span><span class="dep-chip" data-target="mortal_sin_excludes_purgatory">mortal_sin_excludes_purgatory</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="fullyPurified">
@@ -629,10 +526,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque fullyPurified : Person → Prop
-</code></pre></div>
-<div class="node-desc">Whether a person is fully purified (holiness meets the threshold).</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="holiness_required_for_heaven">holiness_required_for_heaven</span><span class="dep-chip" data-target="imperfect_purification_exists">imperfect_purification_exists</span><span class="dep-chip" data-target="post_mortem_purification">post_mortem_purification</span><span class="dep-chip" data-target="purified_in_grace_sees_god">purified_in_grace_sees_god</span><span class="dep-chip" data-target="purgatory_achieves_holiness">purgatory_achieves_holiness</span><span class="dep-chip" data-target="grace_at_death_guarantees_heaven">grace_at_death_guarantees_heaven</span><span class="dep-chip" data-target="fully_purified_skips_purgatory">fully_purified_skips_purgatory</span></div></div>
+    <div class="node-prop"><pre><code>opaque fullyPurified : Person → Prop</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="fully_purified_skips_purgatory">fully_purified_skips_purgatory</span><span class="dep-chip" data-target="grace_at_death_guarantees_heaven">grace_at_death_guarantees_heaven</span><span class="dep-chip" data-target="heavenThreshold">heavenThreshold</span><span class="dep-chip" data-target="holiness_required_for_heaven">holiness_required_for_heaven</span><span class="dep-chip" data-target="imperfect_purification_exists">imperfect_purification_exists</span><span class="dep-chip" data-target="post_mortem_purification">post_mortem_purification</span><span class="dep-chip" data-target="purgatory_achieves_holiness">purgatory_achieves_holiness</span><span class="dep-chip" data-target="purgatory_full_promise">purgatory_full_promise</span><span class="dep-chip" data-target="purified_in_grace_sees_god">purified_in_grace_sees_god</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="inPurgatory">
@@ -642,10 +537,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque inPurgatory : Person → Prop
-</code></pre></div>
-<div class="node-desc">Whether a person is in the state of purgatorial purification.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="post_mortem_purification">post_mortem_purification</span><span class="dep-chip" data-target="purgatory_leads_to_heaven">purgatory_leads_to_heaven</span><span class="dep-chip" data-target="prayer_aids_dead">prayer_aids_dead</span><span class="dep-chip" data-target="mortal_sin_excludes_purgatory">mortal_sin_excludes_purgatory</span><span class="dep-chip" data-target="purgatory_guarantees_vision">purgatory_guarantees_vision</span><span class="dep-chip" data-target="purgatory_achieves_holiness">purgatory_achieves_holiness</span><span class="dep-chip" data-target="hell_purgatory_boundary">hell_purgatory_boundary</span></div></div>
+    <div class="node-prop"><pre><code>opaque inPurgatory : Person → Prop</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hell_purgatory_boundary">hell_purgatory_boundary</span><span class="dep-chip" data-target="mortal_sin_excludes_purgatory">mortal_sin_excludes_purgatory</span><span class="dep-chip" data-target="post_mortem_purification">post_mortem_purification</span><span class="dep-chip" data-target="prayer_aids_dead">prayer_aids_dead</span><span class="dep-chip" data-target="purgatory_achieves_holiness">purgatory_achieves_holiness</span><span class="dep-chip" data-target="purgatory_full_promise">purgatory_full_promise</span><span class="dep-chip" data-target="purgatory_guarantees_vision">purgatory_guarantees_vision</span><span class="dep-chip" data-target="purgatory_is_inhabited">purgatory_is_inhabited</span><span class="dep-chip" data-target="purgatory_leads_to_heaven">purgatory_leads_to_heaven</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="praysFor">
@@ -655,9 +548,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque praysFor : Person → Person → Prop
-</code></pre></div>
-<div class="node-desc">Whether a living person prays for a dead person.</div>
+    <div class="node-prop"><pre><code>opaque praysFor : Person → Person → Prop</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="prayer_aids_dead">prayer_aids_dead</span></div></div>
   </div>
 </div>
@@ -668,9 +559,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque prayerAidsPurification : Person → Prop
-</code></pre></div>
-<div class="node-desc">Whether prayer aids the purification of a person.</div>
+    <div class="node-prop"><pre><code>opaque prayerAidsPurification : Person → Prop</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="prayer_aids_dead">prayer_aids_dead</span></div></div>
   </div>
 </div>
@@ -681,10 +570,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque attainsBeatificVision : Person → Prop
-</code></pre></div>
-<div class="node-desc">Whether a person has attained the beatific vision (heaven).</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="holiness_required_for_heaven">holiness_required_for_heaven</span><span class="dep-chip" data-target="purgatory_leads_to_heaven">purgatory_leads_to_heaven</span><span class="dep-chip" data-target="purified_in_grace_sees_god">purified_in_grace_sees_god</span><span class="dep-chip" data-target="purgatory_guarantees_vision">purgatory_guarantees_vision</span><span class="dep-chip" data-target="grace_at_death_guarantees_heaven">grace_at_death_guarantees_heaven</span></div></div>
+    <div class="node-prop"><pre><code>opaque attainsBeatificVision : Person → Prop</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="grace_at_death_guarantees_heaven">grace_at_death_guarantees_heaven</span><span class="dep-chip" data-target="holiness_required_for_heaven">holiness_required_for_heaven</span><span class="dep-chip" data-target="purgatory_full_promise">purgatory_full_promise</span><span class="dep-chip" data-target="purgatory_guarantees_vision">purgatory_guarantees_vision</span><span class="dep-chip" data-target="purgatory_leads_to_heaven">purgatory_leads_to_heaven</span><span class="dep-chip" data-target="purified_in_grace_sees_god">purified_in_grace_sees_god</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="holiness_required_for_heaven">
@@ -695,11 +582,29 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom holiness_required_for_heaven :
-  ∀ (p : Person), attainsBeatificVision p → fullyPurified p
-</code></pre></div>
-<div class="node-desc">1 (§1030 + Rev 21:27): Nothing impure can enter heaven. │   Source: [Scripture] Rev 21:27 — &quot;Nothing unclean will enter it.</div>
+  ∀ (p : Person), attainsBeatificVision p → fullyPurified p</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="attainsBeatificVision">attainsBeatificVision</span><span class="dep-chip" data-target="fullyPurified">fullyPurified</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="purgatory_achieves_holiness">purgatory_achieves_holiness</span><span class="dep-chip" data-target="attainsBeatificVision">attainsBeatificVision</span><span class="dep-chip" data-target="fullyPurified">fullyPurified</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="purgatory_achieves_holiness">purgatory_achieves_holiness</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="purg_ax1_provenance">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">purg_ax1_provenance</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def purg_ax1_provenance : Provenance := Provenance.scripture &quot;Rev 21:27; Heb 12:14&quot;</code></pre></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="purg_ax1_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">purg_ax1_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def purg_ax1_tag : DenominationalTag := ecumenical</code></pre></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="imperfect_purification_exists">
@@ -710,11 +615,29 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom imperfect_purification_exists :
-  ∃ (p : Person), diedInGrace p ∧ ¬fullyPurified p
-</code></pre></div>
-<div class="node-desc">2 (§1030): A middle state exists. Some die in grace but │   Source: [Definition] CCC §1030 │   ⚠ HIDDEN ASSUMPTION: &quot;Imperfectly purified&quot; presupposes that holiness</div>
+  ∃ (p : Person), diedInGrace p ∧ ¬fullyPurified p</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="diedInGrace">diedInGrace</span><span class="dep-chip" data-target="fullyPurified">fullyPurified</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="diedInGrace">diedInGrace</span><span class="dep-chip" data-target="fullyPurified">fullyPurified</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="attachment_without_guilt_means_purgatory">attachment_without_guilt_means_purgatory</span><span class="dep-chip" data-target="purgatory_is_inhabited">purgatory_is_inhabited</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="purg_ax2_provenance">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">purg_ax2_provenance</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def purg_ax2_provenance : Provenance := Provenance.definition 1030</code></pre></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="purg_ax2_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">purg_ax2_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def purg_ax2_tag : DenominationalTag := catholicOnly</code></pre></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="post_mortem_purification">
@@ -725,11 +648,29 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom post_mortem_purification :
-  ∀ (p : Person), diedInGrace p → ¬fullyPurified p → inPurgatory p
-</code></pre></div>
-<div class="node-desc">3 (§1030): Post-mortem purification occurs. │   Source: [Definition] CCC §1030</div>
+  ∀ (p : Person), diedInGrace p → ¬fullyPurified p → inPurgatory p</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="diedInGrace">diedInGrace</span><span class="dep-chip" data-target="fullyPurified">fullyPurified</span><span class="dep-chip" data-target="inPurgatory">inPurgatory</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="grace_at_death_guarantees_heaven">grace_at_death_guarantees_heaven</span><span class="dep-chip" data-target="diedInGrace">diedInGrace</span><span class="dep-chip" data-target="fullyPurified">fullyPurified</span><span class="dep-chip" data-target="inPurgatory">inPurgatory</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="attachment_without_guilt_means_purgatory">attachment_without_guilt_means_purgatory</span><span class="dep-chip" data-target="grace_at_death_guarantees_heaven">grace_at_death_guarantees_heaven</span><span class="dep-chip" data-target="purgatory_is_inhabited">purgatory_is_inhabited</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="purg_ax3_provenance">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">purg_ax3_provenance</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def purg_ax3_provenance : Provenance := Provenance.definition 1030</code></pre></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="purg_ax3_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">purg_ax3_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def purg_ax3_tag : DenominationalTag := catholicOnly</code></pre></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="purgatory_leads_to_heaven">
@@ -740,11 +681,29 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom purgatory_leads_to_heaven :
-  ∀ (p : Person), inPurgatory p → attainsBeatificVision p
-</code></pre></div>
-<div class="node-desc">4 (§1030): Purgatory is temporary — the purified WILL reach heaven. │   Source: [Definition] CCC §1030</div>
+  ∀ (p : Person), inPurgatory p → attainsBeatificVision p</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="attainsBeatificVision">attainsBeatificVision</span><span class="dep-chip" data-target="inPurgatory">inPurgatory</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="purgatory_guarantees_vision">purgatory_guarantees_vision</span><span class="dep-chip" data-target="purgatory_achieves_holiness">purgatory_achieves_holiness</span><span class="dep-chip" data-target="grace_at_death_guarantees_heaven">grace_at_death_guarantees_heaven</span><span class="dep-chip" data-target="attainsBeatificVision">attainsBeatificVision</span><span class="dep-chip" data-target="inPurgatory">inPurgatory</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="grace_at_death_guarantees_heaven">grace_at_death_guarantees_heaven</span><span class="dep-chip" data-target="purgatory_achieves_holiness">purgatory_achieves_holiness</span><span class="dep-chip" data-target="purgatory_guarantees_vision">purgatory_guarantees_vision</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="purg_ax4_provenance">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">purg_ax4_provenance</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def purg_ax4_provenance : Provenance := Provenance.definition 1030</code></pre></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="purg_ax4_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">purg_ax4_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def purg_ax4_tag : DenominationalTag := catholicOnly</code></pre></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="prayer_aids_dead">
@@ -756,11 +715,28 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom prayer_aids_dead :
   ∀ (living dead : Person), praysFor living dead → inPurgatory dead →
-    prayerAidsPurification dead
-</code></pre></div>
-<div class="node-desc">5 (§1032): Prayer for the dead is efficacious. │   Source: [Scripture] 2 Macc 12:46 — &quot;It is a holy and wholesome │   ⚠ HIDDEN ASSUMPTION: Prayer efficacy crosses the life/death boundary.</div>
+    prayerAidsPurification dead</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="inPurgatory">inPurgatory</span><span class="dep-chip" data-target="prayerAidsPurification">prayerAidsPurification</span><span class="dep-chip" data-target="praysFor">praysFor</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="inPurgatory">inPurgatory</span><span class="dep-chip" data-target="prayerAidsPurification">prayerAidsPurification</span><span class="dep-chip" data-target="praysFor">praysFor</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="purg_ax5_provenance">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">purg_ax5_provenance</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def purg_ax5_provenance : Provenance := Provenance.scripture &quot;2 Macc 12:46&quot;</code></pre></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="purg_ax5_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">purg_ax5_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def purg_ax5_tag : DenominationalTag := catholicOnly</code></pre></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="mortal_sin_excludes_purgatory">
@@ -771,11 +747,29 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom mortal_sin_excludes_purgatory :
-  ∀ (p : Person), diedInMortalSin p → ¬inPurgatory p
-</code></pre></div>
-<div class="node-desc">6: Those who die in mortal sin do NOT enter purgatory. │   Source: [Definition] CCC §1033 (from Hell.lean's scope)</div>
+  ∀ (p : Person), diedInMortalSin p → ¬inPurgatory p</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="diedInMortalSin">diedInMortalSin</span><span class="dep-chip" data-target="inPurgatory">inPurgatory</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hell_purgatory_boundary">hell_purgatory_boundary</span><span class="dep-chip" data-target="diedInMortalSin">diedInMortalSin</span><span class="dep-chip" data-target="inPurgatory">inPurgatory</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hell_purgatory_boundary">hell_purgatory_boundary</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="purg_ax6_provenance">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">purg_ax6_provenance</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def purg_ax6_provenance : Provenance := Provenance.definition 1033</code></pre></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="purg_ax6_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">purg_ax6_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def purg_ax6_tag : DenominationalTag := catholicOnly</code></pre></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="purified_in_grace_sees_god">
@@ -786,11 +780,29 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom purified_in_grace_sees_god :
-  ∀ (p : Person), diedInGrace p → fullyPurified p → attainsBeatificVision p
-</code></pre></div>
-<div class="node-desc">7: Those who die in grace AND are already fully purified go │   Source: [Definition] CCC §1023 │   ⚠ HIDDEN ASSUMPTION: The Catechism implies this (§1023: &quot;those who die</div>
+  ∀ (p : Person), diedInGrace p → fullyPurified p → attainsBeatificVision p</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="attainsBeatificVision">attainsBeatificVision</span><span class="dep-chip" data-target="diedInGrace">diedInGrace</span><span class="dep-chip" data-target="fullyPurified">fullyPurified</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="grace_at_death_guarantees_heaven">grace_at_death_guarantees_heaven</span><span class="dep-chip" data-target="attainsBeatificVision">attainsBeatificVision</span><span class="dep-chip" data-target="diedInGrace">diedInGrace</span><span class="dep-chip" data-target="fullyPurified">fullyPurified</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="grace_at_death_guarantees_heaven">grace_at_death_guarantees_heaven</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="purg_ax7_provenance">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">purg_ax7_provenance</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def purg_ax7_provenance : Provenance := Provenance.definition 1023</code></pre></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="purg_ax7_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">purg_ax7_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def purg_ax7_tag : DenominationalTag := ecumenical</code></pre></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="purgatory_guarantees_vision">
@@ -801,10 +813,10 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem purgatory_guarantees_vision :
-    ∀ (p : Person), inPurgatory p → attainsBeatificVision p</code></pre></div>
-<div class="node-desc">1: Everyone in purgatory will see God.</div>
+    ∀ (p : Person), inPurgatory p → attainsBeatificVision p :=
+  fun (p : Person) (h : inPurgatory p) =&gt; purgatory_leads_to_heaven p h</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="attainsBeatificVision">attainsBeatificVision</span><span class="dep-chip" data-target="inPurgatory">inPurgatory</span><span class="dep-chip" data-target="purgatory_leads_to_heaven">purgatory_leads_to_heaven</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="attainsBeatificVision">attainsBeatificVision</span><span class="dep-chip" data-target="inPurgatory">inPurgatory</span><span class="dep-chip" data-target="purgatory_leads_to_heaven">purgatory_leads_to_heaven</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="purgatory_full_promise">purgatory_full_promise</span><span class="dep-chip" data-target="purgatory_is_inhabited">purgatory_is_inhabited</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="purgatory_achieves_holiness">
@@ -815,10 +827,11 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem purgatory_achieves_holiness :
-    ∀ (p : Person), inPurgatory p → fullyPurified p</code></pre></div>
-<div class="node-desc">2: Purgatory results in full purification.</div>
+    ∀ (p : Person), inPurgatory p → fullyPurified p :=
+  fun (p : Person) (h : inPurgatory p) =&gt;
+    holiness_required_for_heaven p (purgatory_leads_to_heaven p h)</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="fullyPurified">fullyPurified</span><span class="dep-chip" data-target="holiness_required_for_heaven">holiness_required_for_heaven</span><span class="dep-chip" data-target="inPurgatory">inPurgatory</span><span class="dep-chip" data-target="purgatory_leads_to_heaven">purgatory_leads_to_heaven</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="fullyPurified">fullyPurified</span><span class="dep-chip" data-target="inPurgatory">inPurgatory</span><span class="dep-chip" data-target="holiness_required_for_heaven">holiness_required_for_heaven</span><span class="dep-chip" data-target="purgatory_leads_to_heaven">purgatory_leads_to_heaven</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="purgatory_full_promise">purgatory_full_promise</span><span class="dep-chip" data-target="purgatory_is_inhabited">purgatory_is_inhabited</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="grace_at_death_guarantees_heaven">
@@ -829,10 +842,14 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem grace_at_death_guarantees_heaven :
-    ∀ (p : Person), diedInGrace p → attainsBeatificVision p</code></pre></div>
-<div class="node-desc">3: Dying in grace guarantees eventual heaven.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DeathState">DeathState</span><span class="dep-chip" data-target="attainsBeatificVision">attainsBeatificVision</span><span class="dep-chip" data-target="death_is_final">death_is_final</span><span class="dep-chip" data-target="diedInGrace">diedInGrace</span><span class="dep-chip" data-target="fullyPurified">fullyPurified</span><span class="dep-chip" data-target="post_mortem_purification">post_mortem_purification</span><span class="dep-chip" data-target="purgatory_leads_to_heaven">purgatory_leads_to_heaven</span><span class="dep-chip" data-target="purified_in_grace_sees_god">purified_in_grace_sees_god</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="attainsBeatificVision">attainsBeatificVision</span><span class="dep-chip" data-target="diedInGrace">diedInGrace</span><span class="dep-chip" data-target="fullyPurified">fullyPurified</span><span class="dep-chip" data-target="post_mortem_purification">post_mortem_purification</span><span class="dep-chip" data-target="purgatory_leads_to_heaven">purgatory_leads_to_heaven</span><span class="dep-chip" data-target="purified_in_grace_sees_god">purified_in_grace_sees_god</span></div></div>
+    ∀ (p : Person), diedInGrace p → attainsBeatificVision p :=
+  fun (p : Person) (hg : diedInGrace p) =&gt;
+    Classical.byCases
+      (fun (hp : fullyPurified p) =&gt;
+        purified_in_grace_sees_god p hg hp)
+      (fun (hnp : ¬fullyPurified p) =&gt;
+        purgatory_leads_to_heaven p (post_mortem_purification p hg hnp))</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="attainsBeatificVision">attainsBeatificVision</span><span class="dep-chip" data-target="diedInGrace">diedInGrace</span><span class="dep-chip" data-target="fullyPurified">fullyPurified</span><span class="dep-chip" data-target="post_mortem_purification">post_mortem_purification</span><span class="dep-chip" data-target="purgatory_leads_to_heaven">purgatory_leads_to_heaven</span><span class="dep-chip" data-target="purified_in_grace_sees_god">purified_in_grace_sees_god</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="death_finalizes_choice_not_state">
@@ -843,11 +860,29 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom death_finalizes_choice_not_state :
-  ∀ (p : Person), diedInGrace p → ¬diedInMortalSin p
-</code></pre></div>
-<div class="node-desc">The resolution: death is final for CHOICE, not for all change. │   Source: [Tradition] — theological inference, not stated in CCC. │   ⚠ HIDDEN ASSUMPTION: This distinction is never made explicit in the</div>
+  ∀ (p : Person), diedInGrace p → ¬diedInMortalSin p</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="diedInGrace">diedInGrace</span><span class="dep-chip" data-target="diedInMortalSin">diedInMortalSin</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="grace_and_mortal_sin_exclusive">grace_and_mortal_sin_exclusive</span><span class="dep-chip" data-target="purgatory_person_is_dead_and_spiritual">purgatory_person_is_dead_and_spiritual</span><span class="dep-chip" data-target="diedInGrace">diedInGrace</span><span class="dep-chip" data-target="diedInMortalSin">diedInMortalSin</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="grace_and_mortal_sin_exclusive">grace_and_mortal_sin_exclusive</span><span class="dep-chip" data-target="purgatory_person_is_dead_and_spiritual">purgatory_person_is_dead_and_spiritual</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="resolution_provenance">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">resolution_provenance</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def resolution_provenance : Provenance := Provenance.tradition &quot;theological inference&quot;</code></pre></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="resolution_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">resolution_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def resolution_tag : DenominationalTag := catholicOnly</code></pre></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="hell_purgatory_boundary">
@@ -858,10 +893,10 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem hell_purgatory_boundary :
-    ∀ (p : Person), diedInMortalSin p → ¬inPurgatory p</code></pre></div>
-<div class="node-desc">4: The hell-purgatory boundary is absolute.</div>
+    ∀ (p : Person), diedInMortalSin p → ¬inPurgatory p :=
+  fun (p : Person) (h : diedInMortalSin p) =&gt;
+    mortal_sin_excludes_purgatory p h</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="diedInMortalSin">diedInMortalSin</span><span class="dep-chip" data-target="inPurgatory">inPurgatory</span><span class="dep-chip" data-target="mortal_sin_excludes_purgatory">mortal_sin_excludes_purgatory</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="diedInMortalSin">diedInMortalSin</span><span class="dep-chip" data-target="inPurgatory">inPurgatory</span><span class="dep-chip" data-target="mortal_sin_excludes_purgatory">mortal_sin_excludes_purgatory</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="grace_and_mortal_sin_exclusive">
@@ -872,10 +907,10 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem grace_and_mortal_sin_exclusive :
-    ∀ (p : Person), diedInGrace p → ¬diedInMortalSin p</code></pre></div>
-<div class="node-desc">5: Grace at death and mortal sin at death are mutually exclusive.</div>
+    ∀ (p : Person), diedInGrace p → ¬diedInMortalSin p :=
+  fun (p : Person) (h : diedInGrace p) =&gt;
+    death_finalizes_choice_not_state p h</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="death_finalizes_choice_not_state">death_finalizes_choice_not_state</span><span class="dep-chip" data-target="diedInGrace">diedInGrace</span><span class="dep-chip" data-target="diedInMortalSin">diedInMortalSin</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="diedInGrace">diedInGrace</span><span class="dep-chip" data-target="diedInMortalSin">diedInMortalSin</span><span class="dep-chip" data-target="death_finalizes_choice_not_state">death_finalizes_choice_not_state</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="purgatory_scripture_73">
@@ -885,8 +920,12 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def purgatory_scripture_73 : List String</code></pre></div>
-<div class="node-desc">The scriptural evidence under the 73-book (Catholic) canon.</div>
+    <div class="node-prop"><pre><code>def purgatory_scripture_73 : List String :=
+  [ &quot;2 Macc 12:46 — 'holy and wholesome thought to pray for the dead'&quot;
+  , &quot;1 Cor 3:13-15 — 'saved, but only as through fire'&quot;
+  , &quot;Mt 12:32 — 'not forgiven in this age or the age to come'&quot;
+  , &quot;Rev 21:27 — 'nothing unclean will enter'&quot;
+  ]</code></pre></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="purgatory_scripture_66">
@@ -896,9 +935,11 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def purgatory_scripture_66 : List String</code></pre></div>
-<div class="node-desc">The scriptural evidence under the 66-book (Protestant) canon.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="death_is_final">death_is_final</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="soul_is_immortal">soul_is_immortal</span></div></div>
+    <div class="node-prop"><pre><code>def purgatory_scripture_66 : List String :=
+  [ &quot;1 Cor 3:13-15 — 'saved, but only as through fire' (contested reading)&quot;
+  , &quot;Mt 12:32 — 'not forgiven in this age or the age to come' (contested reading)&quot;
+  , &quot;Rev 21:27 — 'nothing unclean will enter' (shared, but doesn't entail purgatory)&quot;
+  ]</code></pre></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="purgatory_person_is_dead_and_spiritual">
@@ -910,10 +951,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem purgatory_person_is_dead_and_spiritual (p : HumanPerson)
     (_h_dead : isDead p) :
-    hasSpiritualAspect p</code></pre></div>
-<div class="node-desc">Bridge: a person in purgatory is isDead — their soul persists but</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="death_finalizes_choice_not_state">death_finalizes_choice_not_state</span><span class="dep-chip" data-target="death_separates">death_separates</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="soul_is_immortal">soul_is_immortal</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="death_finalizes_choice_not_state">death_finalizes_choice_not_state</span></div></div>
+    hasSpiritualAspect p :=
+  soul_is_immortal p</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="death_finalizes_choice_not_state">death_finalizes_choice_not_state</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="purgatory_death_compatible_with_purification">
@@ -928,9 +968,8 @@ h1 {
     -- Soul persists (can be purified)
     hasSpiritualAspect p ∧
     -- Body is gone (death separated it)
-    ¬hasCorporealAspect p</code></pre></div>
-<div class="node-desc">Bridge: Soul.lean says isDead → ¬hasCorporealAspect (body gone).</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="death_separates">death_separates</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="soul_is_immortal">soul_is_immortal</span></div></div>
+    ¬hasCorporealAspect p :=
+  ⟨soul_is_immortal p, (death_separates p h_dead).1⟩</code></pre></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="purified_soul_awaits_resurrection">
@@ -942,9 +981,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem purified_soul_awaits_resurrection (p : HumanPerson)
     (h_risen : isRisen p) :
-    hasCorporealAspect p ∧ hasSpiritualAspect p</code></pre></div>
-<div class="node-desc">Bridge: after purification, the soul awaits resurrection (§997).</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="isRisen">isRisen</span><span class="dep-chip" data-target="resurrection_reunites">resurrection_reunites</span></div></div>
+    hasCorporealAspect p ∧ hasSpiritualAspect p :=
+  resurrection_reunites p h_risen</code></pre></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="purgatory_person_is_incomplete">
@@ -956,9 +994,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem purgatory_person_is_incomplete (p : HumanPerson)
     (h_dead : isDead p) :
-    ¬hasCorporealAspect p</code></pre></div>
-<div class="node-desc">Bridge: the incompleteness of a person in purgatory. They have their</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="afterReconciliation">afterReconciliation</span><span class="dep-chip" data-target="attachments_go_to_purgatory">attachments_go_to_purgatory</span><span class="dep-chip" data-target="death_separates">death_separates</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="isDead">isDead</span></div></div>
+    ¬hasCorporealAspect p :=
+  (death_separates p h_dead).1</code></pre></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="purgatory_from_sin_profile">
@@ -969,9 +1006,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem purgatory_from_sin_profile :
-    afterlifeFromProfile afterReconciliation = AfterlifeOutcome.purgatory</code></pre></div>
-<div class="node-desc">Bridge: a person goes to purgatory because their sin profile</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="AfterlifeOutcome">AfterlifeOutcome</span><span class="dep-chip" data-target="afterReconciliation">afterReconciliation</span><span class="dep-chip" data-target="afterlifeFromProfile">afterlifeFromProfile</span><span class="dep-chip" data-target="attachments_go_to_purgatory">attachments_go_to_purgatory</span><span class="dep-chip" data-target="purified_go_to_heaven">purified_go_to_heaven</span></div></div>
+    afterlifeFromProfile afterReconciliation = AfterlifeOutcome.purgatory :=
+  attachments_go_to_purgatory</code></pre></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="fully_purified_skips_purgatory">
@@ -982,10 +1018,9 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem fully_purified_skips_purgatory :
-    afterlifeFromProfile Catlib.fullyPurified = AfterlifeOutcome.heaven</code></pre></div>
-<div class="node-desc">The fully purified go to heaven, not purgatory. If all three</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="AfterlifeOutcome">AfterlifeOutcome</span><span class="dep-chip" data-target="afterlifeFromProfile">afterlifeFromProfile</span><span class="dep-chip" data-target="fullyPurified">fullyPurified</span><span class="dep-chip" data-target="purified_go_to_heaven">purified_go_to_heaven</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="fullyPurified">fullyPurified</span></div></div>
+    afterlifeFromProfile Catlib.fullyPurified = AfterlifeOutcome.heaven :=
+  purified_go_to_heaven</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="fullyPurified">fullyPurified</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="attachment_without_guilt_means_purgatory">
@@ -1001,9 +1036,51 @@ h1 {
     (h_a : sp.attachment ≠ EffectState.unknownToUs)
     (h_no_guilt : sp.guilt = EffectState.removed)
     (h_attach : sp.attachment = EffectState.present) :
-    afterlifeFromProfile sp = AfterlifeOutcome.purgatory</code></pre></div>
-<div class="node-desc">When the sin profile is determinate, has no guilt, but has</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="AfterlifeOutcome">AfterlifeOutcome</span><span class="dep-chip" data-target="EffectState">EffectState</span><span class="dep-chip" data-target="SinProfile">SinProfile</span><span class="dep-chip" data-target="afterlifeFromProfile">afterlifeFromProfile</span></div></div>
+    afterlifeFromProfile sp = AfterlifeOutcome.purgatory := by
+  unfold afterlifeFromProfile
+  have h_no_unk : ¬(sp.originalWound = EffectState.unknownToUs
+                   ∨ sp.guilt = EffectState.unknownToUs
+                   ∨ sp.attachment = EffectState.unknownToUs) :=
+    fun h =&gt; h.elim h_ow (fun h2 =&gt; h2.elim h_g h_a)
+  simp [h_no_unk]
+  split
+  · next h_all =&gt;
+    exact absurd h_all.2.2 (by rw [h_attach]; decide)
+  · split
+    · next h_guilt_present =&gt;
+      exact absurd h_guilt_present (by rw [h_no_guilt]; decide)
+    · rfl</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="imperfect_purification_exists">imperfect_purification_exists</span><span class="dep-chip" data-target="post_mortem_purification">post_mortem_purification</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="purgatory_is_inhabited">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">purgatory_is_inhabited</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem purgatory_is_inhabited :
+    ∃ (p : Person), inPurgatory p :=
+  let ⟨p, h_grace, h_not_purified⟩ := imperfect_purification_exists
+  ⟨p, post_mortem_purification p h_grace h_not_purified⟩</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="imperfect_purification_exists">imperfect_purification_exists</span><span class="dep-chip" data-target="inPurgatory">inPurgatory</span><span class="dep-chip" data-target="post_mortem_purification">post_mortem_purification</span><span class="dep-chip" data-target="purgatory_achieves_holiness">purgatory_achieves_holiness</span><span class="dep-chip" data-target="purgatory_guarantees_vision">purgatory_guarantees_vision</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="purgatory_full_promise">purgatory_full_promise</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="purgatory_full_promise">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">purgatory_full_promise</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem purgatory_full_promise :
+    ∃ (p : Person), inPurgatory p ∧ fullyPurified p ∧ attainsBeatificVision p :=
+  let ⟨p, h_purg⟩ := purgatory_is_inhabited
+  ⟨p, h_purg, purgatory_achieves_holiness p h_purg,
+   purgatory_guarantees_vision p h_purg⟩</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="attainsBeatificVision">attainsBeatificVision</span><span class="dep-chip" data-target="fullyPurified">fullyPurified</span><span class="dep-chip" data-target="inPurgatory">inPurgatory</span><span class="dep-chip" data-target="purgatory_achieves_holiness">purgatory_achieves_holiness</span><span class="dep-chip" data-target="purgatory_guarantees_vision">purgatory_guarantees_vision</span><span class="dep-chip" data-target="purgatory_is_inhabited">purgatory_is_inhabited</span></div></div>
   </div>
 </div>
   </div>
