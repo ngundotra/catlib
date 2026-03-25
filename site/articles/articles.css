@@ -1,6 +1,15 @@
 /* Catlib Articles — supplemental styles for long-form essays
    Extends the base styles.css — dark scriptorium theme. */
 
+/* Compact hero for subpages (articles, axiom wiki, etc.) */
+.hero {
+  min-height: auto;
+  padding: 1.5rem 0 0.5rem;
+}
+.hero .ornament, .hero .hero-ornament { display: none; }
+.hero .hero-scroll-hint { display: none; }
+.hero .hero-line { margin: 1rem auto 0; }
+
 /* ============================================================
    Back-to-main navigation
    ============================================================ */
