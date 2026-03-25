@@ -1832,6 +1832,28 @@ def _axiom_name_to_model_key(axiom_name):
     return axiom_name.lower()
 
 
+def _model_covers_axiom(axiom_name, model_theorems):
+    """Check whether any model theorem covers a given axiom name.
+
+    Handles cases where the model theorem name differs slightly from the
+    axiom scope name (e.g. 's8_grace_necessary_and_transformative' covers
+    'S8_GRACE_NECESSARY_TRANSFORMATIVE').
+    """
+    key = _axiom_name_to_model_key(axiom_name)
+    if key in model_theorems:
+        return True
+    # Fuzzy: check if any model theorem starts with the same prefix (e.g. s8_)
+    # and contains all the words from the axiom name
+    prefix = key.split("_")[0] + "_"  # e.g. "s8_"
+    axiom_words = set(key.split("_")[1:])  # e.g. {"grace", "necessary", "transformative"}
+    for t in model_theorems:
+        if t.startswith(prefix):
+            theorem_words = set(t.split("_")[1:])
+            if axiom_words.issubset(theorem_words):
+                return True
+    return False
+
+
 def _get_tag_label(tag_raw):
     """Return a human-readable label for a denominational tag."""
     tag = tag_raw.strip()
@@ -1903,8 +1925,7 @@ def _print_single_denomination(denomination, scope, lutheran_mods, model_theorem
     covered = []
     uncovered = []
     for name, tag_raw in accepted:
-        key = _axiom_name_to_model_key(name)
-        if key in model_theorems:
+        if _model_covers_axiom(name, model_theorems):
             covered.append((name, tag_raw))
         else:
             uncovered.append((name, tag_raw))
@@ -1931,8 +1952,14 @@ def _print_single_denomination(denomination, scope, lutheran_mods, model_theorem
 
     # Additional consistency proofs beyond base axioms
     if has_model and denomination == "catholic":
-        base_keys = {_axiom_name_to_model_key(name) for name, _ in scope}
-        additional = [t for t in model_theorems if t not in base_keys]
+        # A model theorem is "additional" if it doesn't cover any base axiom
+        base_names = [name for name, _ in scope]
+        def _is_base_proof(theorem_name):
+            for bn in base_names:
+                if _model_covers_axiom(bn, {theorem_name}):
+                    return True
+            return False
+        additional = [t for t in model_theorems if not _is_base_proof(t)]
         if additional:
             # Group additional proofs for a summary
             categories = set()
@@ -1980,8 +2007,7 @@ def _print_compare(scope, lutheran_mods, model_theorems, has_model, total_model_
     cath_covered = []
     cath_uncovered = []
     for name, tag_raw in catholic_axioms:
-        key = _axiom_name_to_model_key(name)
-        if key in model_theorems:
+        if _model_covers_axiom(name, model_theorems):
             cath_covered.append((name, tag_raw))
         else:
             cath_uncovered.append((name, tag_raw))
@@ -2053,7 +2079,7 @@ def _print_compare(scope, lutheran_mods, model_theorems, has_model, total_model_
             print(f"  Added: {ax_name}")
 
     # Lutheran model coverage
-    luth_covered = [n for n, _ in lutheran_axioms if _axiom_name_to_model_key(n) in model_theorems]
+    luth_covered = [n for n, _ in lutheran_axioms if _model_covers_axiom(n, model_theorems)]
     if luth_covered:
         print(f"  Consistency model: {len(luth_covered)}/{luth_base} proven")
     else:
@@ -2073,14 +2099,15 @@ def _print_compare(scope, lutheran_mods, model_theorems, has_model, total_model_
                 # Infer contradiction domain
                 domain = ""
                 lower = desc.lower()
-                if "grace" in lower:
-                    domain = "grace nature"
-                elif "free" in lower or "will" in lower or "bondage" in lower:
-                    domain = "free will"
+                # Order matters: check specific terms before generic "grace"
+                if "sacrament" in lower or "ex opere" in lower:
+                    domain = "sacramental theology"
                 elif "monergis" in lower or "synergis" in lower or "cooperat" in lower:
                     domain = "cooperation"
-                elif "sacrament" in lower:
-                    domain = "sacramental theology"
+                elif "free" in lower or "will" in lower or "bondage" in lower:
+                    domain = "free will"
+                elif "grace" in lower or "forensic" in lower or "transformative" in lower:
+                    domain = "grace nature"
                 if domain:
                     print(f"  {prefix} ({cath_short}) \u2227 {prefix}' ({luth_short.lower().strip()}) \u2192 contradiction on {domain}")
                 else:
