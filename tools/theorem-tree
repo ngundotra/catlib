@@ -1064,7 +1064,7 @@ def _check_lake():
     except (FileNotFoundError, subprocess.TimeoutExpired):
         print("Error: `lake` not found. Kernel mode requires a working Lean/lake install.",
               file=sys.stderr)
-        print("Use regex-based flags (--flow, --trace, etc.) instead, or install lake.",
+        print("Install Lean/lake via https://leanprover.github.io/lean4/doc/setup.html",
               file=sys.stderr)
         sys.exit(1)
 
@@ -1090,13 +1090,18 @@ def kernel_scan_declarations(root_path):
     Returns:
         theorems: list of (fqn, file_path, line_no)
         axioms: list of (fqn, file_path, line_no, kind)
+        namespaces: set of namespace strings found (e.g. {"Catlib.Creed.Christology", ...})
     """
     theorems = []
     axioms = []
+    namespaces = set()
     root = Path(root_path)
 
-    lean_files = sorted(root.rglob("*.lean"))
-    lean_files = [f for f in lean_files if not _is_import_only(f)]
+    if root.is_file():
+        lean_files = [root] if root.suffix == ".lean" and not _is_import_only(root) else []
+    else:
+        lean_files = sorted(root.rglob("*.lean"))
+        lean_files = [f for f in lean_files if not _is_import_only(f)]
 
     for filepath in lean_files:
         try:
@@ -1127,6 +1132,7 @@ def kernel_scan_declarations(root_path):
             m = NAMESPACE_RE.match(line)
             if m:
                 ns_stack.append(m.group(1))
+                namespaces.add(m.group(1))
                 continue
 
             m = _KERNEL_END_NS_RE.match(line)
@@ -1156,7 +1162,7 @@ def kernel_scan_declarations(root_path):
                 fqn = f"{current_ns}.{name}" if current_ns else name
                 axioms.append((fqn, str(filepath), i, kind))
 
-    return theorems, axioms
+    return theorems, axioms, namespaces
 
 
 def run_print_axioms(theorem_fqns, batch_size=50):
@@ -1322,8 +1328,32 @@ def _parse_check_types_output(output, batch_fqns, types, errors):
             types[name] = type_str
 
 
-def print_propositions(axiom_results, type_results, source_axioms):
-    """Print proposition-centric analysis: what has been proven and how."""
+def print_propositions(axiom_results, type_results, source_axioms,
+                       thm_source=None, namespaces=None):
+    """Print proposition-centric analysis: what has been proven and how.
+
+    Args:
+        thm_source: optional dict {fqn: (file_path, line_no)} for docstring extraction
+        namespaces: optional set of namespace strings for display cleanup
+    """
+
+    def _display(type_str):
+        return _clean_type_for_display(type_str, namespaces)
+
+    def _first_docstring(theorem_fqns):
+        """Get first available docstring (first line only) from proving theorems."""
+        if not thm_source:
+            return ""
+        for fqn in theorem_fqns:
+            if fqn in thm_source:
+                fp, ln = thm_source[fqn]
+                doc = _extract_docstring(fp, ln)
+                if doc:
+                    first_line = doc.split('\n')[0].strip()
+                    if len(first_line) > 120:
+                        first_line = first_line[:117] + "..."
+                    return first_line
+        return ""
 
     # Group theorems by the type (proposition) they prove
     prop_to_theorems = defaultdict(list)
@@ -1377,7 +1407,10 @@ def print_propositions(axiom_results, type_results, source_axioms):
     print()
 
     for idx, pd in enumerate(proven, 1):
-        print(f"  {idx}. {pd['type']}")
+        print(f"  {idx}. {_display(pd['type'])}")
+        doc = _first_docstring(pd["theorems"])
+        if doc:
+            print(f'     "{doc}"')
         thm_names = [_kernel_short_name(t) for t in pd["theorems"]]
         print(f"     Proven by: {', '.join(thm_names)}")
         if pd["axiom_paths"]:
@@ -1400,7 +1433,7 @@ def print_propositions(axiom_results, type_results, source_axioms):
     print(f"FRAGILE ({len(fragile)} proven by exactly 1 axiom path):")
     print()
     for pd in fragile:
-        print(f"  - {pd['type']}")
+        print(f"  - {_display(pd['type'])}")
         for thm, ax_list in pd["axiom_paths"].items():
             ax_display = [_kernel_short_name(a) for a in ax_list]
             print(f"    via {_kernel_short_name(thm)}: [{', '.join(ax_display)}]")
@@ -1411,7 +1444,7 @@ def print_propositions(axiom_results, type_results, source_axioms):
     print(f"OVERDETERMINED ({len(overdetermined)} proven by multiple independent axiom paths):")
     print()
     for pd in overdetermined:
-        print(f"  - {pd['type']}")
+        print(f"  - {_display(pd['type'])}")
         for thm, ax_list in pd["axiom_paths"].items():
             ax_display = [_kernel_short_name(a) for a in ax_list]
             print(f"    via {_kernel_short_name(thm)}: [{', '.join(ax_display)}]")
@@ -1461,11 +1494,11 @@ def print_propositions(axiom_results, type_results, source_axioms):
         if loses_all:
             print(f"    LOSES ALL PROOFS:")
             for prop_type in loses_all:
-                print(f"      - {prop_type}")
+                print(f"      - {_display(prop_type)}")
         if loses_some:
             print(f"    LOSES SOME PROOFS (has alternatives):")
             for prop_type in loses_some:
-                print(f"      - {prop_type}")
+                print(f"      - {_display(prop_type)}")
         print(f"    UNAFFECTED: {unaffected_count}")
         print()
 
@@ -1495,6 +1528,81 @@ def _kernel_short_name(fqn):
         if fqn.startswith(prefix):
             return fqn[len(prefix):]
     return fqn
+
+
+def _clean_type_for_display(type_str, namespaces=None):
+    """Strip Catlib namespace prefixes from a type string for readable display.
+
+    The raw type_str comes from `set_option pp.fullNames true` output, e.g.:
+      "Catlib.Creed.bore Catlib.Creed.mary Catlib.Creed.Christology.christ"
+    Returns:
+      "bore mary Christology.christ"
+
+    Uses the dynamically-discovered namespace set for accurate stripping.
+    Falls back to stripping any 'Catlib.' prefix.
+    """
+    result = type_str
+    if namespaces:
+        # Sort longest-first so we match the most specific prefix
+        for ns in sorted(namespaces, key=len, reverse=True):
+            result = result.replace(ns + ".", "")
+    # Catch-all: strip any remaining Catlib. prefix
+    result = result.replace("Catlib.", "")
+    return result
+
+
+def _extract_docstring(file_path, line_no):
+    """Extract the /-- ... -/ docstring immediately before a declaration.
+
+    Args:
+        file_path: Path to the .lean file
+        line_no: 1-based line number of the declaration
+
+    Returns:
+        The raw docstring text (without /-- -/ delimiters), or ""
+    """
+    try:
+        with open(file_path, "r", encoding="utf-8") as f:
+            lines = f.readlines()
+    except (IOError, UnicodeDecodeError):
+        return ""
+
+    # line_no is 1-based; the declaration is on lines[line_no - 1]
+    # Walk backwards from the line before the declaration to find the docstring
+    idx = line_no - 2  # 0-based index of line before declaration
+    if idx < 0:
+        return ""
+
+    # Skip blank lines between docstring and declaration
+    while idx >= 0 and lines[idx].strip() == "":
+        idx -= 1
+
+    if idx < 0:
+        return ""
+
+    # Check if this line ends a docstring (contains -/)
+    end_line = idx
+    if "-/" not in lines[end_line]:
+        return ""
+
+    # Now find the start of the docstring (line containing /--)
+    start_line = end_line
+    while start_line >= 0:
+        if "/--" in lines[start_line]:
+            break
+        start_line -= 1
+
+    if start_line < 0:
+        return ""
+
+    # Extract the docstring content
+    doc_lines = lines[start_line:end_line + 1]
+    text = "".join(doc_lines)
+
+    # Remove the /-- and -/ delimiters
+    text = re.sub(r'^.*?/--\s*', '', text, count=1)
+    text = re.sub(r'\s*-/\s*$', '', text)
+    return text.strip()
 
 
 def print_true_islands(results, source_axioms):
@@ -1706,7 +1814,7 @@ def _run_kernel_mode(kernel_mode, kernel_name, kernel_json, root_path):
     _check_lake()
 
     print("Scanning Lean sources...", file=sys.stderr)
-    theorems, axioms = kernel_scan_declarations(root_path)
+    theorems, axioms, namespaces = kernel_scan_declarations(root_path)
     print(f"  Found {len(theorems)} theorems, {len(axioms)} axioms/opaques",
           file=sys.stderr)
 
@@ -1736,7 +1844,8 @@ def _run_kernel_mode(kernel_mode, kernel_name, kernel_json, root_path):
         if type_errors:
             print(f"  {len(type_errors)} #check errors (skipped)", file=sys.stderr)
         print(file=sys.stderr)
-        print_propositions(results, type_results, axioms)
+        thm_source = {fqn: (fp, ln) for fqn, fp, ln in theorems}
+        print_propositions(results, type_results, axioms, thm_source, namespaces)
     elif kernel_json:
         print_kernel_json(results, errors, axioms)
     elif kernel_mode == "kernel":

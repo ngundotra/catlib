@@ -581,7 +581,7 @@ def main():
 
     print("Scanning declarations...", file=sys.stderr)
     os.chdir(PROJECT_ROOT)
-    theorems, axioms = theorem_tree.kernel_scan_declarations(str(CATLIB_DIR))
+    theorems, axioms, _namespaces = theorem_tree.kernel_scan_declarations(str(CATLIB_DIR))
 
     print(f"  Found {len(theorems)} theorems, {len(axioms)} axioms", file=sys.stderr)
 

@@ -26,7 +26,10 @@ theorem_tree = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(theorem_tree)
 
 # Convenience aliases — kernel-mode functions
-scan_declarations = theorem_tree.kernel_scan_declarations
+def scan_declarations(path):
+    """Wrapper that drops the namespaces return value for backward compat."""
+    theorems, axioms, _ns = theorem_tree.kernel_scan_declarations(path)
+    return theorems, axioms
 filter_catlib_axioms = theorem_tree.filter_catlib_axioms
 print_true_islands = theorem_tree.print_true_islands
 _parse_print_axioms_output = theorem_tree._parse_print_axioms_output
