@@ -1,0 +1,1415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Model — Catlib Explorer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --text: #2a1f14;
+  --text-light: #5c4a3a;
+  --text-muted: #8a7a6a;
+  --bg: #f4ead5;
+  --bg-parchment: #efe3c8;
+  --bg-vellum: #e8d9b8;
+  --accent: #7a2e0e;
+  --accent-gold: #b8860b;
+  --accent-gold-light: #d4a937;
+  --border: #c4a872;
+  --border-dark: #a08050;
+  --code-bg: #1e1a15;
+  --code-text: #e8d9b8;
+
+  /* Node type colors */
+  --axiom-bg: #f5e6d8;
+  --axiom-border: #c4713a;
+  --axiom-dot: #b8510e;
+  --theorem-bg: #dde8f0;
+  --theorem-border: #5a8aaa;
+  --theorem-dot: #2a6a8a;
+  --def-bg: #e4ead4;
+  --def-border: #7a9a5a;
+  --def-dot: #4a7a2a;
+  --opaque-bg: #ebe0d0;
+  --opaque-border: #a08050;
+  --opaque-dot: #7a6030;
+  --structure-bg: #e8daf0;
+  --structure-border: #8a6aaa;
+  --structure-dot: #6a4a8a;
+  --inductive-bg: #e8daf0;
+  --inductive-border: #8a6aaa;
+  --inductive-dot: #6a4a8a;
+  --proposition-bg: #f0e0e4;
+  --proposition-border: #aa5a6a;
+  --proposition-dot: #8a2a4a;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #e0d5c0;
+    --text-light: #b8a890;
+    --text-muted: #8a7a6a;
+    --bg: #1a1510;
+    --bg-parchment: #221c14;
+    --bg-vellum: #2a2218;
+    --accent: #d4856a;
+    --accent-gold: #d4a937;
+    --accent-gold-light: #e8c050;
+    --border: #4a3a28;
+    --border-dark: #6a5a40;
+    --code-bg: #0e0c08;
+    --code-text: #e8d9b8;
+
+    --axiom-bg: #2a1e14;
+    --axiom-border: #8a4a20;
+    --axiom-dot: #d4856a;
+    --theorem-bg: #14202a;
+    --theorem-border: #3a6a8a;
+    --theorem-dot: #6aaad4;
+    --def-bg: #1a2214;
+    --def-border: #4a6a3a;
+    --def-dot: #8aba6a;
+    --opaque-bg: #221c14;
+    --opaque-border: #6a5030;
+    --opaque-dot: #b8a060;
+    --structure-bg: #201a28;
+    --structure-border: #6a4a8a;
+    --structure-dot: #aa8ad4;
+    --inductive-bg: #201a28;
+    --inductive-border: #6a4a8a;
+    --inductive-dot: #aa8ad4;
+    --proposition-bg: #2a1420;
+    --proposition-border: #8a3a5a;
+    --proposition-dot: #d46a8a;
+  }
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  font-size: 17px;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.7;
+  min-height: 100vh;
+  -webkit-text-size-adjust: 100%;
+}
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+h1 {
+  font-family: Cinzel, Georgia, serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.3rem;
+  color: var(--text);
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--text-light);
+  font-style: italic;
+  margin-bottom: 1.5rem;
+}
+
+.serve-note {
+  background: var(--code-bg);
+  color: var(--code-text);
+  padding: 0.8rem 1rem;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.75rem;
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+  line-height: 1.6;
+}
+
+/* ── Search ── */
+.search-box {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.05rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--bg-parchment);
+  color: var(--text);
+  margin-bottom: 1.5rem;
+  outline: none;
+}
+
+.search-box:focus {
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 0 2px rgba(184, 134, 11, 0.2);
+}
+
+.search-box::placeholder {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* ── Category sections ── */
+.category-header {
+  font-family: Cinzel, Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-variant: small-caps;
+  margin: 1.8rem 0 0.8rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── File cards ── */
+.file-card {
+  display: block;
+  padding: 1rem 1.1rem;
+  margin-bottom: 0.5rem;
+  background: var(--bg-parchment);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  text-decoration: none;
+  color: var(--text);
+  transition: background 0.15s, border-color 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.file-card:hover, .file-card:active {
+  background: var(--bg-vellum);
+  border-color: var(--accent-gold);
+  text-decoration: none;
+}
+
+.file-card-name {
+  font-family: Cinzel, Georgia, serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.3rem;
+}
+
+.file-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  font-size: 0.82rem;
+  color: var(--text-light);
+}
+
+.file-card-meta .tag {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.75rem;
+  font-family: Cinzel, Georgia, serif;
+  letter-spacing: 0.03em;
+}
+
+.tag-axiom { background: var(--axiom-bg); color: var(--axiom-dot); border: 1px solid var(--axiom-border); }
+.tag-theorem { background: var(--theorem-bg); color: var(--theorem-dot); border: 1px solid var(--theorem-border); }
+.tag-def { background: var(--def-bg); color: var(--def-dot); border: 1px solid var(--def-border); }
+.tag-proposition { background: var(--proposition-bg); color: var(--proposition-dot); border: 1px solid var(--proposition-border); }
+
+.file-card-ccc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 0.3rem;
+}
+
+/* ── Summary stats ── */
+.stats-bar {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--text-light);
+  font-style: italic;
+}
+
+.stats-bar span { white-space: nowrap; }
+
+/* ── Node cards (per-file page) ── */
+.node-card {
+  margin-bottom: 0.4rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  border-left: 4px solid var(--border);
+}
+
+.node-card.kind-axiom { border-left-color: var(--axiom-dot); }
+.node-card.kind-theorem { border-left-color: var(--theorem-dot); }
+.node-card.kind-def { border-left-color: var(--def-dot); }
+.node-card.kind-opaque { border-left-color: var(--opaque-dot); }
+.node-card.kind-structure { border-left-color: var(--structure-dot); }
+.node-card.kind-inductive { border-left-color: var(--inductive-dot); }
+.node-card.kind-proposition { border-left-color: var(--proposition-dot); }
+
+.node-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  background: var(--bg-parchment);
+  transition: background 0.15s;
+}
+
+.node-header:active {
+  background: var(--bg-vellum);
+}
+
+.node-kind-badge {
+  flex-shrink: 0;
+  font-family: monospace;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+  font-weight: bold;
+}
+
+.kind-axiom .node-kind-badge { background: var(--axiom-bg); color: var(--axiom-dot); }
+.kind-theorem .node-kind-badge { background: var(--theorem-bg); color: var(--theorem-dot); }
+.kind-def .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
+.kind-opaque .node-kind-badge { background: var(--opaque-bg); color: var(--opaque-dot); }
+.kind-structure .node-kind-badge { background: var(--structure-bg); color: var(--structure-dot); }
+.kind-inductive .node-kind-badge { background: var(--inductive-bg); color: var(--inductive-dot); }
+.kind-proposition .node-kind-badge { background: var(--proposition-bg); color: var(--proposition-dot); }
+
+.node-name {
+  flex: 1;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.82rem;
+  word-break: break-all;
+}
+
+.node-chevron {
+  flex-shrink: 0;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  transition: transform 0.2s;
+}
+
+.node-card.open .node-chevron {
+  transform: rotate(90deg);
+}
+
+.node-details {
+  display: none;
+  padding: 0.6rem 1rem 0.8rem;
+  font-size: 0.9rem;
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.node-card.open .node-details {
+  display: block;
+}
+
+.node-prop {
+  margin-bottom: 0.5rem;
+}
+
+.node-prop pre {
+  background: var(--code-bg);
+  color: var(--code-text);
+  padding: 0.6rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  white-space: pre;
+  margin: 0;
+}
+
+.node-prop code {
+  font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', Menlo, monospace;
+  font-size: 0.75rem;
+}
+
+.node-desc {
+  margin-bottom: 0.5rem;
+  font-style: italic;
+  color: var(--text-light);
+  line-height: 1.5;
+}
+
+.node-dep-section {
+  margin-top: 0.4rem;
+}
+
+.node-dep-label {
+  font-family: Cinzel, Georgia, serif;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-bottom: 0.2rem;
+}
+
+.node-dep-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.dep-chip {
+  display: inline-block;
+  font-family: monospace;
+  font-size: 0.72rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  background: var(--bg-vellum);
+  border: 1px solid var(--border);
+  color: var(--text-light);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.dep-chip:active {
+  background: var(--accent-gold);
+  color: var(--code-bg);
+}
+
+.node-scope {
+  margin-top: 0.4rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* ── Flow diagram header ── */
+.flow-summary {
+  display: flex;
+  justify-content: center;
+  gap: 0.3rem;
+  margin-bottom: 1.2rem;
+  flex-wrap: wrap;
+  align-items: center;
+  font-family: Cinzel, Georgia, serif;
+  font-size: 0.85rem;
+  color: var(--text-light);
+}
+
+.flow-count {
+  display: inline-block;
+  padding: 0.3rem 0.7rem;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.flow-arrow { color: var(--accent-gold); padding: 0 0.2rem; }
+
+.flow-count.axioms { background: var(--axiom-bg); color: var(--axiom-dot); }
+.flow-count.theorems { background: var(--theorem-bg); color: var(--theorem-dot); }
+.flow-count.derived { background: var(--def-bg); color: var(--def-dot); }
+
+/* ── Legend ── */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  justify-content: center;
+  margin-bottom: 1.2rem;
+  font-size: 0.78rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--text-light);
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.legend-dot.axiom { background: var(--axiom-dot); }
+.legend-dot.theorem { background: var(--theorem-dot); }
+.legend-dot.def { background: var(--def-dot); }
+.legend-dot.opaque { background: var(--opaque-dot); }
+.legend-dot.structure { background: var(--structure-dot); }
+.legend-dot.inductive { background: var(--inductive-dot); }
+.legend-dot.proposition { background: var(--proposition-dot); }
+
+/* ── Filter buttons ── */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-bottom: 1rem;
+  justify-content: center;
+}
+
+.filter-btn {
+  font-family: monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.3rem 0.7rem;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text-light);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.filter-btn.active {
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+}
+
+/* ── Back link ── */
+.back-link {
+  display: inline-block;
+  margin-bottom: 1rem;
+  font-family: Cinzel, Georgia, serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+}
+
+/* ── Footer ── */
+.footer {
+  text-align: center;
+  padding-top: 2rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* ── Responsive ── */
+@media (max-width: 500px) {
+  html { font-size: 16px; }
+  .container { padding: 1rem 0.75rem 2rem; }
+  h1 { font-size: 1.35rem; }
+  .node-name { font-size: 0.75rem; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <a href="index.html" class="back-link">&larr; All files</a>
+  <h1>Model</h1>
+  <div class="subtitle">Audit &middot; 63 declarations</div>
+
+  
+  
+
+  <div class="legend"><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot proposition"></span>proposition</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
+
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="def">def (15)</button><button class="filter-btn" data-filter="proposition">proposition (15)</button><button class="filter-btn" data-filter="theorem">theorem (33)</button></div>
+
+  <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
+
+  <div id="nodeList">
+    <div class="node-card kind-proposition" data-kind="proposition" data-name="M.moralTruthValue">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">proposition</span>
+    <span class="node-name">M.moralTruthValue</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def M.moralTruthValue : M.MoralProposition → Prop := fun _ =&gt; True</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MoralProposition">MoralProposition</span><span class="dep-chip" data-target="moralTruthValue">moralTruthValue</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="M.s6_moral_realism">M.s6_moral_realism</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="M.accessibleToReason">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">M.accessibleToReason</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def M.accessibleToReason : M.MoralProposition → Prop := fun _ =&gt; True</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MoralProposition">MoralProposition</span><span class="dep-chip" data-target="accessibleToReason">accessibleToReason</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="M.s6_moral_realism">M.s6_moral_realism</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-proposition" data-kind="proposition" data-name="M.couldChooseOtherwise">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">proposition</span>
+    <span class="node-name">M.couldChooseOtherwise</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def M.couldChooseOtherwise : Person → Prop := fun _ =&gt; True</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="couldChooseOtherwise">couldChooseOtherwise</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="M.t1_libertarian_free_will">M.t1_libertarian_free_will</span><span class="dep-chip" data-target="M.t2_grace_preserves_freedom">M.t2_grace_preserves_freedom</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="M.causesCompete">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">M.causesCompete</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def M.causesCompete : M.PrimaryCause → M.SecondaryCause → Prop := fun _ _ =&gt; False</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="PrimaryCause">PrimaryCause</span><span class="dep-chip" data-target="SecondaryCause">SecondaryCause</span><span class="dep-chip" data-target="causesCompete">causesCompete</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="M.p2_two_tier_causation">M.p2_two_tier_causation</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-proposition" data-kind="proposition" data-name="M.godIsLove">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">proposition</span>
+    <span class="node-name">M.godIsLove</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def M.godIsLove : Prop := True</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="godIsLove">godIsLove</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="M.s1_god_is_love">M.s1_god_is_love</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="M.loveRequiresFreedom">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">M.loveRequiresFreedom</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def M.loveRequiresFreedom : Prop := True</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="loveRequiresFreedom">loveRequiresFreedom</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="M.s1_god_is_love">M.s1_god_is_love</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-proposition" data-kind="proposition" data-name="M.godWillsSalvation">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">proposition</span>
+    <span class="node-name">M.godWillsSalvation</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def M.godWillsSalvation : Person → Prop := fun _ =&gt; True</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="godWillsSalvation">godWillsSalvation</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="M.s2_universal_salvific_will">M.s2_universal_salvific_will</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="M.moralLawInscribed">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">M.moralLawInscribed</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def M.moralLawInscribed : Person → Prop := fun _ =&gt; True</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="moralLawInscribed">moralLawInscribed</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="M.s3_law_on_hearts">M.s3_law_on_hearts</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-proposition" data-kind="proposition" data-name="M.divinelyGoverned">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">proposition</span>
+    <span class="node-name">M.divinelyGoverned</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def M.divinelyGoverned : Prop → Prop := fun _ =&gt; True</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="divinelyGoverned">divinelyGoverned</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="M.s4_universal_providence">M.s4_universal_providence</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="M.isGraveSin">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">M.isGraveSin</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def M.isGraveSin : Sin → Prop := fun _ =&gt; False</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isGraveSin">isGraveSin</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="M.s5_sin_separates">M.s5_sin_separates</span><span class="dep-chip" data-target="M.mortal_sin_can_destroy_charity">M.mortal_sin_can_destroy_charity</span><span class="dep-chip" data-target="M.mortal_sin_preserves_eros">M.mortal_sin_preserves_eros</span><span class="dep-chip" data-target="M.mortal_sin_preserves_philia">M.mortal_sin_preserves_philia</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-proposition" data-kind="proposition" data-name="M.graceGiven">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">proposition</span>
+    <span class="node-name">M.graceGiven</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def M.graceGiven : Person → Grace → Prop := fun _ _ =&gt; True</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="graceGiven">graceGiven</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="M.s8_grace_necessary_and_transformative">M.s8_grace_necessary_and_transformative</span><span class="dep-chip" data-target="M.t2_grace_preserves_freedom">M.t2_grace_preserves_freedom</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="M.graceTransforms">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">M.graceTransforms</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def M.graceTransforms : Grace → Person → Prop := fun _ _ =&gt; True</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="graceTransforms">graceTransforms</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="M.s8_grace_necessary_and_transformative">M.s8_grace_necessary_and_transformative</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-proposition" data-kind="proposition" data-name="M.cooperatesWithGrace">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">proposition</span>
+    <span class="node-name">M.cooperatesWithGrace</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def M.cooperatesWithGrace : Person → Grace → Prop := fun _ _ =&gt; True</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="cooperatesWithGrace">cooperatesWithGrace</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="M.signifies">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">M.signifies</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def M.signifies : M.Sacrament → Prop := fun _ =&gt; True</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Sacrament">Sacrament</span><span class="dep-chip" data-target="signifies">signifies</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="M.t3_sacramental_efficacy">M.t3_sacramental_efficacy</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-proposition" data-kind="proposition" data-name="M.confers">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">proposition</span>
+    <span class="node-name">M.confers</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def M.confers : M.Sacrament → Prop := fun _ =&gt; True</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Sacrament">Sacrament</span><span class="dep-chip" data-target="confers">confers</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="M.t3_sacramental_efficacy">M.t3_sacramental_efficacy</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="M.conscienceJudges">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">M.conscienceJudges</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def M.conscienceJudges : Person → Action → Prop := fun _ _ =&gt; True</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="conscienceJudges">conscienceJudges</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="M.s9_conscience_binds">M.s9_conscience_binds</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-proposition" data-kind="proposition" data-name="M.obligated">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">proposition</span>
+    <span class="node-name">M.obligated</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def M.obligated : Person → Action → Prop := fun _ _ =&gt; True</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="obligated">obligated</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="M.s9_conscience_binds">M.s9_conscience_binds</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="M.isEvil">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">M.isEvil</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def M.isEvil : Prop → Prop := fun _ =&gt; False</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isEvil">isEvil</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="M.p3_evil_is_privation">M.p3_evil_is_privation</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-proposition" data-kind="proposition" data-name="M.isDueGoodAbsent">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">proposition</span>
+    <span class="node-name">M.isDueGoodAbsent</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def M.isDueGoodAbsent : Prop → Prop := fun _ =&gt; True</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isDueGoodAbsent">isDueGoodAbsent</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="M.p3_evil_is_privation">M.p3_evil_is_privation</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="M.loves">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">M.loves</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def M.loves : Person → Person → Prop := fun _ _ =&gt; True
+</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="loves">loves</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-proposition" data-kind="proposition" data-name="M.inCommunion">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">proposition</span>
+    <span class="node-name">M.inCommunion</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def M.inCommunion : CommunionParty → CommunionParty → Prop
+  | .person p1, .person p2 =&gt; p1 ≠ p2
+  | _, _ =&gt; True
+</code></pre></div>
+<div class="node-desc">Communion: everyone communes with everyone EXCEPT persons with themselves.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CommunionParty">CommunionParty</span><span class="dep-chip" data-target="inCommunion">inCommunion</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="M.communion_symmetric">M.communion_symmetric</span><span class="dep-chip" data-target="M.communion_not_self_reflexive">M.communion_not_self_reflexive</span><span class="dep-chip" data-target="M.god_self_communion">M.god_self_communion</span><span class="dep-chip" data-target="M.church_self_communion">M.church_self_communion</span><span class="dep-chip" data-target="M.s5_sin_separates">M.s5_sin_separates</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-proposition" data-kind="proposition" data-name="M.directedTowardGood">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">proposition</span>
+    <span class="node-name">M.directedTowardGood</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def M.directedTowardGood : Person → Prop := fun p =&gt; p.hasFreeWill = true</code></pre></div>
+<div class="node-desc">S7 helpers.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="directedTowardGood">directedTowardGood</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="M.s7_teleological_freedom">M.s7_teleological_freedom</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="M.agentFreedom">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">M.agentFreedom</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def M.agentFreedom : Person → FreedomDegree := fun p =&gt;
+  if p.hasFreeWill = true then
+    { level := 10, canChooseEvil := True, orientedToGood := True }
+  else
+    { level := 1, canChooseEvil := True, orientedToGood := False }
+</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="FreedomDegree">FreedomDegree</span><span class="dep-chip" data-target="agentFreedom">agentFreedom</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="M.s7_teleological_freedom">M.s7_teleological_freedom</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-proposition" data-kind="proposition" data-name="M.hasSpiritualAspect">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">proposition</span>
+    <span class="node-name">M.hasSpiritualAspect</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def M.hasSpiritualAspect : Nat → Prop := fun _ =&gt; True</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="M.both_aspects_in_life">M.both_aspects_in_life</span><span class="dep-chip" data-target="M.corporeal_requires_spiritual">M.corporeal_requires_spiritual</span><span class="dep-chip" data-target="M.soul_is_immortal">M.soul_is_immortal</span><span class="dep-chip" data-target="M.death_separates">M.death_separates</span><span class="dep-chip" data-target="M.resurrection_reunites">M.resurrection_reunites</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="M.hasCorporealAspect">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">M.hasCorporealAspect</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def M.hasCorporealAspect : Nat → Prop := fun n =&gt; n &lt; 100 ∨ n ≥ 200</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="M.both_aspects_in_life">M.both_aspects_in_life</span><span class="dep-chip" data-target="M.corporeal_requires_spiritual">M.corporeal_requires_spiritual</span><span class="dep-chip" data-target="M.death_separates">M.death_separates</span><span class="dep-chip" data-target="M.resurrection_reunites">M.resurrection_reunites</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-proposition" data-kind="proposition" data-name="M.isDead">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">proposition</span>
+    <span class="node-name">M.isDead</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def M.isDead : Nat → Prop := fun n =&gt; 100 ≤ n ∧ n &lt; 200</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isDead">isDead</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="M.both_aspects_in_life">M.both_aspects_in_life</span><span class="dep-chip" data-target="M.death_separates">M.death_separates</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="M.isRisen">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">M.isRisen</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def M.isRisen : Nat → Prop := fun n =&gt; n ≥ 200</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isRisen">isRisen</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="M.both_aspects_in_life">M.both_aspects_in_life</span><span class="dep-chip" data-target="M.resurrection_reunites">M.resurrection_reunites</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="M.personOfHuman">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">M.personOfHuman</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def M.personOfHuman : Nat → Person := fun _ =&gt; Person.human
+</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Person.human">Person.human</span><span class="dep-chip" data-target="personOfHuman">personOfHuman</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="M.personOfHuman_capacities">M.personOfHuman_capacities</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-proposition" data-kind="proposition" data-name="M.inBeatifyingCommunion">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">proposition</span>
+    <span class="node-name">M.inBeatifyingCommunion</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def M.inBeatifyingCommunion : Nat → Prop := fun n =&gt; n &lt; 150 ∨ n ≥ 200</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="inBeatifyingCommunion">inBeatifyingCommunion</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="M.beatific_vision_requires_purity_person">M.beatific_vision_requires_purity_person</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="M.sinProfileOf">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">M.sinProfileOf</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def M.sinProfileOf : Nat → SinProfile := fun n =&gt;
+  if n &lt; 150 ∨ n ≥ 200 then
+    { originalWound := EffectState.removed
+    , guilt := EffectState.removed
+    , attachment := EffectState.removed }
+  else
+    { originalWound := EffectState.removed
+    , guilt := EffectState.present
+    , attachment := EffectState.present }
+</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EffectState">EffectState</span><span class="dep-chip" data-target="SinProfile">SinProfile</span><span class="dep-chip" data-target="sinProfileOf">sinProfileOf</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="M.beatific_vision_requires_purity_person">M.beatific_vision_requires_purity_person</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="M.communion_symmetric">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">M.communion_symmetric</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem M.communion_symmetric :
+    ∀ (a b : CommunionParty), M.inCommunion a b → M.inCommunion b a</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CommunionParty">CommunionParty</span><span class="dep-chip" data-target="M.inCommunion">M.inCommunion</span><span class="dep-chip" data-target="communion_symmetric">communion_symmetric</span><span class="dep-chip" data-target="inCommunion">inCommunion</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="M.communion_not_self_reflexive">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">M.communion_not_self_reflexive</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem M.communion_not_self_reflexive :
+    ∀ (p : Person), p.isMoralAgent = true → ¬ M.inCommunion (.person p) (.person p)</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="M.inCommunion">M.inCommunion</span><span class="dep-chip" data-target="communion_not_self_reflexive">communion_not_self_reflexive</span><span class="dep-chip" data-target="inCommunion">inCommunion</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="M.god_self_communion">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">M.god_self_communion</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem M.god_self_communion : M.inCommunion .god .god</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="M.inCommunion">M.inCommunion</span><span class="dep-chip" data-target="god_self_communion">god_self_communion</span><span class="dep-chip" data-target="inCommunion">inCommunion</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="M.church_self_communion">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">M.church_self_communion</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem M.church_self_communion : M.inCommunion .church .church</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="M.inCommunion">M.inCommunion</span><span class="dep-chip" data-target="church_self_communion">church_self_communion</span><span class="dep-chip" data-target="inCommunion">inCommunion</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="M.p2_two_tier_causation">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">M.p2_two_tier_causation</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem M.p2_two_tier_causation :
+    ∀ (p : M.PrimaryCause) (s : M.SecondaryCause), ¬ M.causesCompete p s</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="M.causesCompete">M.causesCompete</span><span class="dep-chip" data-target="PrimaryCause">PrimaryCause</span><span class="dep-chip" data-target="SecondaryCause">SecondaryCause</span><span class="dep-chip" data-target="causesCompete">causesCompete</span><span class="dep-chip" data-target="p2_two_tier_causation">p2_two_tier_causation</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="M.p3_evil_is_privation">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">M.p3_evil_is_privation</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem M.p3_evil_is_privation :
+    ∀ (e : Prop), M.isEvil e → M.isDueGoodAbsent e</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="M.isDueGoodAbsent">M.isDueGoodAbsent</span><span class="dep-chip" data-target="M.isEvil">M.isEvil</span><span class="dep-chip" data-target="isDueGoodAbsent">isDueGoodAbsent</span><span class="dep-chip" data-target="isEvil">isEvil</span><span class="dep-chip" data-target="p3_evil_is_privation">p3_evil_is_privation</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="M.s1_god_is_love">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">M.s1_god_is_love</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem M.s1_god_is_love : M.godIsLove ∧ M.loveRequiresFreedom</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="M.godIsLove">M.godIsLove</span><span class="dep-chip" data-target="M.loveRequiresFreedom">M.loveRequiresFreedom</span><span class="dep-chip" data-target="godIsLove">godIsLove</span><span class="dep-chip" data-target="loveRequiresFreedom">loveRequiresFreedom</span><span class="dep-chip" data-target="s1_god_is_love">s1_god_is_love</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="M.s2_universal_salvific_will">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">M.s2_universal_salvific_will</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem M.s2_universal_salvific_will :
+    ∀ (p : Person), M.godWillsSalvation p</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="M.godWillsSalvation">M.godWillsSalvation</span><span class="dep-chip" data-target="godWillsSalvation">godWillsSalvation</span><span class="dep-chip" data-target="s2_universal_salvific_will">s2_universal_salvific_will</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="M.s3_law_on_hearts">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">M.s3_law_on_hearts</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem M.s3_law_on_hearts :
+    ∀ (p : Person), p.hasIntellect = true → M.moralLawInscribed p</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="M.moralLawInscribed">M.moralLawInscribed</span><span class="dep-chip" data-target="moralLawInscribed">moralLawInscribed</span><span class="dep-chip" data-target="s3_law_on_hearts">s3_law_on_hearts</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="M.s4_universal_providence">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">M.s4_universal_providence</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem M.s4_universal_providence :
+    ∀ (event : Prop), M.divinelyGoverned event</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="M.divinelyGoverned">M.divinelyGoverned</span><span class="dep-chip" data-target="divinelyGoverned">divinelyGoverned</span><span class="dep-chip" data-target="s4_universal_providence">s4_universal_providence</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="M.s5_sin_separates">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">M.s5_sin_separates</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem M.s5_sin_separates :
+    ∀ (p : Person) (s : Sin), M.isGraveSin s → s.action.agent = p →
+    ¬ M.inCommunion (.person p) .god</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="M.inCommunion">M.inCommunion</span><span class="dep-chip" data-target="M.isGraveSin">M.isGraveSin</span><span class="dep-chip" data-target="inCommunion">inCommunion</span><span class="dep-chip" data-target="isGraveSin">isGraveSin</span><span class="dep-chip" data-target="s5_sin_separates">s5_sin_separates</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="M.s6_moral_realism">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">M.s6_moral_realism</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem M.s6_moral_realism :
+    ∀ (mp : M.MoralProposition), M.moralTruthValue mp → M.accessibleToReason mp</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="M.accessibleToReason">M.accessibleToReason</span><span class="dep-chip" data-target="M.moralTruthValue">M.moralTruthValue</span><span class="dep-chip" data-target="MoralProposition">MoralProposition</span><span class="dep-chip" data-target="accessibleToReason">accessibleToReason</span><span class="dep-chip" data-target="moralTruthValue">moralTruthValue</span><span class="dep-chip" data-target="s6_moral_realism">s6_moral_realism</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="M.s7_teleological_freedom">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">M.s7_teleological_freedom</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem M.s7_teleological_freedom :
+    ∀ (a1 a2 : Person),
+    M.directedTowardGood a1 → ¬ M.directedTowardGood a2 →
+    freedomLt (M.agentFreedom a2) (M.agentFreedom a1)</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="M.agentFreedom">M.agentFreedom</span><span class="dep-chip" data-target="M.directedTowardGood">M.directedTowardGood</span><span class="dep-chip" data-target="agentFreedom">agentFreedom</span><span class="dep-chip" data-target="directedTowardGood">directedTowardGood</span><span class="dep-chip" data-target="freedomLt">freedomLt</span><span class="dep-chip" data-target="s7_teleological_freedom">s7_teleological_freedom</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="M.s8_grace_necessary_and_transformative">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">M.s8_grace_necessary_and_transformative</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem M.s8_grace_necessary_and_transformative :
+    ∀ (p : Person) (g : Grace), M.graceGiven p g → M.graceTransforms g p</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="M.graceGiven">M.graceGiven</span><span class="dep-chip" data-target="M.graceTransforms">M.graceTransforms</span><span class="dep-chip" data-target="graceGiven">graceGiven</span><span class="dep-chip" data-target="graceTransforms">graceTransforms</span><span class="dep-chip" data-target="s8_grace_necessary_and_transformative">s8_grace_necessary_and_transformative</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="M.s9_conscience_binds">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">M.s9_conscience_binds</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem M.s9_conscience_binds :
+    ∀ (p : Person) (a : Action), M.conscienceJudges p a → M.obligated p a</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="M.conscienceJudges">M.conscienceJudges</span><span class="dep-chip" data-target="M.obligated">M.obligated</span><span class="dep-chip" data-target="conscienceJudges">conscienceJudges</span><span class="dep-chip" data-target="obligated">obligated</span><span class="dep-chip" data-target="s9_conscience_binds">s9_conscience_binds</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="M.t1_libertarian_free_will">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">M.t1_libertarian_free_will</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem M.t1_libertarian_free_will :
+    ∀ (a : Person), M.couldChooseOtherwise a</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="M.couldChooseOtherwise">M.couldChooseOtherwise</span><span class="dep-chip" data-target="couldChooseOtherwise">couldChooseOtherwise</span><span class="dep-chip" data-target="t1_libertarian_free_will">t1_libertarian_free_will</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="M.t2_grace_preserves_freedom">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">M.t2_grace_preserves_freedom</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem M.t2_grace_preserves_freedom :
+    ∀ (p : Person) (g : Grace), M.graceGiven p g → M.couldChooseOtherwise p</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="M.couldChooseOtherwise">M.couldChooseOtherwise</span><span class="dep-chip" data-target="M.graceGiven">M.graceGiven</span><span class="dep-chip" data-target="couldChooseOtherwise">couldChooseOtherwise</span><span class="dep-chip" data-target="graceGiven">graceGiven</span><span class="dep-chip" data-target="t2_grace_preserves_freedom">t2_grace_preserves_freedom</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="M.t3_sacramental_efficacy">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">M.t3_sacramental_efficacy</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem M.t3_sacramental_efficacy :
+    ∀ (s : M.Sacrament), M.signifies s → M.confers s</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="M.confers">M.confers</span><span class="dep-chip" data-target="M.signifies">M.signifies</span><span class="dep-chip" data-target="Sacrament">Sacrament</span><span class="dep-chip" data-target="confers">confers</span><span class="dep-chip" data-target="signifies">signifies</span><span class="dep-chip" data-target="t3_sacramental_efficacy">t3_sacramental_efficacy</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="M.both_aspects_in_life">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">M.both_aspects_in_life</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem M.both_aspects_in_life :
+    ∀ (p : Nat),
+    ¬M.isDead p → ¬M.isRisen p →
+    M.hasCorporealAspect p ∧ M.hasSpiritualAspect p</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="M.hasCorporealAspect">M.hasCorporealAspect</span><span class="dep-chip" data-target="M.hasSpiritualAspect">M.hasSpiritualAspect</span><span class="dep-chip" data-target="M.isDead">M.isDead</span><span class="dep-chip" data-target="M.isRisen">M.isRisen</span><span class="dep-chip" data-target="both_aspects_in_life">both_aspects_in_life</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="isRisen">isRisen</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="M.corporeal_requires_spiritual">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">M.corporeal_requires_spiritual</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem M.corporeal_requires_spiritual :
+    ∀ (p : Nat), M.hasCorporealAspect p → M.hasSpiritualAspect p</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="M.hasCorporealAspect">M.hasCorporealAspect</span><span class="dep-chip" data-target="M.hasSpiritualAspect">M.hasSpiritualAspect</span><span class="dep-chip" data-target="corporeal_requires_spiritual">corporeal_requires_spiritual</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="M.soul_is_immortal">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">M.soul_is_immortal</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem M.soul_is_immortal :
+    ∀ (p : Nat), M.hasSpiritualAspect p</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="M.hasSpiritualAspect">M.hasSpiritualAspect</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="soul_is_immortal">soul_is_immortal</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="M.death_separates">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">M.death_separates</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem M.death_separates :
+    ∀ (p : Nat),
+    M.isDead p → ¬M.hasCorporealAspect p ∧ M.hasSpiritualAspect p</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="M.hasCorporealAspect">M.hasCorporealAspect</span><span class="dep-chip" data-target="M.hasSpiritualAspect">M.hasSpiritualAspect</span><span class="dep-chip" data-target="M.isDead">M.isDead</span><span class="dep-chip" data-target="death_separates">death_separates</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="isDead">isDead</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="M.resurrection_reunites">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">M.resurrection_reunites</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem M.resurrection_reunites :
+    ∀ (p : Nat),
+    M.isRisen p → M.hasCorporealAspect p ∧ M.hasSpiritualAspect p</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="M.hasCorporealAspect">M.hasCorporealAspect</span><span class="dep-chip" data-target="M.hasSpiritualAspect">M.hasSpiritualAspect</span><span class="dep-chip" data-target="M.isRisen">M.isRisen</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="isRisen">isRisen</span><span class="dep-chip" data-target="resurrection_reunites">resurrection_reunites</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="M.personOfHuman_capacities">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">M.personOfHuman_capacities</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem M.personOfHuman_capacities :
+    ∀ (hp : Nat),
+    let p := M.personOfHuman hp
+    p.hasIntellect = true ∧ p.hasFreeWill = true ∧ p.isMoralAgent = true</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="M.personOfHuman">M.personOfHuman</span><span class="dep-chip" data-target="Person.human">Person.human</span><span class="dep-chip" data-target="SoulState">SoulState</span><span class="dep-chip" data-target="beatific_vision_requires_purity">beatific_vision_requires_purity</span><span class="dep-chip" data-target="beatific_vision_requires_purity_person">beatific_vision_requires_purity_person</span><span class="dep-chip" data-target="choseGod">choseGod</span><span class="dep-chip" data-target="god_sustains_all">god_sustains_all</span><span class="dep-chip" data-target="inBeatifyingCommunion">inBeatifyingCommunion</span><span class="dep-chip" data-target="personOfHuman">personOfHuman</span><span class="dep-chip" data-target="personOfHuman_capacities">personOfHuman_capacities</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="M.beatific_vision_requires_purity_person">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">M.beatific_vision_requires_purity_person</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem M.beatific_vision_requires_purity_person :
+    ∀ (p : Nat), M.inBeatifyingCommunion p →
+    let sp := M.sinProfileOf p
+    sp.originalWound = EffectState.removed ∧
+    sp.guilt = EffectState.removed ∧
+    sp.attachment = EffectState.removed</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EffectState">EffectState</span><span class="dep-chip" data-target="M.inBeatifyingCommunion">M.inBeatifyingCommunion</span><span class="dep-chip" data-target="M.sinProfileOf">M.sinProfileOf</span><span class="dep-chip" data-target="TypedLove">TypedLove</span><span class="dep-chip" data-target="agape_not_symmetric_witness">agape_not_symmetric_witness</span><span class="dep-chip" data-target="agape_requires_freedom">agape_requires_freedom</span><span class="dep-chip" data-target="beatific_vision_requires_purity_person">beatific_vision_requires_purity_person</span><span class="dep-chip" data-target="inBeatifyingCommunion">inBeatifyingCommunion</span><span class="dep-chip" data-target="self_love_reflexive">self_love_reflexive</span><span class="dep-chip" data-target="sinProfileOf">sinProfileOf</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="M.philia_symmetric">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">M.philia_symmetric</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem M.philia_symmetric :
+    ∀ (tl : TypedLove),
+    tl.kind = LoveKind.philia →
+    ∃ (tl' : TypedLove),
+      tl'.kind = LoveKind.philia ∧
+      tl'.lover = tl.beloved ∧
+      tl'.beloved = tl.lover ∧
+      tl'.degree &gt; 0</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="LoveKind">LoveKind</span><span class="dep-chip" data-target="TypedLove">TypedLove</span><span class="dep-chip" data-target="philia_symmetric">philia_symmetric</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="M.charity_can_increase">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">M.charity_can_increase</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem M.charity_can_increase :
+    ∀ (tl : TypedLove),
+    tl.kind = LoveKind.agape →
+    tl.lover.hasFreeWill = true →
+    ∃ (tl' : TypedLove),
+      tl'.kind = LoveKind.agape ∧
+      tl'.lover = tl.lover ∧
+      tl'.beloved = tl.beloved ∧
+      tl'.degree &gt; tl.degree</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="LoveKind">LoveKind</span><span class="dep-chip" data-target="TypedLove">TypedLove</span><span class="dep-chip" data-target="charity_can_increase">charity_can_increase</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="M.mortal_sin_can_destroy_charity">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">M.mortal_sin_can_destroy_charity</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem M.mortal_sin_can_destroy_charity :
+    ∀ (tl : TypedLove) (s : Sin),
+    tl.kind = LoveKind.agape → M.isGraveSin s →
+    ∃ (tl' : TypedLove),
+      tl'.kind = LoveKind.agape ∧ tl'.lover = tl.lover ∧
+      tl'.beloved = tl.beloved ∧ tl'.degree = 0</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="LoveKind">LoveKind</span><span class="dep-chip" data-target="M.isGraveSin">M.isGraveSin</span><span class="dep-chip" data-target="TypedLove">TypedLove</span><span class="dep-chip" data-target="isGraveSin">isGraveSin</span><span class="dep-chip" data-target="mortal_sin_can_destroy_charity">mortal_sin_can_destroy_charity</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="M.mortal_sin_preserves_eros">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">M.mortal_sin_preserves_eros</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem M.mortal_sin_preserves_eros :
+    ∀ (tl : TypedLove) (s : Sin),
+    tl.kind = LoveKind.eros → tl.degree &gt; 0 → M.isGraveSin s →
+    ∃ (tl' : TypedLove),
+      tl'.kind = LoveKind.eros ∧ tl'.lover = tl.lover ∧
+      tl'.beloved = tl.beloved ∧ tl'.degree &gt; 0</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="LoveKind">LoveKind</span><span class="dep-chip" data-target="M.isGraveSin">M.isGraveSin</span><span class="dep-chip" data-target="TypedLove">TypedLove</span><span class="dep-chip" data-target="isGraveSin">isGraveSin</span><span class="dep-chip" data-target="mortal_sin_preserves_eros">mortal_sin_preserves_eros</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="M.mortal_sin_preserves_philia">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">M.mortal_sin_preserves_philia</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem M.mortal_sin_preserves_philia :
+    ∀ (tl : TypedLove) (s : Sin),
+    tl.kind = LoveKind.philia → tl.degree &gt; 0 → M.isGraveSin s →
+    ∃ (tl' : TypedLove),
+      tl'.kind = LoveKind.philia ∧ tl'.lover = tl.lover ∧
+      tl'.beloved = tl.beloved ∧ tl'.degree &gt; 0</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="LoveKind">LoveKind</span><span class="dep-chip" data-target="M.isGraveSin">M.isGraveSin</span><span class="dep-chip" data-target="TypedLove">TypedLove</span><span class="dep-chip" data-target="isGraveSin">isGraveSin</span><span class="dep-chip" data-target="mortal_sin_preserves_philia">mortal_sin_preserves_philia</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="M.eros_does_not_require_freedom">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">M.eros_does_not_require_freedom</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem M.eros_does_not_require_freedom :
+    ∃ (tl : TypedLove),
+    tl.kind = LoveKind.eros ∧ tl.degree &gt; 0 ∧
+    tl.lover.hasFreeWill = false</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="LoveKind">LoveKind</span><span class="dep-chip" data-target="Person.human">Person.human</span><span class="dep-chip" data-target="TypedLove">TypedLove</span><span class="dep-chip" data-target="eros_does_not_require_freedom">eros_does_not_require_freedom</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="M.ordo_amoris_god_over_neighbor">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">M.ordo_amoris_god_over_neighbor</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem M.ordo_amoris_god_over_neighbor :
+    ∀ (p : Person) (tl_god tl_neighbor : TypedLove),
+    tl_god.kind = LoveKind.agape → tl_neighbor.kind = LoveKind.agape →
+    tl_god.lover = p → tl_neighbor.lover = p →
+    tl_god.degree &gt; tl_neighbor.degree → True</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="LoveKind">LoveKind</span><span class="dep-chip" data-target="TypedLove">TypedLove</span><span class="dep-chip" data-target="ordo_amoris_god_over_neighbor">ordo_amoris_god_over_neighbor</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="M.ordo_amoris_neighbor_over_self">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">M.ordo_amoris_neighbor_over_self</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem M.ordo_amoris_neighbor_over_self :
+    ∀ (p : Person) (tl_neighbor tl_self : TypedLove),
+    tl_neighbor.kind = LoveKind.agape → tl_self.kind = LoveKind.selfLove →
+    tl_neighbor.lover = p → tl_self.lover = p →
+    tl_neighbor.degree &gt; tl_self.degree → True</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Communion">Communion</span><span class="dep-chip" data-target="LoveKind">LoveKind</span><span class="dep-chip" data-target="SoulState">SoulState</span><span class="dep-chip" data-target="TypedLove">TypedLove</span><span class="dep-chip" data-target="agape_not_symmetric_witness">agape_not_symmetric_witness</span><span class="dep-chip" data-target="agape_requires_freedom">agape_requires_freedom</span><span class="dep-chip" data-target="beatific_vision_requires_purity">beatific_vision_requires_purity</span><span class="dep-chip" data-target="god_sustains_all">god_sustains_all</span><span class="dep-chip" data-target="ordo_amoris_neighbor_over_self">ordo_amoris_neighbor_over_self</span><span class="dep-chip" data-target="self_love_reflexive">self_love_reflexive</span></div></div>
+  </div>
+</div>
+  </div>
+
+  <div class="footer">
+    Generated from <code>Catlib/Audit/Model.lean</code>
+  </div>
+</div>
+
+<script>
+function toggleNode(header) {
+  header.parentElement.classList.toggle('open');
+}
+
+// Tap a dep chip to scroll to that node
+document.addEventListener('click', function(e) {
+  if (e.target.classList.contains('dep-chip')) {
+    var target = e.target.getAttribute('data-target');
+    var cards = document.querySelectorAll('.node-card');
+    for (var i = 0; i < cards.length; i++) {
+      if (cards[i].getAttribute('data-name') === target) {
+        cards[i].classList.add('open');
+        cards[i].scrollIntoView({ behavior: 'smooth', block: 'center' });
+        cards[i].style.boxShadow = '0 0 0 3px var(--accent-gold)';
+        setTimeout(function(c) { c.style.boxShadow = ''; }, 1500, cards[i]);
+        break;
+      }
+    }
+  }
+});
+
+// Search
+document.getElementById('nodeSearch').addEventListener('input', function() {
+  var q = this.value.toLowerCase();
+  var cards = document.querySelectorAll('.node-card');
+  for (var i = 0; i < cards.length; i++) {
+    var name = cards[i].getAttribute('data-name').toLowerCase();
+    var desc = (cards[i].querySelector('.node-desc') || {}).textContent || '';
+    var show = !q || name.indexOf(q) !== -1 || desc.toLowerCase().indexOf(q) !== -1;
+    cards[i].style.display = show ? '' : 'none';
+  }
+});
+
+// Filter buttons
+document.querySelectorAll('.filter-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+    this.classList.add('active');
+    var filter = this.getAttribute('data-filter');
+    var cards = document.querySelectorAll('.node-card');
+    for (var i = 0; i < cards.length; i++) {
+      if (filter === 'all' || cards[i].getAttribute('data-kind') === filter) {
+        cards[i].style.display = '';
+      } else {
+        cards[i].style.display = 'none';
+      }
+    }
+  });
+});
+</script>
+</body>
+</html>

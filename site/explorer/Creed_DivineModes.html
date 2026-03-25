@@ -528,9 +528,9 @@ h1 {
   
   <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1023, &sect;1030, &sect;1033, &sect;1260, &sect;1472, &sect;301, &sect;847, &sect;997</div>
 
-  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot proposition"></span>proposition</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot structure"></span>structure</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
+  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span><span class="legend-item"><span class="legend-dot proposition"></span>proposition</span><span class="legend-item"><span class="legend-dot structure"></span>structure</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
 
-  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (5)</button><button class="filter-btn" data-filter="def">def (5)</button><button class="filter-btn" data-filter="proposition">proposition (5)</button><button class="filter-btn" data-filter="inductive">inductive (1)</button><button class="filter-btn" data-filter="opaque">opaque (1)</button><button class="filter-btn" data-filter="structure">structure (2)</button><button class="filter-btn" data-filter="theorem">theorem (22)</button></div>
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (3)</button><button class="filter-btn" data-filter="def">def (2)</button><button class="filter-btn" data-filter="inductive">inductive (2)</button><button class="filter-btn" data-filter="proposition">proposition (9)</button><button class="filter-btn" data-filter="structure">structure (1)</button><button class="filter-btn" data-filter="theorem">theorem (24)</button></div>
 
   <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
 
@@ -544,89 +544,110 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>inductive DivineMode where</code></pre></div>
 <div class="node-desc">How God relates to a creature.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="inBeatifyingCommunion">inBeatifyingCommunion</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="god_sustains_all">god_sustains_all</span><span class="dep-chip" data-target="inBeatifyingCommunion">inBeatifyingCommunion</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="god_sustains_all">god_sustains_all</span></div></div>
   </div>
 </div>
-<div class="node-card kind-structure" data-kind="structure" data-name="SoulState">
+<div class="node-card kind-inductive" data-kind="inductive" data-name="SoulState">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">structure</span>
+    <span class="node-kind-badge">inductive</span>
     <span class="node-name">SoulState</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>structure SoulState where</code></pre></div>
+    <div class="node-prop"><pre><code>inductive SoulState where</code></pre></div>
 <div class="node-desc">The state of a soul's relationship with God after death.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="inBeatifyingCommunion">inBeatifyingCommunion</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="god_sustains_all">god_sustains_all</span><span class="dep-chip" data-target="beatific_vision_requires_purity">beatific_vision_requires_purity</span><span class="dep-chip" data-target="heavenState">heavenState</span><span class="dep-chip" data-target="purgatoryState">purgatoryState</span><span class="dep-chip" data-target="hellState">hellState</span><span class="dep-chip" data-target="soulstate_communion_bridge">soulstate_communion_bridge</span><span class="dep-chip" data-target="heaven_requires_purity">heaven_requires_purity</span><span class="dep-chip" data-target="purgatory_is_transitional">purgatory_is_transitional</span><span class="dep-chip" data-target="communion_requires_purification">communion_requires_purification</span><span class="dep-chip" data-target="afterlifeToSoulState">afterlifeToSoulState</span><span class="dep-chip" data-target="personAfterlifeFromSin">personAfterlifeFromSin</span><span class="dep-chip" data-target="hell_profile_means_hellState">hell_profile_means_hellState</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="SoulState.sustained">SoulState.sustained</span><span class="dep-chip" data-target="SoulState.choseGod">SoulState.choseGod</span><span class="dep-chip" data-target="SoulState.hasBeatificVision">SoulState.hasBeatificVision</span><span class="dep-chip" data-target="SoulState.purified">SoulState.purified</span><span class="dep-chip" data-target="god_sustains_all">god_sustains_all</span><span class="dep-chip" data-target="beatific_vision_requires_purity">beatific_vision_requires_purity</span><span class="dep-chip" data-target="soulstate_communion_bridge">soulstate_communion_bridge</span><span class="dep-chip" data-target="heaven_requires_purity">heaven_requires_purity</span><span class="dep-chip" data-target="purgatory_is_transitional">purgatory_is_transitional</span><span class="dep-chip" data-target="communion_requires_purification">communion_requires_purification</span><span class="dep-chip" data-target="afterlifeToSoulState">afterlifeToSoulState</span><span class="dep-chip" data-target="personAfterlifeFromSin">personAfterlifeFromSin</span><span class="dep-chip" data-target="hell_profile_means_hellState">hell_profile_means_hellState</span></div></div>
   </div>
 </div>
-<div class="node-card kind-axiom" data-kind="axiom" data-name="god_sustains_all">
+<div class="node-card kind-proposition" data-kind="proposition" data-name="SoulState.sustained">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">axiom</span>
+    <span class="node-kind-badge">proposition</span>
+    <span class="node-name">SoulState.sustained</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def SoulState.sustained : SoulState → Prop
+  | .heaven | .purgatory | .hell =&gt; True
+</code></pre></div>
+<div class="node-desc">God sustains all souls in existence — this is NOT optional.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SoulState">SoulState</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="SoulState">SoulState</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-proposition" data-kind="proposition" data-name="SoulState.choseGod">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">proposition</span>
+    <span class="node-name">SoulState.choseGod</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def SoulState.choseGod : SoulState → Prop
+  | .heaven | .purgatory =&gt; True
+  | .hell =&gt; False
+</code></pre></div>
+<div class="node-desc">Whether the person chose God (died in grace, salvation assured).</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SoulState">SoulState</span><span class="dep-chip" data-target="choseGod">choseGod</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="SoulState">SoulState</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-proposition" data-kind="proposition" data-name="SoulState.hasBeatificVision">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">proposition</span>
+    <span class="node-name">SoulState.hasBeatificVision</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def SoulState.hasBeatificVision : SoulState → Prop
+  | .heaven =&gt; True
+  | .purgatory | .hell =&gt; False
+</code></pre></div>
+<div class="node-desc">Whether the person has the beatific vision — sees God face to face.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SoulState">SoulState</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="SoulState">SoulState</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-proposition" data-kind="proposition" data-name="SoulState.purified">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">proposition</span>
+    <span class="node-name">SoulState.purified</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def SoulState.purified : SoulState → Prop
+  | .heaven =&gt; True
+  | .purgatory | .hell =&gt; False
+</code></pre></div>
+<div class="node-desc">Whether the soul is fully purified of all sin effects.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SoulState">SoulState</span><span class="dep-chip" data-target="beatific_vision_requires_purity">beatific_vision_requires_purity</span><span class="dep-chip" data-target="god_sustains_all">god_sustains_all</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="SoulState">SoulState</span><span class="dep-chip" data-target="beatific_vision_requires_purity">beatific_vision_requires_purity</span><span class="dep-chip" data-target="god_sustains_all">god_sustains_all</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="god_sustains_all">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
     <span class="node-name">god_sustains_all</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>axiom god_sustains_all :
-  ∀ (s : SoulState), s.sustained
-</code></pre></div>
-<div class="node-desc">God sustains ALL that exists. │   Source: [Scripture] Col 1:17 (&quot;in him all things hold together&quot;), | Scope: Ecumenical — all Christians accept divine</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SoulState">SoulState</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="soulstate_communion_bridge">soulstate_communion_bridge</span><span class="dep-chip" data-target="all_states_sustained">all_states_sustained</span><span class="dep-chip" data-target="hell_paradox_resolved">hell_paradox_resolved</span><span class="dep-chip" data-target="SoulState">SoulState</span></div></div>
+    <div class="node-prop"><pre><code>theorem god_sustains_all (s : SoulState) : s.sustained</code></pre></div>
+<div class="node-desc">God sustains ALL that exists. │   Source: [Scripture] Col 1:17 (&quot;in him all things hold together&quot;),</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SoulState">SoulState</span><span class="dep-chip" data-target="inBeatifyingCommunion">inBeatifyingCommunion</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="DivineMode">DivineMode</span><span class="dep-chip" data-target="SoulState.purified">SoulState.purified</span><span class="dep-chip" data-target="SoulState">SoulState</span></div></div>
   </div>
 </div>
-<div class="node-card kind-axiom" data-kind="axiom" data-name="beatific_vision_requires_purity">
+<div class="node-card kind-theorem" data-kind="theorem" data-name="beatific_vision_requires_purity">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">axiom</span>
+    <span class="node-kind-badge">theorem</span>
     <span class="node-name">beatific_vision_requires_purity</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>axiom beatific_vision_requires_purity :
-  ∀ (s : SoulState), s.inBeatifyingCommunion → s.purified
-</code></pre></div>
+    <div class="node-prop"><pre><code>theorem beatific_vision_requires_purity (s : SoulState) :
+    s.hasBeatificVision → s.purified</code></pre></div>
 <div class="node-desc">The beatific vision requires full purification. │   Source: [Scripture] Rev 21:27 (&quot;nothing impure will ever enter&quot;),</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SoulState">SoulState</span><span class="dep-chip" data-target="inBeatifyingCommunion">inBeatifyingCommunion</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="heaven_requires_purity">heaven_requires_purity</span><span class="dep-chip" data-target="SoulState">SoulState</span></div></div>
-  </div>
-</div>
-<div class="node-card kind-def" data-kind="def" data-name="heavenState">
-  <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">def</span>
-    <span class="node-name">heavenState</span>
-    <span class="node-chevron">&#9654;</span>
-  </div>
-  <div class="node-details">
-    <div class="node-prop"><pre><code>def heavenState : SoulState</code></pre></div>
-<div class="node-desc">Heaven: sustained AND in full communion (beatified).</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SoulState">SoulState</span><span class="dep-chip" data-target="inBeatifyingCommunion">inBeatifyingCommunion</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="soulstate_communion_bridge">soulstate_communion_bridge</span><span class="dep-chip" data-target="all_states_sustained">all_states_sustained</span><span class="dep-chip" data-target="heaven_requires_purity">heaven_requires_purity</span><span class="dep-chip" data-target="afterlifeToSoulState">afterlifeToSoulState</span><span class="dep-chip" data-target="afterlife_heaven_is_heavenState">afterlife_heaven_is_heavenState</span><span class="dep-chip" data-target="heaven_profile_means_heavenState">heaven_profile_means_heavenState</span><span class="dep-chip" data-target="SoulState">SoulState</span></div></div>
-  </div>
-</div>
-<div class="node-card kind-def" data-kind="def" data-name="purgatoryState">
-  <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">def</span>
-    <span class="node-name">purgatoryState</span>
-    <span class="node-chevron">&#9654;</span>
-  </div>
-  <div class="node-details">
-    <div class="node-prop"><pre><code>def purgatoryState : SoulState</code></pre></div>
-<div class="node-desc">Purgatory: sustained AND in communion (assured), but not yet</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SoulState">SoulState</span><span class="dep-chip" data-target="inBeatifyingCommunion">inBeatifyingCommunion</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="soulstate_communion_bridge">soulstate_communion_bridge</span><span class="dep-chip" data-target="all_states_sustained">all_states_sustained</span><span class="dep-chip" data-target="purgatory_is_transitional">purgatory_is_transitional</span><span class="dep-chip" data-target="afterlifeToSoulState">afterlifeToSoulState</span><span class="dep-chip" data-target="afterlife_purgatory_is_purgatoryState">afterlife_purgatory_is_purgatoryState</span><span class="dep-chip" data-target="heaven_profile_means_heavenState">heaven_profile_means_heavenState</span><span class="dep-chip" data-target="purgatory_profile_means_purgatoryState">purgatory_profile_means_purgatoryState</span><span class="dep-chip" data-target="SoulState">SoulState</span></div></div>
-  </div>
-</div>
-<div class="node-card kind-def" data-kind="def" data-name="hellState">
-  <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">def</span>
-    <span class="node-name">hellState</span>
-    <span class="node-chevron">&#9654;</span>
-  </div>
-  <div class="node-details">
-    <div class="node-prop"><pre><code>def hellState : SoulState</code></pre></div>
-<div class="node-desc">Hell: sustained but NOT in communion. Exists without any good.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SoulState">SoulState</span><span class="dep-chip" data-target="inBeatifyingCommunion">inBeatifyingCommunion</span><span class="dep-chip" data-target="inCommunion">inCommunion</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="soulstate_communion_bridge">soulstate_communion_bridge</span><span class="dep-chip" data-target="all_states_sustained">all_states_sustained</span><span class="dep-chip" data-target="hell_paradox_resolved">hell_paradox_resolved</span><span class="dep-chip" data-target="heaven_requires_purity">heaven_requires_purity</span><span class="dep-chip" data-target="hell_means_no_communion_with_god">hell_means_no_communion_with_god</span><span class="dep-chip" data-target="afterlifeToSoulState">afterlifeToSoulState</span><span class="dep-chip" data-target="afterlife_hell_is_hellState">afterlife_hell_is_hellState</span><span class="dep-chip" data-target="purgatory_profile_means_purgatoryState">purgatory_profile_means_purgatoryState</span><span class="dep-chip" data-target="hell_profile_means_hellState">hell_profile_means_hellState</span><span class="dep-chip" data-target="SoulState">SoulState</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SoulState">SoulState</span><span class="dep-chip" data-target="choseGod">choseGod</span><span class="dep-chip" data-target="inBeatifyingCommunion">inBeatifyingCommunion</span><span class="dep-chip" data-target="inCommunion">inCommunion</span><span class="dep-chip" data-target="personOfHuman">personOfHuman</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="SoulState.purified">SoulState.purified</span><span class="dep-chip" data-target="heaven_requires_purity">heaven_requires_purity</span><span class="dep-chip" data-target="SoulState">SoulState</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="soulstate_communion_bridge">
@@ -637,12 +658,12 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom soulstate_communion_bridge :
-  ∀ (p : Person) (s : SoulState),
-    s.inBeatifyingCommunion ↔ inCommunion (.person p) .god
+  ∀ (hp : HumanPerson) (s : SoulState),
+    s.choseGod ↔ inBeatifyingCommunion hp
 </code></pre></div>
-<div class="node-desc">Bridge: the SoulState's inBeatifyingCommunion field corresponds to the</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SoulState">SoulState</span><span class="dep-chip" data-target="god_sustains_all">god_sustains_all</span><span class="dep-chip" data-target="heavenState">heavenState</span><span class="dep-chip" data-target="hellState">hellState</span><span class="dep-chip" data-target="inBeatifyingCommunion">inBeatifyingCommunion</span><span class="dep-chip" data-target="inCommunion">inCommunion</span><span class="dep-chip" data-target="purgatoryState">purgatoryState</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="heaven_requires_purity">heaven_requires_purity</span><span class="dep-chip" data-target="hell_means_no_communion_with_god">hell_means_no_communion_with_god</span><span class="dep-chip" data-target="SoulState">SoulState</span><span class="dep-chip" data-target="god_sustains_all">god_sustains_all</span><span class="dep-chip" data-target="heavenState">heavenState</span><span class="dep-chip" data-target="hellState">hellState</span><span class="dep-chip" data-target="purgatoryState">purgatoryState</span></div></div>
+<div class="node-desc">Bridge: a SoulState's `choseGod` property corresponds to the</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="SoulState">SoulState</span><span class="dep-chip" data-target="choseGod">choseGod</span><span class="dep-chip" data-target="inBeatifyingCommunion">inBeatifyingCommunion</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="heaven_requires_purity">heaven_requires_purity</span><span class="dep-chip" data-target="hell_means_no_communion_with_god">hell_means_no_communion_with_god</span><span class="dep-chip" data-target="SoulState">SoulState</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="all_states_sustained">
@@ -654,9 +675,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem all_states_sustained :
     heavenState.sustained ∧ purgatoryState.sustained ∧ hellState.sustained</code></pre></div>
-<div class="node-desc">Structural lemma (Tier 0): instantiates god_sustains_all for the</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="god_sustains_all">god_sustains_all</span><span class="dep-chip" data-target="heavenState">heavenState</span><span class="dep-chip" data-target="hellState">hellState</span><span class="dep-chip" data-target="purgatoryState">purgatoryState</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="god_sustains_all">god_sustains_all</span><span class="dep-chip" data-target="heavenState">heavenState</span><span class="dep-chip" data-target="hellState">hellState</span><span class="dep-chip" data-target="purgatoryState">purgatoryState</span></div></div>
+<div class="node-desc">Structural lemma (Tier 0): all three afterlife states are sustained.</div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="hell_paradox_resolved">
@@ -669,11 +688,10 @@ h1 {
     <div class="node-prop"><pre><code>theorem hell_paradox_resolved :
     -- The damned exist (sustained)
     hellState.sustained ∧
-    -- The damned are separated from communion
-    ¬hellState.inBeatifyingCommunion</code></pre></div>
+    -- The damned did not choose God
+    ¬hellState.choseGod</code></pre></div>
 <div class="node-desc">The hell paradox resolved: the damned are separated from God's</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="god_sustains_all">god_sustains_all</span><span class="dep-chip" data-target="hellState">hellState</span><span class="dep-chip" data-target="inBeatifyingCommunion">inBeatifyingCommunion</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="god_sustains_all">god_sustains_all</span><span class="dep-chip" data-target="hellState">hellState</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="choseGod">choseGod</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="heaven_requires_purity">
@@ -684,10 +702,10 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem heaven_requires_purity :
-    heavenState.inBeatifyingCommunion → heavenState.purified</code></pre></div>
-<div class="node-desc">Heaven requires full purification — you can't be in communion</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SoulState">SoulState</span><span class="dep-chip" data-target="beatific_vision_requires_purity">beatific_vision_requires_purity</span><span class="dep-chip" data-target="heavenState">heavenState</span><span class="dep-chip" data-target="hellState">hellState</span><span class="dep-chip" data-target="inBeatifyingCommunion">inBeatifyingCommunion</span><span class="dep-chip" data-target="soulstate_communion_bridge">soulstate_communion_bridge</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="SoulState">SoulState</span><span class="dep-chip" data-target="beatific_vision_requires_purity">beatific_vision_requires_purity</span><span class="dep-chip" data-target="heavenState">heavenState</span><span class="dep-chip" data-target="hellState">hellState</span><span class="dep-chip" data-target="soulstate_communion_bridge">soulstate_communion_bridge</span></div></div>
+    heavenState.hasBeatificVision → heavenState.purified</code></pre></div>
+<div class="node-desc">Heaven requires full purification — you can't have the beatific</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SoulState">SoulState</span><span class="dep-chip" data-target="beatific_vision_requires_purity">beatific_vision_requires_purity</span><span class="dep-chip" data-target="soulstate_communion_bridge">soulstate_communion_bridge</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="SoulState">SoulState</span><span class="dep-chip" data-target="beatific_vision_requires_purity">beatific_vision_requires_purity</span><span class="dep-chip" data-target="soulstate_communion_bridge">soulstate_communion_bridge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="hell_means_no_communion_with_god">
@@ -697,12 +715,12 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>theorem hell_means_no_communion_with_god (p : Person) :
-    ¬hellState.inBeatifyingCommunion →
-    ¬inCommunion (.person p) .god</code></pre></div>
+    <div class="node-prop"><pre><code>theorem hell_means_no_communion_with_god (hp : HumanPerson) :
+    ¬hellState.choseGod →
+    ¬inBeatifyingCommunion hp</code></pre></div>
 <div class="node-desc">Hell means loss of communion with God.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="hellState">hellState</span><span class="dep-chip" data-target="inBeatifyingCommunion">inBeatifyingCommunion</span><span class="dep-chip" data-target="inCommunion">inCommunion</span><span class="dep-chip" data-target="soulstate_communion_bridge">soulstate_communion_bridge</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hellState">hellState</span><span class="dep-chip" data-target="soulstate_communion_bridge">soulstate_communion_bridge</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="choseGod">choseGod</span><span class="dep-chip" data-target="inBeatifyingCommunion">inBeatifyingCommunion</span><span class="dep-chip" data-target="soulstate_communion_bridge">soulstate_communion_bridge</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="soulstate_communion_bridge">soulstate_communion_bridge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="purgatory_is_transitional">
@@ -713,10 +731,10 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem purgatory_is_transitional :
-    purgatoryState.inBeatifyingCommunion ∧ ¬purgatoryState.purified</code></pre></div>
-<div class="node-desc">Purgatory is the state of being in communion (chose God) but</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="SinProfile">SinProfile</span><span class="dep-chip" data-target="SoulState">SoulState</span><span class="dep-chip" data-target="inBeatifyingCommunion">inBeatifyingCommunion</span><span class="dep-chip" data-target="isPurified">isPurified</span><span class="dep-chip" data-target="purgatoryState">purgatoryState</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="SoulState">SoulState</span><span class="dep-chip" data-target="isPurified">isPurified</span><span class="dep-chip" data-target="purgatoryState">purgatoryState</span></div></div>
+    purgatoryState.choseGod ∧ ¬purgatoryState.purified</code></pre></div>
+<div class="node-desc">Purgatory is the state of having chosen God but being</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Being">Being</span><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="SinProfile">SinProfile</span><span class="dep-chip" data-target="SoulState">SoulState</span><span class="dep-chip" data-target="choseGod">choseGod</span><span class="dep-chip" data-target="honors">honors</span><span class="dep-chip" data-target="isPurified">isPurified</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="SoulState">SoulState</span><span class="dep-chip" data-target="isPurified">isPurified</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="sinProfileOf">
@@ -742,22 +760,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def isPurified (p : HumanPerson) : Prop</code></pre></div>
 <div class="node-desc">A person is fully purified when all three sin-effect layers are removed:</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CommunionParty">CommunionParty</span><span class="dep-chip" data-target="EffectState">EffectState</span><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="inCommunion">inCommunion</span><span class="dep-chip" data-target="sinProfileOf">sinProfileOf</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EffectState">EffectState</span><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="sinProfileOf">sinProfileOf</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="purgatory_is_transitional">purgatory_is_transitional</span><span class="dep-chip" data-target="beatific_vision_requires_purity_person">beatific_vision_requires_purity_person</span><span class="dep-chip" data-target="personInHeaven">personInHeaven</span><span class="dep-chip" data-target="personInPurgatory">personInPurgatory</span><span class="dep-chip" data-target="personRisen">personRisen</span><span class="dep-chip" data-target="risen_saint_is_true_endpoint">risen_saint_is_true_endpoint</span><span class="dep-chip" data-target="communion_requires_purification">communion_requires_purification</span><span class="dep-chip" data-target="sinProfileOf">sinProfileOf</span></div></div>
-  </div>
-</div>
-<div class="node-card kind-opaque" data-kind="opaque" data-name="inBeatifyingCommunionPerson">
-  <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">opaque</span>
-    <span class="node-name">inBeatifyingCommunionPerson</span>
-    <span class="node-chevron">&#9654;</span>
-  </div>
-  <div class="node-details">
-    <div class="node-prop"><pre><code>opaque inBeatifyingCommunionPerson : HumanPerson → Prop
-</code></pre></div>
-<div class="node-desc">Whether a human person is in beatifying communion with God.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="beatific_vision_requires_purity_person">beatific_vision_requires_purity_person</span><span class="dep-chip" data-target="personInHeaven">personInHeaven</span><span class="dep-chip" data-target="personInHell">personInHell</span><span class="dep-chip" data-target="personRisen">personRisen</span><span class="dep-chip" data-target="risen_saint_is_true_endpoint">risen_saint_is_true_endpoint</span><span class="dep-chip" data-target="communion_requires_purification">communion_requires_purification</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="beatific_vision_requires_purity_person">
@@ -768,11 +772,11 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom beatific_vision_requires_purity_person :
-  ∀ (p : HumanPerson), inBeatifyingCommunionPerson p → isPurified p
+  ∀ (p : HumanPerson), inBeatifyingCommunion p → isPurified p
 </code></pre></div>
 <div class="node-desc">The beatific vision requires full purification for persons. │   Source: [Scripture] Rev 21:27; [Definition] CCC §1023-1024.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="inBeatifyingCommunionPerson">inBeatifyingCommunionPerson</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="isPurified">isPurified</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="risen_saint_is_true_endpoint">risen_saint_is_true_endpoint</span><span class="dep-chip" data-target="communion_requires_purification">communion_requires_purification</span><span class="dep-chip" data-target="inBeatifyingCommunionPerson">inBeatifyingCommunionPerson</span><span class="dep-chip" data-target="isPurified">isPurified</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="inBeatifyingCommunion">inBeatifyingCommunion</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="isPurified">isPurified</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="risen_saint_is_true_endpoint">risen_saint_is_true_endpoint</span><span class="dep-chip" data-target="communion_requires_purification">communion_requires_purification</span><span class="dep-chip" data-target="isPurified">isPurified</span></div></div>
   </div>
 </div>
 <div class="node-card kind-structure" data-kind="structure" data-name="PersonAfterlife">
@@ -796,8 +800,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def personInHeaven (p : HumanPerson) : Prop</code></pre></div>
 <div class="node-desc">A person in heaven: dead (incomplete — no body) but in full</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="inBeatifyingCommunionPerson">inBeatifyingCommunionPerson</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="isPurified">isPurified</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="heaven_is_incomplete">heaven_is_incomplete</span><span class="dep-chip" data-target="only_risen_is_complete">only_risen_is_complete</span><span class="dep-chip" data-target="inBeatifyingCommunionPerson">inBeatifyingCommunionPerson</span><span class="dep-chip" data-target="isPurified">isPurified</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Being">Being</span><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="inBeatifyingCommunion">inBeatifyingCommunion</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="isPurified">isPurified</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="heaven_is_incomplete">heaven_is_incomplete</span><span class="dep-chip" data-target="only_risen_is_complete">only_risen_is_complete</span><span class="dep-chip" data-target="isPurified">isPurified</span></div></div>
   </div>
 </div>
 <div class="node-card kind-proposition" data-kind="proposition" data-name="personInPurgatory">
@@ -822,8 +826,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def personInHell (p : HumanPerson) : Prop</code></pre></div>
 <div class="node-desc">A person in hell: dead (incomplete), NOT in beatifying communion.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="inBeatifyingCommunionPerson">inBeatifyingCommunionPerson</span><span class="dep-chip" data-target="isDead">isDead</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hell_is_incomplete">hell_is_incomplete</span><span class="dep-chip" data-target="inBeatifyingCommunionPerson">inBeatifyingCommunionPerson</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="inBeatifyingCommunion">inBeatifyingCommunion</span><span class="dep-chip" data-target="isDead">isDead</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hell_is_incomplete">hell_is_incomplete</span></div></div>
   </div>
 </div>
 <div class="node-card kind-proposition" data-kind="proposition" data-name="personRisen">
@@ -835,8 +839,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def personRisen (p : HumanPerson) : Prop</code></pre></div>
 <div class="node-desc">A risen saint: the TRUE endpoint. Body and soul reunited AND in</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="inBeatifyingCommunionPerson">inBeatifyingCommunionPerson</span><span class="dep-chip" data-target="isPurified">isPurified</span><span class="dep-chip" data-target="isRisen">isRisen</span><span class="dep-chip" data-target="soul_is_immortal">soul_is_immortal</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="only_risen_is_complete">only_risen_is_complete</span><span class="dep-chip" data-target="risen_saint_is_true_endpoint">risen_saint_is_true_endpoint</span><span class="dep-chip" data-target="inBeatifyingCommunionPerson">inBeatifyingCommunionPerson</span><span class="dep-chip" data-target="isPurified">isPurified</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="inBeatifyingCommunion">inBeatifyingCommunion</span><span class="dep-chip" data-target="isPurified">isPurified</span><span class="dep-chip" data-target="isRisen">isRisen</span><span class="dep-chip" data-target="soul_is_immortal">soul_is_immortal</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="only_risen_is_complete">only_risen_is_complete</span><span class="dep-chip" data-target="risen_saint_is_true_endpoint">risen_saint_is_true_endpoint</span><span class="dep-chip" data-target="isPurified">isPurified</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="dead_person_sustained">
@@ -948,10 +952,10 @@ h1 {
     <div class="node-prop"><pre><code>theorem risen_saint_is_true_endpoint (p : HumanPerson)
     (h : personRisen p) :
     hasCorporealAspect p ∧ hasSpiritualAspect p ∧
-    inBeatifyingCommunionPerson p ∧ isPurified p</code></pre></div>
+    inBeatifyingCommunion p ∧ isPurified p</code></pre></div>
 <div class="node-desc">A risen saint has BOTH completeness AND communion — the true</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="beatific_vision_requires_purity_person">beatific_vision_requires_purity_person</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="inBeatifyingCommunionPerson">inBeatifyingCommunionPerson</span><span class="dep-chip" data-target="isPurified">isPurified</span><span class="dep-chip" data-target="personRisen">personRisen</span><span class="dep-chip" data-target="resurrection_reunites">resurrection_reunites</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="inBeatifyingCommunionPerson">inBeatifyingCommunionPerson</span><span class="dep-chip" data-target="isPurified">isPurified</span><span class="dep-chip" data-target="beatific_vision_requires_purity_person">beatific_vision_requires_purity_person</span><span class="dep-chip" data-target="personRisen">personRisen</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Communion">Communion</span><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="beatific_vision_requires_purity_person">beatific_vision_requires_purity_person</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="inBeatifyingCommunion">inBeatifyingCommunion</span><span class="dep-chip" data-target="isPurified">isPurified</span><span class="dep-chip" data-target="personRisen">personRisen</span><span class="dep-chip" data-target="resurrection_reunites">resurrection_reunites</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="isPurified">isPurified</span><span class="dep-chip" data-target="beatific_vision_requires_purity_person">beatific_vision_requires_purity_person</span><span class="dep-chip" data-target="personRisen">personRisen</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="communion_requires_purification">
@@ -962,11 +966,11 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem communion_requires_purification (p : HumanPerson)
-    (h_comm : inBeatifyingCommunionPerson p) :
+    (h_comm : inBeatifyingCommunion p) :
     isPurified p</code></pre></div>
 <div class="node-desc">Communion with God requires purification.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="AfterlifeOutcome">AfterlifeOutcome</span><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="SinProfile">SinProfile</span><span class="dep-chip" data-target="SoulState">SoulState</span><span class="dep-chip" data-target="afterlifeFromProfile">afterlifeFromProfile</span><span class="dep-chip" data-target="afterlifeToSoulState">afterlifeToSoulState</span><span class="dep-chip" data-target="beatific_vision_requires_purity_person">beatific_vision_requires_purity_person</span><span class="dep-chip" data-target="inBeatifyingCommunionPerson">inBeatifyingCommunionPerson</span><span class="dep-chip" data-target="isPurified">isPurified</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="SoulState">SoulState</span><span class="dep-chip" data-target="inBeatifyingCommunionPerson">inBeatifyingCommunionPerson</span><span class="dep-chip" data-target="isPurified">isPurified</span><span class="dep-chip" data-target="afterlifeToSoulState">afterlifeToSoulState</span><span class="dep-chip" data-target="beatific_vision_requires_purity_person">beatific_vision_requires_purity_person</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="AfterlifeOutcome">AfterlifeOutcome</span><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="SinProfile">SinProfile</span><span class="dep-chip" data-target="SoulState">SoulState</span><span class="dep-chip" data-target="afterlifeFromProfile">afterlifeFromProfile</span><span class="dep-chip" data-target="afterlifeToSoulState">afterlifeToSoulState</span><span class="dep-chip" data-target="beatific_vision_requires_purity_person">beatific_vision_requires_purity_person</span><span class="dep-chip" data-target="inBeatifyingCommunion">inBeatifyingCommunion</span><span class="dep-chip" data-target="isPurified">isPurified</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="SoulState">SoulState</span><span class="dep-chip" data-target="afterlifeToSoulState">afterlifeToSoulState</span><span class="dep-chip" data-target="isPurified">isPurified</span><span class="dep-chip" data-target="beatific_vision_requires_purity_person">beatific_vision_requires_purity_person</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="afterlifeToSoulState">
@@ -983,8 +987,8 @@ h1 {
   | .knownToGodAlone =&gt; none
 </code></pre></div>
 <div class="node-desc">Bridge: the afterlife outcome (from SinEffects) determines</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="AfterlifeOutcome">AfterlifeOutcome</span><span class="dep-chip" data-target="SoulState">SoulState</span><span class="dep-chip" data-target="heavenState">heavenState</span><span class="dep-chip" data-target="hellState">hellState</span><span class="dep-chip" data-target="purgatoryState">purgatoryState</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="communion_requires_purification">communion_requires_purification</span><span class="dep-chip" data-target="afterlife_heaven_is_heavenState">afterlife_heaven_is_heavenState</span><span class="dep-chip" data-target="afterlife_purgatory_is_purgatoryState">afterlife_purgatory_is_purgatoryState</span><span class="dep-chip" data-target="afterlife_hell_is_hellState">afterlife_hell_is_hellState</span><span class="dep-chip" data-target="knownToGodAlone_indeterminate">knownToGodAlone_indeterminate</span><span class="dep-chip" data-target="heaven_profile_means_heavenState">heaven_profile_means_heavenState</span><span class="dep-chip" data-target="purgatory_profile_means_purgatoryState">purgatory_profile_means_purgatoryState</span><span class="dep-chip" data-target="hell_profile_means_hellState">hell_profile_means_hellState</span><span class="dep-chip" data-target="sin_profile_determines_divine_mode">sin_profile_determines_divine_mode</span><span class="dep-chip" data-target="SoulState">SoulState</span><span class="dep-chip" data-target="heavenState">heavenState</span><span class="dep-chip" data-target="hellState">hellState</span><span class="dep-chip" data-target="purgatoryState">purgatoryState</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="AfterlifeOutcome">AfterlifeOutcome</span><span class="dep-chip" data-target="SoulState">SoulState</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="communion_requires_purification">communion_requires_purification</span><span class="dep-chip" data-target="afterlife_heaven_is_heavenState">afterlife_heaven_is_heavenState</span><span class="dep-chip" data-target="afterlife_purgatory_is_purgatoryState">afterlife_purgatory_is_purgatoryState</span><span class="dep-chip" data-target="afterlife_hell_is_hellState">afterlife_hell_is_hellState</span><span class="dep-chip" data-target="knownToGodAlone_indeterminate">knownToGodAlone_indeterminate</span><span class="dep-chip" data-target="heaven_profile_means_heavenState">heaven_profile_means_heavenState</span><span class="dep-chip" data-target="purgatory_profile_means_purgatoryState">purgatory_profile_means_purgatoryState</span><span class="dep-chip" data-target="hell_profile_means_hellState">hell_profile_means_hellState</span><span class="dep-chip" data-target="sin_profile_determines_divine_mode">sin_profile_determines_divine_mode</span><span class="dep-chip" data-target="SoulState">SoulState</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="afterlife_heaven_is_heavenState">
@@ -995,10 +999,11 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem afterlife_heaven_is_heavenState :
-    afterlifeToSoulState AfterlifeOutcome.heaven = some heavenState</code></pre></div>
+    afterlifeToSoulState AfterlifeOutcome.heaven = some heavenState := rfl
+</code></pre></div>
 <div class="node-desc">The determinate cases map correctly: heaven → heavenState.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="AfterlifeOutcome">AfterlifeOutcome</span><span class="dep-chip" data-target="afterlifeToSoulState">afterlifeToSoulState</span><span class="dep-chip" data-target="heavenState">heavenState</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="heavenState">heavenState</span><span class="dep-chip" data-target="afterlifeToSoulState">afterlifeToSoulState</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="AfterlifeOutcome">AfterlifeOutcome</span><span class="dep-chip" data-target="afterlifeToSoulState">afterlifeToSoulState</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="afterlifeToSoulState">afterlifeToSoulState</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="afterlife_purgatory_is_purgatoryState">
@@ -1009,10 +1014,11 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem afterlife_purgatory_is_purgatoryState :
-    afterlifeToSoulState AfterlifeOutcome.purgatory = some purgatoryState</code></pre></div>
+    afterlifeToSoulState AfterlifeOutcome.purgatory = some purgatoryState := rfl
+</code></pre></div>
 <div class="node-desc">The determinate cases map correctly: purgatory → purgatoryState.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="AfterlifeOutcome">AfterlifeOutcome</span><span class="dep-chip" data-target="afterlifeToSoulState">afterlifeToSoulState</span><span class="dep-chip" data-target="purgatoryState">purgatoryState</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="purgatoryState">purgatoryState</span><span class="dep-chip" data-target="afterlifeToSoulState">afterlifeToSoulState</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="AfterlifeOutcome">AfterlifeOutcome</span><span class="dep-chip" data-target="afterlifeToSoulState">afterlifeToSoulState</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="afterlifeToSoulState">afterlifeToSoulState</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="afterlife_hell_is_hellState">
@@ -1023,10 +1029,11 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem afterlife_hell_is_hellState :
-    afterlifeToSoulState AfterlifeOutcome.hell = some hellState</code></pre></div>
+    afterlifeToSoulState AfterlifeOutcome.hell = some hellState := rfl
+</code></pre></div>
 <div class="node-desc">The determinate cases map correctly: hell → hellState.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="AfterlifeOutcome">AfterlifeOutcome</span><span class="dep-chip" data-target="afterlifeToSoulState">afterlifeToSoulState</span><span class="dep-chip" data-target="hellState">hellState</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hellState">hellState</span><span class="dep-chip" data-target="afterlifeToSoulState">afterlifeToSoulState</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="AfterlifeOutcome">AfterlifeOutcome</span><span class="dep-chip" data-target="afterlifeToSoulState">afterlifeToSoulState</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="afterlifeToSoulState">afterlifeToSoulState</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="knownToGodAlone_indeterminate">
@@ -1037,7 +1044,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem knownToGodAlone_indeterminate :
-    afterlifeToSoulState AfterlifeOutcome.knownToGodAlone = none</code></pre></div>
+    afterlifeToSoulState AfterlifeOutcome.knownToGodAlone = none := rfl
+</code></pre></div>
 <div class="node-desc">If the outcome is `knownToGodAlone`, we CANNOT determine the divine mode.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="AfterlifeOutcome">AfterlifeOutcome</span><span class="dep-chip" data-target="afterlifeToSoulState">afterlifeToSoulState</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="afterlifeToSoulState">afterlifeToSoulState</span></div></div>
@@ -1068,8 +1076,8 @@ h1 {
     (h : afterlifeFromProfile sp = AfterlifeOutcome.heaven) :
     afterlifeToSoulState (afterlifeFromProfile sp) = some heavenState</code></pre></div>
 <div class="node-desc">If the sin profile yields heaven, the person is in beatifying communion</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="AfterlifeOutcome">AfterlifeOutcome</span><span class="dep-chip" data-target="SinProfile">SinProfile</span><span class="dep-chip" data-target="afterlifeFromProfile">afterlifeFromProfile</span><span class="dep-chip" data-target="afterlifeToSoulState">afterlifeToSoulState</span><span class="dep-chip" data-target="heavenState">heavenState</span><span class="dep-chip" data-target="purgatoryState">purgatoryState</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="heavenState">heavenState</span><span class="dep-chip" data-target="purgatoryState">purgatoryState</span><span class="dep-chip" data-target="afterlifeToSoulState">afterlifeToSoulState</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="AfterlifeOutcome">AfterlifeOutcome</span><span class="dep-chip" data-target="SinProfile">SinProfile</span><span class="dep-chip" data-target="afterlifeFromProfile">afterlifeFromProfile</span><span class="dep-chip" data-target="afterlifeToSoulState">afterlifeToSoulState</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="afterlifeToSoulState">afterlifeToSoulState</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="purgatory_profile_means_purgatoryState">
@@ -1083,8 +1091,8 @@ h1 {
     (h : afterlifeFromProfile sp = AfterlifeOutcome.purgatory) :
     afterlifeToSoulState (afterlifeFromProfile sp) = some purgatoryState</code></pre></div>
 <div class="node-desc">If the sin profile yields purgatory, the person is in communion but</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="AfterlifeOutcome">AfterlifeOutcome</span><span class="dep-chip" data-target="SinProfile">SinProfile</span><span class="dep-chip" data-target="afterlifeFromProfile">afterlifeFromProfile</span><span class="dep-chip" data-target="afterlifeToSoulState">afterlifeToSoulState</span><span class="dep-chip" data-target="hellState">hellState</span><span class="dep-chip" data-target="purgatoryState">purgatoryState</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hellState">hellState</span><span class="dep-chip" data-target="purgatoryState">purgatoryState</span><span class="dep-chip" data-target="afterlifeToSoulState">afterlifeToSoulState</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="AfterlifeOutcome">AfterlifeOutcome</span><span class="dep-chip" data-target="SinProfile">SinProfile</span><span class="dep-chip" data-target="afterlifeFromProfile">afterlifeFromProfile</span><span class="dep-chip" data-target="afterlifeToSoulState">afterlifeToSoulState</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="afterlifeToSoulState">afterlifeToSoulState</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="hell_profile_means_hellState">
@@ -1098,8 +1106,8 @@ h1 {
     (h : afterlifeFromProfile sp = AfterlifeOutcome.hell) :
     afterlifeToSoulState (afterlifeFromProfile sp) = some hellState</code></pre></div>
 <div class="node-desc">If the sin profile yields hell, the person is sustained but NOT in</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="AfterlifeOutcome">AfterlifeOutcome</span><span class="dep-chip" data-target="SinProfile">SinProfile</span><span class="dep-chip" data-target="SoulState">SoulState</span><span class="dep-chip" data-target="afterlifeFromProfile">afterlifeFromProfile</span><span class="dep-chip" data-target="afterlifeToSoulState">afterlifeToSoulState</span><span class="dep-chip" data-target="hellState">hellState</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="SoulState">SoulState</span><span class="dep-chip" data-target="hellState">hellState</span><span class="dep-chip" data-target="afterlifeToSoulState">afterlifeToSoulState</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="AfterlifeOutcome">AfterlifeOutcome</span><span class="dep-chip" data-target="SinProfile">SinProfile</span><span class="dep-chip" data-target="SoulState">SoulState</span><span class="dep-chip" data-target="afterlifeFromProfile">afterlifeFromProfile</span><span class="dep-chip" data-target="afterlifeToSoulState">afterlifeToSoulState</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="SoulState">SoulState</span><span class="dep-chip" data-target="afterlifeToSoulState">afterlifeToSoulState</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="sin_profile_determines_divine_mode">

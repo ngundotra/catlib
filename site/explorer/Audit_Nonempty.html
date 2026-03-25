@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Nonempty — Catlib Explorer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --text: #2a1f14;
+  --text-light: #5c4a3a;
+  --text-muted: #8a7a6a;
+  --bg: #f4ead5;
+  --bg-parchment: #efe3c8;
+  --bg-vellum: #e8d9b8;
+  --accent: #7a2e0e;
+  --accent-gold: #b8860b;
+  --accent-gold-light: #d4a937;
+  --border: #c4a872;
+  --border-dark: #a08050;
+  --code-bg: #1e1a15;
+  --code-text: #e8d9b8;
+
+  /* Node type colors */
+  --axiom-bg: #f5e6d8;
+  --axiom-border: #c4713a;
+  --axiom-dot: #b8510e;
+  --theorem-bg: #dde8f0;
+  --theorem-border: #5a8aaa;
+  --theorem-dot: #2a6a8a;
+  --def-bg: #e4ead4;
+  --def-border: #7a9a5a;
+  --def-dot: #4a7a2a;
+  --opaque-bg: #ebe0d0;
+  --opaque-border: #a08050;
+  --opaque-dot: #7a6030;
+  --structure-bg: #e8daf0;
+  --structure-border: #8a6aaa;
+  --structure-dot: #6a4a8a;
+  --inductive-bg: #e8daf0;
+  --inductive-border: #8a6aaa;
+  --inductive-dot: #6a4a8a;
+  --proposition-bg: #f0e0e4;
+  --proposition-border: #aa5a6a;
+  --proposition-dot: #8a2a4a;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #e0d5c0;
+    --text-light: #b8a890;
+    --text-muted: #8a7a6a;
+    --bg: #1a1510;
+    --bg-parchment: #221c14;
+    --bg-vellum: #2a2218;
+    --accent: #d4856a;
+    --accent-gold: #d4a937;
+    --accent-gold-light: #e8c050;
+    --border: #4a3a28;
+    --border-dark: #6a5a40;
+    --code-bg: #0e0c08;
+    --code-text: #e8d9b8;
+
+    --axiom-bg: #2a1e14;
+    --axiom-border: #8a4a20;
+    --axiom-dot: #d4856a;
+    --theorem-bg: #14202a;
+    --theorem-border: #3a6a8a;
+    --theorem-dot: #6aaad4;
+    --def-bg: #1a2214;
+    --def-border: #4a6a3a;
+    --def-dot: #8aba6a;
+    --opaque-bg: #221c14;
+    --opaque-border: #6a5030;
+    --opaque-dot: #b8a060;
+    --structure-bg: #201a28;
+    --structure-border: #6a4a8a;
+    --structure-dot: #aa8ad4;
+    --inductive-bg: #201a28;
+    --inductive-border: #6a4a8a;
+    --inductive-dot: #aa8ad4;
+    --proposition-bg: #2a1420;
+    --proposition-border: #8a3a5a;
+    --proposition-dot: #d46a8a;
+  }
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  font-size: 17px;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.7;
+  min-height: 100vh;
+  -webkit-text-size-adjust: 100%;
+}
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+h1 {
+  font-family: Cinzel, Georgia, serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.3rem;
+  color: var(--text);
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--text-light);
+  font-style: italic;
+  margin-bottom: 1.5rem;
+}
+
+.serve-note {
+  background: var(--code-bg);
+  color: var(--code-text);
+  padding: 0.8rem 1rem;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.75rem;
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+  line-height: 1.6;
+}
+
+/* ── Search ── */
+.search-box {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.05rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--bg-parchment);
+  color: var(--text);
+  margin-bottom: 1.5rem;
+  outline: none;
+}
+
+.search-box:focus {
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 0 2px rgba(184, 134, 11, 0.2);
+}
+
+.search-box::placeholder {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* ── Category sections ── */
+.category-header {
+  font-family: Cinzel, Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-variant: small-caps;
+  margin: 1.8rem 0 0.8rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── File cards ── */
+.file-card {
+  display: block;
+  padding: 1rem 1.1rem;
+  margin-bottom: 0.5rem;
+  background: var(--bg-parchment);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  text-decoration: none;
+  color: var(--text);
+  transition: background 0.15s, border-color 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.file-card:hover, .file-card:active {
+  background: var(--bg-vellum);
+  border-color: var(--accent-gold);
+  text-decoration: none;
+}
+
+.file-card-name {
+  font-family: Cinzel, Georgia, serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.3rem;
+}
+
+.file-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  font-size: 0.82rem;
+  color: var(--text-light);
+}
+
+.file-card-meta .tag {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.75rem;
+  font-family: Cinzel, Georgia, serif;
+  letter-spacing: 0.03em;
+}
+
+.tag-axiom { background: var(--axiom-bg); color: var(--axiom-dot); border: 1px solid var(--axiom-border); }
+.tag-theorem { background: var(--theorem-bg); color: var(--theorem-dot); border: 1px solid var(--theorem-border); }
+.tag-def { background: var(--def-bg); color: var(--def-dot); border: 1px solid var(--def-border); }
+.tag-proposition { background: var(--proposition-bg); color: var(--proposition-dot); border: 1px solid var(--proposition-border); }
+
+.file-card-ccc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 0.3rem;
+}
+
+/* ── Summary stats ── */
+.stats-bar {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--text-light);
+  font-style: italic;
+}
+
+.stats-bar span { white-space: nowrap; }
+
+/* ── Node cards (per-file page) ── */
+.node-card {
+  margin-bottom: 0.4rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  border-left: 4px solid var(--border);
+}
+
+.node-card.kind-axiom { border-left-color: var(--axiom-dot); }
+.node-card.kind-theorem { border-left-color: var(--theorem-dot); }
+.node-card.kind-def { border-left-color: var(--def-dot); }
+.node-card.kind-opaque { border-left-color: var(--opaque-dot); }
+.node-card.kind-structure { border-left-color: var(--structure-dot); }
+.node-card.kind-inductive { border-left-color: var(--inductive-dot); }
+.node-card.kind-proposition { border-left-color: var(--proposition-dot); }
+
+.node-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  background: var(--bg-parchment);
+  transition: background 0.15s;
+}
+
+.node-header:active {
+  background: var(--bg-vellum);
+}
+
+.node-kind-badge {
+  flex-shrink: 0;
+  font-family: monospace;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+  font-weight: bold;
+}
+
+.kind-axiom .node-kind-badge { background: var(--axiom-bg); color: var(--axiom-dot); }
+.kind-theorem .node-kind-badge { background: var(--theorem-bg); color: var(--theorem-dot); }
+.kind-def .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
+.kind-opaque .node-kind-badge { background: var(--opaque-bg); color: var(--opaque-dot); }
+.kind-structure .node-kind-badge { background: var(--structure-bg); color: var(--structure-dot); }
+.kind-inductive .node-kind-badge { background: var(--inductive-bg); color: var(--inductive-dot); }
+.kind-proposition .node-kind-badge { background: var(--proposition-bg); color: var(--proposition-dot); }
+
+.node-name {
+  flex: 1;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.82rem;
+  word-break: break-all;
+}
+
+.node-chevron {
+  flex-shrink: 0;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  transition: transform 0.2s;
+}
+
+.node-card.open .node-chevron {
+  transform: rotate(90deg);
+}
+
+.node-details {
+  display: none;
+  padding: 0.6rem 1rem 0.8rem;
+  font-size: 0.9rem;
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.node-card.open .node-details {
+  display: block;
+}
+
+.node-prop {
+  margin-bottom: 0.5rem;
+}
+
+.node-prop pre {
+  background: var(--code-bg);
+  color: var(--code-text);
+  padding: 0.6rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  white-space: pre;
+  margin: 0;
+}
+
+.node-prop code {
+  font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', Menlo, monospace;
+  font-size: 0.75rem;
+}
+
+.node-desc {
+  margin-bottom: 0.5rem;
+  font-style: italic;
+  color: var(--text-light);
+  line-height: 1.5;
+}
+
+.node-dep-section {
+  margin-top: 0.4rem;
+}
+
+.node-dep-label {
+  font-family: Cinzel, Georgia, serif;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-bottom: 0.2rem;
+}
+
+.node-dep-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.dep-chip {
+  display: inline-block;
+  font-family: monospace;
+  font-size: 0.72rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  background: var(--bg-vellum);
+  border: 1px solid var(--border);
+  color: var(--text-light);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.dep-chip:active {
+  background: var(--accent-gold);
+  color: var(--code-bg);
+}
+
+.node-scope {
+  margin-top: 0.4rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* ── Flow diagram header ── */
+.flow-summary {
+  display: flex;
+  justify-content: center;
+  gap: 0.3rem;
+  margin-bottom: 1.2rem;
+  flex-wrap: wrap;
+  align-items: center;
+  font-family: Cinzel, Georgia, serif;
+  font-size: 0.85rem;
+  color: var(--text-light);
+}
+
+.flow-count {
+  display: inline-block;
+  padding: 0.3rem 0.7rem;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.flow-arrow { color: var(--accent-gold); padding: 0 0.2rem; }
+
+.flow-count.axioms { background: var(--axiom-bg); color: var(--axiom-dot); }
+.flow-count.theorems { background: var(--theorem-bg); color: var(--theorem-dot); }
+.flow-count.derived { background: var(--def-bg); color: var(--def-dot); }
+
+/* ── Legend ── */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  justify-content: center;
+  margin-bottom: 1.2rem;
+  font-size: 0.78rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--text-light);
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.legend-dot.axiom { background: var(--axiom-dot); }
+.legend-dot.theorem { background: var(--theorem-dot); }
+.legend-dot.def { background: var(--def-dot); }
+.legend-dot.opaque { background: var(--opaque-dot); }
+.legend-dot.structure { background: var(--structure-dot); }
+.legend-dot.inductive { background: var(--inductive-dot); }
+.legend-dot.proposition { background: var(--proposition-dot); }
+
+/* ── Filter buttons ── */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-bottom: 1rem;
+  justify-content: center;
+}
+
+.filter-btn {
+  font-family: monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.3rem 0.7rem;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text-light);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.filter-btn.active {
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+}
+
+/* ── Back link ── */
+.back-link {
+  display: inline-block;
+  margin-bottom: 1rem;
+  font-family: Cinzel, Georgia, serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+}
+
+/* ── Footer ── */
+.footer {
+  text-align: center;
+  padding-top: 2rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* ── Responsive ── */
+@media (max-width: 500px) {
+  html { font-size: 16px; }
+  .container { padding: 1rem 0.75rem 2rem; }
+  h1 { font-size: 1.35rem; }
+  .node-name { font-size: 0.75rem; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <a href="index.html" class="back-link">&larr; All files</a>
+  <h1>Nonempty</h1>
+  <div class="subtitle">Audit &middot; 29 declarations</div>
+
+  
+  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1030, &sect;1210, &sect;199, &sect;213, &sect;2402, &sect;253, &sect;328, &sect;355, &sect;84, &sect;881</div>
+
+  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span></div>
+
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (29)</button></div>
+
+  <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
+
+  <div id="nodeList">
+    <div class="node-card kind-axiom" data-kind="axiom" data-name="MoralProposition.nonempty">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">MoralProposition.nonempty</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom MoralProposition.nonempty : Nonempty Catlib.MoralProposition
+instance : Nonempty Catlib.MoralProposition := MoralProposition.nonempty
+</code></pre></div>
+<div class="node-desc">Moral propositions exist.  Presupposed by S6 (moral realism).</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MoralProposition">MoralProposition</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="TheGood.nonempty">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">TheGood.nonempty</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom TheGood.nonempty : Nonempty Catlib.TheGood
+instance : Nonempty Catlib.TheGood := TheGood.nonempty
+</code></pre></div>
+<div class="node-desc">The Good exists as a telos.  Presupposed by S7 (teleological freedom).</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="TheGood">TheGood</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="PrimaryCause.nonempty">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">PrimaryCause.nonempty</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom PrimaryCause.nonempty : Nonempty Catlib.PrimaryCause
+instance : Nonempty Catlib.PrimaryCause := PrimaryCause.nonempty
+</code></pre></div>
+<div class="node-desc">A primary cause exists (God acts).  Presupposed by P2 (two-tier causation).</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="PrimaryCause">PrimaryCause</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="SecondaryCause.nonempty">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">SecondaryCause.nonempty</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom SecondaryCause.nonempty : Nonempty Catlib.SecondaryCause
+instance : Nonempty Catlib.SecondaryCause := SecondaryCause.nonempty
+</code></pre></div>
+<div class="node-desc">A secondary cause exists (creatures act).  Presupposed by P2.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SecondaryCause">SecondaryCause</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="God.nonempty">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">God.nonempty</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom God.nonempty : Nonempty Catlib.God
+instance : Nonempty Catlib.God := God.nonempty
+</code></pre></div>
+<div class="node-desc">God exists.  CCC §199: &quot;I believe in one God.</div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="Sacrament.nonempty">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">Sacrament.nonempty</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom Sacrament.nonempty : Nonempty Catlib.Sacrament
+instance : Nonempty Catlib.Sacrament := Sacrament.nonempty
+</code></pre></div>
+<div class="node-desc">Sacraments exist.  CCC §1210: there are seven sacraments.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Sacrament">Sacrament</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="HumanPerson.nonempty">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">HumanPerson.nonempty</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom HumanPerson.nonempty : Nonempty Catlib.Creed.HumanPerson
+instance : Nonempty Catlib.Creed.HumanPerson := HumanPerson.nonempty
+</code></pre></div>
+<div class="node-desc">Human persons exist.  CCC §355: &quot;God created man in his own image.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="DivineSubstance.nonempty">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">DivineSubstance.nonempty</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom DivineSubstance.nonempty : Nonempty Catlib.Creed.DivineSubstance
+instance : Nonempty Catlib.Creed.DivineSubstance := DivineSubstance.nonempty
+</code></pre></div>
+<div class="node-desc">The divine substance exists.  CCC §253: &quot;one in substance.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DivineSubstance">DivineSubstance</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="EcumenicalCouncil.nonempty">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">EcumenicalCouncil.nonempty</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom EcumenicalCouncil.nonempty : Nonempty Catlib.Creed.ConciliarAuthority.EcumenicalCouncil
+instance : Nonempty Catlib.Creed.ConciliarAuthority.EcumenicalCouncil := EcumenicalCouncil.nonempty
+</code></pre></div>
+<div class="node-desc">Ecumenical councils have occurred (Nicaea, Trent, Vatican I/II, etc.).</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EcumenicalCouncil">EcumenicalCouncil</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="ConciliarDefinition.nonempty">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">ConciliarDefinition.nonempty</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom ConciliarDefinition.nonempty : Nonempty Catlib.Creed.ConciliarAuthority.ConciliarDefinition
+instance : Nonempty Catlib.Creed.ConciliarAuthority.ConciliarDefinition := ConciliarDefinition.nonempty
+</code></pre></div>
+<div class="node-desc">Councils produced binding definitions.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ConciliarDefinition">ConciliarDefinition</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="ApostolicTeaching.nonempty">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">ApostolicTeaching.nonempty</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom ApostolicTeaching.nonempty : Nonempty Catlib.Creed.RuleOfFaith.ApostolicTeaching
+instance : Nonempty Catlib.Creed.RuleOfFaith.ApostolicTeaching := ApostolicTeaching.nonempty
+</code></pre></div>
+<div class="node-desc">The apostles transmitted teachings.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ApostolicTeaching">ApostolicTeaching</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="WrittenText.nonempty">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">WrittenText.nonempty</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom WrittenText.nonempty : Nonempty Catlib.Creed.RuleOfFaith.WrittenText
+instance : Nonempty Catlib.Creed.RuleOfFaith.WrittenText := WrittenText.nonempty
+</code></pre></div>
+<div class="node-desc">Written texts (Scripture) exist.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="WrittenText">WrittenText</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="MagisterialJudgment.nonempty">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">MagisterialJudgment.nonempty</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom MagisterialJudgment.nonempty : Nonempty Catlib.Creed.RuleOfFaith.MagisterialJudgment
+instance : Nonempty Catlib.Creed.RuleOfFaith.MagisterialJudgment := MagisterialJudgment.nonempty
+</code></pre></div>
+<div class="node-desc">The Magisterium has issued judgments.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MagisterialJudgment">MagisterialJudgment</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="TheologicalPredicate.nonempty">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">TheologicalPredicate.nonempty</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom TheologicalPredicate.nonempty : Nonempty Catlib.Creed.AnalogyOfBeing.TheologicalPredicate
+instance : Nonempty Catlib.Creed.AnalogyOfBeing.TheologicalPredicate := TheologicalPredicate.nonempty
+</code></pre></div>
+<div class="node-desc">We can predicate things of God (e.g., &quot;God is good&quot;).</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="TheologicalPredicate">TheologicalPredicate</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="Teaching.nonempty">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">Teaching.nonempty</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom Teaching.nonempty : Nonempty Catlib.Creed.PapalInfallibility.Teaching
+instance : Nonempty Catlib.Creed.PapalInfallibility.Teaching := Teaching.nonempty
+</code></pre></div>
+<div class="node-desc">Popes have issued teachings.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Teaching">Teaching</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="PetrineOffice.nonempty">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">PetrineOffice.nonempty</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom PetrineOffice.nonempty : Nonempty Catlib.Creed.PapalInfallibility.PetrineOffice
+instance : Nonempty Catlib.Creed.PapalInfallibility.PetrineOffice := PetrineOffice.nonempty
+</code></pre></div>
+<div class="node-desc">The Petrine office exists.  CCC §881.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="PetrineOffice">PetrineOffice</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="Truth.nonempty">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">Truth.nonempty</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom Truth.nonempty : Nonempty Catlib.Creed.FaithAndReason.Truth
+instance : Nonempty Catlib.Creed.FaithAndReason.Truth := Truth.nonempty
+</code></pre></div>
+<div class="node-desc">Truth exists.  Presupposed by the entire formalization.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Truth">Truth</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="Being.nonempty">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">Being.nonempty</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom Being.nonempty : Nonempty Catlib.Creed.EssenceExistence.Being
+instance : Nonempty Catlib.Creed.EssenceExistence.Being := Being.nonempty
+</code></pre></div>
+<div class="node-desc">Beings exist.  Self-evident.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Being">Being</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="Angel.nonempty">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">Angel.nonempty</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom Angel.nonempty : Nonempty Catlib.Creed.Angel
+instance : Nonempty Catlib.Creed.Angel := Angel.nonempty
+</code></pre></div>
+<div class="node-desc">Angels exist.  CCC §328: &quot;The existence of angels — a truth of faith.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="Matter.nonempty">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">Matter.nonempty</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom Matter.nonempty : Nonempty Catlib.Creed.Matter
+instance : Nonempty Catlib.Creed.Matter := Matter.nonempty
+</code></pre></div>
+<div class="node-desc">Matter exists.  The material world is real.</div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="DepositOfFaith.nonempty">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">DepositOfFaith.nonempty</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom DepositOfFaith.nonempty : Nonempty Catlib.Creed.DevelopmentOfDoctrine.DepositOfFaith
+instance : Nonempty Catlib.Creed.DevelopmentOfDoctrine.DepositOfFaith := DepositOfFaith.nonempty
+</code></pre></div>
+<div class="node-desc">The deposit of faith was entrusted to the apostles.  CCC §84.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DepositOfFaith">DepositOfFaith</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="Doctrine.nonempty">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">Doctrine.nonempty</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom Doctrine.nonempty : Nonempty Catlib.Creed.DevelopmentOfDoctrine.Doctrine
+instance : Nonempty Catlib.Creed.DevelopmentOfDoctrine.Doctrine := Doctrine.nonempty
+</code></pre></div>
+<div class="node-desc">Doctrines have been formulated and developed.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Doctrine">Doctrine</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="HolinessDegree.nonempty">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">HolinessDegree.nonempty</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom HolinessDegree.nonempty : Nonempty Catlib.Creed.HolinessDegree
+instance : Nonempty Catlib.Creed.HolinessDegree := HolinessDegree.nonempty
+</code></pre></div>
+<div class="node-desc">Holiness admits of degrees.  CCC §1030-1031.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HolinessDegree">HolinessDegree</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="DivineEssence.nonempty">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">DivineEssence.nonempty</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom DivineEssence.nonempty : Nonempty Catlib.Creed.DivineAttributes.DivineEssence
+instance : Nonempty Catlib.Creed.DivineAttributes.DivineEssence := DivineEssence.nonempty
+</code></pre></div>
+<div class="node-desc">God has an essence.  CCC §213: &quot;I AM WHO I AM.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DivineEssence">DivineEssence</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="Interpretation.nonempty">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">Interpretation.nonempty</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom Interpretation.nonempty : Nonempty Catlib.Creed.PrivateJudgment.Interpretation
+instance : Nonempty Catlib.Creed.PrivateJudgment.Interpretation := Interpretation.nonempty
+</code></pre></div>
+<div class="node-desc">People form interpretations of Scripture and doctrine.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Interpretation">Interpretation</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="Adjudicator.nonempty">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">Adjudicator.nonempty</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom Adjudicator.nonempty : Nonempty Catlib.Creed.PrivateJudgment.Adjudicator
+instance : Nonempty Catlib.Creed.PrivateJudgment.Adjudicator := Adjudicator.nonempty
+</code></pre></div>
+<div class="node-desc">Adjudicators of doctrinal disputes exist (Magisterium, councils, etc.).</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Adjudicator">Adjudicator</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="MaterialGood.nonempty">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">MaterialGood.nonempty</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom MaterialGood.nonempty : Nonempty Catlib.MoralTheology.SocialDoctrine.MaterialGood
+instance : Nonempty Catlib.MoralTheology.SocialDoctrine.MaterialGood := MaterialGood.nonempty
+</code></pre></div>
+<div class="node-desc">Material goods exist.  CCC §2402.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MaterialGood">MaterialGood</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="SavingEvent.nonempty">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">SavingEvent.nonempty</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom SavingEvent.nonempty : Nonempty Catlib.Sacraments.Liturgy.SavingEvent
+instance : Nonempty Catlib.Sacraments.Liturgy.SavingEvent := SavingEvent.nonempty
+</code></pre></div>
+<div class="node-desc">Saving events have occurred (the Paschal mystery).</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SavingEvent">SavingEvent</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="Moment.nonempty">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">Moment.nonempty</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom Moment.nonempty : Nonempty Catlib.Sacraments.Liturgy.Moment
+instance : Nonempty Catlib.Sacraments.Liturgy.Moment := Moment.nonempty
+</code></pre></div>
+<div class="node-desc">Time exists; moments are real.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Moment">Moment</span></div></div>
+  </div>
+</div>
+  </div>
+
+  <div class="footer">
+    Generated from <code>Catlib/Audit/Nonempty.lean</code>
+  </div>
+</div>
+
+<script>
+function toggleNode(header) {
+  header.parentElement.classList.toggle('open');
+}
+
+// Tap a dep chip to scroll to that node
+document.addEventListener('click', function(e) {
+  if (e.target.classList.contains('dep-chip')) {
+    var target = e.target.getAttribute('data-target');
+    var cards = document.querySelectorAll('.node-card');
+    for (var i = 0; i < cards.length; i++) {
+      if (cards[i].getAttribute('data-name') === target) {
+        cards[i].classList.add('open');
+        cards[i].scrollIntoView({ behavior: 'smooth', block: 'center' });
+        cards[i].style.boxShadow = '0 0 0 3px var(--accent-gold)';
+        setTimeout(function(c) { c.style.boxShadow = ''; }, 1500, cards[i]);
+        break;
+      }
+    }
+  }
+});
+
+// Search
+document.getElementById('nodeSearch').addEventListener('input', function() {
+  var q = this.value.toLowerCase();
+  var cards = document.querySelectorAll('.node-card');
+  for (var i = 0; i < cards.length; i++) {
+    var name = cards[i].getAttribute('data-name').toLowerCase();
+    var desc = (cards[i].querySelector('.node-desc') || {}).textContent || '';
+    var show = !q || name.indexOf(q) !== -1 || desc.toLowerCase().indexOf(q) !== -1;
+    cards[i].style.display = show ? '' : 'none';
+  }
+});
+
+// Filter buttons
+document.querySelectorAll('.filter-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+    this.classList.add('active');
+    var filter = this.getAttribute('data-filter');
+    var cards = document.querySelectorAll('.node-card');
+    for (var i = 0; i < cards.length; i++) {
+      if (filter === 'all' || cards[i].getAttribute('data-kind') === filter) {
+        cards[i].style.display = '';
+      } else {
+        cards[i].style.display = 'none';
+      }
+    }
+  });
+});
+</script>
+</body>
+</html>

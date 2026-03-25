@@ -528,9 +528,9 @@ h1 {
   
   <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1374, &sect;365, &sect;464, &sect;466, &sect;467, &sect;470, &sect;471, &sect;474, &sect;475, &sect;624, &sect;645, &sect;650</div>
 
-  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot proposition"></span>proposition</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot structure"></span>structure</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
+  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot proposition"></span>proposition</span><span class="legend-item"><span class="legend-dot structure"></span>structure</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
 
-  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (7)</button><button class="filter-btn" data-filter="def">def (1)</button><button class="filter-btn" data-filter="proposition">proposition (2)</button><button class="filter-btn" data-filter="inductive">inductive (1)</button><button class="filter-btn" data-filter="opaque">opaque (7)</button><button class="filter-btn" data-filter="structure">structure (1)</button><button class="filter-btn" data-filter="theorem">theorem (14)</button></div>
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (7)</button><button class="filter-btn" data-filter="def">def (1)</button><button class="filter-btn" data-filter="inductive">inductive (1)</button><button class="filter-btn" data-filter="opaque">opaque (7)</button><button class="filter-btn" data-filter="proposition">proposition (2)</button><button class="filter-btn" data-filter="structure">structure (1)</button><button class="filter-btn" data-filter="theorem">theorem (14)</button></div>
 
   <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
 
@@ -544,6 +544,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>inductive Nature where</code></pre></div>
 <div class="node-desc">A nature — divine or human. The question of how many natures a person │   Scope: ECUMENICAL — all Christians use this distinction.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isDivine">isDivine</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="IncarnateSubject">IncarnateSubject</span><span class="dep-chip" data-target="IncarnateSubject.hasNature">IncarnateSubject.hasNature</span><span class="dep-chip" data-target="christ">christ</span><span class="dep-chip" data-target="hypostatic_union">hypostatic_union</span><span class="dep-chip" data-target="chalcedonian_definition">chalcedonian_definition</span><span class="dep-chip" data-target="wholeChristPresent">wholeChristPresent</span><span class="dep-chip" data-target="christ_is_both_divine_and_human">christ_is_both_divine_and_human</span></div></div>
   </div>
 </div>
@@ -556,7 +557,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>structure IncarnateSubject where</code></pre></div>
 <div class="node-desc">A person who may possess one or more natures. In Christology, the key</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Nature">Nature</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Nature">Nature</span><span class="dep-chip" data-target="isDivine">isDivine</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="IncarnateSubject.hasNature">IncarnateSubject.hasNature</span><span class="dep-chip" data-target="christ">christ</span><span class="dep-chip" data-target="naturesRemainDistinct">naturesRemainDistinct</span><span class="dep-chip" data-target="naturesUnchanged">naturesUnchanged</span><span class="dep-chip" data-target="naturesUndivided">naturesUndivided</span><span class="dep-chip" data-target="naturesInseparable">naturesInseparable</span><span class="dep-chip" data-target="hasDivineWill">hasDivineWill</span><span class="dep-chip" data-target="divineNatureUnitedThroughDeath">divineNatureUnitedThroughDeath</span><span class="dep-chip" data-target="divine_nature_persists_through_death">divine_nature_persists_through_death</span><span class="dep-chip" data-target="Nature">Nature</span></div></div>
   </div>
 </div>
@@ -582,7 +583,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def christ : IncarnateSubject</code></pre></div>
 <div class="node-desc">Christ — one person with two natures.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="IncarnateSubject">IncarnateSubject</span><span class="dep-chip" data-target="Nature">Nature</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="IncarnateSubject">IncarnateSubject</span><span class="dep-chip" data-target="Nature">Nature</span><span class="dep-chip" data-target="isDivine">isDivine</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hypostatic_union">hypostatic_union</span><span class="dep-chip" data-target="chalcedonian_definition">chalcedonian_definition</span><span class="dep-chip" data-target="christ_has_two_wills">christ_has_two_wills</span><span class="dep-chip" data-target="divine_nature_persists_through_death">divine_nature_persists_through_death</span><span class="dep-chip" data-target="wholeChristPresent">wholeChristPresent</span><span class="dep-chip" data-target="christ_is_both_divine_and_human">christ_is_both_divine_and_human</span><span class="dep-chip" data-target="without_confusion">without_confusion</span><span class="dep-chip" data-target="without_change">without_change</span><span class="dep-chip" data-target="without_division">without_division</span><span class="dep-chip" data-target="without_separation">without_separation</span><span class="dep-chip" data-target="cross_does_not_break_union">cross_does_not_break_union</span><span class="dep-chip" data-target="chalcedon_rules_out_all_heresies">chalcedon_rules_out_all_heresies</span><span class="dep-chip" data-target="Nature">Nature</span><span class="dep-chip" data-target="IncarnateSubject">IncarnateSubject</span></div></div>
   </div>
 </div>
@@ -599,7 +600,7 @@ h1 {
   christ.hasNature Nature.human
 </code></pre></div>
 <div class="node-desc">Christ is one person with two natures. │   Source: [Tradition] Council of Chalcedon (451); [Definition] CCC §466-469. | Scope: ECUMENICAL.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Nature">Nature</span><span class="dep-chip" data-target="christ">christ</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Nature">Nature</span><span class="dep-chip" data-target="christ">christ</span><span class="dep-chip" data-target="isDivine">isDivine</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="christ_is_both_divine_and_human">christ_is_both_divine_and_human</span><span class="dep-chip" data-target="christ_body_requires_soul">christ_body_requires_soul</span><span class="dep-chip" data-target="whole_christ_is_present">whole_christ_is_present</span><span class="dep-chip" data-target="christ_models_risen_completeness">christ_models_risen_completeness</span><span class="dep-chip" data-target="Nature">Nature</span><span class="dep-chip" data-target="christ">christ</span></div></div>
   </div>
 </div>
