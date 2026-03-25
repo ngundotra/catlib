@@ -143,7 +143,7 @@ h1 {
   line-height: 1.6;
 }
 
-/* ── Search ── */
+/* Search */
 .search-box {
   width: 100%;
   padding: 0.8rem 1rem;
@@ -167,7 +167,7 @@ h1 {
   font-style: italic;
 }
 
-/* ── Category sections ── */
+/* Category sections */
 .category-header {
   font-family: Cinzel, Georgia, serif;
   font-size: 1.1rem;
@@ -181,7 +181,7 @@ h1 {
   border-bottom: 1px solid var(--border);
 }
 
-/* ── File cards ── */
+/* File cards */
 .file-card {
   display: block;
   padding: 1rem 1.1rem;
@@ -237,7 +237,7 @@ h1 {
   margin-top: 0.3rem;
 }
 
-/* ── Summary stats ── */
+/* Summary stats */
 .stats-bar {
   display: flex;
   justify-content: center;
@@ -251,7 +251,7 @@ h1 {
 
 .stats-bar span { white-space: nowrap; }
 
-/* ── Node cards (per-file page) ── */
+/* Node cards */
 .node-card {
   margin-bottom: 0.4rem;
   border: 1px solid var(--border);
@@ -267,6 +267,8 @@ h1 {
 .node-card.kind-structure { border-left-color: var(--structure-dot); }
 .node-card.kind-inductive { border-left-color: var(--inductive-dot); }
 .node-card.kind-proposition { border-left-color: var(--proposition-dot); }
+.node-card.kind-instance { border-left-color: var(--def-dot); }
+.node-card.kind-abbrev { border-left-color: var(--def-dot); }
 
 .node-header {
   display: flex;
@@ -302,6 +304,8 @@ h1 {
 .kind-structure .node-kind-badge { background: var(--structure-bg); color: var(--structure-dot); }
 .kind-inductive .node-kind-badge { background: var(--inductive-bg); color: var(--inductive-dot); }
 .kind-proposition .node-kind-badge { background: var(--proposition-bg); color: var(--proposition-dot); }
+.kind-instance .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
+.kind-abbrev .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
 
 .node-name {
   flex: 1;
@@ -405,7 +409,7 @@ h1 {
   color: var(--text-muted);
 }
 
-/* ── Flow diagram header ── */
+/* Flow diagram header */
 .flow-summary {
   display: flex;
   justify-content: center;
@@ -431,7 +435,7 @@ h1 {
 .flow-count.theorems { background: var(--theorem-bg); color: var(--theorem-dot); }
 .flow-count.derived { background: var(--def-bg); color: var(--def-dot); }
 
-/* ── Legend ── */
+/* Legend */
 .legend {
   display: flex;
   flex-wrap: wrap;
@@ -463,7 +467,7 @@ h1 {
 .legend-dot.inductive { background: var(--inductive-dot); }
 .legend-dot.proposition { background: var(--proposition-dot); }
 
-/* ── Filter buttons ── */
+/* Filter buttons */
 .filter-bar {
   display: flex;
   flex-wrap: wrap;
@@ -492,7 +496,7 @@ h1 {
   border-color: var(--accent);
 }
 
-/* ── Back link ── */
+/* Back link */
 .back-link {
   display: inline-block;
   margin-bottom: 1rem;
@@ -501,7 +505,7 @@ h1 {
   letter-spacing: 0.04em;
 }
 
-/* ── Footer ── */
+/* Footer */
 .footer {
   text-align: center;
   padding-top: 2rem;
@@ -510,7 +514,7 @@ h1 {
   font-style: italic;
 }
 
-/* ── Responsive ── */
+/* Responsive */
 @media (max-width: 500px) {
   html { font-size: 16px; }
   .container { padding: 1rem 0.75rem 2rem; }
@@ -523,14 +527,12 @@ h1 {
 <div class="container">
   <a href="index.html" class="back-link">&larr; All files</a>
   <h1>Suicide</h1>
-  <div class="subtitle">MoralTheology &middot; 14 declarations</div>
+  <div class="subtitle">Moral Theology &middot; 19 declarations</div>
 
-  
   <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;2264, &sect;2280, &sect;2281, &sect;2282, &sect;2283</div>
+  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span><span class="legend-item"><span class="legend-dot proposition"></span>proposition</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
 
-  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
-
-  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (5)</button><button class="filter-btn" data-filter="inductive">inductive (1)</button><button class="filter-btn" data-filter="opaque">opaque (4)</button><button class="filter-btn" data-filter="theorem">theorem (4)</button></div>
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (5)</button><button class="filter-btn" data-filter="def">def (4)</button><button class="filter-btn" data-filter="inductive">inductive (1)</button><button class="filter-btn" data-filter="proposition">proposition (4)</button><button class="filter-btn" data-filter="theorem">theorem (5)</button></div>
 
   <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
 
@@ -544,59 +546,55 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>inductive PsychologicalState where</code></pre></div>
 <div class="node-desc">Whether a person is experiencing grave psychological disturbance.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="psychologicalStateOf">psychologicalStateOf</span><span class="dep-chip" data-target="psychological_suffering_diminishes_consent">psychological_suffering_diminishes_consent</span><span class="dep-chip" data-target="suicide_under_suffering_not_necessarily_mortal">suicide_under_suffering_not_necessarily_mortal</span><span class="dep-chip" data-target="suicide_under_suffering_not_mortal">suicide_under_suffering_not_mortal</span><span class="dep-chip" data-target="grace_may_be_preserved">grace_may_be_preserved</span><span class="dep-chip" data-target="hope_for_salvation_of_suicide">hope_for_salvation_of_suicide</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="grace_may_be_preserved">grace_may_be_preserved</span><span class="dep-chip" data-target="hope_for_salvation_of_suicide">hope_for_salvation_of_suicide</span><span class="dep-chip" data-target="psychologicalStateOf">psychologicalStateOf</span><span class="dep-chip" data-target="psychological_suffering_diminishes_consent">psychological_suffering_diminishes_consent</span><span class="dep-chip" data-target="suicide_under_suffering_not_mortal">suicide_under_suffering_not_mortal</span><span class="dep-chip" data-target="suicide_under_suffering_not_necessarily_mortal">suicide_under_suffering_not_necessarily_mortal</span></div></div>
   </div>
 </div>
-<div class="node-card kind-opaque" data-kind="opaque" data-name="selfPreservationIsNaturalInclination">
+<div class="node-card kind-proposition" data-kind="proposition" data-name="selfPreservationIsNaturalInclination">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">opaque</span>
+    <span class="node-kind-badge">proposition</span>
     <span class="node-name">selfPreservationIsNaturalInclination</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque selfPreservationIsNaturalInclination : Prop
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque selfPreservationIsNaturalInclination : Prop</code></pre></div>
 <div class="node-desc">Whether self-preservation is a natural inclination of human beings.</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="self_preservation_is_natural_law">self_preservation_is_natural_law</span></div></div>
   </div>
 </div>
-<div class="node-card kind-opaque" data-kind="opaque" data-name="contradictsSelfLove">
+<div class="node-card kind-proposition" data-kind="proposition" data-name="contradictsSelfLove">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">opaque</span>
+    <span class="node-kind-badge">proposition</span>
     <span class="node-name">contradictsSelfLove</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque contradictsSelfLove : Action → Prop
-</code></pre></div>
-<div class="node-desc">Whether an action contradicts self-love (the legitimate love of self</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="suicide_contradicts_self_love_and_natural_law">suicide_contradicts_self_love_and_natural_law</span></div></div>
+    <div class="node-prop"><pre><code>opaque contradictsSelfLove : Action → Prop</code></pre></div>
+<div class="node-desc">Whether an action contradicts self-love (the legitimate love of self that CCC §2264 calls &quot;a fundamental principle of mo...</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="suicide_contradicts_self_love_and_natural_law">suicide_contradicts_self_love_and_natural_law</span><span class="dep-chip" data-target="suicide_opposes_defense_ground">suicide_opposes_defense_ground</span></div></div>
   </div>
 </div>
-<div class="node-card kind-opaque" data-kind="opaque" data-name="contradictsNaturalLaw">
+<div class="node-card kind-proposition" data-kind="proposition" data-name="contradictsNaturalLaw">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">opaque</span>
+    <span class="node-kind-badge">proposition</span>
     <span class="node-name">contradictsNaturalLaw</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque contradictsNaturalLaw : Action → Prop
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque contradictsNaturalLaw : Action → Prop</code></pre></div>
 <div class="node-desc">Whether an action contradicts the natural law precept of self-preservation.</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="suicide_contradicts_self_love_and_natural_law">suicide_contradicts_self_love_and_natural_law</span></div></div>
   </div>
 </div>
-<div class="node-card kind-opaque" data-kind="opaque" data-name="isSuicideAct">
+<div class="node-card kind-proposition" data-kind="proposition" data-name="isSuicideAct">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">opaque</span>
+    <span class="node-kind-badge">proposition</span>
     <span class="node-name">isSuicideAct</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque isSuicideAct : Action → Prop
-</code></pre></div>
-<div class="node-desc">Whether an action is the act of taking one's own life.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="suicide_contradicts_self_love_and_natural_law">suicide_contradicts_self_love_and_natural_law</span><span class="dep-chip" data-target="suicide_is_grave_matter">suicide_is_grave_matter</span><span class="dep-chip" data-target="psychological_suffering_diminishes_consent">psychological_suffering_diminishes_consent</span><span class="dep-chip" data-target="suicide_under_suffering_not_necessarily_mortal">suicide_under_suffering_not_necessarily_mortal</span><span class="dep-chip" data-target="suicide_under_suffering_not_mortal">suicide_under_suffering_not_mortal</span><span class="dep-chip" data-target="grace_may_be_preserved">grace_may_be_preserved</span><span class="dep-chip" data-target="hope_for_salvation_of_suicide">hope_for_salvation_of_suicide</span></div></div>
+    <div class="node-prop"><pre><code>opaque isSuicideAct : Action → Prop</code></pre></div>
+<div class="node-desc">Whether an action is the act of taking one&#x27;s own life.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="grace_may_be_preserved">grace_may_be_preserved</span><span class="dep-chip" data-target="hope_for_salvation_of_suicide">hope_for_salvation_of_suicide</span><span class="dep-chip" data-target="psychological_suffering_diminishes_consent">psychological_suffering_diminishes_consent</span><span class="dep-chip" data-target="suicide_contradicts_self_love_and_natural_law">suicide_contradicts_self_love_and_natural_law</span><span class="dep-chip" data-target="suicide_is_grave_matter">suicide_is_grave_matter</span><span class="dep-chip" data-target="suicide_opposes_defense_ground">suicide_opposes_defense_ground</span><span class="dep-chip" data-target="suicide_under_suffering_not_mortal">suicide_under_suffering_not_mortal</span><span class="dep-chip" data-target="suicide_under_suffering_not_necessarily_mortal">suicide_under_suffering_not_necessarily_mortal</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="psychologicalStateOf">
@@ -606,11 +604,9 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>axiom psychologicalStateOf : Sin → PsychologicalState
-</code></pre></div>
+    <div class="node-prop"><pre><code>axiom psychologicalStateOf : Sin → PsychologicalState</code></pre></div>
 <div class="node-desc">The psychological state of the agent at the time of an action.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="PsychologicalState">PsychologicalState</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="psychological_suffering_diminishes_consent">psychological_suffering_diminishes_consent</span><span class="dep-chip" data-target="suicide_under_suffering_not_necessarily_mortal">suicide_under_suffering_not_necessarily_mortal</span><span class="dep-chip" data-target="suicide_under_suffering_not_mortal">suicide_under_suffering_not_mortal</span><span class="dep-chip" data-target="grace_may_be_preserved">grace_may_be_preserved</span><span class="dep-chip" data-target="hope_for_salvation_of_suicide">hope_for_salvation_of_suicide</span><span class="dep-chip" data-target="PsychologicalState">PsychologicalState</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="PsychologicalState">PsychologicalState</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="grace_may_be_preserved">grace_may_be_preserved</span><span class="dep-chip" data-target="hope_for_salvation_of_suicide">hope_for_salvation_of_suicide</span><span class="dep-chip" data-target="psychological_suffering_diminishes_consent">psychological_suffering_diminishes_consent</span><span class="dep-chip" data-target="suicide_under_suffering_not_mortal">suicide_under_suffering_not_mortal</span><span class="dep-chip" data-target="suicide_under_suffering_not_necessarily_mortal">suicide_under_suffering_not_necessarily_mortal</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="self_preservation_is_natural_law">
@@ -621,11 +617,9 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom self_preservation_is_natural_law :
-  selfPreservationIsNaturalInclination
-</code></pre></div>
-<div class="node-desc">Self-preservation is a basic precept of the natural law. │   Scope: ECUMENICAL — self-preservation as a natural</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="selfPreservationIsNaturalInclination">selfPreservationIsNaturalInclination</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="selfPreservationIsNaturalInclination">selfPreservationIsNaturalInclination</span></div></div>
+selfPreservationIsNaturalInclination</code></pre></div>
+<div class="node-desc">Self-preservation is a basic precept of the natural law.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="selfPreservationIsNaturalInclination">selfPreservationIsNaturalInclination</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hope_conclusion_tag">hope_conclusion_tag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="suicide_contradicts_self_love_and_natural_law">
@@ -636,12 +630,10 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom suicide_contradicts_self_love_and_natural_law :
-  ∀ (a : Action), isSuicideAct a →
-    contradictsSelfLove a ∧ contradictsNaturalLaw a
-</code></pre></div>
-<div class="node-desc">An act of suicide contradicts both self-love and the natural law</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="contradictsNaturalLaw">contradictsNaturalLaw</span><span class="dep-chip" data-target="contradictsSelfLove">contradictsSelfLove</span><span class="dep-chip" data-target="isSuicideAct">isSuicideAct</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="contradictsNaturalLaw">contradictsNaturalLaw</span><span class="dep-chip" data-target="contradictsSelfLove">contradictsSelfLove</span><span class="dep-chip" data-target="isSuicideAct">isSuicideAct</span></div></div>
+∀ (a : Action), isSuicideAct a →
+contradictsSelfLove a ∧ contradictsNaturalLaw a</code></pre></div>
+<div class="node-desc">An act of suicide contradicts both self-love and the natural law precept of self-preservation.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="contradictsNaturalLaw">contradictsNaturalLaw</span><span class="dep-chip" data-target="contradictsSelfLove">contradictsSelfLove</span><span class="dep-chip" data-target="isSuicideAct">isSuicideAct</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hope_conclusion_tag">hope_conclusion_tag</span><span class="dep-chip" data-target="suicide_opposes_defense_ground">suicide_opposes_defense_ground</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="suicide_is_grave_matter">
@@ -652,12 +644,10 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom suicide_is_grave_matter :
-  ∀ (a : Action), isSuicideAct a →
-    ∀ (sa : Sin), sa.action = a → sa.gravity = MatterGravity.grave
-</code></pre></div>
-<div class="node-desc">Suicide is objectively grave matter. │   Scope: ECUMENICAL — virtually all Christian traditions</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MatterGravity">MatterGravity</span><span class="dep-chip" data-target="MoralConsent">MoralConsent</span><span class="dep-chip" data-target="isSuicideAct">isSuicideAct</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="psychological_suffering_diminishes_consent">psychological_suffering_diminishes_consent</span><span class="dep-chip" data-target="grace_may_be_preserved">grace_may_be_preserved</span><span class="dep-chip" data-target="hope_for_salvation_of_suicide">hope_for_salvation_of_suicide</span><span class="dep-chip" data-target="isSuicideAct">isSuicideAct</span></div></div>
+∀ (a : Action), isSuicideAct a →
+∀ (sa : Sin), sa.action = a → sa.gravity = MatterGravity.grave</code></pre></div>
+<div class="node-desc">Suicide is objectively grave matter.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isSuicideAct">isSuicideAct</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="grace_may_be_preserved">grace_may_be_preserved</span><span class="dep-chip" data-target="hope_for_salvation_of_suicide">hope_for_salvation_of_suicide</span><span class="dep-chip" data-target="psychological_suffering_diminishes_consent">psychological_suffering_diminishes_consent</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="psychological_suffering_diminishes_consent">
@@ -668,14 +658,12 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom psychological_suffering_diminishes_consent :
-  ∀ (sa : Sin),
-    isSuicideAct sa.action →
-    psychologicalStateOf sa = PsychologicalState.graveSuffering →
-    sa.consent = MoralConsent.incomplete
-</code></pre></div>
-<div class="node-desc">THE KEY AXIOM: Grave psychological suffering diminishes moral consent. │   Source: [Definition] CCC §2282; This axiom connects psychological states to the moral | Scope: ECUMENICAL — even trad...</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MoralConsent">MoralConsent</span><span class="dep-chip" data-target="PsychologicalState">PsychologicalState</span><span class="dep-chip" data-target="Sin.isMortal">Sin.isMortal</span><span class="dep-chip" data-target="isSuicideAct">isSuicideAct</span><span class="dep-chip" data-target="psychologicalStateOf">psychologicalStateOf</span><span class="dep-chip" data-target="suicide_is_grave_matter">suicide_is_grave_matter</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="suicide_under_suffering_not_necessarily_mortal">suicide_under_suffering_not_necessarily_mortal</span><span class="dep-chip" data-target="grace_may_be_preserved">grace_may_be_preserved</span><span class="dep-chip" data-target="PsychologicalState">PsychologicalState</span><span class="dep-chip" data-target="isSuicideAct">isSuicideAct</span><span class="dep-chip" data-target="psychologicalStateOf">psychologicalStateOf</span><span class="dep-chip" data-target="suicide_is_grave_matter">suicide_is_grave_matter</span></div></div>
+∀ (sa : Sin),
+isSuicideAct sa.action →
+psychologicalStateOf sa = PsychologicalState.graveSuffering →
+sa.consent = MoralConsent.incomplete</code></pre></div>
+<div class="node-desc">THE KEY AXIOM: Grave psychological suffering diminishes moral consent.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="PsychologicalState">PsychologicalState</span><span class="dep-chip" data-target="isSuicideAct">isSuicideAct</span><span class="dep-chip" data-target="psychologicalStateOf">psychologicalStateOf</span><span class="dep-chip" data-target="suicide_is_grave_matter">suicide_is_grave_matter</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="grace_may_be_preserved">grace_may_be_preserved</span><span class="dep-chip" data-target="suicide_under_suffering_not_necessarily_mortal">suicide_under_suffering_not_necessarily_mortal</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="suicide_under_suffering_not_necessarily_mortal">
@@ -686,13 +674,12 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem suicide_under_suffering_not_necessarily_mortal
-    (sa : Sin)
-    (h_suicide : isSuicideAct sa.action)
-    (h_suffering : psychologicalStateOf sa = PsychologicalState.graveSuffering) :
-    sa.isVenial</code></pre></div>
-<div class="node-desc">Suicide committed under grave psychological suffering is not necessarily │   Scope: CATHOLIC — the mortal/venial distinction as the</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="PsychologicalState">PsychologicalState</span><span class="dep-chip" data-target="Sin.isVenial">Sin.isVenial</span><span class="dep-chip" data-target="isSuicideAct">isSuicideAct</span><span class="dep-chip" data-target="mortal_venial_exclusive">mortal_venial_exclusive</span><span class="dep-chip" data-target="psychologicalStateOf">psychologicalStateOf</span><span class="dep-chip" data-target="psychological_suffering_diminishes_consent">psychological_suffering_diminishes_consent</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="suicide_under_suffering_not_mortal">suicide_under_suffering_not_mortal</span><span class="dep-chip" data-target="PsychologicalState">PsychologicalState</span><span class="dep-chip" data-target="isSuicideAct">isSuicideAct</span><span class="dep-chip" data-target="psychologicalStateOf">psychologicalStateOf</span><span class="dep-chip" data-target="psychological_suffering_diminishes_consent">psychological_suffering_diminishes_consent</span></div></div>
+(sa : Sin)
+(h_suicide : isSuicideAct sa.action)
+(h_suffering : psychologicalStateOf sa = PsychologicalState.graveSuffering) :
+sa.isVenial</code></pre></div>
+<div class="node-desc">Suicide committed under grave psychological suffering is not necessarily mortal sin, because the consent condition is no...</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="PsychologicalState">PsychologicalState</span><span class="dep-chip" data-target="isSuicideAct">isSuicideAct</span><span class="dep-chip" data-target="psychologicalStateOf">psychologicalStateOf</span><span class="dep-chip" data-target="psychological_suffering_diminishes_consent">psychological_suffering_diminishes_consent</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="suicide_under_suffering_not_mortal">suicide_under_suffering_not_mortal</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="suicide_under_suffering_not_mortal">
@@ -703,13 +690,12 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem suicide_under_suffering_not_mortal
-    (sa : Sin)
-    (h_suicide : isSuicideAct sa.action)
-    (h_suffering : psychologicalStateOf sa = PsychologicalState.graveSuffering) :
-    ¬sa.isMortal</code></pre></div>
+(sa : Sin)
+(h_suicide : isSuicideAct sa.action)
+(h_suffering : psychologicalStateOf sa = PsychologicalState.graveSuffering) :
+¬sa.isMortal</code></pre></div>
 <div class="node-desc">Corollary: suicide under grave suffering is NOT mortal sin.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="PsychologicalState">PsychologicalState</span><span class="dep-chip" data-target="isSuicideAct">isSuicideAct</span><span class="dep-chip" data-target="mortal_sin_causes_loss_of_grace">mortal_sin_causes_loss_of_grace</span><span class="dep-chip" data-target="mortal_venial_exclusive">mortal_venial_exclusive</span><span class="dep-chip" data-target="psychologicalStateOf">psychologicalStateOf</span><span class="dep-chip" data-target="suicide_under_suffering_not_necessarily_mortal">suicide_under_suffering_not_necessarily_mortal</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="grace_may_be_preserved">grace_may_be_preserved</span><span class="dep-chip" data-target="hope_for_salvation_of_suicide">hope_for_salvation_of_suicide</span><span class="dep-chip" data-target="PsychologicalState">PsychologicalState</span><span class="dep-chip" data-target="isSuicideAct">isSuicideAct</span><span class="dep-chip" data-target="psychologicalStateOf">psychologicalStateOf</span><span class="dep-chip" data-target="suicide_under_suffering_not_necessarily_mortal">suicide_under_suffering_not_necessarily_mortal</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="PsychologicalState">PsychologicalState</span><span class="dep-chip" data-target="isSuicideAct">isSuicideAct</span><span class="dep-chip" data-target="psychologicalStateOf">psychologicalStateOf</span><span class="dep-chip" data-target="suicide_under_suffering_not_necessarily_mortal">suicide_under_suffering_not_necessarily_mortal</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="grace_may_be_preserved">grace_may_be_preserved</span><span class="dep-chip" data-target="hope_for_salvation_of_suicide">hope_for_salvation_of_suicide</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="grace_may_be_preserved">
@@ -720,17 +706,11 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem grace_may_be_preserved
-    (sa : Sin)
-    (h_suicide : isSuicideAct sa.action)
-    (h_suffering : psychologicalStateOf sa = PsychologicalState.graveSuffering) :
-    -- The mortal-sin-based mechanism for losing grace does not apply,
-    -- because the sin is not mortal. Since mortal_sin_causes_loss_of_grace
-    -- (Sin.lean) only triggers on mortal sin, a person in grace who
-    -- commits suicide under suffering does not necessarily lose grace.
-    ¬sa.isMortal</code></pre></div>
-<div class="node-desc">If suicide under suffering is not mortal sin, the person's state of │   Scope: CATHOLIC — requires the mortal sin / grace</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="PsychologicalState">PsychologicalState</span><span class="dep-chip" data-target="Sin.isMortal">Sin.isMortal</span><span class="dep-chip" data-target="isSuicideAct">isSuicideAct</span><span class="dep-chip" data-target="mortal_sin_causes_loss_of_grace">mortal_sin_causes_loss_of_grace</span><span class="dep-chip" data-target="psychologicalStateOf">psychologicalStateOf</span><span class="dep-chip" data-target="psychological_suffering_diminishes_consent">psychological_suffering_diminishes_consent</span><span class="dep-chip" data-target="s2_universal_salvific_will">s2_universal_salvific_will</span><span class="dep-chip" data-target="suicide_is_grave_matter">suicide_is_grave_matter</span><span class="dep-chip" data-target="suicide_under_suffering_not_mortal">suicide_under_suffering_not_mortal</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="PsychologicalState">PsychologicalState</span><span class="dep-chip" data-target="isSuicideAct">isSuicideAct</span><span class="dep-chip" data-target="psychologicalStateOf">psychologicalStateOf</span><span class="dep-chip" data-target="suicide_is_grave_matter">suicide_is_grave_matter</span><span class="dep-chip" data-target="psychological_suffering_diminishes_consent">psychological_suffering_diminishes_consent</span><span class="dep-chip" data-target="suicide_under_suffering_not_mortal">suicide_under_suffering_not_mortal</span></div></div>
+(sa : Sin)
+(h_suicide : isSuicideAct sa.action)
+(h_suffering : psychologicalStateOf sa = PsychologicalState.graveSuffering) :</code></pre></div>
+<div class="node-desc">If suicide under suffering is not mortal sin, the person&#x27;s state of grace is not necessarily lost.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="PsychologicalState">PsychologicalState</span><span class="dep-chip" data-target="isSuicideAct">isSuicideAct</span><span class="dep-chip" data-target="psychologicalStateOf">psychologicalStateOf</span><span class="dep-chip" data-target="psychological_suffering_diminishes_consent">psychological_suffering_diminishes_consent</span><span class="dep-chip" data-target="suicide_is_grave_matter">suicide_is_grave_matter</span><span class="dep-chip" data-target="suicide_under_suffering_not_mortal">suicide_under_suffering_not_mortal</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="hope_for_salvation_of_suicide">
@@ -741,19 +721,79 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem hope_for_salvation_of_suicide
-    (p : Person)
-    (sa : Sin)
-    (h_suicide : isSuicideAct sa.action)
-    (h_suffering : psychologicalStateOf sa = PsychologicalState.graveSuffering) :
-    -- Pillar 1: The act is not necessarily mortal sin
-    ¬sa.isMortal ∧
-    -- Pillar 2: God desires this person's salvation
-    godWillsSalvation p</code></pre></div>
-<div class="node-desc">We should not despair of the eternal salvation of persons who have Scope: ECUMENICAL in conclusion — virtually all</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="PsychologicalState">PsychologicalState</span><span class="dep-chip" data-target="godWillsSalvation">godWillsSalvation</span><span class="dep-chip" data-target="isSuicideAct">isSuicideAct</span><span class="dep-chip" data-target="psychologicalStateOf">psychologicalStateOf</span><span class="dep-chip" data-target="s2_universal_salvific_will">s2_universal_salvific_will</span><span class="dep-chip" data-target="suicide_is_grave_matter">suicide_is_grave_matter</span><span class="dep-chip" data-target="suicide_under_suffering_not_mortal">suicide_under_suffering_not_mortal</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="PsychologicalState">PsychologicalState</span><span class="dep-chip" data-target="isSuicideAct">isSuicideAct</span><span class="dep-chip" data-target="psychologicalStateOf">psychologicalStateOf</span><span class="dep-chip" data-target="suicide_is_grave_matter">suicide_is_grave_matter</span><span class="dep-chip" data-target="suicide_under_suffering_not_mortal">suicide_under_suffering_not_mortal</span></div></div>
+(p : Person)
+(sa : Sin)
+(h_suicide : isSuicideAct sa.action)
+(h_suffering : psychologicalStateOf sa = PsychologicalState.graveSuffering) :</code></pre></div>
+<div class="node-desc">&quot;We should not despair of the eternal salvation of persons who have taken their own lives.&quot; (CCC §2283)  This is the cen...</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="PsychologicalState">PsychologicalState</span><span class="dep-chip" data-target="isSuicideAct">isSuicideAct</span><span class="dep-chip" data-target="psychologicalStateOf">psychologicalStateOf</span><span class="dep-chip" data-target="suicide_is_grave_matter">suicide_is_grave_matter</span><span class="dep-chip" data-target="suicide_under_suffering_not_mortal">suicide_under_suffering_not_mortal</span></div></div>
   </div>
 </div>
+<div class="node-card kind-def" data-kind="def" data-name="suicide_grave_matter_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">suicide_grave_matter_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def suicide_grave_matter_tag : DenominationalTag</code></pre></div>
+<div class="node-desc">Suicide is objectively grave matter: ecumenical.</div>
+
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="diminished_culpability_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">diminished_culpability_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def diminished_culpability_tag : DenominationalTag</code></pre></div>
+<div class="node-desc">Psychological suffering diminishes culpability: ecumenical.</div>
+
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="hope_mechanism_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">hope_mechanism_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def hope_mechanism_tag : DenominationalTag</code></pre></div>
+<div class="node-desc">Hope for salvation (via mortal/venial mechanism): Catholic.</div>
+
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="hope_conclusion_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">hope_conclusion_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def hope_conclusion_tag : DenominationalTag</code></pre></div>
+<div class="node-desc">Hope for salvation (the conclusion itself): ecumenical.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="self_preservation_is_natural_law">self_preservation_is_natural_law</span><span class="dep-chip" data-target="suicide_contradicts_self_love_and_natural_law">suicide_contradicts_self_love_and_natural_law</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="suicide_opposes_defense_ground">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">suicide_opposes_defense_ground</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem suicide_opposes_defense_ground
+(a : Action) (tl : TypedLove)
+(h_suicide : isSuicideAct a)
+(h_self_love : tl.kind = LoveKind.selfLove)
+(_h_pos : tl.degree &gt; 0) :</code></pre></div>
+<div class="node-desc">Suicide contradicts the same self-love that grounds legitimate defense.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="contradictsSelfLove">contradictsSelfLove</span><span class="dep-chip" data-target="isSuicideAct">isSuicideAct</span><span class="dep-chip" data-target="suicide_contradicts_self_love_and_natural_law">suicide_contradicts_self_love_and_natural_law</span></div></div>
+  </div>
+</div>
+
   </div>
 
   <div class="footer">

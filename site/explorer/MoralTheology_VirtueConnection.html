@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Virtue Connection — Catlib Explorer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --text: #2a1f14;
+  --text-light: #5c4a3a;
+  --text-muted: #8a7a6a;
+  --bg: #f4ead5;
+  --bg-parchment: #efe3c8;
+  --bg-vellum: #e8d9b8;
+  --accent: #7a2e0e;
+  --accent-gold: #b8860b;
+  --accent-gold-light: #d4a937;
+  --border: #c4a872;
+  --border-dark: #a08050;
+  --code-bg: #1e1a15;
+  --code-text: #e8d9b8;
+
+  /* Node type colors */
+  --axiom-bg: #f5e6d8;
+  --axiom-border: #c4713a;
+  --axiom-dot: #b8510e;
+  --theorem-bg: #dde8f0;
+  --theorem-border: #5a8aaa;
+  --theorem-dot: #2a6a8a;
+  --def-bg: #e4ead4;
+  --def-border: #7a9a5a;
+  --def-dot: #4a7a2a;
+  --opaque-bg: #ebe0d0;
+  --opaque-border: #a08050;
+  --opaque-dot: #7a6030;
+  --structure-bg: #e8daf0;
+  --structure-border: #8a6aaa;
+  --structure-dot: #6a4a8a;
+  --inductive-bg: #e8daf0;
+  --inductive-border: #8a6aaa;
+  --inductive-dot: #6a4a8a;
+  --proposition-bg: #f0e0e4;
+  --proposition-border: #aa5a6a;
+  --proposition-dot: #8a2a4a;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #e0d5c0;
+    --text-light: #b8a890;
+    --text-muted: #8a7a6a;
+    --bg: #1a1510;
+    --bg-parchment: #221c14;
+    --bg-vellum: #2a2218;
+    --accent: #d4856a;
+    --accent-gold: #d4a937;
+    --accent-gold-light: #e8c050;
+    --border: #4a3a28;
+    --border-dark: #6a5a40;
+    --code-bg: #0e0c08;
+    --code-text: #e8d9b8;
+
+    --axiom-bg: #2a1e14;
+    --axiom-border: #8a4a20;
+    --axiom-dot: #d4856a;
+    --theorem-bg: #14202a;
+    --theorem-border: #3a6a8a;
+    --theorem-dot: #6aaad4;
+    --def-bg: #1a2214;
+    --def-border: #4a6a3a;
+    --def-dot: #8aba6a;
+    --opaque-bg: #221c14;
+    --opaque-border: #6a5030;
+    --opaque-dot: #b8a060;
+    --structure-bg: #201a28;
+    --structure-border: #6a4a8a;
+    --structure-dot: #aa8ad4;
+    --inductive-bg: #201a28;
+    --inductive-border: #6a4a8a;
+    --inductive-dot: #aa8ad4;
+    --proposition-bg: #2a1420;
+    --proposition-border: #8a3a5a;
+    --proposition-dot: #d46a8a;
+  }
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  font-size: 17px;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.7;
+  min-height: 100vh;
+  -webkit-text-size-adjust: 100%;
+}
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+h1 {
+  font-family: Cinzel, Georgia, serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.3rem;
+  color: var(--text);
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--text-light);
+  font-style: italic;
+  margin-bottom: 1.5rem;
+}
+
+.serve-note {
+  background: var(--code-bg);
+  color: var(--code-text);
+  padding: 0.8rem 1rem;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.75rem;
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+  line-height: 1.6;
+}
+
+/* Search */
+.search-box {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.05rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--bg-parchment);
+  color: var(--text);
+  margin-bottom: 1.5rem;
+  outline: none;
+}
+
+.search-box:focus {
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 0 2px rgba(184, 134, 11, 0.2);
+}
+
+.search-box::placeholder {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* Category sections */
+.category-header {
+  font-family: Cinzel, Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-variant: small-caps;
+  margin: 1.8rem 0 0.8rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* File cards */
+.file-card {
+  display: block;
+  padding: 1rem 1.1rem;
+  margin-bottom: 0.5rem;
+  background: var(--bg-parchment);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  text-decoration: none;
+  color: var(--text);
+  transition: background 0.15s, border-color 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.file-card:hover, .file-card:active {
+  background: var(--bg-vellum);
+  border-color: var(--accent-gold);
+  text-decoration: none;
+}
+
+.file-card-name {
+  font-family: Cinzel, Georgia, serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.3rem;
+}
+
+.file-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  font-size: 0.82rem;
+  color: var(--text-light);
+}
+
+.file-card-meta .tag {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.75rem;
+  font-family: Cinzel, Georgia, serif;
+  letter-spacing: 0.03em;
+}
+
+.tag-axiom { background: var(--axiom-bg); color: var(--axiom-dot); border: 1px solid var(--axiom-border); }
+.tag-theorem { background: var(--theorem-bg); color: var(--theorem-dot); border: 1px solid var(--theorem-border); }
+.tag-def { background: var(--def-bg); color: var(--def-dot); border: 1px solid var(--def-border); }
+.tag-proposition { background: var(--proposition-bg); color: var(--proposition-dot); border: 1px solid var(--proposition-border); }
+
+.file-card-ccc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 0.3rem;
+}
+
+/* Summary stats */
+.stats-bar {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--text-light);
+  font-style: italic;
+}
+
+.stats-bar span { white-space: nowrap; }
+
+/* Node cards */
+.node-card {
+  margin-bottom: 0.4rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  border-left: 4px solid var(--border);
+}
+
+.node-card.kind-axiom { border-left-color: var(--axiom-dot); }
+.node-card.kind-theorem { border-left-color: var(--theorem-dot); }
+.node-card.kind-def { border-left-color: var(--def-dot); }
+.node-card.kind-opaque { border-left-color: var(--opaque-dot); }
+.node-card.kind-structure { border-left-color: var(--structure-dot); }
+.node-card.kind-inductive { border-left-color: var(--inductive-dot); }
+.node-card.kind-proposition { border-left-color: var(--proposition-dot); }
+.node-card.kind-instance { border-left-color: var(--def-dot); }
+.node-card.kind-abbrev { border-left-color: var(--def-dot); }
+
+.node-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  background: var(--bg-parchment);
+  transition: background 0.15s;
+}
+
+.node-header:active {
+  background: var(--bg-vellum);
+}
+
+.node-kind-badge {
+  flex-shrink: 0;
+  font-family: monospace;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+  font-weight: bold;
+}
+
+.kind-axiom .node-kind-badge { background: var(--axiom-bg); color: var(--axiom-dot); }
+.kind-theorem .node-kind-badge { background: var(--theorem-bg); color: var(--theorem-dot); }
+.kind-def .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
+.kind-opaque .node-kind-badge { background: var(--opaque-bg); color: var(--opaque-dot); }
+.kind-structure .node-kind-badge { background: var(--structure-bg); color: var(--structure-dot); }
+.kind-inductive .node-kind-badge { background: var(--inductive-bg); color: var(--inductive-dot); }
+.kind-proposition .node-kind-badge { background: var(--proposition-bg); color: var(--proposition-dot); }
+.kind-instance .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
+.kind-abbrev .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
+
+.node-name {
+  flex: 1;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.82rem;
+  word-break: break-all;
+}
+
+.node-chevron {
+  flex-shrink: 0;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  transition: transform 0.2s;
+}
+
+.node-card.open .node-chevron {
+  transform: rotate(90deg);
+}
+
+.node-details {
+  display: none;
+  padding: 0.6rem 1rem 0.8rem;
+  font-size: 0.9rem;
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.node-card.open .node-details {
+  display: block;
+}
+
+.node-prop {
+  margin-bottom: 0.5rem;
+}
+
+.node-prop pre {
+  background: var(--code-bg);
+  color: var(--code-text);
+  padding: 0.6rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  white-space: pre;
+  margin: 0;
+}
+
+.node-prop code {
+  font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', Menlo, monospace;
+  font-size: 0.75rem;
+}
+
+.node-desc {
+  margin-bottom: 0.5rem;
+  font-style: italic;
+  color: var(--text-light);
+  line-height: 1.5;
+}
+
+.node-dep-section {
+  margin-top: 0.4rem;
+}
+
+.node-dep-label {
+  font-family: Cinzel, Georgia, serif;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-bottom: 0.2rem;
+}
+
+.node-dep-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.dep-chip {
+  display: inline-block;
+  font-family: monospace;
+  font-size: 0.72rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  background: var(--bg-vellum);
+  border: 1px solid var(--border);
+  color: var(--text-light);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.dep-chip:active {
+  background: var(--accent-gold);
+  color: var(--code-bg);
+}
+
+.node-scope {
+  margin-top: 0.4rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* Flow diagram header */
+.flow-summary {
+  display: flex;
+  justify-content: center;
+  gap: 0.3rem;
+  margin-bottom: 1.2rem;
+  flex-wrap: wrap;
+  align-items: center;
+  font-family: Cinzel, Georgia, serif;
+  font-size: 0.85rem;
+  color: var(--text-light);
+}
+
+.flow-count {
+  display: inline-block;
+  padding: 0.3rem 0.7rem;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.flow-arrow { color: var(--accent-gold); padding: 0 0.2rem; }
+
+.flow-count.axioms { background: var(--axiom-bg); color: var(--axiom-dot); }
+.flow-count.theorems { background: var(--theorem-bg); color: var(--theorem-dot); }
+.flow-count.derived { background: var(--def-bg); color: var(--def-dot); }
+
+/* Legend */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  justify-content: center;
+  margin-bottom: 1.2rem;
+  font-size: 0.78rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--text-light);
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.legend-dot.axiom { background: var(--axiom-dot); }
+.legend-dot.theorem { background: var(--theorem-dot); }
+.legend-dot.def { background: var(--def-dot); }
+.legend-dot.opaque { background: var(--opaque-dot); }
+.legend-dot.structure { background: var(--structure-dot); }
+.legend-dot.inductive { background: var(--inductive-dot); }
+.legend-dot.proposition { background: var(--proposition-dot); }
+
+/* Filter buttons */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-bottom: 1rem;
+  justify-content: center;
+}
+
+.filter-btn {
+  font-family: monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.3rem 0.7rem;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text-light);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.filter-btn.active {
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+}
+
+/* Back link */
+.back-link {
+  display: inline-block;
+  margin-bottom: 1rem;
+  font-family: Cinzel, Georgia, serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding-top: 2rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  html { font-size: 16px; }
+  .container { padding: 1rem 0.75rem 2rem; }
+  h1 { font-size: 1.35rem; }
+  .node-name { font-size: 0.75rem; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <a href="index.html" class="back-link">&larr; All files</a>
+  <h1>Virtue Connection</h1>
+  <div class="subtitle">Moral Theology &middot; 23 declarations</div>
+
+  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1733, &sect;1827, &sect;1830, &sect;1831</div>
+  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span><span class="legend-item"><span class="legend-dot proposition"></span>proposition</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
+
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (6)</button><button class="filter-btn" data-filter="def">def (4)</button><button class="filter-btn" data-filter="inductive">inductive (1)</button><button class="filter-btn" data-filter="proposition">proposition (3)</button><button class="filter-btn" data-filter="theorem">theorem (9)</button></div>
+
+  <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
+
+  <div id="nodeList">
+    <div class="node-card kind-proposition" data-kind="proposition" data-name="isPerfectVirtue">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">proposition</span>
+    <span class="node-name">isPerfectVirtue</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>opaque isPerfectVirtue : Person → Virtue → Prop</code></pre></div>
+<div class="node-desc">Whether a person&#x27;s virtue is &quot;perfect&quot; — ordered to the ultimate end (God) through charity.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="charity_is_mechanism_of_connection">charity_is_mechanism_of_connection</span><span class="dep-chip" data-target="connection_thesis">connection_thesis</span><span class="dep-chip" data-target="gift_connects_all_virtues">gift_connects_all_virtues</span><span class="dep-chip" data-target="gifts_perfect_virtues">gifts_perfect_virtues</span><span class="dep-chip" data-target="lacking_one_perfect_means_lacking_all">lacking_one_perfect_means_lacking_all</span><span class="dep-chip" data-target="lacking_perfect_virtue_means_no_charity">lacking_perfect_virtue_means_no_charity</span><span class="dep-chip" data-target="perfect_connected_imperfect_not">perfect_connected_imperfect_not</span><span class="dep-chip" data-target="perfect_virtue_entails_agape">perfect_virtue_entails_agape</span><span class="dep-chip" data-target="perfect_virtue_requires_charity">perfect_virtue_requires_charity</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-proposition" data-kind="proposition" data-name="hasImperfectVirtue">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">proposition</span>
+    <span class="node-name">hasImperfectVirtue</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>opaque hasImperfectVirtue : Person → Virtue → Prop</code></pre></div>
+<div class="node-desc">Whether a person has an imperfect (acquired, natural) version of a virtue.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="imperfect_virtues_not_connected">imperfect_virtues_not_connected</span><span class="dep-chip" data-target="perfect_connected_imperfect_not">perfect_connected_imperfect_not</span><span class="dep-chip" data-target="without_charity_all_imperfect">without_charity_all_imperfect</span><span class="dep-chip" data-target="without_charity_virtue_is_imperfect">without_charity_virtue_is_imperfect</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-inductive" data-kind="inductive" data-name="GiftOfHolySpirit">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">inductive</span>
+    <span class="node-name">GiftOfHolySpirit</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>inductive GiftOfHolySpirit where</code></pre></div>
+<div class="node-desc">The seven gifts of the Holy Spirit.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="gift_connects_all_virtues">gift_connects_all_virtues</span><span class="dep-chip" data-target="gifts_distinct_from_virtues">gifts_distinct_from_virtues</span><span class="dep-chip" data-target="gifts_perfect_virtues">gifts_perfect_virtues</span><span class="dep-chip" data-target="hasGift">hasGift</span><span class="dep-chip" data-target="virtue_without_gifts_possible">virtue_without_gifts_possible</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-proposition" data-kind="proposition" data-name="hasGift">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">proposition</span>
+    <span class="node-name">hasGift</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>opaque hasGift : Person → GiftOfHolySpirit → Prop</code></pre></div>
+<div class="node-desc">Whether a person has a gift of the Holy Spirit.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="GiftOfHolySpirit">GiftOfHolySpirit</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="gift_connects_all_virtues">gift_connects_all_virtues</span><span class="dep-chip" data-target="gifts_distinct_from_virtues">gifts_distinct_from_virtues</span><span class="dep-chip" data-target="gifts_perfect_virtues">gifts_perfect_virtues</span><span class="dep-chip" data-target="virtue_without_gifts_possible">virtue_without_gifts_possible</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="connection_thesis">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">connection_thesis</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom connection_thesis :
+∀ (p : Person) (v : CardinalVirtue),
+isPerfectVirtue p (Virtue.cardinal v) →
+(∀ (w : CardinalVirtue), isPerfectVirtue p (Virtue.cardinal w))</code></pre></div>
+<div class="node-desc">The connection thesis: perfect moral virtues are interconnected.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isPerfectVirtue">isPerfectVirtue</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="charity_is_mechanism_of_connection">charity_is_mechanism_of_connection</span><span class="dep-chip" data-target="gift_connects_all_virtues">gift_connects_all_virtues</span><span class="dep-chip" data-target="lacking_one_perfect_means_lacking_all">lacking_one_perfect_means_lacking_all</span><span class="dep-chip" data-target="lacking_perfect_virtue_means_no_charity">lacking_perfect_virtue_means_no_charity</span><span class="dep-chip" data-target="perfect_connected_imperfect_not">perfect_connected_imperfect_not</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="perfect_virtue_requires_charity">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">perfect_virtue_requires_charity</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom perfect_virtue_requires_charity :
+∀ (p : Person) (v : CardinalVirtue),
+isPerfectVirtue p (Virtue.cardinal v) →
+hasVirtue p (Virtue.theological TheologicalVirtue.charity)</code></pre></div>
+<div class="node-desc">Perfect virtue requires charity.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isPerfectVirtue">isPerfectVirtue</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="charity_is_mechanism_of_connection">charity_is_mechanism_of_connection</span><span class="dep-chip" data-target="lacking_one_perfect_means_lacking_all">lacking_one_perfect_means_lacking_all</span><span class="dep-chip" data-target="perfect_virtue_entails_agape">perfect_virtue_entails_agape</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="without_charity_virtue_is_imperfect">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">without_charity_virtue_is_imperfect</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom without_charity_virtue_is_imperfect :
+∀ (p : Person) (v : CardinalVirtue),
+hasVirtue p (Virtue.cardinal v) →
+¬ hasVirtue p (Virtue.theological TheologicalVirtue.charity) →
+hasImperfectVirtue p (Virtue.cardinal v)</code></pre></div>
+<div class="node-desc">Without charity, virtues are imperfect.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="hasImperfectVirtue">hasImperfectVirtue</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="charity_is_mechanism_of_connection">charity_is_mechanism_of_connection</span><span class="dep-chip" data-target="without_charity_all_imperfect">without_charity_all_imperfect</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="imperfect_virtues_not_connected">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">imperfect_virtues_not_connected</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom imperfect_virtues_not_connected :
+∃ (p : Person) (v w : CardinalVirtue),
+v ≠ w ∧
+hasImperfectVirtue p (Virtue.cardinal v) ∧
+¬ hasImperfectVirtue p (Virtue.cardinal w)</code></pre></div>
+<div class="node-desc">Imperfect virtues are NOT connected.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="hasImperfectVirtue">hasImperfectVirtue</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="lacking_perfect_virtue_means_no_charity">lacking_perfect_virtue_means_no_charity</span><span class="dep-chip" data-target="perfect_connected_imperfect_not">perfect_connected_imperfect_not</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="gifts_distinct_from_virtues">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">gifts_distinct_from_virtues</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom gifts_distinct_from_virtues :
+∃ (p : Person) (v : CardinalVirtue) (g : GiftOfHolySpirit),
+hasVirtue p (Virtue.cardinal v) ∧
+¬ hasGift p g</code></pre></div>
+<div class="node-desc">Gifts of the Holy Spirit are distinct from virtues.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="GiftOfHolySpirit">GiftOfHolySpirit</span><span class="dep-chip" data-target="hasGift">hasGift</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="perfect_connected_imperfect_not">perfect_connected_imperfect_not</span><span class="dep-chip" data-target="virtue_without_gifts_possible">virtue_without_gifts_possible</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-axiom" data-kind="axiom" data-name="gifts_perfect_virtues">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">gifts_perfect_virtues</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>axiom gifts_perfect_virtues :
+∀ (p : Person) (v : CardinalVirtue) (g : GiftOfHolySpirit),
+hasVirtue p (Virtue.cardinal v) →
+hasGift p g →</code></pre></div>
+<div class="node-desc">Gifts perfect the virtues.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="GiftOfHolySpirit">GiftOfHolySpirit</span><span class="dep-chip" data-target="hasGift">hasGift</span><span class="dep-chip" data-target="isPerfectVirtue">isPerfectVirtue</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="gift_connects_all_virtues">gift_connects_all_virtues</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="charity_is_mechanism_of_connection">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">charity_is_mechanism_of_connection</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem charity_is_mechanism_of_connection
+(p : Person) (v : CardinalVirtue)
+(h_perfect : isPerfectVirtue p (Virtue.cardinal v)) :</code></pre></div>
+<div class="node-desc">Charity is necessary for the connection of virtues.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="connection_thesis">connection_thesis</span><span class="dep-chip" data-target="isPerfectVirtue">isPerfectVirtue</span><span class="dep-chip" data-target="perfect_virtue_requires_charity">perfect_virtue_requires_charity</span><span class="dep-chip" data-target="without_charity_virtue_is_imperfect">without_charity_virtue_is_imperfect</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="without_charity_all_imperfect">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">without_charity_all_imperfect</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem without_charity_all_imperfect
+(p : Person)
+(h_pru : hasVirtue p (Virtue.cardinal CardinalVirtue.prudence))
+(h_jus : hasVirtue p (Virtue.cardinal CardinalVirtue.justice))
+(h_for : hasVirtue p (Virtue.cardinal CardinalVirtue.fortitude))
+(h_tem : hasVirtue p (Virtue.cardinal CardinalVirtue.temperance))
+(h_no_charity : ¬ hasVirtue p (Virtue.theological TheologicalVirtue.charity)) :
+hasImperfectVirtue p (Virtue.cardinal CardinalVirtue.prudence) ∧
+hasImperfectVirtue p (Virtue.cardinal CardinalVirtue.justice) ∧
+hasImperfectVirtue p (Virtue.cardinal CardinalVirtue.fortitude) ∧
+hasImperfectVirtue p (Virtue.cardinal CardinalVirtue.temperance)</code></pre></div>
+<div class="node-desc">A person with all four cardinal virtues but without charity has only imperfect virtues.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="hasImperfectVirtue">hasImperfectVirtue</span><span class="dep-chip" data-target="without_charity_virtue_is_imperfect">without_charity_virtue_is_imperfect</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="perfect_virtue_entails_agape">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">perfect_virtue_entails_agape</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem perfect_virtue_entails_agape
+(p : Person) (v : CardinalVirtue)
+(h_perfect : isPerfectVirtue p (Virtue.cardinal v)) :
+∃ (tl : TypedLove),
+tl.kind = LoveKind.agape ∧
+tl.lover = p ∧
+tl.degree &gt; 0</code></pre></div>
+<div class="node-desc">The person who has perfect virtues has agape-love (charity = agape).</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isPerfectVirtue">isPerfectVirtue</span><span class="dep-chip" data-target="perfect_virtue_requires_charity">perfect_virtue_requires_charity</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="perfect_virtue_increases_freedom">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">perfect_virtue_increases_freedom</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem perfect_virtue_increases_freedom
+(fd : FreedomDegree)
+(h_oriented : fd.orientedToGood) :
+fd.level &gt; 0</code></pre></div>
+<div class="node-desc">A person with one perfect virtue is oriented to the good and therefore has positive freedom.</div>
+
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="gift_connects_all_virtues">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">gift_connects_all_virtues</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem gift_connects_all_virtues
+(p : Person) (v : CardinalVirtue) (g : GiftOfHolySpirit)
+(h_virtue : hasVirtue p (Virtue.cardinal v))
+(h_gift : hasGift p g) :
+∀ (w : CardinalVirtue), isPerfectVirtue p (Virtue.cardinal w)</code></pre></div>
+<div class="node-desc">A gift elevating one virtue makes all cardinal virtues perfect (via the connection thesis).</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="GiftOfHolySpirit">GiftOfHolySpirit</span><span class="dep-chip" data-target="connection_thesis">connection_thesis</span><span class="dep-chip" data-target="gifts_perfect_virtues">gifts_perfect_virtues</span><span class="dep-chip" data-target="hasGift">hasGift</span><span class="dep-chip" data-target="isPerfectVirtue">isPerfectVirtue</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="lacking_one_perfect_means_lacking_all">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">lacking_one_perfect_means_lacking_all</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem lacking_one_perfect_means_lacking_all
+(p : Person) (w : CardinalVirtue)
+(h_lacks : ¬ isPerfectVirtue p (Virtue.cardinal w)) :
+∀ (v : CardinalVirtue), ¬ isPerfectVirtue p (Virtue.cardinal v)</code></pre></div>
+<div class="node-desc">If a person lacks a perfect cardinal virtue, they cannot have ANY perfect cardinal virtue (by contrapositive of connecti...</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="connection_thesis">connection_thesis</span><span class="dep-chip" data-target="isPerfectVirtue">isPerfectVirtue</span><span class="dep-chip" data-target="perfect_virtue_requires_charity">perfect_virtue_requires_charity</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="lacking_perfect_virtue_means_no_charity">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">lacking_perfect_virtue_means_no_charity</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem lacking_perfect_virtue_means_no_charity
+(p : Person) (w : CardinalVirtue)
+(h_lacks : ¬ isPerfectVirtue p (Virtue.cardinal w))
+(v : CardinalVirtue)
+(h_charity_implies_perfect :
+hasVirtue p (Virtue.theological TheologicalVirtue.charity) →
+isPerfectVirtue p (Virtue.cardinal v)) :
+¬ hasVirtue p (Virtue.theological TheologicalVirtue.charity)</code></pre></div>
+<div class="node-desc">Lacking any perfect cardinal virtue means lacking charity.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="connection_thesis">connection_thesis</span><span class="dep-chip" data-target="imperfect_virtues_not_connected">imperfect_virtues_not_connected</span><span class="dep-chip" data-target="isPerfectVirtue">isPerfectVirtue</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="perfect_connected_imperfect_not">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">perfect_connected_imperfect_not</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem perfect_connected_imperfect_not :</code></pre></div>
+<div class="node-desc">The contrast between perfect and imperfect virtue: perfect virtues are connected (having one gives all), but imperfect v...</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="connection_thesis">connection_thesis</span><span class="dep-chip" data-target="gifts_distinct_from_virtues">gifts_distinct_from_virtues</span><span class="dep-chip" data-target="hasImperfectVirtue">hasImperfectVirtue</span><span class="dep-chip" data-target="imperfect_virtues_not_connected">imperfect_virtues_not_connected</span><span class="dep-chip" data-target="isPerfectVirtue">isPerfectVirtue</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="virtue_without_gifts_possible">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">virtue_without_gifts_possible</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem virtue_without_gifts_possible :
+∃ (p : Person) (v : CardinalVirtue) (g : GiftOfHolySpirit),
+hasVirtue p (Virtue.cardinal v) ∧
+¬ hasGift p g</code></pre></div>
+<div class="node-desc">Virtue does not entail having the gifts of the Holy Spirit.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="GiftOfHolySpirit">GiftOfHolySpirit</span><span class="dep-chip" data-target="gifts_distinct_from_virtues">gifts_distinct_from_virtues</span><span class="dep-chip" data-target="hasGift">hasGift</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="connection_thesis_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">connection_thesis_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def connection_thesis_tag : DenominationalTag</code></pre></div>
+<div class="node-desc">The connection thesis: broadly Thomistic, Catholic.</div>
+
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="charity_form_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">charity_form_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def charity_form_tag : DenominationalTag</code></pre></div>
+<div class="node-desc">Charity as form of virtues: Catholic.</div>
+
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="gifts_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">gifts_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def gifts_tag : DenominationalTag</code></pre></div>
+<div class="node-desc">Gifts of the Holy Spirit: ecumenical.</div>
+
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="perfect_imperfect_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">perfect_imperfect_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def perfect_imperfect_tag : DenominationalTag</code></pre></div>
+<div class="node-desc">Perfect vs imperfect virtue distinction: Catholic/Thomistic.</div>
+
+  </div>
+</div>
+
+  </div>
+
+  <div class="footer">
+    Generated from <code>Catlib/MoralTheology/VirtueConnection.lean</code>
+  </div>
+</div>
+
+<script>
+function toggleNode(header) {
+  header.parentElement.classList.toggle('open');
+}
+
+// Tap a dep chip to scroll to that node
+document.addEventListener('click', function(e) {
+  if (e.target.classList.contains('dep-chip')) {
+    var target = e.target.getAttribute('data-target');
+    var cards = document.querySelectorAll('.node-card');
+    for (var i = 0; i < cards.length; i++) {
+      if (cards[i].getAttribute('data-name') === target) {
+        cards[i].classList.add('open');
+        cards[i].scrollIntoView({ behavior: 'smooth', block: 'center' });
+        cards[i].style.boxShadow = '0 0 0 3px var(--accent-gold)';
+        setTimeout(function(c) { c.style.boxShadow = ''; }, 1500, cards[i]);
+        break;
+      }
+    }
+  }
+});
+
+// Search
+document.getElementById('nodeSearch').addEventListener('input', function() {
+  var q = this.value.toLowerCase();
+  var cards = document.querySelectorAll('.node-card');
+  for (var i = 0; i < cards.length; i++) {
+    var name = cards[i].getAttribute('data-name').toLowerCase();
+    var desc = (cards[i].querySelector('.node-desc') || {}).textContent || '';
+    var show = !q || name.indexOf(q) !== -1 || desc.toLowerCase().indexOf(q) !== -1;
+    cards[i].style.display = show ? '' : 'none';
+  }
+});
+
+// Filter buttons
+document.querySelectorAll('.filter-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+    this.classList.add('active');
+    var filter = this.getAttribute('data-filter');
+    var cards = document.querySelectorAll('.node-card');
+    for (var i = 0; i < cards.length; i++) {
+      if (filter === 'all' || cards[i].getAttribute('data-kind') === filter) {
+        cards[i].style.display = '';
+      } else {
+        cards[i].style.display = 'none';
+      }
+    }
+  });
+});
+</script>
+</body>
+</html>

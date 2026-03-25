@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>SourcesOfMorality — Catlib Explorer</title>
+  <title>Sources Of Morality — Catlib Explorer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -143,7 +143,7 @@ h1 {
   line-height: 1.6;
 }
 
-/* ── Search ── */
+/* Search */
 .search-box {
   width: 100%;
   padding: 0.8rem 1rem;
@@ -167,7 +167,7 @@ h1 {
   font-style: italic;
 }
 
-/* ── Category sections ── */
+/* Category sections */
 .category-header {
   font-family: Cinzel, Georgia, serif;
   font-size: 1.1rem;
@@ -181,7 +181,7 @@ h1 {
   border-bottom: 1px solid var(--border);
 }
 
-/* ── File cards ── */
+/* File cards */
 .file-card {
   display: block;
   padding: 1rem 1.1rem;
@@ -237,7 +237,7 @@ h1 {
   margin-top: 0.3rem;
 }
 
-/* ── Summary stats ── */
+/* Summary stats */
 .stats-bar {
   display: flex;
   justify-content: center;
@@ -251,7 +251,7 @@ h1 {
 
 .stats-bar span { white-space: nowrap; }
 
-/* ── Node cards (per-file page) ── */
+/* Node cards */
 .node-card {
   margin-bottom: 0.4rem;
   border: 1px solid var(--border);
@@ -267,6 +267,8 @@ h1 {
 .node-card.kind-structure { border-left-color: var(--structure-dot); }
 .node-card.kind-inductive { border-left-color: var(--inductive-dot); }
 .node-card.kind-proposition { border-left-color: var(--proposition-dot); }
+.node-card.kind-instance { border-left-color: var(--def-dot); }
+.node-card.kind-abbrev { border-left-color: var(--def-dot); }
 
 .node-header {
   display: flex;
@@ -302,6 +304,8 @@ h1 {
 .kind-structure .node-kind-badge { background: var(--structure-bg); color: var(--structure-dot); }
 .kind-inductive .node-kind-badge { background: var(--inductive-bg); color: var(--inductive-dot); }
 .kind-proposition .node-kind-badge { background: var(--proposition-bg); color: var(--proposition-dot); }
+.kind-instance .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
+.kind-abbrev .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
 
 .node-name {
   flex: 1;
@@ -405,7 +409,7 @@ h1 {
   color: var(--text-muted);
 }
 
-/* ── Flow diagram header ── */
+/* Flow diagram header */
 .flow-summary {
   display: flex;
   justify-content: center;
@@ -431,7 +435,7 @@ h1 {
 .flow-count.theorems { background: var(--theorem-bg); color: var(--theorem-dot); }
 .flow-count.derived { background: var(--def-bg); color: var(--def-dot); }
 
-/* ── Legend ── */
+/* Legend */
 .legend {
   display: flex;
   flex-wrap: wrap;
@@ -463,7 +467,7 @@ h1 {
 .legend-dot.inductive { background: var(--inductive-dot); }
 .legend-dot.proposition { background: var(--proposition-dot); }
 
-/* ── Filter buttons ── */
+/* Filter buttons */
 .filter-bar {
   display: flex;
   flex-wrap: wrap;
@@ -492,7 +496,7 @@ h1 {
   border-color: var(--accent);
 }
 
-/* ── Back link ── */
+/* Back link */
 .back-link {
   display: inline-block;
   margin-bottom: 1rem;
@@ -501,7 +505,7 @@ h1 {
   letter-spacing: 0.04em;
 }
 
-/* ── Footer ── */
+/* Footer */
 .footer {
   text-align: center;
   padding-top: 2rem;
@@ -510,7 +514,7 @@ h1 {
   font-style: italic;
 }
 
-/* ── Responsive ── */
+/* Responsive */
 @media (max-width: 500px) {
   html { font-size: 16px; }
   .container { padding: 1rem 0.75rem 2rem; }
@@ -522,15 +526,13 @@ h1 {
 <body>
 <div class="container">
   <a href="index.html" class="back-link">&larr; All files</a>
-  <h1>SourcesOfMorality</h1>
-  <div class="subtitle">MoralTheology &middot; 6 declarations</div>
+  <h1>Sources Of Morality</h1>
+  <div class="subtitle">Moral Theology &middot; 6 declarations</div>
 
-  
   <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1750, &sect;1752, &sect;1755, &sect;1756</div>
+  <div class="legend"><span class="legend-item"><span class="legend-dot proposition"></span>proposition</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
 
-  <div class="legend"><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot proposition"></span>proposition</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
-
-  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" <button class="filter-btn" data-filter="proposition">proposition (1)</button><button class="filter-btn" data-filter="theorem">theorem (5)</button></div>
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="proposition">proposition (1)</button><button class="filter-btn" data-filter="theorem">theorem (5)</button></div>
 
   <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
 
@@ -543,12 +545,12 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem good_end_cannot_justify_evil_means
-    (eval : MoralEvaluation)
-    (h_bad_object : ¬eval.objectIsGood)
-    (_h_good_intention : eval.intentionIsGood) :
-    eval.isEvil</code></pre></div>
+(eval : MoralEvaluation)
+(h_bad_object : ¬eval.objectIsGood)
+(_h_good_intention : eval.intentionIsGood) :
+eval.isEvil</code></pre></div>
 <div class="node-desc">§1755: A good end does not make a bad action good.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MoralEvaluation.isEvil">MoralEvaluation.isEvil</span><span class="dep-chip" data-target="isEvil">isEvil</span></div></div>
+
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="good_intention_insufficient">
@@ -559,11 +561,12 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem good_intention_insufficient
-    (eval : MoralEvaluation)
-    (_h_good_intention : eval.intentionIsGood)
-    (h_bad_object : ¬eval.objectIsGood) :
-    ¬eval.isGood</code></pre></div>
-<div class="node-desc">§1752: &quot;In contrast to the object, the intention resides in the acting</div>
+(eval : MoralEvaluation)
+(_h_good_intention : eval.intentionIsGood)
+(h_bad_object : ¬eval.objectIsGood) :
+¬eval.isGood</code></pre></div>
+<div class="node-desc">§1752: &quot;In contrast to the object, the intention resides in the acting subject...</div>
+
   </div>
 </div>
 <div class="node-card kind-proposition" data-kind="proposition" data-name="IntrinsicallyEvil">
@@ -574,8 +577,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>def IntrinsicallyEvil (objectPredicate : Prop) : Prop</code></pre></div>
-<div class="node-desc">An act type is intrinsically evil if its object is never good, │   ⚠ HIDDEN ASSUMPTION: This definition treats the &quot;object&quot; as evaluable</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="intrinsically_evil_always_evil">intrinsically_evil_always_evil</span><span class="dep-chip" data-target="intrinsic_evil_intention_independent">intrinsic_evil_intention_independent</span></div></div>
+<div class="node-desc">An act type is intrinsically evil if its object is never good, regardless of any other considerations.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="intrinsic_evil_intention_independent">intrinsic_evil_intention_independent</span><span class="dep-chip" data-target="intrinsically_evil_always_evil">intrinsically_evil_always_evil</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="intrinsically_evil_always_evil">
@@ -586,12 +589,11 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem intrinsically_evil_always_evil
-    (eval : MoralEvaluation)
-    (h_intrinsic : IntrinsicallyEvil eval.objectIsGood) :
-    ¬eval.isGood</code></pre></div>
-<div class="node-desc">§1756: For intrinsically evil acts, no intention or circumstance</div>
+(eval : MoralEvaluation)
+(h_intrinsic : IntrinsicallyEvil eval.objectIsGood) :
+¬eval.isGood</code></pre></div>
+<div class="node-desc">§1756: For intrinsically evil acts, no intention or circumstance can make them good.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="IntrinsicallyEvil">IntrinsicallyEvil</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="IntrinsicallyEvil">IntrinsicallyEvil</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="intrinsic_evil_intention_independent">
@@ -602,25 +604,12 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem intrinsic_evil_intention_independent
-    (action : Action)
-    (h_intrinsic : IntrinsicallyEvil (∃ _ : Prop, True))
-    (intention1 intention2 : Prop) :
-    let eval1 : MoralEvaluation := {
-      action := action
-      objectIsGood := ∃ _ : Prop, True  -- using same object predicate
-      intentionIsGood := intention1
-      circumstancesAppropriate := action.circumstances
-    }
-    let eval2 : MoralEvaluation := {
-      action := action
-      objectIsGood := ∃ _ : Prop, True
-      intentionIsGood := intention2
-      circumstancesAppropriate := action.circumstances
-    }
-    ¬eval1.isGood ∧ ¬eval2.isGood</code></pre></div>
+(action : Action)
+(h_intrinsic : IntrinsicallyEvil (∃ _ : Prop, True))
+(intention1 intention2 : Prop) :
+let eval1 : MoralEvaluation</code></pre></div>
 <div class="node-desc">Key finding: intrinsic evil is independent of intention.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="IntrinsicallyEvil">IntrinsicallyEvil</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="IntrinsicallyEvil">IntrinsicallyEvil</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="framework_compatible_with_context_dependent_object">
@@ -631,28 +620,15 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem framework_compatible_with_context_dependent_object
-    (good_in_context bad_out_of_context : Prop)
-    (h_context : good_in_context)
-    (h_no_context : ¬bad_out_of_context)
-    (action : Action) :
-    -- Same action can be evaluated differently depending on which
-    -- &quot;object goodness&quot; predicate we use
-    let eval_in_context : MoralEvaluation := {
-      action := action
-      objectIsGood := good_in_context
-      intentionIsGood := True
-      circumstancesAppropriate := True
-    }
-    let eval_out_of_context : MoralEvaluation := {
-      action := action
-      objectIsGood := bad_out_of_context
-      intentionIsGood := True
-      circumstancesAppropriate := True
-    }
-    eval_in_context.isGood ∧ ¬eval_out_of_context.isGood</code></pre></div>
-<div class="node-desc">Without the independence axiom, nothing prevents the object's moral</div>
+(good_in_context bad_out_of_context : Prop)
+(h_context : good_in_context)
+(h_no_context : ¬bad_out_of_context)
+(action : Action) :</code></pre></div>
+<div class="node-desc">Without the independence axiom, nothing prevents the object&#x27;s moral character from varying with circumstances.</div>
+
   </div>
 </div>
+
   </div>
 
   <div class="footer">

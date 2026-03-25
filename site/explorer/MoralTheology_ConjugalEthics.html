@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>ConjugalEthics — Catlib Explorer</title>
+  <title>Conjugal Ethics — Catlib Explorer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -143,7 +143,7 @@ h1 {
   line-height: 1.6;
 }
 
-/* ── Search ── */
+/* Search */
 .search-box {
   width: 100%;
   padding: 0.8rem 1rem;
@@ -167,7 +167,7 @@ h1 {
   font-style: italic;
 }
 
-/* ── Category sections ── */
+/* Category sections */
 .category-header {
   font-family: Cinzel, Georgia, serif;
   font-size: 1.1rem;
@@ -181,7 +181,7 @@ h1 {
   border-bottom: 1px solid var(--border);
 }
 
-/* ── File cards ── */
+/* File cards */
 .file-card {
   display: block;
   padding: 1rem 1.1rem;
@@ -237,7 +237,7 @@ h1 {
   margin-top: 0.3rem;
 }
 
-/* ── Summary stats ── */
+/* Summary stats */
 .stats-bar {
   display: flex;
   justify-content: center;
@@ -251,7 +251,7 @@ h1 {
 
 .stats-bar span { white-space: nowrap; }
 
-/* ── Node cards (per-file page) ── */
+/* Node cards */
 .node-card {
   margin-bottom: 0.4rem;
   border: 1px solid var(--border);
@@ -267,6 +267,8 @@ h1 {
 .node-card.kind-structure { border-left-color: var(--structure-dot); }
 .node-card.kind-inductive { border-left-color: var(--inductive-dot); }
 .node-card.kind-proposition { border-left-color: var(--proposition-dot); }
+.node-card.kind-instance { border-left-color: var(--def-dot); }
+.node-card.kind-abbrev { border-left-color: var(--def-dot); }
 
 .node-header {
   display: flex;
@@ -302,6 +304,8 @@ h1 {
 .kind-structure .node-kind-badge { background: var(--structure-bg); color: var(--structure-dot); }
 .kind-inductive .node-kind-badge { background: var(--inductive-bg); color: var(--inductive-dot); }
 .kind-proposition .node-kind-badge { background: var(--proposition-bg); color: var(--proposition-dot); }
+.kind-instance .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
+.kind-abbrev .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
 
 .node-name {
   flex: 1;
@@ -405,7 +409,7 @@ h1 {
   color: var(--text-muted);
 }
 
-/* ── Flow diagram header ── */
+/* Flow diagram header */
 .flow-summary {
   display: flex;
   justify-content: center;
@@ -431,7 +435,7 @@ h1 {
 .flow-count.theorems { background: var(--theorem-bg); color: var(--theorem-dot); }
 .flow-count.derived { background: var(--def-bg); color: var(--def-dot); }
 
-/* ── Legend ── */
+/* Legend */
 .legend {
   display: flex;
   flex-wrap: wrap;
@@ -463,7 +467,7 @@ h1 {
 .legend-dot.inductive { background: var(--inductive-dot); }
 .legend-dot.proposition { background: var(--proposition-dot); }
 
-/* ── Filter buttons ── */
+/* Filter buttons */
 .filter-bar {
   display: flex;
   flex-wrap: wrap;
@@ -492,7 +496,7 @@ h1 {
   border-color: var(--accent);
 }
 
-/* ── Back link ── */
+/* Back link */
 .back-link {
   display: inline-block;
   margin-bottom: 1rem;
@@ -501,7 +505,7 @@ h1 {
   letter-spacing: 0.04em;
 }
 
-/* ── Footer ── */
+/* Footer */
 .footer {
   text-align: center;
   padding-top: 2rem;
@@ -510,7 +514,7 @@ h1 {
   font-style: italic;
 }
 
-/* ── Responsive ── */
+/* Responsive */
 @media (max-width: 500px) {
   html { font-size: 16px; }
   .container { padding: 1rem 0.75rem 2rem; }
@@ -522,15 +526,13 @@ h1 {
 <body>
 <div class="container">
   <a href="index.html" class="back-link">&larr; All files</a>
-  <h1>ConjugalEthics</h1>
-  <div class="subtitle">MoralTheology &middot; 22 declarations</div>
+  <h1>Conjugal Ethics</h1>
+  <div class="subtitle">Moral Theology &middot; 26 declarations</div>
 
-  
-  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;11, &sect;12, &sect;13, &sect;14, &sect;16, &sect;1750, &sect;2366, &sect;2368, &sect;2370, &sect;2372, &sect;365, &sect;37, &sect;78</div>
+  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;11, &sect;12, &sect;13, &sect;14, &sect;16, &sect;37, &sect;78, &sect;365, &sect;1750, &sect;2366, &hellip;</div>
+  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot proposition"></span>proposition</span><span class="legend-item"><span class="legend-dot structure"></span>structure</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
 
-  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot proposition"></span>proposition</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot structure"></span>structure</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
-
-  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (3)</button><button class="filter-btn" data-filter="def">def (2)</button><button class="filter-btn" data-filter="proposition">proposition (5)</button><button class="filter-btn" data-filter="opaque">opaque (2)</button><button class="filter-btn" data-filter="structure">structure (3)</button><button class="filter-btn" data-filter="theorem">theorem (7)</button></div>
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (3)</button><button class="filter-btn" data-filter="def">def (6)</button><button class="filter-btn" data-filter="proposition">proposition (7)</button><button class="filter-btn" data-filter="structure">structure (3)</button><button class="filter-btn" data-filter="theorem">theorem (7)</button></div>
 
   <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
 
@@ -542,9 +544,13 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>structure ConjugalAct where</code></pre></div>
+    <div class="node-prop"><pre><code>structure ConjugalAct where
+spouse1 : Person
+spouse2 : Person
+unitiveIntact : Prop
+procreativeIntact : Prop</code></pre></div>
 <div class="node-desc">The two inherent meanings of the conjugal act (HV §12).</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ConjugalAct.bothMeaningsIntact">ConjugalAct.bothMeaningsIntact</span><span class="dep-chip" data-target="deliberatelyFrustratesProcreation">deliberatelyFrustratesProcreation</span><span class="dep-chip" data-target="conjugal_procreative_end">conjugal_procreative_end</span><span class="dep-chip" data-target="physical_act_determines_object">physical_act_determines_object</span><span class="dep-chip" data-target="conjugal_frustration_is_teleological">conjugal_frustration_is_teleological</span><span class="dep-chip" data-target="inseparability_principle">inseparability_principle</span><span class="dep-chip" data-target="A1_SEPARABILITY">A1_SEPARABILITY</span><span class="dep-chip" data-target="NFPObject">NFPObject</span><span class="dep-chip" data-target="ContraceptionObject">ContraceptionObject</span><span class="dep-chip" data-target="contraception_frustrates">contraception_frustrates</span><span class="dep-chip" data-target="contraception_intrinsically_evil">contraception_intrinsically_evil</span><span class="dep-chip" data-target="nfp_object_not_evil">nfp_object_not_evil</span><span class="dep-chip" data-target="nfp_does_not_frustrate">nfp_does_not_frustrate</span><span class="dep-chip" data-target="nfp_does_not_trigger_inseparability">nfp_does_not_trigger_inseparability</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="A1_SEPARABILITY">A1_SEPARABILITY</span><span class="dep-chip" data-target="ConjugalAct.bothMeaningsIntact">ConjugalAct.bothMeaningsIntact</span><span class="dep-chip" data-target="ContraceptionObject">ContraceptionObject</span><span class="dep-chip" data-target="NFPObject">NFPObject</span><span class="dep-chip" data-target="conjugal_frustration_is_teleological">conjugal_frustration_is_teleological</span><span class="dep-chip" data-target="conjugal_procreative_end">conjugal_procreative_end</span><span class="dep-chip" data-target="contraception_frustrates">contraception_frustrates</span><span class="dep-chip" data-target="contraception_intrinsically_evil">contraception_intrinsically_evil</span><span class="dep-chip" data-target="deliberatelyFrustratesProcreation">deliberatelyFrustratesProcreation</span><span class="dep-chip" data-target="inseparability_principle">inseparability_principle</span><span class="dep-chip" data-target="nfp_does_not_frustrate">nfp_does_not_frustrate</span><span class="dep-chip" data-target="nfp_does_not_trigger_inseparability">nfp_does_not_trigger_inseparability</span><span class="dep-chip" data-target="nfp_object_not_evil">nfp_object_not_evil</span><span class="dep-chip" data-target="physical_act_determines_object">physical_act_determines_object</span></div></div>
   </div>
 </div>
 <div class="node-card kind-proposition" data-kind="proposition" data-name="ConjugalAct.bothMeaningsIntact">
@@ -557,21 +563,18 @@ h1 {
     <div class="node-prop"><pre><code>def ConjugalAct.bothMeaningsIntact (act : ConjugalAct) : Prop</code></pre></div>
 <div class="node-desc">Whether a conjugal act is ordered to both meanings.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ConjugalAct">ConjugalAct</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ConjugalAct">ConjugalAct</span></div></div>
   </div>
 </div>
-<div class="node-card kind-opaque" data-kind="opaque" data-name="deliberatelyFrustratesProcreation">
+<div class="node-card kind-proposition" data-kind="proposition" data-name="deliberatelyFrustratesProcreation">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">opaque</span>
+    <span class="node-kind-badge">proposition</span>
     <span class="node-name">deliberatelyFrustratesProcreation</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque deliberatelyFrustratesProcreation : ConjugalAct → Prop
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque deliberatelyFrustratesProcreation : ConjugalAct → Prop</code></pre></div>
 <div class="node-desc">Whether a conjugal act deliberately frustrates one of its meanings.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ConjugalAct">ConjugalAct</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="physical_act_determines_object">physical_act_determines_object</span><span class="dep-chip" data-target="conjugal_frustration_is_teleological">conjugal_frustration_is_teleological</span><span class="dep-chip" data-target="inseparability_principle">inseparability_principle</span><span class="dep-chip" data-target="NFPObject">NFPObject</span><span class="dep-chip" data-target="contraception_frustrates">contraception_frustrates</span><span class="dep-chip" data-target="nfp_does_not_frustrate">nfp_does_not_frustrate</span><span class="dep-chip" data-target="nfp_does_not_trigger_inseparability">nfp_does_not_trigger_inseparability</span><span class="dep-chip" data-target="ConjugalAct">ConjugalAct</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ConjugalAct">ConjugalAct</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="NFPObject">NFPObject</span><span class="dep-chip" data-target="conjugal_frustration_is_teleological">conjugal_frustration_is_teleological</span><span class="dep-chip" data-target="contraception_frustrates">contraception_frustrates</span><span class="dep-chip" data-target="inseparability_principle">inseparability_principle</span><span class="dep-chip" data-target="nfp_does_not_frustrate">nfp_does_not_frustrate</span><span class="dep-chip" data-target="nfp_does_not_trigger_inseparability">nfp_does_not_trigger_inseparability</span><span class="dep-chip" data-target="physical_act_determines_object">physical_act_determines_object</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="conjugal_procreative_end">
@@ -582,9 +585,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>def conjugal_procreative_end (act : ConjugalAct) : NaturalEnd</code></pre></div>
-<div class="node-desc">The natural end (telos) of the conjugal act: procreation. │   Source: Aquinas, ST II-II q.154; Humanae Vitae §12.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ConjugalAct">ConjugalAct</span><span class="dep-chip" data-target="NaturalEnd">NaturalEnd</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="conjugal_frustration_is_teleological">conjugal_frustration_is_teleological</span><span class="dep-chip" data-target="inseparability_principle">inseparability_principle</span><span class="dep-chip" data-target="contraception_intrinsically_evil">contraception_intrinsically_evil</span><span class="dep-chip" data-target="ConjugalAct">ConjugalAct</span></div></div>
+<div class="node-desc">The natural end (telos) of the conjugal act: procreation.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ConjugalAct">ConjugalAct</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="conjugal_frustration_is_teleological">conjugal_frustration_is_teleological</span><span class="dep-chip" data-target="contraception_intrinsically_evil">contraception_intrinsically_evil</span><span class="dep-chip" data-target="inseparability_principle">inseparability_principle</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="physical_act_determines_object">
@@ -595,15 +597,9 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom physical_act_determines_object :
-  ∀ (act : ConjugalAct),
-    -- If the physical act is not modified (procreative structure intact),
-    -- then the act does not deliberately frustrate procreation,
-    -- REGARDLESS of the couple's intent to avoid pregnancy
-    act.procreativeIntact → ¬deliberatelyFrustratesProcreation act
-</code></pre></div>
-<div class="node-desc">The moral object of a conjugal act is determined by what is │   Source: Implicit in CCC §1750-1756 (the object of the act is one of | Scope: CATHOLIC. Consequentialists and most Pro... │   ⚠ HIDDEN ASSUMPTION: This is a PHILOSOPHICAL commitment inherited from</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ConjugalAct">ConjugalAct</span><span class="dep-chip" data-target="deliberatelyFrustratesProcreation">deliberatelyFrustratesProcreation</span><span class="dep-chip" data-target="teleological_realism">teleological_realism</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="nfp_object_not_evil">nfp_object_not_evil</span><span class="dep-chip" data-target="nfp_does_not_frustrate">nfp_does_not_frustrate</span><span class="dep-chip" data-target="ConjugalAct">ConjugalAct</span><span class="dep-chip" data-target="deliberatelyFrustratesProcreation">deliberatelyFrustratesProcreation</span></div></div>
+∀ (act : ConjugalAct),</code></pre></div>
+<div class="node-desc">AXIOM: THE PHYSICAL ACT PRINCIPLE.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ConjugalAct">ConjugalAct</span><span class="dep-chip" data-target="deliberatelyFrustratesProcreation">deliberatelyFrustratesProcreation</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="contraception_evil_tag">contraception_evil_tag</span><span class="dep-chip" data-target="nfp_does_not_frustrate">nfp_does_not_frustrate</span><span class="dep-chip" data-target="nfp_object_not_evil">nfp_object_not_evil</span><span class="dep-chip" data-target="separability_tag">separability_tag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="conjugal_frustration_is_teleological">
@@ -614,13 +610,11 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom conjugal_frustration_is_teleological :
-  ∀ (act : ConjugalAct) (agent : Person),
-    deliberatelyFrustratesProcreation act →
-    deliberatelyFrustrates agent (conjugal_procreative_end act)
-</code></pre></div>
-<div class="node-desc">Conjugal frustration IS teleological frustration. │   Scope: CATHOLIC (requires teleological_realism).</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ConjugalAct">ConjugalAct</span><span class="dep-chip" data-target="conjugal_procreative_end">conjugal_procreative_end</span><span class="dep-chip" data-target="contraception_frustrates">contraception_frustrates</span><span class="dep-chip" data-target="deliberatelyFrustrates">deliberatelyFrustrates</span><span class="dep-chip" data-target="deliberatelyFrustratesProcreation">deliberatelyFrustratesProcreation</span><span class="dep-chip" data-target="frustration_is_evil">frustration_is_evil</span><span class="dep-chip" data-target="teleological_realism">teleological_realism</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="inseparability_principle">inseparability_principle</span><span class="dep-chip" data-target="contraception_frustrates">contraception_frustrates</span><span class="dep-chip" data-target="ConjugalAct">ConjugalAct</span><span class="dep-chip" data-target="conjugal_procreative_end">conjugal_procreative_end</span><span class="dep-chip" data-target="deliberatelyFrustratesProcreation">deliberatelyFrustratesProcreation</span></div></div>
+∀ (act : ConjugalAct) (agent : Person),
+deliberatelyFrustratesProcreation act →
+deliberatelyFrustrates agent (conjugal_procreative_end act)</code></pre></div>
+<div class="node-desc">AXIOM: Conjugal frustration IS teleological frustration.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ConjugalAct">ConjugalAct</span><span class="dep-chip" data-target="conjugal_procreative_end">conjugal_procreative_end</span><span class="dep-chip" data-target="contraception_frustrates">contraception_frustrates</span><span class="dep-chip" data-target="deliberatelyFrustratesProcreation">deliberatelyFrustratesProcreation</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="contraception_frustrates">contraception_frustrates</span><span class="dep-chip" data-target="inseparability_principle">inseparability_principle</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="inseparability_principle">
@@ -631,13 +625,24 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem inseparability_principle
-    (act : ConjugalAct)
-    (agent : Person)
-    (h_frustrates : deliberatelyFrustratesProcreation act) :
-    IntrinsicallyEvil (conjugal_procreative_end act).purpose</code></pre></div>
-<div class="node-desc">Deliberately frustrating the procreative meaning of a conjugal act │   Scope: Catholic (post-1930). Pre-1930: ecumenical.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ConjugalAct">ConjugalAct</span><span class="dep-chip" data-target="IntrinsicallyEvil">IntrinsicallyEvil</span><span class="dep-chip" data-target="conjugal_frustration_is_teleological">conjugal_frustration_is_teleological</span><span class="dep-chip" data-target="conjugal_procreative_end">conjugal_procreative_end</span><span class="dep-chip" data-target="deliberatelyFrustratesProcreation">deliberatelyFrustratesProcreation</span><span class="dep-chip" data-target="frustration_is_evil">frustration_is_evil</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="contraception_intrinsically_evil">contraception_intrinsically_evil</span><span class="dep-chip" data-target="ConjugalAct">ConjugalAct</span><span class="dep-chip" data-target="conjugal_procreative_end">conjugal_procreative_end</span><span class="dep-chip" data-target="deliberatelyFrustratesProcreation">deliberatelyFrustratesProcreation</span><span class="dep-chip" data-target="conjugal_frustration_is_teleological">conjugal_frustration_is_teleological</span></div></div>
+(act : ConjugalAct)
+(agent : Person)
+(h_frustrates : deliberatelyFrustratesProcreation act) :
+IntrinsicallyEvil (conjugal_procreative_end act).purpose</code></pre></div>
+<div class="node-desc">THEOREM (HV §12, CCC §2366): THE INSEPARABILITY PRINCIPLE.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ConjugalAct">ConjugalAct</span><span class="dep-chip" data-target="conjugal_frustration_is_teleological">conjugal_frustration_is_teleological</span><span class="dep-chip" data-target="conjugal_procreative_end">conjugal_procreative_end</span><span class="dep-chip" data-target="deliberatelyFrustratesProcreation">deliberatelyFrustratesProcreation</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="contraception_intrinsically_evil">contraception_intrinsically_evil</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="inseparability_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">inseparability_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def inseparability_tag : DenominationalTag</code></pre></div>
+<div class="node-desc">Denominational tag: Catholic (post-1930; pre-1930 ecumenical).</div>
+
   </div>
 </div>
 <div class="node-card kind-proposition" data-kind="proposition" data-name="A1_SEPARABILITY">
@@ -649,8 +654,19 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def A1_SEPARABILITY (act : ConjugalAct) (justReason : Prop) : Prop</code></pre></div>
 <div class="node-desc">The separability principle — the axiom Lambeth 1930 introduced.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ConjugalAct">ConjugalAct</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="medical_treatment_permissible">medical_treatment_permissible</span><span class="dep-chip" data-target="ConjugalAct">ConjugalAct</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ConjugalAct">ConjugalAct</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="medical_treatment_permissible">medical_treatment_permissible</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="separability_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">separability_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def separability_tag : DenominationalTag</code></pre></div>
+<div class="node-desc">Denominational tag: Protestant post-1930.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="physical_act_determines_object">physical_act_determines_object</span></div></div>
   </div>
 </div>
 <div class="node-card kind-proposition" data-kind="proposition" data-name="NFPObject">
@@ -661,9 +677,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>def NFPObject (act : ConjugalAct) : Prop</code></pre></div>
-<div class="node-desc">The moral object of NFP: when a couple engages in the conjugal act</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ConjugalAct">ConjugalAct</span><span class="dep-chip" data-target="deliberatelyFrustratesProcreation">deliberatelyFrustratesProcreation</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="nfp_object_not_evil">nfp_object_not_evil</span><span class="dep-chip" data-target="ConjugalAct">ConjugalAct</span><span class="dep-chip" data-target="deliberatelyFrustratesProcreation">deliberatelyFrustratesProcreation</span></div></div>
+<div class="node-desc">The moral object of NFP: when a couple engages in the conjugal act during infertile periods, both meanings are intact — ...</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ConjugalAct">ConjugalAct</span><span class="dep-chip" data-target="deliberatelyFrustratesProcreation">deliberatelyFrustratesProcreation</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="contraception_evil_tag">contraception_evil_tag</span><span class="dep-chip" data-target="nfp_object_not_evil">nfp_object_not_evil</span></div></div>
   </div>
 </div>
 <div class="node-card kind-proposition" data-kind="proposition" data-name="ContraceptionObject">
@@ -674,9 +689,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>def ContraceptionObject (act : ConjugalAct) : Prop</code></pre></div>
-<div class="node-desc">The moral object of contraception: having sex while deliberately</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ConjugalAct">ConjugalAct</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="contraception_frustrates">contraception_frustrates</span><span class="dep-chip" data-target="contraception_intrinsically_evil">contraception_intrinsically_evil</span><span class="dep-chip" data-target="ConjugalAct">ConjugalAct</span></div></div>
+<div class="node-desc">The moral object of contraception: having sex while deliberately rendering procreation impossible.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ConjugalAct">ConjugalAct</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="contraception_frustrates">contraception_frustrates</span><span class="dep-chip" data-target="contraception_intrinsically_evil">contraception_intrinsically_evil</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="contraception_frustrates">
@@ -687,13 +701,11 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom contraception_frustrates :
-  ∀ (act : ConjugalAct),
-    ContraceptionObject act →
-    deliberatelyFrustratesProcreation act
-</code></pre></div>
-<div class="node-desc">Contraception deliberately frustrates procreation. │   Scope: ECUMENICAL (definitional — even those who</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ConjugalAct">ConjugalAct</span><span class="dep-chip" data-target="ContraceptionObject">ContraceptionObject</span><span class="dep-chip" data-target="conjugal_frustration_is_teleological">conjugal_frustration_is_teleological</span><span class="dep-chip" data-target="deliberatelyFrustratesProcreation">deliberatelyFrustratesProcreation</span><span class="dep-chip" data-target="frustration_is_evil">frustration_is_evil</span><span class="dep-chip" data-target="teleological_realism">teleological_realism</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="conjugal_frustration_is_teleological">conjugal_frustration_is_teleological</span><span class="dep-chip" data-target="contraception_intrinsically_evil">contraception_intrinsically_evil</span><span class="dep-chip" data-target="nfp_does_not_frustrate">nfp_does_not_frustrate</span><span class="dep-chip" data-target="ConjugalAct">ConjugalAct</span><span class="dep-chip" data-target="ContraceptionObject">ContraceptionObject</span><span class="dep-chip" data-target="deliberatelyFrustratesProcreation">deliberatelyFrustratesProcreation</span></div></div>
+∀ (act : ConjugalAct),
+ContraceptionObject act →
+deliberatelyFrustratesProcreation act</code></pre></div>
+<div class="node-desc">AXIOM: Contraception deliberately frustrates procreation.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ConjugalAct">ConjugalAct</span><span class="dep-chip" data-target="ContraceptionObject">ContraceptionObject</span><span class="dep-chip" data-target="conjugal_frustration_is_teleological">conjugal_frustration_is_teleological</span><span class="dep-chip" data-target="deliberatelyFrustratesProcreation">deliberatelyFrustratesProcreation</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="conjugal_frustration_is_teleological">conjugal_frustration_is_teleological</span><span class="dep-chip" data-target="contraception_intrinsically_evil">contraception_intrinsically_evil</span><span class="dep-chip" data-target="nfp_does_not_frustrate">nfp_does_not_frustrate</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="contraception_intrinsically_evil">
@@ -704,13 +716,24 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem contraception_intrinsically_evil
-    (act : ConjugalAct)
-    (agent : Person)
-    (h_contra : ContraceptionObject act) :
-    IntrinsicallyEvil (conjugal_procreative_end act).purpose</code></pre></div>
-<div class="node-desc">Contraception is intrinsically evil (under inseparability). │   Scope: CATHOLIC (depends on the entire teleological framework).</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ConjugalAct">ConjugalAct</span><span class="dep-chip" data-target="ContraceptionObject">ContraceptionObject</span><span class="dep-chip" data-target="IntrinsicallyEvil">IntrinsicallyEvil</span><span class="dep-chip" data-target="conjugal_procreative_end">conjugal_procreative_end</span><span class="dep-chip" data-target="contraception_frustrates">contraception_frustrates</span><span class="dep-chip" data-target="inseparability_principle">inseparability_principle</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ConjugalAct">ConjugalAct</span><span class="dep-chip" data-target="ContraceptionObject">ContraceptionObject</span><span class="dep-chip" data-target="conjugal_procreative_end">conjugal_procreative_end</span><span class="dep-chip" data-target="contraception_frustrates">contraception_frustrates</span><span class="dep-chip" data-target="inseparability_principle">inseparability_principle</span></div></div>
+(act : ConjugalAct)
+(agent : Person)
+(h_contra : ContraceptionObject act) :
+IntrinsicallyEvil (conjugal_procreative_end act).purpose</code></pre></div>
+<div class="node-desc">THEOREM: Contraception is intrinsically evil (under inseparability).</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ConjugalAct">ConjugalAct</span><span class="dep-chip" data-target="ContraceptionObject">ContraceptionObject</span><span class="dep-chip" data-target="conjugal_procreative_end">conjugal_procreative_end</span><span class="dep-chip" data-target="contraception_frustrates">contraception_frustrates</span><span class="dep-chip" data-target="inseparability_principle">inseparability_principle</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="contraception_evil_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">contraception_evil_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def contraception_evil_tag : DenominationalTag</code></pre></div>
+<div class="node-desc">Denominational tag: Catholic.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="NFPObject">NFPObject</span><span class="dep-chip" data-target="physical_act_determines_object">physical_act_determines_object</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="nfp_object_not_evil">
@@ -721,9 +744,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem nfp_object_not_evil (act : ConjugalAct) : NFPObject act</code></pre></div>
-<div class="node-desc">The object of NFP is not evil. When a conjugal act preserves both</div>
+<div class="node-desc">The object of NFP is not evil.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ConjugalAct">ConjugalAct</span><span class="dep-chip" data-target="NFPObject">NFPObject</span><span class="dep-chip" data-target="physical_act_determines_object">physical_act_determines_object</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ConjugalAct">ConjugalAct</span><span class="dep-chip" data-target="NFPObject">NFPObject</span><span class="dep-chip" data-target="physical_act_determines_object">physical_act_determines_object</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="nfp_does_not_frustrate">
@@ -734,13 +756,12 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem nfp_does_not_frustrate
-    (act : ConjugalAct)
-    (h_unitive : act.unitiveIntact)
-    (h_procreative : act.procreativeIntact) :
-    ¬deliberatelyFrustratesProcreation act</code></pre></div>
-<div class="node-desc">NFP does NOT deliberately frustrate procreation.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ConjugalAct">ConjugalAct</span><span class="dep-chip" data-target="contraception_frustrates">contraception_frustrates</span><span class="dep-chip" data-target="deliberatelyFrustratesProcreation">deliberatelyFrustratesProcreation</span><span class="dep-chip" data-target="physical_act_determines_object">physical_act_determines_object</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="nfp_does_not_trigger_inseparability">nfp_does_not_trigger_inseparability</span><span class="dep-chip" data-target="ConjugalAct">ConjugalAct</span><span class="dep-chip" data-target="deliberatelyFrustratesProcreation">deliberatelyFrustratesProcreation</span><span class="dep-chip" data-target="physical_act_determines_object">physical_act_determines_object</span><span class="dep-chip" data-target="contraception_frustrates">contraception_frustrates</span></div></div>
+(act : ConjugalAct)
+(h_unitive : act.unitiveIntact)
+(h_procreative : act.procreativeIntact) :
+¬deliberatelyFrustratesProcreation act</code></pre></div>
+<div class="node-desc">THEOREM: NFP does NOT deliberately frustrate procreation.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ConjugalAct">ConjugalAct</span><span class="dep-chip" data-target="contraception_frustrates">contraception_frustrates</span><span class="dep-chip" data-target="deliberatelyFrustratesProcreation">deliberatelyFrustratesProcreation</span><span class="dep-chip" data-target="physical_act_determines_object">physical_act_determines_object</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="nfp_does_not_trigger_inseparability">nfp_does_not_trigger_inseparability</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="nfp_does_not_trigger_inseparability">
@@ -751,13 +772,12 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem nfp_does_not_trigger_inseparability
-    (act : ConjugalAct)
-    (h_unitive : act.unitiveIntact)
-    (h_procreative : act.procreativeIntact) :
-    ¬deliberatelyFrustratesProcreation act</code></pre></div>
-<div class="node-desc">NFP does not trigger the inseparability principle.</div>
+(act : ConjugalAct)
+(h_unitive : act.unitiveIntact)
+(h_procreative : act.procreativeIntact) :
+¬deliberatelyFrustratesProcreation act</code></pre></div>
+<div class="node-desc">THEOREM: NFP does not trigger the inseparability principle.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ConjugalAct">ConjugalAct</span><span class="dep-chip" data-target="deliberatelyFrustratesProcreation">deliberatelyFrustratesProcreation</span><span class="dep-chip" data-target="nfp_does_not_frustrate">nfp_does_not_frustrate</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ConjugalAct">ConjugalAct</span><span class="dep-chip" data-target="deliberatelyFrustratesProcreation">deliberatelyFrustratesProcreation</span><span class="dep-chip" data-target="nfp_does_not_frustrate">nfp_does_not_frustrate</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="nfp_is_permissible">
@@ -768,24 +788,36 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem nfp_is_permissible
-    (eval : MoralEvaluation)
-    (h_obj : eval.objectIsGood)
-    (h_int : eval.intentionIsGood)
-    (h_circ : eval.circumstancesAppropriate) :
-    eval.isGood</code></pre></div>
+(eval : MoralEvaluation)
+(h_obj : eval.objectIsGood)
+(h_int : eval.intentionIsGood)
+(h_circ : eval.circumstancesAppropriate) :
+eval.isGood</code></pre></div>
 <div class="node-desc">NFP is permissible: the moral evaluation can be good.</div>
+
   </div>
 </div>
-<div class="node-card kind-opaque" data-kind="opaque" data-name="JustReasons">
+<div class="node-card kind-def" data-kind="def" data-name="nfp_tag">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">opaque</span>
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">nfp_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def nfp_tag : DenominationalTag</code></pre></div>
+<div class="node-desc">Denominational tag: Catholic.</div>
+
+  </div>
+</div>
+<div class="node-card kind-proposition" data-kind="proposition" data-name="JustReasons">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">proposition</span>
     <span class="node-name">JustReasons</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque JustReasons : Prop
-</code></pre></div>
-<div class="node-desc">Just reasons for spacing births. │   ⚠ HIDDEN ASSUMPTION: &quot;Just reasons&quot; is undefined. This is a</div>
+    <div class="node-prop"><pre><code>opaque JustReasons : Prop</code></pre></div>
+<div class="node-desc">Just reasons for spacing births.</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ResponsibleParenthood">ResponsibleParenthood</span></div></div>
   </div>
 </div>
@@ -796,10 +828,12 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>structure ResponsibleParenthood where</code></pre></div>
-<div class="node-desc">Responsible parenthood: spacing for just reasons using NFP</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="JustReasons">JustReasons</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ResponsibleParenthood.isPermissible">ResponsibleParenthood.isPermissible</span><span class="dep-chip" data-target="JustReasons">JustReasons</span></div></div>
+    <div class="node-prop"><pre><code>structure ResponsibleParenthood where
+justReasons : JustReasons
+methodRespectsInseparability : Prop
+notSelfish : Prop</code></pre></div>
+<div class="node-desc">Responsible parenthood: spacing for just reasons using NFP is morally permissible.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="JustReasons">JustReasons</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ResponsibleParenthood.isPermissible">ResponsibleParenthood.isPermissible</span></div></div>
   </div>
 </div>
 <div class="node-card kind-proposition" data-kind="proposition" data-name="ResponsibleParenthood.isPermissible">
@@ -811,8 +845,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def ResponsibleParenthood.isPermissible (rp : ResponsibleParenthood) : Prop</code></pre></div>
 <div class="node-desc">Responsible parenthood is permissible when all conditions hold.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DoubleEffectConditions">DoubleEffectConditions</span><span class="dep-chip" data-target="ResponsibleParenthood">ResponsibleParenthood</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ResponsibleParenthood">ResponsibleParenthood</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ResponsibleParenthood">ResponsibleParenthood</span></div></div>
   </div>
 </div>
 <div class="node-card kind-structure" data-kind="structure" data-name="MedicalTreatmentWithSideEffect">
@@ -822,9 +855,14 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>structure MedicalTreatmentWithSideEffect where</code></pre></div>
+    <div class="node-prop"><pre><code>structure MedicalTreatmentWithSideEffect where
+patient : Person
+medicalCondition : Prop
+treatsCondition : Prop
+contraceptiveSideEffect : Prop
+intendsMedical : Prop
+  ...</code></pre></div>
 <div class="node-desc">A medical treatment with a contraceptive side effect.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DoubleEffectAct">DoubleEffectAct</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="MedicalTreatmentWithSideEffect.toDoubleEffectAct">MedicalTreatmentWithSideEffect.toDoubleEffectAct</span></div></div>
   </div>
 </div>
@@ -836,10 +874,9 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>def MedicalTreatmentWithSideEffect.toDoubleEffectAct
-    (mt : MedicalTreatmentWithSideEffect) : DoubleEffectAct</code></pre></div>
-<div class="node-desc">Medical treatment with contraceptive side effect as a double</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DoubleEffectAct">DoubleEffectAct</span><span class="dep-chip" data-target="MedicalTreatmentWithSideEffect">MedicalTreatmentWithSideEffect</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="MedicalTreatmentWithSideEffect">MedicalTreatmentWithSideEffect</span></div></div>
+(mt : MedicalTreatmentWithSideEffect) : DoubleEffectAct</code></pre></div>
+<div class="node-desc">Medical treatment with contraceptive side effect as a double effect act.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MedicalTreatmentWithSideEffect">MedicalTreatmentWithSideEffect</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="medical_treatment_permissible">
@@ -850,17 +887,17 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem medical_treatment_permissible
-    (dec : DoubleEffectConditions)
-    (h_not_evil : dec.actNotIntrinsicallyEvil)
-    (h_intended : dec.goodIntended)
-    (h_not_means : dec.badNotMeansToGood)
-    (h_proportionate : dec.proportionate) :
-    dec.isPermissible</code></pre></div>
-<div class="node-desc">Medical treatment is permissible under double effect when all</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="A1_SEPARABILITY">A1_SEPARABILITY</span><span class="dep-chip" data-target="DoubleEffectConditions">DoubleEffectConditions</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="A1_SEPARABILITY">A1_SEPARABILITY</span></div></div>
+(dec : DoubleEffectConditions)
+(h_not_evil : dec.actNotIntrinsicallyEvil)
+(h_intended : dec.goodIntended)
+(h_not_means : dec.badNotMeansToGood)
+(h_proportionate : dec.proportionate) :
+dec.isPermissible</code></pre></div>
+<div class="node-desc">Medical treatment is permissible under double effect when all four conditions are met: 1.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="A1_SEPARABILITY">A1_SEPARABILITY</span></div></div>
   </div>
 </div>
+
   </div>
 
   <div class="footer">

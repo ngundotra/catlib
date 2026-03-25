@@ -143,7 +143,7 @@ h1 {
   line-height: 1.6;
 }
 
-/* ── Search ── */
+/* Search */
 .search-box {
   width: 100%;
   padding: 0.8rem 1rem;
@@ -167,7 +167,7 @@ h1 {
   font-style: italic;
 }
 
-/* ── Category sections ── */
+/* Category sections */
 .category-header {
   font-family: Cinzel, Georgia, serif;
   font-size: 1.1rem;
@@ -181,7 +181,7 @@ h1 {
   border-bottom: 1px solid var(--border);
 }
 
-/* ── File cards ── */
+/* File cards */
 .file-card {
   display: block;
   padding: 1rem 1.1rem;
@@ -237,7 +237,7 @@ h1 {
   margin-top: 0.3rem;
 }
 
-/* ── Summary stats ── */
+/* Summary stats */
 .stats-bar {
   display: flex;
   justify-content: center;
@@ -251,7 +251,7 @@ h1 {
 
 .stats-bar span { white-space: nowrap; }
 
-/* ── Node cards (per-file page) ── */
+/* Node cards */
 .node-card {
   margin-bottom: 0.4rem;
   border: 1px solid var(--border);
@@ -267,6 +267,8 @@ h1 {
 .node-card.kind-structure { border-left-color: var(--structure-dot); }
 .node-card.kind-inductive { border-left-color: var(--inductive-dot); }
 .node-card.kind-proposition { border-left-color: var(--proposition-dot); }
+.node-card.kind-instance { border-left-color: var(--def-dot); }
+.node-card.kind-abbrev { border-left-color: var(--def-dot); }
 
 .node-header {
   display: flex;
@@ -302,6 +304,8 @@ h1 {
 .kind-structure .node-kind-badge { background: var(--structure-bg); color: var(--structure-dot); }
 .kind-inductive .node-kind-badge { background: var(--inductive-bg); color: var(--inductive-dot); }
 .kind-proposition .node-kind-badge { background: var(--proposition-bg); color: var(--proposition-dot); }
+.kind-instance .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
+.kind-abbrev .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
 
 .node-name {
   flex: 1;
@@ -405,7 +409,7 @@ h1 {
   color: var(--text-muted);
 }
 
-/* ── Flow diagram header ── */
+/* Flow diagram header */
 .flow-summary {
   display: flex;
   justify-content: center;
@@ -431,7 +435,7 @@ h1 {
 .flow-count.theorems { background: var(--theorem-bg); color: var(--theorem-dot); }
 .flow-count.derived { background: var(--def-bg); color: var(--def-dot); }
 
-/* ── Legend ── */
+/* Legend */
 .legend {
   display: flex;
   flex-wrap: wrap;
@@ -463,7 +467,7 @@ h1 {
 .legend-dot.inductive { background: var(--inductive-dot); }
 .legend-dot.proposition { background: var(--proposition-dot); }
 
-/* ── Filter buttons ── */
+/* Filter buttons */
 .filter-bar {
   display: flex;
   flex-wrap: wrap;
@@ -492,7 +496,7 @@ h1 {
   border-color: var(--accent);
 }
 
-/* ── Back link ── */
+/* Back link */
 .back-link {
   display: inline-block;
   margin-bottom: 1rem;
@@ -501,7 +505,7 @@ h1 {
   letter-spacing: 0.04em;
 }
 
-/* ── Footer ── */
+/* Footer */
 .footer {
   text-align: center;
   padding-top: 2rem;
@@ -510,7 +514,7 @@ h1 {
   font-style: italic;
 }
 
-/* ── Responsive ── */
+/* Responsive */
 @media (max-width: 500px) {
   html { font-size: 16px; }
   .container { padding: 1rem 0.75rem 2rem; }
@@ -523,14 +527,12 @@ h1 {
 <div class="container">
   <a href="index.html" class="back-link">&larr; All files</a>
   <h1>Freedom</h1>
-  <div class="subtitle">MoralTheology &middot; 8 declarations</div>
+  <div class="subtitle">Moral Theology &middot; 8 declarations</div>
 
-  
   <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1730, &sect;1731, &sect;1732, &sect;1733, &sect;1734</div>
+  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot proposition"></span>proposition</span><span class="legend-item"><span class="legend-dot structure"></span>structure</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
 
-  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot proposition"></span>proposition</span><span class="legend-item"><span class="legend-dot structure"></span>structure</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
-
-  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (1)</button><button class="filter-btn" <button class="filter-btn" data-filter="proposition">proposition (2)</button><button class="filter-btn" data-filter="structure">structure (1)</button><button class="filter-btn" data-filter="theorem">theorem (4)</button></div>
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (1)</button><button class="filter-btn" data-filter="proposition">proposition (2)</button><button class="filter-btn" data-filter="structure">structure (1)</button><button class="filter-btn" data-filter="theorem">theorem (4)</button></div>
 
   <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
 
@@ -542,9 +544,9 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def freedomAsChoice (canChoose : Prop) : Prop := canChoose
-</code></pre></div>
+    <div class="node-prop"><pre><code>def freedomAsChoice (canChoose : Prop) : Prop</code></pre></div>
 <div class="node-desc">Freedom-as-choice: the modern/liberal concept.</div>
+
   </div>
 </div>
 <div class="node-card kind-proposition" data-kind="proposition" data-name="freedomAsFlourishing">
@@ -554,10 +556,9 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def freedomAsFlourishing (orientedToGood : Prop) : Prop := orientedToGood
-</code></pre></div>
-<div class="node-desc">Freedom-as-flourishing: the Catechism's deeper concept.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="agentFreedom">agentFreedom</span><span class="dep-chip" data-target="directedTowardGood">directedTowardGood</span><span class="dep-chip" data-target="freedomLt">freedomLt</span><span class="dep-chip" data-target="s7_teleological_freedom">s7_teleological_freedom</span></div></div>
+    <div class="node-prop"><pre><code>def freedomAsFlourishing (orientedToGood : Prop) : Prop</code></pre></div>
+<div class="node-desc">Freedom-as-flourishing: the Catechism&#x27;s deeper concept.</div>
+
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="good_increases_freedom">
@@ -568,15 +569,10 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom good_increases_freedom :
-  ∀ (fd : FreedomDegree),
-    fd.orientedToGood →
-    -- Freedom level increases
-    -- (choosing good makes you freer)
-    fd.level &gt; 0
-</code></pre></div>
-<div class="node-desc">Doing good increases freedom. │   Source: [Definition] CCC §1733 │   ⚠ HIDDEN ASSUMPTION: This is a TELEOLOGICAL claim — freedom has</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="FreedomDegree">FreedomDegree</span><span class="dep-chip" data-target="PerfectFreedom">PerfectFreedom</span><span class="dep-chip" data-target="perfect_freedom_cannot_sin">perfect_freedom_cannot_sin</span><span class="dep-chip" data-target="s7_teleological_freedom">s7_teleological_freedom</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="PerfectFreedom">PerfectFreedom</span><span class="dep-chip" data-target="oriented_person_has_freedom">oriented_person_has_freedom</span><span class="dep-chip" data-target="perfect_freedom_cannot_sin">perfect_freedom_cannot_sin</span></div></div>
+∀ (fd : FreedomDegree),
+fd.orientedToGood →</code></pre></div>
+<div class="node-desc">AXIOM (§1733): Doing good increases freedom.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="PerfectFreedom">PerfectFreedom</span><span class="dep-chip" data-target="perfect_freedom_cannot_sin">perfect_freedom_cannot_sin</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="PerfectFreedom">PerfectFreedom</span><span class="dep-chip" data-target="oriented_person_has_freedom">oriented_person_has_freedom</span><span class="dep-chip" data-target="perfect_freedom_cannot_sin">perfect_freedom_cannot_sin</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="teleological_freedom_from_s7">
@@ -587,11 +583,11 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem teleological_freedom_from_s7
-    (a1 a2 : Person)
-    (h1 : directedTowardGood a1) (h2 : ¬ directedTowardGood a2) :
-    freedomLt (agentFreedom a2) (agentFreedom a1)</code></pre></div>
-<div class="node-desc">Bridge to S7: teleological freedom — the good-directed agent is freer</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="agentFreedom">agentFreedom</span><span class="dep-chip" data-target="directedTowardGood">directedTowardGood</span><span class="dep-chip" data-target="freedomLt">freedomLt</span><span class="dep-chip" data-target="s7_teleological_freedom">s7_teleological_freedom</span></div></div>
+(a1 a2 : Person)
+(h1 : directedTowardGood a1) (h2 : ¬ directedTowardGood a2) :
+freedomLt (agentFreedom a2) (agentFreedom a1)</code></pre></div>
+<div class="node-desc">Bridge to S7: teleological freedom — the good-directed agent is freer than the non-good-directed agent.</div>
+
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="libertarian_free_will_from_t1">
@@ -602,9 +598,9 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem libertarian_free_will_from_t1 (a : Person) :
-    couldChooseOtherwise a</code></pre></div>
+couldChooseOtherwise a</code></pre></div>
 <div class="node-desc">Bridge to T1: libertarian free will — every person could choose otherwise.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="couldChooseOtherwise">couldChooseOtherwise</span><span class="dep-chip" data-target="t1_libertarian_free_will">t1_libertarian_free_will</span></div></div>
+
   </div>
 </div>
 <div class="node-card kind-structure" data-kind="structure" data-name="PerfectFreedom">
@@ -614,10 +610,12 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>structure PerfectFreedom where</code></pre></div>
-<div class="node-desc">Perfect freedom: fully oriented to good, no longer able to</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="good_increases_freedom">good_increases_freedom</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="good_increases_freedom">good_increases_freedom</span><span class="dep-chip" data-target="perfect_freedom_cannot_sin">perfect_freedom_cannot_sin</span></div></div>
+    <div class="node-prop"><pre><code>structure PerfectFreedom where
+person : Person
+fullyOriented : Prop
+cannotChooseEvil : Prop</code></pre></div>
+<div class="node-desc">Perfect freedom: fully oriented to good, no longer able to choose evil.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="good_increases_freedom">good_increases_freedom</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="good_increases_freedom">good_increases_freedom</span><span class="dep-chip" data-target="perfect_freedom_cannot_sin">perfect_freedom_cannot_sin</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="oriented_person_has_freedom">
@@ -628,11 +626,10 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem oriented_person_has_freedom
-    (fd : FreedomDegree) (h : fd.orientedToGood) :
-    fd.level &gt; 0</code></pre></div>
-<div class="node-desc">A person oriented toward the good has positive freedom.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="FreedomDegree">FreedomDegree</span><span class="dep-chip" data-target="good_increases_freedom">good_increases_freedom</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="good_increases_freedom">good_increases_freedom</span></div></div>
+(fd : FreedomDegree) (h : fd.orientedToGood) :
+fd.level &gt; 0</code></pre></div>
+<div class="node-desc">THEOREM: A person oriented toward the good has positive freedom.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="good_increases_freedom">good_increases_freedom</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="perfect_freedom_cannot_sin">
@@ -643,18 +640,16 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem perfect_freedom_cannot_sin
-    (pf : PerfectFreedom)
-    (h_oriented : pf.fullyOriented)
-    (h_cannot : pf.cannotChooseEvil)
-    (fd : FreedomDegree)
-    (h_fd_oriented : fd.orientedToGood) :
-    -- This being is fully free (positive freedom) AND unable to sin
-    pf.fullyOriented ∧ pf.cannotChooseEvil ∧ fd.level &gt; 0</code></pre></div>
-<div class="node-desc">The perfect freedom paradox: under the Catechism's model,</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="FreedomDegree">FreedomDegree</span><span class="dep-chip" data-target="PerfectFreedom">PerfectFreedom</span><span class="dep-chip" data-target="good_increases_freedom">good_increases_freedom</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="good_increases_freedom">good_increases_freedom</span><span class="dep-chip" data-target="PerfectFreedom">PerfectFreedom</span></div></div>
+(pf : PerfectFreedom)
+(h_oriented : pf.fullyOriented)
+(h_cannot : pf.cannotChooseEvil)
+(fd : FreedomDegree)
+(h_fd_oriented : fd.orientedToGood) :</code></pre></div>
+<div class="node-desc">The perfect freedom paradox: under the Catechism&#x27;s model, the inability to choose evil IS the perfection of freedom.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="PerfectFreedom">PerfectFreedom</span><span class="dep-chip" data-target="good_increases_freedom">good_increases_freedom</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="good_increases_freedom">good_increases_freedom</span></div></div>
   </div>
 </div>
+
   </div>
 
   <div class="footer">
