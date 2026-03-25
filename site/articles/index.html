@@ -12,53 +12,142 @@
   <link rel="stylesheet" href="../styles.css">
   <link rel="stylesheet" href="articles.css">
   <style>
+    /* Page-level header — compact, no hero */
+    .page-header {
+      padding: 0.8rem 0 0.5rem;
+      text-align: center;
+    }
+    .page-header h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--text);
+      letter-spacing: 0.04em;
+      margin: 0 0 0.2rem;
+    }
+    .page-header .page-desc {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+    .page-header .page-count {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-top: 0.4rem;
+    }
+
+    /* Thin gold rule */
+    .rule {
+      border: none;
+      height: 1px;
+      background: var(--gold-dim);
+      margin: 0.6rem auto 1rem;
+      max-width: 120px;
+    }
+
+    /* Article list — dense, scannable */
     .article-list {
       list-style: none;
       padding: 0;
-      margin: 2rem 0;
-      text-align: left;
+      margin: 0 auto;
+      max-width: 680px;
     }
-
     .article-list li {
-      border: 1px solid var(--border);
-      background: var(--bg-parchment);
-      padding: 1.4rem 1.8rem;
-      margin-bottom: 1rem;
-      border-radius: 2px;
-      transition: background 0.3s, border-color 0.3s;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.2s;
     }
-
+    .article-list li:first-child {
+      border-top: 1px solid var(--border);
+    }
     .article-list li:hover {
-      background: var(--bg-vellum);
-      border-color: var(--border-dark);
+      background: var(--bg-surface);
     }
-
     .article-list a {
       text-decoration: none;
-      display: block;
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      padding: 0.7rem 0.5rem;
     }
-
     .article-list .article-title {
       font-family: 'Cinzel', serif;
-      font-size: 1rem;
+      font-size: 0.88rem;
       font-weight: 600;
-      color: var(--accent);
-      letter-spacing: 0.03em;
-      margin-bottom: 0.3rem;
+      color: var(--gold);
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .article-list .article-desc {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+      margin: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .article-list li:hover .article-title {
+      color: var(--gold-bright);
     }
 
-    .article-list .article-desc {
-      font-size: 0.98rem;
-      color: var(--text-light);
-      font-style: italic;
-      line-height: 1.6;
-      margin: 0;
+    /* Bottom nav */
+    .bottom-nav {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      padding: 1.5rem 0;
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
-    .hero { min-height: auto; padding: 5rem 0 2rem; }
-    .article-list .article-title { color: var(--gold, #c9a84c); }
-    .site-nav-sub { position: relative; background: none; padding: 1rem 0 0; display: flex; justify-content: center; gap: 2rem; font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; }
-    .site-nav-sub a { color: var(--text-secondary, #b0a48e); text-decoration: none; transition: color 0.3s; }
+    .bottom-nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 0.4rem 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+    .bottom-nav a:hover {
+      color: var(--gold);
+      border-color: var(--gold-dim);
+    }
+
+    /* Nav bar */
+    .site-nav-sub {
+      position: relative;
+      background: none;
+      padding: 0.5rem 0 0;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .site-nav-sub a {
+      color: var(--text-secondary, #b0a48e);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
     .site-nav-sub a:hover { color: var(--gold, #c9a84c); }
+
+    @media (max-width: 600px) {
+      .article-list a {
+        flex-direction: column;
+        gap: 0.15rem;
+      }
+      .article-list .article-desc {
+        white-space: normal;
+        font-size: 0.82rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -69,137 +158,87 @@
   </nav>
 
   <main>
-
-    <section class="hero">
-      <div class="ornament">&#10053;</div>
+    <div class="page-header">
       <h1>Articles</h1>
-      <p class="subtitle">
-        Essays exploring what formal verification reveals about Catholic
-        theology &mdash; hidden assumptions, denominational fault lines,
-        and open questions.
-      </p>
-    </section>
+      <p class="page-desc">What formal verification reveals about Catholic theology</p>
+      <div class="page-count">16 essays</div>
+    </div>
 
-    <div class="divider">&#8258;</div>
+    <hr class="rule">
 
     <ul class="article-list">
-      <li>
-        <a href="seven-sacraments.html">
-          <div class="article-title">The Seven Sacraments, Formalized</div>
-          <p class="article-desc">What does the sacramental system look like when every assumption is explicit?</p>
-        </a>
-      </li>
-      <li>
-        <a href="luther.html">
-          <div class="article-title">Luther's Axioms</div>
-          <p class="article-desc">Where do Catholics and Lutherans actually disagree?</p>
-        </a>
-      </li>
-      <li>
-        <a href="forgiveness.html">
-          <div class="article-title">Forgiveness</div>
-          <p class="article-desc">Why do Catholics believe priests can forgive sins?</p>
-        </a>
-      </li>
-      <li>
-        <a href="purgatory.html">
-          <div class="article-title">Purgatory</div>
-          <p class="article-desc">How do we know purgatory exists?</p>
-        </a>
-      </li>
-      <li>
-        <a href="divine-modes.html">
-          <div class="article-title">Divine Modes</div>
-          <p class="article-desc">If God sustains everything, how can hell be "separation from God"?</p>
-        </a>
-      </li>
-      <li>
-        <a href="conjugal-ethics.html">
-          <div class="article-title">Conjugal Ethics</div>
-          <p class="article-desc">How should Catholics think about family size and contraception?</p>
-        </a>
-      </li>
-      <li>
-        <a href="limits.html">
-          <div class="article-title">The Limits of Proof</div>
-          <p class="article-desc">Where does formalization stop?</p>
-        </a>
-      </li>
-      <li>
-        <a href="priestly-authority.html">
-          <div class="article-title">Priestly Authority</div>
-          <p class="article-desc">Where does priestly authority come from, specifically?</p>
-        </a>
-      </li>
-      <li>
-        <a href="culpability-math.html">
-          <div class="article-title">The Mathematics of Culpability</div>
-          <p class="article-desc">What mathematical structure does culpability have?</p>
-        </a>
-      </li>
-      <li>
-        <a href="communion.html">
-          <div class="article-title">What Is Communion?</div>
-          <p class="article-desc">Formalizing a concept the Catechism never defines</p>
-        </a>
-      </li>
-      <li>
-        <a href="body-and-soul.html">
-          <div class="article-title">Body and Soul</div>
-          <p class="article-desc">What does the Catechism mean by "the soul is the form of the body"?</p>
-        </a>
-      </li>
-      <li>
-        <a href="geometry-of-grace.html">
-          <div class="article-title">The Geometry of Grace</div>
-          <p class="article-desc">What shape does grace have?</p>
-        </a>
-      </li>
-      <li>
-        <a href="love-math.html">
-          <div class="article-title">The Mathematics of Love</div>
-          <p class="article-desc">What mathematical structure does love have?</p>
-        </a>
-      </li>
-      <li>
-        <a href="reconciliation.html">
-          <div class="article-title">Reconciliation</div>
-          <p class="article-desc">How does sacramental reconciliation restore communion?</p>
-        </a>
-      </li>
-      <li>
-        <a href="essence-existence.html">
-          <div class="article-title">The Deepest Hidden Assumption</div>
-          <p class="article-desc">What is the single most important philosophical assumption the Catechism never names?</p>
-        </a>
-      </li>
-      <li>
-        <a href="barths-objection.html">
-          <div class="article-title">Barth&rsquo;s Objection</div>
-          <p class="article-desc">If human language about God is only analogical, does this entire project mean anything?</p>
-        </a>
-      </li>
+      <li><a href="seven-sacraments.html">
+        <div class="article-title">The Seven Sacraments</div>
+        <p class="article-desc">What does the sacramental system look like when every assumption is explicit?</p>
+      </a></li>
+      <li><a href="luther.html">
+        <div class="article-title">Luther's Axioms</div>
+        <p class="article-desc">Where do Catholics and Lutherans actually disagree?</p>
+      </a></li>
+      <li><a href="forgiveness.html">
+        <div class="article-title">Forgiveness</div>
+        <p class="article-desc">Why do Catholics believe priests can forgive sins?</p>
+      </a></li>
+      <li><a href="purgatory.html">
+        <div class="article-title">Purgatory</div>
+        <p class="article-desc">How do we know purgatory exists?</p>
+      </a></li>
+      <li><a href="divine-modes.html">
+        <div class="article-title">Divine Modes</div>
+        <p class="article-desc">If God sustains everything, how can hell be "separation from God"?</p>
+      </a></li>
+      <li><a href="conjugal-ethics.html">
+        <div class="article-title">Conjugal Ethics</div>
+        <p class="article-desc">How should Catholics think about family size and contraception?</p>
+      </a></li>
+      <li><a href="limits.html">
+        <div class="article-title">The Limits of Proof</div>
+        <p class="article-desc">Where does formalization stop?</p>
+      </a></li>
+      <li><a href="priestly-authority.html">
+        <div class="article-title">Priestly Authority</div>
+        <p class="article-desc">Where does priestly authority come from, specifically?</p>
+      </a></li>
+      <li><a href="culpability-math.html">
+        <div class="article-title">The Mathematics of Culpability</div>
+        <p class="article-desc">What mathematical structure does culpability have?</p>
+      </a></li>
+      <li><a href="communion.html">
+        <div class="article-title">What Is Communion?</div>
+        <p class="article-desc">Formalizing a concept the Catechism never defines</p>
+      </a></li>
+      <li><a href="body-and-soul.html">
+        <div class="article-title">Body and Soul</div>
+        <p class="article-desc">What does the Catechism mean by "the soul is the form of the body"?</p>
+      </a></li>
+      <li><a href="geometry-of-grace.html">
+        <div class="article-title">The Geometry of Grace</div>
+        <p class="article-desc">What shape does grace have?</p>
+      </a></li>
+      <li><a href="love-math.html">
+        <div class="article-title">The Mathematics of Love</div>
+        <p class="article-desc">What mathematical structure does love have?</p>
+      </a></li>
+      <li><a href="reconciliation.html">
+        <div class="article-title">Reconciliation</div>
+        <p class="article-desc">How does sacramental reconciliation restore communion?</p>
+      </a></li>
+      <li><a href="essence-existence.html">
+        <div class="article-title">The Deepest Hidden Assumption</div>
+        <p class="article-desc">What is the single most important philosophical assumption the Catechism never names?</p>
+      </a></li>
+      <li><a href="barths-objection.html">
+        <div class="article-title">Barth&rsquo;s Objection</div>
+        <p class="article-desc">If human language about God is only analogical, does this entire project mean anything?</p>
+      </a></li>
     </ul>
 
-    <div class="ornament">&#10053;</div>
-
-    <section class="cta-section">
-      <div class="cta-group">
-        <a href="https://github.com/ngundotra/catlib" class="cta-button primary">View on GitHub</a>
-        <a href="../axioms/index.html" class="cta-button secondary">Axiom Wiki</a>
-        <a href="../explorer/index.html" class="cta-button secondary">Explorer</a>
-        <a href="../index.html" class="cta-button secondary">Back to Catlib</a>
-      </div>
-    </section>
+    <nav class="bottom-nav">
+      <a href="https://github.com/ngundotra/catlib">GitHub</a>
+      <a href="../axioms/index.html">Axiom Wiki</a>
+      <a href="../explorer/index.html">Explorer</a>
+      <a href="../index.html">Home</a>
+    </nav>
   </main>
-
-  <footer>
-    <div class="ornament">&#10053;</div>
-    <p>
-      <a href="https://github.com/ngundotra/catlib">Catlib</a>&nbsp;&mdash;
-      formalizing the Catholic Catechism in Lean 4.
-      A love letter to the Catholic intellectual tradition, written with precision.
-    </p>
-  </footer>
 </body>
 </html>
