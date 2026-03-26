@@ -267,8 +267,6 @@ h1 {
 .node-card.kind-structure { border-left-color: var(--structure-dot); }
 .node-card.kind-inductive { border-left-color: var(--inductive-dot); }
 .node-card.kind-proposition { border-left-color: var(--proposition-dot); }
-.node-card.kind-instance { border-left-color: var(--def-dot); }
-.node-card.kind-abbrev { border-left-color: var(--def-dot); }
 
 .node-header {
   display: flex;
@@ -304,8 +302,6 @@ h1 {
 .kind-structure .node-kind-badge { background: var(--structure-bg); color: var(--structure-dot); }
 .kind-inductive .node-kind-badge { background: var(--inductive-bg); color: var(--inductive-dot); }
 .kind-proposition .node-kind-badge { background: var(--proposition-bg); color: var(--proposition-dot); }
-.kind-instance .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
-.kind-abbrev .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
 
 .node-name {
   flex: 1;
@@ -466,8 +462,6 @@ h1 {
 .legend-dot.structure { background: var(--structure-dot); }
 .legend-dot.inductive { background: var(--inductive-dot); }
 .legend-dot.proposition { background: var(--proposition-dot); }
-.legend-dot.instance { background: var(--def-dot); }
-.legend-dot.abbrev { background: var(--def-dot); }
 
 /* ── Filter buttons ── */
 .filter-bar {
@@ -530,12 +524,19 @@ h1 {
   <a href="index.html" class="back-link">&larr; All files</a>
   <h1>Anointing</h1>
   <div class="subtitle">Sacraments &middot; 36 declarations</div>
-  
-  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1023, &sect;1263, &sect;1303, &sect;1376, &sect;1468, &sect;1514, &sect;1520, &sect;1521, &sect;1523, &sect;1581, &sect;1639</div>
 
-  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span></div>
+  <div class="flow-summary">
+  <span class="flow-count axioms">24 axioms</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count theorems">10 theorems</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count derived">2 derived</span>
+</div>
+  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1023, &sect;1263, &sect;1303, &sect;1376, &sect;1468, &sect;1499, &sect;1514, &sect;1520, &sect;1521, &sect;1523, &sect;1581, &sect;1582, &sect;1639</div>
 
-  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (14)</button><button class="filter-btn" data-filter="theorem">theorem (10)</button><button class="filter-btn" data-filter="def">def (2)</button><button class="filter-btn" data-filter="opaque">opaque (10)</button></div>
+  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
+
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (14)</button><button class="filter-btn" data-filter="def">def (2)</button><button class="filter-btn" data-filter="opaque">opaque (10)</button><button class="filter-btn" data-filter="theorem">theorem (10)</button></div>
 
   <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
 
@@ -549,6 +550,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque seriouslyIll : Person → Prop</code></pre></div>
 <div class="node-desc">Whether a person is seriously ill or in danger of death.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="anointing_confers_strengthening">anointing_confers_strengthening</span><span class="dep-chip" data-target="anointing_confers_forgiveness_if_no_penance">anointing_confers_forgiveness_if_no_penance</span><span class="dep-chip" data-target="anointing_unites_to_passion">anointing_unites_to_passion</span><span class="dep-chip" data-target="anointing_heals_if_conducive">anointing_heals_if_conducive</span><span class="dep-chip" data-target="anointing_prepares_for_death">anointing_prepares_for_death</span><span class="dep-chip" data-target="healing_salvation_tension">healing_salvation_tension</span><span class="dep-chip" data-target="anointing_always_achieves_spiritual_good">anointing_always_achieves_spiritual_good</span><span class="dep-chip" data-target="anointing_pivots_at_deaths_door">anointing_pivots_at_deaths_door</span><span class="dep-chip" data-target="conditional_effect_is_nonvacuous">conditional_effect_is_nonvacuous</span><span class="dep-chip" data-target="anointing_fills_penance_gap">anointing_fills_penance_gap</span><span class="dep-chip" data-target="anointing_full_effects_when_conducive">anointing_full_effects_when_conducive</span><span class="dep-chip" data-target="anointing_spiritual_effects_when_not_conducive">anointing_spiritual_effects_when_not_conducive</span><span class="dep-chip" data-target="anointing_exhaustive_coverage">anointing_exhaustive_coverage</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="conduciveToSalvation">
@@ -559,10 +561,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque conduciveToSalvation : Person → Prop</code></pre></div>
-<div class="node-desc">Whether physical healing is conducive to the salvation of the person&#x27;s soul.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="anointing_exhaustive_coverage">anointing_exhaustive_coverage</span>
-</div></div>
+<div class="node-desc">Whether physical healing is conducive to the salvation of the person's soul.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="anointing_heals_if_conducive">anointing_heals_if_conducive</span><span class="dep-chip" data-target="anointing_prepares_for_death">anointing_prepares_for_death</span><span class="dep-chip" data-target="healing_salvation_tension">healing_salvation_tension</span><span class="dep-chip" data-target="beatifying_communion_excludes_conducive">beatifying_communion_excludes_conducive</span><span class="dep-chip" data-target="hasConditionalEffect">hasConditionalEffect</span><span class="dep-chip" data-target="marriage_no_conditional_effect">marriage_no_conditional_effect</span><span class="dep-chip" data-target="anointing_pivots_at_deaths_door">anointing_pivots_at_deaths_door</span><span class="dep-chip" data-target="conditional_effect_is_nonvacuous">conditional_effect_is_nonvacuous</span><span class="dep-chip" data-target="anointing_full_effects_when_conducive">anointing_full_effects_when_conducive</span><span class="dep-chip" data-target="anointing_spiritual_effects_when_not_conducive">anointing_spiritual_effects_when_not_conducive</span><span class="dep-chip" data-target="anointing_exhaustive_coverage">anointing_exhaustive_coverage</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="unableToReceivePenance">
@@ -574,6 +574,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque unableToReceivePenance : Person → Prop</code></pre></div>
 <div class="node-desc">Whether the person was unable to receive the sacrament of Penance.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="anointing_confers_forgiveness_if_no_penance">anointing_confers_forgiveness_if_no_penance</span><span class="dep-chip" data-target="anointing_fills_penance_gap">anointing_fills_penance_gap</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="receivesStrengthening">
@@ -585,6 +586,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque receivesStrengthening : Person → Prop</code></pre></div>
 <div class="node-desc">Whether the person receives spiritual strengthening (peace, courage,</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="anointing_confers_strengthening">anointing_confers_strengthening</span><span class="dep-chip" data-target="anointing_always_achieves_spiritual_good">anointing_always_achieves_spiritual_good</span><span class="dep-chip" data-target="anointing_fills_penance_gap">anointing_fills_penance_gap</span><span class="dep-chip" data-target="anointing_full_effects_when_conducive">anointing_full_effects_when_conducive</span><span class="dep-chip" data-target="anointing_spiritual_effects_when_not_conducive">anointing_spiritual_effects_when_not_conducive</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="receivesForgiveness">
@@ -596,6 +598,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque receivesForgiveness : Person → Prop</code></pre></div>
 <div class="node-desc">Whether the person receives forgiveness of sins through this sacrament.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="anointing_confers_forgiveness_if_no_penance">anointing_confers_forgiveness_if_no_penance</span><span class="dep-chip" data-target="anointing_fills_penance_gap">anointing_fills_penance_gap</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="unitedToChristsPassion">
@@ -606,7 +609,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque unitedToChristsPassion : Person → Prop</code></pre></div>
-<div class="node-desc">Whether the person is united to Christ&#x27;s Passion through this sacrament.</div>
+<div class="node-desc">Whether the person is united to Christ's Passion through this sacrament.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="anointing_unites_to_passion">anointing_unites_to_passion</span><span class="dep-chip" data-target="anointing_always_achieves_spiritual_good">anointing_always_achieves_spiritual_good</span><span class="dep-chip" data-target="anointing_fills_penance_gap">anointing_fills_penance_gap</span><span class="dep-chip" data-target="anointing_full_effects_when_conducive">anointing_full_effects_when_conducive</span><span class="dep-chip" data-target="anointing_spiritual_effects_when_not_conducive">anointing_spiritual_effects_when_not_conducive</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="receivesHealing">
@@ -618,6 +622,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque receivesHealing : Person → Prop</code></pre></div>
 <div class="node-desc">Whether the person receives physical healing through this sacrament.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="anointing_heals_if_conducive">anointing_heals_if_conducive</span><span class="dep-chip" data-target="anointing_full_effects_when_conducive">anointing_full_effects_when_conducive</span><span class="dep-chip" data-target="anointing_exhaustive_coverage">anointing_exhaustive_coverage</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="preparedForFinalJourney">
@@ -627,12 +632,9 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque preparedForFinalJourney : Person → Prop
-
--- ============================================================================
--- § 2. Denominational Tags
--- ============================================================================</code></pre></div>
+    <div class="node-prop"><pre><code>opaque preparedForFinalJourney : Person → Prop</code></pre></div>
 <div class="node-desc">Whether the sacrament prepares the person for the final journey (death).</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="anointing_prepares_for_death">anointing_prepares_for_death</span><span class="dep-chip" data-target="anointing_pivots_at_deaths_door">anointing_pivots_at_deaths_door</span><span class="dep-chip" data-target="anointing_spiritual_effects_when_not_conducive">anointing_spiritual_effects_when_not_conducive</span><span class="dep-chip" data-target="anointing_exhaustive_coverage">anointing_exhaustive_coverage</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="certainEffectsTag">
@@ -666,13 +668,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom anointing_confers_strengthening :
   ∀ (p : Person), seriouslyIll p → receivesStrengthening p</code></pre></div>
-<div class="node-desc">Anointing always confers spiritual strengthening.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="anointing_always_achieves_spiritual_good">anointing_always_achieves_spiritual_good</span>
-<span class="dep-chip" data-target="anointing_fills_penance_gap">anointing_fills_penance_gap</span>
-<span class="dep-chip" data-target="anointing_full_effects_when_conducive">anointing_full_effects_when_conducive</span>
-<span class="dep-chip" data-target="anointing_spiritual_effects_when_not_conducive">anointing_spiritual_effects_when_not_conducive</span>
-</div></div>
+<div class="node-desc">AXIOM (§1520): Anointing always confers spiritual strengthening.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="receivesStrengthening">receivesStrengthening</span><span class="dep-chip" data-target="seriouslyIll">seriouslyIll</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="anointing_always_achieves_spiritual_good">anointing_always_achieves_spiritual_good</span><span class="dep-chip" data-target="anointing_fills_penance_gap">anointing_fills_penance_gap</span><span class="dep-chip" data-target="anointing_full_effects_when_conducive">anointing_full_effects_when_conducive</span><span class="dep-chip" data-target="anointing_spiritual_effects_when_not_conducive">anointing_spiritual_effects_when_not_conducive</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="anointing_confers_forgiveness_if_no_penance">
@@ -684,10 +682,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom anointing_confers_forgiveness_if_no_penance :
   ∀ (p : Person), seriouslyIll p → unableToReceivePenance p → receivesForgiveness p</code></pre></div>
-<div class="node-desc">Anointing confers forgiveness of sins when Penance is</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="anointing_fills_penance_gap">anointing_fills_penance_gap</span>
-</div></div>
+<div class="node-desc">AXIOM (§1520): Anointing confers forgiveness of sins when Penance is</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="receivesForgiveness">receivesForgiveness</span><span class="dep-chip" data-target="seriouslyIll">seriouslyIll</span><span class="dep-chip" data-target="unableToReceivePenance">unableToReceivePenance</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="conditional_effect_is_nonvacuous">conditional_effect_is_nonvacuous</span><span class="dep-chip" data-target="anointing_fills_penance_gap">anointing_fills_penance_gap</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="anointing_unites_to_passion">
@@ -698,18 +695,10 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom anointing_unites_to_passion :
-  ∀ (p : Person), seriouslyIll p → unitedToChristsPassion p
-
--- ============================================================================
--- § 4. Axiom — The Conditional Effect
--- ============================================================================</code></pre></div>
-<div class="node-desc">Anointing unites the sick person to Christ&#x27;s Passion.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="anointing_always_achieves_spiritual_good">anointing_always_achieves_spiritual_good</span>
-<span class="dep-chip" data-target="anointing_fills_penance_gap">anointing_fills_penance_gap</span>
-<span class="dep-chip" data-target="anointing_full_effects_when_conducive">anointing_full_effects_when_conducive</span>
-<span class="dep-chip" data-target="anointing_spiritual_effects_when_not_conducive">anointing_spiritual_effects_when_not_conducive</span>
-</div></div>
+  ∀ (p : Person), seriouslyIll p → unitedToChristsPassion p</code></pre></div>
+<div class="node-desc">AXIOM (§1521): Anointing unites the sick person to Christ's Passion.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="seriouslyIll">seriouslyIll</span><span class="dep-chip" data-target="unitedToChristsPassion">unitedToChristsPassion</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="anointing_always_achieves_spiritual_good">anointing_always_achieves_spiritual_good</span><span class="dep-chip" data-target="anointing_fills_penance_gap">anointing_fills_penance_gap</span><span class="dep-chip" data-target="anointing_full_effects_when_conducive">anointing_full_effects_when_conducive</span><span class="dep-chip" data-target="anointing_spiritual_effects_when_not_conducive">anointing_spiritual_effects_when_not_conducive</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="anointing_heals_if_conducive">
@@ -721,11 +710,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom anointing_heals_if_conducive :
   ∀ (p : Person), seriouslyIll p → conduciveToSalvation p → receivesHealing p</code></pre></div>
-<div class="node-desc">Anointing restores health IF conducive to salvation.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="anointing_full_effects_when_conducive">anointing_full_effects_when_conducive</span>
-<span class="dep-chip" data-target="anointing_exhaustive_coverage">anointing_exhaustive_coverage</span>
-</div></div>
+<div class="node-desc">AXIOM (§1520): Anointing restores health IF conducive to salvation.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="conduciveToSalvation">conduciveToSalvation</span><span class="dep-chip" data-target="receivesHealing">receivesHealing</span><span class="dep-chip" data-target="seriouslyIll">seriouslyIll</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="anointing_uniquely_conditional">anointing_uniquely_conditional</span><span class="dep-chip" data-target="anointing_full_effects_when_conducive">anointing_full_effects_when_conducive</span><span class="dep-chip" data-target="anointing_exhaustive_coverage">anointing_exhaustive_coverage</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="anointing_prepares_for_death">
@@ -736,17 +723,10 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom anointing_prepares_for_death :
-  ∀ (p : Person), seriouslyIll p → ¬conduciveToSalvation p → preparedForFinalJourney p
-
--- ============================================================================
--- § 5. Hidden Assumption — Healing and Salvation Can Be in Tension
--- ============================================================================</code></pre></div>
-<div class="node-desc">Anointing prepares the person for the final journey.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="anointing_pivots_at_deaths_door">anointing_pivots_at_deaths_door</span>
-<span class="dep-chip" data-target="anointing_spiritual_effects_when_not_conducive">anointing_spiritual_effects_when_not_conducive</span>
-<span class="dep-chip" data-target="anointing_exhaustive_coverage">anointing_exhaustive_coverage</span>
-</div></div>
+  ∀ (p : Person), seriouslyIll p → ¬conduciveToSalvation p → preparedForFinalJourney p</code></pre></div>
+<div class="node-desc">AXIOM (§1523): Anointing prepares the person for the final journey.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="conduciveToSalvation">conduciveToSalvation</span><span class="dep-chip" data-target="preparedForFinalJourney">preparedForFinalJourney</span><span class="dep-chip" data-target="seriouslyIll">seriouslyIll</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="anointing_uniquely_conditional">anointing_uniquely_conditional</span><span class="dep-chip" data-target="anointing_pivots_at_deaths_door">anointing_pivots_at_deaths_door</span><span class="dep-chip" data-target="anointing_spiritual_effects_when_not_conducive">anointing_spiritual_effects_when_not_conducive</span><span class="dep-chip" data-target="anointing_exhaustive_coverage">anointing_exhaustive_coverage</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="healing_salvation_tension">
@@ -757,15 +737,10 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom healing_salvation_tension :
-  ∃ (p : Person), seriouslyIll p ∧ ¬conduciveToSalvation p
-
--- ============================================================================
--- § 6. Connection to DivineModes — Why Death Can Be Good
--- ============================================================================</code></pre></div>
+  ∃ (p : Person), seriouslyIll p ∧ ¬conduciveToSalvation p</code></pre></div>
 <div class="node-desc">AXIOM: Physical healing and spiritual salvation can be in tension.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="conditional_effect_is_nonvacuous">conditional_effect_is_nonvacuous</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="conduciveToSalvation">conduciveToSalvation</span><span class="dep-chip" data-target="seriouslyIll">seriouslyIll</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="anointing_pivots_at_deaths_door">anointing_pivots_at_deaths_door</span><span class="dep-chip" data-target="conditional_effect_is_nonvacuous">conditional_effect_is_nonvacuous</span><span class="dep-chip" data-target="anointing_relational_is_union_with_passion">anointing_relational_is_union_with_passion</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="deathLeadsToBeatifyingCommunion">
@@ -777,6 +752,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque deathLeadsToBeatifyingCommunion : Person → Prop</code></pre></div>
 <div class="node-desc">Whether death would lead to beatifying communion for this person.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="beatifying_communion_excludes_conducive">beatifying_communion_excludes_conducive</span><span class="dep-chip" data-target="anointing_pivots_at_deaths_door">anointing_pivots_at_deaths_door</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="beatifying_communion_excludes_conducive">
@@ -787,15 +763,10 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom beatifying_communion_excludes_conducive :
-  ∀ (p : Person), deathLeadsToBeatifyingCommunion p → ¬conduciveToSalvation p
-
--- ============================================================================
--- § 7. Uniqueness — No Other Sacrament Has a Conditional Primary Effect
--- ============================================================================</code></pre></div>
+  ∀ (p : Person), deathLeadsToBeatifyingCommunion p → ¬conduciveToSalvation p</code></pre></div>
 <div class="node-desc">AXIOM: When death leads to beatifying communion, healing is not</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="anointing_pivots_at_deaths_door">anointing_pivots_at_deaths_door</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="conduciveToSalvation">conduciveToSalvation</span><span class="dep-chip" data-target="deathLeadsToBeatifyingCommunion">deathLeadsToBeatifyingCommunion</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="anointing_uniquely_conditional">anointing_uniquely_conditional</span><span class="dep-chip" data-target="anointing_pivots_at_deaths_door">anointing_pivots_at_deaths_door</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="hasConditionalEffect">
@@ -807,6 +778,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque hasConditionalEffect : SacramentKind → Prop</code></pre></div>
 <div class="node-desc">Whether a sacrament has a conditional primary effect — an effect whose</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="conduciveToSalvation">conduciveToSalvation</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="anointing_has_conditional_effect">anointing_has_conditional_effect</span><span class="dep-chip" data-target="baptism_no_conditional_effect">baptism_no_conditional_effect</span><span class="dep-chip" data-target="confirmation_no_conditional_effect">confirmation_no_conditional_effect</span><span class="dep-chip" data-target="eucharist_no_conditional_effect">eucharist_no_conditional_effect</span><span class="dep-chip" data-target="reconciliation_no_conditional_effect">reconciliation_no_conditional_effect</span><span class="dep-chip" data-target="holyOrders_no_conditional_effect">holyOrders_no_conditional_effect</span><span class="dep-chip" data-target="marriage_no_conditional_effect">marriage_no_conditional_effect</span><span class="dep-chip" data-target="anointing_uniquely_conditional">anointing_uniquely_conditional</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="anointing_has_conditional_effect">
@@ -819,9 +792,8 @@ h1 {
     <div class="node-prop"><pre><code>axiom anointing_has_conditional_effect :
   hasConditionalEffect .anointingOfTheSick</code></pre></div>
 <div class="node-desc">AXIOM: Anointing of the Sick has a conditional primary effect.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="anointing_uniquely_conditional">anointing_uniquely_conditional</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="hasConditionalEffect">hasConditionalEffect</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="anointing_uniquely_conditional">anointing_uniquely_conditional</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="baptism_no_conditional_effect">
@@ -834,9 +806,8 @@ h1 {
     <div class="node-prop"><pre><code>axiom baptism_no_conditional_effect :
   ¬hasConditionalEffect .baptism</code></pre></div>
 <div class="node-desc">AXIOM: Baptism has no conditional primary effect.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="anointing_uniquely_conditional">anointing_uniquely_conditional</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="hasConditionalEffect">hasConditionalEffect</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="anointing_uniquely_conditional">anointing_uniquely_conditional</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="confirmation_no_conditional_effect">
@@ -849,9 +820,8 @@ h1 {
     <div class="node-prop"><pre><code>axiom confirmation_no_conditional_effect :
   ¬hasConditionalEffect .confirmation</code></pre></div>
 <div class="node-desc">AXIOM: Confirmation has no conditional primary effect.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="anointing_uniquely_conditional">anointing_uniquely_conditional</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="hasConditionalEffect">hasConditionalEffect</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="anointing_uniquely_conditional">anointing_uniquely_conditional</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="eucharist_no_conditional_effect">
@@ -864,9 +834,8 @@ h1 {
     <div class="node-prop"><pre><code>axiom eucharist_no_conditional_effect :
   ¬hasConditionalEffect .eucharist</code></pre></div>
 <div class="node-desc">AXIOM: The Eucharist has no conditional primary effect.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="anointing_uniquely_conditional">anointing_uniquely_conditional</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="hasConditionalEffect">hasConditionalEffect</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="anointing_uniquely_conditional">anointing_uniquely_conditional</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="reconciliation_no_conditional_effect">
@@ -879,9 +848,8 @@ h1 {
     <div class="node-prop"><pre><code>axiom reconciliation_no_conditional_effect :
   ¬hasConditionalEffect .reconciliation</code></pre></div>
 <div class="node-desc">AXIOM: Reconciliation has no conditional primary effect.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="anointing_uniquely_conditional">anointing_uniquely_conditional</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="hasConditionalEffect">hasConditionalEffect</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="anointing_uniquely_conditional">anointing_uniquely_conditional</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="holyOrders_no_conditional_effect">
@@ -894,9 +862,8 @@ h1 {
     <div class="node-prop"><pre><code>axiom holyOrders_no_conditional_effect :
   ¬hasConditionalEffect .holyOrders</code></pre></div>
 <div class="node-desc">AXIOM: Holy Orders has no conditional primary effect.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="anointing_uniquely_conditional">anointing_uniquely_conditional</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="hasConditionalEffect">hasConditionalEffect</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="anointing_uniquely_conditional">anointing_uniquely_conditional</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="marriage_no_conditional_effect">
@@ -907,15 +874,10 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom marriage_no_conditional_effect :
-  ¬hasConditionalEffect .marriage
-
--- ============================================================================
--- § 8. Theorems
--- ============================================================================</code></pre></div>
+  ¬hasConditionalEffect .marriage</code></pre></div>
 <div class="node-desc">AXIOM: Marriage has no conditional primary effect.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="anointing_uniquely_conditional">anointing_uniquely_conditional</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="conduciveToSalvation">conduciveToSalvation</span><span class="dep-chip" data-target="hasConditionalEffect">hasConditionalEffect</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="anointing_uniquely_conditional">anointing_uniquely_conditional</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="anointing_always_achieves_spiritual_good">
@@ -929,10 +891,8 @@ h1 {
     ∀ (p : Person), seriouslyIll p →
       receivesStrengthening p ∧ unitedToChristsPassion p</code></pre></div>
 <div class="node-desc">Anointing always achieves its spiritual effects regardless of whether</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="anointing_unites_to_passion">anointing_unites_to_passion</span>
-<span class="dep-chip" data-target="anointing_confers_strengthening">anointing_confers_strengthening</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="anointing_confers_strengthening">anointing_confers_strengthening</span><span class="dep-chip" data-target="anointing_unites_to_passion">anointing_unites_to_passion</span><span class="dep-chip" data-target="receivesStrengthening">receivesStrengthening</span><span class="dep-chip" data-target="seriouslyIll">seriouslyIll</span><span class="dep-chip" data-target="unitedToChristsPassion">unitedToChristsPassion</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="anointing_relational_is_union_with_passion">anointing_relational_is_union_with_passion</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="anointing_uniquely_conditional">
@@ -945,15 +905,8 @@ h1 {
     <div class="node-prop"><pre><code>theorem anointing_uniquely_conditional :
     ∀ (s : SacramentKind), hasConditionalEffect s ↔ s = .anointingOfTheSick</code></pre></div>
 <div class="node-desc">Anointing is the ONLY sacrament among the seven with a conditional</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="marriage_no_conditional_effect">marriage_no_conditional_effect</span>
-<span class="dep-chip" data-target="anointing_has_conditional_effect">anointing_has_conditional_effect</span>
-<span class="dep-chip" data-target="reconciliation_no_conditional_effect">reconciliation_no_conditional_effect</span>
-<span class="dep-chip" data-target="baptism_no_conditional_effect">baptism_no_conditional_effect</span>
-<span class="dep-chip" data-target="eucharist_no_conditional_effect">eucharist_no_conditional_effect</span>
-<span class="dep-chip" data-target="holyOrders_no_conditional_effect">holyOrders_no_conditional_effect</span>
-<span class="dep-chip" data-target="confirmation_no_conditional_effect">confirmation_no_conditional_effect</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="anointing_has_conditional_effect">anointing_has_conditional_effect</span><span class="dep-chip" data-target="anointing_heals_if_conducive">anointing_heals_if_conducive</span><span class="dep-chip" data-target="anointing_prepares_for_death">anointing_prepares_for_death</span><span class="dep-chip" data-target="baptism_no_conditional_effect">baptism_no_conditional_effect</span><span class="dep-chip" data-target="beatifying_communion_excludes_conducive">beatifying_communion_excludes_conducive</span><span class="dep-chip" data-target="confirmation_no_conditional_effect">confirmation_no_conditional_effect</span><span class="dep-chip" data-target="eucharist_no_conditional_effect">eucharist_no_conditional_effect</span><span class="dep-chip" data-target="hasConditionalEffect">hasConditionalEffect</span><span class="dep-chip" data-target="holyOrders_no_conditional_effect">holyOrders_no_conditional_effect</span><span class="dep-chip" data-target="marriage_no_conditional_effect">marriage_no_conditional_effect</span><span class="dep-chip" data-target="reconciliation_no_conditional_effect">reconciliation_no_conditional_effect</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="anointing_relational_is_union_with_passion">anointing_relational_is_union_with_passion</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="anointing_pivots_at_deaths_door">
@@ -967,10 +920,8 @@ h1 {
     ∀ (p : Person), seriouslyIll p → deathLeadsToBeatifyingCommunion p →
       preparedForFinalJourney p ∧ ¬conduciveToSalvation p</code></pre></div>
 <div class="node-desc">When death leads to beatifying communion, anointing pivots from healing</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="anointing_prepares_for_death">anointing_prepares_for_death</span>
-<span class="dep-chip" data-target="beatifying_communion_excludes_conducive">beatifying_communion_excludes_conducive</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="anointing_prepares_for_death">anointing_prepares_for_death</span><span class="dep-chip" data-target="beatifying_communion_excludes_conducive">beatifying_communion_excludes_conducive</span><span class="dep-chip" data-target="conduciveToSalvation">conduciveToSalvation</span><span class="dep-chip" data-target="deathLeadsToBeatifyingCommunion">deathLeadsToBeatifyingCommunion</span><span class="dep-chip" data-target="healing_salvation_tension">healing_salvation_tension</span><span class="dep-chip" data-target="preparedForFinalJourney">preparedForFinalJourney</span><span class="dep-chip" data-target="seriouslyIll">seriouslyIll</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="anointing_relational_is_union_with_passion">anointing_relational_is_union_with_passion</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="conditional_effect_is_nonvacuous">
@@ -981,11 +932,10 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem conditional_effect_is_nonvacuous :
-    ∃ (p : Person), seriouslyIll p ∧ ¬conduciveToSalvation p</code></pre></div>
+    ∃ (p : Person), seriouslyIll p ∧ ¬conduciveToSalvation p := healing_salvation_tension
+</code></pre></div>
 <div class="node-desc">The &quot;if conducive&quot; clause is non-vacuous: there genuinely exist cases</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="healing_salvation_tension">healing_salvation_tension</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="anointing_confers_forgiveness_if_no_penance">anointing_confers_forgiveness_if_no_penance</span><span class="dep-chip" data-target="conduciveToSalvation">conduciveToSalvation</span><span class="dep-chip" data-target="healing_salvation_tension">healing_salvation_tension</span><span class="dep-chip" data-target="seriouslyIll">seriouslyIll</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="anointing_fills_penance_gap">
@@ -999,11 +949,7 @@ h1 {
     ∀ (p : Person), seriouslyIll p → unableToReceivePenance p →
       receivesStrengthening p ∧ receivesForgiveness p ∧ unitedToChristsPassion p</code></pre></div>
 <div class="node-desc">When Penance is unavailable, Anointing provides BOTH spiritual</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="anointing_unites_to_passion">anointing_unites_to_passion</span>
-<span class="dep-chip" data-target="anointing_confers_strengthening">anointing_confers_strengthening</span>
-<span class="dep-chip" data-target="anointing_confers_forgiveness_if_no_penance">anointing_confers_forgiveness_if_no_penance</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="anointing_confers_forgiveness_if_no_penance">anointing_confers_forgiveness_if_no_penance</span><span class="dep-chip" data-target="anointing_confers_strengthening">anointing_confers_strengthening</span><span class="dep-chip" data-target="anointing_unites_to_passion">anointing_unites_to_passion</span><span class="dep-chip" data-target="receivesForgiveness">receivesForgiveness</span><span class="dep-chip" data-target="receivesStrengthening">receivesStrengthening</span><span class="dep-chip" data-target="seriouslyIll">seriouslyIll</span><span class="dep-chip" data-target="unableToReceivePenance">unableToReceivePenance</span><span class="dep-chip" data-target="unitedToChristsPassion">unitedToChristsPassion</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="anointing_full_effects_when_conducive">
@@ -1017,11 +963,7 @@ h1 {
     ∀ (p : Person), seriouslyIll p → conduciveToSalvation p →
       receivesStrengthening p ∧ unitedToChristsPassion p ∧ receivesHealing p</code></pre></div>
 <div class="node-desc">When healing IS conducive, the sick person receives BOTH spiritual</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="anointing_unites_to_passion">anointing_unites_to_passion</span>
-<span class="dep-chip" data-target="anointing_confers_strengthening">anointing_confers_strengthening</span>
-<span class="dep-chip" data-target="anointing_heals_if_conducive">anointing_heals_if_conducive</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="anointing_confers_strengthening">anointing_confers_strengthening</span><span class="dep-chip" data-target="anointing_heals_if_conducive">anointing_heals_if_conducive</span><span class="dep-chip" data-target="anointing_unites_to_passion">anointing_unites_to_passion</span><span class="dep-chip" data-target="conduciveToSalvation">conduciveToSalvation</span><span class="dep-chip" data-target="receivesHealing">receivesHealing</span><span class="dep-chip" data-target="receivesStrengthening">receivesStrengthening</span><span class="dep-chip" data-target="seriouslyIll">seriouslyIll</span><span class="dep-chip" data-target="unitedToChristsPassion">unitedToChristsPassion</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="anointing_spiritual_effects_when_not_conducive">
@@ -1035,11 +977,7 @@ h1 {
     ∀ (p : Person), seriouslyIll p → ¬conduciveToSalvation p →
       receivesStrengthening p ∧ unitedToChristsPassion p ∧ preparedForFinalJourney p</code></pre></div>
 <div class="node-desc">When healing is NOT conducive, the person still receives all spiritual</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="anointing_prepares_for_death">anointing_prepares_for_death</span>
-<span class="dep-chip" data-target="anointing_unites_to_passion">anointing_unites_to_passion</span>
-<span class="dep-chip" data-target="anointing_confers_strengthening">anointing_confers_strengthening</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="anointing_confers_strengthening">anointing_confers_strengthening</span><span class="dep-chip" data-target="anointing_prepares_for_death">anointing_prepares_for_death</span><span class="dep-chip" data-target="anointing_unites_to_passion">anointing_unites_to_passion</span><span class="dep-chip" data-target="conduciveToSalvation">conduciveToSalvation</span><span class="dep-chip" data-target="preparedForFinalJourney">preparedForFinalJourney</span><span class="dep-chip" data-target="receivesStrengthening">receivesStrengthening</span><span class="dep-chip" data-target="seriouslyIll">seriouslyIll</span><span class="dep-chip" data-target="unitedToChristsPassion">unitedToChristsPassion</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="anointing_exhaustive_coverage">
@@ -1053,11 +991,8 @@ h1 {
     ∀ (p : Person), seriouslyIll p →
       (receivesHealing p ∨ preparedForFinalJourney p)</code></pre></div>
 <div class="node-desc">Anointing covers both cases exhaustively: for any seriously ill person,</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="anointing_prepares_for_death">anointing_prepares_for_death</span>
-<span class="dep-chip" data-target="conduciveToSalvation">conduciveToSalvation</span>
-<span class="dep-chip" data-target="anointing_heals_if_conducive">anointing_heals_if_conducive</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="anointing_heals_if_conducive">anointing_heals_if_conducive</span><span class="dep-chip" data-target="anointing_prepares_for_death">anointing_prepares_for_death</span><span class="dep-chip" data-target="conduciveToSalvation">conduciveToSalvation</span><span class="dep-chip" data-target="preparedForFinalJourney">preparedForFinalJourney</span><span class="dep-chip" data-target="receivesHealing">receivesHealing</span><span class="dep-chip" data-target="seriouslyIll">seriouslyIll</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="anointing_relational_is_union_with_passion">anointing_relational_is_union_with_passion</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="anointing_dispositional_is_strengthening">
@@ -1068,8 +1003,9 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem anointing_dispositional_is_strengthening :
-    causesChangeOfType .anointingOfTheSick .dispositional</code></pre></div>
-<div class="node-desc">Connection to SacramentalCausation: Anointing&#x27;s dispositional change</div>
+    causesChangeOfType .anointingOfTheSick .dispositional := anointing_causes_dispositional
+</code></pre></div>
+<div class="node-desc">Connection to SacramentalCausation: Anointing's dispositional change</div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="anointing_relational_is_union_with_passion">
@@ -1080,8 +1016,14 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem anointing_relational_is_union_with_passion :
-    causesChangeOfType .anointingOfTheSick .relational</code></pre></div>
-<div class="node-desc">Connection to SacramentalCausation: Anointing&#x27;s relational change</div>
+    causesChangeOfType .anointingOfTheSick .relational := anointing_causes_relational
+
+-- ============================================================================
+-- § 9. Summary
+-- ============================================================================
+</code></pre></div>
+<div class="node-desc">Connection to SacramentalCausation: Anointing's relational change</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="anointing_always_achieves_spiritual_good">anointing_always_achieves_spiritual_good</span><span class="dep-chip" data-target="anointing_exhaustive_coverage">anointing_exhaustive_coverage</span><span class="dep-chip" data-target="anointing_pivots_at_deaths_door">anointing_pivots_at_deaths_door</span><span class="dep-chip" data-target="anointing_uniquely_conditional">anointing_uniquely_conditional</span><span class="dep-chip" data-target="healing_salvation_tension">healing_salvation_tension</span></div></div>
   </div>
 </div>
   </div>

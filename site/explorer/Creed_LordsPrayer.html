@@ -143,7 +143,7 @@ h1 {
   line-height: 1.6;
 }
 
-/* -- Search -- */
+/* ── Search ── */
 .search-box {
   width: 100%;
   padding: 0.8rem 1rem;
@@ -167,7 +167,91 @@ h1 {
   font-style: italic;
 }
 
-/* -- Node cards -- */
+/* ── Category sections ── */
+.category-header {
+  font-family: Cinzel, Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-variant: small-caps;
+  margin: 1.8rem 0 0.8rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── File cards ── */
+.file-card {
+  display: block;
+  padding: 1rem 1.1rem;
+  margin-bottom: 0.5rem;
+  background: var(--bg-parchment);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  text-decoration: none;
+  color: var(--text);
+  transition: background 0.15s, border-color 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.file-card:hover, .file-card:active {
+  background: var(--bg-vellum);
+  border-color: var(--accent-gold);
+  text-decoration: none;
+}
+
+.file-card-name {
+  font-family: Cinzel, Georgia, serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.3rem;
+}
+
+.file-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  font-size: 0.82rem;
+  color: var(--text-light);
+}
+
+.file-card-meta .tag {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.75rem;
+  font-family: Cinzel, Georgia, serif;
+  letter-spacing: 0.03em;
+}
+
+.tag-axiom { background: var(--axiom-bg); color: var(--axiom-dot); border: 1px solid var(--axiom-border); }
+.tag-theorem { background: var(--theorem-bg); color: var(--theorem-dot); border: 1px solid var(--theorem-border); }
+.tag-def { background: var(--def-bg); color: var(--def-dot); border: 1px solid var(--def-border); }
+.tag-proposition { background: var(--proposition-bg); color: var(--proposition-dot); border: 1px solid var(--proposition-border); }
+
+.file-card-ccc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 0.3rem;
+}
+
+/* ── Summary stats ── */
+.stats-bar {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--text-light);
+  font-style: italic;
+}
+
+.stats-bar span { white-space: nowrap; }
+
+/* ── Node cards (per-file page) ── */
 .node-card {
   margin-bottom: 0.4rem;
   border: 1px solid var(--border);
@@ -321,7 +405,7 @@ h1 {
   color: var(--text-muted);
 }
 
-/* -- Flow diagram header -- */
+/* ── Flow diagram header ── */
 .flow-summary {
   display: flex;
   justify-content: center;
@@ -347,7 +431,7 @@ h1 {
 .flow-count.theorems { background: var(--theorem-bg); color: var(--theorem-dot); }
 .flow-count.derived { background: var(--def-bg); color: var(--def-dot); }
 
-/* -- Legend -- */
+/* ── Legend ── */
 .legend {
   display: flex;
   flex-wrap: wrap;
@@ -379,7 +463,7 @@ h1 {
 .legend-dot.inductive { background: var(--inductive-dot); }
 .legend-dot.proposition { background: var(--proposition-dot); }
 
-/* -- Filter buttons -- */
+/* ── Filter buttons ── */
 .filter-bar {
   display: flex;
   flex-wrap: wrap;
@@ -408,7 +492,7 @@ h1 {
   border-color: var(--accent);
 }
 
-/* -- Back link -- */
+/* ── Back link ── */
 .back-link {
   display: inline-block;
   margin-bottom: 1rem;
@@ -417,7 +501,7 @@ h1 {
   letter-spacing: 0.04em;
 }
 
-/* -- Footer -- */
+/* ── Footer ── */
 .footer {
   text-align: center;
   padding-top: 2rem;
@@ -426,7 +510,7 @@ h1 {
   font-style: italic;
 }
 
-/* -- Responsive -- */
+/* ── Responsive ── */
 @media (max-width: 500px) {
   html { font-size: 16px; }
   .container { padding: 1rem 0.75rem 2rem; }
@@ -441,8 +525,15 @@ h1 {
   <h1>LordsPrayer</h1>
   <div class="subtitle">Creed &middot; 35 declarations</div>
 
-  
-  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1472, &sect;2761, &sect;2774, &sect;2803, &sect;2807, &sect;2809, &sect;2812, &sect;2816, &sect;2818, &sect;2820, &sect;2822, &sect;2825 (+14 more)</div>
+  <div class="flow-summary">
+  <span class="flow-count axioms">14 axioms</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count theorems">13 theorems</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count derived">8 derived</span>
+</div>
+  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1472, &sect;2761, &sect;2774, &sect;2803, &sect;2807, &sect;2809, &sect;2812, &sect;2816, &sect;2818, &sect;2820, &sect;2822, &sect;2825, &sect;2828, &sect;2830, &sect;2835 +11 more</div>
+
   <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot proposition"></span>proposition</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
 
   <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (7)</button><button class="filter-btn" data-filter="def">def (4)</button><button class="filter-btn" data-filter="inductive">inductive (3)</button><button class="filter-btn" data-filter="opaque">opaque (7)</button><button class="filter-btn" data-filter="proposition">proposition (1)</button><button class="filter-btn" data-filter="theorem">theorem (13)</button></div>
@@ -458,7 +549,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>inductive PetitionKind where</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="PetitionKind.orientation">PetitionKind.orientation</span><span class="dep-chip" data-target="eucharistic_bread_tag">eucharistic_bread_tag</span><span class="dep-chip" data-target="first_three_godward">first_three_godward</span><span class="dep-chip" data-target="last_four_humanward">last_four_humanward</span><span class="dep-chip" data-target="orientations_exhaustive">orientations_exhaustive</span></div></div>
+<div class="node-desc">The seven petitions of the Lord's Prayer (§2803).</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="PetitionKind.orientation">PetitionKind.orientation</span><span class="dep-chip" data-target="first_three_godward">first_three_godward</span><span class="dep-chip" data-target="last_four_humanward">last_four_humanward</span><span class="dep-chip" data-target="orientations_exhaustive">orientations_exhaustive</span><span class="dep-chip" data-target="eucharistic_bread_tag">eucharistic_bread_tag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-inductive" data-kind="inductive" data-name="PetitionOrientation">
@@ -469,6 +561,7 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>inductive PetitionOrientation where</code></pre></div>
+<div class="node-desc">The structural orientation of a petition (§2803–2806).</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="PetitionKind.orientation">PetitionKind.orientation</span><span class="dep-chip" data-target="eucharistic_bread_tag">eucharistic_bread_tag</span></div></div>
   </div>
 </div>
@@ -486,7 +579,9 @@ h1 {
   | .giveUsDailyBread        =&gt; .humanWard
   | .forgiveUsTrespasses     =&gt; .humanWard
   | .leadUsNotIntoTemptation =&gt; .humanWard
-  | .deliverUsFromEvil       =&gt; .humanWard</code></pre></div>
+  | .deliverUsFromEvil       =&gt; .humanWard
+</code></pre></div>
+<div class="node-desc">Which orientation each petition has.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="PetitionKind">PetitionKind</span><span class="dep-chip" data-target="PetitionOrientation">PetitionOrientation</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="eucharistic_bread_tag">eucharistic_bread_tag</span></div></div>
   </div>
@@ -499,7 +594,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>inductive BreadKind where</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="eucharistic_bread_tag">eucharistic_bread_tag</span><span class="dep-chip" data-target="receivesBread">receivesBread</span></div></div>
+<div class="node-desc">The dual nature of &quot;daily bread&quot; (§2835–2837).</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="receivesBread">receivesBread</span><span class="dep-chip" data-target="eucharistic_bread_tag">eucharistic_bread_tag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="recognizesHoliness">
@@ -510,7 +606,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque recognizesHoliness : Person → Prop</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="eucharistic_bread_tag">eucharistic_bread_tag</span><span class="dep-chip" data-target="hallowing_presupposes_intellect">hallowing_presupposes_intellect</span></div></div>
+<div class="node-desc">Whether a person recognizes God's holiness (Petition 1).</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hallowing_presupposes_intellect">hallowing_presupposes_intellect</span><span class="dep-chip" data-target="eucharistic_bread_tag">eucharistic_bread_tag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="participatesInKingdom">
@@ -521,7 +618,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque participatesInKingdom : Person → Prop</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="eucharistic_bread_tag">eucharistic_bread_tag</span><span class="dep-chip" data-target="kingdom_is_communion">kingdom_is_communion</span><span class="dep-chip" data-target="kingdom_requires_communion">kingdom_requires_communion</span></div></div>
+<div class="node-desc">Whether a person participates in God's kingdom (Petition 2).</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="kingdom_requires_communion">kingdom_requires_communion</span><span class="dep-chip" data-target="kingdom_is_communion">kingdom_is_communion</span><span class="dep-chip" data-target="eucharistic_bread_tag">eucharistic_bread_tag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="receivesBread">
@@ -532,6 +630,7 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque receivesBread : Person → BreadKind → Prop</code></pre></div>
+<div class="node-desc">Whether a person receives daily bread of a given kind (Petition 4).</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="BreadKind">BreadKind</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="bread_is_dual">bread_is_dual</span><span class="dep-chip" data-target="eucharistic_bread_tag">eucharistic_bread_tag</span></div></div>
   </div>
@@ -544,7 +643,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque hasForgiven : Person → Prop</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="divine_forgiveness_requires_human">divine_forgiveness_requires_human</span><span class="dep-chip" data-target="eucharistic_bread_tag">eucharistic_bread_tag</span><span class="dep-chip" data-target="forgiveness_reciprocity">forgiveness_reciprocity</span></div></div>
+<div class="node-desc">Whether a person has forgiven those who trespassed against them.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="forgiveness_reciprocity">forgiveness_reciprocity</span><span class="dep-chip" data-target="divine_forgiveness_requires_human">divine_forgiveness_requires_human</span><span class="dep-chip" data-target="eucharistic_bread_tag">eucharistic_bread_tag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="undergoingTrial">
@@ -555,6 +655,7 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque undergoingTrial : Person → Prop</code></pre></div>
+<div class="node-desc">Whether a person is undergoing a trial (testing that can strengthen).</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="eucharistic_bread_tag">eucharistic_bread_tag</span></div></div>
   </div>
 </div>
@@ -566,7 +667,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque temptedTowardSin : Person → Prop</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="deliverance_frees_from_temptation">deliverance_frees_from_temptation</span><span class="dep-chip" data-target="deliverance_subsumes_protection">deliverance_subsumes_protection</span><span class="dep-chip" data-target="eucharistic_bread_tag">eucharistic_bread_tag</span><span class="dep-chip" data-target="temptation_can_break_communion">temptation_can_break_communion</span><span class="dep-chip" data-target="temptation_threat_to_communion">temptation_threat_to_communion</span></div></div>
+<div class="node-desc">Whether a person is being tempted toward sin.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="temptation_can_break_communion">temptation_can_break_communion</span><span class="dep-chip" data-target="deliverance_frees_from_temptation">deliverance_frees_from_temptation</span><span class="dep-chip" data-target="deliverance_subsumes_protection">deliverance_subsumes_protection</span><span class="dep-chip" data-target="temptation_threat_to_communion">temptation_threat_to_communion</span><span class="dep-chip" data-target="eucharistic_bread_tag">eucharistic_bread_tag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="deliveredFromEvil">
@@ -577,6 +679,7 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque deliveredFromEvil : Person → Prop</code></pre></div>
+<div class="node-desc">Whether a person is delivered from the Evil One (Petition 7).</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="deliverance_frees_from_temptation">deliverance_frees_from_temptation</span><span class="dep-chip" data-target="deliverance_subsumes_protection">deliverance_subsumes_protection</span><span class="dep-chip" data-target="eucharistic_bread_tag">eucharistic_bread_tag</span></div></div>
   </div>
 </div>
@@ -587,9 +690,9 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def divinelyForgiven (hp : HumanPerson) : Prop :=
-  (sinProfileOf hp).guilt = EffectState.removed</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="divine_forgiveness_requires_human">divine_forgiveness_requires_human</span><span class="dep-chip" data-target="eucharistic_bread_tag">eucharistic_bread_tag</span><span class="dep-chip" data-target="forgiveness_is_guilt_removal">forgiveness_is_guilt_removal</span><span class="dep-chip" data-target="forgiveness_reciprocity">forgiveness_reciprocity</span></div></div>
+    <div class="node-prop"><pre><code>def divinelyForgiven (hp : HumanPerson) : Prop</code></pre></div>
+<div class="node-desc">Whether a person is divinely forgiven — guilt (Layer 2) removed.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="forgiveness_reciprocity">forgiveness_reciprocity</span><span class="dep-chip" data-target="divine_forgiveness_requires_human">divine_forgiveness_requires_human</span><span class="dep-chip" data-target="forgiveness_is_guilt_removal">forgiveness_is_guilt_removal</span><span class="dep-chip" data-target="eucharistic_bread_tag">eucharistic_bread_tag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="hallowing_presupposes_intellect">
@@ -602,6 +705,7 @@ h1 {
     <div class="node-prop"><pre><code>axiom hallowing_presupposes_intellect :
   ∀ (p : Person),
     recognizesHoliness p → p.hasIntellect = true</code></pre></div>
+<div class="node-desc">AXIOM (§2807–2815): Recognizing God's holiness is the beginning of</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="recognizesHoliness">recognizesHoliness</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="eucharistic_bread_tag">eucharistic_bread_tag</span></div></div>
   </div>
@@ -617,8 +721,9 @@ h1 {
   ∀ (hp : HumanPerson),
     participatesInKingdom (personOfHuman hp) →
     inBeatifyingCommunion hp</code></pre></div>
+<div class="node-desc">AXIOM (§2816–2821): Participation in God's kingdom is participation</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="participatesInKingdom">participatesInKingdom</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="deliverance_subsumes_protection">deliverance_subsumes_protection</span><span class="dep-chip" data-target="eucharistic_bread_tag">eucharistic_bread_tag</span><span class="dep-chip" data-target="kingdom_is_communion">kingdom_is_communion</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="deliverance_subsumes_protection">deliverance_subsumes_protection</span><span class="dep-chip" data-target="kingdom_is_communion">kingdom_is_communion</span><span class="dep-chip" data-target="eucharistic_bread_tag">eucharistic_bread_tag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="will_alignment_preserves_freedom">
@@ -633,7 +738,8 @@ h1 {
     graceGiven p g →
     cooperatesWithGrace p g →
     couldChooseOtherwise p</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="eucharistic_bread_tag">eucharistic_bread_tag</span><span class="dep-chip" data-target="orientations_exhaustive">orientations_exhaustive</span><span class="dep-chip" data-target="thy_will_done_preserves_freedom">thy_will_done_preserves_freedom</span></div></div>
+<div class="node-desc">AXIOM (§2822–2827): Asking &quot;thy will be done&quot; under grace preserves</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="orientations_exhaustive">orientations_exhaustive</span><span class="dep-chip" data-target="thy_will_done_preserves_freedom">thy_will_done_preserves_freedom</span><span class="dep-chip" data-target="eucharistic_bread_tag">eucharistic_bread_tag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="bread_is_dual">
@@ -650,6 +756,7 @@ h1 {
     -- A free person with intellect can receive BOTH kinds of bread
     (receivesBread p .material → True) ∧
     (receivesBread p .spiritual → True)</code></pre></div>
+<div class="node-desc">AXIOM (§2828–2837): Material and spiritual bread are both given.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="receivesBread">receivesBread</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="eucharistic_bread_tag">eucharistic_bread_tag</span></div></div>
   </div>
@@ -664,8 +771,9 @@ h1 {
     <div class="node-prop"><pre><code>axiom forgiveness_reciprocity :
   ∀ (hp : HumanPerson),
     divinelyForgiven hp → hasForgiven (personOfHuman hp)</code></pre></div>
+<div class="node-desc">AXIOM (§2838–2845): Divine forgiveness requires human forgiveness.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="divinelyForgiven">divinelyForgiven</span><span class="dep-chip" data-target="hasForgiven">hasForgiven</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="divine_forgiveness_requires_human">divine_forgiveness_requires_human</span><span class="dep-chip" data-target="eucharistic_bread_tag">eucharistic_bread_tag</span><span class="dep-chip" data-target="thy_will_done_preserves_freedom">thy_will_done_preserves_freedom</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="thy_will_done_preserves_freedom">thy_will_done_preserves_freedom</span><span class="dep-chip" data-target="divine_forgiveness_requires_human">divine_forgiveness_requires_human</span><span class="dep-chip" data-target="eucharistic_bread_tag">eucharistic_bread_tag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="temptation_can_break_communion">
@@ -681,8 +789,9 @@ h1 {
     isGraveSin s →
     s.action.agent = personOfHuman hp →
     ¬inBeatifyingCommunion hp</code></pre></div>
+<div class="node-desc">AXIOM (§2846–2849): Trial and temptation-to-sin are distinct, and</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="temptedTowardSin">temptedTowardSin</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="eucharistic_bread_tag">eucharistic_bread_tag</span><span class="dep-chip" data-target="temptation_threat_to_communion">temptation_threat_to_communion</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="temptation_threat_to_communion">temptation_threat_to_communion</span><span class="dep-chip" data-target="eucharistic_bread_tag">eucharistic_bread_tag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="deliverance_frees_from_temptation">
@@ -695,8 +804,9 @@ h1 {
     <div class="node-prop"><pre><code>axiom deliverance_frees_from_temptation :
   ∀ (p : Person),
     deliveredFromEvil p → ¬temptedTowardSin p</code></pre></div>
+<div class="node-desc">AXIOM (§2850–2854): Deliverance from evil implies freedom from</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="deliveredFromEvil">deliveredFromEvil</span><span class="dep-chip" data-target="temptedTowardSin">temptedTowardSin</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="deliverance_subsumes_protection">deliverance_subsumes_protection</span><span class="dep-chip" data-target="eucharistic_bread_tag">eucharistic_bread_tag</span><span class="dep-chip" data-target="forgiveness_is_guilt_removal">forgiveness_is_guilt_removal</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="forgiveness_is_guilt_removal">forgiveness_is_guilt_removal</span><span class="dep-chip" data-target="deliverance_subsumes_protection">deliverance_subsumes_protection</span><span class="dep-chip" data-target="eucharistic_bread_tag">eucharistic_bread_tag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="first_three_godward">
@@ -709,8 +819,8 @@ h1 {
     <div class="node-prop"><pre><code>theorem first_three_godward :
     PetitionKind.hallowedBeThyName.orientation = .godWard ∧
     PetitionKind.thyKingdomCome.orientation = .godWard ∧
-    PetitionKind.thyWillBeDone.orientation = .godWard :=
-  ⟨rfl, rfl, rfl⟩</code></pre></div>
+    PetitionKind.thyWillBeDone.orientation = .godWard</code></pre></div>
+<div class="node-desc">THEOREM: The first three petitions are all God-ward.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="PetitionKind">PetitionKind</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="eucharistic_bread_tag">eucharistic_bread_tag</span></div></div>
   </div>
@@ -726,8 +836,8 @@ h1 {
     PetitionKind.giveUsDailyBread.orientation = .humanWard ∧
     PetitionKind.forgiveUsTrespasses.orientation = .humanWard ∧
     PetitionKind.leadUsNotIntoTemptation.orientation = .humanWard ∧
-    PetitionKind.deliverUsFromEvil.orientation = .humanWard :=
-  ⟨rfl, rfl, rfl, rfl⟩</code></pre></div>
+    PetitionKind.deliverUsFromEvil.orientation = .humanWard</code></pre></div>
+<div class="node-desc">THEOREM: The last four petitions are all human-ward.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="PetitionKind">PetitionKind</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="eucharistic_bread_tag">eucharistic_bread_tag</span></div></div>
   </div>
@@ -741,15 +851,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem orientations_exhaustive :
     ∀ (pk : PetitionKind),
-      pk.orientation = .godWard ∨ pk.orientation = .humanWard :=
-  fun pk =&gt; match pk with
-  | .hallowedBeThyName       =&gt; Or.inl rfl
-  | .thyKingdomCome          =&gt; Or.inl rfl
-  | .thyWillBeDone           =&gt; Or.inl rfl
-  | .giveUsDailyBread        =&gt; Or.inr rfl
-  | .forgiveUsTrespasses     =&gt; Or.inr rfl
-  | .leadUsNotIntoTemptation =&gt; Or.inr rfl
-  | .deliverUsFromEvil       =&gt; Or.inr rfl</code></pre></div>
+      pk.orientation = .godWard ∨ pk.orientation = .humanWard</code></pre></div>
+<div class="node-desc">THEOREM: The God-ward / human-ward split is exhaustive.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="PetitionKind">PetitionKind</span><span class="dep-chip" data-target="will_alignment_preserves_freedom">will_alignment_preserves_freedom</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="eucharistic_bread_tag">eucharistic_bread_tag</span></div></div>
   </div>
@@ -765,8 +868,8 @@ h1 {
     (p : Person) (g : Grace)
     (h_grace : graceGiven p g)
     (h_coop : cooperatesWithGrace p g) :
-    couldChooseOtherwise p :=
-  will_alignment_preserves_freedom p g h_grace h_coop</code></pre></div>
+    couldChooseOtherwise p</code></pre></div>
+<div class="node-desc">THEOREM: Will-alignment through grace preserves freedom (Petition 3 + T2).</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="forgiveness_reciprocity">forgiveness_reciprocity</span><span class="dep-chip" data-target="will_alignment_preserves_freedom">will_alignment_preserves_freedom</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="eucharistic_bread_tag">eucharistic_bread_tag</span></div></div>
   </div>
@@ -780,8 +883,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem divine_forgiveness_requires_human
     (hp : HumanPerson) (h : divinelyForgiven hp) :
-    hasForgiven (personOfHuman hp) :=
-  forgiveness_reciprocity hp h</code></pre></div>
+    hasForgiven (personOfHuman hp)</code></pre></div>
+<div class="node-desc">THEOREM: Divine forgiveness requires human forgiveness (Petition 5).</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="divinelyForgiven">divinelyForgiven</span><span class="dep-chip" data-target="forgiveness_reciprocity">forgiveness_reciprocity</span><span class="dep-chip" data-target="hasForgiven">hasForgiven</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="eucharistic_bread_tag">eucharistic_bread_tag</span></div></div>
   </div>
@@ -795,8 +898,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem forgiveness_is_guilt_removal
     (hp : HumanPerson) (h : divinelyForgiven hp) :
-    (sinProfileOf hp).guilt = EffectState.removed :=
-  h</code></pre></div>
+    (sinProfileOf hp).guilt = EffectState.removed</code></pre></div>
+<div class="node-desc">THEOREM: Divine forgiveness specifically removes guilt (Layer 2).</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="deliverance_frees_from_temptation">deliverance_frees_from_temptation</span><span class="dep-chip" data-target="divinelyForgiven">divinelyForgiven</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="eucharistic_bread_tag">eucharistic_bread_tag</span></div></div>
   </div>
@@ -810,8 +913,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem deliverance_subsumes_protection
     (p : Person) (h : deliveredFromEvil p) :
-    ¬temptedTowardSin p :=
-  deliverance_frees_from_temptation p h</code></pre></div>
+    ¬temptedTowardSin p</code></pre></div>
+<div class="node-desc">THEOREM: Petitions 6 and 7 are linked — deliverance subsumes protection.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="deliverance_frees_from_temptation">deliverance_frees_from_temptation</span><span class="dep-chip" data-target="deliveredFromEvil">deliveredFromEvil</span><span class="dep-chip" data-target="kingdom_requires_communion">kingdom_requires_communion</span><span class="dep-chip" data-target="temptedTowardSin">temptedTowardSin</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="eucharistic_bread_tag">eucharistic_bread_tag</span></div></div>
   </div>
@@ -826,8 +929,8 @@ h1 {
     <div class="node-prop"><pre><code>theorem kingdom_is_communion
     (hp : HumanPerson)
     (h : participatesInKingdom (personOfHuman hp)) :
-    inBeatifyingCommunion hp :=
-  kingdom_requires_communion hp h</code></pre></div>
+    inBeatifyingCommunion hp</code></pre></div>
+<div class="node-desc">THEOREM: Kingdom participation requires communion with God.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="kingdom_requires_communion">kingdom_requires_communion</span><span class="dep-chip" data-target="participatesInKingdom">participatesInKingdom</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="eucharistic_bread_tag">eucharistic_bread_tag</span></div></div>
   </div>
@@ -840,8 +943,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem will_be_done_under_providence (event : Prop) :
-    divinelyGoverned event :=
-  s4_universal_providence event</code></pre></div>
+    divinelyGoverned event</code></pre></div>
+<div class="node-desc">Bridge to S4: The third petition presupposes that ALL events are</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="eucharistic_bread_tag">eucharistic_bread_tag</span></div></div>
   </div>
 </div>
@@ -854,8 +957,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem grace_preserves_freedom_bridge
     (p : Person) (g : Grace) (h : graceGiven p g) :
-    couldChooseOtherwise p :=
-  t2_grace_preserves_freedom p g h</code></pre></div>
+    couldChooseOtherwise p</code></pre></div>
+<div class="node-desc">Bridge to T2: Grace preserves freedom even when aligning the will.</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="eucharistic_bread_tag">eucharistic_bread_tag</span></div></div>
   </div>
 </div>
@@ -867,8 +970,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem kingdom_for_all (p : Person) :
-    godWillsSalvation p :=
-  s2_universal_salvific_will p</code></pre></div>
+    godWillsSalvation p</code></pre></div>
+<div class="node-desc">Bridge to S2: The second petition is grounded in God's universal</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="eucharistic_bread_tag">eucharistic_bread_tag</span></div></div>
   </div>
 </div>
@@ -884,8 +987,8 @@ h1 {
     (h_tempt : temptedTowardSin (personOfHuman hp))
     (h_grave : isGraveSin s)
     (h_agent : s.action.agent = personOfHuman hp) :
-    ¬inBeatifyingCommunion hp :=
-  temptation_can_break_communion hp s h_tempt h_grave h_agent</code></pre></div>
+    ¬inBeatifyingCommunion hp</code></pre></div>
+<div class="node-desc">Bridge to S5: Temptation, when it leads to grave sin, separates</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="temptation_can_break_communion">temptation_can_break_communion</span><span class="dep-chip" data-target="temptedTowardSin">temptedTowardSin</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="eucharistic_bread_tag">eucharistic_bread_tag</span></div></div>
   </div>
@@ -901,8 +1004,8 @@ h1 {
     (pr : PetitionaryPrayer)
     (h_free : pr.agent.hasFreeWill = true)
     (h_act : pr.isFreeAct) :
-    isSecondaryCause pr ∧ participatesInProvidence pr ∧ transformsPrayer pr :=
-  prayer_meaningful_under_providence pr h_free h_act</code></pre></div>
+    isSecondaryCause pr ∧ participatesInProvidence pr ∧ transformsPrayer pr</code></pre></div>
+<div class="node-desc">THEOREM: The Lord's Prayer as a whole is a meaningful petitionary prayer.</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="eucharistic_bread_tag">eucharistic_bread_tag</span></div></div>
   </div>
 </div>
@@ -913,9 +1016,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def lords_prayer_tag : DenominationalTag :=
-  { acceptedBy := [Denomination.ecumenical],
-    note := &quot;Mt 6:9-13; the one prayer all Christians share&quot; }</code></pre></div>
+    <div class="node-prop"><pre><code>def lords_prayer_tag : DenominationalTag</code></pre></div>
+<div class="node-desc">Denominational tag: the Lord's Prayer and its structure.</div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="forgiveness_reciprocity_tag">
@@ -925,9 +1027,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def forgiveness_reciprocity_tag : DenominationalTag :=
-  { acceptedBy := [Denomination.ecumenical],
-    note := &quot;Mt 6:14-15; substance shared, mechanism differs&quot; }</code></pre></div>
+    <div class="node-prop"><pre><code>def forgiveness_reciprocity_tag : DenominationalTag</code></pre></div>
+<div class="node-desc">Denominational tag: forgiveness reciprocity.</div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="eucharistic_bread_tag">
@@ -937,9 +1038,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def eucharistic_bread_tag : DenominationalTag :=
-  { acceptedBy := [Denomination.catholic],
-    note := &quot;§2837 + T3; stronger where sacramental efficacy holds&quot; }</code></pre></div>
+    <div class="node-prop"><pre><code>def eucharistic_bread_tag : DenominationalTag</code></pre></div>
+<div class="node-desc">Denominational tag: Eucharistic reading of daily bread.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="BreadKind">BreadKind</span><span class="dep-chip" data-target="PetitionKind">PetitionKind</span><span class="dep-chip" data-target="PetitionKind.orientation">PetitionKind.orientation</span><span class="dep-chip" data-target="PetitionOrientation">PetitionOrientation</span><span class="dep-chip" data-target="bread_is_dual">bread_is_dual</span><span class="dep-chip" data-target="deliverance_frees_from_temptation">deliverance_frees_from_temptation</span><span class="dep-chip" data-target="deliverance_subsumes_protection">deliverance_subsumes_protection</span><span class="dep-chip" data-target="deliveredFromEvil">deliveredFromEvil</span><span class="dep-chip" data-target="divine_forgiveness_requires_human">divine_forgiveness_requires_human</span><span class="dep-chip" data-target="divinelyForgiven">divinelyForgiven</span><span class="dep-chip" data-target="first_three_godward">first_three_godward</span><span class="dep-chip" data-target="forgiveness_is_guilt_removal">forgiveness_is_guilt_removal</span><span class="dep-chip" data-target="forgiveness_reciprocity">forgiveness_reciprocity</span><span class="dep-chip" data-target="grace_preserves_freedom_bridge">grace_preserves_freedom_bridge</span><span class="dep-chip" data-target="hallowing_presupposes_intellect">hallowing_presupposes_intellect</span><span class="dep-chip" data-target="hasForgiven">hasForgiven</span><span class="dep-chip" data-target="kingdom_for_all">kingdom_for_all</span><span class="dep-chip" data-target="kingdom_is_communion">kingdom_is_communion</span><span class="dep-chip" data-target="kingdom_requires_communion">kingdom_requires_communion</span><span class="dep-chip" data-target="last_four_humanward">last_four_humanward</span><span class="dep-chip" data-target="lords_prayer_meaningful">lords_prayer_meaningful</span><span class="dep-chip" data-target="orientations_exhaustive">orientations_exhaustive</span><span class="dep-chip" data-target="participatesInKingdom">participatesInKingdom</span><span class="dep-chip" data-target="receivesBread">receivesBread</span><span class="dep-chip" data-target="recognizesHoliness">recognizesHoliness</span><span class="dep-chip" data-target="temptation_can_break_communion">temptation_can_break_communion</span><span class="dep-chip" data-target="temptation_threat_to_communion">temptation_threat_to_communion</span><span class="dep-chip" data-target="temptedTowardSin">temptedTowardSin</span><span class="dep-chip" data-target="thy_will_done_preserves_freedom">thy_will_done_preserves_freedom</span><span class="dep-chip" data-target="undergoingTrial">undergoingTrial</span><span class="dep-chip" data-target="will_alignment_preserves_freedom">will_alignment_preserves_freedom</span><span class="dep-chip" data-target="will_be_done_under_providence">will_be_done_under_providence</span></div></div>
   </div>
 </div>

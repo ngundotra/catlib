@@ -525,7 +525,13 @@ h1 {
   <h1>HylomorphicFormation</h1>
   <div class="subtitle">Creed &middot; 22 declarations</div>
 
-  
+  <div class="flow-summary">
+  <span class="flow-count axioms">11 axioms</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count theorems">11 theorems</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count derived">0 derived</span>
+</div>
   <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;364, &sect;365, &sect;366, &sect;997</div>
 
   <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
@@ -542,9 +548,9 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque Matter : Type
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque Matter : Type</code></pre></div>
 <div class="node-desc">Matter — the material substrate that the soul &quot;forms&quot; into a body.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="isInformedBy">isInformedBy</span><span class="dep-chip" data-target="isLivingHumanBody">isLivingHumanBody</span><span class="dep-chip" data-target="retainsOrganization">retainsOrganization</span><span class="dep-chip" data-target="soul_forms_matter_into_body">soul_forms_matter_into_body</span><span class="dep-chip" data-target="living_body_requires_soul">living_body_requires_soul</span><span class="dep-chip" data-target="departure_of_soul_causes_decay">departure_of_soul_causes_decay</span><span class="dep-chip" data-target="participatesInImageOfGod">participatesInImageOfGod</span><span class="dep-chip" data-target="body_dignity_from_soul">body_dignity_from_soul</span><span class="dep-chip" data-target="formation_iff_living_body">formation_iff_living_body</span><span class="dep-chip" data-target="no_soul_no_body">no_soul_no_body</span><span class="dep-chip" data-target="death_removes_formation">death_removes_formation</span><span class="dep-chip" data-target="formation_explains_corporeal_requires_spiritual">formation_explains_corporeal_requires_spiritual</span><span class="dep-chip" data-target="formation_explains_decay">formation_explains_decay</span><span class="dep-chip" data-target="death_affects_both_levels">death_affects_both_levels</span><span class="dep-chip" data-target="form_is_divinely_created">form_is_divinely_created</span><span class="dep-chip" data-target="bodily_dignity_chain">bodily_dignity_chain</span><span class="dep-chip" data-target="formation_rejects_materialism">formation_rejects_materialism</span><span class="dep-chip" data-target="formation_rejects_traducianism">formation_rejects_traducianism</span><span class="dep-chip" data-target="complete_hylomorphic_asymmetry">complete_hylomorphic_asymmetry</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="isInformedBy">
@@ -554,10 +560,9 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque isInformedBy : Matter → HumanPerson → Prop
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque isInformedBy : Matter → HumanPerson → Prop</code></pre></div>
 <div class="node-desc">Whether matter is informed (actualized) by a spiritual soul into</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Matter">Matter</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="soul_forms_matter_into_body">soul_forms_matter_into_body</span><span class="dep-chip" data-target="living_body_requires_soul">living_body_requires_soul</span><span class="dep-chip" data-target="departure_of_soul_causes_decay">departure_of_soul_causes_decay</span><span class="dep-chip" data-target="body_dignity_from_soul">body_dignity_from_soul</span><span class="dep-chip" data-target="formation_iff_living_body">formation_iff_living_body</span><span class="dep-chip" data-target="no_soul_no_body">no_soul_no_body</span><span class="dep-chip" data-target="death_removes_formation">death_removes_formation</span><span class="dep-chip" data-target="formation_explains_corporeal_requires_spiritual">formation_explains_corporeal_requires_spiritual</span><span class="dep-chip" data-target="formation_explains_decay">formation_explains_decay</span><span class="dep-chip" data-target="death_affects_both_levels">death_affects_both_levels</span><span class="dep-chip" data-target="form_is_divinely_created">form_is_divinely_created</span><span class="dep-chip" data-target="bodily_dignity_chain">bodily_dignity_chain</span><span class="dep-chip" data-target="formation_rejects_materialism">formation_rejects_materialism</span><span class="dep-chip" data-target="complete_hylomorphic_asymmetry">complete_hylomorphic_asymmetry</span></div></div>
   </div>
 </div>
@@ -568,9 +573,9 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque isLivingHumanBody : Matter → Prop
-</code></pre></div>
-<div class="node-desc">Whether matter constitutes a living human body. │   ⚠ HIDDEN ASSUMPTION: There is a fact of the matter about whether</div>
+    <div class="node-prop"><pre><code>opaque isLivingHumanBody : Matter → Prop</code></pre></div>
+<div class="node-desc">Whether matter constitutes a living human body.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Matter">Matter</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="soul_forms_matter_into_body">soul_forms_matter_into_body</span><span class="dep-chip" data-target="living_body_requires_soul">living_body_requires_soul</span><span class="dep-chip" data-target="formation_iff_living_body">formation_iff_living_body</span><span class="dep-chip" data-target="no_soul_no_body">no_soul_no_body</span><span class="dep-chip" data-target="bodily_dignity_chain">bodily_dignity_chain</span><span class="dep-chip" data-target="formation_rejects_materialism">formation_rejects_materialism</span><span class="dep-chip" data-target="complete_hylomorphic_asymmetry">complete_hylomorphic_asymmetry</span></div></div>
   </div>
 </div>
@@ -581,9 +586,9 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque retainsOrganization : Matter → Prop
-</code></pre></div>
-<div class="node-desc">Whether matter retains its organization after the soul departs. │   ⚠ HIDDEN ASSUMPTION: The body's organization depends continuously on</div>
+    <div class="node-prop"><pre><code>opaque retainsOrganization : Matter → Prop</code></pre></div>
+<div class="node-desc">Whether matter retains its organization after the soul departs.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Matter">Matter</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="departure_of_soul_causes_decay">departure_of_soul_causes_decay</span><span class="dep-chip" data-target="death_removes_formation">death_removes_formation</span><span class="dep-chip" data-target="formation_explains_decay">formation_explains_decay</span><span class="dep-chip" data-target="death_affects_both_levels">death_affects_both_levels</span><span class="dep-chip" data-target="complete_hylomorphic_asymmetry">complete_hylomorphic_asymmetry</span></div></div>
   </div>
 </div>
@@ -596,11 +601,10 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom soul_forms_matter_into_body :
   ∀ (m : Matter) (p : HumanPerson),
-    isInformedBy m p → isLivingHumanBody m
-</code></pre></div>
-<div class="node-desc">1 (§365): The soul FORMS matter into a living human body. │   Source: [Definition] CCC §365; [Tradition] Council of Vienne (1312); | Scope: Catholic (the Aristotelian framework is</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="isInformedBy">isInformedBy</span><span class="dep-chip" data-target="isLivingHumanBody">isLivingHumanBody</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="formation_iff_living_body">formation_iff_living_body</span><span class="dep-chip" data-target="formation_explains_corporeal_requires_spiritual">formation_explains_corporeal_requires_spiritual</span><span class="dep-chip" data-target="bodily_dignity_chain">bodily_dignity_chain</span><span class="dep-chip" data-target="complete_hylomorphic_asymmetry">complete_hylomorphic_asymmetry</span><span class="dep-chip" data-target="isInformedBy">isInformedBy</span><span class="dep-chip" data-target="isLivingHumanBody">isLivingHumanBody</span></div></div>
+    isInformedBy m p → isLivingHumanBody m</code></pre></div>
+<div class="node-desc">AXIOM 1 (§365): The soul FORMS matter into a living human body.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Matter">Matter</span><span class="dep-chip" data-target="isInformedBy">isInformedBy</span><span class="dep-chip" data-target="isLivingHumanBody">isLivingHumanBody</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="formation_iff_living_body">formation_iff_living_body</span><span class="dep-chip" data-target="formation_explains_corporeal_requires_spiritual">formation_explains_corporeal_requires_spiritual</span><span class="dep-chip" data-target="bodily_dignity_chain">bodily_dignity_chain</span><span class="dep-chip" data-target="complete_hylomorphic_asymmetry">complete_hylomorphic_asymmetry</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="living_body_requires_soul">
@@ -612,11 +616,10 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom living_body_requires_soul :
   ∀ (m : Matter),
-    isLivingHumanBody m → ∃ (p : HumanPerson), isInformedBy m p
-</code></pre></div>
-<div class="node-desc">2 (§364): A living human body REQUIRES soul-animation. │   Source: [Definition] CCC §364. | Scope: Catholic (same as AXIOM 1).</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="isInformedBy">isInformedBy</span><span class="dep-chip" data-target="isLivingHumanBody">isLivingHumanBody</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="formation_iff_living_body">formation_iff_living_body</span><span class="dep-chip" data-target="no_soul_no_body">no_soul_no_body</span><span class="dep-chip" data-target="formation_explains_corporeal_requires_spiritual">formation_explains_corporeal_requires_spiritual</span><span class="dep-chip" data-target="bodily_dignity_chain">bodily_dignity_chain</span><span class="dep-chip" data-target="formation_rejects_materialism">formation_rejects_materialism</span><span class="dep-chip" data-target="complete_hylomorphic_asymmetry">complete_hylomorphic_asymmetry</span><span class="dep-chip" data-target="isInformedBy">isInformedBy</span><span class="dep-chip" data-target="isLivingHumanBody">isLivingHumanBody</span></div></div>
+    isLivingHumanBody m → ∃ (p : HumanPerson), isInformedBy m p</code></pre></div>
+<div class="node-desc">AXIOM 2 (§364): A living human body REQUIRES soul-animation.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Matter">Matter</span><span class="dep-chip" data-target="isInformedBy">isInformedBy</span><span class="dep-chip" data-target="isLivingHumanBody">isLivingHumanBody</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="formation_iff_living_body">formation_iff_living_body</span><span class="dep-chip" data-target="no_soul_no_body">no_soul_no_body</span><span class="dep-chip" data-target="formation_explains_corporeal_requires_spiritual">formation_explains_corporeal_requires_spiritual</span><span class="dep-chip" data-target="bodily_dignity_chain">bodily_dignity_chain</span><span class="dep-chip" data-target="formation_rejects_materialism">formation_rejects_materialism</span><span class="dep-chip" data-target="complete_hylomorphic_asymmetry">complete_hylomorphic_asymmetry</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="departure_of_soul_causes_decay">
@@ -633,11 +636,10 @@ h1 {
     -- ...and the person dies (soul departs)...
     isDead p →
     -- ...then the matter loses its organization
-    ¬retainsOrganization m
-</code></pre></div>
-<div class="node-desc">3 (§997): When the soul departs, the body decays. │   Source: [Definition] CCC §997; [Philosophical] Aristotle, | Scope: Ecumenical (all Christians affirm bodily decay</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="informs">informs</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="isInformedBy">isInformedBy</span><span class="dep-chip" data-target="participatesInImageOfGod">participatesInImageOfGod</span><span class="dep-chip" data-target="participation">participation</span><span class="dep-chip" data-target="retainsOrganization">retainsOrganization</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="death_removes_formation">death_removes_formation</span><span class="dep-chip" data-target="formation_explains_decay">formation_explains_decay</span><span class="dep-chip" data-target="death_affects_both_levels">death_affects_both_levels</span><span class="dep-chip" data-target="complete_hylomorphic_asymmetry">complete_hylomorphic_asymmetry</span><span class="dep-chip" data-target="isInformedBy">isInformedBy</span><span class="dep-chip" data-target="participatesInImageOfGod">participatesInImageOfGod</span><span class="dep-chip" data-target="retainsOrganization">retainsOrganization</span></div></div>
+    ¬retainsOrganization m</code></pre></div>
+<div class="node-desc">AXIOM 3 (§997): When the soul departs, the body decays.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Matter">Matter</span><span class="dep-chip" data-target="isInformedBy">isInformedBy</span><span class="dep-chip" data-target="participatesInImageOfGod">participatesInImageOfGod</span><span class="dep-chip" data-target="retainsOrganization">retainsOrganization</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="death_removes_formation">death_removes_formation</span><span class="dep-chip" data-target="formation_explains_decay">formation_explains_decay</span><span class="dep-chip" data-target="death_affects_both_levels">death_affects_both_levels</span><span class="dep-chip" data-target="complete_hylomorphic_asymmetry">complete_hylomorphic_asymmetry</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="participatesInImageOfGod">
@@ -647,9 +649,9 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque participatesInImageOfGod : Matter → Prop
-</code></pre></div>
-<div class="node-desc">4 (§364): The body's dignity derives from the soul. │   Source: [Definition] CCC §364; [Scripture] Gen 1:27 (image of God). | Scope: Ecumenical (the claim itself is ecumenical;</div>
+    <div class="node-prop"><pre><code>opaque participatesInImageOfGod : Matter → Prop</code></pre></div>
+<div class="node-desc">AXIOM 4 (§364): The body's dignity derives from the soul.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Matter">Matter</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="departure_of_soul_causes_decay">departure_of_soul_causes_decay</span><span class="dep-chip" data-target="body_dignity_from_soul">body_dignity_from_soul</span><span class="dep-chip" data-target="bodily_dignity_chain">bodily_dignity_chain</span><span class="dep-chip" data-target="complete_hylomorphic_asymmetry">complete_hylomorphic_asymmetry</span></div></div>
   </div>
 </div>
@@ -662,10 +664,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom body_dignity_from_soul :
   ∀ (m : Matter) (p : HumanPerson),
-    isInformedBy m p → participatesInImageOfGod m
-</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="isInformedBy">isInformedBy</span><span class="dep-chip" data-target="participatesInImageOfGod">participatesInImageOfGod</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="bodily_dignity_chain">bodily_dignity_chain</span><span class="dep-chip" data-target="complete_hylomorphic_asymmetry">complete_hylomorphic_asymmetry</span><span class="dep-chip" data-target="isInformedBy">isInformedBy</span><span class="dep-chip" data-target="participatesInImageOfGod">participatesInImageOfGod</span></div></div>
+    isInformedBy m p → participatesInImageOfGod m</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Matter">Matter</span><span class="dep-chip" data-target="isInformedBy">isInformedBy</span><span class="dep-chip" data-target="participatesInImageOfGod">participatesInImageOfGod</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="bodily_dignity_chain">bodily_dignity_chain</span><span class="dep-chip" data-target="complete_hylomorphic_asymmetry">complete_hylomorphic_asymmetry</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="isCreatedImmediatelyByGod">
@@ -675,10 +676,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque isCreatedImmediatelyByGod : HumanPerson → Prop
-</code></pre></div>
-<div class="node-desc">5 (§366): The soul is created immediately by God. │   Source: [Definition] CCC §366; [Tradition] Lateran Council V (1513); | Scope: Ecumenical (immediate creation of the s... │   ⚠ HIDDEN ASSUMPTION: The soul-as-form is the same entity as the</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span></div></div>
+    <div class="node-prop"><pre><code>opaque isCreatedImmediatelyByGod : HumanPerson → Prop</code></pre></div>
+<div class="node-desc">AXIOM 5 (§366): The soul is created immediately by God.</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="soul_created_by_god">soul_created_by_god</span><span class="dep-chip" data-target="form_is_divinely_created">form_is_divinely_created</span><span class="dep-chip" data-target="bodily_dignity_chain">bodily_dignity_chain</span><span class="dep-chip" data-target="formation_rejects_traducianism">formation_rejects_traducianism</span><span class="dep-chip" data-target="complete_hylomorphic_asymmetry">complete_hylomorphic_asymmetry</span></div></div>
   </div>
 </div>
@@ -690,10 +689,9 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom soul_created_by_god :
-  ∀ (p : HumanPerson), isCreatedImmediatelyByGod p
-</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="isCreatedImmediatelyByGod">isCreatedImmediatelyByGod</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="death_affects_both_levels">death_affects_both_levels</span><span class="dep-chip" data-target="form_is_divinely_created">form_is_divinely_created</span><span class="dep-chip" data-target="bodily_dignity_chain">bodily_dignity_chain</span><span class="dep-chip" data-target="formation_rejects_traducianism">formation_rejects_traducianism</span><span class="dep-chip" data-target="complete_hylomorphic_asymmetry">complete_hylomorphic_asymmetry</span><span class="dep-chip" data-target="isCreatedImmediatelyByGod">isCreatedImmediatelyByGod</span></div></div>
+  ∀ (p : HumanPerson), isCreatedImmediatelyByGod p</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isCreatedImmediatelyByGod">isCreatedImmediatelyByGod</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="death_affects_both_levels">death_affects_both_levels</span><span class="dep-chip" data-target="form_is_divinely_created">form_is_divinely_created</span><span class="dep-chip" data-target="bodily_dignity_chain">bodily_dignity_chain</span><span class="dep-chip" data-target="formation_rejects_traducianism">formation_rejects_traducianism</span><span class="dep-chip" data-target="complete_hylomorphic_asymmetry">complete_hylomorphic_asymmetry</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="formation_iff_living_body">
@@ -706,8 +704,8 @@ h1 {
     <div class="node-prop"><pre><code>theorem formation_iff_living_body (m : Matter) :
     isLivingHumanBody m ↔ ∃ (p : HumanPerson), isInformedBy m p</code></pre></div>
 <div class="node-desc">Formation gives the iff: matter is a living human body IF AND ONLY IF</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="corporeal_requires_spiritual">corporeal_requires_spiritual</span><span class="dep-chip" data-target="isInformedBy">isInformedBy</span><span class="dep-chip" data-target="isLivingHumanBody">isLivingHumanBody</span><span class="dep-chip" data-target="living_body_requires_soul">living_body_requires_soul</span><span class="dep-chip" data-target="soul_forms_matter_into_body">soul_forms_matter_into_body</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="complete_hylomorphic_asymmetry">complete_hylomorphic_asymmetry</span><span class="dep-chip" data-target="isInformedBy">isInformedBy</span><span class="dep-chip" data-target="isLivingHumanBody">isLivingHumanBody</span><span class="dep-chip" data-target="living_body_requires_soul">living_body_requires_soul</span><span class="dep-chip" data-target="soul_forms_matter_into_body">soul_forms_matter_into_body</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Matter">Matter</span><span class="dep-chip" data-target="isInformedBy">isInformedBy</span><span class="dep-chip" data-target="isLivingHumanBody">isLivingHumanBody</span><span class="dep-chip" data-target="living_body_requires_soul">living_body_requires_soul</span><span class="dep-chip" data-target="soul_forms_matter_into_body">soul_forms_matter_into_body</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="complete_hylomorphic_asymmetry">complete_hylomorphic_asymmetry</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="no_soul_no_body">
@@ -721,8 +719,8 @@ h1 {
     (h : ∀ (p : HumanPerson), ¬isInformedBy m p) :
     ¬isLivingHumanBody m</code></pre></div>
 <div class="node-desc">Without a soul, matter is NOT a human body. Contrapositive of AXIOM 1.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="isInformedBy">isInformedBy</span><span class="dep-chip" data-target="isLivingHumanBody">isLivingHumanBody</span><span class="dep-chip" data-target="living_body_requires_soul">living_body_requires_soul</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="complete_hylomorphic_asymmetry">complete_hylomorphic_asymmetry</span><span class="dep-chip" data-target="isInformedBy">isInformedBy</span><span class="dep-chip" data-target="isLivingHumanBody">isLivingHumanBody</span><span class="dep-chip" data-target="living_body_requires_soul">living_body_requires_soul</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Matter">Matter</span><span class="dep-chip" data-target="isInformedBy">isInformedBy</span><span class="dep-chip" data-target="isLivingHumanBody">isLivingHumanBody</span><span class="dep-chip" data-target="living_body_requires_soul">living_body_requires_soul</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="complete_hylomorphic_asymmetry">complete_hylomorphic_asymmetry</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="death_removes_formation">
@@ -736,8 +734,8 @@ h1 {
     (h_inf : isInformedBy m p) (h_dead : isDead p) :
     ¬retainsOrganization m</code></pre></div>
 <div class="node-desc">Death removes the form from the matter, causing two consequences:</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="corporeal_requires_spiritual">corporeal_requires_spiritual</span><span class="dep-chip" data-target="departure_of_soul_causes_decay">departure_of_soul_causes_decay</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="isInformedBy">isInformedBy</span><span class="dep-chip" data-target="retainsOrganization">retainsOrganization</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="complete_hylomorphic_asymmetry">complete_hylomorphic_asymmetry</span><span class="dep-chip" data-target="isInformedBy">isInformedBy</span><span class="dep-chip" data-target="retainsOrganization">retainsOrganization</span><span class="dep-chip" data-target="departure_of_soul_causes_decay">departure_of_soul_causes_decay</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Matter">Matter</span><span class="dep-chip" data-target="departure_of_soul_causes_decay">departure_of_soul_causes_decay</span><span class="dep-chip" data-target="isInformedBy">isInformedBy</span><span class="dep-chip" data-target="retainsOrganization">retainsOrganization</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="complete_hylomorphic_asymmetry">complete_hylomorphic_asymmetry</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="formation_explains_corporeal_requires_spiritual">
@@ -752,9 +750,9 @@ h1 {
       hasCorporealAspect p → ∃ (m : Matter), isInformedBy m p)
     (p : HumanPerson) (h_corp : hasCorporealAspect p) :
     hasSpiritualAspect p</code></pre></div>
-<div class="node-desc">The CONCEPTUAL bridge: if we identify &quot;having a corporeal aspect</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="death_separates">death_separates</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="isInformedBy">isInformedBy</span><span class="dep-chip" data-target="living_body_requires_soul">living_body_requires_soul</span><span class="dep-chip" data-target="soul_forms_matter_into_body">soul_forms_matter_into_body</span><span class="dep-chip" data-target="soul_is_immortal">soul_is_immortal</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="complete_hylomorphic_asymmetry">complete_hylomorphic_asymmetry</span><span class="dep-chip" data-target="isInformedBy">isInformedBy</span><span class="dep-chip" data-target="living_body_requires_soul">living_body_requires_soul</span><span class="dep-chip" data-target="soul_forms_matter_into_body">soul_forms_matter_into_body</span></div></div>
+<div class="node-desc">The CONCEPTUAL bridge: if we identify &quot;having a corporeal aspect&quot;</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Matter">Matter</span><span class="dep-chip" data-target="isInformedBy">isInformedBy</span><span class="dep-chip" data-target="living_body_requires_soul">living_body_requires_soul</span><span class="dep-chip" data-target="soul_forms_matter_into_body">soul_forms_matter_into_body</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="complete_hylomorphic_asymmetry">complete_hylomorphic_asymmetry</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="formation_explains_decay">
@@ -771,8 +769,8 @@ h1 {
     -- The person loses corporeal aspect (from Soul.lean)
     ¬hasCorporealAspect p</code></pre></div>
 <div class="node-desc">The formation model explains WHY the body decays at death.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="death_separates">death_separates</span><span class="dep-chip" data-target="departure_of_soul_causes_decay">departure_of_soul_causes_decay</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="isInformedBy">isInformedBy</span><span class="dep-chip" data-target="retainsOrganization">retainsOrganization</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="complete_hylomorphic_asymmetry">complete_hylomorphic_asymmetry</span><span class="dep-chip" data-target="isInformedBy">isInformedBy</span><span class="dep-chip" data-target="retainsOrganization">retainsOrganization</span><span class="dep-chip" data-target="departure_of_soul_causes_decay">departure_of_soul_causes_decay</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Matter">Matter</span><span class="dep-chip" data-target="departure_of_soul_causes_decay">departure_of_soul_causes_decay</span><span class="dep-chip" data-target="isInformedBy">isInformedBy</span><span class="dep-chip" data-target="retainsOrganization">retainsOrganization</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="complete_hylomorphic_asymmetry">complete_hylomorphic_asymmetry</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="death_affects_both_levels">
@@ -789,8 +787,8 @@ h1 {
     -- Matter level: organization lost
     ¬retainsOrganization m</code></pre></div>
 <div class="node-desc">The formation model reveals a parallel between two consequences</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="death_separates">death_separates</span><span class="dep-chip" data-target="departure_of_soul_causes_decay">departure_of_soul_causes_decay</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="informs">informs</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="isInformedBy">isInformedBy</span><span class="dep-chip" data-target="retainsOrganization">retainsOrganization</span><span class="dep-chip" data-target="soul_created_by_god">soul_created_by_god</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="complete_hylomorphic_asymmetry">complete_hylomorphic_asymmetry</span><span class="dep-chip" data-target="isInformedBy">isInformedBy</span><span class="dep-chip" data-target="retainsOrganization">retainsOrganization</span><span class="dep-chip" data-target="departure_of_soul_causes_decay">departure_of_soul_causes_decay</span><span class="dep-chip" data-target="soul_created_by_god">soul_created_by_god</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Matter">Matter</span><span class="dep-chip" data-target="departure_of_soul_causes_decay">departure_of_soul_causes_decay</span><span class="dep-chip" data-target="isInformedBy">isInformedBy</span><span class="dep-chip" data-target="retainsOrganization">retainsOrganization</span><span class="dep-chip" data-target="soul_created_by_god">soul_created_by_god</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="complete_hylomorphic_asymmetry">complete_hylomorphic_asymmetry</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="form_is_divinely_created">
@@ -804,8 +802,8 @@ h1 {
     (_h_inf : isInformedBy _m p) :
     isCreatedImmediatelyByGod p</code></pre></div>
 <div class="node-desc">Every human person's soul — the form of their body — is created</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="informs">informs</span><span class="dep-chip" data-target="isCreatedImmediatelyByGod">isCreatedImmediatelyByGod</span><span class="dep-chip" data-target="isInformedBy">isInformedBy</span><span class="dep-chip" data-target="soul_created_by_god">soul_created_by_god</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="complete_hylomorphic_asymmetry">complete_hylomorphic_asymmetry</span><span class="dep-chip" data-target="isCreatedImmediatelyByGod">isCreatedImmediatelyByGod</span><span class="dep-chip" data-target="isInformedBy">isInformedBy</span><span class="dep-chip" data-target="soul_created_by_god">soul_created_by_god</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Matter">Matter</span><span class="dep-chip" data-target="isCreatedImmediatelyByGod">isCreatedImmediatelyByGod</span><span class="dep-chip" data-target="isInformedBy">isInformedBy</span><span class="dep-chip" data-target="soul_created_by_god">soul_created_by_god</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="complete_hylomorphic_asymmetry">complete_hylomorphic_asymmetry</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="bodily_dignity_chain">
@@ -821,8 +819,8 @@ h1 {
     isLivingHumanBody m ∧
     participatesInImageOfGod m</code></pre></div>
 <div class="node-desc">The dignity of the body traces back to God through two steps:</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="body_dignity_from_soul">body_dignity_from_soul</span><span class="dep-chip" data-target="isCreatedImmediatelyByGod">isCreatedImmediatelyByGod</span><span class="dep-chip" data-target="isInformedBy">isInformedBy</span><span class="dep-chip" data-target="isLivingHumanBody">isLivingHumanBody</span><span class="dep-chip" data-target="living_body_requires_soul">living_body_requires_soul</span><span class="dep-chip" data-target="participatesInImageOfGod">participatesInImageOfGod</span><span class="dep-chip" data-target="soul_created_by_god">soul_created_by_god</span><span class="dep-chip" data-target="soul_forms_matter_into_body">soul_forms_matter_into_body</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="complete_hylomorphic_asymmetry">complete_hylomorphic_asymmetry</span><span class="dep-chip" data-target="isCreatedImmediatelyByGod">isCreatedImmediatelyByGod</span><span class="dep-chip" data-target="isInformedBy">isInformedBy</span><span class="dep-chip" data-target="isLivingHumanBody">isLivingHumanBody</span><span class="dep-chip" data-target="participatesInImageOfGod">participatesInImageOfGod</span><span class="dep-chip" data-target="body_dignity_from_soul">body_dignity_from_soul</span><span class="dep-chip" data-target="living_body_requires_soul">living_body_requires_soul</span><span class="dep-chip" data-target="soul_created_by_god">soul_created_by_god</span><span class="dep-chip" data-target="soul_forms_matter_into_body">soul_forms_matter_into_body</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Matter">Matter</span><span class="dep-chip" data-target="body_dignity_from_soul">body_dignity_from_soul</span><span class="dep-chip" data-target="isCreatedImmediatelyByGod">isCreatedImmediatelyByGod</span><span class="dep-chip" data-target="isInformedBy">isInformedBy</span><span class="dep-chip" data-target="isLivingHumanBody">isLivingHumanBody</span><span class="dep-chip" data-target="living_body_requires_soul">living_body_requires_soul</span><span class="dep-chip" data-target="participatesInImageOfGod">participatesInImageOfGod</span><span class="dep-chip" data-target="soul_created_by_god">soul_created_by_god</span><span class="dep-chip" data-target="soul_forms_matter_into_body">soul_forms_matter_into_body</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="complete_hylomorphic_asymmetry">complete_hylomorphic_asymmetry</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="formation_rejects_materialism">
@@ -837,8 +835,8 @@ h1 {
     ∀ (m : Matter), isLivingHumanBody m →
       ∃ (p : HumanPerson), isInformedBy m p</code></pre></div>
 <div class="node-desc">Materialism (applied to formation): matter can organize itself</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="isInformedBy">isInformedBy</span><span class="dep-chip" data-target="isLivingHumanBody">isLivingHumanBody</span><span class="dep-chip" data-target="living_body_requires_soul">living_body_requires_soul</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="complete_hylomorphic_asymmetry">complete_hylomorphic_asymmetry</span><span class="dep-chip" data-target="isInformedBy">isInformedBy</span><span class="dep-chip" data-target="isLivingHumanBody">isLivingHumanBody</span><span class="dep-chip" data-target="living_body_requires_soul">living_body_requires_soul</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Matter">Matter</span><span class="dep-chip" data-target="isInformedBy">isInformedBy</span><span class="dep-chip" data-target="isLivingHumanBody">isLivingHumanBody</span><span class="dep-chip" data-target="living_body_requires_soul">living_body_requires_soul</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="complete_hylomorphic_asymmetry">complete_hylomorphic_asymmetry</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="formation_rejects_traducianism">
@@ -851,8 +849,8 @@ h1 {
     <div class="node-prop"><pre><code>theorem formation_rejects_traducianism (p : HumanPerson) :
     isCreatedImmediatelyByGod p</code></pre></div>
 <div class="node-desc">Traducianism: the soul is produced by the parents through</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="informs">informs</span><span class="dep-chip" data-target="isCreatedImmediatelyByGod">isCreatedImmediatelyByGod</span><span class="dep-chip" data-target="soul_body_asymmetry">soul_body_asymmetry</span><span class="dep-chip" data-target="soul_created_by_god">soul_created_by_god</span><span class="dep-chip" data-target="soul_is_immortal">soul_is_immortal</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="complete_hylomorphic_asymmetry">complete_hylomorphic_asymmetry</span><span class="dep-chip" data-target="isCreatedImmediatelyByGod">isCreatedImmediatelyByGod</span><span class="dep-chip" data-target="soul_created_by_god">soul_created_by_god</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Matter">Matter</span><span class="dep-chip" data-target="isCreatedImmediatelyByGod">isCreatedImmediatelyByGod</span><span class="dep-chip" data-target="soul_created_by_god">soul_created_by_god</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="complete_hylomorphic_asymmetry">complete_hylomorphic_asymmetry</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="complete_hylomorphic_asymmetry">
@@ -868,8 +866,7 @@ h1 {
     -- Matter side: cannot be a body without a soul
     (∀ (m : Matter), isLivingHumanBody m → ∃ (q : HumanPerson), isInformedBy m q)</code></pre></div>
 <div class="node-desc">The full asymmetry, using both Soul.lean and the formation model:</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="bodily_dignity_chain">bodily_dignity_chain</span><span class="dep-chip" data-target="body_dignity_from_soul">body_dignity_from_soul</span><span class="dep-chip" data-target="corporeal_requires_spiritual">corporeal_requires_spiritual</span><span class="dep-chip" data-target="death_affects_both_levels">death_affects_both_levels</span><span class="dep-chip" data-target="death_removes_formation">death_removes_formation</span><span class="dep-chip" data-target="death_separates">death_separates</span><span class="dep-chip" data-target="departure_of_soul_causes_decay">departure_of_soul_causes_decay</span><span class="dep-chip" data-target="form_is_divinely_created">form_is_divinely_created</span><span class="dep-chip" data-target="formation_explains_corporeal_requires_spiritual">formation_explains_corporeal_requires_spiritual</span><span class="dep-chip" data-target="formation_explains_decay">formation_explains_decay</span><span class="dep-chip" data-target="formation_iff_living_body">formation_iff_living_body</span><span class="dep-chip" data-target="formation_rejects_materialism">formation_rejects_materialism</span><span class="dep-chip" data-target="formation_rejects_traducianism">formation_rejects_traducianism</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="informs">informs</span><span class="dep-chip" data-target="isCreatedImmediatelyByGod">isCreatedImmediatelyByGod</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="isExercisingPowers">isExercisingPowers</span><span class="dep-chip" data-target="isInformedBy">isInformedBy</span><span class="dep-chip" data-target="isLivingHumanBody">isLivingHumanBody</span><span class="dep-chip" data-target="living_body_requires_soul">living_body_requires_soul</span><span class="dep-chip" data-target="no_soul_no_body">no_soul_no_body</span><span class="dep-chip" data-target="participatesInImageOfGod">participatesInImageOfGod</span><span class="dep-chip" data-target="retainsOrganization">retainsOrganization</span><span class="dep-chip" data-target="separated_soul_can_think_and_will">separated_soul_can_think_and_will</span><span class="dep-chip" data-target="soul_created_by_god">soul_created_by_god</span><span class="dep-chip" data-target="soul_forms_matter_into_body">soul_forms_matter_into_body</span><span class="dep-chip" data-target="soul_is_immortal">soul_is_immortal</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="isCreatedImmediatelyByGod">isCreatedImmediatelyByGod</span><span class="dep-chip" data-target="isInformedBy">isInformedBy</span><span class="dep-chip" data-target="isLivingHumanBody">isLivingHumanBody</span><span class="dep-chip" data-target="participatesInImageOfGod">participatesInImageOfGod</span><span class="dep-chip" data-target="retainsOrganization">retainsOrganization</span><span class="dep-chip" data-target="body_dignity_from_soul">body_dignity_from_soul</span><span class="dep-chip" data-target="departure_of_soul_causes_decay">departure_of_soul_causes_decay</span><span class="dep-chip" data-target="living_body_requires_soul">living_body_requires_soul</span><span class="dep-chip" data-target="soul_created_by_god">soul_created_by_god</span><span class="dep-chip" data-target="soul_forms_matter_into_body">soul_forms_matter_into_body</span><span class="dep-chip" data-target="bodily_dignity_chain">bodily_dignity_chain</span><span class="dep-chip" data-target="death_affects_both_levels">death_affects_both_levels</span><span class="dep-chip" data-target="death_removes_formation">death_removes_formation</span><span class="dep-chip" data-target="form_is_divinely_created">form_is_divinely_created</span><span class="dep-chip" data-target="formation_explains_corporeal_requires_spiritual">formation_explains_corporeal_requires_spiritual</span><span class="dep-chip" data-target="formation_explains_decay">formation_explains_decay</span><span class="dep-chip" data-target="formation_iff_living_body">formation_iff_living_body</span><span class="dep-chip" data-target="formation_rejects_materialism">formation_rejects_materialism</span><span class="dep-chip" data-target="formation_rejects_traducianism">formation_rejects_traducianism</span><span class="dep-chip" data-target="no_soul_no_body">no_soul_no_body</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Matter">Matter</span><span class="dep-chip" data-target="bodily_dignity_chain">bodily_dignity_chain</span><span class="dep-chip" data-target="body_dignity_from_soul">body_dignity_from_soul</span><span class="dep-chip" data-target="death_affects_both_levels">death_affects_both_levels</span><span class="dep-chip" data-target="death_removes_formation">death_removes_formation</span><span class="dep-chip" data-target="departure_of_soul_causes_decay">departure_of_soul_causes_decay</span><span class="dep-chip" data-target="form_is_divinely_created">form_is_divinely_created</span><span class="dep-chip" data-target="formation_explains_corporeal_requires_spiritual">formation_explains_corporeal_requires_spiritual</span><span class="dep-chip" data-target="formation_explains_decay">formation_explains_decay</span><span class="dep-chip" data-target="formation_iff_living_body">formation_iff_living_body</span><span class="dep-chip" data-target="formation_rejects_materialism">formation_rejects_materialism</span><span class="dep-chip" data-target="formation_rejects_traducianism">formation_rejects_traducianism</span><span class="dep-chip" data-target="isCreatedImmediatelyByGod">isCreatedImmediatelyByGod</span><span class="dep-chip" data-target="isInformedBy">isInformedBy</span><span class="dep-chip" data-target="isLivingHumanBody">isLivingHumanBody</span><span class="dep-chip" data-target="living_body_requires_soul">living_body_requires_soul</span><span class="dep-chip" data-target="no_soul_no_body">no_soul_no_body</span><span class="dep-chip" data-target="participatesInImageOfGod">participatesInImageOfGod</span><span class="dep-chip" data-target="retainsOrganization">retainsOrganization</span><span class="dep-chip" data-target="soul_created_by_god">soul_created_by_god</span><span class="dep-chip" data-target="soul_forms_matter_into_body">soul_forms_matter_into_body</span></div></div>
   </div>
 </div>
   </div>

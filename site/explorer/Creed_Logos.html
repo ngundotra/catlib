@@ -525,7 +525,13 @@ h1 {
   <h1>Logos</h1>
   <div class="subtitle">Creed &middot; 16 declarations</div>
 
-  
+  <div class="flow-summary">
+  <span class="flow-count axioms">8 axioms</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count theorems">7 theorems</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count derived">1 derived</span>
+</div>
   <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;241, &sect;291, &sect;292, &sect;295, &sect;299, &sect;320</div>
 
   <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
@@ -542,10 +548,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque isEternalLogos : DivinePerson → Prop
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque isEternalLogos : DivinePerson → Prop</code></pre></div>
 <div class="node-desc">Whether a divine person is the eternal Logos (Word) — the rational</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DivinePerson">DivinePerson</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="son_is_logos">son_is_logos</span><span class="dep-chip" data-target="all_created_through_logos">all_created_through_logos</span><span class="dep-chip" data-target="wisdom_is_the_logos">wisdom_is_the_logos</span><span class="dep-chip" data-target="logos_trinitarian_status">logos_trinitarian_status</span><span class="dep-chip" data-target="logos_with_god_and_is_god">logos_with_god_and_is_god</span><span class="dep-chip" data-target="incarnate_christ_is_divine_logos">incarnate_christ_is_divine_logos</span><span class="dep-chip" data-target="logos_is_both_identity_and_cosmology">logos_is_both_identity_and_cosmology</span></div></div>
   </div>
 </div>
@@ -556,10 +560,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque allCreatedThrough : DivinePerson → Prop
-</code></pre></div>
-<div class="node-desc">Whether all things were created through a given agent. │   ⚠ HIDDEN ASSUMPTION: &quot;through&quot; indicates genuine causal mediation,</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DivinePerson">DivinePerson</span><span class="dep-chip" data-target="participation">participation</span></div></div>
+    <div class="node-prop"><pre><code>opaque allCreatedThrough : DivinePerson → Prop</code></pre></div>
+<div class="node-desc">Whether all things were created through a given agent.</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="all_created_through_logos">all_created_through_logos</span><span class="dep-chip" data-target="logos_grounds_intelligibility">logos_grounds_intelligibility</span><span class="dep-chip" data-target="logos_is_both_identity_and_cosmology">logos_is_both_identity_and_cosmology</span><span class="dep-chip" data-target="logos_bridges_creator_and_creation">logos_bridges_creator_and_creation</span></div></div>
   </div>
 </div>
@@ -570,10 +572,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque groundsIntelligibility : DivinePerson → Prop
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque groundsIntelligibility : DivinePerson → Prop</code></pre></div>
 <div class="node-desc">Whether the rational order of creation is grounded in a person</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DivinePerson">DivinePerson</span><span class="dep-chip" data-target="godCreatesThruWisdom">godCreatesThruWisdom</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="logos_grounds_intelligibility">logos_grounds_intelligibility</span><span class="dep-chip" data-target="logos_grounds_creation_order">logos_grounds_creation_order</span><span class="dep-chip" data-target="logos_is_both_identity_and_cosmology">logos_is_both_identity_and_cosmology</span></div></div>
   </div>
 </div>
@@ -584,8 +584,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque wisdomIsPersonal : Prop
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque wisdomIsPersonal : Prop</code></pre></div>
 <div class="node-desc">Whether divine wisdom is personal — i.e., identified with a person</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="wisdom_is_the_logos">wisdom_is_the_logos</span><span class="dep-chip" data-target="wisdom_is_personal">wisdom_is_personal</span><span class="dep-chip" data-target="logos_is_both_identity_and_cosmology">logos_is_both_identity_and_cosmology</span></div></div>
   </div>
@@ -597,11 +596,10 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>axiom son_is_logos : isEternalLogos son
-</code></pre></div>
-<div class="node-desc">The Son (second person of the Trinity) IS │   Source: [Scripture] Jn 1:1; [Definition] CCC §241, §291. | Scope: ECUMENICAL (Nicaea 325, Chalcedon 451).</div>
+    <div class="node-prop"><pre><code>axiom son_is_logos : isEternalLogos son</code></pre></div>
+<div class="node-desc">AXIOM (Jn 1:1, §241): The Son (second person of the Trinity) IS</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isEternalLogos">isEternalLogos</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="wisdom_is_the_logos">wisdom_is_the_logos</span><span class="dep-chip" data-target="logos_trinitarian_status">logos_trinitarian_status</span><span class="dep-chip" data-target="logos_grounds_creation_order">logos_grounds_creation_order</span><span class="dep-chip" data-target="wisdom_is_personal">wisdom_is_personal</span><span class="dep-chip" data-target="logos_with_god_and_is_god">logos_with_god_and_is_god</span><span class="dep-chip" data-target="incarnate_christ_is_divine_logos">incarnate_christ_is_divine_logos</span><span class="dep-chip" data-target="logos_is_both_identity_and_cosmology">logos_is_both_identity_and_cosmology</span><span class="dep-chip" data-target="logos_bridges_creator_and_creation">logos_bridges_creator_and_creation</span><span class="dep-chip" data-target="logos_denominational_scope">logos_denominational_scope</span><span class="dep-chip" data-target="isEternalLogos">isEternalLogos</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="wisdom_is_the_logos">wisdom_is_the_logos</span><span class="dep-chip" data-target="logos_trinitarian_status">logos_trinitarian_status</span><span class="dep-chip" data-target="logos_grounds_creation_order">logos_grounds_creation_order</span><span class="dep-chip" data-target="wisdom_is_personal">wisdom_is_personal</span><span class="dep-chip" data-target="logos_with_god_and_is_god">logos_with_god_and_is_god</span><span class="dep-chip" data-target="incarnate_christ_is_divine_logos">incarnate_christ_is_divine_logos</span><span class="dep-chip" data-target="logos_is_both_identity_and_cosmology">logos_is_both_identity_and_cosmology</span><span class="dep-chip" data-target="logos_bridges_creator_and_creation">logos_bridges_creator_and_creation</span><span class="dep-chip" data-target="logos_denominational_scope">logos_denominational_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="all_created_through_logos">
@@ -612,11 +610,10 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom all_created_through_logos :
-  isEternalLogos son → allCreatedThrough son
-</code></pre></div>
-<div class="node-desc">All things were created through the Logos. │   Source: [Scripture] Jn 1:3; [Definition] CCC §291-292, §320. | Scope: ECUMENICAL.</div>
+  isEternalLogos son → allCreatedThrough son</code></pre></div>
+<div class="node-desc">AXIOM (Jn 1:3, §291-292): All things were created through the Logos.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="allCreatedThrough">allCreatedThrough</span><span class="dep-chip" data-target="isEternalLogos">isEternalLogos</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="logos_trinitarian_status">logos_trinitarian_status</span><span class="dep-chip" data-target="logos_grounds_creation_order">logos_grounds_creation_order</span><span class="dep-chip" data-target="logos_is_both_identity_and_cosmology">logos_is_both_identity_and_cosmology</span><span class="dep-chip" data-target="logos_bridges_creator_and_creation">logos_bridges_creator_and_creation</span><span class="dep-chip" data-target="logos_denominational_scope">logos_denominational_scope</span><span class="dep-chip" data-target="allCreatedThrough">allCreatedThrough</span><span class="dep-chip" data-target="isEternalLogos">isEternalLogos</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="logos_trinitarian_status">logos_trinitarian_status</span><span class="dep-chip" data-target="logos_grounds_creation_order">logos_grounds_creation_order</span><span class="dep-chip" data-target="logos_is_both_identity_and_cosmology">logos_is_both_identity_and_cosmology</span><span class="dep-chip" data-target="logos_bridges_creator_and_creation">logos_bridges_creator_and_creation</span><span class="dep-chip" data-target="logos_denominational_scope">logos_denominational_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="logos_grounds_intelligibility">
@@ -627,11 +624,10 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom logos_grounds_intelligibility :
-  allCreatedThrough son → groundsIntelligibility son
-</code></pre></div>
-<div class="node-desc">Creation through the Logos grounds the │   Source: [Definition] CCC §291-292, §295. | Scope: ECUMENICAL.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="allCreatedThrough">allCreatedThrough</span><span class="dep-chip" data-target="godCreatesThruWisdom">godCreatesThruWisdom</span><span class="dep-chip" data-target="groundsIntelligibility">groundsIntelligibility</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="logos_trinitarian_status">logos_trinitarian_status</span><span class="dep-chip" data-target="logos_grounds_creation_order">logos_grounds_creation_order</span><span class="dep-chip" data-target="logos_denominational_scope">logos_denominational_scope</span><span class="dep-chip" data-target="allCreatedThrough">allCreatedThrough</span><span class="dep-chip" data-target="groundsIntelligibility">groundsIntelligibility</span></div></div>
+  allCreatedThrough son → groundsIntelligibility son</code></pre></div>
+<div class="node-desc">AXIOM (§291-292, §295): Creation through the Logos grounds the</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="allCreatedThrough">allCreatedThrough</span><span class="dep-chip" data-target="groundsIntelligibility">groundsIntelligibility</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="logos_trinitarian_status">logos_trinitarian_status</span><span class="dep-chip" data-target="logos_grounds_creation_order">logos_grounds_creation_order</span><span class="dep-chip" data-target="logos_denominational_scope">logos_denominational_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="wisdom_is_the_logos">
@@ -644,11 +640,10 @@ h1 {
     <div class="node-prop"><pre><code>axiom wisdom_is_the_logos :
   godCreatesThruWisdom →
   isEternalLogos son →
-  wisdomIsPersonal
-</code></pre></div>
-<div class="node-desc">The wisdom through which God creates │   Source: [Definition] CCC §291-292 + §299. | Scope: ECUMENICAL. │   ⚠ HIDDEN ASSUMPTION: The identification of wisdom (an attribute) with</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Sortal">Sortal</span><span class="dep-chip" data-target="different_person_father_son">different_person_father_son</span><span class="dep-chip" data-target="godCreatesThruWisdom">godCreatesThruWisdom</span><span class="dep-chip" data-target="isEternalLogos">isEternalLogos</span><span class="dep-chip" data-target="relativelySame">relativelySame</span><span class="dep-chip" data-target="same_god_father_son">same_god_father_son</span><span class="dep-chip" data-target="son_is_logos">son_is_logos</span><span class="dep-chip" data-target="wisdomIsPersonal">wisdomIsPersonal</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="logos_grounds_creation_order">logos_grounds_creation_order</span><span class="dep-chip" data-target="wisdom_is_personal">wisdom_is_personal</span><span class="dep-chip" data-target="logos_denominational_scope">logos_denominational_scope</span><span class="dep-chip" data-target="isEternalLogos">isEternalLogos</span><span class="dep-chip" data-target="wisdomIsPersonal">wisdomIsPersonal</span><span class="dep-chip" data-target="son_is_logos">son_is_logos</span></div></div>
+  wisdomIsPersonal</code></pre></div>
+<div class="node-desc">AXIOM (§291-292 + §299): The wisdom through which God creates</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isEternalLogos">isEternalLogos</span><span class="dep-chip" data-target="son_is_logos">son_is_logos</span><span class="dep-chip" data-target="wisdomIsPersonal">wisdomIsPersonal</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="logos_grounds_creation_order">logos_grounds_creation_order</span><span class="dep-chip" data-target="wisdom_is_personal">wisdom_is_personal</span><span class="dep-chip" data-target="logos_denominational_scope">logos_denominational_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="logos_trinitarian_status">
@@ -664,9 +659,9 @@ h1 {
   ¬relativelySame Sortal.person father son ∧
   -- AND &quot;is God&quot; — same divine substance as the Father
   relativelySame Sortal.god father son</code></pre></div>
-<div class="node-desc">The Logos is &quot;with God</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Sortal">Sortal</span><span class="dep-chip" data-target="all_created_through_logos">all_created_through_logos</span><span class="dep-chip" data-target="different_person_father_son">different_person_father_son</span><span class="dep-chip" data-target="father">father</span><span class="dep-chip" data-target="isEternalLogos">isEternalLogos</span><span class="dep-chip" data-target="logos_grounds_intelligibility">logos_grounds_intelligibility</span><span class="dep-chip" data-target="relativelySame">relativelySame</span><span class="dep-chip" data-target="same_god_father_son">same_god_father_son</span><span class="dep-chip" data-target="son_is_logos">son_is_logos</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="wisdom_is_personal">wisdom_is_personal</span><span class="dep-chip" data-target="logos_with_god_and_is_god">logos_with_god_and_is_god</span><span class="dep-chip" data-target="logos_is_both_identity_and_cosmology">logos_is_both_identity_and_cosmology</span><span class="dep-chip" data-target="logos_bridges_creator_and_creation">logos_bridges_creator_and_creation</span><span class="dep-chip" data-target="logos_denominational_scope">logos_denominational_scope</span><span class="dep-chip" data-target="isEternalLogos">isEternalLogos</span><span class="dep-chip" data-target="all_created_through_logos">all_created_through_logos</span><span class="dep-chip" data-target="logos_grounds_intelligibility">logos_grounds_intelligibility</span><span class="dep-chip" data-target="son_is_logos">son_is_logos</span></div></div>
+<div class="node-desc">THEOREM (Jn 1:1, relative identity): The Logos is &quot;with God&quot;</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="all_created_through_logos">all_created_through_logos</span><span class="dep-chip" data-target="isEternalLogos">isEternalLogos</span><span class="dep-chip" data-target="logos_grounds_intelligibility">logos_grounds_intelligibility</span><span class="dep-chip" data-target="son_is_logos">son_is_logos</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="wisdom_is_personal">wisdom_is_personal</span><span class="dep-chip" data-target="logos_with_god_and_is_god">logos_with_god_and_is_god</span><span class="dep-chip" data-target="logos_is_both_identity_and_cosmology">logos_is_both_identity_and_cosmology</span><span class="dep-chip" data-target="logos_bridges_creator_and_creation">logos_bridges_creator_and_creation</span><span class="dep-chip" data-target="logos_denominational_scope">logos_denominational_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="logos_grounds_creation_order">
@@ -678,9 +673,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem logos_grounds_creation_order :
     groundsIntelligibility son</code></pre></div>
-<div class="node-desc">The full Logos identification chain.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="all_created_through_logos">all_created_through_logos</span><span class="dep-chip" data-target="godCreatesThruWisdom">godCreatesThruWisdom</span><span class="dep-chip" data-target="god_creates_through_wisdom">god_creates_through_wisdom</span><span class="dep-chip" data-target="groundsIntelligibility">groundsIntelligibility</span><span class="dep-chip" data-target="logos_grounds_intelligibility">logos_grounds_intelligibility</span><span class="dep-chip" data-target="son_is_logos">son_is_logos</span><span class="dep-chip" data-target="wisdom_is_the_logos">wisdom_is_the_logos</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="incarnate_christ_is_divine_logos">incarnate_christ_is_divine_logos</span><span class="dep-chip" data-target="logos_is_both_identity_and_cosmology">logos_is_both_identity_and_cosmology</span><span class="dep-chip" data-target="logos_denominational_scope">logos_denominational_scope</span><span class="dep-chip" data-target="groundsIntelligibility">groundsIntelligibility</span><span class="dep-chip" data-target="all_created_through_logos">all_created_through_logos</span><span class="dep-chip" data-target="logos_grounds_intelligibility">logos_grounds_intelligibility</span><span class="dep-chip" data-target="son_is_logos">son_is_logos</span><span class="dep-chip" data-target="wisdom_is_the_logos">wisdom_is_the_logos</span></div></div>
+<div class="node-desc">THEOREM: The full Logos identification chain.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="all_created_through_logos">all_created_through_logos</span><span class="dep-chip" data-target="groundsIntelligibility">groundsIntelligibility</span><span class="dep-chip" data-target="logos_grounds_intelligibility">logos_grounds_intelligibility</span><span class="dep-chip" data-target="son_is_logos">son_is_logos</span><span class="dep-chip" data-target="wisdom_is_the_logos">wisdom_is_the_logos</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="incarnate_christ_is_divine_logos">incarnate_christ_is_divine_logos</span><span class="dep-chip" data-target="logos_is_both_identity_and_cosmology">logos_is_both_identity_and_cosmology</span><span class="dep-chip" data-target="logos_denominational_scope">logos_denominational_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="wisdom_is_personal">
@@ -691,9 +686,9 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem wisdom_is_personal : wisdomIsPersonal</code></pre></div>
-<div class="node-desc">Divine wisdom is personal — the KEY result.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="god_creates_through_wisdom">god_creates_through_wisdom</span><span class="dep-chip" data-target="logos_trinitarian_status">logos_trinitarian_status</span><span class="dep-chip" data-target="son_is_logos">son_is_logos</span><span class="dep-chip" data-target="wisdomIsPersonal">wisdomIsPersonal</span><span class="dep-chip" data-target="wisdom_is_the_logos">wisdom_is_the_logos</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="logos_is_both_identity_and_cosmology">logos_is_both_identity_and_cosmology</span><span class="dep-chip" data-target="logos_denominational_scope">logos_denominational_scope</span><span class="dep-chip" data-target="wisdomIsPersonal">wisdomIsPersonal</span><span class="dep-chip" data-target="son_is_logos">son_is_logos</span><span class="dep-chip" data-target="logos_trinitarian_status">logos_trinitarian_status</span><span class="dep-chip" data-target="wisdom_is_the_logos">wisdom_is_the_logos</span></div></div>
+<div class="node-desc">THEOREM: Divine wisdom is personal — the KEY result.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="logos_trinitarian_status">logos_trinitarian_status</span><span class="dep-chip" data-target="son_is_logos">son_is_logos</span><span class="dep-chip" data-target="wisdomIsPersonal">wisdomIsPersonal</span><span class="dep-chip" data-target="wisdom_is_the_logos">wisdom_is_the_logos</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="logos_is_both_identity_and_cosmology">logos_is_both_identity_and_cosmology</span><span class="dep-chip" data-target="logos_denominational_scope">logos_denominational_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="logos_with_god_and_is_god">
@@ -706,9 +701,9 @@ h1 {
     <div class="node-prop"><pre><code>theorem logos_with_god_and_is_god :
     ¬relativelySame Sortal.person father son ∧
     relativelySame Sortal.god father son</code></pre></div>
-<div class="node-desc">The Logos is both &quot;with God&quot; and &quot;is God&quot; — the Trinitarian</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DivinePerson">DivinePerson</span><span class="dep-chip" data-target="IncarnateSubject">IncarnateSubject</span><span class="dep-chip" data-target="Sortal">Sortal</span><span class="dep-chip" data-target="christ">christ</span><span class="dep-chip" data-target="father">father</span><span class="dep-chip" data-target="hypostatic_union">hypostatic_union</span><span class="dep-chip" data-target="isEternalLogos">isEternalLogos</span><span class="dep-chip" data-target="logos_trinitarian_status">logos_trinitarian_status</span><span class="dep-chip" data-target="relativelySame">relativelySame</span><span class="dep-chip" data-target="son_is_logos">son_is_logos</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="logos_denominational_scope">logos_denominational_scope</span><span class="dep-chip" data-target="isEternalLogos">isEternalLogos</span><span class="dep-chip" data-target="son_is_logos">son_is_logos</span><span class="dep-chip" data-target="logos_trinitarian_status">logos_trinitarian_status</span></div></div>
+<div class="node-desc">THEOREM: The Logos is both &quot;with God&quot; and &quot;is God&quot; — the Trinitarian</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isEternalLogos">isEternalLogos</span><span class="dep-chip" data-target="logos_trinitarian_status">logos_trinitarian_status</span><span class="dep-chip" data-target="son_is_logos">son_is_logos</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="logos_denominational_scope">logos_denominational_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="incarnate_christ_is_divine_logos">
@@ -720,9 +715,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem incarnate_christ_is_divine_logos :
     christ.isDivine ∧ isEternalLogos son</code></pre></div>
-<div class="node-desc">The incarnate Christ IS the cosmic Logos.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="christ">christ</span><span class="dep-chip" data-target="hypostatic_union">hypostatic_union</span><span class="dep-chip" data-target="isEternalLogos">isEternalLogos</span><span class="dep-chip" data-target="logos_grounds_creation_order">logos_grounds_creation_order</span><span class="dep-chip" data-target="son_is_logos">son_is_logos</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="logos_denominational_scope">logos_denominational_scope</span><span class="dep-chip" data-target="isEternalLogos">isEternalLogos</span><span class="dep-chip" data-target="son_is_logos">son_is_logos</span><span class="dep-chip" data-target="logos_grounds_creation_order">logos_grounds_creation_order</span></div></div>
+<div class="node-desc">THEOREM: The incarnate Christ IS the cosmic Logos.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isEternalLogos">isEternalLogos</span><span class="dep-chip" data-target="logos_grounds_creation_order">logos_grounds_creation_order</span><span class="dep-chip" data-target="son_is_logos">son_is_logos</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="logos_denominational_scope">logos_denominational_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="logos_is_both_identity_and_cosmology">
@@ -739,9 +734,9 @@ h1 {
     groundsIntelligibility son ∧
     -- (3) Personalization: the wisdom behind creation is personal
     wisdomIsPersonal</code></pre></div>
-<div class="node-desc">Logos as answer to &quot;both at once.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Nature">Nature</span><span class="dep-chip" data-target="Sortal">Sortal</span><span class="dep-chip" data-target="allCreatedThrough">allCreatedThrough</span><span class="dep-chip" data-target="all_created_through_logos">all_created_through_logos</span><span class="dep-chip" data-target="christ">christ</span><span class="dep-chip" data-target="groundsIntelligibility">groundsIntelligibility</span><span class="dep-chip" data-target="hypostatic_union">hypostatic_union</span><span class="dep-chip" data-target="isEternalLogos">isEternalLogos</span><span class="dep-chip" data-target="logos_grounds_creation_order">logos_grounds_creation_order</span><span class="dep-chip" data-target="logos_trinitarian_status">logos_trinitarian_status</span><span class="dep-chip" data-target="relativelySame">relativelySame</span><span class="dep-chip" data-target="son_is_logos">son_is_logos</span><span class="dep-chip" data-target="wisdomIsPersonal">wisdomIsPersonal</span><span class="dep-chip" data-target="wisdom_is_personal">wisdom_is_personal</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="logos_denominational_scope">logos_denominational_scope</span><span class="dep-chip" data-target="allCreatedThrough">allCreatedThrough</span><span class="dep-chip" data-target="groundsIntelligibility">groundsIntelligibility</span><span class="dep-chip" data-target="isEternalLogos">isEternalLogos</span><span class="dep-chip" data-target="wisdomIsPersonal">wisdomIsPersonal</span><span class="dep-chip" data-target="all_created_through_logos">all_created_through_logos</span><span class="dep-chip" data-target="son_is_logos">son_is_logos</span><span class="dep-chip" data-target="logos_trinitarian_status">logos_trinitarian_status</span><span class="dep-chip" data-target="logos_grounds_creation_order">logos_grounds_creation_order</span><span class="dep-chip" data-target="wisdom_is_personal">wisdom_is_personal</span></div></div>
+<div class="node-desc">THEOREM: Logos as answer to &quot;both at once.&quot;</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="allCreatedThrough">allCreatedThrough</span><span class="dep-chip" data-target="all_created_through_logos">all_created_through_logos</span><span class="dep-chip" data-target="groundsIntelligibility">groundsIntelligibility</span><span class="dep-chip" data-target="isEternalLogos">isEternalLogos</span><span class="dep-chip" data-target="logos_grounds_creation_order">logos_grounds_creation_order</span><span class="dep-chip" data-target="logos_trinitarian_status">logos_trinitarian_status</span><span class="dep-chip" data-target="son_is_logos">son_is_logos</span><span class="dep-chip" data-target="wisdomIsPersonal">wisdomIsPersonal</span><span class="dep-chip" data-target="wisdom_is_personal">wisdom_is_personal</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="logos_denominational_scope">logos_denominational_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="logos_bridges_creator_and_creation">
@@ -758,9 +753,9 @@ h1 {
     relativelySame Sortal.god father son ∧
     -- The Logos (incarnate as Christ) has a human nature
     christ.hasNature Nature.human</code></pre></div>
-<div class="node-desc">The Logos bridges Creator and creation.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Nature">Nature</span><span class="dep-chip" data-target="Sortal">Sortal</span><span class="dep-chip" data-target="allCreatedThrough">allCreatedThrough</span><span class="dep-chip" data-target="all_created_through_logos">all_created_through_logos</span><span class="dep-chip" data-target="christ">christ</span><span class="dep-chip" data-target="father">father</span><span class="dep-chip" data-target="hypostatic_union">hypostatic_union</span><span class="dep-chip" data-target="logos_trinitarian_status">logos_trinitarian_status</span><span class="dep-chip" data-target="relativelySame">relativelySame</span><span class="dep-chip" data-target="son_is_logos">son_is_logos</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="logos_denominational_scope">logos_denominational_scope</span><span class="dep-chip" data-target="allCreatedThrough">allCreatedThrough</span><span class="dep-chip" data-target="all_created_through_logos">all_created_through_logos</span><span class="dep-chip" data-target="son_is_logos">son_is_logos</span><span class="dep-chip" data-target="logos_trinitarian_status">logos_trinitarian_status</span></div></div>
+<div class="node-desc">THEOREM: The Logos bridges Creator and creation.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="allCreatedThrough">allCreatedThrough</span><span class="dep-chip" data-target="all_created_through_logos">all_created_through_logos</span><span class="dep-chip" data-target="logos_trinitarian_status">logos_trinitarian_status</span><span class="dep-chip" data-target="son_is_logos">son_is_logos</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="logos_denominational_scope">logos_denominational_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="logos_denominational_scope">
@@ -772,9 +767,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def logos_denominational_scope : DenominationalTag := ecumenical
 </code></pre></div>
-<div class="node-desc">ECUMENICAL. Jn 1:1-3 is accepted by all major Christian traditions. Scope: all axioms and theorems in this file are</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DivinePerson">DivinePerson</span><span class="dep-chip" data-target="IncarnateSubject">IncarnateSubject</span><span class="dep-chip" data-target="Nature">Nature</span><span class="dep-chip" data-target="Sortal">Sortal</span><span class="dep-chip" data-target="all_created_through_logos">all_created_through_logos</span><span class="dep-chip" data-target="christ">christ</span><span class="dep-chip" data-target="father">father</span><span class="dep-chip" data-target="godCreatesThruWisdom">godCreatesThruWisdom</span><span class="dep-chip" data-target="god_creates_through_wisdom">god_creates_through_wisdom</span><span class="dep-chip" data-target="hypostatic_union">hypostatic_union</span><span class="dep-chip" data-target="incarnate_christ_is_divine_logos">incarnate_christ_is_divine_logos</span><span class="dep-chip" data-target="logos_bridges_creator_and_creation">logos_bridges_creator_and_creation</span><span class="dep-chip" data-target="logos_grounds_creation_order">logos_grounds_creation_order</span><span class="dep-chip" data-target="logos_grounds_intelligibility">logos_grounds_intelligibility</span><span class="dep-chip" data-target="logos_is_both_identity_and_cosmology">logos_is_both_identity_and_cosmology</span><span class="dep-chip" data-target="logos_trinitarian_status">logos_trinitarian_status</span><span class="dep-chip" data-target="logos_with_god_and_is_god">logos_with_god_and_is_god</span><span class="dep-chip" data-target="relativelySame">relativelySame</span><span class="dep-chip" data-target="son_is_logos">son_is_logos</span><span class="dep-chip" data-target="wisdom_is_personal">wisdom_is_personal</span><span class="dep-chip" data-target="wisdom_is_the_logos">wisdom_is_the_logos</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="all_created_through_logos">all_created_through_logos</span><span class="dep-chip" data-target="logos_grounds_intelligibility">logos_grounds_intelligibility</span><span class="dep-chip" data-target="son_is_logos">son_is_logos</span><span class="dep-chip" data-target="logos_trinitarian_status">logos_trinitarian_status</span><span class="dep-chip" data-target="wisdom_is_the_logos">wisdom_is_the_logos</span><span class="dep-chip" data-target="logos_bridges_creator_and_creation">logos_bridges_creator_and_creation</span><span class="dep-chip" data-target="logos_grounds_creation_order">logos_grounds_creation_order</span><span class="dep-chip" data-target="logos_with_god_and_is_god">logos_with_god_and_is_god</span><span class="dep-chip" data-target="wisdom_is_personal">wisdom_is_personal</span><span class="dep-chip" data-target="incarnate_christ_is_divine_logos">incarnate_christ_is_divine_logos</span><span class="dep-chip" data-target="logos_is_both_identity_and_cosmology">logos_is_both_identity_and_cosmology</span></div></div>
+<div class="node-desc">Denominational scope: all axioms and theorems in this file are</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="all_created_through_logos">all_created_through_logos</span><span class="dep-chip" data-target="incarnate_christ_is_divine_logos">incarnate_christ_is_divine_logos</span><span class="dep-chip" data-target="logos_bridges_creator_and_creation">logos_bridges_creator_and_creation</span><span class="dep-chip" data-target="logos_grounds_creation_order">logos_grounds_creation_order</span><span class="dep-chip" data-target="logos_grounds_intelligibility">logos_grounds_intelligibility</span><span class="dep-chip" data-target="logos_is_both_identity_and_cosmology">logos_is_both_identity_and_cosmology</span><span class="dep-chip" data-target="logos_trinitarian_status">logos_trinitarian_status</span><span class="dep-chip" data-target="logos_with_god_and_is_god">logos_with_god_and_is_god</span><span class="dep-chip" data-target="son_is_logos">son_is_logos</span><span class="dep-chip" data-target="wisdom_is_personal">wisdom_is_personal</span><span class="dep-chip" data-target="wisdom_is_the_logos">wisdom_is_the_logos</span></div></div>
   </div>
 </div>
   </div>

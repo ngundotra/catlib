@@ -523,14 +523,20 @@ h1 {
 <div class="container">
   <a href="index.html" class="back-link">&larr; All files</a>
   <h1>HolySpirit</h1>
-  <div class="subtitle">Creed &middot; 20 declarations</div>
+  <div class="subtitle">Creed &middot; 22 declarations</div>
 
-  
+  <div class="flow-summary">
+  <span class="flow-count axioms">11 axioms</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count theorems">7 theorems</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count derived">4 derived</span>
+</div>
   <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;246, &sect;248, &sect;253, &sect;255, &sect;258, &sect;683, &sect;685, &sect;687, &sect;688, &sect;689, &sect;690, &sect;733</div>
 
-  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
+  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
 
-  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (7)</button><button class="filter-btn" data-filter="inductive">inductive (2)</button><button class="filter-btn" data-filter="opaque">opaque (4)</button><button class="filter-btn" data-filter="theorem">theorem (7)</button></div>
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (7)</button><button class="filter-btn" data-filter="def">def (2)</button><button class="filter-btn" data-filter="inductive">inductive (2)</button><button class="filter-btn" data-filter="opaque">opaque (4)</button><button class="filter-btn" data-filter="theorem">theorem (7)</button></div>
 
   <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
 
@@ -554,11 +560,10 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque hasMission : DivinePerson → DivineMission → Prop
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque hasMission : DivinePerson → DivineMission → Prop</code></pre></div>
 <div class="node-desc">Whether a divine person has a specific mission.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DivineMission">DivineMission</span><span class="dep-chip" data-target="DivinePerson">DivinePerson</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="son_reveals_spirit_sanctifies">son_reveals_spirit_sanctifies</span><span class="dep-chip" data-target="sanctification_is_appropriated">sanctification_is_appropriated</span><span class="dep-chip" data-target="revelation_is_appropriated">revelation_is_appropriated</span><span class="dep-chip" data-target="DivineMission">DivineMission</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DivineMission">DivineMission</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="son_reveals_spirit_sanctifies">son_reveals_spirit_sanctifies</span><span class="dep-chip" data-target="sanctification_is_appropriated">sanctification_is_appropriated</span><span class="dep-chip" data-target="revelation_is_appropriated">revelation_is_appropriated</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="actsInseparably">
@@ -568,10 +573,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque actsInseparably : DivinePerson → DivinePerson → DivinePerson → Prop → Prop
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque actsInseparably : DivinePerson → DivinePerson → DivinePerson → Prop → Prop</code></pre></div>
 <div class="node-desc">Whether a divine act is performed inseparably by all three persons.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DivinePerson">DivinePerson</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="trinitarian_inseparability">trinitarian_inseparability</span><span class="dep-chip" data-target="mission_is_appropriation">mission_is_appropriation</span><span class="dep-chip" data-target="sanctification_is_appropriated">sanctification_is_appropriated</span><span class="dep-chip" data-target="revelation_is_appropriated">revelation_is_appropriated</span><span class="dep-chip" data-target="grace_giving_inseparable">grace_giving_inseparable</span></div></div>
   </div>
 </div>
@@ -582,10 +585,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque appropriatedTo : DivinePerson → Prop → Prop
-</code></pre></div>
-<div class="node-desc">Whether a divine act is APPROPRIATED to a specific person. │   ⚠ HIDDEN ASSUMPTION: Appropriation is the bridge between inseparable</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DivinePerson">DivinePerson</span></div></div>
+    <div class="node-prop"><pre><code>opaque appropriatedTo : DivinePerson → Prop → Prop</code></pre></div>
+<div class="node-desc">Whether a divine act is APPROPRIATED to a specific person.</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="mission_is_appropriation">mission_is_appropriation</span><span class="dep-chip" data-target="spirit_gives_grace">spirit_gives_grace</span><span class="dep-chip" data-target="grace_given_is_spirits_work">grace_given_is_spirits_work</span></div></div>
   </div>
 </div>
@@ -608,11 +609,10 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque spiritProceeds : ProcessionSource → Prop
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque spiritProceeds : ProcessionSource → Prop</code></pre></div>
 <div class="node-desc">The procession relation: from whom does the Spirit eternally proceed?</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ProcessionSource">ProcessionSource</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="western_filioque">western_filioque</span><span class="dep-chip" data-target="eastern_formulation_legitimate">eastern_formulation_legitimate</span><span class="dep-chip" data-target="both_procession_formulas">both_procession_formulas</span><span class="dep-chip" data-target="ProcessionSource">ProcessionSource</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="western_filioque">western_filioque</span><span class="dep-chip" data-target="eastern_formulation_legitimate">eastern_formulation_legitimate</span><span class="dep-chip" data-target="both_procession_formulas">both_procession_formulas</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="spirit_is_divine_person">
@@ -625,11 +625,9 @@ h1 {
     <div class="node-prop"><pre><code>axiom spirit_is_divine_person :
   holySpirit.isDivineSubstance ∧
   holySpirit ≠ father ∧
-  holySpirit ≠ son
-</code></pre></div>
-<div class="node-desc">1 (§685): The Spirit is a person of the Trinity — consubstantial │   Source: [Tradition] Nicaea-Constantinople (381 AD); CCC §685.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="father">father</span><span class="dep-chip" data-target="holySpirit">holySpirit</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="eastern_formulation_legitimate">eastern_formulation_legitimate</span><span class="dep-chip" data-target="spirit_distinct_from_son">spirit_distinct_from_son</span></div></div>
+  holySpirit ≠ son</code></pre></div>
+<div class="node-desc">AXIOM 1 (§685): The Spirit is a person of the Trinity — consubstantial</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="eastern_formulation_legitimate">eastern_formulation_legitimate</span><span class="dep-chip" data-target="spirit_distinct_from_son">spirit_distinct_from_son</span><span class="dep-chip" data-target="eastern_tag">eastern_tag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="son_reveals_spirit_sanctifies">
@@ -641,11 +639,10 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom son_reveals_spirit_sanctifies :
   hasMission son DivineMission.revelation ∧
-  hasMission holySpirit DivineMission.sanctification
-</code></pre></div>
-<div class="node-desc">2 (§689-690): The Son's mission is revelation, the Spirit's │   Source: [Definition] CCC §689-690.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DivineMission">DivineMission</span><span class="dep-chip" data-target="hasMission">hasMission</span><span class="dep-chip" data-target="holySpirit">holySpirit</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="sanctification_is_appropriated">sanctification_is_appropriated</span><span class="dep-chip" data-target="revelation_is_appropriated">revelation_is_appropriated</span><span class="dep-chip" data-target="DivineMission">DivineMission</span><span class="dep-chip" data-target="hasMission">hasMission</span></div></div>
+  hasMission holySpirit DivineMission.sanctification</code></pre></div>
+<div class="node-desc">AXIOM 2 (§689-690): The Son's mission is revelation, the Spirit's</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DivineMission">DivineMission</span><span class="dep-chip" data-target="hasMission">hasMission</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="sanctification_is_appropriated">sanctification_is_appropriated</span><span class="dep-chip" data-target="revelation_is_appropriated">revelation_is_appropriated</span><span class="dep-chip" data-target="eastern_tag">eastern_tag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="trinitarian_inseparability">
@@ -657,11 +654,10 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom trinitarian_inseparability :
   ∀ (act : Prop),
-    actsInseparably father son holySpirit act
-</code></pre></div>
-<div class="node-desc">3 (§258): All divine acts are inseparable — the three persons │   Source: [Tradition] Fourth Lateran Council (1215); CCC §258.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="actsInseparably">actsInseparably</span><span class="dep-chip" data-target="father">father</span><span class="dep-chip" data-target="holySpirit">holySpirit</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="sanctification_is_appropriated">sanctification_is_appropriated</span><span class="dep-chip" data-target="revelation_is_appropriated">revelation_is_appropriated</span><span class="dep-chip" data-target="actsInseparably">actsInseparably</span></div></div>
+    actsInseparably father son holySpirit act</code></pre></div>
+<div class="node-desc">AXIOM 3 (§258): All divine acts are inseparable — the three persons</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="actsInseparably">actsInseparably</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="sanctification_is_appropriated">sanctification_is_appropriated</span><span class="dep-chip" data-target="revelation_is_appropriated">revelation_is_appropriated</span><span class="dep-chip" data-target="eastern_tag">eastern_tag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="mission_is_appropriation">
@@ -674,11 +670,10 @@ h1 {
     <div class="node-prop"><pre><code>axiom mission_is_appropriation :
   ∀ (p : DivinePerson) (act : Prop),
     appropriatedTo p act →
-    actsInseparably father son holySpirit act
-</code></pre></div>
-<div class="node-desc">4 (§258): Mission distinction is by APPROPRIATION, not by │   Source: [Tradition] CCC §258; Aquinas ST I q.39 a.7. │   ⚠ HIDDEN ASSUMPTION: The CCC assumes the concept of appropriation</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DivinePerson">DivinePerson</span><span class="dep-chip" data-target="actsInseparably">actsInseparably</span><span class="dep-chip" data-target="appropriatedTo">appropriatedTo</span><span class="dep-chip" data-target="father">father</span><span class="dep-chip" data-target="holySpirit">holySpirit</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="grace_given_is_spirits_work">grace_given_is_spirits_work</span><span class="dep-chip" data-target="grace_giving_inseparable">grace_giving_inseparable</span><span class="dep-chip" data-target="actsInseparably">actsInseparably</span><span class="dep-chip" data-target="appropriatedTo">appropriatedTo</span></div></div>
+    actsInseparably father son holySpirit act</code></pre></div>
+<div class="node-desc">AXIOM 4 (§258): Mission distinction is by APPROPRIATION, not by</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="actsInseparably">actsInseparably</span><span class="dep-chip" data-target="appropriatedTo">appropriatedTo</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="grace_given_is_spirits_work">grace_given_is_spirits_work</span><span class="dep-chip" data-target="grace_giving_inseparable">grace_giving_inseparable</span><span class="dep-chip" data-target="eastern_tag">eastern_tag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="western_filioque">
@@ -689,11 +684,10 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom western_filioque :
-  spiritProceeds ProcessionSource.fatherAndSon
-</code></pre></div>
-<div class="node-desc">5 (§246, Council of Toledo 589 AD): The WESTERN filioque — │   Source: [Council] Council of Toledo (589 AD); CCC §246. | Scope: Catholic/Western. The Eastern Orthodox reject</div>
+  spiritProceeds ProcessionSource.fatherAndSon</code></pre></div>
+<div class="node-desc">AXIOM 5 (§246, Council of Toledo 589 AD): The WESTERN filioque —</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ProcessionSource">ProcessionSource</span><span class="dep-chip" data-target="spiritProceeds">spiritProceeds</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="both_procession_formulas">both_procession_formulas</span><span class="dep-chip" data-target="ProcessionSource">ProcessionSource</span><span class="dep-chip" data-target="spiritProceeds">spiritProceeds</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="both_procession_formulas">both_procession_formulas</span><span class="dep-chip" data-target="eastern_tag">eastern_tag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="eastern_formulation_legitimate">
@@ -704,11 +698,10 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom eastern_formulation_legitimate :
-  spiritProceeds ProcessionSource.fatherThroughSon
-</code></pre></div>
-<div class="node-desc">6 (§248): The CCC acknowledges the Eastern &quot;through the Son&quot; │   Source: [Definition] CCC §248. │   ⚠ HIDDEN ASSUMPTION: The CCC is doing something remarkable here — it</div>
+  spiritProceeds ProcessionSource.fatherThroughSon</code></pre></div>
+<div class="node-desc">AXIOM 6 (§248): The CCC acknowledges the Eastern &quot;through the Son&quot;</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ProcessionSource">ProcessionSource</span><span class="dep-chip" data-target="spiritProceeds">spiritProceeds</span><span class="dep-chip" data-target="spirit_is_divine_person">spirit_is_divine_person</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="both_procession_formulas">both_procession_formulas</span><span class="dep-chip" data-target="ProcessionSource">ProcessionSource</span><span class="dep-chip" data-target="spirit_is_divine_person">spirit_is_divine_person</span><span class="dep-chip" data-target="spiritProceeds">spiritProceeds</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="both_procession_formulas">both_procession_formulas</span><span class="dep-chip" data-target="eastern_tag">eastern_tag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="spirit_distinct_from_son">
@@ -720,9 +713,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem spirit_distinct_from_son :
     holySpirit ≠ son</code></pre></div>
-<div class="node-desc">The Spirit is really distinct from the Son.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="holySpirit">holySpirit</span><span class="dep-chip" data-target="spirit_is_divine_person">spirit_is_divine_person</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="spirit_is_divine_person">spirit_is_divine_person</span></div></div>
+<div class="node-desc">THEOREM: The Spirit is really distinct from the Son.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="spirit_is_divine_person">spirit_is_divine_person</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="eastern_tag">eastern_tag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="sanctification_is_appropriated">
@@ -735,9 +728,9 @@ h1 {
     <div class="node-prop"><pre><code>theorem sanctification_is_appropriated :
     hasMission holySpirit DivineMission.sanctification ∧
     actsInseparably father son holySpirit (hasMission holySpirit DivineMission.sanctification)</code></pre></div>
-<div class="node-desc">The mission distinction is real but appropriated.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DivineMission">DivineMission</span><span class="dep-chip" data-target="actsInseparably">actsInseparably</span><span class="dep-chip" data-target="father">father</span><span class="dep-chip" data-target="hasMission">hasMission</span><span class="dep-chip" data-target="holySpirit">holySpirit</span><span class="dep-chip" data-target="son_reveals_spirit_sanctifies">son_reveals_spirit_sanctifies</span><span class="dep-chip" data-target="trinitarian_inseparability">trinitarian_inseparability</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="DivineMission">DivineMission</span><span class="dep-chip" data-target="actsInseparably">actsInseparably</span><span class="dep-chip" data-target="hasMission">hasMission</span><span class="dep-chip" data-target="trinitarian_inseparability">trinitarian_inseparability</span><span class="dep-chip" data-target="son_reveals_spirit_sanctifies">son_reveals_spirit_sanctifies</span></div></div>
+<div class="node-desc">THEOREM: The mission distinction is real but appropriated.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DivineMission">DivineMission</span><span class="dep-chip" data-target="actsInseparably">actsInseparably</span><span class="dep-chip" data-target="hasMission">hasMission</span><span class="dep-chip" data-target="son_reveals_spirit_sanctifies">son_reveals_spirit_sanctifies</span><span class="dep-chip" data-target="trinitarian_inseparability">trinitarian_inseparability</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="eastern_tag">eastern_tag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="revelation_is_appropriated">
@@ -750,9 +743,9 @@ h1 {
     <div class="node-prop"><pre><code>theorem revelation_is_appropriated :
     hasMission son DivineMission.revelation ∧
     actsInseparably father son holySpirit (hasMission son DivineMission.revelation)</code></pre></div>
-<div class="node-desc">Revelation is likewise appropriated to the Son.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DivineMission">DivineMission</span><span class="dep-chip" data-target="actsInseparably">actsInseparably</span><span class="dep-chip" data-target="father">father</span><span class="dep-chip" data-target="hasMission">hasMission</span><span class="dep-chip" data-target="holySpirit">holySpirit</span><span class="dep-chip" data-target="son_reveals_spirit_sanctifies">son_reveals_spirit_sanctifies</span><span class="dep-chip" data-target="trinitarian_inseparability">trinitarian_inseparability</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="DivineMission">DivineMission</span><span class="dep-chip" data-target="actsInseparably">actsInseparably</span><span class="dep-chip" data-target="hasMission">hasMission</span><span class="dep-chip" data-target="trinitarian_inseparability">trinitarian_inseparability</span><span class="dep-chip" data-target="son_reveals_spirit_sanctifies">son_reveals_spirit_sanctifies</span></div></div>
+<div class="node-desc">THEOREM: Revelation is likewise appropriated to the Son.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DivineMission">DivineMission</span><span class="dep-chip" data-target="actsInseparably">actsInseparably</span><span class="dep-chip" data-target="hasMission">hasMission</span><span class="dep-chip" data-target="son_reveals_spirit_sanctifies">son_reveals_spirit_sanctifies</span><span class="dep-chip" data-target="trinitarian_inseparability">trinitarian_inseparability</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="eastern_tag">eastern_tag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="both_procession_formulas">
@@ -765,9 +758,9 @@ h1 {
     <div class="node-prop"><pre><code>theorem both_procession_formulas :
     spiritProceeds ProcessionSource.fatherAndSon ∧
     spiritProceeds ProcessionSource.fatherThroughSon</code></pre></div>
-<div class="node-desc">Both filioque formulations hold simultaneously.</div>
+<div class="node-desc">THEOREM: Both filioque formulations hold simultaneously.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ProcessionSource">ProcessionSource</span><span class="dep-chip" data-target="eastern_formulation_legitimate">eastern_formulation_legitimate</span><span class="dep-chip" data-target="spiritProceeds">spiritProceeds</span><span class="dep-chip" data-target="western_filioque">western_filioque</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ProcessionSource">ProcessionSource</span><span class="dep-chip" data-target="spiritProceeds">spiritProceeds</span><span class="dep-chip" data-target="eastern_formulation_legitimate">eastern_formulation_legitimate</span><span class="dep-chip" data-target="western_filioque">western_filioque</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="eastern_tag">eastern_tag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="spirit_gives_grace">
@@ -780,11 +773,10 @@ h1 {
     <div class="node-prop"><pre><code>axiom spirit_gives_grace :
   ∀ (p : Person) (g : Grace),
     graceGiven p g →
-    appropriatedTo holySpirit (graceGiven p g)
-</code></pre></div>
-<div class="node-desc">7 (§733, Rom 5:5): The Spirit is the giver of grace. │   Source: [Scripture] Rom 5:5; CCC §733. │   ⚠ HIDDEN ASSUMPTION: &quot;through the Holy Spirit&quot; means the Spirit is</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="appropriatedTo">appropriatedTo</span><span class="dep-chip" data-target="graceGiven">graceGiven</span><span class="dep-chip" data-target="holySpirit">holySpirit</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="grace_given_is_spirits_work">grace_given_is_spirits_work</span><span class="dep-chip" data-target="grace_giving_inseparable">grace_giving_inseparable</span><span class="dep-chip" data-target="appropriatedTo">appropriatedTo</span></div></div>
+    appropriatedTo holySpirit (graceGiven p g)</code></pre></div>
+<div class="node-desc">AXIOM 7 (§733, Rom 5:5): The Spirit is the giver of grace.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="appropriatedTo">appropriatedTo</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="grace_given_is_spirits_work">grace_given_is_spirits_work</span><span class="dep-chip" data-target="grace_giving_inseparable">grace_giving_inseparable</span><span class="dep-chip" data-target="eastern_tag">eastern_tag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="grace_given_is_spirits_work">
@@ -797,9 +789,9 @@ h1 {
     <div class="node-prop"><pre><code>theorem grace_given_is_spirits_work
     (p : Person) (g : Grace) (h : graceGiven p g) :
     appropriatedTo holySpirit (graceGiven p g)</code></pre></div>
-<div class="node-desc">When grace is given to a person, the Spirit's sanctifying</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="appropriatedTo">appropriatedTo</span><span class="dep-chip" data-target="graceGiven">graceGiven</span><span class="dep-chip" data-target="holySpirit">holySpirit</span><span class="dep-chip" data-target="mission_is_appropriation">mission_is_appropriation</span><span class="dep-chip" data-target="spirit_gives_grace">spirit_gives_grace</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="appropriatedTo">appropriatedTo</span><span class="dep-chip" data-target="mission_is_appropriation">mission_is_appropriation</span><span class="dep-chip" data-target="spirit_gives_grace">spirit_gives_grace</span></div></div>
+<div class="node-desc">THEOREM: When grace is given to a person, the Spirit's sanctifying</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="appropriatedTo">appropriatedTo</span><span class="dep-chip" data-target="mission_is_appropriation">mission_is_appropriation</span><span class="dep-chip" data-target="spirit_gives_grace">spirit_gives_grace</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="eastern_tag">eastern_tag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="grace_giving_inseparable">
@@ -812,9 +804,9 @@ h1 {
     <div class="node-prop"><pre><code>theorem grace_giving_inseparable
     (p : Person) (g : Grace) (h : graceGiven p g) :
     actsInseparably father son holySpirit (graceGiven p g)</code></pre></div>
-<div class="node-desc">Appropriation entails inseparability — when we attribute</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="TrinRelation">TrinRelation</span><span class="dep-chip" data-target="actsInseparably">actsInseparably</span><span class="dep-chip" data-target="father">father</span><span class="dep-chip" data-target="graceGiven">graceGiven</span><span class="dep-chip" data-target="holySpirit">holySpirit</span><span class="dep-chip" data-target="mission_is_appropriation">mission_is_appropriation</span><span class="dep-chip" data-target="relationsOppose">relationsOppose</span><span class="dep-chip" data-target="spirit_gives_grace">spirit_gives_grace</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="actsInseparably">actsInseparably</span><span class="dep-chip" data-target="mission_is_appropriation">mission_is_appropriation</span><span class="dep-chip" data-target="spirit_gives_grace">spirit_gives_grace</span></div></div>
+<div class="node-desc">THEOREM: Appropriation entails inseparability — when we attribute</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="actsInseparably">actsInseparably</span><span class="dep-chip" data-target="mission_is_appropriation">mission_is_appropriation</span><span class="dep-chip" data-target="spirit_gives_grace">spirit_gives_grace</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="eastern_tag">eastern_tag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="spirit_son_opposition">
@@ -827,7 +819,30 @@ h1 {
     <div class="node-prop"><pre><code>theorem spirit_son_opposition :
     relationsOppose TrinRelation.spiration TrinRelation.procession = true</code></pre></div>
 <div class="node-desc">STRUCTURAL LEMMA (Tier 0): The Spirit's distinction from the Son is</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="TrinRelation">TrinRelation</span><span class="dep-chip" data-target="relationsOppose">relationsOppose</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="eastern_tag">eastern_tag</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="filioque_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">filioque_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def filioque_tag : DenominationalTag</code></pre></div>
+<div class="node-desc">Denominational tag: the Western filioque is Catholic-distinctive</div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="eastern_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">eastern_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def eastern_tag : DenominationalTag</code></pre></div>
+<div class="node-desc">Denominational tag: Eastern formulation accepted by both Catholic</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="both_procession_formulas">both_procession_formulas</span><span class="dep-chip" data-target="eastern_formulation_legitimate">eastern_formulation_legitimate</span><span class="dep-chip" data-target="grace_given_is_spirits_work">grace_given_is_spirits_work</span><span class="dep-chip" data-target="grace_giving_inseparable">grace_giving_inseparable</span><span class="dep-chip" data-target="mission_is_appropriation">mission_is_appropriation</span><span class="dep-chip" data-target="revelation_is_appropriated">revelation_is_appropriated</span><span class="dep-chip" data-target="sanctification_is_appropriated">sanctification_is_appropriated</span><span class="dep-chip" data-target="son_reveals_spirit_sanctifies">son_reveals_spirit_sanctifies</span><span class="dep-chip" data-target="spirit_distinct_from_son">spirit_distinct_from_son</span><span class="dep-chip" data-target="spirit_gives_grace">spirit_gives_grace</span><span class="dep-chip" data-target="spirit_is_divine_person">spirit_is_divine_person</span><span class="dep-chip" data-target="spirit_son_opposition">spirit_son_opposition</span><span class="dep-chip" data-target="trinitarian_inseparability">trinitarian_inseparability</span><span class="dep-chip" data-target="western_filioque">western_filioque</span></div></div>
   </div>
 </div>
   </div>

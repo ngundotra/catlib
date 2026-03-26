@@ -2,30 +2,28 @@
 """
 theorem-tree: Dependency analysis and visualization for Lean 4 formalizations.
 
-Two modes of operation:
-  Regex mode (fast, no build needed):  Tree views, flow diagrams, traces
-  Kernel mode (slow, needs lake build): Ground-truth deps via #print axioms
+Proposition analysis (requires `lake build`):
+    ./tools/theorem-tree --prop NAME <path>            # Kernel deps for a theorem
+    ./tools/theorem-tree --prop-summary <path>         # Full proposition analysis
+    ./tools/theorem-tree --prop-summary fragile <path> # Just fragile propositions
+    ./tools/theorem-tree --prop-summary overdetermined <path>
+    ./tools/theorem-tree --prop-summary impact <path>  # Axiom impact analysis
+    ./tools/theorem-tree --prop-flow <path>            # Axiom → theorem flow diagram
 
-Regex mode — fast, approximate:
-    ./tools/theorem-tree <path>                    # Tree of file or directory
-    ./tools/theorem-tree --connections <path>       # Cross-file connections only
-    ./tools/theorem-tree --axioms-only <path>       # Show just axioms
-    ./tools/theorem-tree --theorems-only <path>     # Show just theorems
-    ./tools/theorem-tree --brief <path>             # One-line descriptions (default)
-    ./tools/theorem-tree --verbose <path>           # Full multi-line docstrings
-    ./tools/theorem-tree --flow <path>              # Sankey-style dependency flow
-    ./tools/theorem-tree --trace NAME <path>        # Trace dependencies of a theorem
-    ./tools/theorem-tree --defs <path>              # Definitions and their connections
-    ./tools/theorem-tree --consistency <path>        # Catholic consistency analysis
-    ./tools/theorem-tree --consistency lutheran <path>  # Lutheran consistency analysis
-    ./tools/theorem-tree --consistency compare <path>   # Catholic vs Lutheran comparison
-
-Kernel mode — slow, exact (requires `lake build`):
+Other kernel tools:
     ./tools/theorem-tree --true-islands <path>      # Kernel-verified unused axioms
-    ./tools/theorem-tree --kernel NAME <path>       # Kernel deps for a theorem
     ./tools/theorem-tree --compare <path>           # Compare regex vs kernel deps
     ./tools/theorem-tree --json <path>              # JSON kernel dependency report
-    ./tools/theorem-tree --props <path>             # Proposition-centric analysis
+
+Regex mode (fast, no build needed):
+    ./tools/theorem-tree <path>                    # Tree of file or directory
+    ./tools/theorem-tree --flow <path>             # Sankey-style dependency flow
+    ./tools/theorem-tree --trace NAME <path>       # Trace dependencies of a theorem
+
+Consistency analysis:
+    ./tools/theorem-tree --consistency <path>        # Catholic consistency analysis
+    ./tools/theorem-tree --consistency lutheran <path>
+    ./tools/theorem-tree --consistency compare <path>
 """
 
 import json
@@ -1043,6 +1041,200 @@ def print_defs(all_parsed, root):
 # ---------------------------------------------------------------------------
 # Kernel mode — ground-truth dependency analysis via Lean's #print axioms
 # ---------------------------------------------------------------------------
+# Source-level declaration scanning (no build needed)
+# ---------------------------------------------------------------------------
+# These functions extract all declarations, docstrings, signatures, and
+# dependencies directly from .lean source files.  They provide the data
+# needed by site generators (generate-explorer, axiom-wiki) as a Python API.
+
+_DECL_RE = re.compile(
+    r'^(axiom|theorem|def|opaque|structure|inductive|instance|abbrev|class)\s+(\S+)')
+_DECL_STOP_RE = re.compile(
+    r'^(axiom|theorem|def|opaque|structure|inductive|instance|abbrev|class'
+    r'|/--|/-!|/-\s|section|end|namespace|open|import|#)')
+
+
+def scan_all_declarations(filepath):
+    """Scan a .lean file and extract all declarations with docstrings and signatures.
+
+    Returns a list of dicts:
+        [{"kind": "theorem", "name": "foo", "line_no": 42,
+          "docstring": "First line of doc...", "signature": "theorem foo : ..."}, ...]
+
+    Defs whose return type is Prop are reclassified as kind="proposition".
+    """
+    filepath = str(filepath)
+    with open(filepath, encoding="utf-8") as f:
+        content = f.read()
+    lines = content.split("\n")
+
+    declarations = []
+    i = 0
+    pending_docstring = ""
+
+    while i < len(lines):
+        line = lines[i]
+        stripped = line.strip()
+
+        # --- Collect docstring ---
+        if stripped.startswith("/--") or stripped.startswith("/-!"):
+            doc_lines = []
+            doc_start = i
+            in_doc = True
+            while i < len(lines) and in_doc:
+                doc_lines.append(lines[i])
+                if "-/" in lines[i] and (i > doc_start or "-/" in lines[i][3:]):
+                    in_doc = False
+                i += 1
+            # Extract first meaningful line
+            raw = "\n".join(doc_lines)
+            raw = re.sub(r"^/--\s*", "", raw)
+            raw = re.sub(r"^/-!\s*", "", raw)
+            raw = re.sub(r"\s*-/$", "", raw)
+            for dl in raw.split("\n"):
+                dl = dl.strip()
+                if dl and not dl.startswith("#"):
+                    pending_docstring = dl[:200]
+                    break
+            continue
+
+        # --- Match declaration ---
+        m = _DECL_RE.match(stripped)
+        if m:
+            kind = m.group(1)
+            name = m.group(2)
+            decl_line_no = i + 1  # 1-based
+
+            # Collect full signature (multi-line, up to := or next decl)
+            sig_lines = []
+            # Check if the declaration line itself has ':= by' or ':='
+            first_line = lines[i]
+            if ":= by" in first_line:
+                sig_lines.append(first_line[: first_line.index(":= by")].rstrip())
+                found_end = True
+            elif re.search(r":=\s*$", first_line.strip()):
+                sig_lines.append(first_line[: first_line.rindex(":=")].rstrip())
+                found_end = True
+            else:
+                sig_lines.append(first_line)
+                found_end = False
+            j = i + 1
+            while not found_end and j < len(lines):
+                curr = lines[j]
+                curr_stripped = curr.strip()
+                # Hit next declaration/comment — stop before consuming it
+                if _DECL_STOP_RE.match(curr_stripped):
+                    break
+                # Blank line after axiom/opaque (they have no body)
+                if curr_stripped == "" and kind in ("axiom", "opaque"):
+                    break
+                # ':= by' — end of theorem signature
+                if ":= by" in curr:
+                    before = curr[: curr.index(":= by")].rstrip()
+                    if before:
+                        sig_lines.append(before)
+                    found_end = True
+                    break
+                # ':=' at end — end of def body start
+                if re.search(r":=\s*$", curr_stripped):
+                    before = curr[: curr.rindex(":=")].rstrip()
+                    if before:
+                        sig_lines.append(before)
+                    found_end = True
+                    break
+                sig_lines.append(curr)
+                j += 1
+
+            signature = "\n".join(l.rstrip() for l in sig_lines)
+            signature = re.sub(r"\s*:=\s*by\s*$", "", signature)
+            signature = re.sub(r"\s*:=\s*$", "", signature)
+
+            # For structure/inductive, just keep header
+            if kind in ("structure", "inductive"):
+                signature = f"{kind} {name} where"
+
+            # Detect Prop-returning defs → reclassify as "proposition"
+            actual_kind = kind
+            if kind == "def":
+                full_sig = " ".join(sig_lines)
+                if (re.search(r":\s*Prop\b", full_sig)
+                        or re.search(r"→\s*Prop\b", full_sig)
+                        or re.search(r"->\s*Prop\b", full_sig)):
+                    actual_kind = "proposition"
+
+            declarations.append({
+                "kind": actual_kind,
+                "name": name,
+                "line_no": decl_line_no,
+                "docstring": pending_docstring,
+                "signature": signature,
+            })
+            pending_docstring = ""
+            i = j + 1 if found_end else (j if j > i else i + 1)
+            continue
+
+        # Reset docstring if we hit a non-declaration, non-blank line
+        if stripped and not stripped.startswith("--"):
+            pending_docstring = ""
+
+        i += 1
+
+    return declarations
+
+
+def compute_file_dependencies(declarations, filepath):
+    """Compute intra-file dependencies between declarations.
+
+    Returns:
+        deps: dict {name: set of names it depends on}
+        used_by: dict {name: set of names that use it}
+    """
+    filepath = str(filepath)
+    with open(filepath, encoding="utf-8") as f:
+        content = f.read()
+
+    lines = content.split("\n")
+    names = {d["name"] for d in declarations}
+
+    # Map name → start line (0-based)
+    decl_starts = {}
+    for d in declarations:
+        decl_starts[d["name"]] = d["line_no"] - 1  # convert to 0-based
+
+    sorted_decls = sorted(decl_starts.items(), key=lambda x: x[1])
+
+    deps = defaultdict(set)
+    used_by = defaultdict(set)
+
+    for idx, (decl_name, start_line) in enumerate(sorted_decls):
+        if idx + 1 < len(sorted_decls):
+            end_line = sorted_decls[idx + 1][1]
+        else:
+            end_line = len(lines)
+
+        body = "\n".join(lines[start_line:end_line])
+        for other_name in names:
+            if other_name == decl_name:
+                continue
+            pattern = r"\b" + re.escape(other_name) + r"\b"
+            if re.search(pattern, body):
+                deps[decl_name].add(other_name)
+                used_by[other_name].add(decl_name)
+
+    return dict(deps), dict(used_by)
+
+
+def extract_ccc_refs(filepath):
+    """Extract CCC paragraph references (§NNN) from a .lean file."""
+    filepath = str(filepath)
+    with open(filepath, encoding="utf-8") as f:
+        content = f.read()
+    return sorted(set(re.findall(r"§(\d+)", content)))
+
+
+# ---------------------------------------------------------------------------
+# Kernel mode (requires `lake build`)
+# ---------------------------------------------------------------------------
 
 # Lean built-in axioms to filter out of kernel results
 LEAN_BUILTINS = {
@@ -1329,12 +1521,13 @@ def _parse_check_types_output(output, batch_fqns, types, errors):
 
 
 def print_propositions(axiom_results, type_results, source_axioms,
-                       thm_source=None, namespaces=None):
+                       thm_source=None, namespaces=None, section=None):
     """Print proposition-centric analysis: what has been proven and how.
 
     Args:
         thm_source: optional dict {fqn: (file_path, line_no)} for docstring extraction
         namespaces: optional set of namespace strings for display cleanup
+        section: optional filter — None=all, "fragile", "overdetermined", "impact"
     """
 
     def _display(type_str):
@@ -1354,6 +1547,14 @@ def print_propositions(axiom_results, type_results, source_axioms,
                         first_line = first_line[:117] + "..."
                     return first_line
         return ""
+
+    def _prop_label(pd):
+        """Build a readable label: theorem name(s) as primary, type as secondary."""
+        thm_names = [_kernel_short_name(t) for t in pd["theorems"]]
+        if len(thm_names) == 1:
+            return thm_names[0]
+        else:
+            return f"{thm_names[0]}  ({len(thm_names)} proofs)"
 
     # Group theorems by the type (proposition) they prove
     prop_to_theorems = defaultdict(list)
@@ -1399,116 +1600,193 @@ def print_propositions(axiom_results, type_results, source_axioms,
             overdetermined.append(pd)
 
     # --- Print report ---
-    print()
-    print("PROPOSITIONS — What Has Been Proven")
-    print("=" * 70)
-    print()
-    print(f"PROVEN ({len(proven)} propositions with proofs):")
-    print()
+    show_all = section is None
 
-    for idx, pd in enumerate(proven, 1):
-        print(f"  {idx}. {_display(pd['type'])}")
-        doc = _first_docstring(pd["theorems"])
-        if doc:
-            print(f'     "{doc}"')
-        thm_names = [_kernel_short_name(t) for t in pd["theorems"]]
-        print(f"     Proven by: {', '.join(thm_names)}")
-        if pd["axiom_paths"]:
-            print(f"     Axiom paths:")
+    if show_all:
+        print()
+        print("PROPOSITIONS — What Has Been Proven")
+        print("=" * 70)
+        print()
+        print(f"  {len(proven)} proven  |  {len(fragile)} fragile  |  {len(overdetermined)} overdetermined")
+        print()
+
+    if show_all or section == "fragile":
+        # Fragile propositions
+        print("-" * 70)
+        print(f"FRAGILE ({len(fragile)} — proven by exactly 1 axiom path):")
+        print()
+        for pd in fragile:
+            label = _prop_label(pd)
+            doc = _first_docstring(pd["theorems"])
+            print(f"  {label}")
+            if doc:
+                print(f'    "{doc}"')
+            print(f"    Type: {_display(pd['type'])}")
+            for thm, ax_list in pd["axiom_paths"].items():
+                if ax_list:
+                    ax_display = [_kernel_short_name(a) for a in ax_list]
+                    print(f"    <- {', '.join(ax_display)}")
+                else:
+                    print(f"    <- (pure logic)")
+            print()
+
+    if show_all or section == "overdetermined":
+        # Overdetermined propositions
+        print("-" * 70)
+        print(f"OVERDETERMINED ({len(overdetermined)} — multiple independent axiom paths):")
+        print()
+        for pd in overdetermined:
+            label = _prop_label(pd)
+            doc = _first_docstring(pd["theorems"])
+            n_paths = len(pd.get("unique_axiom_sets", []))
+            print(f"  {label}  [{n_paths} paths]")
+            if doc:
+                print(f'    "{doc}"')
+            print(f"    Type: {_display(pd['type'])}")
             for thm, ax_list in pd["axiom_paths"].items():
                 short = _kernel_short_name(thm)
                 if ax_list:
                     ax_display = [_kernel_short_name(a) for a in ax_list]
-                    print(f"       via {short}: [{', '.join(ax_display)}]")
+                    print(f"    via {short}: [{', '.join(ax_display)}]")
                 else:
-                    print(f"       via {short}: [no Catlib axioms — pure logic]")
-        unique_sets = pd.get("unique_axiom_sets", [])
-        if len(unique_sets) > 1:
-            print(f"     NOTE: {len(unique_sets)} independent proof paths"
-                  f" — robust to single axiom rejection")
+                    print(f"    via {short}: [pure logic]")
+            print()
+
+    if show_all or section == "impact":
+        # Axiom impact analysis
+        print("-" * 70)
+        print("AXIOM IMPACT ANALYSIS:")
         print()
 
-    # Fragile propositions
-    print("-" * 70)
-    print(f"FRAGILE ({len(fragile)} proven by exactly 1 axiom path):")
-    print()
-    for pd in fragile:
-        print(f"  - {_display(pd['type'])}")
-        for thm, ax_list in pd["axiom_paths"].items():
-            ax_display = [_kernel_short_name(a) for a in ax_list]
-            print(f"    via {_kernel_short_name(thm)}: [{', '.join(ax_display)}]")
-    print()
-
-    # Overdetermined propositions
-    print("-" * 70)
-    print(f"OVERDETERMINED ({len(overdetermined)} proven by multiple independent axiom paths):")
-    print()
-    for pd in overdetermined:
-        print(f"  - {_display(pd['type'])}")
-        for thm, ax_list in pd["axiom_paths"].items():
-            ax_display = [_kernel_short_name(a) for a in ax_list]
-            print(f"    via {_kernel_short_name(thm)}: [{', '.join(ax_display)}]")
-    print()
-
-    # Axiom impact analysis
-    print("-" * 70)
-    print("AXIOM IMPACT ANALYSIS:")
-    print()
-
-    # Collect all catlib axioms used across all proofs
-    all_catlib_axioms = set()
-    for pd in proven:
-        for ax_list in pd["axiom_paths"].values():
-            all_catlib_axioms.update(filter_catlib_axioms(ax_list))
-
-    # Also include declared axioms that might not be used
-    declared_axiom_fqns = {fqn for fqn, _, _, kind in source_axioms if kind == "axiom"}
-    all_catlib_axioms.update(declared_axiom_fqns)
-
-    for axiom in sorted(all_catlib_axioms):
-        loses_all = []
-        loses_some = []
-        unaffected_count = 0
-
+        # Build a label lookup: type_str -> label for readable display
+        type_to_label = {}
         for pd in proven:
-            paths = pd["axiom_paths"]
-            # Count how many proof paths use this axiom
-            paths_using = 0
-            total_paths = len(paths)
-            for thm, ax_list in paths.items():
-                if axiom in ax_list:
-                    paths_using += 1
+            type_to_label[pd["type"]] = _prop_label(pd)
 
-            if paths_using == 0:
-                unaffected_count += 1
-            elif paths_using == total_paths:
-                loses_all.append(pd["type"])
-            else:
-                loses_some.append(pd["type"])
+        # Collect all catlib axioms used across all proofs
+        all_catlib_axioms = set()
+        for pd in proven:
+            for ax_list in pd["axiom_paths"].values():
+                all_catlib_axioms.update(filter_catlib_axioms(ax_list))
 
-        if not loses_all and not loses_some:
-            continue  # Axiom not used — skip
+        # Also include declared axioms that might not be used
+        declared_axiom_fqns = {fqn for fqn, _, _, kind in source_axioms if kind == "axiom"}
+        all_catlib_axioms.update(declared_axiom_fqns)
 
-        short_ax = _kernel_short_name(axiom)
-        print(f"  If you reject [{short_ax}]:")
-        if loses_all:
-            print(f"    LOSES ALL PROOFS:")
-            for prop_type in loses_all:
-                print(f"      - {_display(prop_type)}")
-        if loses_some:
-            print(f"    LOSES SOME PROOFS (has alternatives):")
-            for prop_type in loses_some:
-                print(f"      - {_display(prop_type)}")
-        print(f"    UNAFFECTED: {unaffected_count}")
-        print()
+        for axiom in sorted(all_catlib_axioms):
+            loses_all = []
+            loses_some = []
+            unaffected_count = 0
+
+            for pd in proven:
+                paths = pd["axiom_paths"]
+                paths_using = sum(1 for ax_list in paths.values() if axiom in ax_list)
+                total_paths = len(paths)
+
+                if paths_using == 0:
+                    unaffected_count += 1
+                elif paths_using == total_paths:
+                    loses_all.append(pd["type"])
+                else:
+                    loses_some.append(pd["type"])
+
+            if not loses_all and not loses_some:
+                continue
+
+            short_ax = _kernel_short_name(axiom)
+            print(f"  If you reject [{short_ax}]:")
+            if loses_all:
+                print(f"    LOSES ALL PROOFS:")
+                for pt in loses_all:
+                    print(f"      - {type_to_label.get(pt, _display(pt))}")
+            if loses_some:
+                print(f"    LOSES SOME PROOFS (has alternatives):")
+                for pt in loses_some:
+                    print(f"      - {type_to_label.get(pt, _display(pt))}")
+            print(f"    UNAFFECTED: {unaffected_count}")
+            print()
 
     # Report theorems that failed #check
-    theorems_without_types = set(axiom_results.keys()) - set(type_results.keys())
-    if theorems_without_types:
+    if show_all:
+        theorems_without_types = set(axiom_results.keys()) - set(type_results.keys())
+        if theorems_without_types:
+            print("-" * 70)
+            print(f"SKIPPED ({len(theorems_without_types)} theorems where #check failed):")
+            for t in sorted(theorems_without_types):
+                print(f"  - {t}")
+            print()
+
+
+def print_prop_flow(axiom_results, thm_source, source_axioms, namespaces):
+    """Print an axiom → theorem flow diagram showing how axioms feed into proofs."""
+
+    # Build axiom FQN set for labeling
+    source_axiom_fqns = {fqn for fqn, _, _, _ in source_axioms}
+
+    # Collect theorem data sorted by number of axiom deps (simplest first)
+    thm_entries = []
+    for thm_fqn, deps in sorted(axiom_results.items()):
+        catlib_deps = sorted(filter_catlib_axioms(deps))
+        short_name = _kernel_short_name(thm_fqn)
+        doc = ""
+        if thm_fqn in thm_source:
+            fp, ln = thm_source[thm_fqn]
+            raw_doc = _extract_docstring(fp, ln)
+            if raw_doc:
+                doc = raw_doc.split('\n')[0].strip()
+                if len(doc) > 80:
+                    doc = doc[:77] + "..."
+        thm_entries.append((short_name, catlib_deps, doc))
+
+    thm_entries.sort(key=lambda e: len(e[1]))
+
+    print()
+    print("AXIOM \u2192 THEOREM FLOW")
+    print("=" * 70)
+    print()
+
+    # Also track which axioms are used vs unused
+    all_used_axioms = set()
+
+    for short_name, catlib_deps, doc in thm_entries:
+        dep_names = [_kernel_short_name(d) for d in catlib_deps]
+        all_used_axioms.update(catlib_deps)
+
+        if not dep_names:
+            # Pure logic theorem
+            print(f"  (pure logic)  \u2500\u2500\u25b6  {short_name}")
+        else:
+            # Print axiom block with tree connectors
+            width = max(len(d) for d in dep_names)
+            for j, dep in enumerate(dep_names):
+                if j == 0 and len(dep_names) == 1:
+                    connector = "\u2500\u2500"
+                elif j == 0:
+                    connector = "\u250c\u2500"
+                elif j == len(dep_names) - 1:
+                    connector = "\u2514\u2500"
+                else:
+                    connector = "\u251c\u2500"
+
+                if j == 0:
+                    arrow_pad = " " * (width - len(dep) + 2)
+                    print(f"  {connector} {dep}{arrow_pad}\u2500\u2500\u25b6  {short_name}")
+                else:
+                    print(f"  {connector} {dep}")
+
+        if doc:
+            # Indent docstring under the theorem
+            pad = " " * (width + 12) if dep_names else " " * 22
+            print(f'{pad}"{doc}"')
+        print()
+
+    # Show unused axioms at the bottom
+    unused = source_axiom_fqns - all_used_axioms
+    if unused:
         print("-" * 70)
-        print(f"SKIPPED ({len(theorems_without_types)} theorems where #check failed):")
-        for t in sorted(theorems_without_types):
-            print(f"  - {t}")
+        print(f"UNUSED AXIOMS ({len(unused)} — no theorem depends on these):")
+        for ax in sorted(unused):
+            print(f"  \u00d7 {_kernel_short_name(ax)}")
         print()
 
 
@@ -1629,7 +1907,7 @@ def print_true_islands(results, source_axioms):
     print()
 
 
-def print_kernel_theorem(results, theorem_name):
+def print_kernel_theorem(results, theorem_name, thm_source=None, namespaces=None):
     """Print kernel-verified dependencies for a single theorem."""
     matches = [fqn for fqn in results if theorem_name in fqn]
     if not matches:
@@ -1642,10 +1920,21 @@ def print_kernel_theorem(results, theorem_name):
         catlib_deps = filter_catlib_axioms(deps)
         lean_deps = [a for a in deps if a in LEAN_BUILTINS]
 
-        print(f"theorem {fqn}")
-        print(f"  Catlib dependencies ({len(catlib_deps)}):")
+        print(f"theorem {_kernel_short_name(fqn)}")
+        # Show docstring if available
+        if thm_source and fqn in thm_source:
+            fp, ln = thm_source[fqn]
+            doc = _extract_docstring(fp, ln)
+            if doc:
+                first_line = doc.split('\n')[0].strip()
+                if len(first_line) > 120:
+                    first_line = first_line[:117] + "..."
+                print(f'  "{first_line}"')
+        print(f"  Axiom dependencies ({len(catlib_deps)}):")
         for d in sorted(catlib_deps):
-            print(f"    <- {d}")
+            print(f"    <- {_kernel_short_name(d)}")
+        if not catlib_deps:
+            print(f"    (pure logic — no Catlib axioms)")
         if lean_deps:
             print(f"  Lean builtins: {', '.join(lean_deps)}")
         print()
@@ -1809,7 +2098,8 @@ def print_kernel_full(results, errors, source_axioms, source_theorems):
         print()
 
 
-def _run_kernel_mode(kernel_mode, kernel_name, kernel_json, root_path):
+def _run_kernel_mode(kernel_mode, kernel_name, kernel_json, root_path,
+                     prop_summary_section=None):
     """Execute kernel-mode operations. Requires lake."""
     _check_lake()
 
@@ -1836,6 +2126,8 @@ def _run_kernel_mode(kernel_mode, kernel_name, kernel_json, root_path):
         print(f"  {len(errors)} errors", file=sys.stderr)
     print(file=sys.stderr)
 
+    thm_source = {fqn: (fp, ln) for fqn, fp, ln in theorems}
+
     if kernel_mode == "props":
         # Props mode: also run #check to get theorem types
         print(f"Running #check on {len(query_fqns)} theorems...", file=sys.stderr)
@@ -1844,12 +2136,14 @@ def _run_kernel_mode(kernel_mode, kernel_name, kernel_json, root_path):
         if type_errors:
             print(f"  {len(type_errors)} #check errors (skipped)", file=sys.stderr)
         print(file=sys.stderr)
-        thm_source = {fqn: (fp, ln) for fqn, fp, ln in theorems}
-        print_propositions(results, type_results, axioms, thm_source, namespaces)
+        print_propositions(results, type_results, axioms, thm_source, namespaces,
+                           section=prop_summary_section)
+    elif kernel_mode == "prop-flow":
+        print_prop_flow(results, thm_source, axioms, namespaces)
     elif kernel_json:
         print_kernel_json(results, errors, axioms)
     elif kernel_mode == "kernel":
-        print_kernel_theorem(results, kernel_name)
+        print_kernel_theorem(results, kernel_name, thm_source, namespaces)
     elif kernel_mode == "true-islands":
         print_true_islands(results, axioms)
     elif kernel_mode == "compare":
@@ -2234,6 +2528,16 @@ def main():
     if not args or "--help" in args or "-h" in args:
         print(__doc__.strip())
         print()
+        print("Proposition analysis (requires `lake build`):")
+        print("  --prop NAME          Kernel-verified deps for a theorem")
+        print("  --prop-summary [SEC] Proposition analysis (all/fragile/overdetermined/impact)")
+        print("  --prop-flow          Axiom → theorem flow diagram")
+        print()
+        print("Other kernel tools:")
+        print("  --true-islands       Kernel-verified unused axioms")
+        print("  --compare            Compare regex vs kernel dependency detection")
+        print("  --json               JSON output of kernel dependency report")
+        print()
         print("Regex mode (fast, no build needed):")
         print("  --connections        Show cross-file connections only")
         print("  --axioms-only        Show only axiom declarations")
@@ -2245,13 +2549,6 @@ def main():
         print("  --trace NAME         Trace all dependencies of a declaration")
         print("  --defs               Show definitions and their theorem connections")
         print("  --consistency [DENOM] Denominational consistency analysis (catholic/lutheran/compare)")
-        print()
-        print("Kernel mode (slow, requires `lake build`):")
-        print("  --true-islands       Kernel-verified unused axioms (axiom-only)")
-        print("  --kernel NAME        Kernel-verified deps for a theorem")
-        print("  --compare            Compare regex vs kernel dependency detection")
-        print("  --json               JSON output of kernel dependency report")
-        print("  --props              Proposition-centric analysis (what has been proven)")
         print()
         print("  -h, --help           Show this help message")
         sys.exit(0)
@@ -2265,9 +2562,10 @@ def main():
     defs_mode = False
     consistency_mode = None  # None, or denomination string
     # Kernel mode flags
-    kernel_mode = None   # "true-islands", "kernel", "compare", "full"
+    kernel_mode = None   # "true-islands", "kernel", "compare", "full", "props", "prop-flow"
     kernel_name = None
     kernel_json = False
+    prop_summary_section = None  # None = all, or "fragile"/"overdetermined"/"impact"
 
     i = 0
     while i < len(args):
@@ -2301,24 +2599,30 @@ def main():
                 consistency_mode = args[i]
             else:
                 consistency_mode = "catholic"
-        # Kernel mode flags
-        elif arg == "--true-islands":
-            kernel_mode = "true-islands"
-        elif arg == "--kernel":
+        # Proposition / kernel mode flags
+        elif arg == "--prop":
             kernel_mode = "kernel"
             i += 1
             if i >= len(args):
-                print("Error: --kernel requires a theorem name", file=sys.stderr)
+                print(f"Error: {arg} requires a theorem name", file=sys.stderr)
                 sys.exit(1)
             kernel_name = args[i]
+        elif arg == "--prop-summary":
+            kernel_mode = "props"
+            # Optional section filter: fragile/overdetermined/impact
+            if i + 1 < len(args) and args[i + 1] in ("fragile", "overdetermined", "impact"):
+                i += 1
+                prop_summary_section = args[i]
+        elif arg == "--prop-flow":
+            kernel_mode = "prop-flow"
+        elif arg == "--true-islands":
+            kernel_mode = "true-islands"
         elif arg == "--compare":
             kernel_mode = "compare"
         elif arg == "--json":
             kernel_json = True
             if not kernel_mode:
                 kernel_mode = "full"
-        elif arg == "--props":
-            kernel_mode = "props"
         else:
             target_path = arg
         i += 1
@@ -2352,7 +2656,8 @@ def main():
 
     # Kernel mode: dispatch early (no need for regex parsing)
     if kernel_mode:
-        _run_kernel_mode(kernel_mode, kernel_name, kernel_json, target_path)
+        _run_kernel_mode(kernel_mode, kernel_name, kernel_json, target_path,
+                         prop_summary_section=prop_summary_section)
         return
 
     # Find project root

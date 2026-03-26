@@ -267,8 +267,6 @@ h1 {
 .node-card.kind-structure { border-left-color: var(--structure-dot); }
 .node-card.kind-inductive { border-left-color: var(--inductive-dot); }
 .node-card.kind-proposition { border-left-color: var(--proposition-dot); }
-.node-card.kind-instance { border-left-color: var(--def-dot); }
-.node-card.kind-abbrev { border-left-color: var(--def-dot); }
 
 .node-header {
   display: flex;
@@ -304,8 +302,6 @@ h1 {
 .kind-structure .node-kind-badge { background: var(--structure-bg); color: var(--structure-dot); }
 .kind-inductive .node-kind-badge { background: var(--inductive-bg); color: var(--inductive-dot); }
 .kind-proposition .node-kind-badge { background: var(--proposition-bg); color: var(--proposition-dot); }
-.kind-instance .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
-.kind-abbrev .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
 
 .node-name {
   flex: 1;
@@ -466,8 +462,6 @@ h1 {
 .legend-dot.structure { background: var(--structure-dot); }
 .legend-dot.inductive { background: var(--inductive-dot); }
 .legend-dot.proposition { background: var(--proposition-dot); }
-.legend-dot.instance { background: var(--def-dot); }
-.legend-dot.abbrev { background: var(--def-dot); }
 
 /* ── Filter buttons ── */
 .filter-bar {
@@ -530,12 +524,19 @@ h1 {
   <a href="index.html" class="back-link">&larr; All files</a>
   <h1>MatterAndForm</h1>
   <div class="subtitle">Sacraments &middot; 25 declarations</div>
-  
-  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1127, &sect;1131, &sect;1239, &sect;1240, &sect;1300, &sect;1333, &sect;1449, &sect;1519, &sect;1573, &sect;1626, &sect;1627</div>
 
-  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span></div>
+  <div class="flow-summary">
+  <span class="flow-count axioms">13 axioms</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count theorems">10 theorems</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count derived">2 derived</span>
+</div>
+  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1127, &sect;1131, &sect;1239, &sect;1240, &sect;1300, &sect;1333, &sect;1449, &sect;1519, &sect;1573, &sect;1626, &sect;1627, &sect;365</div>
 
-  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (7)</button><button class="filter-btn" data-filter="theorem">theorem (10)</button><button class="filter-btn" data-filter="def">def (2)</button><button class="filter-btn" data-filter="opaque">opaque (6)</button></div>
+  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
+
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (7)</button><button class="filter-btn" data-filter="def">def (2)</button><button class="filter-btn" data-filter="opaque">opaque (6)</button><button class="filter-btn" data-filter="theorem">theorem (10)</button></div>
 
   <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
 
@@ -549,6 +550,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque hasMatter : SacramentKind → Prop</code></pre></div>
 <div class="node-desc">Whether the appropriate MATTER (physical/sensible element) is present</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="every_sacrament_has_matter">every_sacrament_has_matter</span><span class="dep-chip" data-target="validity_requires_both">validity_requires_both</span><span class="dep-chip" data-target="matter_alone_indeterminate">matter_alone_indeterminate</span><span class="dep-chip" data-target="matter_and_form_determine">matter_and_form_determine</span><span class="dep-chip" data-target="every_sacrament_is_composite">every_sacrament_is_composite</span><span class="dep-chip" data-target="matter_without_form_invalid">matter_without_form_invalid</span><span class="dep-chip" data-target="form_without_matter_invalid">form_without_matter_invalid</span><span class="dep-chip" data-target="marriage_still_hylomorphic">marriage_still_hylomorphic</span><span class="dep-chip" data-target="hylomorphic_analogy">hylomorphic_analogy</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="hasForm">
@@ -560,6 +562,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque hasForm : SacramentKind → Prop</code></pre></div>
 <div class="node-desc">Whether the appropriate FORM (verbal/ritual words) is present</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="every_sacrament_has_form">every_sacrament_has_form</span><span class="dep-chip" data-target="validity_requires_both">validity_requires_both</span><span class="dep-chip" data-target="matter_alone_indeterminate">matter_alone_indeterminate</span><span class="dep-chip" data-target="matter_and_form_determine">matter_and_form_determine</span><span class="dep-chip" data-target="every_sacrament_is_composite">every_sacrament_is_composite</span><span class="dep-chip" data-target="matter_without_form_invalid">matter_without_form_invalid</span><span class="dep-chip" data-target="form_without_matter_invalid">form_without_matter_invalid</span><span class="dep-chip" data-target="marriage_still_hylomorphic">marriage_still_hylomorphic</span><span class="dep-chip" data-target="form_is_essential">form_is_essential</span><span class="dep-chip" data-target="hylomorphic_analogy">hylomorphic_analogy</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="isValidlyCelebrated">
@@ -571,6 +574,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque isValidlyCelebrated : SacramentKind → Prop</code></pre></div>
 <div class="node-desc">Whether a sacrament is validly celebrated — the sacrament achieves</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="validity_requires_both">validity_requires_both</span><span class="dep-chip" data-target="valid_sacrament_is_determinate">valid_sacrament_is_determinate</span><span class="dep-chip" data-target="matter_without_form_invalid">matter_without_form_invalid</span><span class="dep-chip" data-target="form_without_matter_invalid">form_without_matter_invalid</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="isDeterminateSign">
@@ -580,12 +584,9 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque isDeterminateSign : SacramentKind → Prop
-
--- ============================================================================
--- § 2. Marriage: The Anomalous Case
--- ============================================================================</code></pre></div>
+    <div class="node-prop"><pre><code>opaque isDeterminateSign : SacramentKind → Prop</code></pre></div>
 <div class="node-desc">Whether a sacramental sign is DETERMINATE — i.e., it unambiguously</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="matter_alone_indeterminate">matter_alone_indeterminate</span><span class="dep-chip" data-target="matter_and_form_determine">matter_and_form_determine</span><span class="dep-chip" data-target="valid_sacrament_is_determinate">valid_sacrament_is_determinate</span><span class="dep-chip" data-target="every_sacrament_is_determinate">every_sacrament_is_determinate</span><span class="dep-chip" data-target="efficacious_sign">efficacious_sign</span><span class="dep-chip" data-target="form_is_essential">form_is_essential</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="hasExternalMatter">
@@ -595,12 +596,9 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque hasExternalMatter : SacramentKind → Prop
-
--- ============================================================================
--- § 3. Denominational Tags
--- ============================================================================</code></pre></div>
+    <div class="node-prop"><pre><code>opaque hasExternalMatter : SacramentKind → Prop</code></pre></div>
 <div class="node-desc">Whether the matter of a sacrament is an EXTERNAL physical element</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="marriage_matter_is_persons">marriage_matter_is_persons</span><span class="dep-chip" data-target="six_sacraments_have_external_matter">six_sacraments_have_external_matter</span><span class="dep-chip" data-target="marriage_uniquely_non_external">marriage_uniquely_non_external</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="hylomorphicSignTag">
@@ -634,14 +632,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom every_sacrament_has_matter :
   ∀ (s : SacramentKind), hasMatter s</code></pre></div>
-<div class="node-desc">Every sacrament has matter —</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="every_sacrament_is_composite">every_sacrament_is_composite</span>
-<span class="dep-chip" data-target="every_sacrament_is_determinate">every_sacrament_is_determinate</span>
-<span class="dep-chip" data-target="marriage_still_hylomorphic">marriage_still_hylomorphic</span>
-<span class="dep-chip" data-target="form_is_essential">form_is_essential</span>
-<span class="dep-chip" data-target="hylomorphic_analogy">hylomorphic_analogy</span>
-</div></div>
+<div class="node-desc">AXIOM (ST III q.60 a.6, §1131): Every sacrament has matter —</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="hasMatter">hasMatter</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="six_sacraments_have_external_matter">six_sacraments_have_external_matter</span><span class="dep-chip" data-target="every_sacrament_is_composite">every_sacrament_is_composite</span><span class="dep-chip" data-target="every_sacrament_is_determinate">every_sacrament_is_determinate</span><span class="dep-chip" data-target="marriage_uniquely_non_external">marriage_uniquely_non_external</span><span class="dep-chip" data-target="marriage_still_hylomorphic">marriage_still_hylomorphic</span><span class="dep-chip" data-target="efficacious_sign">efficacious_sign</span><span class="dep-chip" data-target="form_is_essential">form_is_essential</span><span class="dep-chip" data-target="hylomorphicAnalogyHolds">hylomorphicAnalogyHolds</span><span class="dep-chip" data-target="hylomorphic_analogy">hylomorphic_analogy</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="every_sacrament_has_form">
@@ -653,13 +646,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom every_sacrament_has_form :
   ∀ (s : SacramentKind), hasForm s</code></pre></div>
-<div class="node-desc">Every sacrament has form —</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="every_sacrament_is_composite">every_sacrament_is_composite</span>
-<span class="dep-chip" data-target="every_sacrament_is_determinate">every_sacrament_is_determinate</span>
-<span class="dep-chip" data-target="marriage_still_hylomorphic">marriage_still_hylomorphic</span>
-<span class="dep-chip" data-target="hylomorphic_analogy">hylomorphic_analogy</span>
-</div></div>
+<div class="node-desc">AXIOM (ST III q.60 a.6, §1131): Every sacrament has form —</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="hasForm">hasForm</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="six_sacraments_have_external_matter">six_sacraments_have_external_matter</span><span class="dep-chip" data-target="every_sacrament_is_composite">every_sacrament_is_composite</span><span class="dep-chip" data-target="every_sacrament_is_determinate">every_sacrament_is_determinate</span><span class="dep-chip" data-target="marriage_uniquely_non_external">marriage_uniquely_non_external</span><span class="dep-chip" data-target="marriage_still_hylomorphic">marriage_still_hylomorphic</span><span class="dep-chip" data-target="hylomorphicAnalogyHolds">hylomorphicAnalogyHolds</span><span class="dep-chip" data-target="hylomorphic_analogy">hylomorphic_analogy</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="validity_requires_both">
@@ -671,12 +660,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom validity_requires_both :
   ∀ (s : SacramentKind), isValidlyCelebrated s → hasMatter s ∧ hasForm s</code></pre></div>
-<div class="node-desc">A sacrament is</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="valid_sacrament_is_determinate">valid_sacrament_is_determinate</span>
-<span class="dep-chip" data-target="matter_without_form_invalid">matter_without_form_invalid</span>
-<span class="dep-chip" data-target="form_without_matter_invalid">form_without_matter_invalid</span>
-</div></div>
+<div class="node-desc">AXIOM (Council of Florence, 1439; CCC §1127-1128): A sacrament is</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="hasForm">hasForm</span><span class="dep-chip" data-target="hasMatter">hasMatter</span><span class="dep-chip" data-target="isValidlyCelebrated">isValidlyCelebrated</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="matter_and_form_determine">matter_and_form_determine</span><span class="dep-chip" data-target="valid_sacrament_is_determinate">valid_sacrament_is_determinate</span><span class="dep-chip" data-target="every_sacrament_is_determinate">every_sacrament_is_determinate</span><span class="dep-chip" data-target="matter_without_form_invalid">matter_without_form_invalid</span><span class="dep-chip" data-target="form_without_matter_invalid">form_without_matter_invalid</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="matter_alone_indeterminate">
@@ -688,10 +674,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom matter_alone_indeterminate :
   ∀ (s : SacramentKind), hasMatter s → ¬hasForm s → ¬isDeterminateSign s</code></pre></div>
-<div class="node-desc">Matter without form does not produce a</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="form_is_essential">form_is_essential</span>
-</div></div>
+<div class="node-desc">AXIOM (ST III q.60 a.6): Matter without form does not produce a</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="hasForm">hasForm</span><span class="dep-chip" data-target="hasMatter">hasMatter</span><span class="dep-chip" data-target="isDeterminateSign">isDeterminateSign</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="efficacious_sign">efficacious_sign</span><span class="dep-chip" data-target="form_is_essential">form_is_essential</span><span class="dep-chip" data-target="hylomorphic_analogy">hylomorphic_analogy</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="matter_and_form_determine">
@@ -703,11 +688,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom matter_and_form_determine :
   ∀ (s : SacramentKind), hasMatter s → hasForm s → isDeterminateSign s</code></pre></div>
-<div class="node-desc">Matter and form together produce a</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="valid_sacrament_is_determinate">valid_sacrament_is_determinate</span>
-<span class="dep-chip" data-target="every_sacrament_is_determinate">every_sacrament_is_determinate</span>
-</div></div>
+<div class="node-desc">AXIOM (ST III q.60 a.6-7): Matter and form together produce a</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="hasForm">hasForm</span><span class="dep-chip" data-target="hasMatter">hasMatter</span><span class="dep-chip" data-target="isDeterminateSign">isDeterminateSign</span><span class="dep-chip" data-target="validity_requires_both">validity_requires_both</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="valid_sacrament_is_determinate">valid_sacrament_is_determinate</span><span class="dep-chip" data-target="every_sacrament_is_composite">every_sacrament_is_composite</span><span class="dep-chip" data-target="every_sacrament_is_determinate">every_sacrament_is_determinate</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="valid_sacrament_is_determinate">
@@ -720,10 +703,7 @@ h1 {
     <div class="node-prop"><pre><code>theorem valid_sacrament_is_determinate :
     ∀ (s : SacramentKind), isValidlyCelebrated s → isDeterminateSign s</code></pre></div>
 <div class="node-desc">THEOREM (§1127-1131): A validly celebrated sacrament is a determinate sign.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="validity_requires_both">validity_requires_both</span>
-<span class="dep-chip" data-target="matter_and_form_determine">matter_and_form_determine</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isDeterminateSign">isDeterminateSign</span><span class="dep-chip" data-target="isValidlyCelebrated">isValidlyCelebrated</span><span class="dep-chip" data-target="matter_and_form_determine">matter_and_form_determine</span><span class="dep-chip" data-target="validity_requires_both">validity_requires_both</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="marriage_matter_is_persons">
@@ -735,10 +715,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom marriage_matter_is_persons :
   ¬hasExternalMatter .marriage</code></pre></div>
-<div class="node-desc">Six sacraments</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="marriage_uniquely_non_external">marriage_uniquely_non_external</span>
-</div></div>
+<div class="node-desc">AXIOM (§1626-1627, Aquinas ST III Suppl. q.42 a.1): Six sacraments</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="hasExternalMatter">hasExternalMatter</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="form_without_matter_invalid">form_without_matter_invalid</span><span class="dep-chip" data-target="marriage_uniquely_non_external">marriage_uniquely_non_external</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="six_sacraments_have_external_matter">
@@ -754,15 +733,10 @@ h1 {
   ∧ hasExternalMatter .confirmation
   ∧ hasExternalMatter .reconciliation
   ∧ hasExternalMatter .anointingOfTheSick
-  ∧ hasExternalMatter .holyOrders
-
--- ============================================================================
--- § 5. Theorems — What the Structure Reveals
--- ============================================================================</code></pre></div>
-<div class="node-desc">The other six</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="marriage_uniquely_non_external">marriage_uniquely_non_external</span>
-</div></div>
+  ∧ hasExternalMatter .holyOrders</code></pre></div>
+<div class="node-desc">AXIOM (§1239, §1333, §1300, §1449, §1519, §1573): The other six</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="every_sacrament_has_form">every_sacrament_has_form</span><span class="dep-chip" data-target="every_sacrament_has_matter">every_sacrament_has_matter</span><span class="dep-chip" data-target="hasExternalMatter">hasExternalMatter</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="form_without_matter_invalid">form_without_matter_invalid</span><span class="dep-chip" data-target="marriage_uniquely_non_external">marriage_uniquely_non_external</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="every_sacrament_is_composite">
@@ -775,10 +749,8 @@ h1 {
     <div class="node-prop"><pre><code>theorem every_sacrament_is_composite :
     ∀ (s : SacramentKind), hasMatter s ∧ hasForm s</code></pre></div>
 <div class="node-desc">THEOREM: Every sacrament is a composite of matter and form.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="every_sacrament_has_form">every_sacrament_has_form</span>
-<span class="dep-chip" data-target="every_sacrament_has_matter">every_sacrament_has_matter</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="every_sacrament_has_form">every_sacrament_has_form</span><span class="dep-chip" data-target="every_sacrament_has_matter">every_sacrament_has_matter</span><span class="dep-chip" data-target="hasForm">hasForm</span><span class="dep-chip" data-target="hasMatter">hasMatter</span><span class="dep-chip" data-target="matter_and_form_determine">matter_and_form_determine</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hylomorphic_analogy">hylomorphic_analogy</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="every_sacrament_is_determinate">
@@ -791,15 +763,8 @@ h1 {
     <div class="node-prop"><pre><code>theorem every_sacrament_is_determinate :
     ∀ (s : SacramentKind), isDeterminateSign s</code></pre></div>
 <div class="node-desc">THEOREM: Every sacrament is a determinate sign — it signifies</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="every_sacrament_has_form">every_sacrament_has_form</span>
-<span class="dep-chip" data-target="every_sacrament_has_matter">every_sacrament_has_matter</span>
-<span class="dep-chip" data-target="matter_and_form_determine">matter_and_form_determine</span>
-</div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="efficacious_sign">efficacious_sign</span>
-<span class="dep-chip" data-target="form_is_essential">form_is_essential</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="every_sacrament_has_form">every_sacrament_has_form</span><span class="dep-chip" data-target="every_sacrament_has_matter">every_sacrament_has_matter</span><span class="dep-chip" data-target="isDeterminateSign">isDeterminateSign</span><span class="dep-chip" data-target="matter_and_form_determine">matter_and_form_determine</span><span class="dep-chip" data-target="validity_requires_both">validity_requires_both</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="marriage_still_hylomorphic">marriage_still_hylomorphic</span><span class="dep-chip" data-target="efficacious_sign">efficacious_sign</span><span class="dep-chip" data-target="form_is_essential">form_is_essential</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="matter_without_form_invalid">
@@ -813,9 +778,8 @@ h1 {
     ∀ (s : SacramentKind), hasMatter s → ¬hasForm s →
       ¬isValidlyCelebrated s</code></pre></div>
 <div class="node-desc">THEOREM: Matter without form never produces a valid sacrament.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="validity_requires_both">validity_requires_both</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="hasForm">hasForm</span><span class="dep-chip" data-target="hasMatter">hasMatter</span><span class="dep-chip" data-target="isValidlyCelebrated">isValidlyCelebrated</span><span class="dep-chip" data-target="validity_requires_both">validity_requires_both</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hylomorphic_analogy">hylomorphic_analogy</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="form_without_matter_invalid">
@@ -829,9 +793,8 @@ h1 {
     ∀ (s : SacramentKind), hasForm s → ¬hasMatter s →
       ¬isValidlyCelebrated s</code></pre></div>
 <div class="node-desc">THEOREM: Form without matter never produces a valid sacrament.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="validity_requires_both">validity_requires_both</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="hasForm">hasForm</span><span class="dep-chip" data-target="hasMatter">hasMatter</span><span class="dep-chip" data-target="isValidlyCelebrated">isValidlyCelebrated</span><span class="dep-chip" data-target="marriage_matter_is_persons">marriage_matter_is_persons</span><span class="dep-chip" data-target="six_sacraments_have_external_matter">six_sacraments_have_external_matter</span><span class="dep-chip" data-target="validity_requires_both">validity_requires_both</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hylomorphic_analogy">hylomorphic_analogy</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="marriage_uniquely_non_external">
@@ -844,10 +807,8 @@ h1 {
     <div class="node-prop"><pre><code>theorem marriage_uniquely_non_external :
     ∀ (s : SacramentKind), hasExternalMatter s ↔ s ≠ .marriage</code></pre></div>
 <div class="node-desc">THEOREM: Marriage is the unique sacrament without external matter.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="marriage_matter_is_persons">marriage_matter_is_persons</span>
-<span class="dep-chip" data-target="six_sacraments_have_external_matter">six_sacraments_have_external_matter</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="every_sacrament_has_form">every_sacrament_has_form</span><span class="dep-chip" data-target="every_sacrament_has_matter">every_sacrament_has_matter</span><span class="dep-chip" data-target="hasExternalMatter">hasExternalMatter</span><span class="dep-chip" data-target="marriage_matter_is_persons">marriage_matter_is_persons</span><span class="dep-chip" data-target="six_sacraments_have_external_matter">six_sacraments_have_external_matter</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hylomorphic_analogy">hylomorphic_analogy</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="marriage_still_hylomorphic">
@@ -859,11 +820,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem marriage_still_hylomorphic :
     hasMatter .marriage ∧ hasForm .marriage</code></pre></div>
-<div class="node-desc">THEOREM: Despite marriage&#x27;s anomalous matter, it still satisfies the</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="every_sacrament_has_form">every_sacrament_has_form</span>
-<span class="dep-chip" data-target="every_sacrament_has_matter">every_sacrament_has_matter</span>
-</div></div>
+<div class="node-desc">THEOREM: Despite marriage's anomalous matter, it still satisfies the</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="every_sacrament_has_form">every_sacrament_has_form</span><span class="dep-chip" data-target="every_sacrament_has_matter">every_sacrament_has_matter</span><span class="dep-chip" data-target="every_sacrament_is_determinate">every_sacrament_is_determinate</span><span class="dep-chip" data-target="hasForm">hasForm</span><span class="dep-chip" data-target="hasMatter">hasMatter</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="efficacious_sign">
@@ -877,9 +835,8 @@ h1 {
     ∀ (s : SacramentKind),
       isDeterminateSign s ∧ ∃ (ct : ChangeType), causesChangeOfType s ct</code></pre></div>
 <div class="node-desc">THEOREM: Every sacrament is both a determinate sign AND a cause of</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="every_sacrament_is_determinate">every_sacrament_is_determinate</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="every_sacrament_has_matter">every_sacrament_has_matter</span><span class="dep-chip" data-target="every_sacrament_is_determinate">every_sacrament_is_determinate</span><span class="dep-chip" data-target="isDeterminateSign">isDeterminateSign</span><span class="dep-chip" data-target="matter_alone_indeterminate">matter_alone_indeterminate</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hylomorphic_analogy">hylomorphic_analogy</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="form_is_essential">
@@ -896,11 +853,7 @@ h1 {
       -- ...but would NOT be without its form
       ∧ (¬hasForm s → ¬isDeterminateSign s)</code></pre></div>
 <div class="node-desc">THEOREM: Matter alone is never a determinate sacramental sign AND</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="every_sacrament_is_determinate">every_sacrament_is_determinate</span>
-<span class="dep-chip" data-target="matter_alone_indeterminate">matter_alone_indeterminate</span>
-<span class="dep-chip" data-target="every_sacrament_has_matter">every_sacrament_has_matter</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="every_sacrament_has_matter">every_sacrament_has_matter</span><span class="dep-chip" data-target="every_sacrament_is_determinate">every_sacrament_is_determinate</span><span class="dep-chip" data-target="hasForm">hasForm</span><span class="dep-chip" data-target="isDeterminateSign">isDeterminateSign</span><span class="dep-chip" data-target="matter_alone_indeterminate">matter_alone_indeterminate</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="hylomorphicAnalogyHolds">
@@ -912,6 +865,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque hylomorphicAnalogyHolds : Prop</code></pre></div>
 <div class="node-desc">Whether the hylomorphic analogy holds: sacramental signs have the</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="every_sacrament_has_form">every_sacrament_has_form</span><span class="dep-chip" data-target="every_sacrament_has_matter">every_sacrament_has_matter</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hylomorphic_analogy">hylomorphic_analogy</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="hylomorphic_analogy">
@@ -925,10 +880,7 @@ h1 {
     hylomorphicAnalogyHolds →
       ∀ (s : SacramentKind), hasMatter s ∧ hasForm s</code></pre></div>
 <div class="node-desc">THEOREM: IF the hylomorphic analogy holds (the Thomistic claim that</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="every_sacrament_has_form">every_sacrament_has_form</span>
-<span class="dep-chip" data-target="every_sacrament_has_matter">every_sacrament_has_matter</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="efficacious_sign">efficacious_sign</span><span class="dep-chip" data-target="every_sacrament_has_form">every_sacrament_has_form</span><span class="dep-chip" data-target="every_sacrament_has_matter">every_sacrament_has_matter</span><span class="dep-chip" data-target="every_sacrament_is_composite">every_sacrament_is_composite</span><span class="dep-chip" data-target="form_without_matter_invalid">form_without_matter_invalid</span><span class="dep-chip" data-target="hasForm">hasForm</span><span class="dep-chip" data-target="hasMatter">hasMatter</span><span class="dep-chip" data-target="hylomorphicAnalogyHolds">hylomorphicAnalogyHolds</span><span class="dep-chip" data-target="marriage_uniquely_non_external">marriage_uniquely_non_external</span><span class="dep-chip" data-target="matter_alone_indeterminate">matter_alone_indeterminate</span><span class="dep-chip" data-target="matter_without_form_invalid">matter_without_form_invalid</span></div></div>
   </div>
 </div>
   </div>

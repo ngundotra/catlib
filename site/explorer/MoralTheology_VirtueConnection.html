@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Virtue Connection — Catlib Explorer</title>
+  <title>VirtueConnection — Catlib Explorer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -143,7 +143,7 @@ h1 {
   line-height: 1.6;
 }
 
-/* Search */
+/* ── Search ── */
 .search-box {
   width: 100%;
   padding: 0.8rem 1rem;
@@ -167,7 +167,7 @@ h1 {
   font-style: italic;
 }
 
-/* Category sections */
+/* ── Category sections ── */
 .category-header {
   font-family: Cinzel, Georgia, serif;
   font-size: 1.1rem;
@@ -181,7 +181,7 @@ h1 {
   border-bottom: 1px solid var(--border);
 }
 
-/* File cards */
+/* ── File cards ── */
 .file-card {
   display: block;
   padding: 1rem 1.1rem;
@@ -237,7 +237,7 @@ h1 {
   margin-top: 0.3rem;
 }
 
-/* Summary stats */
+/* ── Summary stats ── */
 .stats-bar {
   display: flex;
   justify-content: center;
@@ -251,7 +251,7 @@ h1 {
 
 .stats-bar span { white-space: nowrap; }
 
-/* Node cards */
+/* ── Node cards (per-file page) ── */
 .node-card {
   margin-bottom: 0.4rem;
   border: 1px solid var(--border);
@@ -267,8 +267,6 @@ h1 {
 .node-card.kind-structure { border-left-color: var(--structure-dot); }
 .node-card.kind-inductive { border-left-color: var(--inductive-dot); }
 .node-card.kind-proposition { border-left-color: var(--proposition-dot); }
-.node-card.kind-instance { border-left-color: var(--def-dot); }
-.node-card.kind-abbrev { border-left-color: var(--def-dot); }
 
 .node-header {
   display: flex;
@@ -304,8 +302,6 @@ h1 {
 .kind-structure .node-kind-badge { background: var(--structure-bg); color: var(--structure-dot); }
 .kind-inductive .node-kind-badge { background: var(--inductive-bg); color: var(--inductive-dot); }
 .kind-proposition .node-kind-badge { background: var(--proposition-bg); color: var(--proposition-dot); }
-.kind-instance .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
-.kind-abbrev .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
 
 .node-name {
   flex: 1;
@@ -409,7 +405,7 @@ h1 {
   color: var(--text-muted);
 }
 
-/* Flow diagram header */
+/* ── Flow diagram header ── */
 .flow-summary {
   display: flex;
   justify-content: center;
@@ -435,7 +431,7 @@ h1 {
 .flow-count.theorems { background: var(--theorem-bg); color: var(--theorem-dot); }
 .flow-count.derived { background: var(--def-bg); color: var(--def-dot); }
 
-/* Legend */
+/* ── Legend ── */
 .legend {
   display: flex;
   flex-wrap: wrap;
@@ -467,7 +463,7 @@ h1 {
 .legend-dot.inductive { background: var(--inductive-dot); }
 .legend-dot.proposition { background: var(--proposition-dot); }
 
-/* Filter buttons */
+/* ── Filter buttons ── */
 .filter-bar {
   display: flex;
   flex-wrap: wrap;
@@ -496,7 +492,7 @@ h1 {
   border-color: var(--accent);
 }
 
-/* Back link */
+/* ── Back link ── */
 .back-link {
   display: inline-block;
   margin-bottom: 1rem;
@@ -505,7 +501,7 @@ h1 {
   letter-spacing: 0.04em;
 }
 
-/* Footer */
+/* ── Footer ── */
 .footer {
   text-align: center;
   padding-top: 2rem;
@@ -514,7 +510,7 @@ h1 {
   font-style: italic;
 }
 
-/* Responsive */
+/* ── Responsive ── */
 @media (max-width: 500px) {
   html { font-size: 16px; }
   .container { padding: 1rem 0.75rem 2rem; }
@@ -526,39 +522,47 @@ h1 {
 <body>
 <div class="container">
   <a href="index.html" class="back-link">&larr; All files</a>
-  <h1>Virtue Connection</h1>
-  <div class="subtitle">Moral Theology &middot; 23 declarations</div>
+  <h1>VirtueConnection</h1>
+  <div class="subtitle">MoralTheology &middot; 23 declarations</div>
 
+  <div class="flow-summary">
+  <span class="flow-count axioms">9 axioms</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count theorems">9 theorems</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count derived">5 derived</span>
+</div>
   <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1733, &sect;1827, &sect;1830, &sect;1831</div>
-  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span><span class="legend-item"><span class="legend-dot proposition"></span>proposition</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
 
-  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (6)</button><button class="filter-btn" data-filter="def">def (4)</button><button class="filter-btn" data-filter="inductive">inductive (1)</button><button class="filter-btn" data-filter="proposition">proposition (3)</button><button class="filter-btn" data-filter="theorem">theorem (9)</button></div>
+  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
+
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (6)</button><button class="filter-btn" data-filter="def">def (4)</button><button class="filter-btn" data-filter="inductive">inductive (1)</button><button class="filter-btn" data-filter="opaque">opaque (3)</button><button class="filter-btn" data-filter="theorem">theorem (9)</button></div>
 
   <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
 
   <div id="nodeList">
-    <div class="node-card kind-proposition" data-kind="proposition" data-name="isPerfectVirtue">
+    <div class="node-card kind-opaque" data-kind="opaque" data-name="isPerfectVirtue">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
+    <span class="node-kind-badge">opaque</span>
     <span class="node-name">isPerfectVirtue</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque isPerfectVirtue : Person → Virtue → Prop</code></pre></div>
-<div class="node-desc">Whether a person&#x27;s virtue is &quot;perfect&quot; — ordered to the ultimate end (God) through charity.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="charity_is_mechanism_of_connection">charity_is_mechanism_of_connection</span><span class="dep-chip" data-target="connection_thesis">connection_thesis</span><span class="dep-chip" data-target="gift_connects_all_virtues">gift_connects_all_virtues</span><span class="dep-chip" data-target="gifts_perfect_virtues">gifts_perfect_virtues</span><span class="dep-chip" data-target="lacking_one_perfect_means_lacking_all">lacking_one_perfect_means_lacking_all</span><span class="dep-chip" data-target="lacking_perfect_virtue_means_no_charity">lacking_perfect_virtue_means_no_charity</span><span class="dep-chip" data-target="perfect_connected_imperfect_not">perfect_connected_imperfect_not</span><span class="dep-chip" data-target="perfect_virtue_entails_agape">perfect_virtue_entails_agape</span><span class="dep-chip" data-target="perfect_virtue_requires_charity">perfect_virtue_requires_charity</span></div></div>
+<div class="node-desc">Whether a person's virtue is &quot;perfect&quot; — ordered to the ultimate end</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="connection_thesis">connection_thesis</span><span class="dep-chip" data-target="perfect_virtue_requires_charity">perfect_virtue_requires_charity</span><span class="dep-chip" data-target="gifts_perfect_virtues">gifts_perfect_virtues</span><span class="dep-chip" data-target="charity_is_mechanism_of_connection">charity_is_mechanism_of_connection</span><span class="dep-chip" data-target="perfect_virtue_entails_agape">perfect_virtue_entails_agape</span><span class="dep-chip" data-target="gift_connects_all_virtues">gift_connects_all_virtues</span><span class="dep-chip" data-target="lacking_one_perfect_means_lacking_all">lacking_one_perfect_means_lacking_all</span><span class="dep-chip" data-target="lacking_perfect_virtue_means_no_charity">lacking_perfect_virtue_means_no_charity</span><span class="dep-chip" data-target="perfect_connected_imperfect_not">perfect_connected_imperfect_not</span></div></div>
   </div>
 </div>
-<div class="node-card kind-proposition" data-kind="proposition" data-name="hasImperfectVirtue">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="hasImperfectVirtue">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
+    <span class="node-kind-badge">opaque</span>
     <span class="node-name">hasImperfectVirtue</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque hasImperfectVirtue : Person → Virtue → Prop</code></pre></div>
 <div class="node-desc">Whether a person has an imperfect (acquired, natural) version of a virtue.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="imperfect_virtues_not_connected">imperfect_virtues_not_connected</span><span class="dep-chip" data-target="perfect_connected_imperfect_not">perfect_connected_imperfect_not</span><span class="dep-chip" data-target="without_charity_all_imperfect">without_charity_all_imperfect</span><span class="dep-chip" data-target="without_charity_virtue_is_imperfect">without_charity_virtue_is_imperfect</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="without_charity_virtue_is_imperfect">without_charity_virtue_is_imperfect</span><span class="dep-chip" data-target="imperfect_virtues_not_connected">imperfect_virtues_not_connected</span><span class="dep-chip" data-target="without_charity_all_imperfect">without_charity_all_imperfect</span><span class="dep-chip" data-target="perfect_connected_imperfect_not">perfect_connected_imperfect_not</span></div></div>
   </div>
 </div>
 <div class="node-card kind-inductive" data-kind="inductive" data-name="GiftOfHolySpirit">
@@ -570,19 +574,20 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>inductive GiftOfHolySpirit where</code></pre></div>
 <div class="node-desc">The seven gifts of the Holy Spirit.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="gift_connects_all_virtues">gift_connects_all_virtues</span><span class="dep-chip" data-target="gifts_distinct_from_virtues">gifts_distinct_from_virtues</span><span class="dep-chip" data-target="gifts_perfect_virtues">gifts_perfect_virtues</span><span class="dep-chip" data-target="hasGift">hasGift</span><span class="dep-chip" data-target="virtue_without_gifts_possible">virtue_without_gifts_possible</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hasGift">hasGift</span><span class="dep-chip" data-target="gifts_distinct_from_virtues">gifts_distinct_from_virtues</span><span class="dep-chip" data-target="gifts_perfect_virtues">gifts_perfect_virtues</span><span class="dep-chip" data-target="gift_connects_all_virtues">gift_connects_all_virtues</span><span class="dep-chip" data-target="virtue_without_gifts_possible">virtue_without_gifts_possible</span></div></div>
   </div>
 </div>
-<div class="node-card kind-proposition" data-kind="proposition" data-name="hasGift">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="hasGift">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
+    <span class="node-kind-badge">opaque</span>
     <span class="node-name">hasGift</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque hasGift : Person → GiftOfHolySpirit → Prop</code></pre></div>
 <div class="node-desc">Whether a person has a gift of the Holy Spirit.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="GiftOfHolySpirit">GiftOfHolySpirit</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="gift_connects_all_virtues">gift_connects_all_virtues</span><span class="dep-chip" data-target="gifts_distinct_from_virtues">gifts_distinct_from_virtues</span><span class="dep-chip" data-target="gifts_perfect_virtues">gifts_perfect_virtues</span><span class="dep-chip" data-target="virtue_without_gifts_possible">virtue_without_gifts_possible</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="GiftOfHolySpirit">GiftOfHolySpirit</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="gifts_distinct_from_virtues">gifts_distinct_from_virtues</span><span class="dep-chip" data-target="gifts_perfect_virtues">gifts_perfect_virtues</span><span class="dep-chip" data-target="gift_connects_all_virtues">gift_connects_all_virtues</span><span class="dep-chip" data-target="virtue_without_gifts_possible">virtue_without_gifts_possible</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="connection_thesis">
@@ -593,11 +598,12 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom connection_thesis :
-∀ (p : Person) (v : CardinalVirtue),
-isPerfectVirtue p (Virtue.cardinal v) →
-(∀ (w : CardinalVirtue), isPerfectVirtue p (Virtue.cardinal w))</code></pre></div>
-<div class="node-desc">The connection thesis: perfect moral virtues are interconnected.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isPerfectVirtue">isPerfectVirtue</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="charity_is_mechanism_of_connection">charity_is_mechanism_of_connection</span><span class="dep-chip" data-target="gift_connects_all_virtues">gift_connects_all_virtues</span><span class="dep-chip" data-target="lacking_one_perfect_means_lacking_all">lacking_one_perfect_means_lacking_all</span><span class="dep-chip" data-target="lacking_perfect_virtue_means_no_charity">lacking_perfect_virtue_means_no_charity</span><span class="dep-chip" data-target="perfect_connected_imperfect_not">perfect_connected_imperfect_not</span></div></div>
+  ∀ (p : Person) (v : CardinalVirtue),
+    isPerfectVirtue p (Virtue.cardinal v) →
+    (∀ (w : CardinalVirtue), isPerfectVirtue p (Virtue.cardinal w))</code></pre></div>
+<div class="node-desc">**A1. The connection thesis: perfect moral virtues are interconnected.**</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isPerfectVirtue">isPerfectVirtue</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="charity_is_mechanism_of_connection">charity_is_mechanism_of_connection</span><span class="dep-chip" data-target="gift_connects_all_virtues">gift_connects_all_virtues</span><span class="dep-chip" data-target="lacking_one_perfect_means_lacking_all">lacking_one_perfect_means_lacking_all</span><span class="dep-chip" data-target="lacking_perfect_virtue_means_no_charity">lacking_perfect_virtue_means_no_charity</span><span class="dep-chip" data-target="perfect_connected_imperfect_not">perfect_connected_imperfect_not</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="perfect_virtue_requires_charity">
@@ -608,11 +614,12 @@ isPerfectVirtue p (Virtue.cardinal v) →
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom perfect_virtue_requires_charity :
-∀ (p : Person) (v : CardinalVirtue),
-isPerfectVirtue p (Virtue.cardinal v) →
-hasVirtue p (Virtue.theological TheologicalVirtue.charity)</code></pre></div>
-<div class="node-desc">Perfect virtue requires charity.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isPerfectVirtue">isPerfectVirtue</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="charity_is_mechanism_of_connection">charity_is_mechanism_of_connection</span><span class="dep-chip" data-target="lacking_one_perfect_means_lacking_all">lacking_one_perfect_means_lacking_all</span><span class="dep-chip" data-target="perfect_virtue_entails_agape">perfect_virtue_entails_agape</span></div></div>
+  ∀ (p : Person) (v : CardinalVirtue),
+    isPerfectVirtue p (Virtue.cardinal v) →
+    hasVirtue p (Virtue.theological TheologicalVirtue.charity)</code></pre></div>
+<div class="node-desc">**A2. Perfect virtue requires charity.**</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isPerfectVirtue">isPerfectVirtue</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="charity_is_mechanism_of_connection">charity_is_mechanism_of_connection</span><span class="dep-chip" data-target="perfect_virtue_entails_agape">perfect_virtue_entails_agape</span><span class="dep-chip" data-target="lacking_one_perfect_means_lacking_all">lacking_one_perfect_means_lacking_all</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="without_charity_virtue_is_imperfect">
@@ -623,12 +630,13 @@ hasVirtue p (Virtue.theological TheologicalVirtue.charity)</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom without_charity_virtue_is_imperfect :
-∀ (p : Person) (v : CardinalVirtue),
-hasVirtue p (Virtue.cardinal v) →
-¬ hasVirtue p (Virtue.theological TheologicalVirtue.charity) →
-hasImperfectVirtue p (Virtue.cardinal v)</code></pre></div>
-<div class="node-desc">Without charity, virtues are imperfect.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="hasImperfectVirtue">hasImperfectVirtue</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="charity_is_mechanism_of_connection">charity_is_mechanism_of_connection</span><span class="dep-chip" data-target="without_charity_all_imperfect">without_charity_all_imperfect</span></div></div>
+  ∀ (p : Person) (v : CardinalVirtue),
+    hasVirtue p (Virtue.cardinal v) →
+    ¬ hasVirtue p (Virtue.theological TheologicalVirtue.charity) →
+    hasImperfectVirtue p (Virtue.cardinal v)</code></pre></div>
+<div class="node-desc">**A3. Without charity, virtues are imperfect.**</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="hasImperfectVirtue">hasImperfectVirtue</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="charity_is_mechanism_of_connection">charity_is_mechanism_of_connection</span><span class="dep-chip" data-target="without_charity_all_imperfect">without_charity_all_imperfect</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="imperfect_virtues_not_connected">
@@ -639,12 +647,13 @@ hasImperfectVirtue p (Virtue.cardinal v)</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom imperfect_virtues_not_connected :
-∃ (p : Person) (v w : CardinalVirtue),
-v ≠ w ∧
-hasImperfectVirtue p (Virtue.cardinal v) ∧
-¬ hasImperfectVirtue p (Virtue.cardinal w)</code></pre></div>
-<div class="node-desc">Imperfect virtues are NOT connected.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="hasImperfectVirtue">hasImperfectVirtue</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="lacking_perfect_virtue_means_no_charity">lacking_perfect_virtue_means_no_charity</span><span class="dep-chip" data-target="perfect_connected_imperfect_not">perfect_connected_imperfect_not</span></div></div>
+  ∃ (p : Person) (v w : CardinalVirtue),
+    v ≠ w ∧
+    hasImperfectVirtue p (Virtue.cardinal v) ∧
+    ¬ hasImperfectVirtue p (Virtue.cardinal w)</code></pre></div>
+<div class="node-desc">**A4. Imperfect virtues are NOT connected.**</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="hasImperfectVirtue">hasImperfectVirtue</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="lacking_perfect_virtue_means_no_charity">lacking_perfect_virtue_means_no_charity</span><span class="dep-chip" data-target="perfect_connected_imperfect_not">perfect_connected_imperfect_not</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="gifts_distinct_from_virtues">
@@ -655,11 +664,12 @@ hasImperfectVirtue p (Virtue.cardinal v) ∧
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom gifts_distinct_from_virtues :
-∃ (p : Person) (v : CardinalVirtue) (g : GiftOfHolySpirit),
-hasVirtue p (Virtue.cardinal v) ∧
-¬ hasGift p g</code></pre></div>
-<div class="node-desc">Gifts of the Holy Spirit are distinct from virtues.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="GiftOfHolySpirit">GiftOfHolySpirit</span><span class="dep-chip" data-target="hasGift">hasGift</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="perfect_connected_imperfect_not">perfect_connected_imperfect_not</span><span class="dep-chip" data-target="virtue_without_gifts_possible">virtue_without_gifts_possible</span></div></div>
+  ∃ (p : Person) (v : CardinalVirtue) (g : GiftOfHolySpirit),
+    hasVirtue p (Virtue.cardinal v) ∧
+    ¬ hasGift p g</code></pre></div>
+<div class="node-desc">**A5. Gifts of the Holy Spirit are distinct from virtues.**</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="GiftOfHolySpirit">GiftOfHolySpirit</span><span class="dep-chip" data-target="hasGift">hasGift</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="perfect_connected_imperfect_not">perfect_connected_imperfect_not</span><span class="dep-chip" data-target="virtue_without_gifts_possible">virtue_without_gifts_possible</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="gifts_perfect_virtues">
@@ -670,11 +680,15 @@ hasVirtue p (Virtue.cardinal v) ∧
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom gifts_perfect_virtues :
-∀ (p : Person) (v : CardinalVirtue) (g : GiftOfHolySpirit),
-hasVirtue p (Virtue.cardinal v) →
-hasGift p g →</code></pre></div>
-<div class="node-desc">Gifts perfect the virtues.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="GiftOfHolySpirit">GiftOfHolySpirit</span><span class="dep-chip" data-target="hasGift">hasGift</span><span class="dep-chip" data-target="isPerfectVirtue">isPerfectVirtue</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="gift_connects_all_virtues">gift_connects_all_virtues</span></div></div>
+  ∀ (p : Person) (v : CardinalVirtue) (g : GiftOfHolySpirit),
+    hasVirtue p (Virtue.cardinal v) →
+    hasGift p g →
+    -- The virtue, when accompanied by the gift, reaches a higher mode
+    -- We express this as: the virtue becomes perfect (ordered to God)
+    isPerfectVirtue p (Virtue.cardinal v)</code></pre></div>
+<div class="node-desc">**A6. Gifts perfect the virtues.**</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="GiftOfHolySpirit">GiftOfHolySpirit</span><span class="dep-chip" data-target="hasGift">hasGift</span><span class="dep-chip" data-target="isPerfectVirtue">isPerfectVirtue</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="gift_connects_all_virtues">gift_connects_all_virtues</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="charity_is_mechanism_of_connection">
@@ -685,9 +699,12 @@ hasGift p g →</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem charity_is_mechanism_of_connection
-(p : Person) (v : CardinalVirtue)
-(h_perfect : isPerfectVirtue p (Virtue.cardinal v)) :</code></pre></div>
-<div class="node-desc">Charity is necessary for the connection of virtues.</div>
+    (p : Person) (v : CardinalVirtue)
+    (h_perfect : isPerfectVirtue p (Virtue.cardinal v)) :
+    -- If one perfect virtue → all perfect virtues AND charity
+    (∀ (w : CardinalVirtue), isPerfectVirtue p (Virtue.cardinal w)) ∧
+    hasVirtue p (Virtue.theological TheologicalVirtue.charity)</code></pre></div>
+<div class="node-desc">Charity is necessary for the connection of virtues. Without charity,</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="connection_thesis">connection_thesis</span><span class="dep-chip" data-target="isPerfectVirtue">isPerfectVirtue</span><span class="dep-chip" data-target="perfect_virtue_requires_charity">perfect_virtue_requires_charity</span><span class="dep-chip" data-target="without_charity_virtue_is_imperfect">without_charity_virtue_is_imperfect</span></div></div>
   </div>
 </div>
@@ -699,17 +716,17 @@ hasGift p g →</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem without_charity_all_imperfect
-(p : Person)
-(h_pru : hasVirtue p (Virtue.cardinal CardinalVirtue.prudence))
-(h_jus : hasVirtue p (Virtue.cardinal CardinalVirtue.justice))
-(h_for : hasVirtue p (Virtue.cardinal CardinalVirtue.fortitude))
-(h_tem : hasVirtue p (Virtue.cardinal CardinalVirtue.temperance))
-(h_no_charity : ¬ hasVirtue p (Virtue.theological TheologicalVirtue.charity)) :
-hasImperfectVirtue p (Virtue.cardinal CardinalVirtue.prudence) ∧
-hasImperfectVirtue p (Virtue.cardinal CardinalVirtue.justice) ∧
-hasImperfectVirtue p (Virtue.cardinal CardinalVirtue.fortitude) ∧
-hasImperfectVirtue p (Virtue.cardinal CardinalVirtue.temperance)</code></pre></div>
-<div class="node-desc">A person with all four cardinal virtues but without charity has only imperfect virtues.</div>
+    (p : Person)
+    (h_pru : hasVirtue p (Virtue.cardinal CardinalVirtue.prudence))
+    (h_jus : hasVirtue p (Virtue.cardinal CardinalVirtue.justice))
+    (h_for : hasVirtue p (Virtue.cardinal CardinalVirtue.fortitude))
+    (h_tem : hasVirtue p (Virtue.cardinal CardinalVirtue.temperance))
+    (h_no_charity : ¬ hasVirtue p (Virtue.theological TheologicalVirtue.charity)) :
+    hasImperfectVirtue p (Virtue.cardinal CardinalVirtue.prudence) ∧
+    hasImperfectVirtue p (Virtue.cardinal CardinalVirtue.justice) ∧
+    hasImperfectVirtue p (Virtue.cardinal CardinalVirtue.fortitude) ∧
+    hasImperfectVirtue p (Virtue.cardinal CardinalVirtue.temperance)</code></pre></div>
+<div class="node-desc">A person with all four cardinal virtues but without charity has only</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="hasImperfectVirtue">hasImperfectVirtue</span><span class="dep-chip" data-target="without_charity_virtue_is_imperfect">without_charity_virtue_is_imperfect</span></div></div>
   </div>
 </div>
@@ -721,12 +738,12 @@ hasImperfectVirtue p (Virtue.cardinal CardinalVirtue.temperance)</code></pre></d
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem perfect_virtue_entails_agape
-(p : Person) (v : CardinalVirtue)
-(h_perfect : isPerfectVirtue p (Virtue.cardinal v)) :
-∃ (tl : TypedLove),
-tl.kind = LoveKind.agape ∧
-tl.lover = p ∧
-tl.degree &gt; 0</code></pre></div>
+    (p : Person) (v : CardinalVirtue)
+    (h_perfect : isPerfectVirtue p (Virtue.cardinal v)) :
+    ∃ (tl : TypedLove),
+      tl.kind = LoveKind.agape ∧
+      tl.lover = p ∧
+      tl.degree &gt; 0</code></pre></div>
 <div class="node-desc">The person who has perfect virtues has agape-love (charity = agape).</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isPerfectVirtue">isPerfectVirtue</span><span class="dep-chip" data-target="perfect_virtue_requires_charity">perfect_virtue_requires_charity</span></div></div>
   </div>
@@ -739,11 +756,10 @@ tl.degree &gt; 0</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem perfect_virtue_increases_freedom
-(fd : FreedomDegree)
-(h_oriented : fd.orientedToGood) :
-fd.level &gt; 0</code></pre></div>
-<div class="node-desc">A person with one perfect virtue is oriented to the good and therefore has positive freedom.</div>
-
+    (fd : FreedomDegree)
+    (h_oriented : fd.orientedToGood) :
+    fd.level &gt; 0</code></pre></div>
+<div class="node-desc">A person with one perfect virtue is oriented to the good and therefore</div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="gift_connects_all_virtues">
@@ -754,11 +770,11 @@ fd.level &gt; 0</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem gift_connects_all_virtues
-(p : Person) (v : CardinalVirtue) (g : GiftOfHolySpirit)
-(h_virtue : hasVirtue p (Virtue.cardinal v))
-(h_gift : hasGift p g) :
-∀ (w : CardinalVirtue), isPerfectVirtue p (Virtue.cardinal w)</code></pre></div>
-<div class="node-desc">A gift elevating one virtue makes all cardinal virtues perfect (via the connection thesis).</div>
+    (p : Person) (v : CardinalVirtue) (g : GiftOfHolySpirit)
+    (h_virtue : hasVirtue p (Virtue.cardinal v))
+    (h_gift : hasGift p g) :
+    ∀ (w : CardinalVirtue), isPerfectVirtue p (Virtue.cardinal w)</code></pre></div>
+<div class="node-desc">A gift elevating one virtue makes all cardinal virtues perfect</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="GiftOfHolySpirit">GiftOfHolySpirit</span><span class="dep-chip" data-target="connection_thesis">connection_thesis</span><span class="dep-chip" data-target="gifts_perfect_virtues">gifts_perfect_virtues</span><span class="dep-chip" data-target="hasGift">hasGift</span><span class="dep-chip" data-target="isPerfectVirtue">isPerfectVirtue</span></div></div>
   </div>
 </div>
@@ -770,10 +786,10 @@ fd.level &gt; 0</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem lacking_one_perfect_means_lacking_all
-(p : Person) (w : CardinalVirtue)
-(h_lacks : ¬ isPerfectVirtue p (Virtue.cardinal w)) :
-∀ (v : CardinalVirtue), ¬ isPerfectVirtue p (Virtue.cardinal v)</code></pre></div>
-<div class="node-desc">If a person lacks a perfect cardinal virtue, they cannot have ANY perfect cardinal virtue (by contrapositive of connecti...</div>
+    (p : Person) (w : CardinalVirtue)
+    (h_lacks : ¬ isPerfectVirtue p (Virtue.cardinal w)) :
+    ∀ (v : CardinalVirtue), ¬ isPerfectVirtue p (Virtue.cardinal v)</code></pre></div>
+<div class="node-desc">If a person lacks a perfect cardinal virtue, they cannot have ANY</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="connection_thesis">connection_thesis</span><span class="dep-chip" data-target="isPerfectVirtue">isPerfectVirtue</span><span class="dep-chip" data-target="perfect_virtue_requires_charity">perfect_virtue_requires_charity</span></div></div>
   </div>
 </div>
@@ -785,13 +801,13 @@ fd.level &gt; 0</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem lacking_perfect_virtue_means_no_charity
-(p : Person) (w : CardinalVirtue)
-(h_lacks : ¬ isPerfectVirtue p (Virtue.cardinal w))
-(v : CardinalVirtue)
-(h_charity_implies_perfect :
-hasVirtue p (Virtue.theological TheologicalVirtue.charity) →
-isPerfectVirtue p (Virtue.cardinal v)) :
-¬ hasVirtue p (Virtue.theological TheologicalVirtue.charity)</code></pre></div>
+    (p : Person) (w : CardinalVirtue)
+    (h_lacks : ¬ isPerfectVirtue p (Virtue.cardinal w))
+    (v : CardinalVirtue)
+    (h_charity_implies_perfect :
+      hasVirtue p (Virtue.theological TheologicalVirtue.charity) →
+      isPerfectVirtue p (Virtue.cardinal v)) :
+    ¬ hasVirtue p (Virtue.theological TheologicalVirtue.charity)</code></pre></div>
 <div class="node-desc">Lacking any perfect cardinal virtue means lacking charity.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="connection_thesis">connection_thesis</span><span class="dep-chip" data-target="imperfect_virtues_not_connected">imperfect_virtues_not_connected</span><span class="dep-chip" data-target="isPerfectVirtue">isPerfectVirtue</span></div></div>
   </div>
@@ -803,8 +819,17 @@ isPerfectVirtue p (Virtue.cardinal v)) :
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>theorem perfect_connected_imperfect_not :</code></pre></div>
-<div class="node-desc">The contrast between perfect and imperfect virtue: perfect virtues are connected (having one gives all), but imperfect v...</div>
+    <div class="node-prop"><pre><code>theorem perfect_connected_imperfect_not :
+    -- Part 1: Perfect virtues are connected
+    (∀ (p : Person) (v : CardinalVirtue),
+      isPerfectVirtue p (Virtue.cardinal v) →
+      ∀ (w : CardinalVirtue), isPerfectVirtue p (Virtue.cardinal w)) ∧
+    -- Part 2: Imperfect virtues are NOT connected (witness exists)
+    (∃ (p : Person) (v w : CardinalVirtue),
+      v ≠ w ∧
+      hasImperfectVirtue p (Virtue.cardinal v) ∧
+      ¬ hasImperfectVirtue p (Virtue.cardinal w))</code></pre></div>
+<div class="node-desc">The contrast between perfect and imperfect virtue: perfect virtues are</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="connection_thesis">connection_thesis</span><span class="dep-chip" data-target="gifts_distinct_from_virtues">gifts_distinct_from_virtues</span><span class="dep-chip" data-target="hasImperfectVirtue">hasImperfectVirtue</span><span class="dep-chip" data-target="imperfect_virtues_not_connected">imperfect_virtues_not_connected</span><span class="dep-chip" data-target="isPerfectVirtue">isPerfectVirtue</span></div></div>
   </div>
 </div>
@@ -816,9 +841,9 @@ isPerfectVirtue p (Virtue.cardinal v)) :
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem virtue_without_gifts_possible :
-∃ (p : Person) (v : CardinalVirtue) (g : GiftOfHolySpirit),
-hasVirtue p (Virtue.cardinal v) ∧
-¬ hasGift p g</code></pre></div>
+    ∃ (p : Person) (v : CardinalVirtue) (g : GiftOfHolySpirit),
+      hasVirtue p (Virtue.cardinal v) ∧
+      ¬ hasGift p g</code></pre></div>
 <div class="node-desc">Virtue does not entail having the gifts of the Holy Spirit.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="GiftOfHolySpirit">GiftOfHolySpirit</span><span class="dep-chip" data-target="gifts_distinct_from_virtues">gifts_distinct_from_virtues</span><span class="dep-chip" data-target="hasGift">hasGift</span></div></div>
   </div>
@@ -832,7 +857,6 @@ hasVirtue p (Virtue.cardinal v) ∧
   <div class="node-details">
     <div class="node-prop"><pre><code>def connection_thesis_tag : DenominationalTag</code></pre></div>
 <div class="node-desc">The connection thesis: broadly Thomistic, Catholic.</div>
-
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="charity_form_tag">
@@ -844,7 +868,6 @@ hasVirtue p (Virtue.cardinal v) ∧
   <div class="node-details">
     <div class="node-prop"><pre><code>def charity_form_tag : DenominationalTag</code></pre></div>
 <div class="node-desc">Charity as form of virtues: Catholic.</div>
-
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="gifts_tag">
@@ -856,7 +879,6 @@ hasVirtue p (Virtue.cardinal v) ∧
   <div class="node-details">
     <div class="node-prop"><pre><code>def gifts_tag : DenominationalTag</code></pre></div>
 <div class="node-desc">Gifts of the Holy Spirit: ecumenical.</div>
-
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="perfect_imperfect_tag">
@@ -868,10 +890,8 @@ hasVirtue p (Virtue.cardinal v) ∧
   <div class="node-details">
     <div class="node-prop"><pre><code>def perfect_imperfect_tag : DenominationalTag</code></pre></div>
 <div class="node-desc">Perfect vs imperfect virtue distinction: Catholic/Thomistic.</div>
-
   </div>
 </div>
-
   </div>
 
   <div class="footer">

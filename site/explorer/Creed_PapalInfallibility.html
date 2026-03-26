@@ -143,7 +143,7 @@ h1 {
   line-height: 1.6;
 }
 
-/* -- Search -- */
+/* ── Search ── */
 .search-box {
   width: 100%;
   padding: 0.8rem 1rem;
@@ -167,7 +167,91 @@ h1 {
   font-style: italic;
 }
 
-/* -- Node cards -- */
+/* ── Category sections ── */
+.category-header {
+  font-family: Cinzel, Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-variant: small-caps;
+  margin: 1.8rem 0 0.8rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── File cards ── */
+.file-card {
+  display: block;
+  padding: 1rem 1.1rem;
+  margin-bottom: 0.5rem;
+  background: var(--bg-parchment);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  text-decoration: none;
+  color: var(--text);
+  transition: background 0.15s, border-color 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.file-card:hover, .file-card:active {
+  background: var(--bg-vellum);
+  border-color: var(--accent-gold);
+  text-decoration: none;
+}
+
+.file-card-name {
+  font-family: Cinzel, Georgia, serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.3rem;
+}
+
+.file-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  font-size: 0.82rem;
+  color: var(--text-light);
+}
+
+.file-card-meta .tag {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.75rem;
+  font-family: Cinzel, Georgia, serif;
+  letter-spacing: 0.03em;
+}
+
+.tag-axiom { background: var(--axiom-bg); color: var(--axiom-dot); border: 1px solid var(--axiom-border); }
+.tag-theorem { background: var(--theorem-bg); color: var(--theorem-dot); border: 1px solid var(--theorem-border); }
+.tag-def { background: var(--def-bg); color: var(--def-dot); border: 1px solid var(--def-border); }
+.tag-proposition { background: var(--proposition-bg); color: var(--proposition-dot); border: 1px solid var(--proposition-border); }
+
+.file-card-ccc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 0.3rem;
+}
+
+/* ── Summary stats ── */
+.stats-bar {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--text-light);
+  font-style: italic;
+}
+
+.stats-bar span { white-space: nowrap; }
+
+/* ── Node cards (per-file page) ── */
 .node-card {
   margin-bottom: 0.4rem;
   border: 1px solid var(--border);
@@ -321,7 +405,7 @@ h1 {
   color: var(--text-muted);
 }
 
-/* -- Flow diagram header -- */
+/* ── Flow diagram header ── */
 .flow-summary {
   display: flex;
   justify-content: center;
@@ -347,7 +431,7 @@ h1 {
 .flow-count.theorems { background: var(--theorem-bg); color: var(--theorem-dot); }
 .flow-count.derived { background: var(--def-bg); color: var(--def-dot); }
 
-/* -- Legend -- */
+/* ── Legend ── */
 .legend {
   display: flex;
   flex-wrap: wrap;
@@ -379,7 +463,7 @@ h1 {
 .legend-dot.inductive { background: var(--inductive-dot); }
 .legend-dot.proposition { background: var(--proposition-dot); }
 
-/* -- Filter buttons -- */
+/* ── Filter buttons ── */
 .filter-bar {
   display: flex;
   flex-wrap: wrap;
@@ -408,7 +492,7 @@ h1 {
   border-color: var(--accent);
 }
 
-/* -- Back link -- */
+/* ── Back link ── */
 .back-link {
   display: inline-block;
   margin-bottom: 1rem;
@@ -417,7 +501,7 @@ h1 {
   letter-spacing: 0.04em;
 }
 
-/* -- Footer -- */
+/* ── Footer ── */
 .footer {
   text-align: center;
   padding-top: 2rem;
@@ -426,7 +510,7 @@ h1 {
   font-style: italic;
 }
 
-/* -- Responsive -- */
+/* ── Responsive ── */
 @media (max-width: 500px) {
   html { font-size: 16px; }
   .container { padding: 1rem 0.75rem 2rem; }
@@ -441,8 +525,15 @@ h1 {
   <h1>PapalInfallibility</h1>
   <div class="subtitle">Creed &middot; 41 declarations</div>
 
-  
+  <div class="flow-summary">
+  <span class="flow-count axioms">19 axioms</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count theorems">6 theorems</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count derived">16 derived</span>
+</div>
   <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;552, &sect;882, &sect;891</div>
+
   <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot structure"></span>structure</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
 
   <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (7)</button><button class="filter-btn" data-filter="def">def (15)</button><button class="filter-btn" data-filter="opaque">opaque (12)</button><button class="filter-btn" data-filter="structure">structure (1)</button><button class="filter-btn" data-filter="theorem">theorem (6)</button></div>
@@ -458,7 +549,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque Teaching : Type</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="CHARISM_GUARANTEES_IRREFORMABILITY">CHARISM_GUARANTEES_IRREFORMABILITY</span><span class="dep-chip" data-target="ExCathedraConditions">ExCathedraConditions</span><span class="dep-chip" data-target="concernsFaithOrMorals">concernsFaithOrMorals</span><span class="dep-chip" data-target="full_chain">full_chain</span><span class="dep-chip" data-target="infallibility_requires_conditions">infallibility_requires_conditions</span><span class="dep-chip" data-target="invokesFullAuthority">invokesFullAuthority</span><span class="dep-chip" data-target="isDefinitiveForUniversalChurch">isDefinitiveForUniversalChurch</span><span class="dep-chip" data-target="isIrreformable">isIrreformable</span><span class="dep-chip" data-target="papal_infallibility">papal_infallibility</span></div></div>
+<div class="node-desc">A teaching on faith or morals — the subject matter over which infallibility</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="concernsFaithOrMorals">concernsFaithOrMorals</span><span class="dep-chip" data-target="isDefinitiveForUniversalChurch">isDefinitiveForUniversalChurch</span><span class="dep-chip" data-target="invokesFullAuthority">invokesFullAuthority</span><span class="dep-chip" data-target="isIrreformable">isIrreformable</span><span class="dep-chip" data-target="ExCathedraConditions">ExCathedraConditions</span><span class="dep-chip" data-target="CHARISM_GUARANTEES_IRREFORMABILITY">CHARISM_GUARANTEES_IRREFORMABILITY</span><span class="dep-chip" data-target="papal_infallibility">papal_infallibility</span><span class="dep-chip" data-target="infallibility_requires_conditions">infallibility_requires_conditions</span><span class="dep-chip" data-target="full_chain">full_chain</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="concernsFaithOrMorals">
@@ -469,6 +561,7 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque concernsFaithOrMorals : Teaching → Prop</code></pre></div>
+<div class="node-desc">Whether a teaching concerns faith or morals (the subject-matter condition).</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Teaching">Teaching</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ExCathedraConditions">ExCathedraConditions</span></div></div>
   </div>
@@ -481,6 +574,7 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque isDefinitiveForUniversalChurch : Teaching → Prop</code></pre></div>
+<div class="node-desc">Whether a teaching is proposed as binding on the universal Church.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Teaching">Teaching</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ExCathedraConditions">ExCathedraConditions</span></div></div>
   </div>
@@ -493,6 +587,7 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque invokesFullAuthority : Teaching → Prop</code></pre></div>
+<div class="node-desc">Whether the full apostolic authority of the Petrine office is invoked.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Teaching">Teaching</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ExCathedraConditions">ExCathedraConditions</span></div></div>
   </div>
@@ -505,8 +600,9 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque isIrreformable : Teaching → Prop</code></pre></div>
+<div class="node-desc">Whether a teaching is irreformable — cannot be reversed or corrected.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Teaching">Teaching</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="CHARISM_GUARANTEES_IRREFORMABILITY">CHARISM_GUARANTEES_IRREFORMABILITY</span><span class="dep-chip" data-target="full_chain">full_chain</span><span class="dep-chip" data-target="infallibility_requires_conditions">infallibility_requires_conditions</span><span class="dep-chip" data-target="papal_infallibility">papal_infallibility</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="CHARISM_GUARANTEES_IRREFORMABILITY">CHARISM_GUARANTEES_IRREFORMABILITY</span><span class="dep-chip" data-target="papal_infallibility">papal_infallibility</span><span class="dep-chip" data-target="infallibility_requires_conditions">infallibility_requires_conditions</span><span class="dep-chip" data-target="full_chain">full_chain</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="PetrineOffice">
@@ -517,7 +613,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque PetrineOffice : Type</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="CHARISM_GUARANTEES_IRREFORMABILITY">CHARISM_GUARANTEES_IRREFORMABILITY</span><span class="dep-chip" data-target="T_CHARISM_EXTENDS">T_CHARISM_EXTENDS</span><span class="dep-chip" data-target="faithCharismCoversOffice">faithCharismCoversOffice</span><span class="dep-chip" data-target="full_chain">full_chain</span><span class="dep-chip" data-target="infallibility_requires_conditions">infallibility_requires_conditions</span><span class="dep-chip" data-target="papal_infallibility">papal_infallibility</span></div></div>
+<div class="node-desc">The Petrine office — the office Christ established when he said to Peter</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="faithCharismCoversOffice">faithCharismCoversOffice</span><span class="dep-chip" data-target="T_CHARISM_EXTENDS">T_CHARISM_EXTENDS</span><span class="dep-chip" data-target="CHARISM_GUARANTEES_IRREFORMABILITY">CHARISM_GUARANTEES_IRREFORMABILITY</span><span class="dep-chip" data-target="papal_infallibility">papal_infallibility</span><span class="dep-chip" data-target="infallibility_requires_conditions">infallibility_requires_conditions</span><span class="dep-chip" data-target="full_chain">full_chain</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="holdsPetrineOffice">
@@ -528,7 +625,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque holdsPetrineOffice : Person → Prop</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ExCathedraConditions">ExCathedraConditions</span><span class="dep-chip" data-target="S_FAITH_PRAYER">S_FAITH_PRAYER</span><span class="dep-chip" data-target="S_PETRINE_COMMISSION">S_PETRINE_COMMISSION</span><span class="dep-chip" data-target="T_CHARISM_EXTENDS">T_CHARISM_EXTENDS</span><span class="dep-chip" data-target="full_chain">full_chain</span><span class="dep-chip" data-target="papal_infallibility">papal_infallibility</span></div></div>
+<div class="node-desc">Whether someone holds the Petrine office (is the current Pope).</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ExCathedraConditions">ExCathedraConditions</span><span class="dep-chip" data-target="S_PETRINE_COMMISSION">S_PETRINE_COMMISSION</span><span class="dep-chip" data-target="S_FAITH_PRAYER">S_FAITH_PRAYER</span><span class="dep-chip" data-target="T_CHARISM_EXTENDS">T_CHARISM_EXTENDS</span><span class="dep-chip" data-target="papal_infallibility">papal_infallibility</span><span class="dep-chip" data-target="full_chain">full_chain</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="divineAssistancePromised">
@@ -539,6 +637,7 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque divineAssistancePromised : Person → Prop</code></pre></div>
+<div class="node-desc">Whether divine assistance was promised to a specific person's faith.</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="S_FAITH_PRAYER">S_FAITH_PRAYER</span><span class="dep-chip" data-target="T_CHARISM_EXTENDS">T_CHARISM_EXTENDS</span><span class="dep-chip" data-target="papal_infallibility">papal_infallibility</span></div></div>
   </div>
 </div>
@@ -550,8 +649,9 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque faithCharismCoversOffice : PetrineOffice → Prop</code></pre></div>
+<div class="node-desc">Whether Christ's prayer for Peter's faith (Lk 22:32) extends to the</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="PetrineOffice">PetrineOffice</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="CHARISM_GUARANTEES_IRREFORMABILITY">CHARISM_GUARANTEES_IRREFORMABILITY</span><span class="dep-chip" data-target="T_CHARISM_EXTENDS">T_CHARISM_EXTENDS</span><span class="dep-chip" data-target="full_chain">full_chain</span><span class="dep-chip" data-target="infallibility_requires_conditions">infallibility_requires_conditions</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="T_CHARISM_EXTENDS">T_CHARISM_EXTENDS</span><span class="dep-chip" data-target="CHARISM_GUARANTEES_IRREFORMABILITY">CHARISM_GUARANTEES_IRREFORMABILITY</span><span class="dep-chip" data-target="infallibility_requires_conditions">infallibility_requires_conditions</span><span class="dep-chip" data-target="full_chain">full_chain</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="peterIsTheRock">
@@ -562,7 +662,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque peterIsTheRock : Prop</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ORTHODOX_PRIMACY_OF_HONOR">ORTHODOX_PRIMACY_OF_HONOR</span><span class="dep-chip" data-target="T_PETER_IS_ROCK">T_PETER_IS_ROCK</span><span class="dep-chip" data-target="full_chain">full_chain</span><span class="dep-chip" data-target="orthodox_cut">orthodox_cut</span><span class="dep-chip" data-target="protestant_cut">protestant_cut</span></div></div>
+<div class="node-desc">Whether Peter personally is the rock on which Christ builds the Church.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="T_PETER_IS_ROCK">T_PETER_IS_ROCK</span><span class="dep-chip" data-target="protestant_cut">protestant_cut</span><span class="dep-chip" data-target="ORTHODOX_PRIMACY_OF_HONOR">ORTHODOX_PRIMACY_OF_HONOR</span><span class="dep-chip" data-target="orthodox_cut">orthodox_cut</span><span class="dep-chip" data-target="full_chain">full_chain</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="petrineSuccessionToRome">
@@ -573,7 +674,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque petrineSuccessionToRome : Prop</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ORTHODOX_PRIMACY_OF_HONOR">ORTHODOX_PRIMACY_OF_HONOR</span><span class="dep-chip" data-target="T_PETRINE_SUCCESSION">T_PETRINE_SUCCESSION</span><span class="dep-chip" data-target="full_chain">full_chain</span><span class="dep-chip" data-target="orthodox_cut">orthodox_cut</span><span class="dep-chip" data-target="protestant_cut_succession">protestant_cut_succession</span></div></div>
+<div class="node-desc">Whether the Petrine office passes through apostolic succession to the</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="T_PETRINE_SUCCESSION">T_PETRINE_SUCCESSION</span><span class="dep-chip" data-target="protestant_cut_succession">protestant_cut_succession</span><span class="dep-chip" data-target="ORTHODOX_PRIMACY_OF_HONOR">ORTHODOX_PRIMACY_OF_HONOR</span><span class="dep-chip" data-target="orthodox_cut">orthodox_cut</span><span class="dep-chip" data-target="full_chain">full_chain</span></div></div>
   </div>
 </div>
 <div class="node-card kind-structure" data-kind="structure" data-name="ExCathedraConditions">
@@ -584,8 +686,9 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>structure ExCathedraConditions where</code></pre></div>
+<div class="node-desc">The four conditions for an ex cathedra pronouncement.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="S_PETRINE_COMMISSION">S_PETRINE_COMMISSION</span><span class="dep-chip" data-target="Teaching">Teaching</span><span class="dep-chip" data-target="concernsFaithOrMorals">concernsFaithOrMorals</span><span class="dep-chip" data-target="holdsPetrineOffice">holdsPetrineOffice</span><span class="dep-chip" data-target="invokesFullAuthority">invokesFullAuthority</span><span class="dep-chip" data-target="isDefinitiveForUniversalChurch">isDefinitiveForUniversalChurch</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="CHARISM_GUARANTEES_IRREFORMABILITY">CHARISM_GUARANTEES_IRREFORMABILITY</span><span class="dep-chip" data-target="full_chain">full_chain</span><span class="dep-chip" data-target="infallibility_requires_conditions">infallibility_requires_conditions</span><span class="dep-chip" data-target="papal_infallibility">papal_infallibility</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="CHARISM_GUARANTEES_IRREFORMABILITY">CHARISM_GUARANTEES_IRREFORMABILITY</span><span class="dep-chip" data-target="papal_infallibility">papal_infallibility</span><span class="dep-chip" data-target="infallibility_requires_conditions">infallibility_requires_conditions</span><span class="dep-chip" data-target="full_chain">full_chain</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="S_PETRINE_COMMISSION">
@@ -598,8 +701,9 @@ h1 {
     <div class="node-prop"><pre><code>axiom S_PETRINE_COMMISSION :
   ∃ (peter : Person),
     holdsPetrineOffice peter</code></pre></div>
+<div class="node-desc">**AXIOM (S_PETRINE_COMMISSION)**: Christ commissioned Peter with special</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="holdsPetrineOffice">holdsPetrineOffice</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="CHARISM_GUARANTEES_IRREFORMABILITY_tag">CHARISM_GUARANTEES_IRREFORMABILITY_tag</span><span class="dep-chip" data-target="ExCathedraConditions">ExCathedraConditions</span><span class="dep-chip" data-target="full_chain">full_chain</span><span class="dep-chip" data-target="orthodox_cut">orthodox_cut</span><span class="dep-chip" data-target="papalInfallibilityDenominationalScope">papalInfallibilityDenominationalScope</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ExCathedraConditions">ExCathedraConditions</span><span class="dep-chip" data-target="CHARISM_GUARANTEES_IRREFORMABILITY_tag">CHARISM_GUARANTEES_IRREFORMABILITY_tag</span><span class="dep-chip" data-target="orthodox_cut">orthodox_cut</span><span class="dep-chip" data-target="full_chain">full_chain</span><span class="dep-chip" data-target="papalInfallibilityDenominationalScope">papalInfallibilityDenominationalScope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="S_PETRINE_COMMISSION_provenance">
@@ -609,8 +713,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def S_PETRINE_COMMISSION_provenance : Provenance :=
-  Provenance.scripture &quot;Mt 16:18-19&quot;</code></pre></div>
+    <div class="node-prop"><pre><code>def S_PETRINE_COMMISSION_provenance : Provenance</code></pre></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="S_PETRINE_COMMISSION_tag">
@@ -620,7 +723,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def S_PETRINE_COMMISSION_tag : DenominationalTag := ecumenical</code></pre></div>
+    <div class="node-prop"><pre><code>def S_PETRINE_COMMISSION_tag : DenominationalTag := ecumenical
+</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="S_FAITH_PRAYER">S_FAITH_PRAYER</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="papalInfallibilityDenominationalScope">papalInfallibilityDenominationalScope</span></div></div>
   </div>
@@ -635,8 +739,9 @@ h1 {
     <div class="node-prop"><pre><code>axiom S_FAITH_PRAYER :
   ∃ (peter : Person),
     holdsPetrineOffice peter ∧ divineAssistancePromised peter</code></pre></div>
+<div class="node-desc">**AXIOM (S_FAITH_PRAYER)**: Christ prayed specifically for Peter's faith</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="divineAssistancePromised">divineAssistancePromised</span><span class="dep-chip" data-target="holdsPetrineOffice">holdsPetrineOffice</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="CHARISM_GUARANTEES_IRREFORMABILITY_tag">CHARISM_GUARANTEES_IRREFORMABILITY_tag</span><span class="dep-chip" data-target="S_PETRINE_COMMISSION_tag">S_PETRINE_COMMISSION_tag</span><span class="dep-chip" data-target="T_CHARISM_EXTENDS">T_CHARISM_EXTENDS</span><span class="dep-chip" data-target="full_chain">full_chain</span><span class="dep-chip" data-target="orthodox_cut">orthodox_cut</span><span class="dep-chip" data-target="papalInfallibilityDenominationalScope">papalInfallibilityDenominationalScope</span><span class="dep-chip" data-target="papal_infallibility">papal_infallibility</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="S_PETRINE_COMMISSION_tag">S_PETRINE_COMMISSION_tag</span><span class="dep-chip" data-target="T_CHARISM_EXTENDS">T_CHARISM_EXTENDS</span><span class="dep-chip" data-target="CHARISM_GUARANTEES_IRREFORMABILITY_tag">CHARISM_GUARANTEES_IRREFORMABILITY_tag</span><span class="dep-chip" data-target="papal_infallibility">papal_infallibility</span><span class="dep-chip" data-target="orthodox_cut">orthodox_cut</span><span class="dep-chip" data-target="full_chain">full_chain</span><span class="dep-chip" data-target="papalInfallibilityDenominationalScope">papalInfallibilityDenominationalScope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="S_FAITH_PRAYER_provenance">
@@ -646,8 +751,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def S_FAITH_PRAYER_provenance : Provenance :=
-  Provenance.scripture &quot;Lk 22:31-32&quot;</code></pre></div>
+    <div class="node-prop"><pre><code>def S_FAITH_PRAYER_provenance : Provenance</code></pre></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="S_FAITH_PRAYER_tag">
@@ -657,7 +761,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def S_FAITH_PRAYER_tag : DenominationalTag := ecumenical</code></pre></div>
+    <div class="node-prop"><pre><code>def S_FAITH_PRAYER_tag : DenominationalTag := ecumenical
+</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="T_PETER_IS_ROCK">T_PETER_IS_ROCK</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="papalInfallibilityDenominationalScope">papalInfallibilityDenominationalScope</span></div></div>
   </div>
@@ -671,8 +776,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom T_PETER_IS_ROCK :
   peterIsTheRock</code></pre></div>
+<div class="node-desc">**AXIOM (T_PETER_IS_ROCK)**: The &quot;rock&quot; in Mt 16:18 IS Peter personally,</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="peterIsTheRock">peterIsTheRock</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="CHARISM_GUARANTEES_IRREFORMABILITY_tag">CHARISM_GUARANTEES_IRREFORMABILITY_tag</span><span class="dep-chip" data-target="S_FAITH_PRAYER_tag">S_FAITH_PRAYER_tag</span><span class="dep-chip" data-target="full_chain">full_chain</span><span class="dep-chip" data-target="infallibility_requires_conditions">infallibility_requires_conditions</span><span class="dep-chip" data-target="orthodox_cut">orthodox_cut</span><span class="dep-chip" data-target="papalInfallibilityDenominationalScope">papalInfallibilityDenominationalScope</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="S_FAITH_PRAYER_tag">S_FAITH_PRAYER_tag</span><span class="dep-chip" data-target="CHARISM_GUARANTEES_IRREFORMABILITY_tag">CHARISM_GUARANTEES_IRREFORMABILITY_tag</span><span class="dep-chip" data-target="infallibility_requires_conditions">infallibility_requires_conditions</span><span class="dep-chip" data-target="orthodox_cut">orthodox_cut</span><span class="dep-chip" data-target="full_chain">full_chain</span><span class="dep-chip" data-target="papalInfallibilityDenominationalScope">papalInfallibilityDenominationalScope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="T_PETER_IS_ROCK_provenance">
@@ -682,8 +788,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def T_PETER_IS_ROCK_provenance : Provenance :=
-  Provenance.tradition &quot;Mt 16:18 (Catholic-patristic reading); CCC §552&quot;</code></pre></div>
+    <div class="node-prop"><pre><code>def T_PETER_IS_ROCK_provenance : Provenance</code></pre></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="T_PETER_IS_ROCK_tag">
@@ -693,9 +798,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def T_PETER_IS_ROCK_tag : DenominationalTag :=
-  { acceptedBy := [Denomination.catholic]
-    note := &quot;Catholic + Orthodox (broadly); Protestants reject — read 'rock' as Peter's confession&quot; }</code></pre></div>
+    <div class="node-prop"><pre><code>def T_PETER_IS_ROCK_tag : DenominationalTag</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="T_PETRINE_SUCCESSION">T_PETRINE_SUCCESSION</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="papalInfallibilityDenominationalScope">papalInfallibilityDenominationalScope</span></div></div>
   </div>
@@ -709,8 +812,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom T_PETRINE_SUCCESSION :
   petrineSuccessionToRome</code></pre></div>
+<div class="node-desc">**AXIOM (T_PETRINE_SUCCESSION)**: The Petrine office passes through</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="petrineSuccessionToRome">petrineSuccessionToRome</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="CHARISM_GUARANTEES_IRREFORMABILITY_tag">CHARISM_GUARANTEES_IRREFORMABILITY_tag</span><span class="dep-chip" data-target="T_PETER_IS_ROCK_tag">T_PETER_IS_ROCK_tag</span><span class="dep-chip" data-target="full_chain">full_chain</span><span class="dep-chip" data-target="infallibility_requires_conditions">infallibility_requires_conditions</span><span class="dep-chip" data-target="orthodox_cut">orthodox_cut</span><span class="dep-chip" data-target="papalInfallibilityDenominationalScope">papalInfallibilityDenominationalScope</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="T_PETER_IS_ROCK_tag">T_PETER_IS_ROCK_tag</span><span class="dep-chip" data-target="CHARISM_GUARANTEES_IRREFORMABILITY_tag">CHARISM_GUARANTEES_IRREFORMABILITY_tag</span><span class="dep-chip" data-target="infallibility_requires_conditions">infallibility_requires_conditions</span><span class="dep-chip" data-target="orthodox_cut">orthodox_cut</span><span class="dep-chip" data-target="full_chain">full_chain</span><span class="dep-chip" data-target="papalInfallibilityDenominationalScope">papalInfallibilityDenominationalScope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="T_PETRINE_SUCCESSION_provenance">
@@ -720,8 +824,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def T_PETRINE_SUCCESSION_provenance : Provenance :=
-  Provenance.tradition &quot;CCC §882; Vatican I Pastor Aeternus Ch.2; Irenaeus Adv. Haer. III.3.2&quot;</code></pre></div>
+    <div class="node-prop"><pre><code>def T_PETRINE_SUCCESSION_provenance : Provenance</code></pre></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="T_PETRINE_SUCCESSION_tag">
@@ -731,9 +834,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def T_PETRINE_SUCCESSION_tag : DenominationalTag :=
-  { acceptedBy := [Denomination.catholic]
-    note := &quot;Catholic only; Orthodox accept succession but deny Roman supremacy; Protestants reject&quot; }</code></pre></div>
+    <div class="node-prop"><pre><code>def T_PETRINE_SUCCESSION_tag : DenominationalTag</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="T_CHARISM_EXTENDS">T_CHARISM_EXTENDS</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="papalInfallibilityDenominationalScope">papalInfallibilityDenominationalScope</span></div></div>
   </div>
@@ -750,8 +851,9 @@ h1 {
   -- (i.e., Peter — from S_FAITH_PRAYER), then the charism covers the office itself
   (∃ (p : Person), holdsPetrineOffice p ∧ divineAssistancePromised p) →
   ∀ (office : PetrineOffice), faithCharismCoversOffice office</code></pre></div>
+<div class="node-desc">**AXIOM (T_CHARISM_EXTENDS)**: Christ's prayer for Peter's faith</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="PetrineOffice">PetrineOffice</span><span class="dep-chip" data-target="S_FAITH_PRAYER">S_FAITH_PRAYER</span><span class="dep-chip" data-target="divineAssistancePromised">divineAssistancePromised</span><span class="dep-chip" data-target="faithCharismCoversOffice">faithCharismCoversOffice</span><span class="dep-chip" data-target="holdsPetrineOffice">holdsPetrineOffice</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="CHARISM_GUARANTEES_IRREFORMABILITY_tag">CHARISM_GUARANTEES_IRREFORMABILITY_tag</span><span class="dep-chip" data-target="ORTHODOX_PRIMACY_tag">ORTHODOX_PRIMACY_tag</span><span class="dep-chip" data-target="T_PETRINE_SUCCESSION_tag">T_PETRINE_SUCCESSION_tag</span><span class="dep-chip" data-target="authorityIsCollegial">authorityIsCollegial</span><span class="dep-chip" data-target="full_chain">full_chain</span><span class="dep-chip" data-target="orthodox_cut">orthodox_cut</span><span class="dep-chip" data-target="papalInfallibilityDenominationalScope">papalInfallibilityDenominationalScope</span><span class="dep-chip" data-target="papal_infallibility">papal_infallibility</span><span class="dep-chip" data-target="protestant_cut_succession">protestant_cut_succession</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="T_PETRINE_SUCCESSION_tag">T_PETRINE_SUCCESSION_tag</span><span class="dep-chip" data-target="CHARISM_GUARANTEES_IRREFORMABILITY_tag">CHARISM_GUARANTEES_IRREFORMABILITY_tag</span><span class="dep-chip" data-target="papal_infallibility">papal_infallibility</span><span class="dep-chip" data-target="protestant_cut_succession">protestant_cut_succession</span><span class="dep-chip" data-target="authorityIsCollegial">authorityIsCollegial</span><span class="dep-chip" data-target="ORTHODOX_PRIMACY_tag">ORTHODOX_PRIMACY_tag</span><span class="dep-chip" data-target="orthodox_cut">orthodox_cut</span><span class="dep-chip" data-target="full_chain">full_chain</span><span class="dep-chip" data-target="papalInfallibilityDenominationalScope">papalInfallibilityDenominationalScope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="T_CHARISM_EXTENDS_provenance">
@@ -761,8 +863,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def T_CHARISM_EXTENDS_provenance : Provenance :=
-  Provenance.tradition &quot;CCC §891; Vatican I Pastor Aeternus Ch.4&quot;</code></pre></div>
+    <div class="node-prop"><pre><code>def T_CHARISM_EXTENDS_provenance : Provenance</code></pre></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="T_CHARISM_EXTENDS_tag">
@@ -772,9 +873,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def T_CHARISM_EXTENDS_tag : DenominationalTag :=
-  { acceptedBy := [Denomination.catholic]
-    note := &quot;Catholic only — the biggest leap; extends a personal prayer to an institutional guarantee&quot; }</code></pre></div>
+    <div class="node-prop"><pre><code>def T_CHARISM_EXTENDS_tag : DenominationalTag</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CHARISM_GUARANTEES_IRREFORMABILITY">CHARISM_GUARANTEES_IRREFORMABILITY</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="papalInfallibilityDenominationalScope">papalInfallibilityDenominationalScope</span></div></div>
   </div>
@@ -791,8 +890,9 @@ h1 {
     faithCharismCoversOffice office →
     ExCathedraConditions t →
     isIrreformable t</code></pre></div>
+<div class="node-desc">**AXIOM (CHARISM_GUARANTEES_IRREFORMABILITY)**: When the charism covers</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ExCathedraConditions">ExCathedraConditions</span><span class="dep-chip" data-target="PetrineOffice">PetrineOffice</span><span class="dep-chip" data-target="Teaching">Teaching</span><span class="dep-chip" data-target="faithCharismCoversOffice">faithCharismCoversOffice</span><span class="dep-chip" data-target="isIrreformable">isIrreformable</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="CHARISM_GUARANTEES_IRREFORMABILITY_tag">CHARISM_GUARANTEES_IRREFORMABILITY_tag</span><span class="dep-chip" data-target="T_CHARISM_EXTENDS_tag">T_CHARISM_EXTENDS_tag</span><span class="dep-chip" data-target="infallibility_requires_conditions">infallibility_requires_conditions</span><span class="dep-chip" data-target="papalInfallibilityDenominationalScope">papalInfallibilityDenominationalScope</span><span class="dep-chip" data-target="papal_infallibility">papal_infallibility</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="T_CHARISM_EXTENDS_tag">T_CHARISM_EXTENDS_tag</span><span class="dep-chip" data-target="CHARISM_GUARANTEES_IRREFORMABILITY_tag">CHARISM_GUARANTEES_IRREFORMABILITY_tag</span><span class="dep-chip" data-target="papal_infallibility">papal_infallibility</span><span class="dep-chip" data-target="infallibility_requires_conditions">infallibility_requires_conditions</span><span class="dep-chip" data-target="papalInfallibilityDenominationalScope">papalInfallibilityDenominationalScope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="CHARISM_GUARANTEES_IRREFORMABILITY_provenance">
@@ -802,8 +902,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def CHARISM_GUARANTEES_IRREFORMABILITY_provenance : Provenance :=
-  Provenance.tradition &quot;Vatican I Pastor Aeternus Ch.4; CCC §891&quot;</code></pre></div>
+    <div class="node-prop"><pre><code>def CHARISM_GUARANTEES_IRREFORMABILITY_provenance : Provenance</code></pre></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="CHARISM_GUARANTEES_IRREFORMABILITY_tag">
@@ -813,7 +912,12 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def CHARISM_GUARANTEES_IRREFORMABILITY_tag : DenominationalTag := catholicOnly</code></pre></div>
+    <div class="node-prop"><pre><code>def CHARISM_GUARANTEES_IRREFORMABILITY_tag : DenominationalTag := catholicOnly
+
+-- ============================================================================
+-- THEOREMS — deriving infallibility from the chain
+-- ============================================================================
+</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CHARISM_GUARANTEES_IRREFORMABILITY">CHARISM_GUARANTEES_IRREFORMABILITY</span><span class="dep-chip" data-target="S_FAITH_PRAYER">S_FAITH_PRAYER</span><span class="dep-chip" data-target="S_PETRINE_COMMISSION">S_PETRINE_COMMISSION</span><span class="dep-chip" data-target="T_CHARISM_EXTENDS">T_CHARISM_EXTENDS</span><span class="dep-chip" data-target="T_PETER_IS_ROCK">T_PETER_IS_ROCK</span><span class="dep-chip" data-target="T_PETRINE_SUCCESSION">T_PETRINE_SUCCESSION</span><span class="dep-chip" data-target="papal_infallibility">papal_infallibility</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="papalInfallibilityDenominationalScope">papalInfallibilityDenominationalScope</span></div></div>
   </div>
@@ -829,13 +933,8 @@ h1 {
     (t : Teaching)
     (office : PetrineOffice)
     (h_conditions : ExCathedraConditions t) :
-    isIrreformable t := by
-  -- S_FAITH_PRAYER gives us: ∃ peter, holdsPetrineOffice peter ∧ divineAssistancePromised peter
-  have h_prayer := S_FAITH_PRAYER
-  -- T_CHARISM_EXTENDS uses this to cover the office
-  have h_charism := T_CHARISM_EXTENDS h_prayer office
-  -- The charism + conditions → irreformable
-  exact CHARISM_GUARANTEES_IRREFORMABILITY t office h_charism h_conditions</code></pre></div>
+    isIrreformable t</code></pre></div>
+<div class="node-desc">**THEOREM: papal_infallibility** — The main result.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CHARISM_GUARANTEES_IRREFORMABILITY">CHARISM_GUARANTEES_IRREFORMABILITY</span><span class="dep-chip" data-target="ExCathedraConditions">ExCathedraConditions</span><span class="dep-chip" data-target="PetrineOffice">PetrineOffice</span><span class="dep-chip" data-target="S_FAITH_PRAYER">S_FAITH_PRAYER</span><span class="dep-chip" data-target="T_CHARISM_EXTENDS">T_CHARISM_EXTENDS</span><span class="dep-chip" data-target="Teaching">Teaching</span><span class="dep-chip" data-target="divineAssistancePromised">divineAssistancePromised</span><span class="dep-chip" data-target="holdsPetrineOffice">holdsPetrineOffice</span><span class="dep-chip" data-target="isIrreformable">isIrreformable</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="CHARISM_GUARANTEES_IRREFORMABILITY_tag">CHARISM_GUARANTEES_IRREFORMABILITY_tag</span><span class="dep-chip" data-target="full_chain">full_chain</span><span class="dep-chip" data-target="papalInfallibilityDenominationalScope">papalInfallibilityDenominationalScope</span></div></div>
   </div>
@@ -852,8 +951,8 @@ h1 {
     (office : PetrineOffice)
     (h_charism : faithCharismCoversOffice office)
     (h_conditions : ExCathedraConditions t) :
-    isIrreformable t :=
-  CHARISM_GUARANTEES_IRREFORMABILITY t office h_charism h_conditions</code></pre></div>
+    isIrreformable t</code></pre></div>
+<div class="node-desc">**THEOREM: infallibility_requires_all_conditions** — If any ex cathedra</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CHARISM_GUARANTEES_IRREFORMABILITY">CHARISM_GUARANTEES_IRREFORMABILITY</span><span class="dep-chip" data-target="ExCathedraConditions">ExCathedraConditions</span><span class="dep-chip" data-target="PetrineOffice">PetrineOffice</span><span class="dep-chip" data-target="T_PETER_IS_ROCK">T_PETER_IS_ROCK</span><span class="dep-chip" data-target="T_PETRINE_SUCCESSION">T_PETRINE_SUCCESSION</span><span class="dep-chip" data-target="Teaching">Teaching</span><span class="dep-chip" data-target="faithCharismCoversOffice">faithCharismCoversOffice</span><span class="dep-chip" data-target="isIrreformable">isIrreformable</span><span class="dep-chip" data-target="protestant_cut">protestant_cut</span></div></div>
   </div>
 </div>
@@ -867,8 +966,8 @@ h1 {
     <div class="node-prop"><pre><code>theorem protestant_cut
     (h_deny_rock : ¬peterIsTheRock) :
     -- The Protestant position: denying the rock breaks the chain
-    ¬peterIsTheRock :=
-  h_deny_rock</code></pre></div>
+    ¬peterIsTheRock</code></pre></div>
+<div class="node-desc">**THEOREM: protestant_cut** — If you deny that Peter is the rock,</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="peterIsTheRock">peterIsTheRock</span><span class="dep-chip" data-target="protestant_cut_succession">protestant_cut_succession</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="infallibility_requires_conditions">infallibility_requires_conditions</span></div></div>
   </div>
@@ -882,8 +981,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem protestant_cut_succession
     (h_deny_succession : ¬petrineSuccessionToRome) :
-    ¬petrineSuccessionToRome :=
-  h_deny_succession</code></pre></div>
+    ¬petrineSuccessionToRome</code></pre></div>
+<div class="node-desc">**THEOREM: protestant_cut_succession** — Even if one accepted Peter as</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="T_CHARISM_EXTENDS">T_CHARISM_EXTENDS</span><span class="dep-chip" data-target="petrineSuccessionToRome">petrineSuccessionToRome</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="protestant_cut">protestant_cut</span></div></div>
   </div>
@@ -896,6 +995,7 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque authorityIsCollegial : Prop</code></pre></div>
+<div class="node-desc">Whether authority is collegial (shared among patriarchates) rather than</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ORTHODOX_PRIMACY_OF_HONOR">ORTHODOX_PRIMACY_OF_HONOR</span><span class="dep-chip" data-target="T_CHARISM_EXTENDS">T_CHARISM_EXTENDS</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ORTHODOX_PRIMACY_OF_HONOR">ORTHODOX_PRIMACY_OF_HONOR</span><span class="dep-chip" data-target="orthodox_cut">orthodox_cut</span></div></div>
   </div>
@@ -909,6 +1009,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom ORTHODOX_PRIMACY_OF_HONOR :
   peterIsTheRock → petrineSuccessionToRome → authorityIsCollegial</code></pre></div>
+<div class="node-desc">**AXIOM (ORTHODOX_PRIMACY_OF_HONOR)**: Peter has primacy of honor</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="authorityIsCollegial">authorityIsCollegial</span><span class="dep-chip" data-target="peterIsTheRock">peterIsTheRock</span><span class="dep-chip" data-target="petrineSuccessionToRome">petrineSuccessionToRome</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="authorityIsCollegial">authorityIsCollegial</span><span class="dep-chip" data-target="orthodox_cut">orthodox_cut</span><span class="dep-chip" data-target="papalInfallibilityDenominationalScope">papalInfallibilityDenominationalScope</span></div></div>
   </div>
@@ -920,8 +1021,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def ORTHODOX_PRIMACY_provenance : Provenance :=
-  Provenance.tradition &quot;Canon 28 of Chalcedon; Orthodox ecclesiology&quot;</code></pre></div>
+    <div class="node-prop"><pre><code>def ORTHODOX_PRIMACY_provenance : Provenance</code></pre></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="ORTHODOX_PRIMACY_tag">
@@ -931,9 +1031,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def ORTHODOX_PRIMACY_tag : DenominationalTag :=
-  { acceptedBy := [Denomination.catholic]  -- We tag with catholic since our denomination model
-    note := &quot;Orthodox position — primacy of honor, not jurisdiction&quot; }</code></pre></div>
+    <div class="node-prop"><pre><code>def ORTHODOX_PRIMACY_tag : DenominationalTag</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="T_CHARISM_EXTENDS">T_CHARISM_EXTENDS</span><span class="dep-chip" data-target="orthodox_cut">orthodox_cut</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="papalInfallibilityDenominationalScope">papalInfallibilityDenominationalScope</span></div></div>
   </div>
@@ -950,8 +1048,8 @@ h1 {
     peterIsTheRock →
     petrineSuccessionToRome →
     -- But conclude collegial authority (not papal infallibility)
-    authorityIsCollegial :=
-  fun h_rock h_succession =&gt; ORTHODOX_PRIMACY_OF_HONOR h_rock h_succession</code></pre></div>
+    authorityIsCollegial</code></pre></div>
+<div class="node-desc">**THEOREM: orthodox_cut** — The Orthodox accept the rock and succession</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ORTHODOX_PRIMACY_OF_HONOR">ORTHODOX_PRIMACY_OF_HONOR</span><span class="dep-chip" data-target="S_FAITH_PRAYER">S_FAITH_PRAYER</span><span class="dep-chip" data-target="S_PETRINE_COMMISSION">S_PETRINE_COMMISSION</span><span class="dep-chip" data-target="T_CHARISM_EXTENDS">T_CHARISM_EXTENDS</span><span class="dep-chip" data-target="T_PETER_IS_ROCK">T_PETER_IS_ROCK</span><span class="dep-chip" data-target="T_PETRINE_SUCCESSION">T_PETRINE_SUCCESSION</span><span class="dep-chip" data-target="authorityIsCollegial">authorityIsCollegial</span><span class="dep-chip" data-target="full_chain">full_chain</span><span class="dep-chip" data-target="peterIsTheRock">peterIsTheRock</span><span class="dep-chip" data-target="petrineSuccessionToRome">petrineSuccessionToRome</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ORTHODOX_PRIMACY_tag">ORTHODOX_PRIMACY_tag</span></div></div>
   </div>
@@ -977,13 +1075,8 @@ h1 {
     -- 4. Charism covers the office
     faithCharismCoversOffice office ∧
     -- 5. The teaching is irreformable
-    isIrreformable t := by
-  exact ⟨ S_PETRINE_COMMISSION
-        , T_PETER_IS_ROCK
-        , T_PETRINE_SUCCESSION
-        , T_CHARISM_EXTENDS S_FAITH_PRAYER office
-        , papal_infallibility t office h_conditions
-        ⟩</code></pre></div>
+    isIrreformable t</code></pre></div>
+<div class="node-desc">**THEOREM: full_chain** — The complete chain from all axioms to</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ExCathedraConditions">ExCathedraConditions</span><span class="dep-chip" data-target="PetrineOffice">PetrineOffice</span><span class="dep-chip" data-target="S_FAITH_PRAYER">S_FAITH_PRAYER</span><span class="dep-chip" data-target="S_PETRINE_COMMISSION">S_PETRINE_COMMISSION</span><span class="dep-chip" data-target="T_CHARISM_EXTENDS">T_CHARISM_EXTENDS</span><span class="dep-chip" data-target="T_PETER_IS_ROCK">T_PETER_IS_ROCK</span><span class="dep-chip" data-target="T_PETRINE_SUCCESSION">T_PETRINE_SUCCESSION</span><span class="dep-chip" data-target="Teaching">Teaching</span><span class="dep-chip" data-target="faithCharismCoversOffice">faithCharismCoversOffice</span><span class="dep-chip" data-target="holdsPetrineOffice">holdsPetrineOffice</span><span class="dep-chip" data-target="isIrreformable">isIrreformable</span><span class="dep-chip" data-target="papal_infallibility">papal_infallibility</span><span class="dep-chip" data-target="peterIsTheRock">peterIsTheRock</span><span class="dep-chip" data-target="petrineSuccessionToRome">petrineSuccessionToRome</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="orthodox_cut">orthodox_cut</span></div></div>
   </div>
@@ -995,16 +1088,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def papalInfallibilityDenominationalScope : List (String × DenominationalTag) :=
-  [ (&quot;S_PETRINE_COMMISSION&quot;,   S_PETRINE_COMMISSION_tag)
-  , (&quot;S_FAITH_PRAYER&quot;,         S_FAITH_PRAYER_tag)
-  , (&quot;T_PETER_IS_ROCK&quot;,        T_PETER_IS_ROCK_tag)
-  , (&quot;T_PETRINE_SUCCESSION&quot;,   T_PETRINE_SUCCESSION_tag)
-  , (&quot;T_CHARISM_EXTENDS&quot;,      T_CHARISM_EXTENDS_tag)
-  , (&quot;CHARISM_GUARANTEES_IRREFORMABILITY&quot;, CHARISM_GUARANTEES_IRREFORMABILITY_tag)
-  , (&quot;papal_infallibility (theorem)&quot;, catholicOnly)
-  , (&quot;ORTHODOX_PRIMACY_OF_HONOR (Orthodox alternative)&quot;, ORTHODOX_PRIMACY_tag)
-  ]</code></pre></div>
+    <div class="node-prop"><pre><code>def papalInfallibilityDenominationalScope : List (String × DenominationalTag)</code></pre></div>
+<div class="node-desc">Denominational scope of each axiom in the papal infallibility chain.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CHARISM_GUARANTEES_IRREFORMABILITY">CHARISM_GUARANTEES_IRREFORMABILITY</span><span class="dep-chip" data-target="CHARISM_GUARANTEES_IRREFORMABILITY_tag">CHARISM_GUARANTEES_IRREFORMABILITY_tag</span><span class="dep-chip" data-target="ORTHODOX_PRIMACY_OF_HONOR">ORTHODOX_PRIMACY_OF_HONOR</span><span class="dep-chip" data-target="ORTHODOX_PRIMACY_tag">ORTHODOX_PRIMACY_tag</span><span class="dep-chip" data-target="S_FAITH_PRAYER">S_FAITH_PRAYER</span><span class="dep-chip" data-target="S_FAITH_PRAYER_tag">S_FAITH_PRAYER_tag</span><span class="dep-chip" data-target="S_PETRINE_COMMISSION">S_PETRINE_COMMISSION</span><span class="dep-chip" data-target="S_PETRINE_COMMISSION_tag">S_PETRINE_COMMISSION_tag</span><span class="dep-chip" data-target="T_CHARISM_EXTENDS">T_CHARISM_EXTENDS</span><span class="dep-chip" data-target="T_CHARISM_EXTENDS_tag">T_CHARISM_EXTENDS_tag</span><span class="dep-chip" data-target="T_PETER_IS_ROCK">T_PETER_IS_ROCK</span><span class="dep-chip" data-target="T_PETER_IS_ROCK_tag">T_PETER_IS_ROCK_tag</span><span class="dep-chip" data-target="T_PETRINE_SUCCESSION">T_PETRINE_SUCCESSION</span><span class="dep-chip" data-target="T_PETRINE_SUCCESSION_tag">T_PETRINE_SUCCESSION_tag</span><span class="dep-chip" data-target="papal_infallibility">papal_infallibility</span></div></div>
   </div>
 </div>

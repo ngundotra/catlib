@@ -143,7 +143,7 @@ h1 {
   line-height: 1.6;
 }
 
-/* -- Search -- */
+/* ── Search ── */
 .search-box {
   width: 100%;
   padding: 0.8rem 1rem;
@@ -167,7 +167,91 @@ h1 {
   font-style: italic;
 }
 
-/* -- Node cards -- */
+/* ── Category sections ── */
+.category-header {
+  font-family: Cinzel, Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-variant: small-caps;
+  margin: 1.8rem 0 0.8rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── File cards ── */
+.file-card {
+  display: block;
+  padding: 1rem 1.1rem;
+  margin-bottom: 0.5rem;
+  background: var(--bg-parchment);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  text-decoration: none;
+  color: var(--text);
+  transition: background 0.15s, border-color 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.file-card:hover, .file-card:active {
+  background: var(--bg-vellum);
+  border-color: var(--accent-gold);
+  text-decoration: none;
+}
+
+.file-card-name {
+  font-family: Cinzel, Georgia, serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.3rem;
+}
+
+.file-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  font-size: 0.82rem;
+  color: var(--text-light);
+}
+
+.file-card-meta .tag {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.75rem;
+  font-family: Cinzel, Georgia, serif;
+  letter-spacing: 0.03em;
+}
+
+.tag-axiom { background: var(--axiom-bg); color: var(--axiom-dot); border: 1px solid var(--axiom-border); }
+.tag-theorem { background: var(--theorem-bg); color: var(--theorem-dot); border: 1px solid var(--theorem-border); }
+.tag-def { background: var(--def-bg); color: var(--def-dot); border: 1px solid var(--def-border); }
+.tag-proposition { background: var(--proposition-bg); color: var(--proposition-dot); border: 1px solid var(--proposition-border); }
+
+.file-card-ccc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 0.3rem;
+}
+
+/* ── Summary stats ── */
+.stats-bar {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--text-light);
+  font-style: italic;
+}
+
+.stats-bar span { white-space: nowrap; }
+
+/* ── Node cards (per-file page) ── */
 .node-card {
   margin-bottom: 0.4rem;
   border: 1px solid var(--border);
@@ -321,7 +405,7 @@ h1 {
   color: var(--text-muted);
 }
 
-/* -- Flow diagram header -- */
+/* ── Flow diagram header ── */
 .flow-summary {
   display: flex;
   justify-content: center;
@@ -347,7 +431,7 @@ h1 {
 .flow-count.theorems { background: var(--theorem-bg); color: var(--theorem-dot); }
 .flow-count.derived { background: var(--def-bg); color: var(--def-dot); }
 
-/* -- Legend -- */
+/* ── Legend ── */
 .legend {
   display: flex;
   flex-wrap: wrap;
@@ -379,7 +463,7 @@ h1 {
 .legend-dot.inductive { background: var(--inductive-dot); }
 .legend-dot.proposition { background: var(--proposition-dot); }
 
-/* -- Filter buttons -- */
+/* ── Filter buttons ── */
 .filter-bar {
   display: flex;
   flex-wrap: wrap;
@@ -408,7 +492,7 @@ h1 {
   border-color: var(--accent);
 }
 
-/* -- Back link -- */
+/* ── Back link ── */
 .back-link {
   display: inline-block;
   margin-bottom: 1rem;
@@ -417,7 +501,7 @@ h1 {
   letter-spacing: 0.04em;
 }
 
-/* -- Footer -- */
+/* ── Footer ── */
 .footer {
   text-align: center;
   padding-top: 2rem;
@@ -426,7 +510,7 @@ h1 {
   font-style: italic;
 }
 
-/* -- Responsive -- */
+/* ── Responsive ── */
 @media (max-width: 500px) {
   html { font-size: 16px; }
   .container { padding: 1rem 0.75rem 2rem; }
@@ -441,8 +525,15 @@ h1 {
   <h1>Parousia</h1>
   <div class="subtitle">Creed &middot; 24 declarations</div>
 
-  
-  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;306, &sect;668, &sect;671, &sect;675, &sect;676, &sect;677, &sect;1040, &sect;1042, &sect;1048, &sect;1928, &sect;2401</div>
+  <div class="flow-summary">
+  <span class="flow-count axioms">15 axioms</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count theorems">9 theorems</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count derived">0 derived</span>
+</div>
+  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1040, &sect;1042, &sect;1048, &sect;1928, &sect;2401, &sect;306, &sect;668, &sect;671, &sect;675, &sect;676, &sect;677</div>
+
   <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
 
   <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (7)</button><button class="filter-btn" data-filter="opaque">opaque (8)</button><button class="filter-btn" data-filter="theorem">theorem (9)</button></div>
@@ -458,7 +549,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque parousiaHasOccurred : Prop</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="christ_will_return">christ_will_return</span><span class="dep-chip" data-target="cosmic_transformation">cosmic_transformation</span><span class="dep-chip" data-target="final_trial_leads_to_kingdom">final_trial_leads_to_kingdom</span><span class="dep-chip" data-target="final_trial_precedes_parousia">final_trial_precedes_parousia</span><span class="dep-chip" data-target="p2_applied_to_eschatology">p2_applied_to_eschatology</span><span class="dep-chip" data-target="parousia_brings_kingdom_and_transformation">parousia_brings_kingdom_and_transformation</span><span class="dep-chip" data-target="parousia_context_of_last_judgment">parousia_context_of_last_judgment</span></div></div>
+<div class="node-desc">Whether Christ has returned in glory (the Parousia).</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="christ_will_return">christ_will_return</span><span class="dep-chip" data-target="final_trial_precedes_parousia">final_trial_precedes_parousia</span><span class="dep-chip" data-target="cosmic_transformation">cosmic_transformation</span><span class="dep-chip" data-target="parousia_brings_kingdom_and_transformation">parousia_brings_kingdom_and_transformation</span><span class="dep-chip" data-target="final_trial_leads_to_kingdom">final_trial_leads_to_kingdom</span><span class="dep-chip" data-target="parousia_context_of_last_judgment">parousia_context_of_last_judgment</span><span class="dep-chip" data-target="p2_applied_to_eschatology">p2_applied_to_eschatology</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="kingdomInFullness">
@@ -469,7 +561,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque kingdomInFullness : Prop</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="christ_will_return">christ_will_return</span><span class="dep-chip" data-target="final_trial_leads_to_kingdom">final_trial_leads_to_kingdom</span><span class="dep-chip" data-target="human_effort_prepares">human_effort_prepares</span><span class="dep-chip" data-target="millenarianism_rejected">millenarianism_rejected</span><span class="dep-chip" data-target="p2_applied_to_eschatology">p2_applied_to_eschatology</span><span class="dep-chip" data-target="parousia_brings_kingdom_and_transformation">parousia_brings_kingdom_and_transformation</span><span class="dep-chip" data-target="secular_messianism_fails">secular_messianism_fails</span></div></div>
+<div class="node-desc">Whether the Kingdom of God has come in its fullness.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="christ_will_return">christ_will_return</span><span class="dep-chip" data-target="millenarianism_rejected">millenarianism_rejected</span><span class="dep-chip" data-target="human_effort_prepares">human_effort_prepares</span><span class="dep-chip" data-target="secular_messianism_fails">secular_messianism_fails</span><span class="dep-chip" data-target="parousia_brings_kingdom_and_transformation">parousia_brings_kingdom_and_transformation</span><span class="dep-chip" data-target="final_trial_leads_to_kingdom">final_trial_leads_to_kingdom</span><span class="dep-chip" data-target="p2_applied_to_eschatology">p2_applied_to_eschatology</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="achievableByHumanEffortAlone">
@@ -480,7 +573,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque achievableByHumanEffortAlone : Prop</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="already_but_not_yet">already_but_not_yet</span><span class="dep-chip" data-target="anti_utopianism_compatible_with_social_justice">anti_utopianism_compatible_with_social_justice</span><span class="dep-chip" data-target="development_within_eschatological_horizon">development_within_eschatological_horizon</span><span class="dep-chip" data-target="kingdom_not_by_human_effort_alone">kingdom_not_by_human_effort_alone</span><span class="dep-chip" data-target="p2_applied_to_eschatology">p2_applied_to_eschatology</span><span class="dep-chip" data-target="soteriology_within_already_but_not_yet">soteriology_within_already_but_not_yet</span></div></div>
+<div class="node-desc">Whether the Kingdom of God is achievable by human effort alone,</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="kingdom_not_by_human_effort_alone">kingdom_not_by_human_effort_alone</span><span class="dep-chip" data-target="anti_utopianism_compatible_with_social_justice">anti_utopianism_compatible_with_social_justice</span><span class="dep-chip" data-target="already_but_not_yet">already_but_not_yet</span><span class="dep-chip" data-target="development_within_eschatological_horizon">development_within_eschatological_horizon</span><span class="dep-chip" data-target="soteriology_within_already_but_not_yet">soteriology_within_already_but_not_yet</span><span class="dep-chip" data-target="p2_applied_to_eschatology">p2_applied_to_eschatology</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="isSecularMessianism">
@@ -491,7 +585,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque isSecularMessianism : Prop → Prop</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="millenarianism_rejected">millenarianism_rejected</span><span class="dep-chip" data-target="p2_applied_to_eschatology">p2_applied_to_eschatology</span><span class="dep-chip" data-target="secular_messianism_fails">secular_messianism_fails</span></div></div>
+<div class="node-desc">Whether a given political program constitutes a secular messianism —</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="millenarianism_rejected">millenarianism_rejected</span><span class="dep-chip" data-target="secular_messianism_fails">secular_messianism_fails</span><span class="dep-chip" data-target="p2_applied_to_eschatology">p2_applied_to_eschatology</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="finalTrialOccurring">
@@ -502,7 +597,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque finalTrialOccurring : Prop</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="final_trial_leads_to_kingdom">final_trial_leads_to_kingdom</span><span class="dep-chip" data-target="final_trial_precedes_parousia">final_trial_precedes_parousia</span><span class="dep-chip" data-target="p2_applied_to_eschatology">p2_applied_to_eschatology</span></div></div>
+<div class="node-desc">Whether the Church is undergoing the final eschatological trial.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="final_trial_precedes_parousia">final_trial_precedes_parousia</span><span class="dep-chip" data-target="final_trial_leads_to_kingdom">final_trial_leads_to_kingdom</span><span class="dep-chip" data-target="p2_applied_to_eschatology">p2_applied_to_eschatology</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="universeTransformed">
@@ -513,7 +609,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque universeTransformed : Prop</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="cosmic_transformation">cosmic_transformation</span><span class="dep-chip" data-target="p2_applied_to_eschatology">p2_applied_to_eschatology</span><span class="dep-chip" data-target="parousia_brings_kingdom_and_transformation">parousia_brings_kingdom_and_transformation</span><span class="dep-chip" data-target="parousia_context_of_last_judgment">parousia_context_of_last_judgment</span></div></div>
+<div class="node-desc">Whether the material universe has been eschatologically transformed</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="cosmic_transformation">cosmic_transformation</span><span class="dep-chip" data-target="parousia_brings_kingdom_and_transformation">parousia_brings_kingdom_and_transformation</span><span class="dep-chip" data-target="parousia_context_of_last_judgment">parousia_context_of_last_judgment</span><span class="dep-chip" data-target="p2_applied_to_eschatology">p2_applied_to_eschatology</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="isPreparationForKingdom">
@@ -524,7 +621,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque isPreparationForKingdom : Prop → Prop</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="anti_utopianism_compatible_with_social_justice">anti_utopianism_compatible_with_social_justice</span><span class="dep-chip" data-target="human_effort_prepares">human_effort_prepares</span><span class="dep-chip" data-target="p2_applied_to_eschatology">p2_applied_to_eschatology</span></div></div>
+<div class="node-desc">Whether human action constitutes genuine preparation for the Kingdom.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="human_effort_prepares">human_effort_prepares</span><span class="dep-chip" data-target="anti_utopianism_compatible_with_social_justice">anti_utopianism_compatible_with_social_justice</span><span class="dep-chip" data-target="p2_applied_to_eschatology">p2_applied_to_eschatology</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="christReignsNow">
@@ -535,7 +633,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque christReignsNow : Prop</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="already_but_not_yet">already_but_not_yet</span><span class="dep-chip" data-target="christ_already_reigns">christ_already_reigns</span><span class="dep-chip" data-target="development_within_eschatological_horizon">development_within_eschatological_horizon</span><span class="dep-chip" data-target="p2_applied_to_eschatology">p2_applied_to_eschatology</span><span class="dep-chip" data-target="soteriology_within_already_but_not_yet">soteriology_within_already_but_not_yet</span></div></div>
+<div class="node-desc">Whether Christ is already reigning (present kingship, before Parousia).</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="christ_already_reigns">christ_already_reigns</span><span class="dep-chip" data-target="already_but_not_yet">already_but_not_yet</span><span class="dep-chip" data-target="development_within_eschatological_horizon">development_within_eschatological_horizon</span><span class="dep-chip" data-target="soteriology_within_already_but_not_yet">soteriology_within_already_but_not_yet</span><span class="dep-chip" data-target="p2_applied_to_eschatology">p2_applied_to_eschatology</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="christ_will_return">
@@ -547,8 +646,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom christ_will_return :
   parousiaHasOccurred → kingdomInFullness</code></pre></div>
+<div class="node-desc">AXIOM 1 (§668; Acts 1:11): The Parousia brings the Kingdom in fullness.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="kingdomInFullness">kingdomInFullness</span><span class="dep-chip" data-target="parousiaHasOccurred">parousiaHasOccurred</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="already_but_not_yet">already_but_not_yet</span><span class="dep-chip" data-target="final_trial_leads_to_kingdom">final_trial_leads_to_kingdom</span><span class="dep-chip" data-target="p2_applied_to_eschatology">p2_applied_to_eschatology</span><span class="dep-chip" data-target="parousia_brings_kingdom_and_transformation">parousia_brings_kingdom_and_transformation</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="already_but_not_yet">already_but_not_yet</span><span class="dep-chip" data-target="parousia_brings_kingdom_and_transformation">parousia_brings_kingdom_and_transformation</span><span class="dep-chip" data-target="final_trial_leads_to_kingdom">final_trial_leads_to_kingdom</span><span class="dep-chip" data-target="p2_applied_to_eschatology">p2_applied_to_eschatology</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="kingdom_not_by_human_effort_alone">
@@ -560,8 +660,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom kingdom_not_by_human_effort_alone :
   ¬achievableByHumanEffortAlone</code></pre></div>
+<div class="node-desc">AXIOM 2 (§677): The Kingdom is NOT achievable by human effort alone.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="achievableByHumanEffortAlone">achievableByHumanEffortAlone</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="already_but_not_yet">already_but_not_yet</span><span class="dep-chip" data-target="anti_utopianism_compatible_with_social_justice">anti_utopianism_compatible_with_social_justice</span><span class="dep-chip" data-target="christ_already_reigns">christ_already_reigns</span><span class="dep-chip" data-target="development_within_eschatological_horizon">development_within_eschatological_horizon</span><span class="dep-chip" data-target="p2_applied_to_eschatology">p2_applied_to_eschatology</span><span class="dep-chip" data-target="parousia_context_of_last_judgment">parousia_context_of_last_judgment</span><span class="dep-chip" data-target="secular_messianism_fails">secular_messianism_fails</span><span class="dep-chip" data-target="soteriology_within_already_but_not_yet">soteriology_within_already_but_not_yet</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="christ_already_reigns">christ_already_reigns</span><span class="dep-chip" data-target="anti_utopianism_compatible_with_social_justice">anti_utopianism_compatible_with_social_justice</span><span class="dep-chip" data-target="secular_messianism_fails">secular_messianism_fails</span><span class="dep-chip" data-target="already_but_not_yet">already_but_not_yet</span><span class="dep-chip" data-target="parousia_context_of_last_judgment">parousia_context_of_last_judgment</span><span class="dep-chip" data-target="development_within_eschatological_horizon">development_within_eschatological_horizon</span><span class="dep-chip" data-target="soteriology_within_already_but_not_yet">soteriology_within_already_but_not_yet</span><span class="dep-chip" data-target="p2_applied_to_eschatology">p2_applied_to_eschatology</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="millenarianism_rejected">
@@ -575,8 +676,9 @@ h1 {
   ∀ (program : Prop),
     isSecularMessianism program →
     ¬(program → kingdomInFullness)</code></pre></div>
+<div class="node-desc">AXIOM 3 (§676): Millenarianism is rejected.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isSecularMessianism">isSecularMessianism</span><span class="dep-chip" data-target="kingdomInFullness">kingdomInFullness</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="anti_utopianism_compatible_with_social_justice">anti_utopianism_compatible_with_social_justice</span><span class="dep-chip" data-target="p2_applied_to_eschatology">p2_applied_to_eschatology</span><span class="dep-chip" data-target="secular_messianism_fails">secular_messianism_fails</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="anti_utopianism_compatible_with_social_justice">anti_utopianism_compatible_with_social_justice</span><span class="dep-chip" data-target="secular_messianism_fails">secular_messianism_fails</span><span class="dep-chip" data-target="p2_applied_to_eschatology">p2_applied_to_eschatology</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="final_trial_precedes_parousia">
@@ -588,8 +690,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom final_trial_precedes_parousia :
   parousiaHasOccurred → finalTrialOccurring</code></pre></div>
+<div class="node-desc">AXIOM 4 (§675): The Church must pass through a final trial before</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="finalTrialOccurring">finalTrialOccurring</span><span class="dep-chip" data-target="parousiaHasOccurred">parousiaHasOccurred</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="final_trial_leads_to_kingdom">final_trial_leads_to_kingdom</span><span class="dep-chip" data-target="p2_applied_to_eschatology">p2_applied_to_eschatology</span><span class="dep-chip" data-target="parousia_brings_kingdom_and_transformation">parousia_brings_kingdom_and_transformation</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="parousia_brings_kingdom_and_transformation">parousia_brings_kingdom_and_transformation</span><span class="dep-chip" data-target="final_trial_leads_to_kingdom">final_trial_leads_to_kingdom</span><span class="dep-chip" data-target="p2_applied_to_eschatology">p2_applied_to_eschatology</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="cosmic_transformation">
@@ -601,8 +704,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom cosmic_transformation :
   parousiaHasOccurred → universeTransformed</code></pre></div>
+<div class="node-desc">AXIOM 5 (§1042-1048): The material universe will be transformed.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="parousiaHasOccurred">parousiaHasOccurred</span><span class="dep-chip" data-target="universeTransformed">universeTransformed</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="already_but_not_yet">already_but_not_yet</span><span class="dep-chip" data-target="final_trial_leads_to_kingdom">final_trial_leads_to_kingdom</span><span class="dep-chip" data-target="p2_applied_to_eschatology">p2_applied_to_eschatology</span><span class="dep-chip" data-target="parousia_brings_kingdom_and_transformation">parousia_brings_kingdom_and_transformation</span><span class="dep-chip" data-target="parousia_context_of_last_judgment">parousia_context_of_last_judgment</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="already_but_not_yet">already_but_not_yet</span><span class="dep-chip" data-target="parousia_brings_kingdom_and_transformation">parousia_brings_kingdom_and_transformation</span><span class="dep-chip" data-target="final_trial_leads_to_kingdom">final_trial_leads_to_kingdom</span><span class="dep-chip" data-target="parousia_context_of_last_judgment">parousia_context_of_last_judgment</span><span class="dep-chip" data-target="p2_applied_to_eschatology">p2_applied_to_eschatology</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="human_effort_prepares">
@@ -620,8 +724,9 @@ h1 {
     -- Yet preparation participates in God's plan (S4: all events are
     -- divinely governed, including human justice work)
     divinelyGoverned action</code></pre></div>
+<div class="node-desc">AXIOM 6: Human justice work is genuine preparation for the Kingdom.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isPreparationForKingdom">isPreparationForKingdom</span><span class="dep-chip" data-target="kingdomInFullness">kingdomInFullness</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="anti_utopianism_compatible_with_social_justice">anti_utopianism_compatible_with_social_justice</span><span class="dep-chip" data-target="christ_already_reigns">christ_already_reigns</span><span class="dep-chip" data-target="p2_applied_to_eschatology">p2_applied_to_eschatology</span><span class="dep-chip" data-target="soteriology_within_already_but_not_yet">soteriology_within_already_but_not_yet</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="christ_already_reigns">christ_already_reigns</span><span class="dep-chip" data-target="anti_utopianism_compatible_with_social_justice">anti_utopianism_compatible_with_social_justice</span><span class="dep-chip" data-target="soteriology_within_already_but_not_yet">soteriology_within_already_but_not_yet</span><span class="dep-chip" data-target="p2_applied_to_eschatology">p2_applied_to_eschatology</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="christ_already_reigns">
@@ -633,8 +738,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom christ_already_reigns :
   christReignsNow</code></pre></div>
+<div class="node-desc">AXIOM 7 (§668): Christ reigns now, before the Parousia.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="christReignsNow">christReignsNow</span><span class="dep-chip" data-target="human_effort_prepares">human_effort_prepares</span><span class="dep-chip" data-target="kingdom_not_by_human_effort_alone">kingdom_not_by_human_effort_alone</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="already_but_not_yet">already_but_not_yet</span><span class="dep-chip" data-target="development_within_eschatological_horizon">development_within_eschatological_horizon</span><span class="dep-chip" data-target="p2_applied_to_eschatology">p2_applied_to_eschatology</span><span class="dep-chip" data-target="parousia_context_of_last_judgment">parousia_context_of_last_judgment</span><span class="dep-chip" data-target="secular_messianism_fails">secular_messianism_fails</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="secular_messianism_fails">secular_messianism_fails</span><span class="dep-chip" data-target="already_but_not_yet">already_but_not_yet</span><span class="dep-chip" data-target="parousia_context_of_last_judgment">parousia_context_of_last_judgment</span><span class="dep-chip" data-target="development_within_eschatological_horizon">development_within_eschatological_horizon</span><span class="dep-chip" data-target="p2_applied_to_eschatology">p2_applied_to_eschatology</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="anti_utopianism_compatible_with_social_justice">
@@ -650,9 +756,8 @@ h1 {
     -- Human effort cannot establish the Kingdom alone
     ¬achievableByHumanEffortAlone ∧
     -- Yet human preparation is genuinely part of God's plan
-    divinelyGoverned action :=
-  ⟨kingdom_not_by_human_effort_alone,
-   (human_effort_prepares action h_prep).2⟩</code></pre></div>
+    divinelyGoverned action</code></pre></div>
+<div class="node-desc">**THEOREM: Anti-utopianism does not negate social action.**</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="achievableByHumanEffortAlone">achievableByHumanEffortAlone</span><span class="dep-chip" data-target="human_effort_prepares">human_effort_prepares</span><span class="dep-chip" data-target="isPreparationForKingdom">isPreparationForKingdom</span><span class="dep-chip" data-target="kingdom_not_by_human_effort_alone">kingdom_not_by_human_effort_alone</span><span class="dep-chip" data-target="millenarianism_rejected">millenarianism_rejected</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="p2_applied_to_eschatology">p2_applied_to_eschatology</span></div></div>
   </div>
@@ -666,8 +771,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem secular_messianism_fails
     (program : Prop) (h_secular : isSecularMessianism program) :
-    ¬(program → kingdomInFullness) :=
-  millenarianism_rejected program h_secular</code></pre></div>
+    ¬(program → kingdomInFullness)</code></pre></div>
+<div class="node-desc">**THEOREM: Secular messianism contradicts the anti-utopian axiom.**</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="christ_already_reigns">christ_already_reigns</span><span class="dep-chip" data-target="isSecularMessianism">isSecularMessianism</span><span class="dep-chip" data-target="kingdomInFullness">kingdomInFullness</span><span class="dep-chip" data-target="kingdom_not_by_human_effort_alone">kingdom_not_by_human_effort_alone</span><span class="dep-chip" data-target="millenarianism_rejected">millenarianism_rejected</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="p2_applied_to_eschatology">p2_applied_to_eschatology</span></div></div>
   </div>
@@ -680,10 +785,10 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem already_but_not_yet :
-    christReignsNow ∧ ¬achievableByHumanEffortAlone :=
-  ⟨christ_already_reigns, kingdom_not_by_human_effort_alone⟩</code></pre></div>
+    christReignsNow ∧ ¬achievableByHumanEffortAlone</code></pre></div>
+<div class="node-desc">**THEOREM: The Kingdom is &quot;already but not yet.&quot;**</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="achievableByHumanEffortAlone">achievableByHumanEffortAlone</span><span class="dep-chip" data-target="christReignsNow">christReignsNow</span><span class="dep-chip" data-target="christ_already_reigns">christ_already_reigns</span><span class="dep-chip" data-target="christ_will_return">christ_will_return</span><span class="dep-chip" data-target="cosmic_transformation">cosmic_transformation</span><span class="dep-chip" data-target="kingdom_not_by_human_effort_alone">kingdom_not_by_human_effort_alone</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="p2_applied_to_eschatology">p2_applied_to_eschatology</span><span class="dep-chip" data-target="soteriology_within_already_but_not_yet">soteriology_within_already_but_not_yet</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="soteriology_within_already_but_not_yet">soteriology_within_already_but_not_yet</span><span class="dep-chip" data-target="p2_applied_to_eschatology">p2_applied_to_eschatology</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="parousia_brings_kingdom_and_transformation">
@@ -695,9 +800,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem parousia_brings_kingdom_and_transformation
     (h_parousia : parousiaHasOccurred) :
-    kingdomInFullness ∧ universeTransformed :=
-  ⟨christ_will_return h_parousia,
-   cosmic_transformation h_parousia⟩</code></pre></div>
+    kingdomInFullness ∧ universeTransformed</code></pre></div>
+<div class="node-desc">**THEOREM: The Parousia brings the Kingdom AND cosmic transformation.**</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="christ_will_return">christ_will_return</span><span class="dep-chip" data-target="cosmic_transformation">cosmic_transformation</span><span class="dep-chip" data-target="final_trial_precedes_parousia">final_trial_precedes_parousia</span><span class="dep-chip" data-target="kingdomInFullness">kingdomInFullness</span><span class="dep-chip" data-target="parousiaHasOccurred">parousiaHasOccurred</span><span class="dep-chip" data-target="universeTransformed">universeTransformed</span></div></div>
   </div>
 </div>
@@ -710,9 +814,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem final_trial_leads_to_kingdom
     (h_parousia : parousiaHasOccurred) :
-    finalTrialOccurring ∧ kingdomInFullness :=
-  ⟨final_trial_precedes_parousia h_parousia,
-   christ_will_return h_parousia⟩</code></pre></div>
+    finalTrialOccurring ∧ kingdomInFullness</code></pre></div>
+<div class="node-desc">**THEOREM: The final trial is part of the Parousia event.**</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="christ_will_return">christ_will_return</span><span class="dep-chip" data-target="cosmic_transformation">cosmic_transformation</span><span class="dep-chip" data-target="finalTrialOccurring">finalTrialOccurring</span><span class="dep-chip" data-target="final_trial_precedes_parousia">final_trial_precedes_parousia</span><span class="dep-chip" data-target="kingdomInFullness">kingdomInFullness</span><span class="dep-chip" data-target="parousiaHasOccurred">parousiaHasOccurred</span></div></div>
   </div>
 </div>
@@ -725,9 +828,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem parousia_context_of_last_judgment
     (h_parousia : parousiaHasOccurred) :
-    universeTransformed ∧ revealsCosmicMeaning :=
-  ⟨cosmic_transformation h_parousia,
-   last_judgment_reveals_history⟩</code></pre></div>
+    universeTransformed ∧ revealsCosmicMeaning</code></pre></div>
+<div class="node-desc">**BRIDGE: The Parousia is the context of the Last Judgment.**</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="christ_already_reigns">christ_already_reigns</span><span class="dep-chip" data-target="cosmic_transformation">cosmic_transformation</span><span class="dep-chip" data-target="kingdom_not_by_human_effort_alone">kingdom_not_by_human_effort_alone</span><span class="dep-chip" data-target="parousiaHasOccurred">parousiaHasOccurred</span><span class="dep-chip" data-target="universeTransformed">universeTransformed</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="p2_applied_to_eschatology">p2_applied_to_eschatology</span></div></div>
   </div>
@@ -747,10 +849,8 @@ h1 {
       e1 ≤ e2 → DevelopmentOfDoctrine.explicitAtEpoch e1 d →
       DevelopmentOfDoctrine.explicitAtEpoch e2 d) ∧
     -- But doctrinal development alone cannot bring the Kingdom
-    ¬achievableByHumanEffortAlone :=
-  ⟨christ_already_reigns,
-   fun e1 e2 d h_le h_exp =&gt; DevelopmentOfDoctrine.understanding_grows e1 e2 d h_le h_exp,
-   kingdom_not_by_human_effort_alone⟩</code></pre></div>
+    ¬achievableByHumanEffortAlone</code></pre></div>
+<div class="node-desc">**BRIDGE: Anti-utopianism sets the eschatological horizon for</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="achievableByHumanEffortAlone">achievableByHumanEffortAlone</span><span class="dep-chip" data-target="christReignsNow">christReignsNow</span><span class="dep-chip" data-target="christ_already_reigns">christ_already_reigns</span><span class="dep-chip" data-target="kingdom_not_by_human_effort_alone">kingdom_not_by_human_effort_alone</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="p2_applied_to_eschatology">p2_applied_to_eschatology</span></div></div>
   </div>
@@ -763,8 +863,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem soteriology_within_already_but_not_yet :
-    christReignsNow ∧ ¬achievableByHumanEffortAlone :=
-  already_but_not_yet</code></pre></div>
+    christReignsNow ∧ ¬achievableByHumanEffortAlone</code></pre></div>
+<div class="node-desc">**BRIDGE: Soteriology operates within the eschatological &quot;already</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="achievableByHumanEffortAlone">achievableByHumanEffortAlone</span><span class="dep-chip" data-target="already_but_not_yet">already_but_not_yet</span><span class="dep-chip" data-target="christReignsNow">christReignsNow</span><span class="dep-chip" data-target="human_effort_prepares">human_effort_prepares</span><span class="dep-chip" data-target="kingdom_not_by_human_effort_alone">kingdom_not_by_human_effort_alone</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="p2_applied_to_eschatology">p2_applied_to_eschatology</span></div></div>
   </div>
@@ -784,10 +884,8 @@ h1 {
     -- Applied: human preparation is real (secondary cause)
     divinelyGoverned action ∧
     -- Applied: human effort alone is insufficient (cannot replace primary cause)
-    ¬achievableByHumanEffortAlone :=
-  ⟨fun p s =&gt; p2_two_tier_causation p s,
-   (human_effort_prepares action h_prep).2,
-   kingdom_not_by_human_effort_alone⟩</code></pre></div>
+    ¬achievableByHumanEffortAlone</code></pre></div>
+<div class="node-desc">**THE KEY THEOREM: P2 reconciles anti-utopianism and social justice.**</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="achievableByHumanEffortAlone">achievableByHumanEffortAlone</span><span class="dep-chip" data-target="already_but_not_yet">already_but_not_yet</span><span class="dep-chip" data-target="anti_utopianism_compatible_with_social_justice">anti_utopianism_compatible_with_social_justice</span><span class="dep-chip" data-target="christReignsNow">christReignsNow</span><span class="dep-chip" data-target="christ_already_reigns">christ_already_reigns</span><span class="dep-chip" data-target="christ_will_return">christ_will_return</span><span class="dep-chip" data-target="cosmic_transformation">cosmic_transformation</span><span class="dep-chip" data-target="development_within_eschatological_horizon">development_within_eschatological_horizon</span><span class="dep-chip" data-target="finalTrialOccurring">finalTrialOccurring</span><span class="dep-chip" data-target="final_trial_precedes_parousia">final_trial_precedes_parousia</span><span class="dep-chip" data-target="human_effort_prepares">human_effort_prepares</span><span class="dep-chip" data-target="isPreparationForKingdom">isPreparationForKingdom</span><span class="dep-chip" data-target="isSecularMessianism">isSecularMessianism</span><span class="dep-chip" data-target="kingdomInFullness">kingdomInFullness</span><span class="dep-chip" data-target="kingdom_not_by_human_effort_alone">kingdom_not_by_human_effort_alone</span><span class="dep-chip" data-target="millenarianism_rejected">millenarianism_rejected</span><span class="dep-chip" data-target="parousiaHasOccurred">parousiaHasOccurred</span><span class="dep-chip" data-target="parousia_context_of_last_judgment">parousia_context_of_last_judgment</span><span class="dep-chip" data-target="secular_messianism_fails">secular_messianism_fails</span><span class="dep-chip" data-target="soteriology_within_already_but_not_yet">soteriology_within_already_but_not_yet</span><span class="dep-chip" data-target="universeTransformed">universeTransformed</span></div></div>
   </div>
 </div>

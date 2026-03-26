@@ -525,7 +525,13 @@ h1 {
   <h1>Heresies</h1>
   <div class="subtitle">Creed &middot; 25 declarations</div>
 
-  
+  <div class="flow-summary">
+  <span class="flow-count axioms">0 axioms</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count theorems">13 theorems</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count derived">12 derived</span>
+</div>
   <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1374, &sect;242, &sect;253, &sect;254, &sect;405, &sect;464, &sect;466, &sect;467, &sect;468</div>
 
   <div class="legend"><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span><span class="legend-item"><span class="legend-dot proposition"></span>proposition</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
@@ -544,7 +550,6 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>inductive HeresyType where</code></pre></div>
 <div class="node-desc">The type of axiom modification that constitutes a heresy.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="contradicts">contradicts</span><span class="dep-chip" data-target="hypostatic_union">hypostatic_union</span><span class="dep-chip" data-target="isDivine">isDivine</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="arianism_type">arianism_type</span><span class="dep-chip" data-target="nestorianism_type">nestorianism_type</span><span class="dep-chip" data-target="pelagianism_type">pelagianism_type</span><span class="dep-chip" data-target="modalism_type">modalism_type</span><span class="dep-chip" data-target="monophysitism_type">monophysitism_type</span><span class="dep-chip" data-target="all_heresies_are_drops_or_swaps">all_heresies_are_drops_or_swaps</span><span class="dep-chip" data-target="four_drops_one_swap">four_drops_one_swap</span><span class="dep-chip" data-target="orthodoxy_excludes_all_heresies">orthodoxy_excludes_all_heresies</span></div></div>
   </div>
 </div>
@@ -558,7 +563,6 @@ h1 {
     <div class="node-prop"><pre><code>def arianDenial : Prop := ¬ christ.isDivine
 </code></pre></div>
 <div class="node-desc">The Arian denial: Christ is NOT divine.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="christ">christ</span><span class="dep-chip" data-target="isDivine">isDivine</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="arianism_breaks_theotokos">arianism_breaks_theotokos</span><span class="dep-chip" data-target="arianism_breaks_eucharistic_divinity">arianism_breaks_eucharistic_divinity</span><span class="dep-chip" data-target="orthodoxy_excludes_all_heresies">orthodoxy_excludes_all_heresies</span></div></div>
   </div>
 </div>
@@ -571,9 +575,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def arianism_type : HeresyType := HeresyType.drop
 </code></pre></div>
-<div class="node-desc">Arianism is a DROP — it removes Christ's divinity. │   Source: [Tradition] Condemned at Nicaea (325 AD); CCC §242. | Scope: Rejected by ALL Christian traditions.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HeresyType">HeresyType</span><span class="dep-chip" data-target="bore">bore</span><span class="dep-chip" data-target="christ">christ</span><span class="dep-chip" data-target="hypostatic_union">hypostatic_union</span><span class="dep-chip" data-target="isDivine">isDivine</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="all_heresies_are_drops_or_swaps">all_heresies_are_drops_or_swaps</span><span class="dep-chip" data-target="four_drops_one_swap">four_drops_one_swap</span><span class="dep-chip" data-target="orthodoxy_excludes_all_heresies">orthodoxy_excludes_all_heresies</span><span class="dep-chip" data-target="HeresyType">HeresyType</span></div></div>
+<div class="node-desc">Arianism is a DROP — it removes Christ's divinity.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HeresyType">HeresyType</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="all_heresies_are_drops_or_swaps">all_heresies_are_drops_or_swaps</span><span class="dep-chip" data-target="four_drops_one_swap">four_drops_one_swap</span><span class="dep-chip" data-target="orthodoxy_excludes_all_heresies">orthodoxy_excludes_all_heresies</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="arianism_breaks_theotokos">
@@ -586,9 +590,9 @@ h1 {
     <div class="node-prop"><pre><code>theorem arianism_breaks_theotokos
     (h_arian : arianDenial) :
     ¬ (christ.isDivine)</code></pre></div>
-<div class="node-desc">Arianism breaks the Theotokos.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Nature">Nature</span><span class="dep-chip" data-target="arianDenial">arianDenial</span><span class="dep-chip" data-target="christ">christ</span><span class="dep-chip" data-target="isDivine">isDivine</span><span class="dep-chip" data-target="wholeChristPresent">wholeChristPresent</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="orthodoxy_excludes_all_heresies">orthodoxy_excludes_all_heresies</span><span class="dep-chip" data-target="arianDenial">arianDenial</span></div></div>
+<div class="node-desc">**THEOREM: Arianism breaks the Theotokos.**</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="arianDenial">arianDenial</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="orthodoxy_excludes_all_heresies">orthodoxy_excludes_all_heresies</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="arianism_breaks_eucharistic_divinity">
@@ -601,9 +605,9 @@ h1 {
     <div class="node-prop"><pre><code>theorem arianism_breaks_eucharistic_divinity
     (h_arian : arianDenial) :
     ¬ (christ.isDivine ∧ christ.hasNature Nature.human)</code></pre></div>
-<div class="node-desc">Arianism breaks the &quot;whole Christ&quot; in the Eucharist.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Nature">Nature</span><span class="dep-chip" data-target="arianDenial">arianDenial</span><span class="dep-chip" data-target="bore">bore</span><span class="dep-chip" data-target="christ">christ</span><span class="dep-chip" data-target="contradicts">contradicts</span><span class="dep-chip" data-target="isDivine">isDivine</span><span class="dep-chip" data-target="naturesUndivided">naturesUndivided</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="orthodoxy_excludes_all_heresies">orthodoxy_excludes_all_heresies</span><span class="dep-chip" data-target="arianDenial">arianDenial</span></div></div>
+<div class="node-desc">**THEOREM: Arianism breaks the &quot;whole Christ&quot; in the Eucharist.**</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="arianDenial">arianDenial</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="orthodoxy_excludes_all_heresies">orthodoxy_excludes_all_heresies</span></div></div>
   </div>
 </div>
 <div class="node-card kind-proposition" data-kind="proposition" data-name="nestorianDenial">
@@ -616,7 +620,6 @@ h1 {
     <div class="node-prop"><pre><code>def nestorianDenial : Prop := ¬ naturesUndivided christ
 </code></pre></div>
 <div class="node-desc">The Nestorian denial: Christ's natures are DIVIDED — two persons,</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="christ">christ</span><span class="dep-chip" data-target="naturesUndivided">naturesUndivided</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="nestorianism_contradicts_chalcedon">nestorianism_contradicts_chalcedon</span><span class="dep-chip" data-target="nestorianism_blocks_theotokos">nestorianism_blocks_theotokos</span><span class="dep-chip" data-target="orthodoxy_excludes_all_heresies">orthodoxy_excludes_all_heresies</span></div></div>
   </div>
 </div>
@@ -630,8 +633,8 @@ h1 {
     <div class="node-prop"><pre><code>def nestorianism_type : HeresyType := HeresyType.drop
 </code></pre></div>
 <div class="node-desc">Nestorianism is a DROP — it removes the unity of Christ's person.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HeresyType">HeresyType</span><span class="dep-chip" data-target="chalcedonian_definition">chalcedonian_definition</span><span class="dep-chip" data-target="christ">christ</span><span class="dep-chip" data-target="contradicts">contradicts</span><span class="dep-chip" data-target="naturesUndivided">naturesUndivided</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="all_heresies_are_drops_or_swaps">all_heresies_are_drops_or_swaps</span><span class="dep-chip" data-target="four_drops_one_swap">four_drops_one_swap</span><span class="dep-chip" data-target="orthodoxy_excludes_all_heresies">orthodoxy_excludes_all_heresies</span><span class="dep-chip" data-target="HeresyType">HeresyType</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HeresyType">HeresyType</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="all_heresies_are_drops_or_swaps">all_heresies_are_drops_or_swaps</span><span class="dep-chip" data-target="four_drops_one_swap">four_drops_one_swap</span><span class="dep-chip" data-target="orthodoxy_excludes_all_heresies">orthodoxy_excludes_all_heresies</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="nestorianism_contradicts_chalcedon">
@@ -647,9 +650,9 @@ h1 {
        naturesUnchanged christ ∧
        naturesUndivided christ ∧
        naturesInseparable christ)</code></pre></div>
-<div class="node-desc">Nestorianism contradicts the Chalcedonian definition.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="bore">bore</span><span class="dep-chip" data-target="christ">christ</span><span class="dep-chip" data-target="naturesInseparable">naturesInseparable</span><span class="dep-chip" data-target="naturesRemainDistinct">naturesRemainDistinct</span><span class="dep-chip" data-target="naturesUnchanged">naturesUnchanged</span><span class="dep-chip" data-target="naturesUndivided">naturesUndivided</span><span class="dep-chip" data-target="nestorianDenial">nestorianDenial</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="orthodoxy_excludes_all_heresies">orthodoxy_excludes_all_heresies</span><span class="dep-chip" data-target="nestorianDenial">nestorianDenial</span></div></div>
+<div class="node-desc">**THEOREM: Nestorianism contradicts the Chalcedonian definition.**</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="nestorianDenial">nestorianDenial</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="orthodoxy_excludes_all_heresies">orthodoxy_excludes_all_heresies</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="nestorianism_blocks_theotokos">
@@ -663,9 +666,9 @@ h1 {
     (h_nestorian : nestorianDenial) :
     -- The Nestorian cannot affirm the full Chalcedonian definition
     ¬ naturesUndivided christ</code></pre></div>
-<div class="node-desc">Nestorianism blocks the Theotokos.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="christ">christ</span><span class="dep-chip" data-target="naturesUndivided">naturesUndivided</span><span class="dep-chip" data-target="nestorianDenial">nestorianDenial</span><span class="dep-chip" data-target="s8_grace_necessary_and_transformative">s8_grace_necessary_and_transformative</span><span class="dep-chip" data-target="the_fall">the_fall</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="orthodoxy_excludes_all_heresies">orthodoxy_excludes_all_heresies</span><span class="dep-chip" data-target="nestorianDenial">nestorianDenial</span></div></div>
+<div class="node-desc">**THEOREM: Nestorianism blocks the Theotokos.**</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="nestorianDenial">nestorianDenial</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="orthodoxy_excludes_all_heresies">orthodoxy_excludes_all_heresies</span></div></div>
   </div>
 </div>
 <div class="node-card kind-proposition" data-kind="proposition" data-name="pelagianDenial_wound">
@@ -677,7 +680,6 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def pelagianDenial_wound : Prop</code></pre></div>
 <div class="node-desc">The Pelagian denial: human nature is NOT wounded by the Fall.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="natureIsWounded">natureIsWounded</span><span class="dep-chip" data-target="the_fall">the_fall</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="orthodoxy_excludes_all_heresies">orthodoxy_excludes_all_heresies</span></div></div>
   </div>
 </div>
@@ -690,7 +692,6 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def pelagianDenial_grace : Prop</code></pre></div>
 <div class="node-desc">The Pelagian denial: grace is NOT necessary for salvation.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="AnthropologicalState">AnthropologicalState</span><span class="dep-chip" data-target="canReachSupernaturalEnd">canReachSupernaturalEnd</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="orthodoxy_excludes_all_heresies">orthodoxy_excludes_all_heresies</span></div></div>
   </div>
 </div>
@@ -704,8 +705,8 @@ h1 {
     <div class="node-prop"><pre><code>def pelagianism_type : HeresyType := HeresyType.drop
 </code></pre></div>
 <div class="node-desc">Pelagianism is a DROP — it removes both the wound and the necessity</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HeresyType">HeresyType</span><span class="dep-chip" data-target="contradicts">contradicts</span><span class="dep-chip" data-target="the_fall">the_fall</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="all_heresies_are_drops_or_swaps">all_heresies_are_drops_or_swaps</span><span class="dep-chip" data-target="four_drops_one_swap">four_drops_one_swap</span><span class="dep-chip" data-target="orthodoxy_excludes_all_heresies">orthodoxy_excludes_all_heresies</span><span class="dep-chip" data-target="HeresyType">HeresyType</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HeresyType">HeresyType</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="all_heresies_are_drops_or_swaps">all_heresies_are_drops_or_swaps</span><span class="dep-chip" data-target="four_drops_one_swap">four_drops_one_swap</span><span class="dep-chip" data-target="orthodoxy_excludes_all_heresies">orthodoxy_excludes_all_heresies</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="pelagianism_contradicts_the_fall">
@@ -722,8 +723,7 @@ h1 {
     -- The orthodox axiom says the wound exists; Pelagius denies it.
     -- These are contradictory.
     False</code></pre></div>
-<div class="node-desc">Pelagianism contradicts the_fall.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="grace_is_necessary">grace_is_necessary</span><span class="dep-chip" data-target="grace_is_the_healing">grace_is_the_healing</span><span class="dep-chip" data-target="natureIsWounded">natureIsWounded</span><span class="dep-chip" data-target="the_fall">the_fall</span><span class="dep-chip" data-target="wound_requires_healing">wound_requires_healing</span></div></div>
+<div class="node-desc">**THEOREM: Pelagianism contradicts the_fall.**</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="orthodoxy_excludes_all_heresies">orthodoxy_excludes_all_heresies</span></div></div>
   </div>
 </div>
@@ -739,8 +739,7 @@ h1 {
     (h_intellect : p.hasIntellect = true) :
     -- Under orthodoxy, grace IS necessary (derived from the_fall)
     ∃ (g : Grace), graceGiven p g → graceHealsWound g p</code></pre></div>
-<div class="node-desc">Pelagianism collapses the grace derivation.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Sortal">Sortal</span><span class="dep-chip" data-target="contradicts">contradicts</span><span class="dep-chip" data-target="different_person_father_son">different_person_father_son</span><span class="dep-chip" data-target="father">father</span><span class="dep-chip" data-target="graceGiven">graceGiven</span><span class="dep-chip" data-target="graceHealsWound">graceHealsWound</span><span class="dep-chip" data-target="grace_is_necessary">grace_is_necessary</span><span class="dep-chip" data-target="relativelySame">relativelySame</span><span class="dep-chip" data-target="the_fall">the_fall</span></div></div>
+<div class="node-desc">**THEOREM: Pelagianism collapses the grace derivation.**</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="orthodoxy_excludes_all_heresies">orthodoxy_excludes_all_heresies</span></div></div>
   </div>
 </div>
@@ -754,7 +753,6 @@ h1 {
     <div class="node-prop"><pre><code>def modalistClaim : Prop := relativelySame Sortal.person father son
 </code></pre></div>
 <div class="node-desc">The Modalist claim: Father and Son are the SAME PERSON.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Sortal">Sortal</span><span class="dep-chip" data-target="father">father</span><span class="dep-chip" data-target="relativelySame">relativelySame</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="modalism_contradicts_trinity">modalism_contradicts_trinity</span><span class="dep-chip" data-target="modalism_destroys_relative_identity">modalism_destroys_relative_identity</span><span class="dep-chip" data-target="orthodoxy_excludes_all_heresies">orthodoxy_excludes_all_heresies</span></div></div>
   </div>
 </div>
@@ -767,9 +765,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def modalism_type : HeresyType := HeresyType.swap
 </code></pre></div>
-<div class="node-desc">Modalism is a SWAP — it replaces relative identity (where &quot;same God</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HeresyType">HeresyType</span><span class="dep-chip" data-target="Sortal">Sortal</span><span class="dep-chip" data-target="contradicts">contradicts</span><span class="dep-chip" data-target="different_person_father_son">different_person_father_son</span><span class="dep-chip" data-target="father">father</span><span class="dep-chip" data-target="relativelySame">relativelySame</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="all_heresies_are_drops_or_swaps">all_heresies_are_drops_or_swaps</span><span class="dep-chip" data-target="four_drops_one_swap">four_drops_one_swap</span><span class="dep-chip" data-target="orthodoxy_excludes_all_heresies">orthodoxy_excludes_all_heresies</span><span class="dep-chip" data-target="HeresyType">HeresyType</span></div></div>
+<div class="node-desc">Modalism is a SWAP — it replaces relative identity (where &quot;same God&quot;</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HeresyType">HeresyType</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="all_heresies_are_drops_or_swaps">all_heresies_are_drops_or_swaps</span><span class="dep-chip" data-target="four_drops_one_swap">four_drops_one_swap</span><span class="dep-chip" data-target="orthodoxy_excludes_all_heresies">orthodoxy_excludes_all_heresies</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="modalism_contradicts_trinity">
@@ -782,9 +780,9 @@ h1 {
     <div class="node-prop"><pre><code>theorem modalism_contradicts_trinity
     (h_modalist : modalistClaim) :
     False</code></pre></div>
-<div class="node-desc">Modalism contradicts the real distinction of persons.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="different_person_father_son">different_person_father_son</span><span class="dep-chip" data-target="modalistClaim">modalistClaim</span><span class="dep-chip" data-target="relative_identity_breaks_leibniz">relative_identity_breaks_leibniz</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="orthodoxy_excludes_all_heresies">orthodoxy_excludes_all_heresies</span><span class="dep-chip" data-target="modalistClaim">modalistClaim</span></div></div>
+<div class="node-desc">**THEOREM: Modalism contradicts the real distinction of persons.**</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="modalistClaim">modalistClaim</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="orthodoxy_excludes_all_heresies">orthodoxy_excludes_all_heresies</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="modalism_destroys_relative_identity">
@@ -802,9 +800,9 @@ h1 {
     -- (relative identity) is destroyed.
     ¬ (relativelySame Sortal.god father son ∧
        ¬ relativelySame Sortal.person father son)</code></pre></div>
-<div class="node-desc">Modalism destroys Leibniz-breaking.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Nature">Nature</span><span class="dep-chip" data-target="Sortal">Sortal</span><span class="dep-chip" data-target="christ">christ</span><span class="dep-chip" data-target="christ_has_full_human_nature">christ_has_full_human_nature</span><span class="dep-chip" data-target="christ_has_two_wills">christ_has_two_wills</span><span class="dep-chip" data-target="father">father</span><span class="dep-chip" data-target="modalistClaim">modalistClaim</span><span class="dep-chip" data-target="naturesRemainDistinct">naturesRemainDistinct</span><span class="dep-chip" data-target="relativelySame">relativelySame</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="orthodoxy_excludes_all_heresies">orthodoxy_excludes_all_heresies</span><span class="dep-chip" data-target="modalistClaim">modalistClaim</span></div></div>
+<div class="node-desc">**THEOREM: Modalism destroys Leibniz-breaking.**</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="modalistClaim">modalistClaim</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="orthodoxy_excludes_all_heresies">orthodoxy_excludes_all_heresies</span></div></div>
   </div>
 </div>
 <div class="node-card kind-proposition" data-kind="proposition" data-name="monophysiteDenial">
@@ -817,7 +815,6 @@ h1 {
     <div class="node-prop"><pre><code>def monophysiteDenial : Prop := ¬ naturesRemainDistinct christ
 </code></pre></div>
 <div class="node-desc">The Monophysite denial: Christ's natures do NOT remain distinct.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="christ">christ</span><span class="dep-chip" data-target="naturesRemainDistinct">naturesRemainDistinct</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="monophysitism_contradicts_chalcedon">monophysitism_contradicts_chalcedon</span><span class="dep-chip" data-target="monophysitism_undercuts_humanity">monophysitism_undercuts_humanity</span><span class="dep-chip" data-target="orthodoxy_excludes_all_heresies">orthodoxy_excludes_all_heresies</span></div></div>
   </div>
 </div>
@@ -831,8 +828,8 @@ h1 {
     <div class="node-prop"><pre><code>def monophysitism_type : HeresyType := HeresyType.drop
 </code></pre></div>
 <div class="node-desc">Monophysitism is a DROP — it removes the distinction between natures,</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HeresyType">HeresyType</span><span class="dep-chip" data-target="chalcedonian_definition">chalcedonian_definition</span><span class="dep-chip" data-target="christ">christ</span><span class="dep-chip" data-target="contradicts">contradicts</span><span class="dep-chip" data-target="naturesRemainDistinct">naturesRemainDistinct</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="all_heresies_are_drops_or_swaps">all_heresies_are_drops_or_swaps</span><span class="dep-chip" data-target="four_drops_one_swap">four_drops_one_swap</span><span class="dep-chip" data-target="orthodoxy_excludes_all_heresies">orthodoxy_excludes_all_heresies</span><span class="dep-chip" data-target="HeresyType">HeresyType</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HeresyType">HeresyType</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="all_heresies_are_drops_or_swaps">all_heresies_are_drops_or_swaps</span><span class="dep-chip" data-target="four_drops_one_swap">four_drops_one_swap</span><span class="dep-chip" data-target="orthodoxy_excludes_all_heresies">orthodoxy_excludes_all_heresies</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="monophysitism_contradicts_chalcedon">
@@ -848,9 +845,9 @@ h1 {
        naturesUnchanged christ ∧
        naturesUndivided christ ∧
        naturesInseparable christ)</code></pre></div>
-<div class="node-desc">Monophysitism contradicts the Chalcedonian definition.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="chalcedonian_definition">chalcedonian_definition</span><span class="dep-chip" data-target="christ">christ</span><span class="dep-chip" data-target="christ_has_full_human_nature">christ_has_full_human_nature</span><span class="dep-chip" data-target="monophysiteDenial">monophysiteDenial</span><span class="dep-chip" data-target="naturesInseparable">naturesInseparable</span><span class="dep-chip" data-target="naturesRemainDistinct">naturesRemainDistinct</span><span class="dep-chip" data-target="naturesUnchanged">naturesUnchanged</span><span class="dep-chip" data-target="naturesUndivided">naturesUndivided</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="orthodoxy_excludes_all_heresies">orthodoxy_excludes_all_heresies</span><span class="dep-chip" data-target="monophysiteDenial">monophysiteDenial</span></div></div>
+<div class="node-desc">**THEOREM: Monophysitism contradicts the Chalcedonian definition.**</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="monophysiteDenial">monophysiteDenial</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="orthodoxy_excludes_all_heresies">orthodoxy_excludes_all_heresies</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="monophysitism_undercuts_humanity">
@@ -866,9 +863,9 @@ h1 {
     -- Without &quot;natures remain distinct,&quot; Christ's human nature is not
     -- genuinely human — it is a divine-human hybrid.
     ¬ naturesRemainDistinct christ</code></pre></div>
-<div class="node-desc">Monophysitism breaks Christ's full humanity.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="christ">christ</span><span class="dep-chip" data-target="isDivine">isDivine</span><span class="dep-chip" data-target="monophysiteDenial">monophysiteDenial</span><span class="dep-chip" data-target="naturesRemainDistinct">naturesRemainDistinct</span><span class="dep-chip" data-target="naturesUndivided">naturesUndivided</span><span class="dep-chip" data-target="the_fall">the_fall</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="orthodoxy_excludes_all_heresies">orthodoxy_excludes_all_heresies</span><span class="dep-chip" data-target="monophysiteDenial">monophysiteDenial</span></div></div>
+<div class="node-desc">**THEOREM: Monophysitism breaks Christ's full humanity.**</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="monophysiteDenial">monophysiteDenial</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="orthodoxy_excludes_all_heresies">orthodoxy_excludes_all_heresies</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="all_heresies_are_drops_or_swaps">
@@ -886,7 +883,7 @@ h1 {
     monophysitism_type = HeresyType.drop</code></pre></div>
 <div class="node-desc">All five heresies we formalize are either DROPs or SWAPs.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HeresyType">HeresyType</span><span class="dep-chip" data-target="arianism_type">arianism_type</span><span class="dep-chip" data-target="modalism_type">modalism_type</span><span class="dep-chip" data-target="monophysitism_type">monophysitism_type</span><span class="dep-chip" data-target="nestorianism_type">nestorianism_type</span><span class="dep-chip" data-target="pelagianism_type">pelagianism_type</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="orthodoxy_excludes_all_heresies">orthodoxy_excludes_all_heresies</span><span class="dep-chip" data-target="HeresyType">HeresyType</span><span class="dep-chip" data-target="arianism_type">arianism_type</span><span class="dep-chip" data-target="modalism_type">modalism_type</span><span class="dep-chip" data-target="monophysitism_type">monophysitism_type</span><span class="dep-chip" data-target="nestorianism_type">nestorianism_type</span><span class="dep-chip" data-target="pelagianism_type">pelagianism_type</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="orthodoxy_excludes_all_heresies">orthodoxy_excludes_all_heresies</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="four_drops_one_swap">
@@ -903,8 +900,8 @@ h1 {
     modalism_type ≠ HeresyType.drop ∧
     monophysitism_type ≠ HeresyType.swap</code></pre></div>
 <div class="node-desc">Four of five heresies are pure DROPs (remove an axiom without</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HeresyType">HeresyType</span><span class="dep-chip" data-target="arianism_type">arianism_type</span><span class="dep-chip" data-target="chalcedonian_definition">chalcedonian_definition</span><span class="dep-chip" data-target="different_person_father_son">different_person_father_son</span><span class="dep-chip" data-target="hypostatic_union">hypostatic_union</span><span class="dep-chip" data-target="modalism_type">modalism_type</span><span class="dep-chip" data-target="monophysitism_type">monophysitism_type</span><span class="dep-chip" data-target="nestorianism_type">nestorianism_type</span><span class="dep-chip" data-target="pelagianism_type">pelagianism_type</span><span class="dep-chip" data-target="the_fall">the_fall</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="orthodoxy_excludes_all_heresies">orthodoxy_excludes_all_heresies</span><span class="dep-chip" data-target="HeresyType">HeresyType</span><span class="dep-chip" data-target="arianism_type">arianism_type</span><span class="dep-chip" data-target="modalism_type">modalism_type</span><span class="dep-chip" data-target="monophysitism_type">monophysitism_type</span><span class="dep-chip" data-target="nestorianism_type">nestorianism_type</span><span class="dep-chip" data-target="pelagianism_type">pelagianism_type</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HeresyType">HeresyType</span><span class="dep-chip" data-target="arianism_type">arianism_type</span><span class="dep-chip" data-target="modalism_type">modalism_type</span><span class="dep-chip" data-target="monophysitism_type">monophysitism_type</span><span class="dep-chip" data-target="nestorianism_type">nestorianism_type</span><span class="dep-chip" data-target="pelagianism_type">pelagianism_type</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="orthodoxy_excludes_all_heresies">orthodoxy_excludes_all_heresies</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="orthodoxy_excludes_all_heresies">
@@ -923,9 +920,8 @@ h1 {
     ¬ modalistClaim ∧
     -- Monophysitism is false: natures DO remain distinct
     ¬ monophysiteDenial</code></pre></div>
-<div class="node-desc">Orthodoxy survives — all five heresies are FALSE</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HeresyType">HeresyType</span><span class="dep-chip" data-target="Sortal">Sortal</span><span class="dep-chip" data-target="all_heresies_are_drops_or_swaps">all_heresies_are_drops_or_swaps</span><span class="dep-chip" data-target="arianDenial">arianDenial</span><span class="dep-chip" data-target="arianism_breaks_eucharistic_divinity">arianism_breaks_eucharistic_divinity</span><span class="dep-chip" data-target="arianism_breaks_theotokos">arianism_breaks_theotokos</span><span class="dep-chip" data-target="arianism_type">arianism_type</span><span class="dep-chip" data-target="canReachSupernaturalEnd">canReachSupernaturalEnd</span><span class="dep-chip" data-target="chalcedonian_definition">chalcedonian_definition</span><span class="dep-chip" data-target="christ">christ</span><span class="dep-chip" data-target="contradicts">contradicts</span><span class="dep-chip" data-target="different_person_father_son">different_person_father_son</span><span class="dep-chip" data-target="father">father</span><span class="dep-chip" data-target="four_drops_one_swap">four_drops_one_swap</span><span class="dep-chip" data-target="grace_is_necessary">grace_is_necessary</span><span class="dep-chip" data-target="hypostatic_union">hypostatic_union</span><span class="dep-chip" data-target="isDivine">isDivine</span><span class="dep-chip" data-target="lutheranModifications">lutheranModifications</span><span class="dep-chip" data-target="modalism_contradicts_trinity">modalism_contradicts_trinity</span><span class="dep-chip" data-target="modalism_destroys_relative_identity">modalism_destroys_relative_identity</span><span class="dep-chip" data-target="modalism_type">modalism_type</span><span class="dep-chip" data-target="modalistClaim">modalistClaim</span><span class="dep-chip" data-target="monophysiteDenial">monophysiteDenial</span><span class="dep-chip" data-target="monophysitism_contradicts_chalcedon">monophysitism_contradicts_chalcedon</span><span class="dep-chip" data-target="monophysitism_type">monophysitism_type</span><span class="dep-chip" data-target="monophysitism_undercuts_humanity">monophysitism_undercuts_humanity</span><span class="dep-chip" data-target="motherhood_targets_persons">motherhood_targets_persons</span><span class="dep-chip" data-target="natureIsWounded">natureIsWounded</span><span class="dep-chip" data-target="naturesInseparable">naturesInseparable</span><span class="dep-chip" data-target="naturesRemainDistinct">naturesRemainDistinct</span><span class="dep-chip" data-target="naturesUndivided">naturesUndivided</span><span class="dep-chip" data-target="nestorianDenial">nestorianDenial</span><span class="dep-chip" data-target="nestorianism_blocks_theotokos">nestorianism_blocks_theotokos</span><span class="dep-chip" data-target="nestorianism_contradicts_chalcedon">nestorianism_contradicts_chalcedon</span><span class="dep-chip" data-target="nestorianism_type">nestorianism_type</span><span class="dep-chip" data-target="pelagianDenial_grace">pelagianDenial_grace</span><span class="dep-chip" data-target="pelagianDenial_wound">pelagianDenial_wound</span><span class="dep-chip" data-target="pelagianism_contradicts_the_fall">pelagianism_contradicts_the_fall</span><span class="dep-chip" data-target="pelagianism_removes_grace_necessity">pelagianism_removes_grace_necessity</span><span class="dep-chip" data-target="pelagianism_type">pelagianism_type</span><span class="dep-chip" data-target="relative_identity_breaks_leibniz">relative_identity_breaks_leibniz</span><span class="dep-chip" data-target="relativelySame">relativelySame</span><span class="dep-chip" data-target="s8_grace_necessary_and_transformative">s8_grace_necessary_and_transformative</span><span class="dep-chip" data-target="the_fall">the_fall</span><span class="dep-chip" data-target="theotokos">theotokos</span><span class="dep-chip" data-target="wholeChristPresent">wholeChristPresent</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="HeresyType">HeresyType</span><span class="dep-chip" data-target="arianDenial">arianDenial</span><span class="dep-chip" data-target="modalistClaim">modalistClaim</span><span class="dep-chip" data-target="monophysiteDenial">monophysiteDenial</span><span class="dep-chip" data-target="nestorianDenial">nestorianDenial</span><span class="dep-chip" data-target="pelagianDenial_grace">pelagianDenial_grace</span><span class="dep-chip" data-target="pelagianDenial_wound">pelagianDenial_wound</span><span class="dep-chip" data-target="pelagianism_contradicts_the_fall">pelagianism_contradicts_the_fall</span><span class="dep-chip" data-target="pelagianism_removes_grace_necessity">pelagianism_removes_grace_necessity</span><span class="dep-chip" data-target="arianism_breaks_eucharistic_divinity">arianism_breaks_eucharistic_divinity</span><span class="dep-chip" data-target="arianism_breaks_theotokos">arianism_breaks_theotokos</span><span class="dep-chip" data-target="arianism_type">arianism_type</span><span class="dep-chip" data-target="modalism_contradicts_trinity">modalism_contradicts_trinity</span><span class="dep-chip" data-target="modalism_destroys_relative_identity">modalism_destroys_relative_identity</span><span class="dep-chip" data-target="modalism_type">modalism_type</span><span class="dep-chip" data-target="monophysitism_contradicts_chalcedon">monophysitism_contradicts_chalcedon</span><span class="dep-chip" data-target="monophysitism_type">monophysitism_type</span><span class="dep-chip" data-target="monophysitism_undercuts_humanity">monophysitism_undercuts_humanity</span><span class="dep-chip" data-target="nestorianism_blocks_theotokos">nestorianism_blocks_theotokos</span><span class="dep-chip" data-target="nestorianism_contradicts_chalcedon">nestorianism_contradicts_chalcedon</span><span class="dep-chip" data-target="nestorianism_type">nestorianism_type</span><span class="dep-chip" data-target="pelagianism_type">pelagianism_type</span><span class="dep-chip" data-target="all_heresies_are_drops_or_swaps">all_heresies_are_drops_or_swaps</span><span class="dep-chip" data-target="four_drops_one_swap">four_drops_one_swap</span></div></div>
+<div class="node-desc">**THEOREM: Orthodoxy survives — all five heresies are FALSE</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HeresyType">HeresyType</span><span class="dep-chip" data-target="all_heresies_are_drops_or_swaps">all_heresies_are_drops_or_swaps</span><span class="dep-chip" data-target="arianDenial">arianDenial</span><span class="dep-chip" data-target="arianism_breaks_eucharistic_divinity">arianism_breaks_eucharistic_divinity</span><span class="dep-chip" data-target="arianism_breaks_theotokos">arianism_breaks_theotokos</span><span class="dep-chip" data-target="arianism_type">arianism_type</span><span class="dep-chip" data-target="four_drops_one_swap">four_drops_one_swap</span><span class="dep-chip" data-target="modalism_contradicts_trinity">modalism_contradicts_trinity</span><span class="dep-chip" data-target="modalism_destroys_relative_identity">modalism_destroys_relative_identity</span><span class="dep-chip" data-target="modalism_type">modalism_type</span><span class="dep-chip" data-target="modalistClaim">modalistClaim</span><span class="dep-chip" data-target="monophysiteDenial">monophysiteDenial</span><span class="dep-chip" data-target="monophysitism_contradicts_chalcedon">monophysitism_contradicts_chalcedon</span><span class="dep-chip" data-target="monophysitism_type">monophysitism_type</span><span class="dep-chip" data-target="monophysitism_undercuts_humanity">monophysitism_undercuts_humanity</span><span class="dep-chip" data-target="nestorianDenial">nestorianDenial</span><span class="dep-chip" data-target="nestorianism_blocks_theotokos">nestorianism_blocks_theotokos</span><span class="dep-chip" data-target="nestorianism_contradicts_chalcedon">nestorianism_contradicts_chalcedon</span><span class="dep-chip" data-target="nestorianism_type">nestorianism_type</span><span class="dep-chip" data-target="pelagianDenial_grace">pelagianDenial_grace</span><span class="dep-chip" data-target="pelagianDenial_wound">pelagianDenial_wound</span><span class="dep-chip" data-target="pelagianism_contradicts_the_fall">pelagianism_contradicts_the_fall</span><span class="dep-chip" data-target="pelagianism_removes_grace_necessity">pelagianism_removes_grace_necessity</span><span class="dep-chip" data-target="pelagianism_type">pelagianism_type</span></div></div>
   </div>
 </div>
   </div>

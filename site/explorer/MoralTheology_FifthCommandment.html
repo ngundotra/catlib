@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Fifth Commandment — Catlib Explorer</title>
+  <title>FifthCommandment — Catlib Explorer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -143,7 +143,7 @@ h1 {
   line-height: 1.6;
 }
 
-/* Search */
+/* ── Search ── */
 .search-box {
   width: 100%;
   padding: 0.8rem 1rem;
@@ -167,7 +167,7 @@ h1 {
   font-style: italic;
 }
 
-/* Category sections */
+/* ── Category sections ── */
 .category-header {
   font-family: Cinzel, Georgia, serif;
   font-size: 1.1rem;
@@ -181,7 +181,7 @@ h1 {
   border-bottom: 1px solid var(--border);
 }
 
-/* File cards */
+/* ── File cards ── */
 .file-card {
   display: block;
   padding: 1rem 1.1rem;
@@ -237,7 +237,7 @@ h1 {
   margin-top: 0.3rem;
 }
 
-/* Summary stats */
+/* ── Summary stats ── */
 .stats-bar {
   display: flex;
   justify-content: center;
@@ -251,7 +251,7 @@ h1 {
 
 .stats-bar span { white-space: nowrap; }
 
-/* Node cards */
+/* ── Node cards (per-file page) ── */
 .node-card {
   margin-bottom: 0.4rem;
   border: 1px solid var(--border);
@@ -267,8 +267,6 @@ h1 {
 .node-card.kind-structure { border-left-color: var(--structure-dot); }
 .node-card.kind-inductive { border-left-color: var(--inductive-dot); }
 .node-card.kind-proposition { border-left-color: var(--proposition-dot); }
-.node-card.kind-instance { border-left-color: var(--def-dot); }
-.node-card.kind-abbrev { border-left-color: var(--def-dot); }
 
 .node-header {
   display: flex;
@@ -304,8 +302,6 @@ h1 {
 .kind-structure .node-kind-badge { background: var(--structure-bg); color: var(--structure-dot); }
 .kind-inductive .node-kind-badge { background: var(--inductive-bg); color: var(--inductive-dot); }
 .kind-proposition .node-kind-badge { background: var(--proposition-bg); color: var(--proposition-dot); }
-.kind-instance .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
-.kind-abbrev .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
 
 .node-name {
   flex: 1;
@@ -409,7 +405,7 @@ h1 {
   color: var(--text-muted);
 }
 
-/* Flow diagram header */
+/* ── Flow diagram header ── */
 .flow-summary {
   display: flex;
   justify-content: center;
@@ -435,7 +431,7 @@ h1 {
 .flow-count.theorems { background: var(--theorem-bg); color: var(--theorem-dot); }
 .flow-count.derived { background: var(--def-bg); color: var(--def-dot); }
 
-/* Legend */
+/* ── Legend ── */
 .legend {
   display: flex;
   flex-wrap: wrap;
@@ -467,7 +463,7 @@ h1 {
 .legend-dot.inductive { background: var(--inductive-dot); }
 .legend-dot.proposition { background: var(--proposition-dot); }
 
-/* Filter buttons */
+/* ── Filter buttons ── */
 .filter-bar {
   display: flex;
   flex-wrap: wrap;
@@ -496,7 +492,7 @@ h1 {
   border-color: var(--accent);
 }
 
-/* Back link */
+/* ── Back link ── */
 .back-link {
   display: inline-block;
   margin-bottom: 1rem;
@@ -505,7 +501,7 @@ h1 {
   letter-spacing: 0.04em;
 }
 
-/* Footer */
+/* ── Footer ── */
 .footer {
   text-align: center;
   padding-top: 2rem;
@@ -514,7 +510,7 @@ h1 {
   font-style: italic;
 }
 
-/* Responsive */
+/* ── Responsive ── */
 @media (max-width: 500px) {
   html { font-size: 16px; }
   .container { padding: 1rem 0.75rem 2rem; }
@@ -526,63 +522,71 @@ h1 {
 <body>
 <div class="container">
   <a href="index.html" class="back-link">&larr; All files</a>
-  <h1>Fifth Commandment</h1>
-  <div class="subtitle">Moral Theology &middot; 19 declarations</div>
+  <h1>FifthCommandment</h1>
+  <div class="subtitle">MoralTheology &middot; 19 declarations</div>
 
-  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1700, &sect;1756, &sect;2258, &sect;2261, &sect;2263, &sect;2267, &sect;2270, &sect;2271, &sect;2272, &sect;2274, &hellip;</div>
-  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot proposition"></span>proposition</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
+  <div class="flow-summary">
+  <span class="flow-count axioms">9 axioms</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count theorems">6 theorems</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count derived">4 derived</span>
+</div>
+  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1700, &sect;1756, &sect;2258, &sect;2261, &sect;2263, &sect;2267, &sect;2270, &sect;2271, &sect;2272, &sect;2274, &sect;2302, &sect;2309</div>
 
-  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (4)</button><button class="filter-btn" data-filter="def">def (4)</button><button class="filter-btn" data-filter="proposition">proposition (5)</button><button class="filter-btn" data-filter="theorem">theorem (6)</button></div>
+  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
+
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (4)</button><button class="filter-btn" data-filter="def">def (4)</button><button class="filter-btn" data-filter="opaque">opaque (5)</button><button class="filter-btn" data-filter="theorem">theorem (6)</button></div>
 
   <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
 
   <div id="nodeList">
-    <div class="node-card kind-proposition" data-kind="proposition" data-name="isInnocent">
+    <div class="node-card kind-opaque" data-kind="opaque" data-name="isInnocent">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
+    <span class="node-kind-badge">opaque</span>
     <span class="node-name">isInnocent</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque isInnocent : Person → Prop</code></pre></div>
 <div class="node-desc">Whether a person is an innocent — not an active aggressor.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="abortion_is_intrinsically_evil">abortion_is_intrinsically_evil</span><span class="dep-chip" data-target="innocents_always_protected">innocents_always_protected</span><span class="dep-chip" data-target="murder_of_innocents_intrinsically_evil">murder_of_innocents_intrinsically_evil</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="murder_of_innocents_intrinsically_evil">murder_of_innocents_intrinsically_evil</span><span class="dep-chip" data-target="abortion_is_intrinsically_evil">abortion_is_intrinsically_evil</span><span class="dep-chip" data-target="innocents_always_protected">innocents_always_protected</span></div></div>
   </div>
 </div>
-<div class="node-card kind-proposition" data-kind="proposition" data-name="isDirectKilling">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="isDirectKilling">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
+    <span class="node-kind-badge">opaque</span>
     <span class="node-name">isDirectKilling</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque isDirectKilling : Action → Person → Prop</code></pre></div>
 <div class="node-desc">Whether an action constitutes the direct, deliberate killing of a person.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="abortion_is_intrinsically_evil">abortion_is_intrinsically_evil</span><span class="dep-chip" data-target="innocents_always_protected">innocents_always_protected</span><span class="dep-chip" data-target="murder_of_innocents_intrinsically_evil">murder_of_innocents_intrinsically_evil</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="murder_of_innocents_intrinsically_evil">murder_of_innocents_intrinsically_evil</span><span class="dep-chip" data-target="abortion_is_intrinsically_evil">abortion_is_intrinsically_evil</span><span class="dep-chip" data-target="innocents_always_protected">innocents_always_protected</span></div></div>
   </div>
 </div>
-<div class="node-card kind-proposition" data-kind="proposition" data-name="isPersonFromConception">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="isPersonFromConception">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
+    <span class="node-kind-badge">opaque</span>
     <span class="node-name">isPersonFromConception</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque isPersonFromConception : Person → Prop</code></pre></div>
 <div class="node-desc">Whether a being has the status of a human person from conception.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="abortion_is_intrinsically_evil">abortion_is_intrinsically_evil</span><span class="dep-chip" data-target="personhood_from_conception">personhood_from_conception</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="personhood_from_conception">personhood_from_conception</span><span class="dep-chip" data-target="abortion_is_intrinsically_evil">abortion_is_intrinsically_evil</span></div></div>
   </div>
 </div>
-<div class="node-card kind-proposition" data-kind="proposition" data-name="lifeIsSacred">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="lifeIsSacred">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
+    <span class="node-kind-badge">opaque</span>
     <span class="node-name">lifeIsSacred</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque lifeIsSacred : Person → Prop</code></pre></div>
-<div class="node-desc">Whether a person&#x27;s life has sacred, inviolable value from God.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="innocents_always_protected">innocents_always_protected</span><span class="dep-chip" data-target="murder_of_innocents_intrinsically_evil">murder_of_innocents_intrinsically_evil</span><span class="dep-chip" data-target="sanctity_of_life">sanctity_of_life</span></div></div>
+<div class="node-desc">Whether a person's life has sacred, inviolable value from God.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="sanctity_of_life">sanctity_of_life</span><span class="dep-chip" data-target="murder_of_innocents_intrinsically_evil">murder_of_innocents_intrinsically_evil</span><span class="dep-chip" data-target="innocents_always_protected">innocents_always_protected</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="sanctity_of_life">
@@ -593,11 +597,12 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom sanctity_of_life :
-∀ (p : Person),
-p.isMoralAgent = true →
-lifeIsSacred p</code></pre></div>
-<div class="node-desc">AXIOM 1 (§2258): Human life is sacred — it involves God&#x27;s creative action and remains in special relationship with the C...</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="lifeIsSacred">lifeIsSacred</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="abortion_is_intrinsically_evil">abortion_is_intrinsically_evil</span></div></div>
+  ∀ (p : Person),
+    p.isMoralAgent = true →
+    lifeIsSacred p</code></pre></div>
+<div class="node-desc">**AXIOM 1 (§2258)**: Human life is sacred — it involves God's creative</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="lifeIsSacred">lifeIsSacred</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="abortion_is_intrinsically_evil">abortion_is_intrinsically_evil</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="murder_of_innocents_intrinsically_evil">
@@ -608,13 +613,14 @@ lifeIsSacred p</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom murder_of_innocents_intrinsically_evil :
-∀ (act : Action) (victim : Person),
-lifeIsSacred victim →
-isDirectKilling act victim →
-isInnocent victim →
-IntrinsicallyEvil act.object</code></pre></div>
-<div class="node-desc">AXIOM 2 (§2261): The deliberate murder of an innocent person is intrinsically evil — it is gravely contrary to human dig...</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isDirectKilling">isDirectKilling</span><span class="dep-chip" data-target="isInnocent">isInnocent</span><span class="dep-chip" data-target="lifeIsSacred">lifeIsSacred</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="abortion_is_intrinsically_evil">abortion_is_intrinsically_evil</span><span class="dep-chip" data-target="death_penalty_revision_2018">death_penalty_revision_2018</span><span class="dep-chip" data-target="innocents_always_protected">innocents_always_protected</span></div></div>
+  ∀ (act : Action) (victim : Person),
+    lifeIsSacred victim →
+    isDirectKilling act victim →
+    isInnocent victim →
+    IntrinsicallyEvil act.object</code></pre></div>
+<div class="node-desc">**AXIOM 2 (§2261)**: The deliberate murder of an innocent person is</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isDirectKilling">isDirectKilling</span><span class="dep-chip" data-target="isInnocent">isInnocent</span><span class="dep-chip" data-target="lifeIsSacred">lifeIsSacred</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="death_penalty_revision_2018">death_penalty_revision_2018</span><span class="dep-chip" data-target="abortion_is_intrinsically_evil">abortion_is_intrinsically_evil</span><span class="dep-chip" data-target="innocents_always_protected">innocents_always_protected</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="personhood_from_conception">
@@ -625,22 +631,23 @@ IntrinsicallyEvil act.object</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom personhood_from_conception :
-∀ (p : Person),
-isPersonFromConception p →
-p.isMoralAgent = true</code></pre></div>
-<div class="node-desc">AXIOM 3 (§2270): Human life must be respected and protected absolutely from the moment of conception.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isPersonFromConception">isPersonFromConception</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="abortion_is_intrinsically_evil">abortion_is_intrinsically_evil</span><span class="dep-chip" data-target="death_penalty_revision_2018">death_penalty_revision_2018</span></div></div>
+  ∀ (p : Person),
+    isPersonFromConception p →
+    p.isMoralAgent = true</code></pre></div>
+<div class="node-desc">**AXIOM 3 (§2270)**: Human life must be respected and protected</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isPersonFromConception">isPersonFromConception</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="death_penalty_revision_2018">death_penalty_revision_2018</span><span class="dep-chip" data-target="abortion_is_intrinsically_evil">abortion_is_intrinsically_evil</span></div></div>
   </div>
 </div>
-<div class="node-card kind-proposition" data-kind="proposition" data-name="deathPenaltyInadmissible">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="deathPenaltyInadmissible">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
+    <span class="node-kind-badge">opaque</span>
     <span class="node-name">deathPenaltyInadmissible</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque deathPenaltyInadmissible : Prop</code></pre></div>
-<div class="node-desc">Whether the death penalty is inadmissible — a moral judgment that it may not be employed regardless of the crime.</div>
+<div class="node-desc">Whether the death penalty is inadmissible — a moral judgment that it</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="death_penalty_revision_2018">death_penalty_revision_2018</span><span class="dep-chip" data-target="sanctity_forbids_execution">sanctity_forbids_execution</span><span class="dep-chip" data-target="temporal_distinction_unifies">temporal_distinction_unifies</span></div></div>
   </div>
 </div>
@@ -652,9 +659,10 @@ p.isMoralAgent = true</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom death_penalty_revision_2018 :
-deathPenaltyInadmissible</code></pre></div>
-<div class="node-desc">AXIOM 4 (§2267, 2018 revision): The death penalty is inadmissible because it attacks the inviolability and dignity of th...</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="abortion_is_intrinsically_evil">abortion_is_intrinsically_evil</span><span class="dep-chip" data-target="deathPenaltyInadmissible">deathPenaltyInadmissible</span><span class="dep-chip" data-target="murder_of_innocents_intrinsically_evil">murder_of_innocents_intrinsically_evil</span><span class="dep-chip" data-target="personhood_from_conception">personhood_from_conception</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="sanctity_forbids_execution">sanctity_forbids_execution</span><span class="dep-chip" data-target="temporal_distinction_unifies">temporal_distinction_unifies</span></div></div>
+  deathPenaltyInadmissible</code></pre></div>
+<div class="node-desc">**AXIOM 4 (§2267, 2018 revision)**: The death penalty is inadmissible</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="abortion_is_intrinsically_evil">abortion_is_intrinsically_evil</span><span class="dep-chip" data-target="deathPenaltyInadmissible">deathPenaltyInadmissible</span><span class="dep-chip" data-target="murder_of_innocents_intrinsically_evil">murder_of_innocents_intrinsically_evil</span><span class="dep-chip" data-target="personhood_from_conception">personhood_from_conception</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="sanctity_forbids_execution">sanctity_forbids_execution</span><span class="dep-chip" data-target="temporal_distinction_unifies">temporal_distinction_unifies</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="abortion_is_intrinsically_evil">
@@ -665,13 +673,14 @@ deathPenaltyInadmissible</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem abortion_is_intrinsically_evil
-(act : Action) (unborn : Person)
-(h_conception : isPersonFromConception unborn)
-(h_innocent : isInnocent unborn)
-(h_direct : isDirectKilling act unborn) :
-IntrinsicallyEvil act.object</code></pre></div>
-<div class="node-desc">THEOREM: abortion_is_intrinsically_evil — Direct, deliberate killing of the unborn is intrinsically evil, because the un...</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isDirectKilling">isDirectKilling</span><span class="dep-chip" data-target="isInnocent">isInnocent</span><span class="dep-chip" data-target="isPersonFromConception">isPersonFromConception</span><span class="dep-chip" data-target="murder_of_innocents_intrinsically_evil">murder_of_innocents_intrinsically_evil</span><span class="dep-chip" data-target="personhood_from_conception">personhood_from_conception</span><span class="dep-chip" data-target="sanctity_of_life">sanctity_of_life</span><span class="dep-chip" data-target="sanctity_permits_defense">sanctity_permits_defense</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="death_penalty_revision_2018">death_penalty_revision_2018</span></div></div>
+    (act : Action) (unborn : Person)
+    (h_conception : isPersonFromConception unborn)
+    (h_innocent : isInnocent unborn)
+    (h_direct : isDirectKilling act unborn) :
+    IntrinsicallyEvil act.object</code></pre></div>
+<div class="node-desc">**THEOREM: abortion_is_intrinsically_evil** — Direct, deliberate</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isDirectKilling">isDirectKilling</span><span class="dep-chip" data-target="isInnocent">isInnocent</span><span class="dep-chip" data-target="isPersonFromConception">isPersonFromConception</span><span class="dep-chip" data-target="murder_of_innocents_intrinsically_evil">murder_of_innocents_intrinsically_evil</span><span class="dep-chip" data-target="personhood_from_conception">personhood_from_conception</span><span class="dep-chip" data-target="sanctity_of_life">sanctity_of_life</span><span class="dep-chip" data-target="sanctity_permits_defense">sanctity_permits_defense</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="death_penalty_revision_2018">death_penalty_revision_2018</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="sanctity_permits_defense">
@@ -682,10 +691,19 @@ IntrinsicallyEvil act.object</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem sanctity_permits_defense
-(dec : DoubleEffectConditions)
-(h_permissible : dec.isPermissible) :</code></pre></div>
-<div class="node-desc">THEOREM: sanctity_permits_defense — The sanctity of life is compatible with legitimate defense because defense targets a...</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="sanctity_forbids_execution">sanctity_forbids_execution</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="abortion_is_intrinsically_evil">abortion_is_intrinsically_evil</span></div></div>
+    (dec : DoubleEffectConditions)
+    (h_permissible : dec.isPermissible) :
+    -- If the double-effect conditions are met, the act is permissible
+    -- This is compatible with sanctity because:
+    -- (1) the act is not intrinsically evil (condition 1)
+    -- (2) the death is not intended (condition 2)
+    -- (3) the death is not the means to safety (condition 3)
+    -- (4) the response is proportionate (condition 4)
+    dec.actNotIntrinsicallyEvil ∧ dec.goodIntended ∧
+    dec.badNotMeansToGood ∧ dec.proportionate</code></pre></div>
+<div class="node-desc">**THEOREM: sanctity_permits_defense** — The sanctity of life is</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="sanctity_forbids_execution">sanctity_forbids_execution</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="abortion_is_intrinsically_evil">abortion_is_intrinsically_evil</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="sanctity_forbids_execution">
@@ -696,10 +714,16 @@ IntrinsicallyEvil act.object</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem sanctity_forbids_execution
-(scenario : LethalForceScenario)
-(h_neutralized : scenario.threatStatus = ThreatStatus.neutralized) :</code></pre></div>
-<div class="node-desc">THEOREM: sanctity_forbids_execution — The sanctity of life, combined with the 2018 revision, forbids execution of the gu...</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="deathPenaltyInadmissible">deathPenaltyInadmissible</span><span class="dep-chip" data-target="death_penalty_revision_2018">death_penalty_revision_2018</span><span class="dep-chip" data-target="revision_is_development_not_contradiction">revision_is_development_not_contradiction</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="sanctity_permits_defense">sanctity_permits_defense</span></div></div>
+    (scenario : LethalForceScenario)
+    (h_neutralized : scenario.threatStatus = ThreatStatus.neutralized) :
+    -- When the threat is neutralized, execution is inadmissible
+    -- (from JustWar.lean's death_penalty_inadmissible) AND
+    -- the death penalty is inadmissible (from axiom 4)
+    (¬scenario.targetIsAggressor ∨ scenario.lessLethalAvailable) ∧
+    deathPenaltyInadmissible</code></pre></div>
+<div class="node-desc">**THEOREM: sanctity_forbids_execution** — The sanctity of life,</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="deathPenaltyInadmissible">deathPenaltyInadmissible</span><span class="dep-chip" data-target="death_penalty_revision_2018">death_penalty_revision_2018</span><span class="dep-chip" data-target="revision_is_development_not_contradiction">revision_is_development_not_contradiction</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="sanctity_permits_defense">sanctity_permits_defense</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="revision_is_development_not_contradiction">
@@ -710,13 +734,19 @@ IntrinsicallyEvil act.object</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem revision_is_development_not_contradiction
-(j : Catlib.Creed.RuleOfFaith.MagisterialJudgment)
-(d : Catlib.Creed.DevelopmentOfDoctrine.Doctrine)
-(deposit : Catlib.Creed.DevelopmentOfDoctrine.DepositOfFaith)
-(h_assists : Catlib.Creed.DevelopmentOfDoctrine.spiritAssists j)
-(h_defined : Catlib.Creed.DevelopmentOfDoctrine.explicitlyDefined d) :</code></pre></div>
-<div class="node-desc">THEOREM: revision_is_development_not_contradiction — The 2018 revision can be modeled as a legitimate development of doc...</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="temporal_distinction_unifies">temporal_distinction_unifies</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="sanctity_forbids_execution">sanctity_forbids_execution</span></div></div>
+    (j : Catlib.Creed.RuleOfFaith.MagisterialJudgment)
+    (d : Catlib.Creed.DevelopmentOfDoctrine.Doctrine)
+    (deposit : Catlib.Creed.DevelopmentOfDoctrine.DepositOfFaith)
+    (h_assists : Catlib.Creed.DevelopmentOfDoctrine.spiritAssists j)
+    (h_defined : Catlib.Creed.DevelopmentOfDoctrine.explicitlyDefined d) :
+    -- Under the DevelopmentOfDoctrine framework, this entails:
+    -- (1) The doctrine was always implicit in the deposit
+    -- (2) It satisfies Newman's seven criteria
+    Catlib.Creed.DevelopmentOfDoctrine.implicitIn d deposit ∧
+    Catlib.Creed.DevelopmentOfDoctrine.satisfiesNewmanNotes d deposit</code></pre></div>
+<div class="node-desc">**THEOREM: revision_is_development_not_contradiction** — The 2018</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="temporal_distinction_unifies">temporal_distinction_unifies</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="sanctity_forbids_execution">sanctity_forbids_execution</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="temporal_distinction_unifies">
@@ -727,16 +757,22 @@ IntrinsicallyEvil act.object</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem temporal_distinction_unifies
-(scenario_war : LethalForceScenario)
-(scenario_penalty : LethalForceScenario)
-(w : War)
-(cc : CCCConditions w)
-(h_war_ongoing : scenario_war.threatStatus = ThreatStatus.ongoing)
-(h_penalty_neutral : scenario_penalty.threatStatus = ThreatStatus.neutralized)
-(h_cc : cc.allMet)
-(h_aggressor : scenario_war.targetIsAggressor) :</code></pre></div>
-<div class="node-desc">THEOREM: temporal_distinction_unifies — The same temporal distinction that reconciles §2267 with §2309 (JustWar.lean&#x27;s `...</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="deathPenaltyInadmissible">deathPenaltyInadmissible</span><span class="dep-chip" data-target="death_penalty_revision_2018">death_penalty_revision_2018</span><span class="dep-chip" data-target="innocents_always_protected">innocents_always_protected</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="revision_is_development_not_contradiction">revision_is_development_not_contradiction</span></div></div>
+    (scenario_war : LethalForceScenario)
+    (scenario_penalty : LethalForceScenario)
+    (w : War)
+    (cc : CCCConditions w)
+    (h_war_ongoing : scenario_war.threatStatus = ThreatStatus.ongoing)
+    (h_penalty_neutral : scenario_penalty.threatStatus = ThreatStatus.neutralized)
+    (h_cc : cc.allMet)
+    (h_aggressor : scenario_war.targetIsAggressor) :
+    -- War scenario: force is linked to ongoing aggression (from JustWar.lean)
+    w.aggressionOngoing ∧
+    -- Penalty scenario: inadmissible (from JustWar.lean + axiom 4)
+    (¬scenario_penalty.targetIsAggressor ∨ scenario_penalty.lessLethalAvailable) ∧
+    deathPenaltyInadmissible</code></pre></div>
+<div class="node-desc">**THEOREM: temporal_distinction_unifies** — The same temporal</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="deathPenaltyInadmissible">deathPenaltyInadmissible</span><span class="dep-chip" data-target="death_penalty_revision_2018">death_penalty_revision_2018</span><span class="dep-chip" data-target="innocents_always_protected">innocents_always_protected</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="revision_is_development_not_contradiction">revision_is_development_not_contradiction</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="innocents_always_protected">
@@ -747,12 +783,15 @@ IntrinsicallyEvil act.object</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem innocents_always_protected
-(act : Action) (victim : Person)
-(h_sacred : lifeIsSacred victim)
-(h_innocent : isInnocent victim)
-(h_direct : isDirectKilling act victim) :</code></pre></div>
-<div class="node-desc">THEOREM: innocents_always_protected — Whether the threat is ongoing or neutralized, innocents are always protected from ...</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isDirectKilling">isDirectKilling</span><span class="dep-chip" data-target="isInnocent">isInnocent</span><span class="dep-chip" data-target="lifeIsSacred">lifeIsSacred</span><span class="dep-chip" data-target="murder_of_innocents_intrinsically_evil">murder_of_innocents_intrinsically_evil</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="temporal_distinction_unifies">temporal_distinction_unifies</span></div></div>
+    (act : Action) (victim : Person)
+    (h_sacred : lifeIsSacred victim)
+    (h_innocent : isInnocent victim)
+    (h_direct : isDirectKilling act victim) :
+    -- The act is intrinsically evil — no circumstance can change this
+    IntrinsicallyEvil act.object</code></pre></div>
+<div class="node-desc">**THEOREM: innocents_always_protected** — Whether the threat is</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isDirectKilling">isDirectKilling</span><span class="dep-chip" data-target="isInnocent">isInnocent</span><span class="dep-chip" data-target="lifeIsSacred">lifeIsSacred</span><span class="dep-chip" data-target="murder_of_innocents_intrinsically_evil">murder_of_innocents_intrinsically_evil</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="temporal_distinction_unifies">temporal_distinction_unifies</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="sanctity_of_life_tag">
@@ -764,7 +803,6 @@ IntrinsicallyEvil act.object</code></pre></div>
   <div class="node-details">
     <div class="node-prop"><pre><code>def sanctity_of_life_tag : DenominationalTag</code></pre></div>
 <div class="node-desc">Sanctity of life: ecumenical.</div>
-
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="murder_prohibition_tag">
@@ -776,7 +814,6 @@ IntrinsicallyEvil act.object</code></pre></div>
   <div class="node-details">
     <div class="node-prop"><pre><code>def murder_prohibition_tag : DenominationalTag</code></pre></div>
 <div class="node-desc">Murder prohibition: ecumenical.</div>
-
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="personhood_conception_tag">
@@ -788,7 +825,6 @@ IntrinsicallyEvil act.object</code></pre></div>
   <div class="node-details">
     <div class="node-prop"><pre><code>def personhood_conception_tag : DenominationalTag</code></pre></div>
 <div class="node-desc">Personhood from conception: Catholic (with broad but not universal Christian support).</div>
-
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="death_penalty_tag">
@@ -800,10 +836,8 @@ IntrinsicallyEvil act.object</code></pre></div>
   <div class="node-details">
     <div class="node-prop"><pre><code>def death_penalty_tag : DenominationalTag</code></pre></div>
 <div class="node-desc">Death penalty inadmissibility: Catholic (2018 revision).</div>
-
   </div>
 </div>
-
   </div>
 
   <div class="footer">

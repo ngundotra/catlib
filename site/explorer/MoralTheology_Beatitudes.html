@@ -143,7 +143,7 @@ h1 {
   line-height: 1.6;
 }
 
-/* Search */
+/* ── Search ── */
 .search-box {
   width: 100%;
   padding: 0.8rem 1rem;
@@ -167,7 +167,7 @@ h1 {
   font-style: italic;
 }
 
-/* Category sections */
+/* ── Category sections ── */
 .category-header {
   font-family: Cinzel, Georgia, serif;
   font-size: 1.1rem;
@@ -181,7 +181,7 @@ h1 {
   border-bottom: 1px solid var(--border);
 }
 
-/* File cards */
+/* ── File cards ── */
 .file-card {
   display: block;
   padding: 1rem 1.1rem;
@@ -237,7 +237,7 @@ h1 {
   margin-top: 0.3rem;
 }
 
-/* Summary stats */
+/* ── Summary stats ── */
 .stats-bar {
   display: flex;
   justify-content: center;
@@ -251,7 +251,7 @@ h1 {
 
 .stats-bar span { white-space: nowrap; }
 
-/* Node cards */
+/* ── Node cards (per-file page) ── */
 .node-card {
   margin-bottom: 0.4rem;
   border: 1px solid var(--border);
@@ -267,8 +267,6 @@ h1 {
 .node-card.kind-structure { border-left-color: var(--structure-dot); }
 .node-card.kind-inductive { border-left-color: var(--inductive-dot); }
 .node-card.kind-proposition { border-left-color: var(--proposition-dot); }
-.node-card.kind-instance { border-left-color: var(--def-dot); }
-.node-card.kind-abbrev { border-left-color: var(--def-dot); }
 
 .node-header {
   display: flex;
@@ -304,8 +302,6 @@ h1 {
 .kind-structure .node-kind-badge { background: var(--structure-bg); color: var(--structure-dot); }
 .kind-inductive .node-kind-badge { background: var(--inductive-bg); color: var(--inductive-dot); }
 .kind-proposition .node-kind-badge { background: var(--proposition-bg); color: var(--proposition-dot); }
-.kind-instance .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
-.kind-abbrev .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
 
 .node-name {
   flex: 1;
@@ -409,7 +405,7 @@ h1 {
   color: var(--text-muted);
 }
 
-/* Flow diagram header */
+/* ── Flow diagram header ── */
 .flow-summary {
   display: flex;
   justify-content: center;
@@ -435,7 +431,7 @@ h1 {
 .flow-count.theorems { background: var(--theorem-bg); color: var(--theorem-dot); }
 .flow-count.derived { background: var(--def-bg); color: var(--def-dot); }
 
-/* Legend */
+/* ── Legend ── */
 .legend {
   display: flex;
   flex-wrap: wrap;
@@ -467,7 +463,7 @@ h1 {
 .legend-dot.inductive { background: var(--inductive-dot); }
 .legend-dot.proposition { background: var(--proposition-dot); }
 
-/* Filter buttons */
+/* ── Filter buttons ── */
 .filter-bar {
   display: flex;
   flex-wrap: wrap;
@@ -496,7 +492,7 @@ h1 {
   border-color: var(--accent);
 }
 
-/* Back link */
+/* ── Back link ── */
 .back-link {
   display: inline-block;
   margin-bottom: 1rem;
@@ -505,7 +501,7 @@ h1 {
   letter-spacing: 0.04em;
 }
 
-/* Footer */
+/* ── Footer ── */
 .footer {
   text-align: center;
   padding-top: 2rem;
@@ -514,7 +510,7 @@ h1 {
   font-style: italic;
 }
 
-/* Responsive */
+/* ── Responsive ── */
 @media (max-width: 500px) {
   html { font-size: 16px; }
   .container { padding: 1rem 0.75rem 2rem; }
@@ -527,12 +523,20 @@ h1 {
 <div class="container">
   <a href="index.html" class="back-link">&larr; All files</a>
   <h1>Beatitudes</h1>
-  <div class="subtitle">Moral Theology &middot; 27 declarations</div>
+  <div class="subtitle">MoralTheology &middot; 27 declarations</div>
 
+  <div class="flow-summary">
+  <span class="flow-count axioms">13 axioms</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count theorems">9 theorems</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count derived">5 derived</span>
+</div>
   <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1716, &sect;1717, &sect;1718, &sect;1720, &sect;1723, &sect;1811, &sect;1822, &sect;1827</div>
-  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span><span class="legend-item"><span class="legend-dot proposition"></span>proposition</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
 
-  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (7)</button><button class="filter-btn" data-filter="def">def (4)</button><button class="filter-btn" data-filter="inductive">inductive (1)</button><button class="filter-btn" data-filter="proposition">proposition (6)</button><button class="filter-btn" data-filter="theorem">theorem (9)</button></div>
+  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
+
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (7)</button><button class="filter-btn" data-filter="def">def (4)</button><button class="filter-btn" data-filter="inductive">inductive (1)</button><button class="filter-btn" data-filter="opaque">opaque (6)</button><button class="filter-btn" data-filter="theorem">theorem (9)</button></div>
 
   <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
 
@@ -546,79 +550,83 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>inductive Beatitude where</code></pre></div>
 <div class="node-desc">The eight Beatitudes from the Sermon on the Mount (Mt 5:3-12).</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="anthropological_foundation">anthropological_foundation</span><span class="dep-chip" data-target="beatitude_living_implies_agape">beatitude_living_implies_agape</span><span class="dep-chip" data-target="beatitude_living_increases_freedom">beatitude_living_increases_freedom</span><span class="dep-chip" data-target="beatitude_perseverance_requires_grace">beatitude_perseverance_requires_grace</span><span class="dep-chip" data-target="beatitudes_and_perseverance">beatitudes_and_perseverance</span><span class="dep-chip" data-target="beatitudes_are_charter">beatitudes_are_charter</span><span class="dep-chip" data-target="beatitudes_create_tension">beatitudes_create_tension</span><span class="dep-chip" data-target="beatitudes_respond_to_desire">beatitudes_respond_to_desire</span><span class="dep-chip" data-target="blessedThroughPassion">blessedThroughPassion</span><span class="dep-chip" data-target="charity_informs_beatitudes">charity_informs_beatitudes</span><span class="dep-chip" data-target="complete_beatitude_chain">complete_beatitude_chain</span><span class="dep-chip" data-target="deprivation_blessed_through_passion">deprivation_blessed_through_passion</span><span class="dep-chip" data-target="desireDirectedToGod">desireDirectedToGod</span><span class="dep-chip" data-target="desire_leads_to_beatitude_living">desire_leads_to_beatitude_living</span><span class="dep-chip" data-target="involvesDeprivation">involvesDeprivation</span><span class="dep-chip" data-target="livesAccordingTo">livesAccordingTo</span><span class="dep-chip" data-target="paradoxical_inversion">paradoxical_inversion</span><span class="dep-chip" data-target="saved_person_lives_beatitudes">saved_person_lives_beatitudes</span><span class="dep-chip" data-target="tension_tag">tension_tag</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="livesAccordingTo">livesAccordingTo</span><span class="dep-chip" data-target="desireDirectedToGod">desireDirectedToGod</span><span class="dep-chip" data-target="blessedThroughPassion">blessedThroughPassion</span><span class="dep-chip" data-target="involvesDeprivation">involvesDeprivation</span><span class="dep-chip" data-target="beatitudes_are_charter">beatitudes_are_charter</span><span class="dep-chip" data-target="paradoxical_inversion">paradoxical_inversion</span><span class="dep-chip" data-target="beatitudes_create_tension">beatitudes_create_tension</span><span class="dep-chip" data-target="beatitudes_respond_to_desire">beatitudes_respond_to_desire</span><span class="dep-chip" data-target="charity_informs_beatitudes">charity_informs_beatitudes</span><span class="dep-chip" data-target="saved_person_lives_beatitudes">saved_person_lives_beatitudes</span><span class="dep-chip" data-target="desire_leads_to_beatitude_living">desire_leads_to_beatitude_living</span><span class="dep-chip" data-target="anthropological_foundation">anthropological_foundation</span><span class="dep-chip" data-target="beatitude_living_implies_agape">beatitude_living_implies_agape</span><span class="dep-chip" data-target="deprivation_blessed_through_passion">deprivation_blessed_through_passion</span><span class="dep-chip" data-target="beatitudes_and_perseverance">beatitudes_and_perseverance</span><span class="dep-chip" data-target="beatitude_living_increases_freedom">beatitude_living_increases_freedom</span><span class="dep-chip" data-target="beatitude_perseverance_requires_grace">beatitude_perseverance_requires_grace</span><span class="dep-chip" data-target="complete_beatitude_chain">complete_beatitude_chain</span><span class="dep-chip" data-target="tension_tag">tension_tag</span></div></div>
   </div>
 </div>
-<div class="node-card kind-proposition" data-kind="proposition" data-name="livesAccordingTo">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="livesAccordingTo">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
+    <span class="node-kind-badge">opaque</span>
     <span class="node-name">livesAccordingTo</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque livesAccordingTo : Person → Beatitude → Prop</code></pre></div>
 <div class="node-desc">Whether a person lives according to a given Beatitude.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Beatitude">Beatitude</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="beatitude_living_implies_agape">beatitude_living_implies_agape</span><span class="dep-chip" data-target="beatitude_perseverance_requires_grace">beatitude_perseverance_requires_grace</span><span class="dep-chip" data-target="beatitudes_are_charter">beatitudes_are_charter</span><span class="dep-chip" data-target="beatitudes_create_tension">beatitudes_create_tension</span><span class="dep-chip" data-target="beatitudes_respond_to_desire">beatitudes_respond_to_desire</span><span class="dep-chip" data-target="charity_informs_beatitudes">charity_informs_beatitudes</span><span class="dep-chip" data-target="complete_beatitude_chain">complete_beatitude_chain</span><span class="dep-chip" data-target="desire_leads_to_beatitude_living">desire_leads_to_beatitude_living</span><span class="dep-chip" data-target="saved_person_lives_beatitudes">saved_person_lives_beatitudes</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Beatitude">Beatitude</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="beatitudes_are_charter">beatitudes_are_charter</span><span class="dep-chip" data-target="beatitudes_create_tension">beatitudes_create_tension</span><span class="dep-chip" data-target="beatitudes_respond_to_desire">beatitudes_respond_to_desire</span><span class="dep-chip" data-target="charity_informs_beatitudes">charity_informs_beatitudes</span><span class="dep-chip" data-target="saved_person_lives_beatitudes">saved_person_lives_beatitudes</span><span class="dep-chip" data-target="desire_leads_to_beatitude_living">desire_leads_to_beatitude_living</span><span class="dep-chip" data-target="beatitude_living_implies_agape">beatitude_living_implies_agape</span><span class="dep-chip" data-target="beatitude_perseverance_requires_grace">beatitude_perseverance_requires_grace</span><span class="dep-chip" data-target="complete_beatitude_chain">complete_beatitude_chain</span></div></div>
   </div>
 </div>
-<div class="node-card kind-proposition" data-kind="proposition" data-name="desiresHappiness">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="desiresHappiness">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
+    <span class="node-kind-badge">opaque</span>
     <span class="node-name">desiresHappiness</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque desiresHappiness : Person → Prop</code></pre></div>
 <div class="node-desc">Whether a person has the natural desire for happiness.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="beatitudes_respond_to_desire">beatitudes_respond_to_desire</span><span class="dep-chip" data-target="desire_leads_to_beatitude_living">desire_leads_to_beatitude_living</span><span class="dep-chip" data-target="only_god_satisfies">only_god_satisfies</span><span class="dep-chip" data-target="universal_desire_for_happiness">universal_desire_for_happiness</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="universal_desire_for_happiness">universal_desire_for_happiness</span><span class="dep-chip" data-target="only_god_satisfies">only_god_satisfies</span><span class="dep-chip" data-target="beatitudes_respond_to_desire">beatitudes_respond_to_desire</span><span class="dep-chip" data-target="desire_leads_to_beatitude_living">desire_leads_to_beatitude_living</span></div></div>
   </div>
 </div>
-<div class="node-card kind-proposition" data-kind="proposition" data-name="desireDirectedToGod">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="desireDirectedToGod">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
+    <span class="node-kind-badge">opaque</span>
     <span class="node-name">desireDirectedToGod</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque desireDirectedToGod : Person → Prop</code></pre></div>
-<div class="node-desc">Whether a person&#x27;s desire for happiness is directed toward God (the supernatural end) rather than remaining at a natural...</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Beatitude">Beatitude</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="anthropological_foundation">anthropological_foundation</span><span class="dep-chip" data-target="beatitudes_respond_to_desire">beatitudes_respond_to_desire</span><span class="dep-chip" data-target="desire_leads_to_beatitude_living">desire_leads_to_beatitude_living</span><span class="dep-chip" data-target="only_god_satisfies">only_god_satisfies</span></div></div>
+<div class="node-desc">Whether a person's desire for happiness is directed toward God</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Beatitude">Beatitude</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="only_god_satisfies">only_god_satisfies</span><span class="dep-chip" data-target="beatitudes_respond_to_desire">beatitudes_respond_to_desire</span><span class="dep-chip" data-target="desire_leads_to_beatitude_living">desire_leads_to_beatitude_living</span><span class="dep-chip" data-target="anthropological_foundation">anthropological_foundation</span></div></div>
   </div>
 </div>
-<div class="node-card kind-proposition" data-kind="proposition" data-name="inEschatologicalTension">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="inEschatologicalTension">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
+    <span class="node-kind-badge">opaque</span>
     <span class="node-name">inEschatologicalTension</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque inEschatologicalTension : Person → Prop</code></pre></div>
-<div class="node-desc">Whether a person experiences the eschatological tension — living in the promise of beatitude while it is not yet fully r...</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="beatitudes_and_perseverance">beatitudes_and_perseverance</span><span class="dep-chip" data-target="beatitudes_create_tension">beatitudes_create_tension</span><span class="dep-chip" data-target="complete_beatitude_chain">complete_beatitude_chain</span></div></div>
+<div class="node-desc">Whether a person experiences the eschatological tension — living</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="beatitudes_create_tension">beatitudes_create_tension</span><span class="dep-chip" data-target="beatitudes_and_perseverance">beatitudes_and_perseverance</span><span class="dep-chip" data-target="complete_beatitude_chain">complete_beatitude_chain</span></div></div>
   </div>
 </div>
-<div class="node-card kind-proposition" data-kind="proposition" data-name="blessedThroughPassion">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="blessedThroughPassion">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
+    <span class="node-kind-badge">opaque</span>
     <span class="node-name">blessedThroughPassion</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque blessedThroughPassion : Beatitude → Prop</code></pre></div>
-<div class="node-desc">Whether earthly deprivation is associated with blessedness through Christ&#x27;s Passion.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Beatitude">Beatitude</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="deprivation_blessed_through_passion">deprivation_blessed_through_passion</span><span class="dep-chip" data-target="paradoxical_inversion">paradoxical_inversion</span></div></div>
+<div class="node-desc">Whether earthly deprivation is associated with blessedness through</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Beatitude">Beatitude</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="paradoxical_inversion">paradoxical_inversion</span><span class="dep-chip" data-target="deprivation_blessed_through_passion">deprivation_blessed_through_passion</span></div></div>
   </div>
 </div>
-<div class="node-card kind-proposition" data-kind="proposition" data-name="involvesDeprivation">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="involvesDeprivation">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
+    <span class="node-kind-badge">opaque</span>
     <span class="node-name">involvesDeprivation</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque involvesDeprivation : Beatitude → Prop</code></pre></div>
-<div class="node-desc">Whether a beatitude involves earthly deprivation or suffering (poverty, mourning, persecution, etc.).</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Beatitude">Beatitude</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="deprivation_blessed_through_passion">deprivation_blessed_through_passion</span><span class="dep-chip" data-target="paradoxical_inversion">paradoxical_inversion</span></div></div>
+<div class="node-desc">Whether a beatitude involves earthly deprivation or suffering</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Beatitude">Beatitude</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="paradoxical_inversion">paradoxical_inversion</span><span class="dep-chip" data-target="deprivation_blessed_through_passion">deprivation_blessed_through_passion</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="universal_desire_for_happiness">
@@ -629,10 +637,11 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom universal_desire_for_happiness :
-∀ (p : Person), p.isMoralAgent = true →
-desiresHappiness p</code></pre></div>
-<div class="node-desc">Natural desire for happiness is universal.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="desiresHappiness">desiresHappiness</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="anthropological_foundation">anthropological_foundation</span></div></div>
+  ∀ (p : Person), p.isMoralAgent = true →
+    desiresHappiness p</code></pre></div>
+<div class="node-desc">**A1. Natural desire for happiness is universal.**</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="desiresHappiness">desiresHappiness</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="anthropological_foundation">anthropological_foundation</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="only_god_satisfies">
@@ -643,11 +652,15 @@ desiresHappiness p</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom only_god_satisfies :
-∀ (p : Person),
-desiresHappiness p →
-desireDirectedToGod p →</code></pre></div>
-<div class="node-desc">Only God satisfies the desire for happiness.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="desireDirectedToGod">desireDirectedToGod</span><span class="dep-chip" data-target="desiresHappiness">desiresHappiness</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="anthropological_foundation">anthropological_foundation</span></div></div>
+  ∀ (p : Person),
+    desiresHappiness p →
+    desireDirectedToGod p →
+    -- The person directed toward God is on the path to true satisfaction
+    -- (in the soteriological sense: in a state of salvation)
+    inStateOfSalvation p</code></pre></div>
+<div class="node-desc">**A2. Only God satisfies the desire for happiness.**</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="desireDirectedToGod">desireDirectedToGod</span><span class="dep-chip" data-target="desiresHappiness">desiresHappiness</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="anthropological_foundation">anthropological_foundation</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="beatitudes_are_charter">
@@ -658,11 +671,12 @@ desireDirectedToGod p →</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom beatitudes_are_charter :
-∀ (p : Person) (b : Beatitude),
-inStateOfSalvation p →
-livesAccordingTo p b</code></pre></div>
-<div class="node-desc">The Beatitudes are the charter of Christian life — not optional.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Beatitude">Beatitude</span><span class="dep-chip" data-target="livesAccordingTo">livesAccordingTo</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="beatitudes_and_perseverance">beatitudes_and_perseverance</span><span class="dep-chip" data-target="complete_beatitude_chain">complete_beatitude_chain</span><span class="dep-chip" data-target="saved_person_lives_beatitudes">saved_person_lives_beatitudes</span></div></div>
+  ∀ (p : Person) (b : Beatitude),
+    inStateOfSalvation p →
+    livesAccordingTo p b</code></pre></div>
+<div class="node-desc">**A3. The Beatitudes are the charter of Christian life — not optional.**</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Beatitude">Beatitude</span><span class="dep-chip" data-target="livesAccordingTo">livesAccordingTo</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="saved_person_lives_beatitudes">saved_person_lives_beatitudes</span><span class="dep-chip" data-target="beatitudes_and_perseverance">beatitudes_and_perseverance</span><span class="dep-chip" data-target="complete_beatitude_chain">complete_beatitude_chain</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="paradoxical_inversion">
@@ -673,11 +687,12 @@ livesAccordingTo p b</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom paradoxical_inversion :
-∀ (b : Beatitude),
-involvesDeprivation b →
-blessedThroughPassion b</code></pre></div>
-<div class="node-desc">The paradoxical inversion: deprivation is blessed through Christ.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Beatitude">Beatitude</span><span class="dep-chip" data-target="blessedThroughPassion">blessedThroughPassion</span><span class="dep-chip" data-target="involvesDeprivation">involvesDeprivation</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="beatitude_living_implies_agape">beatitude_living_implies_agape</span><span class="dep-chip" data-target="deprivation_blessed_through_passion">deprivation_blessed_through_passion</span></div></div>
+  ∀ (b : Beatitude),
+    involvesDeprivation b →
+    blessedThroughPassion b</code></pre></div>
+<div class="node-desc">**A4. The paradoxical inversion: deprivation is blessed through Christ.**</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Beatitude">Beatitude</span><span class="dep-chip" data-target="blessedThroughPassion">blessedThroughPassion</span><span class="dep-chip" data-target="involvesDeprivation">involvesDeprivation</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="beatitude_living_implies_agape">beatitude_living_implies_agape</span><span class="dep-chip" data-target="deprivation_blessed_through_passion">deprivation_blessed_through_passion</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="beatitudes_create_tension">
@@ -688,11 +703,12 @@ blessedThroughPassion b</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom beatitudes_create_tension :
-∀ (p : Person) (b : Beatitude),
-livesAccordingTo p b →
-inEschatologicalTension p</code></pre></div>
-<div class="node-desc">The Beatitudes create eschatological tension.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Beatitude">Beatitude</span><span class="dep-chip" data-target="inEschatologicalTension">inEschatologicalTension</span><span class="dep-chip" data-target="livesAccordingTo">livesAccordingTo</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="beatitudes_and_perseverance">beatitudes_and_perseverance</span><span class="dep-chip" data-target="complete_beatitude_chain">complete_beatitude_chain</span></div></div>
+  ∀ (p : Person) (b : Beatitude),
+    livesAccordingTo p b →
+    inEschatologicalTension p</code></pre></div>
+<div class="node-desc">**A5. The Beatitudes create eschatological tension.**</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Beatitude">Beatitude</span><span class="dep-chip" data-target="inEschatologicalTension">inEschatologicalTension</span><span class="dep-chip" data-target="livesAccordingTo">livesAccordingTo</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="beatitudes_and_perseverance">beatitudes_and_perseverance</span><span class="dep-chip" data-target="complete_beatitude_chain">complete_beatitude_chain</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="beatitudes_respond_to_desire">
@@ -703,12 +719,13 @@ inEschatologicalTension p</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom beatitudes_respond_to_desire :
-∀ (p : Person),
-desiresHappiness p →
-desireDirectedToGod p →
-∀ (b : Beatitude), livesAccordingTo p b</code></pre></div>
-<div class="node-desc">The Beatitudes respond to the natural desire.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Beatitude">Beatitude</span><span class="dep-chip" data-target="desireDirectedToGod">desireDirectedToGod</span><span class="dep-chip" data-target="desiresHappiness">desiresHappiness</span><span class="dep-chip" data-target="livesAccordingTo">livesAccordingTo</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="desire_leads_to_beatitude_living">desire_leads_to_beatitude_living</span></div></div>
+  ∀ (p : Person),
+    desiresHappiness p →
+    desireDirectedToGod p →
+    ∀ (b : Beatitude), livesAccordingTo p b</code></pre></div>
+<div class="node-desc">**A6. The Beatitudes respond to the natural desire.**</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Beatitude">Beatitude</span><span class="dep-chip" data-target="desireDirectedToGod">desireDirectedToGod</span><span class="dep-chip" data-target="desiresHappiness">desiresHappiness</span><span class="dep-chip" data-target="livesAccordingTo">livesAccordingTo</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="desire_leads_to_beatitude_living">desire_leads_to_beatitude_living</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="charity_informs_beatitudes">
@@ -719,11 +736,12 @@ desireDirectedToGod p →
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom charity_informs_beatitudes :
-∀ (p : Person) (b : Beatitude),
-livesAccordingTo p b →
-hasVirtue p (Virtue.theological TheologicalVirtue.charity)</code></pre></div>
-<div class="node-desc">Charity informs the Beatitudes.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Beatitude">Beatitude</span><span class="dep-chip" data-target="livesAccordingTo">livesAccordingTo</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="beatitude_living_implies_agape">beatitude_living_implies_agape</span><span class="dep-chip" data-target="complete_beatitude_chain">complete_beatitude_chain</span></div></div>
+  ∀ (p : Person) (b : Beatitude),
+    livesAccordingTo p b →
+    hasVirtue p (Virtue.theological TheologicalVirtue.charity)</code></pre></div>
+<div class="node-desc">**A7. Charity informs the Beatitudes.**</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Beatitude">Beatitude</span><span class="dep-chip" data-target="livesAccordingTo">livesAccordingTo</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="beatitude_living_implies_agape">beatitude_living_implies_agape</span><span class="dep-chip" data-target="complete_beatitude_chain">complete_beatitude_chain</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="saved_person_lives_beatitudes">
@@ -734,11 +752,12 @@ hasVirtue p (Virtue.theological TheologicalVirtue.charity)</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem saved_person_lives_beatitudes
-(p : Person) (b : Beatitude)
-(h_saved : inStateOfSalvation p) :
-livesAccordingTo p b</code></pre></div>
+    (p : Person) (b : Beatitude)
+    (h_saved : inStateOfSalvation p) :
+    livesAccordingTo p b</code></pre></div>
 <div class="node-desc">A moral agent in a state of salvation lives all eight Beatitudes.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Beatitude">Beatitude</span><span class="dep-chip" data-target="beatitudes_are_charter">beatitudes_are_charter</span><span class="dep-chip" data-target="livesAccordingTo">livesAccordingTo</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="tension_tag">tension_tag</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Beatitude">Beatitude</span><span class="dep-chip" data-target="beatitudes_are_charter">beatitudes_are_charter</span><span class="dep-chip" data-target="livesAccordingTo">livesAccordingTo</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="tension_tag">tension_tag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="desire_leads_to_beatitude_living">
@@ -749,12 +768,13 @@ livesAccordingTo p b</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem desire_leads_to_beatitude_living
-(p : Person) (b : Beatitude)
-(h_desires : desiresHappiness p)
-(h_directed : desireDirectedToGod p) :
-livesAccordingTo p b</code></pre></div>
-<div class="node-desc">A person who desires happiness and directs that desire to God lives according to the Beatitudes.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Beatitude">Beatitude</span><span class="dep-chip" data-target="beatitudes_respond_to_desire">beatitudes_respond_to_desire</span><span class="dep-chip" data-target="desireDirectedToGod">desireDirectedToGod</span><span class="dep-chip" data-target="desiresHappiness">desiresHappiness</span><span class="dep-chip" data-target="livesAccordingTo">livesAccordingTo</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="tension_tag">tension_tag</span></div></div>
+    (p : Person) (b : Beatitude)
+    (h_desires : desiresHappiness p)
+    (h_directed : desireDirectedToGod p) :
+    livesAccordingTo p b</code></pre></div>
+<div class="node-desc">A person who desires happiness and directs that desire to God</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Beatitude">Beatitude</span><span class="dep-chip" data-target="beatitudes_respond_to_desire">beatitudes_respond_to_desire</span><span class="dep-chip" data-target="desireDirectedToGod">desireDirectedToGod</span><span class="dep-chip" data-target="desiresHappiness">desiresHappiness</span><span class="dep-chip" data-target="livesAccordingTo">livesAccordingTo</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="tension_tag">tension_tag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="anthropological_foundation">
@@ -765,11 +785,11 @@ livesAccordingTo p b</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem anthropological_foundation
-(p : Person)
-(h_moral : p.isMoralAgent = true)
-(h_directed : desireDirectedToGod p) :
-inStateOfSalvation p</code></pre></div>
-<div class="node-desc">Every moral agent desires happiness, and if that desire is directed to God, they are in a state of salvation.</div>
+    (p : Person)
+    (h_moral : p.isMoralAgent = true)
+    (h_directed : desireDirectedToGod p) :
+    inStateOfSalvation p</code></pre></div>
+<div class="node-desc">Every moral agent desires happiness, and if that desire is directed</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Beatitude">Beatitude</span><span class="dep-chip" data-target="desireDirectedToGod">desireDirectedToGod</span><span class="dep-chip" data-target="only_god_satisfies">only_god_satisfies</span><span class="dep-chip" data-target="universal_desire_for_happiness">universal_desire_for_happiness</span></div></div>
   </div>
 </div>
@@ -781,14 +801,15 @@ inStateOfSalvation p</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem beatitude_living_implies_agape
-(p : Person) (b : Beatitude)
-(h_lives : livesAccordingTo p b) :
-∃ (tl : TypedLove),
-tl.kind = LoveKind.agape ∧
-tl.lover = p ∧
-tl.degree &gt; 0</code></pre></div>
+    (p : Person) (b : Beatitude)
+    (h_lives : livesAccordingTo p b) :
+    ∃ (tl : TypedLove),
+      tl.kind = LoveKind.agape ∧
+      tl.lover = p ∧
+      tl.degree &gt; 0</code></pre></div>
 <div class="node-desc">A person living any Beatitude has agape-love.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Beatitude">Beatitude</span><span class="dep-chip" data-target="charity_informs_beatitudes">charity_informs_beatitudes</span><span class="dep-chip" data-target="livesAccordingTo">livesAccordingTo</span><span class="dep-chip" data-target="paradoxical_inversion">paradoxical_inversion</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="tension_tag">tension_tag</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Beatitude">Beatitude</span><span class="dep-chip" data-target="charity_informs_beatitudes">charity_informs_beatitudes</span><span class="dep-chip" data-target="livesAccordingTo">livesAccordingTo</span><span class="dep-chip" data-target="paradoxical_inversion">paradoxical_inversion</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="tension_tag">tension_tag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="deprivation_blessed_through_passion">
@@ -799,11 +820,12 @@ tl.degree &gt; 0</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem deprivation_blessed_through_passion
-(b : Beatitude)
-(h_depriv : involvesDeprivation b) :
-blessedThroughPassion b</code></pre></div>
+    (b : Beatitude)
+    (h_depriv : involvesDeprivation b) :
+    blessedThroughPassion b</code></pre></div>
 <div class="node-desc">A deprivation-Beatitude is blessed through the Passion.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Beatitude">Beatitude</span><span class="dep-chip" data-target="blessedThroughPassion">blessedThroughPassion</span><span class="dep-chip" data-target="involvesDeprivation">involvesDeprivation</span><span class="dep-chip" data-target="paradoxical_inversion">paradoxical_inversion</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="tension_tag">tension_tag</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Beatitude">Beatitude</span><span class="dep-chip" data-target="blessedThroughPassion">blessedThroughPassion</span><span class="dep-chip" data-target="involvesDeprivation">involvesDeprivation</span><span class="dep-chip" data-target="paradoxical_inversion">paradoxical_inversion</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="tension_tag">tension_tag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="beatitudes_and_perseverance">
@@ -814,12 +836,13 @@ blessedThroughPassion b</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem beatitudes_and_perseverance
-(p : Person) (b : Beatitude)
-(h_intellect : p.hasIntellect = true)
-(h_saved : inStateOfSalvation p) :
-inEschatologicalTension p ∧ perseveres p</code></pre></div>
-<div class="node-desc">A saved moral agent who lives the Beatitudes both perseveres AND is in eschatological tension.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Beatitude">Beatitude</span><span class="dep-chip" data-target="beatitudes_are_charter">beatitudes_are_charter</span><span class="dep-chip" data-target="beatitudes_create_tension">beatitudes_create_tension</span><span class="dep-chip" data-target="inEschatologicalTension">inEschatologicalTension</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="tension_tag">tension_tag</span></div></div>
+    (p : Person) (b : Beatitude)
+    (h_intellect : p.hasIntellect = true)
+    (h_saved : inStateOfSalvation p) :
+    inEschatologicalTension p ∧ perseveres p</code></pre></div>
+<div class="node-desc">A saved moral agent who lives the Beatitudes both perseveres AND</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Beatitude">Beatitude</span><span class="dep-chip" data-target="beatitudes_are_charter">beatitudes_are_charter</span><span class="dep-chip" data-target="beatitudes_create_tension">beatitudes_create_tension</span><span class="dep-chip" data-target="inEschatologicalTension">inEschatologicalTension</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="tension_tag">tension_tag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="beatitude_living_increases_freedom">
@@ -830,11 +853,12 @@ inEschatologicalTension p ∧ perseveres p</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem beatitude_living_increases_freedom
-(fd : FreedomDegree)
-(h_oriented : fd.orientedToGood) :
-fd.level &gt; 0</code></pre></div>
-<div class="node-desc">A person living the Beatitudes, if oriented toward the good, has positive freedom.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Beatitude">Beatitude</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="tension_tag">tension_tag</span></div></div>
+    (fd : FreedomDegree)
+    (h_oriented : fd.orientedToGood) :
+    fd.level &gt; 0</code></pre></div>
+<div class="node-desc">A person living the Beatitudes, if oriented toward the good, has</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Beatitude">Beatitude</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="tension_tag">tension_tag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="beatitude_perseverance_requires_grace">
@@ -845,14 +869,15 @@ fd.level &gt; 0</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem beatitude_perseverance_requires_grace
-(p : Person) (b : Beatitude) (g : Grace)
-(h_moral : p.isMoralAgent = true)
-(_h_lives : livesAccordingTo p b)
-(h_persevere : Catlib.MoralTheology.Virtues.canPersevereIn p
-(Virtue.theological TheologicalVirtue.charity)) :
-graceGiven p g</code></pre></div>
+    (p : Person) (b : Beatitude) (g : Grace)
+    (h_moral : p.isMoralAgent = true)
+    (_h_lives : livesAccordingTo p b)
+    (h_persevere : Catlib.MoralTheology.Virtues.canPersevereIn p
+      (Virtue.theological TheologicalVirtue.charity)) :
+    graceGiven p g</code></pre></div>
 <div class="node-desc">A moral agent who perseveres in Beatitude-living has received grace.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Beatitude">Beatitude</span><span class="dep-chip" data-target="livesAccordingTo">livesAccordingTo</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="tension_tag">tension_tag</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Beatitude">Beatitude</span><span class="dep-chip" data-target="livesAccordingTo">livesAccordingTo</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="tension_tag">tension_tag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="complete_beatitude_chain">
@@ -863,11 +888,23 @@ graceGiven p g</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem complete_beatitude_chain
-(p : Person) (b : Beatitude)
-(h_intellect : p.hasIntellect = true)
-(h_saved : inStateOfSalvation p) :</code></pre></div>
-<div class="node-desc">The complete chain: a saved person with intellect lives the Beatitudes, has charity, has agape, perseveres, and is in es...</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Beatitude">Beatitude</span><span class="dep-chip" data-target="beatitudes_are_charter">beatitudes_are_charter</span><span class="dep-chip" data-target="beatitudes_create_tension">beatitudes_create_tension</span><span class="dep-chip" data-target="charity_informs_beatitudes">charity_informs_beatitudes</span><span class="dep-chip" data-target="inEschatologicalTension">inEschatologicalTension</span><span class="dep-chip" data-target="livesAccordingTo">livesAccordingTo</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="tension_tag">tension_tag</span></div></div>
+    (p : Person) (b : Beatitude)
+    (h_intellect : p.hasIntellect = true)
+    (h_saved : inStateOfSalvation p) :
+    -- Lives the Beatitudes (A3)
+    livesAccordingTo p b
+    -- Has charity (A7)
+    ∧ hasVirtue p (Virtue.theological TheologicalVirtue.charity)
+    -- Has agape (via Virtues.lean A6)
+    ∧ (∃ (tl : TypedLove),
+        tl.kind = LoveKind.agape ∧ tl.lover = p ∧ tl.degree &gt; 0)
+    -- In eschatological tension (A5)
+    ∧ inEschatologicalTension p
+    -- Perseveres (Soteriology Step 8)
+    ∧ perseveres p</code></pre></div>
+<div class="node-desc">The complete chain: a saved person with intellect lives the</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Beatitude">Beatitude</span><span class="dep-chip" data-target="beatitudes_are_charter">beatitudes_are_charter</span><span class="dep-chip" data-target="beatitudes_create_tension">beatitudes_create_tension</span><span class="dep-chip" data-target="charity_informs_beatitudes">charity_informs_beatitudes</span><span class="dep-chip" data-target="inEschatologicalTension">inEschatologicalTension</span><span class="dep-chip" data-target="livesAccordingTo">livesAccordingTo</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="tension_tag">tension_tag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="beatitudes_tag">
@@ -879,7 +916,6 @@ graceGiven p g</code></pre></div>
   <div class="node-details">
     <div class="node-prop"><pre><code>def beatitudes_tag : DenominationalTag</code></pre></div>
 <div class="node-desc">The Beatitudes themselves: broadly ecumenical.</div>
-
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="charter_tag">
@@ -891,7 +927,6 @@ graceGiven p g</code></pre></div>
   <div class="node-details">
     <div class="node-prop"><pre><code>def charter_tag : DenominationalTag</code></pre></div>
 <div class="node-desc">The charter claim (§1717 — not optional): Catholic emphasis.</div>
-
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="inversion_tag">
@@ -902,8 +937,7 @@ graceGiven p g</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>def inversion_tag : DenominationalTag</code></pre></div>
-<div class="node-desc">The paradoxical inversion through Christ&#x27;s Passion: ecumenical.</div>
-
+<div class="node-desc">The paradoxical inversion through Christ's Passion: ecumenical.</div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="tension_tag">
@@ -918,7 +952,6 @@ graceGiven p g</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Beatitude">Beatitude</span><span class="dep-chip" data-target="beatitude_living_implies_agape">beatitude_living_implies_agape</span><span class="dep-chip" data-target="beatitude_living_increases_freedom">beatitude_living_increases_freedom</span><span class="dep-chip" data-target="beatitude_perseverance_requires_grace">beatitude_perseverance_requires_grace</span><span class="dep-chip" data-target="beatitudes_and_perseverance">beatitudes_and_perseverance</span><span class="dep-chip" data-target="complete_beatitude_chain">complete_beatitude_chain</span><span class="dep-chip" data-target="deprivation_blessed_through_passion">deprivation_blessed_through_passion</span><span class="dep-chip" data-target="desire_leads_to_beatitude_living">desire_leads_to_beatitude_living</span><span class="dep-chip" data-target="saved_person_lives_beatitudes">saved_person_lives_beatitudes</span></div></div>
   </div>
 </div>
-
   </div>
 
   <div class="footer">

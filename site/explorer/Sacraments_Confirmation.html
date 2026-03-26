@@ -267,8 +267,6 @@ h1 {
 .node-card.kind-structure { border-left-color: var(--structure-dot); }
 .node-card.kind-inductive { border-left-color: var(--inductive-dot); }
 .node-card.kind-proposition { border-left-color: var(--proposition-dot); }
-.node-card.kind-instance { border-left-color: var(--def-dot); }
-.node-card.kind-abbrev { border-left-color: var(--def-dot); }
 
 .node-header {
   display: flex;
@@ -304,8 +302,6 @@ h1 {
 .kind-structure .node-kind-badge { background: var(--structure-bg); color: var(--structure-dot); }
 .kind-inductive .node-kind-badge { background: var(--inductive-bg); color: var(--inductive-dot); }
 .kind-proposition .node-kind-badge { background: var(--proposition-bg); color: var(--proposition-dot); }
-.kind-instance .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
-.kind-abbrev .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
 
 .node-name {
   flex: 1;
@@ -466,8 +462,6 @@ h1 {
 .legend-dot.structure { background: var(--structure-dot); }
 .legend-dot.inductive { background: var(--inductive-dot); }
 .legend-dot.proposition { background: var(--proposition-dot); }
-.legend-dot.instance { background: var(--def-dot); }
-.legend-dot.abbrev { background: var(--def-dot); }
 
 /* ── Filter buttons ── */
 .filter-bar {
@@ -530,12 +524,19 @@ h1 {
   <a href="index.html" class="back-link">&larr; All files</a>
   <h1>Confirmation</h1>
   <div class="subtitle">Sacraments &middot; 30 declarations</div>
-  
+
+  <div class="flow-summary">
+  <span class="flow-count axioms">14 axioms</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count theorems">12 theorems</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count derived">4 derived</span>
+</div>
   <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1212, &sect;1266, &sect;1285, &sect;1290, &sect;1292, &sect;1302, &sect;1303, &sect;1304, &sect;1306</div>
 
-  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span><span class="legend-item"><span class="legend-dot proposition"></span>proposition</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span></div>
+  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot proposition"></span>proposition</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
 
-  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (8)</button><button class="filter-btn" data-filter="theorem">theorem (12)</button><button class="filter-btn" data-filter="proposition">proposition (1)</button><button class="filter-btn" data-filter="def">def (2)</button><button class="filter-btn" data-filter="opaque">opaque (6)</button><button class="filter-btn" data-filter="inductive">inductive (1)</button></div>
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (8)</button><button class="filter-btn" data-filter="def">def (2)</button><button class="filter-btn" data-filter="inductive">inductive (1)</button><button class="filter-btn" data-filter="opaque">opaque (6)</button><button class="filter-btn" data-filter="proposition">proposition (1)</button><button class="filter-btn" data-filter="theorem">theorem (12)</button></div>
 
   <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
 
@@ -549,9 +550,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque isConfirmed : Person → Prop</code></pre></div>
 <div class="node-desc">Whether a person has received the sacrament of Confirmation.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="constitutiveReading">constitutiveReading</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="confirmation_requires_baptism">confirmation_requires_baptism</span><span class="dep-chip" data-target="confirmation_confers_full_spirit">confirmation_confers_full_spirit</span><span class="dep-chip" data-target="confirmation_confers_witness_strength">confirmation_confers_witness_strength</span><span class="dep-chip" data-target="confirmation_completes_baptism">confirmation_completes_baptism</span><span class="dep-chip" data-target="confirmation_necessary_for_completion">confirmation_necessary_for_completion</span><span class="dep-chip" data-target="full_initiation_iff">full_initiation_iff</span><span class="dep-chip" data-target="temporal_separation_irrelevant">temporal_separation_irrelevant</span><span class="dep-chip" data-target="baptized_but_incomplete">baptized_but_incomplete</span><span class="dep-chip" data-target="confirmation_presupposes_grace">confirmation_presupposes_grace</span><span class="dep-chip" data-target="confirmed_has_full_grace">confirmed_has_full_grace</span><span class="dep-chip" data-target="confirmation_full_effects">confirmation_full_effects</span><span class="dep-chip" data-target="unconfirmed_not_fully_initiated">unconfirmed_not_fully_initiated</span><span class="dep-chip" data-target="constitutiveReading">constitutiveReading</span><span class="dep-chip" data-target="constitutive_shows_distinct_content">constitutive_shows_distinct_content</span><span class="dep-chip" data-target="east_west_same_effects">east_west_same_effects</span><span class="dep-chip" data-target="east_west_both_complete">east_west_both_complete</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="hasFullOutpouringOfSpirit">
@@ -563,9 +562,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque hasFullOutpouringOfSpirit : Person → Prop</code></pre></div>
 <div class="node-desc">Whether a person has received the FULL outpouring of the Holy Spirit</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="constitutiveReading">constitutiveReading</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="confirmation_confers_full_spirit">confirmation_confers_full_spirit</span><span class="dep-chip" data-target="temporal_separation_irrelevant">temporal_separation_irrelevant</span><span class="dep-chip" data-target="confirmation_full_effects">confirmation_full_effects</span><span class="dep-chip" data-target="constitutiveReading">constitutiveReading</span><span class="dep-chip" data-target="constitutive_shows_distinct_content">constitutive_shows_distinct_content</span><span class="dep-chip" data-target="east_west_same_effects">east_west_same_effects</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="hasStrengthForWitness">
@@ -577,9 +574,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque hasStrengthForWitness : Person → Prop</code></pre></div>
 <div class="node-desc">Whether a person has the STRENGTHENING for mission that Confirmation</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="constitutiveReading">constitutiveReading</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="confirmation_confers_witness_strength">confirmation_confers_witness_strength</span><span class="dep-chip" data-target="temporal_separation_irrelevant">temporal_separation_irrelevant</span><span class="dep-chip" data-target="confirmation_full_effects">confirmation_full_effects</span><span class="dep-chip" data-target="constitutiveReading">constitutiveReading</span><span class="dep-chip" data-target="constitutive_shows_distinct_content">constitutive_shows_distinct_content</span><span class="dep-chip" data-target="east_west_same_effects">east_west_same_effects</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="baptismalGraceComplete">
@@ -590,7 +585,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque baptismalGraceComplete : Person → Prop</code></pre></div>
-<div class="node-desc">Whether a person&#x27;s baptismal grace is &quot;complete&quot; in the sense the</div>
+<div class="node-desc">Whether a person's baptismal grace is &quot;complete&quot; in the sense the</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="confirmation_completes_baptism">confirmation_completes_baptism</span><span class="dep-chip" data-target="confirmation_necessary_for_completion">confirmation_necessary_for_completion</span><span class="dep-chip" data-target="baptized_but_incomplete">baptized_but_incomplete</span><span class="dep-chip" data-target="confirmed_has_full_grace">confirmed_has_full_grace</span><span class="dep-chip" data-target="confirmation_full_effects">confirmation_full_effects</span><span class="dep-chip" data-target="full_initiation_has_complete_grace">full_initiation_has_complete_grace</span><span class="dep-chip" data-target="east_west_both_complete">east_west_both_complete</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="isFullyInitiated">
@@ -600,12 +596,9 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque isFullyInitiated : Person → Prop
-
--- ============================================================================
--- § 2. Liturgical practice: East vs. West
--- ============================================================================</code></pre></div>
+    <div class="node-prop"><pre><code>opaque isFullyInitiated : Person → Prop</code></pre></div>
 <div class="node-desc">Whether a person is FULLY INITIATED into the Catholic Church —</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="full_initiation_iff">full_initiation_iff</span><span class="dep-chip" data-target="full_initiation_has_complete_grace">full_initiation_has_complete_grace</span><span class="dep-chip" data-target="unconfirmed_not_fully_initiated">unconfirmed_not_fully_initiated</span></div></div>
   </div>
 </div>
 <div class="node-card kind-inductive" data-kind="inductive" data-name="InitiationPractice">
@@ -617,6 +610,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>inductive InitiationPractice where</code></pre></div>
 <div class="node-desc">Whether all three initiation sacraments are conferred together</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="temporal_separation_irrelevant">temporal_separation_irrelevant</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="confirmation_requires_baptism">
@@ -628,10 +622,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom confirmation_requires_baptism :
   ∀ (p : Person), isConfirmed p → isBaptized p</code></pre></div>
-<div class="node-desc">Confirmation presupposes baptism. A person</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="confirmation_presupposes_grace">confirmation_presupposes_grace</span>
-</div></div>
+<div class="node-desc">AXIOM (§1285, §1306): Confirmation presupposes baptism. A person</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isConfirmed">isConfirmed</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="confirmation_presupposes_grace">confirmation_presupposes_grace</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="confirmation_confers_full_spirit">
@@ -643,10 +636,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom confirmation_confers_full_spirit :
   ∀ (p : Person), isConfirmed p → hasFullOutpouringOfSpirit p</code></pre></div>
-<div class="node-desc">Confirmation confers the full outpouring of the Holy Spirit.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="confirmation_full_effects">confirmation_full_effects</span>
-</div></div>
+<div class="node-desc">AXIOM (§1302): Confirmation confers the full outpouring of the Holy Spirit.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="hasFullOutpouringOfSpirit">hasFullOutpouringOfSpirit</span><span class="dep-chip" data-target="isConfirmed">isConfirmed</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="confirmation_full_effects">confirmation_full_effects</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="confirmation_confers_witness_strength">
@@ -658,10 +650,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom confirmation_confers_witness_strength :
   ∀ (p : Person), isConfirmed p → hasStrengthForWitness p</code></pre></div>
-<div class="node-desc">Confirmation confers strength to spread and defend the faith.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="confirmation_full_effects">confirmation_full_effects</span>
-</div></div>
+<div class="node-desc">AXIOM (§1303): Confirmation confers strength to spread and defend the faith.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="hasStrengthForWitness">hasStrengthForWitness</span><span class="dep-chip" data-target="isConfirmed">isConfirmed</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="confirmation_full_effects">confirmation_full_effects</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="confirmation_completes_baptism">
@@ -673,13 +664,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom confirmation_completes_baptism :
   ∀ (p : Person), isConfirmed p → baptismalGraceComplete p</code></pre></div>
-<div class="node-desc">Confirmation is necessary for the completion of</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="confirmed_has_full_grace">confirmed_has_full_grace</span>
-<span class="dep-chip" data-target="confirmation_full_effects">confirmation_full_effects</span>
-<span class="dep-chip" data-target="full_initiation_has_complete_grace">full_initiation_has_complete_grace</span>
-<span class="dep-chip" data-target="east_west_both_complete">east_west_both_complete</span>
-</div></div>
+<div class="node-desc">AXIOM (§1285): Confirmation is necessary for the completion of</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="baptismalGraceComplete">baptismalGraceComplete</span><span class="dep-chip" data-target="isConfirmed">isConfirmed</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="confirmed_has_full_grace">confirmed_has_full_grace</span><span class="dep-chip" data-target="confirmation_full_effects">confirmation_full_effects</span><span class="dep-chip" data-target="full_initiation_has_complete_grace">full_initiation_has_complete_grace</span><span class="dep-chip" data-target="east_west_both_complete">east_west_both_complete</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="confirmation_necessary_for_completion">
@@ -691,10 +678,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom confirmation_necessary_for_completion :
   ∀ (p : Person), isBaptized p → ¬isConfirmed p → ¬baptismalGraceComplete p</code></pre></div>
-<div class="node-desc">Confirmation is NECESSARY for the completion of</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="baptized_but_incomplete">baptized_but_incomplete</span>
-</div></div>
+<div class="node-desc">AXIOM (§1285): Confirmation is NECESSARY for the completion of</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="baptismalGraceComplete">baptismalGraceComplete</span><span class="dep-chip" data-target="isConfirmed">isConfirmed</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="temporal_separation_irrelevant">temporal_separation_irrelevant</span><span class="dep-chip" data-target="baptized_but_incomplete">baptized_but_incomplete</span><span class="dep-chip" data-target="eastWestTag">eastWestTag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="full_initiation_iff">
@@ -706,11 +692,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom full_initiation_iff :
   ∀ (p : Person), isFullyInitiated p ↔ (isBaptized p ∧ isConfirmed p)</code></pre></div>
-<div class="node-desc">Full initiation requires both baptism and</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="full_initiation_has_complete_grace">full_initiation_has_complete_grace</span>
-<span class="dep-chip" data-target="unconfirmed_not_fully_initiated">unconfirmed_not_fully_initiated</span>
-</div></div>
+<div class="node-desc">AXIOM (§1285, §1212): Full initiation requires both baptism and</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isConfirmed">isConfirmed</span><span class="dep-chip" data-target="isFullyInitiated">isFullyInitiated</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="full_initiation_has_complete_grace">full_initiation_has_complete_grace</span><span class="dep-chip" data-target="unconfirmed_not_fully_initiated">unconfirmed_not_fully_initiated</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="temporal_separation_irrelevant">
@@ -722,15 +706,10 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom temporal_separation_irrelevant :
   ∀ (p : Person) (_practice : InitiationPractice),
-    isConfirmed p → hasFullOutpouringOfSpirit p ∧ hasStrengthForWitness p
-
--- ============================================================================
--- § 4. Theorems — what the structure reveals
--- ============================================================================</code></pre></div>
-<div class="node-desc">The sacramental content of Confirmation is the</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="east_west_same_effects">east_west_same_effects</span>
-</div></div>
+    isConfirmed p → hasFullOutpouringOfSpirit p ∧ hasStrengthForWitness p</code></pre></div>
+<div class="node-desc">AXIOM (§1290-1292): The sacramental content of Confirmation is the</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="InitiationPractice">InitiationPractice</span><span class="dep-chip" data-target="confirmation_necessary_for_completion">confirmation_necessary_for_completion</span><span class="dep-chip" data-target="hasFullOutpouringOfSpirit">hasFullOutpouringOfSpirit</span><span class="dep-chip" data-target="hasStrengthForWitness">hasStrengthForWitness</span><span class="dep-chip" data-target="isConfirmed">isConfirmed</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="separate_character_implies_distinct_contribution">separate_character_implies_distinct_contribution</span><span class="dep-chip" data-target="east_west_same_effects">east_west_same_effects</span><span class="dep-chip" data-target="eastWestTag">eastWestTag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="baptized_but_incomplete">
@@ -746,9 +725,7 @@ h1 {
     (h_not_confirmed : ¬isConfirmed p) :
     receivesBaptismalGrace p ∧ ¬baptismalGraceComplete p</code></pre></div>
 <div class="node-desc">THEOREM: An unconfirmed baptized person has genuine baptismal grace</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="confirmation_necessary_for_completion">confirmation_necessary_for_completion</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="baptismalGraceComplete">baptismalGraceComplete</span><span class="dep-chip" data-target="confirmation_necessary_for_completion">confirmation_necessary_for_completion</span><span class="dep-chip" data-target="isConfirmed">isConfirmed</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="confirmation_presupposes_grace">
@@ -763,12 +740,8 @@ h1 {
     (h_confirmed : isConfirmed p) :
     receivesBaptismalGrace p</code></pre></div>
 <div class="node-desc">THEOREM: Confirmation presupposes baptismal grace — you must already</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="confirmation_requires_baptism">confirmation_requires_baptism</span>
-</div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="confirmed_has_full_grace">confirmed_has_full_grace</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="confirmation_requires_baptism">confirmation_requires_baptism</span><span class="dep-chip" data-target="isConfirmed">isConfirmed</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="confirmed_has_full_grace">confirmed_has_full_grace</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="confirmed_has_full_grace">
@@ -783,10 +756,7 @@ h1 {
     (h_confirmed : isConfirmed p) :
     receivesBaptismalGrace p ∧ baptismalGraceComplete p</code></pre></div>
 <div class="node-desc">THEOREM: A confirmed person has BOTH baptismal grace and complete</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="confirmation_completes_baptism">confirmation_completes_baptism</span>
-<span class="dep-chip" data-target="confirmation_presupposes_grace">confirmation_presupposes_grace</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="baptismalGraceComplete">baptismalGraceComplete</span><span class="dep-chip" data-target="confirmation_completes_baptism">confirmation_completes_baptism</span><span class="dep-chip" data-target="confirmation_presupposes_grace">confirmation_presupposes_grace</span><span class="dep-chip" data-target="isConfirmed">isConfirmed</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="confirmation_full_effects">
@@ -801,11 +771,7 @@ h1 {
     (h_confirmed : isConfirmed p) :
     hasFullOutpouringOfSpirit p ∧ hasStrengthForWitness p ∧ baptismalGraceComplete p</code></pre></div>
 <div class="node-desc">THEOREM: A confirmed person has the full outpouring of the Spirit</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="confirmation_completes_baptism">confirmation_completes_baptism</span>
-<span class="dep-chip" data-target="confirmation_confers_full_spirit">confirmation_confers_full_spirit</span>
-<span class="dep-chip" data-target="confirmation_confers_witness_strength">confirmation_confers_witness_strength</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="baptismalGraceComplete">baptismalGraceComplete</span><span class="dep-chip" data-target="confirmation_completes_baptism">confirmation_completes_baptism</span><span class="dep-chip" data-target="confirmation_confers_full_spirit">confirmation_confers_full_spirit</span><span class="dep-chip" data-target="confirmation_confers_witness_strength">confirmation_confers_witness_strength</span><span class="dep-chip" data-target="hasFullOutpouringOfSpirit">hasFullOutpouringOfSpirit</span><span class="dep-chip" data-target="hasStrengthForWitness">hasStrengthForWitness</span><span class="dep-chip" data-target="isConfirmed">isConfirmed</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="full_initiation_has_complete_grace">
@@ -820,10 +786,7 @@ h1 {
     (h_init : isFullyInitiated p) :
     receivesBaptismalGrace p ∧ baptismalGraceComplete p</code></pre></div>
 <div class="node-desc">THEOREM: Full initiation implies both baptismal grace and complete</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="confirmation_completes_baptism">confirmation_completes_baptism</span>
-<span class="dep-chip" data-target="full_initiation_iff">full_initiation_iff</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="baptismalGraceComplete">baptismalGraceComplete</span><span class="dep-chip" data-target="confirmation_completes_baptism">confirmation_completes_baptism</span><span class="dep-chip" data-target="full_initiation_iff">full_initiation_iff</span><span class="dep-chip" data-target="isFullyInitiated">isFullyInitiated</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="unconfirmed_not_fully_initiated">
@@ -838,9 +801,7 @@ h1 {
     (h_not_confirmed : ¬isConfirmed p) :
     ¬isFullyInitiated p</code></pre></div>
 <div class="node-desc">THEOREM: An unconfirmed baptized person is NOT fully initiated.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="full_initiation_iff">full_initiation_iff</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="full_initiation_iff">full_initiation_iff</span><span class="dep-chip" data-target="isConfirmed">isConfirmed</span><span class="dep-chip" data-target="isFullyInitiated">isFullyInitiated</span></div></div>
   </div>
 </div>
 <div class="node-card kind-proposition" data-kind="proposition" data-name="constitutiveReading">
@@ -852,11 +813,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def constitutiveReading (p : Person) : Prop</code></pre></div>
 <div class="node-desc">The CONSTITUTIVE reading: Confirmation supplies something baptism</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="hasStrengthForWitness">hasStrengthForWitness</span>
-<span class="dep-chip" data-target="isConfirmed">isConfirmed</span>
-<span class="dep-chip" data-target="hasFullOutpouringOfSpirit">hasFullOutpouringOfSpirit</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="hasFullOutpouringOfSpirit">hasFullOutpouringOfSpirit</span><span class="dep-chip" data-target="hasStrengthForWitness">hasStrengthForWitness</span><span class="dep-chip" data-target="isConfirmed">isConfirmed</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="constitutive_shows_distinct_content">constitutive_shows_distinct_content</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="hasSpiritFromBaptism">
@@ -868,6 +826,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque hasSpiritFromBaptism : Person → Prop</code></pre></div>
 <div class="node-desc">The DEVELOPMENTAL reading: Baptism gives the Spirit fully in KIND</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="baptism_gives_spirit">baptism_gives_spirit</span><span class="dep-chip" data-target="developmental_unconfirmed_has_spirit">developmental_unconfirmed_has_spirit</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="baptism_gives_spirit">
@@ -880,9 +839,8 @@ h1 {
     <div class="node-prop"><pre><code>axiom baptism_gives_spirit :
   ∀ (p : Person), isBaptized p → hasSpiritFromBaptism p</code></pre></div>
 <div class="node-desc">Under the developmental reading, every baptized person already has</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="developmental_unconfirmed_has_spirit">developmental_unconfirmed_has_spirit</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="hasSpiritFromBaptism">hasSpiritFromBaptism</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="developmental_unconfirmed_has_spirit">developmental_unconfirmed_has_spirit</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="developmental_unconfirmed_has_spirit">
@@ -897,9 +855,7 @@ h1 {
     (h_baptized : isBaptized p) :
     hasSpiritFromBaptism p</code></pre></div>
 <div class="node-desc">THEOREM: Under the developmental reading, even an unconfirmed</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="baptism_gives_spirit">baptism_gives_spirit</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="baptism_gives_spirit">baptism_gives_spirit</span><span class="dep-chip" data-target="hasSpiritFromBaptism">hasSpiritFromBaptism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="constitutive_shows_distinct_content">
@@ -916,6 +872,7 @@ h1 {
     (h_not_confirmed : ¬isConfirmed p) :
     ¬hasFullOutpouringOfSpirit p ∧ ¬hasStrengthForWitness p</code></pre></div>
 <div class="node-desc">THEOREM: Under the constitutive reading, Confirmation adds something</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="constitutiveReading">constitutiveReading</span><span class="dep-chip" data-target="hasFullOutpouringOfSpirit">hasFullOutpouringOfSpirit</span><span class="dep-chip" data-target="hasStrengthForWitness">hasStrengthForWitness</span><span class="dep-chip" data-target="isConfirmed">isConfirmed</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="confirmation_character_blocks_repetition">
@@ -942,6 +899,7 @@ h1 {
     ∧ causesChangeOfType .confirmation .ontological
     ∧ causesChangeOfType .confirmation .dispositional</code></pre></div>
 <div class="node-desc">THEOREM: The separate character is evidence for the constitutive reading.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="temporal_separation_irrelevant">temporal_separation_irrelevant</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="east_west_same_effects">
@@ -956,9 +914,7 @@ h1 {
     (h_confirmed : isConfirmed p) :
     hasFullOutpouringOfSpirit p ∧ hasStrengthForWitness p</code></pre></div>
 <div class="node-desc">THEOREM: Under both Eastern and Western practice, a confirmed person</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="temporal_separation_irrelevant">temporal_separation_irrelevant</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="hasFullOutpouringOfSpirit">hasFullOutpouringOfSpirit</span><span class="dep-chip" data-target="hasStrengthForWitness">hasStrengthForWitness</span><span class="dep-chip" data-target="isConfirmed">isConfirmed</span><span class="dep-chip" data-target="temporal_separation_irrelevant">temporal_separation_irrelevant</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="east_west_both_complete">
@@ -973,9 +929,7 @@ h1 {
     (h_confirmed : isConfirmed p) :
     baptismalGraceComplete p</code></pre></div>
 <div class="node-desc">THEOREM: The East/West difference does not affect the completion</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="confirmation_completes_baptism">confirmation_completes_baptism</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="baptismalGraceComplete">baptismalGraceComplete</span><span class="dep-chip" data-target="confirmation_completes_baptism">confirmation_completes_baptism</span><span class="dep-chip" data-target="isConfirmed">isConfirmed</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="confirmationTag">
@@ -998,6 +952,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def eastWestTag : DenominationalTag</code></pre></div>
 <div class="node-desc">Denominational tag for the East/West invariance.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="confirmation_necessary_for_completion">confirmation_necessary_for_completion</span><span class="dep-chip" data-target="temporal_separation_irrelevant">temporal_separation_irrelevant</span></div></div>
   </div>
 </div>
   </div>

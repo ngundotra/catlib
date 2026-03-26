@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sola Scriptura: The Axiom That Divides Christianity &mdash; Catlib</title>
+  <meta name="description" content="Sola scriptura sounds like one doctrine. It's four. A proof assistant found the three exact choice points where Catholic and Protestant part ways.">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Sola Scriptura: The Axiom That Divides Christianity">
+  <meta property="og:description" content="'Sola scriptura' is not one doctrine. It's four. We used a proof assistant to find the three choice points that divide Christianity.">
+  <meta property="og:site_name" content="Catlib">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Sola Scriptura: The Axiom That Divides Christianity">
+  <meta name="twitter:description" content="'Sola scriptura' is not one doctrine. It's four.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel+Decorative:wght@400;700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="articles.css">
+  <style>
+    .tag-reformed {
+      background: rgba(168, 130, 200, 0.1);
+      color: #b08ad8;
+      border: 1px solid rgba(168, 130, 200, 0.25);
+    }
+    .tag-anglican {
+      background: rgba(200, 180, 130, 0.1);
+      color: #c8b482;
+      border: 1px solid rgba(200, 180, 130, 0.25);
+    }
+    .tag-baptist {
+      background: rgba(212, 140, 106, 0.1);
+      color: #d48c6a;
+      border: 1px solid rgba(212, 140, 106, 0.25);
+    }
+    .tag-orthodox {
+      background: rgba(180, 160, 100, 0.1);
+      color: #c4b060;
+      border: 1px solid rgba(180, 160, 100, 0.25);
+    }
+    .choice-card {
+      border: 1px solid var(--border, #2a2520);
+      border-radius: 2px;
+      margin: 1.2rem 0;
+      overflow: hidden;
+    }
+    .choice-card .choice-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      text-align: center;
+      padding: 0.5rem;
+      background: var(--bg-elevated, #241f1a);
+      border-bottom: 1px solid var(--border, #2a2520);
+      color: var(--text-muted, #706558);
+      font-weight: 600;
+    }
+    .choice-card .choice-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .choice-card .choice-side {
+      padding: 0.8rem 1rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .choice-card .choice-side:first-child {
+      border-right: 1px solid var(--border, #2a2520);
+      background: rgba(196, 96, 64, 0.04);
+    }
+    .choice-card .choice-side:last-child {
+      background: rgba(106, 170, 212, 0.04);
+    }
+    .choice-card .choice-side strong {
+      display: block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.3rem;
+    }
+    .spectrum-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 0.88rem;
+    }
+    .spectrum-table th {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted, #706558);
+      border-bottom: 1px solid var(--border-hover, #3a3228);
+      padding: 0.5rem 0.6rem;
+      text-align: left;
+      font-weight: 600;
+    }
+    .spectrum-table td {
+      padding: 0.5rem 0.6rem;
+      border-bottom: 1px solid var(--border, #2a2520);
+      vertical-align: top;
+      line-height: 1.5;
+    }
+    .spectrum-table tr:last-child td { border-bottom: none; }
+    .spectrum-table .separator td {
+      border-bottom: 2px solid var(--gold-dim, #8a7030);
+      padding: 0;
+      height: 0;
+    }
+    @media (max-width: 700px) {
+      .choice-card .choice-body { grid-template-columns: 1fr; }
+      .choice-card .choice-side:first-child {
+        border-right: none;
+        border-bottom: 1px solid var(--border, #2a2520);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <a href="../index.html" class="back-link">Back to Catlib</a>
+
+    <!-- Hero -->
+    <section class="hero compact">
+      <div class="ornament">&#10053;</div>
+      <h1>Sola Scriptura: The Axiom That Divides Christianity</h1>
+      <p class="subtitle">&ldquo;Scripture alone&rdquo; is not one doctrine. It&rsquo;s four.</p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Introduction -->
+    <section class="article-body">
+      <p>
+        <span class="versal">A</span>sk a Baptist what &ldquo;sola scriptura&rdquo;
+        means and they will tell you the Bible is the only authority. Ask a Lutheran
+        and they will tell you the Bible is the highest authority&nbsp;&mdash; but the
+        Creeds and Confessions are valuable witnesses. Ask an Anglican and they will
+        tell you the Bible contains all things necessary for salvation&nbsp;&mdash; but
+        the Church has real authority in controversies of faith. Ask a Presbyterian and
+        they will give you a careful systematic account involving self-authentication,
+        perspicuity, and the internal testimony of the Holy Spirit.
+      </p>
+      <p>
+        These are not the same doctrine.
+      </p>
+      <p>
+        We used a proof assistant to formalize each of these variants as a precise set
+        of axioms, then compared them against the Catholic axiom set. What we found:
+        the entire debate reduces to <strong>three binary choices</strong>. Three places
+        where you must pick Catholic or Protestant. Every other disagreement about
+        Scripture, Tradition, and authority flows downstream from those three.
+      </p>
+      <p>
+        We also found something the formalization made visible that ordinary theological
+        language hides: two claims that <em>sound</em> completely different turn out to
+        be <em>literally the same proposition</em>.
+      </p>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- The Distinction Most People Miss -->
+    <section class="article-body">
+      <h2>The Distinction Most People Miss</h2>
+
+      <p>
+        <span class="versal">W</span>hen a Protestant says &ldquo;Scripture is
+        sufficient&rdquo; and a Catholic says &ldquo;no it isn&rsquo;t,&rdquo; they
+        are usually talking past each other. The word &ldquo;sufficient&rdquo; is
+        doing double duty, and neither side notices.
+      </p>
+      <p>
+        There are two very different claims hiding behind that word:
+      </p>
+      <p>
+        <strong>Material sufficiency:</strong> Scripture <em>contains</em> all
+        necessary doctrine, at least implicitly. Surprisingly, many Catholic
+        theologians accept this. Vatican II&rsquo;s <em>Dei Verbum</em> deliberately
+        left the question open.
+      </p>
+      <p>
+        <strong>Formal sufficiency:</strong> Scripture <em>alone</em>, without an
+        external interpretive authority, is adequate as the rule of faith. Catholics
+        deny this emphatically.
+      </p>
+      <p>
+        The analogy that clarifies it: a law code can contain all necessary laws
+        (materially sufficient) and still need a Supreme Court to interpret them
+        (not formally sufficient). The laws are all there. But &ldquo;all there&rdquo;
+        does not mean &ldquo;self-interpreting.&rdquo;
+      </p>
+      <p>
+        The Protestant sola scriptura claim is <em>formal</em> sufficiency. The
+        Catholic counter-arguments target formal sufficiency, not material sufficiency.
+        The debate is not primarily about whether the Bible has enough content. It is
+        about whether the Bible needs an authoritative reader.
+      </p>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- The Four Variants -->
+    <section class="article-body">
+      <h2>The Four Variants</h2>
+
+      <p>
+        <span class="versal">W</span>e formalized four distinct versions of sola
+        scriptura, each from its own confessional document. They range from the most
+        radical to the most restrained.
+      </p>
+
+      <div class="axis-card">
+        <div class="axis-label">
+          <span class="tag tag-baptist">Baptist</span> &mdash; The Most Radical
+        </div>
+        <div class="axis-side" style="grid-column: 1 / -1; border-right: none;">
+          <em>Baptist Faith &amp; Message</em> (2000): Scripture is &ldquo;truth,
+          without any mixture of error, for its matter&rdquo; and &ldquo;the supreme
+          standard by which all human conduct, <strong>creeds</strong>, and religious
+          opinions should be tried.&rdquo; Soul competency&nbsp;&mdash; each believer
+          has direct access to God through Scripture. No confessional authority. No
+          <em>norma normata</em>. The canon is simply assumed.
+        </div>
+      </div>
+
+      <div class="axis-card">
+        <div class="axis-label">
+          <span class="tag tag-reformed">Reformed</span> &mdash; The Strongest System
+        </div>
+        <div class="axis-side" style="grid-column: 1 / -1; border-right: none;">
+          <em>Westminster Confession of Faith</em> (1646): The most sophisticated
+          formulation. Scripture is materially sufficient, formally sufficient,
+          self-authenticating (&ldquo;our full persuasion&hellip; is from the inward
+          work of the Holy Spirit&rdquo;), perspicuous on essentials, and
+          self-interpreting (&ldquo;the infallible rule of interpretation of Scripture
+          is the Scripture itself&rdquo;). Tradition is explicitly excluded
+          (&ldquo;traditions of men&rdquo;).
+        </div>
+      </div>
+
+      <div class="axis-card">
+        <div class="axis-label">
+          <span class="tag tag-lutheran">Lutheran</span> &mdash; The Moderate Form
+        </div>
+        <div class="axis-side" style="grid-column: 1 / -1; border-right: none;">
+          <em>Formula of Concord</em> (1577): Scripture is the sole <em>norma
+          normans</em> (norming norm). But the Confessions, Creeds, and Church Fathers
+          are the <em>norma normata</em> (normed norm)&nbsp;&mdash; witnesses to
+          scriptural truth with real but derivative authority. They are not
+          &ldquo;traditions of men&rdquo; to be discarded. They are a hermeneutical
+          lens. Luther himself famously questioned James, Hebrews, Jude, and
+          Revelation&nbsp;&mdash; introducing a &ldquo;canon within the canon&rdquo;
+          concept that no other tradition accepts.
+        </div>
+      </div>
+
+      <div class="axis-card">
+        <div class="axis-label">
+          <span class="tag tag-anglican">Anglican</span> &mdash; The Weakest Form
+        </div>
+        <div class="axis-side" style="grid-column: 1 / -1; border-right: none;">
+          <em>39 Articles of Religion</em> (1571): &ldquo;Holy Scripture containeth
+          all things necessary <strong>to salvation</strong>.&rdquo; Note the narrow
+          scope&nbsp;&mdash; &ldquo;to salvation,&rdquo; not &ldquo;for all matters
+          of faith and life.&rdquo; Article XX grants the Church &ldquo;authority in
+          Controversies of Faith,&rdquo; bounded by Scripture. Article XXI concedes
+          that councils &ldquo;may err, and sometimes have erred.&rdquo; This is
+          arguably <em>prima scriptura</em>&nbsp;&mdash; Scripture first among several
+          authorities&nbsp;&mdash; rather than strict sola scriptura.
+        </div>
+      </div>
+
+      <p>
+        These are not minor variations. The Baptist rejects all confessional
+        authority; the Lutheran values it highly. The Reformed excludes tradition
+        entirely; the Anglican gives the Church real (if bounded) authority. They
+        all claim sola scriptura, but the words cover very different commitments.
+      </p>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- The Three Choice Points -->
+    <section class="article-body">
+      <h2>The Three Choice Points</h2>
+
+      <p>
+        <span class="versal">T</span>he formalization reveals that the entire
+        Catholic-Protestant debate on the rule of faith reduces to three binary
+        decisions. Every denominational variant is a specific combination of positions
+        on these three axes. Pick your answers, and your ecclesiology follows.
+      </p>
+
+      <div class="choice-card">
+        <div class="choice-label">Choice 1: Is everything in the Bible?</div>
+        <div class="choice-body">
+          <div class="choice-side">
+            <strong><span class="tag tag-catholic">Catholic</span></strong>
+            No. Some revealed teaching exists only in Tradition. &ldquo;Not
+            everything was written&rdquo; (CCC &sect;76; Jn 21:25). The apostles
+            transmitted revelation <em>two ways</em>: orally and in writing. Some
+            oral teaching was never committed to writing.
+          </div>
+          <div class="choice-side">
+            <strong><span class="tag tag-lutheran">Protestant</span></strong>
+            Yes. All necessary doctrine is in Scripture, at least implicitly. &ldquo;The
+            whole counsel of God concerning all things necessary for&hellip; salvation,
+            faith and life, is either expressly set down in Scripture, or by good and
+            necessary consequence may be deduced from Scripture&rdquo; (WCF I.6).
+          </div>
+        </div>
+      </div>
+
+      <div class="choice-card">
+        <div class="choice-label">Choice 2: How do you know which books are Scripture?</div>
+        <div class="choice-body">
+          <div class="choice-side">
+            <strong><span class="tag tag-catholic">Catholic</span></strong>
+            The Church decided. The canon was determined by magisterial judgment&nbsp;&mdash;
+            the Councils of Hippo (393) and Carthage (397). No Bible verse lists
+            which books belong in the Bible. The act of canonization is not in
+            Scripture. Scripture&rsquo;s authority presupposes the Church that
+            canonized it.
+          </div>
+          <div class="choice-side">
+            <strong><span class="tag tag-lutheran">Protestant</span></strong>
+            Scripture is self-authenticating. &ldquo;Our full persuasion and assurance
+            of the infallible truth and divine authority thereof, is from the inward
+            work of the Holy Spirit bearing witness by and with the Word in our
+            hearts&rdquo; (WCF I.5). The Church <em>recognized</em> the canon; it
+            did not <em>determine</em> it.
+          </div>
+        </div>
+      </div>
+
+      <div class="choice-card">
+        <div class="choice-label">Choice 3: Does the Church make doctrine binding, or just discover it?</div>
+        <div class="choice-body">
+          <div class="choice-side">
+            <strong><span class="tag tag-catholic">Catholic</span></strong>
+            Constitutive authority. The Church&rsquo;s authority derives from
+            apostolic succession and is not reducible to Scripture. The Council of
+            Nicaea defined the Trinity as binding doctrine in 325 AD&nbsp;&mdash;
+            before the canon was even settled. That authority came from succession,
+            not from a book whose boundaries were still being debated.
+          </div>
+          <div class="choice-side">
+            <strong><span class="tag tag-lutheran">Protestant</span></strong>
+            Recognitive authority. Councils have authority only insofar as they
+            faithfully teach Scripture. Their authority is ministerial (serving
+            Scripture), not magisterial (over Scripture). Nicaea was right because
+            it got the Bible right, not because bishops have independent authority.
+          </div>
+        </div>
+      </div>
+
+      <p>
+        That is the complete map. Every Protestant-Catholic disagreement about
+        Scripture, Tradition, and authority reduces to one or more of these three
+        decisions. The Reformed, Lutheran, and Baptist take the Protestant position
+        on all three. The Anglican hedges on the first (restricting sufficiency
+        to &ldquo;things necessary for salvation&rdquo;) and gives the Church more
+        room on the third.
+      </p>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- The Spectrum -->
+    <section class="article-body">
+      <h2>The Full Spectrum</h2>
+
+      <p>
+        <span class="versal">H</span>ere is how all six major traditions map onto
+        the three axes. The line in the middle is where Christianity splits.
+      </p>
+
+      <table class="spectrum-table">
+        <thead>
+          <tr>
+            <th>Tradition</th>
+            <th>Choice 1: All in Scripture?</th>
+            <th>Choice 2: Canon</th>
+            <th>Choice 3: Authority</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="tag tag-baptist">Baptist</span></td>
+            <td>Yes, all of it</td>
+            <td>Assumed</td>
+            <td>Recognitive</td>
+          </tr>
+          <tr>
+            <td><span class="tag tag-reformed">Reformed</span></td>
+            <td>Yes, all of it</td>
+            <td>Self-authenticating</td>
+            <td>Recognitive</td>
+          </tr>
+          <tr>
+            <td><span class="tag tag-lutheran">Lutheran</span></td>
+            <td>Yes, all of it</td>
+            <td>Self-auth. (with caveats)</td>
+            <td>Recognitive</td>
+          </tr>
+          <tr>
+            <td><span class="tag tag-anglican">Anglican</span></td>
+            <td>Yes, for salvation</td>
+            <td>Church-recognized</td>
+            <td>Recognitive (bounded)</td>
+          </tr>
+          <tr class="separator"><td colspan="4"></td></tr>
+          <tr>
+            <td><span class="tag tag-orthodox">Orthodox</span></td>
+            <td>Yes, but within Tradition</td>
+            <td>Church-determined</td>
+            <td>Conciliar</td>
+          </tr>
+          <tr>
+            <td><span class="tag tag-catholic">Catholic</span></td>
+            <td>No&nbsp;&mdash; some in Tradition only</td>
+            <td>Church-determined</td>
+            <td>Constitutive (Magisterium)</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- What the Machine Found -->
+    <section class="article-body">
+      <h2>What the Machine Found</h2>
+
+      <p>
+        <span class="versal">W</span>e formalized each variant as a Lean 4
+        structure, then ran incompatibility checks against the declared Catholic
+        axioms. The results:
+      </p>
+
+      <div class="summary-box">
+        <h3>Finding 1: Three variants fall to the same axiom</h3>
+        <p>
+          The Reformed, Lutheran, and Baptist variants all claim full material
+          sufficiency: every revealed teaching is in Scripture. The Catholic axiom
+          <code>not_everything_written</code> directly negates this. Three lines
+          of proof. Direct contradiction.
+        </p>
+      </div>
+
+      <div class="summary-box">
+        <h3>Finding 2: The Anglican has an escape hatch</h3>
+        <p>
+          The Anglican variant only claims sufficiency for things &ldquo;necessary
+          to salvation.&rdquo; This means the Tradition-only teaching from the
+          Catholic axiom might be <em>non-essential</em>&nbsp;&mdash; and if so,
+          the Anglican position survives. The Anglican is the only Protestant
+          variant that does not directly contradict <code>not_everything_written</code>.
+        </p>
+        <p>
+          But there is a catch. To use this escape hatch, the Anglican must draw
+          a principled line between &ldquo;essential&rdquo; and
+          &ldquo;non-essential&rdquo; doctrine. Who draws that line? That question
+          is itself a doctrinal judgment requiring authority&nbsp;&mdash; and it
+          circles back to Choice 3.
+        </p>
+      </div>
+
+      <div class="summary-box">
+        <h3>Finding 3: Two claims that sound different are the same proposition</h3>
+        <p>
+          This was the surprise. When we defined &ldquo;Tradition has normative
+          authority&rdquo; formally, we got: <em>there exists a revealed teaching
+          that is in Tradition and not in Scripture</em>. When we checked the
+          Catholic axiom <code>not_everything_written</code>, it says: <em>there
+          exists a revealed teaching that is in Tradition and not in Scripture</em>.
+        </p>
+        <p>
+          They are <strong>literally the same proposition</strong>. The proof
+          is <code>Iff.rfl</code>&nbsp;&mdash; reflexivity. Zero steps.
+        </p>
+        <p>
+          This means: when Protestant apologists say &ldquo;we reject normative
+          Tradition&rdquo; and Catholic apologists say &ldquo;not everything
+          was written,&rdquo; they are having the <strong>same argument</strong>
+          in different words. The formalization stripped away five centuries of
+          theological dialect and found one proposition underneath.
+        </p>
+      </div>
+
+      <div class="summary-box">
+        <h3>Finding 4: The combination is stronger than any single argument</h3>
+        <p>
+          The Catholic case against sola scriptura rests on four independent
+          arguments, each from a different Lean file:
+        </p>
+        <ol>
+          <li><strong>Content:</strong> Not everything was written (RuleOfFaith.lean)</li>
+          <li><strong>Canon:</strong> The canon presupposes the Church (RuleOfFaith.lean)</li>
+          <li><strong>Temporal:</strong> Nicaea defined doctrine before the canon was settled (ConciliarAuthority.lean)</li>
+          <li><strong>Interpretation:</strong> Sincere readers disagree, and private judgment has no adjudicator (PrivateJudgment.lean)</li>
+        </ol>
+        <p>
+          Each argument alone has a plausible Protestant counter. But the counters
+          pull in different directions. Self-authentication says Scripture needs
+          nothing external; ministerial authority says the Church played a real role.
+          Material sufficiency says everything is in Scripture; perspicuity says only
+          <em>essential</em> things are clear&nbsp;&mdash; so you still need an
+          interpreter for the rest. The Catholic position does not have this tension
+          because it gives the Church genuine constitutive authority.
+        </p>
+      </div>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- The Orthodox -->
+    <section class="article-body">
+      <h2>The Orthodox Break the Binary</h2>
+
+      <p>
+        <span class="versal">T</span>here is a sixth position that does not fit
+        the Catholic-Protestant binary. The Eastern Orthodox reject sola scriptura
+        as firmly as Catholics do&nbsp;&mdash; but they also reject the papal
+        Magisterium.
+      </p>
+      <p>
+        Their model: Scripture exists <em>within</em> Tradition. Not alongside
+        it. Not as a parallel source. Within it. Georges Florovsky put it
+        precisely: &ldquo;Tradition is Scripture rightly understood.&rdquo;
+        Scripture is the written crystallization of a larger living reality.
+        Remove Tradition and you do not have a standalone book; you have a text
+        ripped from its interpretive home.
+      </p>
+      <p>
+        We formalized this as set inclusion: every teaching in Scripture is also
+        in Tradition. Scripture &sube; Tradition. This is weaker than
+        Florovsky&rsquo;s full claim&nbsp;&mdash; he means something closer to
+        &ldquo;Scripture is unintelligible outside Tradition&rdquo;&nbsp;&mdash;
+        but the structural point is the same. You cannot extract Scripture from
+        Tradition and expect it to work on its own.
+      </p>
+      <p>
+        The Orthodox show that rejecting sola scriptura does not require accepting
+        papal authority. There is a third option: conciliar authority, confirmed by
+        the reception of the whole Church over time. The formalization captures this
+        as a distinct position on the three-axis map.
+      </p>
+    </section>
+
+    <div class="divider">&#10053;</div>
+
+    <!-- Fairness -->
+    <section class="article-body">
+      <h2>Every System Works on Its Own Terms</h2>
+
+      <p>
+        <span class="versal">T</span>he Catholic arguments above show that sola
+        scriptura is incompatible with <em>Catholic</em> axioms. They do not show
+        that sola scriptura is incoherent. This distinction matters.
+      </p>
+      <p>
+        Under Reformed axioms, the Reformed system works. Material sufficiency
+        entails that there is no Tradition-only teaching. Perspicuity entails
+        that sincere readers converge on essentials. Self-authentication entails
+        that the canon does not depend on the Church. No internal contradictions.
+      </p>
+      <p>
+        Under Lutheran axioms, the Lutheran system works. Material sufficiency
+        holds. Tradition serves as a hermeneutical lens&nbsp;&mdash; a witness to
+        what Scripture teaches, not an independent source of doctrine.
+      </p>
+      <p>
+        Under Anglican axioms, the Anglican system works. Essential doctrine is in
+        Scripture. The Church has real authority in controversies, bounded by
+        Scripture. Non-essential doctrine may exist in Tradition. No contradictions.
+      </p>
+      <p>
+        Each system is internally consistent. The machine verified this. The
+        debate is not about logic&nbsp;&mdash; it is about which axioms accurately
+        describe reality.
+      </p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Closing -->
+    <section class="article-body">
+      <h2>Three Decisions, Six Traditions, One Question</h2>
+
+      <p>
+        <span class="versal">T</span>he formalization cannot tell you which axioms
+        are true. No formal system can prove that the canon is self-authenticating
+        rather than Church-determined, or vice versa. No formal system can prove
+        that Church authority is constitutive rather than recognitive. These are
+        judgments about reality that go beyond what logic can establish.
+      </p>
+      <p>
+        What the formalization <em>can</em> do is make the choice points visible.
+        It strips away five centuries of accumulated dialect and shows you the
+        three places where you must choose. A thoughtful Presbyterian and a
+        thoughtful Catholic can now see exactly where they diverge, exactly what
+        each side is assuming, and exactly what follows from those assumptions.
+      </p>
+      <p>
+        And they can see something the theological language hid: that &ldquo;we
+        reject normative Tradition&rdquo; and &ldquo;not everything was
+        written&rdquo; are not two arguments. They are one argument in two
+        dialects.
+      </p>
+      <p>
+        Clarity is not agreement. But it is the prerequisite for an honest
+        conversation. And after five hundred years, an honest conversation would
+        be no small thing.
+      </p>
+    </section>
+
+    <div class="divider">&#8258;</div>
+
+    <!-- Source references -->
+    <section class="article-body">
+      <div class="summary-box">
+        <h3>Source Code</h3>
+        <p>
+          The formalizations referenced in this article are machine-checked in Lean 4.
+          The denominational structures, incompatibility proofs, definitional equivalences,
+          and the three-choice-point analysis are verified in the
+          <a href="https://github.com/ngundotra/catlib">Catlib repository</a>.
+          See
+          <a href="https://github.com/ngundotra/catlib/blob/master/Catlib/Creed/SolaScriptura.lean">SolaScriptura.lean</a>,
+          <a href="https://github.com/ngundotra/catlib/blob/master/Catlib/Creed/RuleOfFaith.lean">RuleOfFaith.lean</a>,
+          <a href="https://github.com/ngundotra/catlib/blob/master/Catlib/Creed/PrivateJudgment.lean">PrivateJudgment.lean</a>, and
+          <a href="https://github.com/ngundotra/catlib/blob/master/Catlib/Creed/ConciliarAuthority.lean">ConciliarAuthority.lean</a>
+          for the formal models.
+        </p>
+      </div>
+    </section>
+
+    <div class="ornament">&#10053;</div>
+
+    <section class="cta-section">
+      <div class="cta-group">
+        <a href="https://github.com/ngundotra/catlib" class="cta-button primary">View on GitHub</a>
+        <a href="../index.html" class="cta-button secondary">Back to Catlib</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="ornament">&#10053;</div>
+    <p>
+      <a href="https://github.com/ngundotra/catlib">Catlib</a>&nbsp;&mdash;
+      formalizing the Catholic Catechism in Lean 4.
+      A love letter to the Catholic intellectual tradition, written with precision.
+    </p>
+  </footer>
+
+</body>
+</html>

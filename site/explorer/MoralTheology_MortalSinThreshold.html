@@ -523,14 +523,20 @@ h1 {
 <div class="container">
   <a href="index.html" class="back-link">&larr; All files</a>
   <h1>MortalSinThreshold</h1>
-  <div class="subtitle">MoralTheology &middot; 19 declarations</div>
+  <div class="subtitle">MoralTheology &middot; 21 declarations</div>
 
-  
+  <div class="flow-summary">
+  <span class="flow-count axioms">4 axioms</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count theorems">8 theorems</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count derived">9 derived</span>
+</div>
   <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1854, &sect;1857, &sect;1858, &sect;1859, &sect;1860, &sect;1861, &sect;1862, &sect;1863</div>
 
-  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot proposition"></span>proposition</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot structure"></span>structure</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
+  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot proposition"></span>proposition</span><span class="legend-item"><span class="legend-dot structure"></span>structure</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
 
-  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (2)</button><button class="filter-btn" <button class="filter-btn" data-filter="proposition">proposition (5)</button><button class="filter-btn" data-filter="opaque">opaque (2)</button><button class="filter-btn" data-filter="structure">structure (2)</button><button class="filter-btn" data-filter="theorem">theorem (8)</button></div>
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (2)</button><button class="filter-btn" data-filter="def">def (2)</button><button class="filter-btn" data-filter="opaque">opaque (2)</button><button class="filter-btn" data-filter="proposition">proposition (5)</button><button class="filter-btn" data-filter="structure">structure (2)</button><button class="filter-btn" data-filter="theorem">theorem (8)</button></div>
 
   <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
 
@@ -545,7 +551,7 @@ h1 {
     <div class="node-prop"><pre><code>structure CulpabilityDegree where</code></pre></div>
 <div class="node-desc">The degree of culpability for a sinful act.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="maxConsent">maxConsent</span><span class="dep-chip" data-target="maxKnowledge">maxKnowledge</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="CulpabilityDegree.isFullKnowledge">CulpabilityDegree.isFullKnowledge</span><span class="dep-chip" data-target="CulpabilityDegree.isCompleteConsent">CulpabilityDegree.isCompleteConsent</span><span class="dep-chip" data-target="CulpabilityDegree.isMaximal">CulpabilityDegree.isMaximal</span><span class="dep-chip" data-target="SinConditions">SinConditions</span><span class="dep-chip" data-target="weakening_matter_prevents_mortal">weakening_matter_prevents_mortal</span><span class="dep-chip" data-target="weakening_knowledge_prevents_mortal">weakening_knowledge_prevents_mortal</span><span class="dep-chip" data-target="weakening_consent_prevents_mortal">weakening_consent_prevents_mortal</span><span class="dep-chip" data-target="only_conjunction_destroys_charity">only_conjunction_destroys_charity</span><span class="dep-chip" data-target="maxConsent">maxConsent</span><span class="dep-chip" data-target="maxKnowledge">maxKnowledge</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="CulpabilityDegree.isFullKnowledge">CulpabilityDegree.isFullKnowledge</span><span class="dep-chip" data-target="CulpabilityDegree.isCompleteConsent">CulpabilityDegree.isCompleteConsent</span><span class="dep-chip" data-target="CulpabilityDegree.isMaximal">CulpabilityDegree.isMaximal</span><span class="dep-chip" data-target="SinConditions">SinConditions</span><span class="dep-chip" data-target="weakening_matter_prevents_mortal">weakening_matter_prevents_mortal</span><span class="dep-chip" data-target="weakening_knowledge_prevents_mortal">weakening_knowledge_prevents_mortal</span><span class="dep-chip" data-target="weakening_consent_prevents_mortal">weakening_consent_prevents_mortal</span><span class="dep-chip" data-target="only_conjunction_destroys_charity">only_conjunction_destroys_charity</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="maxKnowledge">
@@ -567,8 +573,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque maxConsent : Nat
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque maxConsent : Nat</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="CulpabilityDegree">CulpabilityDegree</span><span class="dep-chip" data-target="CulpabilityDegree.isCompleteConsent">CulpabilityDegree.isCompleteConsent</span><span class="dep-chip" data-target="CulpabilityDegree.isMaximal">CulpabilityDegree.isMaximal</span><span class="dep-chip" data-target="binary_agrees_with_graded">binary_agrees_with_graded</span><span class="dep-chip" data-target="only_conjunction_destroys_charity">only_conjunction_destroys_charity</span></div></div>
   </div>
 </div>
@@ -582,7 +587,6 @@ h1 {
     <div class="node-prop"><pre><code>def CulpabilityDegree.isFullKnowledge (cd : CulpabilityDegree) : Prop</code></pre></div>
 <div class="node-desc">Full knowledge (§1859) = knowledge degree at maximum.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CulpabilityDegree">CulpabilityDegree</span><span class="dep-chip" data-target="maxKnowledge">maxKnowledge</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="maxKnowledge">maxKnowledge</span><span class="dep-chip" data-target="CulpabilityDegree">CulpabilityDegree</span></div></div>
   </div>
 </div>
 <div class="node-card kind-proposition" data-kind="proposition" data-name="CulpabilityDegree.isCompleteConsent">
@@ -595,7 +599,6 @@ h1 {
     <div class="node-prop"><pre><code>def CulpabilityDegree.isCompleteConsent (cd : CulpabilityDegree) : Prop</code></pre></div>
 <div class="node-desc">Complete consent (§1859) = consent degree at maximum.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CulpabilityDegree">CulpabilityDegree</span><span class="dep-chip" data-target="maxConsent">maxConsent</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="maxConsent">maxConsent</span><span class="dep-chip" data-target="CulpabilityDegree">CulpabilityDegree</span></div></div>
   </div>
 </div>
 <div class="node-card kind-proposition" data-kind="proposition" data-name="CulpabilityDegree.isMaximal">
@@ -608,7 +611,6 @@ h1 {
     <div class="node-prop"><pre><code>def CulpabilityDegree.isMaximal (cd : CulpabilityDegree) : Prop</code></pre></div>
 <div class="node-desc">Full culpability = both knowledge and consent at maximum.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CulpabilityDegree">CulpabilityDegree</span><span class="dep-chip" data-target="maxConsent">maxConsent</span><span class="dep-chip" data-target="maxKnowledge">maxKnowledge</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="maxConsent">maxConsent</span><span class="dep-chip" data-target="maxKnowledge">maxKnowledge</span><span class="dep-chip" data-target="CulpabilityDegree">CulpabilityDegree</span></div></div>
   </div>
 </div>
 <div class="node-card kind-structure" data-kind="structure" data-name="SinConditions">
@@ -620,8 +622,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>structure SinConditions where</code></pre></div>
 <div class="node-desc">A complete description of a sinful act's mortal-sin conditions.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CulpabilityDegree">CulpabilityDegree</span><span class="dep-chip" data-target="MatterGravity">MatterGravity</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="SinConditions.isMortal">SinConditions.isMortal</span><span class="dep-chip" data-target="SinConditions.isVenial">SinConditions.isVenial</span><span class="dep-chip" data-target="threshold_exhaustive">threshold_exhaustive</span><span class="dep-chip" data-target="threshold_exclusive">threshold_exclusive</span><span class="dep-chip" data-target="binary_agrees_with_graded">binary_agrees_with_graded</span><span class="dep-chip" data-target="weakening_matter_prevents_mortal">weakening_matter_prevents_mortal</span><span class="dep-chip" data-target="weakening_knowledge_prevents_mortal">weakening_knowledge_prevents_mortal</span><span class="dep-chip" data-target="weakening_consent_prevents_mortal">weakening_consent_prevents_mortal</span><span class="dep-chip" data-target="venial_sin_weakens_charity">venial_sin_weakens_charity</span><span class="dep-chip" data-target="mortal_sin_destroys_charity">mortal_sin_destroys_charity</span><span class="dep-chip" data-target="threshold_coincides_with_charity_break">threshold_coincides_with_charity_break</span><span class="dep-chip" data-target="only_conjunction_destroys_charity">only_conjunction_destroys_charity</span><span class="dep-chip" data-target="CulpabilityDegree">CulpabilityDegree</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CulpabilityDegree">CulpabilityDegree</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="SinConditions.isMortal">SinConditions.isMortal</span><span class="dep-chip" data-target="SinConditions.isVenial">SinConditions.isVenial</span><span class="dep-chip" data-target="threshold_exhaustive">threshold_exhaustive</span><span class="dep-chip" data-target="threshold_exclusive">threshold_exclusive</span><span class="dep-chip" data-target="binary_agrees_with_graded">binary_agrees_with_graded</span><span class="dep-chip" data-target="weakening_matter_prevents_mortal">weakening_matter_prevents_mortal</span><span class="dep-chip" data-target="weakening_knowledge_prevents_mortal">weakening_knowledge_prevents_mortal</span><span class="dep-chip" data-target="weakening_consent_prevents_mortal">weakening_consent_prevents_mortal</span><span class="dep-chip" data-target="venial_sin_weakens_charity">venial_sin_weakens_charity</span><span class="dep-chip" data-target="mortal_sin_destroys_charity">mortal_sin_destroys_charity</span><span class="dep-chip" data-target="threshold_coincides_with_charity_break">threshold_coincides_with_charity_break</span><span class="dep-chip" data-target="only_conjunction_destroys_charity">only_conjunction_destroys_charity</span></div></div>
   </div>
 </div>
 <div class="node-card kind-proposition" data-kind="proposition" data-name="SinConditions.isMortal">
@@ -633,8 +635,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def SinConditions.isMortal (sc : SinConditions) : Prop</code></pre></div>
 <div class="node-desc">§1857: A sin is mortal when all three conditions are simultaneously</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MatterGravity">MatterGravity</span><span class="dep-chip" data-target="SinConditions">SinConditions</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="threshold_exhaustive">threshold_exhaustive</span><span class="dep-chip" data-target="SinConditions">SinConditions</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SinConditions">SinConditions</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="threshold_exhaustive">threshold_exhaustive</span></div></div>
   </div>
 </div>
 <div class="node-card kind-proposition" data-kind="proposition" data-name="SinConditions.isVenial">
@@ -646,8 +648,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def SinConditions.isVenial (sc : SinConditions) : Prop</code></pre></div>
 <div class="node-desc">§1862: A sin is venial when any condition falls short of the mortal</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MatterGravity">MatterGravity</span><span class="dep-chip" data-target="SinConditions">SinConditions</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="threshold_exhaustive">threshold_exhaustive</span><span class="dep-chip" data-target="threshold_exclusive">threshold_exclusive</span><span class="dep-chip" data-target="only_conjunction_destroys_charity">only_conjunction_destroys_charity</span><span class="dep-chip" data-target="SinConditions">SinConditions</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SinConditions">SinConditions</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="threshold_exhaustive">threshold_exhaustive</span><span class="dep-chip" data-target="threshold_exclusive">threshold_exclusive</span><span class="dep-chip" data-target="only_conjunction_destroys_charity">only_conjunction_destroys_charity</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="threshold_exhaustive">
@@ -661,7 +663,6 @@ h1 {
     sc.isMortal ∨ sc.isVenial</code></pre></div>
 <div class="node-desc">The mortal and venial conditions are exhaustive: every set of</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SinConditions">SinConditions</span><span class="dep-chip" data-target="SinConditions.isMortal">SinConditions.isMortal</span><span class="dep-chip" data-target="SinConditions.isVenial">SinConditions.isVenial</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="SinConditions">SinConditions</span><span class="dep-chip" data-target="SinConditions.isMortal">SinConditions.isMortal</span><span class="dep-chip" data-target="SinConditions.isVenial">SinConditions.isVenial</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="threshold_exclusive">
@@ -675,7 +676,6 @@ h1 {
     sc.isMortal → ¬sc.isVenial</code></pre></div>
 <div class="node-desc">Mortal and venial conditions are mutually exclusive.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SinConditions">SinConditions</span><span class="dep-chip" data-target="SinConditions.isVenial">SinConditions.isVenial</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="SinConditions">SinConditions</span><span class="dep-chip" data-target="SinConditions.isVenial">SinConditions.isVenial</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="binary_agrees_with_graded">
@@ -691,8 +691,7 @@ h1 {
       sc.gravity = s.gravity ∧
       sc.isMortal</code></pre></div>
 <div class="node-desc">Bridge: the graded SinConditions model agrees with the binary Sin</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Nature">Nature</span><span class="dep-chip" data-target="SinConditions">SinConditions</span><span class="dep-chip" data-target="maxConsent">maxConsent</span><span class="dep-chip" data-target="maxKnowledge">maxKnowledge</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="maxConsent">maxConsent</span><span class="dep-chip" data-target="maxKnowledge">maxKnowledge</span><span class="dep-chip" data-target="SinConditions">SinConditions</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SinConditions">SinConditions</span><span class="dep-chip" data-target="maxConsent">maxConsent</span><span class="dep-chip" data-target="maxKnowledge">maxKnowledge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="weakening_matter_prevents_mortal">
@@ -706,8 +705,7 @@ h1 {
     (cd : CulpabilityDegree) (_h_max : cd.isMaximal) :
     ¬({ gravity := MatterGravity.lesSerious, culpability := cd : SinConditions}).isMortal</code></pre></div>
 <div class="node-desc">Weakening matter gravity (from grave to less serious) prevents</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CulpabilityDegree">CulpabilityDegree</span><span class="dep-chip" data-target="MatterGravity">MatterGravity</span><span class="dep-chip" data-target="SinConditions">SinConditions</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="CulpabilityDegree">CulpabilityDegree</span><span class="dep-chip" data-target="SinConditions">SinConditions</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CulpabilityDegree">CulpabilityDegree</span><span class="dep-chip" data-target="SinConditions">SinConditions</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="weakening_knowledge_prevents_mortal">
@@ -722,8 +720,7 @@ h1 {
     (h_not_full : ¬cd.isFullKnowledge) :
     ¬({ gravity := MatterGravity.grave, culpability := cd : SinConditions}).isMortal</code></pre></div>
 <div class="node-desc">Weakening knowledge (below full) prevents mortal sin, even with</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CulpabilityDegree">CulpabilityDegree</span><span class="dep-chip" data-target="MatterGravity">MatterGravity</span><span class="dep-chip" data-target="SinConditions">SinConditions</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="CulpabilityDegree">CulpabilityDegree</span><span class="dep-chip" data-target="SinConditions">SinConditions</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CulpabilityDegree">CulpabilityDegree</span><span class="dep-chip" data-target="SinConditions">SinConditions</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="weakening_consent_prevents_mortal">
@@ -738,8 +735,7 @@ h1 {
     (h_not_complete : ¬cd.isCompleteConsent) :
     ¬({ gravity := MatterGravity.grave, culpability := cd : SinConditions}).isMortal</code></pre></div>
 <div class="node-desc">Weakening consent (below complete) prevents mortal sin, even with</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CulpabilityDegree">CulpabilityDegree</span><span class="dep-chip" data-target="MatterGravity">MatterGravity</span><span class="dep-chip" data-target="SinConditions">SinConditions</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="CulpabilityDegree">CulpabilityDegree</span><span class="dep-chip" data-target="SinConditions">SinConditions</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CulpabilityDegree">CulpabilityDegree</span><span class="dep-chip" data-target="SinConditions">SinConditions</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="venial_sin_weakens_charity">
@@ -759,11 +755,10 @@ h1 {
       tl'.kind = LoveKind.agape ∧
       tl'.lover = tl.lover ∧
       tl'.beloved = tl.beloved ∧
-      tl'.degree &gt; 0
-</code></pre></div>
-<div class="node-desc">§1863: Venial sin weakens charity but does not destroy it. │   Source: [Definition] CCC §1863. | Scope: CATHOLIC — requires the mortal/venial distinction. │   ⚠ HIDDEN ASSUMPTION: &quot;weakening&quot; means reduction of degree, not</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="LoveKind">LoveKind</span><span class="dep-chip" data-target="SinConditions">SinConditions</span><span class="dep-chip" data-target="TypedLove">TypedLove</span><span class="dep-chip" data-target="isGraveSin">isGraveSin</span><span class="dep-chip" data-target="mortal_sin_can_destroy_charity">mortal_sin_can_destroy_charity</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="threshold_coincides_with_charity_break">threshold_coincides_with_charity_break</span><span class="dep-chip" data-target="only_conjunction_destroys_charity">only_conjunction_destroys_charity</span><span class="dep-chip" data-target="SinConditions">SinConditions</span></div></div>
+      tl'.degree &gt; 0</code></pre></div>
+<div class="node-desc">§1863: Venial sin weakens charity but does not destroy it.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SinConditions">SinConditions</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="threshold_coincides_with_charity_break">threshold_coincides_with_charity_break</span><span class="dep-chip" data-target="only_conjunction_destroys_charity">only_conjunction_destroys_charity</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="mortal_sin_destroys_charity">
@@ -782,11 +777,10 @@ h1 {
       tl'.kind = LoveKind.agape ∧
       tl'.lover = tl.lover ∧
       tl'.beloved = tl.beloved ∧
-      tl'.degree = 0
-</code></pre></div>
-<div class="node-desc">§1861: Mortal sin destroys charity — reduces it to zero. │   Source: [Definition] CCC §1861. | Scope: CATHOLIC.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="LoveKind">LoveKind</span><span class="dep-chip" data-target="SinConditions">SinConditions</span><span class="dep-chip" data-target="TypedLove">TypedLove</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="threshold_coincides_with_charity_break">threshold_coincides_with_charity_break</span><span class="dep-chip" data-target="SinConditions">SinConditions</span></div></div>
+      tl'.degree = 0</code></pre></div>
+<div class="node-desc">§1861: Mortal sin destroys charity — reduces it to zero.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SinConditions">SinConditions</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="threshold_coincides_with_charity_break">threshold_coincides_with_charity_break</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="threshold_coincides_with_charity_break">
@@ -815,8 +809,7 @@ h1 {
         tl'.beloved = tl.beloved ∧
         tl'.degree = 0)</code></pre></div>
 <div class="node-desc">The threshold theorem: the mortal/venial boundary in condition-space</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="LoveKind">LoveKind</span><span class="dep-chip" data-target="SinConditions">SinConditions</span><span class="dep-chip" data-target="TypedLove">TypedLove</span><span class="dep-chip" data-target="mortal_sin_destroys_charity">mortal_sin_destroys_charity</span><span class="dep-chip" data-target="venial_sin_weakens_charity">venial_sin_weakens_charity</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="SinConditions">SinConditions</span><span class="dep-chip" data-target="mortal_sin_destroys_charity">mortal_sin_destroys_charity</span><span class="dep-chip" data-target="venial_sin_weakens_charity">venial_sin_weakens_charity</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SinConditions">SinConditions</span><span class="dep-chip" data-target="mortal_sin_destroys_charity">mortal_sin_destroys_charity</span><span class="dep-chip" data-target="venial_sin_weakens_charity">venial_sin_weakens_charity</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="only_conjunction_destroys_charity">
@@ -855,8 +848,29 @@ h1 {
         tl'.beloved = tl.beloved ∧
         tl'.degree &gt; 0)</code></pre></div>
 <div class="node-desc">Only the full conjunction of all three conditions can destroy charity.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CulpabilityDegree">CulpabilityDegree</span><span class="dep-chip" data-target="LoveKind">LoveKind</span><span class="dep-chip" data-target="MatterGravity">MatterGravity</span><span class="dep-chip" data-target="SinConditions">SinConditions</span><span class="dep-chip" data-target="SinConditions.isVenial">SinConditions.isVenial</span><span class="dep-chip" data-target="TypedLove">TypedLove</span><span class="dep-chip" data-target="maxConsent">maxConsent</span><span class="dep-chip" data-target="maxKnowledge">maxKnowledge</span><span class="dep-chip" data-target="venial_sin_weakens_charity">venial_sin_weakens_charity</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="maxConsent">maxConsent</span><span class="dep-chip" data-target="maxKnowledge">maxKnowledge</span><span class="dep-chip" data-target="CulpabilityDegree">CulpabilityDegree</span><span class="dep-chip" data-target="SinConditions">SinConditions</span><span class="dep-chip" data-target="SinConditions.isVenial">SinConditions.isVenial</span><span class="dep-chip" data-target="venial_sin_weakens_charity">venial_sin_weakens_charity</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CulpabilityDegree">CulpabilityDegree</span><span class="dep-chip" data-target="SinConditions">SinConditions</span><span class="dep-chip" data-target="SinConditions.isVenial">SinConditions.isVenial</span><span class="dep-chip" data-target="maxConsent">maxConsent</span><span class="dep-chip" data-target="maxKnowledge">maxKnowledge</span><span class="dep-chip" data-target="venial_sin_weakens_charity">venial_sin_weakens_charity</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="mortal_sin_threshold_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">mortal_sin_threshold_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def mortal_sin_threshold_tag : DenominationalTag</code></pre></div>
+<div class="node-desc">The mortal sin threshold model: Catholic.</div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="culpability_graded_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">culpability_graded_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def culpability_graded_tag : DenominationalTag</code></pre></div>
+<div class="node-desc">Culpability depends on knowledge/consent: ecumenical.</div>
   </div>
 </div>
   </div>

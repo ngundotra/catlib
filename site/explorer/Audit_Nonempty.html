@@ -523,14 +523,20 @@ h1 {
 <div class="container">
   <a href="index.html" class="back-link">&larr; All files</a>
   <h1>Nonempty</h1>
-  <div class="subtitle">Audit &middot; 29 declarations</div>
+  <div class="subtitle">Audit &middot; 58 declarations</div>
 
-  
+  <div class="flow-summary">
+  <span class="flow-count axioms">29 axioms</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count theorems">0 theorems</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count derived">0 derived</span>
+</div>
   <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1030, &sect;1210, &sect;199, &sect;213, &sect;2402, &sect;253, &sect;328, &sect;355, &sect;84, &sect;881</div>
 
-  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span></div>
+  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot instance"></span>instance</span></div>
 
-  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (29)</button></div>
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (29)</button><button class="filter-btn" data-filter="instance">instance (29)</button></div>
 
   <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
 
@@ -542,11 +548,20 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>axiom MoralProposition.nonempty : Nonempty Catlib.MoralProposition
-instance : Nonempty Catlib.MoralProposition := MoralProposition.nonempty
-</code></pre></div>
+    <div class="node-prop"><pre><code>axiom MoralProposition.nonempty : Nonempty Catlib.MoralProposition</code></pre></div>
 <div class="node-desc">Moral propositions exist.  Presupposed by S6 (moral realism).</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MoralProposition">MoralProposition</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-instance" data-kind="instance" data-name=":">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">instance</span>
+    <span class="node-name">:</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>instance : Nonempty Catlib.Sacraments.Liturgy.Moment := Moment.nonempty
+</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Moment.nonempty">Moment.nonempty</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="TheGood.nonempty">
@@ -556,11 +571,20 @@ instance : Nonempty Catlib.MoralProposition := MoralProposition.nonempty
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>axiom TheGood.nonempty : Nonempty Catlib.TheGood
-instance : Nonempty Catlib.TheGood := TheGood.nonempty
-</code></pre></div>
+    <div class="node-prop"><pre><code>axiom TheGood.nonempty : Nonempty Catlib.TheGood</code></pre></div>
 <div class="node-desc">The Good exists as a telos.  Presupposed by S7 (teleological freedom).</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="TheGood">TheGood</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-instance" data-kind="instance" data-name=":">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">instance</span>
+    <span class="node-name">:</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>instance : Nonempty Catlib.Sacraments.Liturgy.Moment := Moment.nonempty
+</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Moment.nonempty">Moment.nonempty</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="PrimaryCause.nonempty">
@@ -570,11 +594,20 @@ instance : Nonempty Catlib.TheGood := TheGood.nonempty
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>axiom PrimaryCause.nonempty : Nonempty Catlib.PrimaryCause
-instance : Nonempty Catlib.PrimaryCause := PrimaryCause.nonempty
-</code></pre></div>
+    <div class="node-prop"><pre><code>axiom PrimaryCause.nonempty : Nonempty Catlib.PrimaryCause</code></pre></div>
 <div class="node-desc">A primary cause exists (God acts).  Presupposed by P2 (two-tier causation).</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="PrimaryCause">PrimaryCause</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-instance" data-kind="instance" data-name=":">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">instance</span>
+    <span class="node-name">:</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>instance : Nonempty Catlib.Sacraments.Liturgy.Moment := Moment.nonempty
+</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Moment.nonempty">Moment.nonempty</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="SecondaryCause.nonempty">
@@ -584,11 +617,20 @@ instance : Nonempty Catlib.PrimaryCause := PrimaryCause.nonempty
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>axiom SecondaryCause.nonempty : Nonempty Catlib.SecondaryCause
-instance : Nonempty Catlib.SecondaryCause := SecondaryCause.nonempty
-</code></pre></div>
+    <div class="node-prop"><pre><code>axiom SecondaryCause.nonempty : Nonempty Catlib.SecondaryCause</code></pre></div>
 <div class="node-desc">A secondary cause exists (creatures act).  Presupposed by P2.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SecondaryCause">SecondaryCause</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-instance" data-kind="instance" data-name=":">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">instance</span>
+    <span class="node-name">:</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>instance : Nonempty Catlib.Sacraments.Liturgy.Moment := Moment.nonempty
+</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Moment.nonempty">Moment.nonempty</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="God.nonempty">
@@ -598,10 +640,20 @@ instance : Nonempty Catlib.SecondaryCause := SecondaryCause.nonempty
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>axiom God.nonempty : Nonempty Catlib.God
-instance : Nonempty Catlib.God := God.nonempty
+    <div class="node-prop"><pre><code>axiom God.nonempty : Nonempty Catlib.God</code></pre></div>
+<div class="node-desc">God exists.  CCC §199: &quot;I believe in one God.&quot;</div>
+  </div>
+</div>
+<div class="node-card kind-instance" data-kind="instance" data-name=":">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">instance</span>
+    <span class="node-name">:</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>instance : Nonempty Catlib.Sacraments.Liturgy.Moment := Moment.nonempty
 </code></pre></div>
-<div class="node-desc">God exists.  CCC §199: &quot;I believe in one God.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Moment.nonempty">Moment.nonempty</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="Sacrament.nonempty">
@@ -611,11 +663,20 @@ instance : Nonempty Catlib.God := God.nonempty
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>axiom Sacrament.nonempty : Nonempty Catlib.Sacrament
-instance : Nonempty Catlib.Sacrament := Sacrament.nonempty
-</code></pre></div>
+    <div class="node-prop"><pre><code>axiom Sacrament.nonempty : Nonempty Catlib.Sacrament</code></pre></div>
 <div class="node-desc">Sacraments exist.  CCC §1210: there are seven sacraments.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Sacrament">Sacrament</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-instance" data-kind="instance" data-name=":">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">instance</span>
+    <span class="node-name">:</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>instance : Nonempty Catlib.Sacraments.Liturgy.Moment := Moment.nonempty
+</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Moment.nonempty">Moment.nonempty</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="HumanPerson.nonempty">
@@ -625,11 +686,20 @@ instance : Nonempty Catlib.Sacrament := Sacrament.nonempty
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>axiom HumanPerson.nonempty : Nonempty Catlib.Creed.HumanPerson
-instance : Nonempty Catlib.Creed.HumanPerson := HumanPerson.nonempty
+    <div class="node-prop"><pre><code>axiom HumanPerson.nonempty : Nonempty Catlib.Creed.HumanPerson</code></pre></div>
+<div class="node-desc">Human persons exist.  CCC §355: &quot;God created man in his own image.&quot;</div>
+  </div>
+</div>
+<div class="node-card kind-instance" data-kind="instance" data-name=":">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">instance</span>
+    <span class="node-name">:</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>instance : Nonempty Catlib.Sacraments.Liturgy.Moment := Moment.nonempty
 </code></pre></div>
-<div class="node-desc">Human persons exist.  CCC §355: &quot;God created man in his own image.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Moment.nonempty">Moment.nonempty</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="DivineSubstance.nonempty">
@@ -639,11 +709,20 @@ instance : Nonempty Catlib.Creed.HumanPerson := HumanPerson.nonempty
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>axiom DivineSubstance.nonempty : Nonempty Catlib.Creed.DivineSubstance
-instance : Nonempty Catlib.Creed.DivineSubstance := DivineSubstance.nonempty
+    <div class="node-prop"><pre><code>axiom DivineSubstance.nonempty : Nonempty Catlib.Creed.DivineSubstance</code></pre></div>
+<div class="node-desc">The divine substance exists.  CCC §253: &quot;one in substance.&quot;</div>
+  </div>
+</div>
+<div class="node-card kind-instance" data-kind="instance" data-name=":">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">instance</span>
+    <span class="node-name">:</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>instance : Nonempty Catlib.Sacraments.Liturgy.Moment := Moment.nonempty
 </code></pre></div>
-<div class="node-desc">The divine substance exists.  CCC §253: &quot;one in substance.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DivineSubstance">DivineSubstance</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Moment.nonempty">Moment.nonempty</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="EcumenicalCouncil.nonempty">
@@ -653,11 +732,20 @@ instance : Nonempty Catlib.Creed.DivineSubstance := DivineSubstance.nonempty
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>axiom EcumenicalCouncil.nonempty : Nonempty Catlib.Creed.ConciliarAuthority.EcumenicalCouncil
-instance : Nonempty Catlib.Creed.ConciliarAuthority.EcumenicalCouncil := EcumenicalCouncil.nonempty
-</code></pre></div>
+    <div class="node-prop"><pre><code>axiom EcumenicalCouncil.nonempty : Nonempty Catlib.Creed.ConciliarAuthority.EcumenicalCouncil</code></pre></div>
 <div class="node-desc">Ecumenical councils have occurred (Nicaea, Trent, Vatican I/II, etc.).</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EcumenicalCouncil">EcumenicalCouncil</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-instance" data-kind="instance" data-name=":">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">instance</span>
+    <span class="node-name">:</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>instance : Nonempty Catlib.Sacraments.Liturgy.Moment := Moment.nonempty
+</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Moment.nonempty">Moment.nonempty</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="ConciliarDefinition.nonempty">
@@ -667,11 +755,20 @@ instance : Nonempty Catlib.Creed.ConciliarAuthority.EcumenicalCouncil := Ecumeni
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>axiom ConciliarDefinition.nonempty : Nonempty Catlib.Creed.ConciliarAuthority.ConciliarDefinition
-instance : Nonempty Catlib.Creed.ConciliarAuthority.ConciliarDefinition := ConciliarDefinition.nonempty
-</code></pre></div>
+    <div class="node-prop"><pre><code>axiom ConciliarDefinition.nonempty : Nonempty Catlib.Creed.ConciliarAuthority.ConciliarDefinition</code></pre></div>
 <div class="node-desc">Councils produced binding definitions.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ConciliarDefinition">ConciliarDefinition</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-instance" data-kind="instance" data-name=":">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">instance</span>
+    <span class="node-name">:</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>instance : Nonempty Catlib.Sacraments.Liturgy.Moment := Moment.nonempty
+</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Moment.nonempty">Moment.nonempty</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="ApostolicTeaching.nonempty">
@@ -681,11 +778,20 @@ instance : Nonempty Catlib.Creed.ConciliarAuthority.ConciliarDefinition := Conci
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>axiom ApostolicTeaching.nonempty : Nonempty Catlib.Creed.RuleOfFaith.ApostolicTeaching
-instance : Nonempty Catlib.Creed.RuleOfFaith.ApostolicTeaching := ApostolicTeaching.nonempty
-</code></pre></div>
+    <div class="node-prop"><pre><code>axiom ApostolicTeaching.nonempty : Nonempty Catlib.Creed.RuleOfFaith.ApostolicTeaching</code></pre></div>
 <div class="node-desc">The apostles transmitted teachings.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ApostolicTeaching">ApostolicTeaching</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-instance" data-kind="instance" data-name=":">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">instance</span>
+    <span class="node-name">:</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>instance : Nonempty Catlib.Sacraments.Liturgy.Moment := Moment.nonempty
+</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Moment.nonempty">Moment.nonempty</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="WrittenText.nonempty">
@@ -695,11 +801,20 @@ instance : Nonempty Catlib.Creed.RuleOfFaith.ApostolicTeaching := ApostolicTeach
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>axiom WrittenText.nonempty : Nonempty Catlib.Creed.RuleOfFaith.WrittenText
-instance : Nonempty Catlib.Creed.RuleOfFaith.WrittenText := WrittenText.nonempty
-</code></pre></div>
+    <div class="node-prop"><pre><code>axiom WrittenText.nonempty : Nonempty Catlib.Creed.RuleOfFaith.WrittenText</code></pre></div>
 <div class="node-desc">Written texts (Scripture) exist.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="WrittenText">WrittenText</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-instance" data-kind="instance" data-name=":">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">instance</span>
+    <span class="node-name">:</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>instance : Nonempty Catlib.Sacraments.Liturgy.Moment := Moment.nonempty
+</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Moment.nonempty">Moment.nonempty</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="MagisterialJudgment.nonempty">
@@ -709,11 +824,20 @@ instance : Nonempty Catlib.Creed.RuleOfFaith.WrittenText := WrittenText.nonempty
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>axiom MagisterialJudgment.nonempty : Nonempty Catlib.Creed.RuleOfFaith.MagisterialJudgment
-instance : Nonempty Catlib.Creed.RuleOfFaith.MagisterialJudgment := MagisterialJudgment.nonempty
-</code></pre></div>
+    <div class="node-prop"><pre><code>axiom MagisterialJudgment.nonempty : Nonempty Catlib.Creed.RuleOfFaith.MagisterialJudgment</code></pre></div>
 <div class="node-desc">The Magisterium has issued judgments.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MagisterialJudgment">MagisterialJudgment</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-instance" data-kind="instance" data-name=":">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">instance</span>
+    <span class="node-name">:</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>instance : Nonempty Catlib.Sacraments.Liturgy.Moment := Moment.nonempty
+</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Moment.nonempty">Moment.nonempty</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="TheologicalPredicate.nonempty">
@@ -723,11 +847,20 @@ instance : Nonempty Catlib.Creed.RuleOfFaith.MagisterialJudgment := MagisterialJ
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>axiom TheologicalPredicate.nonempty : Nonempty Catlib.Creed.AnalogyOfBeing.TheologicalPredicate
-instance : Nonempty Catlib.Creed.AnalogyOfBeing.TheologicalPredicate := TheologicalPredicate.nonempty
-</code></pre></div>
+    <div class="node-prop"><pre><code>axiom TheologicalPredicate.nonempty : Nonempty Catlib.Creed.AnalogyOfBeing.TheologicalPredicate</code></pre></div>
 <div class="node-desc">We can predicate things of God (e.g., &quot;God is good&quot;).</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="TheologicalPredicate">TheologicalPredicate</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-instance" data-kind="instance" data-name=":">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">instance</span>
+    <span class="node-name">:</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>instance : Nonempty Catlib.Sacraments.Liturgy.Moment := Moment.nonempty
+</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Moment.nonempty">Moment.nonempty</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="Teaching.nonempty">
@@ -737,11 +870,20 @@ instance : Nonempty Catlib.Creed.AnalogyOfBeing.TheologicalPredicate := Theologi
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>axiom Teaching.nonempty : Nonempty Catlib.Creed.PapalInfallibility.Teaching
-instance : Nonempty Catlib.Creed.PapalInfallibility.Teaching := Teaching.nonempty
-</code></pre></div>
+    <div class="node-prop"><pre><code>axiom Teaching.nonempty : Nonempty Catlib.Creed.PapalInfallibility.Teaching</code></pre></div>
 <div class="node-desc">Popes have issued teachings.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Teaching">Teaching</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-instance" data-kind="instance" data-name=":">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">instance</span>
+    <span class="node-name">:</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>instance : Nonempty Catlib.Sacraments.Liturgy.Moment := Moment.nonempty
+</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Moment.nonempty">Moment.nonempty</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="PetrineOffice.nonempty">
@@ -751,11 +893,20 @@ instance : Nonempty Catlib.Creed.PapalInfallibility.Teaching := Teaching.nonempt
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>axiom PetrineOffice.nonempty : Nonempty Catlib.Creed.PapalInfallibility.PetrineOffice
-instance : Nonempty Catlib.Creed.PapalInfallibility.PetrineOffice := PetrineOffice.nonempty
-</code></pre></div>
+    <div class="node-prop"><pre><code>axiom PetrineOffice.nonempty : Nonempty Catlib.Creed.PapalInfallibility.PetrineOffice</code></pre></div>
 <div class="node-desc">The Petrine office exists.  CCC §881.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="PetrineOffice">PetrineOffice</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-instance" data-kind="instance" data-name=":">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">instance</span>
+    <span class="node-name">:</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>instance : Nonempty Catlib.Sacraments.Liturgy.Moment := Moment.nonempty
+</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Moment.nonempty">Moment.nonempty</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="Truth.nonempty">
@@ -765,11 +916,20 @@ instance : Nonempty Catlib.Creed.PapalInfallibility.PetrineOffice := PetrineOffi
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>axiom Truth.nonempty : Nonempty Catlib.Creed.FaithAndReason.Truth
-instance : Nonempty Catlib.Creed.FaithAndReason.Truth := Truth.nonempty
-</code></pre></div>
+    <div class="node-prop"><pre><code>axiom Truth.nonempty : Nonempty Catlib.Creed.FaithAndReason.Truth</code></pre></div>
 <div class="node-desc">Truth exists.  Presupposed by the entire formalization.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Truth">Truth</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-instance" data-kind="instance" data-name=":">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">instance</span>
+    <span class="node-name">:</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>instance : Nonempty Catlib.Sacraments.Liturgy.Moment := Moment.nonempty
+</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Moment.nonempty">Moment.nonempty</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="Being.nonempty">
@@ -779,11 +939,20 @@ instance : Nonempty Catlib.Creed.FaithAndReason.Truth := Truth.nonempty
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>axiom Being.nonempty : Nonempty Catlib.Creed.EssenceExistence.Being
-instance : Nonempty Catlib.Creed.EssenceExistence.Being := Being.nonempty
-</code></pre></div>
+    <div class="node-prop"><pre><code>axiom Being.nonempty : Nonempty Catlib.Creed.EssenceExistence.Being</code></pre></div>
 <div class="node-desc">Beings exist.  Self-evident.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Being">Being</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-instance" data-kind="instance" data-name=":">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">instance</span>
+    <span class="node-name">:</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>instance : Nonempty Catlib.Sacraments.Liturgy.Moment := Moment.nonempty
+</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Moment.nonempty">Moment.nonempty</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="Angel.nonempty">
@@ -793,11 +962,20 @@ instance : Nonempty Catlib.Creed.EssenceExistence.Being := Being.nonempty
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>axiom Angel.nonempty : Nonempty Catlib.Creed.Angel
-instance : Nonempty Catlib.Creed.Angel := Angel.nonempty
+    <div class="node-prop"><pre><code>axiom Angel.nonempty : Nonempty Catlib.Creed.Angel</code></pre></div>
+<div class="node-desc">Angels exist.  CCC §328: &quot;The existence of angels — a truth of faith.&quot;</div>
+  </div>
+</div>
+<div class="node-card kind-instance" data-kind="instance" data-name=":">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">instance</span>
+    <span class="node-name">:</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>instance : Nonempty Catlib.Sacraments.Liturgy.Moment := Moment.nonempty
 </code></pre></div>
-<div class="node-desc">Angels exist.  CCC §328: &quot;The existence of angels — a truth of faith.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Moment.nonempty">Moment.nonempty</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="Matter.nonempty">
@@ -807,10 +985,20 @@ instance : Nonempty Catlib.Creed.Angel := Angel.nonempty
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>axiom Matter.nonempty : Nonempty Catlib.Creed.Matter
-instance : Nonempty Catlib.Creed.Matter := Matter.nonempty
-</code></pre></div>
+    <div class="node-prop"><pre><code>axiom Matter.nonempty : Nonempty Catlib.Creed.Matter</code></pre></div>
 <div class="node-desc">Matter exists.  The material world is real.</div>
+  </div>
+</div>
+<div class="node-card kind-instance" data-kind="instance" data-name=":">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">instance</span>
+    <span class="node-name">:</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>instance : Nonempty Catlib.Sacraments.Liturgy.Moment := Moment.nonempty
+</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Moment.nonempty">Moment.nonempty</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="DepositOfFaith.nonempty">
@@ -820,11 +1008,20 @@ instance : Nonempty Catlib.Creed.Matter := Matter.nonempty
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>axiom DepositOfFaith.nonempty : Nonempty Catlib.Creed.DevelopmentOfDoctrine.DepositOfFaith
-instance : Nonempty Catlib.Creed.DevelopmentOfDoctrine.DepositOfFaith := DepositOfFaith.nonempty
-</code></pre></div>
+    <div class="node-prop"><pre><code>axiom DepositOfFaith.nonempty : Nonempty Catlib.Creed.DevelopmentOfDoctrine.DepositOfFaith</code></pre></div>
 <div class="node-desc">The deposit of faith was entrusted to the apostles.  CCC §84.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DepositOfFaith">DepositOfFaith</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-instance" data-kind="instance" data-name=":">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">instance</span>
+    <span class="node-name">:</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>instance : Nonempty Catlib.Sacraments.Liturgy.Moment := Moment.nonempty
+</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Moment.nonempty">Moment.nonempty</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="Doctrine.nonempty">
@@ -834,11 +1031,20 @@ instance : Nonempty Catlib.Creed.DevelopmentOfDoctrine.DepositOfFaith := Deposit
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>axiom Doctrine.nonempty : Nonempty Catlib.Creed.DevelopmentOfDoctrine.Doctrine
-instance : Nonempty Catlib.Creed.DevelopmentOfDoctrine.Doctrine := Doctrine.nonempty
-</code></pre></div>
+    <div class="node-prop"><pre><code>axiom Doctrine.nonempty : Nonempty Catlib.Creed.DevelopmentOfDoctrine.Doctrine</code></pre></div>
 <div class="node-desc">Doctrines have been formulated and developed.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Doctrine">Doctrine</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-instance" data-kind="instance" data-name=":">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">instance</span>
+    <span class="node-name">:</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>instance : Nonempty Catlib.Sacraments.Liturgy.Moment := Moment.nonempty
+</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Moment.nonempty">Moment.nonempty</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="HolinessDegree.nonempty">
@@ -848,11 +1054,20 @@ instance : Nonempty Catlib.Creed.DevelopmentOfDoctrine.Doctrine := Doctrine.none
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>axiom HolinessDegree.nonempty : Nonempty Catlib.Creed.HolinessDegree
-instance : Nonempty Catlib.Creed.HolinessDegree := HolinessDegree.nonempty
-</code></pre></div>
+    <div class="node-prop"><pre><code>axiom HolinessDegree.nonempty : Nonempty Catlib.Creed.HolinessDegree</code></pre></div>
 <div class="node-desc">Holiness admits of degrees.  CCC §1030-1031.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HolinessDegree">HolinessDegree</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-instance" data-kind="instance" data-name=":">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">instance</span>
+    <span class="node-name">:</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>instance : Nonempty Catlib.Sacraments.Liturgy.Moment := Moment.nonempty
+</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Moment.nonempty">Moment.nonempty</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="DivineEssence.nonempty">
@@ -862,11 +1077,20 @@ instance : Nonempty Catlib.Creed.HolinessDegree := HolinessDegree.nonempty
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>axiom DivineEssence.nonempty : Nonempty Catlib.Creed.DivineAttributes.DivineEssence
-instance : Nonempty Catlib.Creed.DivineAttributes.DivineEssence := DivineEssence.nonempty
+    <div class="node-prop"><pre><code>axiom DivineEssence.nonempty : Nonempty Catlib.Creed.DivineAttributes.DivineEssence</code></pre></div>
+<div class="node-desc">God has an essence.  CCC §213: &quot;I AM WHO I AM.&quot;</div>
+  </div>
+</div>
+<div class="node-card kind-instance" data-kind="instance" data-name=":">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">instance</span>
+    <span class="node-name">:</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>instance : Nonempty Catlib.Sacraments.Liturgy.Moment := Moment.nonempty
 </code></pre></div>
-<div class="node-desc">God has an essence.  CCC §213: &quot;I AM WHO I AM.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DivineEssence">DivineEssence</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Moment.nonempty">Moment.nonempty</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="Interpretation.nonempty">
@@ -876,11 +1100,20 @@ instance : Nonempty Catlib.Creed.DivineAttributes.DivineEssence := DivineEssence
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>axiom Interpretation.nonempty : Nonempty Catlib.Creed.PrivateJudgment.Interpretation
-instance : Nonempty Catlib.Creed.PrivateJudgment.Interpretation := Interpretation.nonempty
-</code></pre></div>
+    <div class="node-prop"><pre><code>axiom Interpretation.nonempty : Nonempty Catlib.Creed.PrivateJudgment.Interpretation</code></pre></div>
 <div class="node-desc">People form interpretations of Scripture and doctrine.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Interpretation">Interpretation</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-instance" data-kind="instance" data-name=":">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">instance</span>
+    <span class="node-name">:</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>instance : Nonempty Catlib.Sacraments.Liturgy.Moment := Moment.nonempty
+</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Moment.nonempty">Moment.nonempty</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="Adjudicator.nonempty">
@@ -890,11 +1123,20 @@ instance : Nonempty Catlib.Creed.PrivateJudgment.Interpretation := Interpretatio
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>axiom Adjudicator.nonempty : Nonempty Catlib.Creed.PrivateJudgment.Adjudicator
-instance : Nonempty Catlib.Creed.PrivateJudgment.Adjudicator := Adjudicator.nonempty
-</code></pre></div>
+    <div class="node-prop"><pre><code>axiom Adjudicator.nonempty : Nonempty Catlib.Creed.PrivateJudgment.Adjudicator</code></pre></div>
 <div class="node-desc">Adjudicators of doctrinal disputes exist (Magisterium, councils, etc.).</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Adjudicator">Adjudicator</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-instance" data-kind="instance" data-name=":">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">instance</span>
+    <span class="node-name">:</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>instance : Nonempty Catlib.Sacraments.Liturgy.Moment := Moment.nonempty
+</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Moment.nonempty">Moment.nonempty</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="MaterialGood.nonempty">
@@ -904,11 +1146,20 @@ instance : Nonempty Catlib.Creed.PrivateJudgment.Adjudicator := Adjudicator.none
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>axiom MaterialGood.nonempty : Nonempty Catlib.MoralTheology.SocialDoctrine.MaterialGood
-instance : Nonempty Catlib.MoralTheology.SocialDoctrine.MaterialGood := MaterialGood.nonempty
-</code></pre></div>
+    <div class="node-prop"><pre><code>axiom MaterialGood.nonempty : Nonempty Catlib.MoralTheology.SocialDoctrine.MaterialGood</code></pre></div>
 <div class="node-desc">Material goods exist.  CCC §2402.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MaterialGood">MaterialGood</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-instance" data-kind="instance" data-name=":">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">instance</span>
+    <span class="node-name">:</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>instance : Nonempty Catlib.Sacraments.Liturgy.Moment := Moment.nonempty
+</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Moment.nonempty">Moment.nonempty</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="SavingEvent.nonempty">
@@ -918,11 +1169,20 @@ instance : Nonempty Catlib.MoralTheology.SocialDoctrine.MaterialGood := Material
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>axiom SavingEvent.nonempty : Nonempty Catlib.Sacraments.Liturgy.SavingEvent
-instance : Nonempty Catlib.Sacraments.Liturgy.SavingEvent := SavingEvent.nonempty
-</code></pre></div>
+    <div class="node-prop"><pre><code>axiom SavingEvent.nonempty : Nonempty Catlib.Sacraments.Liturgy.SavingEvent</code></pre></div>
 <div class="node-desc">Saving events have occurred (the Paschal mystery).</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SavingEvent">SavingEvent</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-instance" data-kind="instance" data-name=":">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">instance</span>
+    <span class="node-name">:</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>instance : Nonempty Catlib.Sacraments.Liturgy.Moment := Moment.nonempty
+</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Moment.nonempty">Moment.nonempty</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="Moment.nonempty">
@@ -932,11 +1192,21 @@ instance : Nonempty Catlib.Sacraments.Liturgy.SavingEvent := SavingEvent.nonempt
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>axiom Moment.nonempty : Nonempty Catlib.Sacraments.Liturgy.Moment
-instance : Nonempty Catlib.Sacraments.Liturgy.Moment := Moment.nonempty
-</code></pre></div>
+    <div class="node-prop"><pre><code>axiom Moment.nonempty : Nonempty Catlib.Sacraments.Liturgy.Moment</code></pre></div>
 <div class="node-desc">Time exists; moments are real.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Moment">Moment</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target=":">:</span><span class="dep-chip" data-target=":">:</span><span class="dep-chip" data-target=":">:</span><span class="dep-chip" data-target=":">:</span><span class="dep-chip" data-target=":">:</span><span class="dep-chip" data-target=":">:</span><span class="dep-chip" data-target=":">:</span><span class="dep-chip" data-target=":">:</span><span class="dep-chip" data-target=":">:</span><span class="dep-chip" data-target=":">:</span><span class="dep-chip" data-target=":">:</span><span class="dep-chip" data-target=":">:</span><span class="dep-chip" data-target=":">:</span><span class="dep-chip" data-target=":">:</span><span class="dep-chip" data-target=":">:</span><span class="dep-chip" data-target=":">:</span><span class="dep-chip" data-target=":">:</span><span class="dep-chip" data-target=":">:</span><span class="dep-chip" data-target=":">:</span><span class="dep-chip" data-target=":">:</span><span class="dep-chip" data-target=":">:</span><span class="dep-chip" data-target=":">:</span><span class="dep-chip" data-target=":">:</span><span class="dep-chip" data-target=":">:</span><span class="dep-chip" data-target=":">:</span><span class="dep-chip" data-target=":">:</span><span class="dep-chip" data-target=":">:</span><span class="dep-chip" data-target=":">:</span><span class="dep-chip" data-target=":">:</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-instance" data-kind="instance" data-name=":">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">instance</span>
+    <span class="node-name">:</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>instance : Nonempty Catlib.Sacraments.Liturgy.Moment := Moment.nonempty
+</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Moment.nonempty">Moment.nonempty</span></div></div>
   </div>
 </div>
   </div>

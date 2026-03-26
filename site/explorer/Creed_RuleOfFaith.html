@@ -143,7 +143,7 @@ h1 {
   line-height: 1.6;
 }
 
-/* -- Search -- */
+/* ── Search ── */
 .search-box {
   width: 100%;
   padding: 0.8rem 1rem;
@@ -167,7 +167,91 @@ h1 {
   font-style: italic;
 }
 
-/* -- Node cards -- */
+/* ── Category sections ── */
+.category-header {
+  font-family: Cinzel, Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-variant: small-caps;
+  margin: 1.8rem 0 0.8rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── File cards ── */
+.file-card {
+  display: block;
+  padding: 1rem 1.1rem;
+  margin-bottom: 0.5rem;
+  background: var(--bg-parchment);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  text-decoration: none;
+  color: var(--text);
+  transition: background 0.15s, border-color 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.file-card:hover, .file-card:active {
+  background: var(--bg-vellum);
+  border-color: var(--accent-gold);
+  text-decoration: none;
+}
+
+.file-card-name {
+  font-family: Cinzel, Georgia, serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.3rem;
+}
+
+.file-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  font-size: 0.82rem;
+  color: var(--text-light);
+}
+
+.file-card-meta .tag {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.75rem;
+  font-family: Cinzel, Georgia, serif;
+  letter-spacing: 0.03em;
+}
+
+.tag-axiom { background: var(--axiom-bg); color: var(--axiom-dot); border: 1px solid var(--axiom-border); }
+.tag-theorem { background: var(--theorem-bg); color: var(--theorem-dot); border: 1px solid var(--theorem-border); }
+.tag-def { background: var(--def-bg); color: var(--def-dot); border: 1px solid var(--def-border); }
+.tag-proposition { background: var(--proposition-bg); color: var(--proposition-dot); border: 1px solid var(--proposition-border); }
+
+.file-card-ccc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 0.3rem;
+}
+
+/* ── Summary stats ── */
+.stats-bar {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--text-light);
+  font-style: italic;
+}
+
+.stats-bar span { white-space: nowrap; }
+
+/* ── Node cards (per-file page) ── */
 .node-card {
   margin-bottom: 0.4rem;
   border: 1px solid var(--border);
@@ -321,7 +405,7 @@ h1 {
   color: var(--text-muted);
 }
 
-/* -- Flow diagram header -- */
+/* ── Flow diagram header ── */
 .flow-summary {
   display: flex;
   justify-content: center;
@@ -347,7 +431,7 @@ h1 {
 .flow-count.theorems { background: var(--theorem-bg); color: var(--theorem-dot); }
 .flow-count.derived { background: var(--def-bg); color: var(--def-dot); }
 
-/* -- Legend -- */
+/* ── Legend ── */
 .legend {
   display: flex;
   flex-wrap: wrap;
@@ -379,7 +463,7 @@ h1 {
 .legend-dot.inductive { background: var(--inductive-dot); }
 .legend-dot.proposition { background: var(--proposition-dot); }
 
-/* -- Filter buttons -- */
+/* ── Filter buttons ── */
 .filter-bar {
   display: flex;
   flex-wrap: wrap;
@@ -408,7 +492,7 @@ h1 {
   border-color: var(--accent);
 }
 
-/* -- Back link -- */
+/* ── Back link ── */
 .back-link {
   display: inline-block;
   margin-bottom: 1rem;
@@ -417,7 +501,7 @@ h1 {
   letter-spacing: 0.04em;
 }
 
-/* -- Footer -- */
+/* ── Footer ── */
 .footer {
   text-align: center;
   padding-top: 2rem;
@@ -426,7 +510,7 @@ h1 {
   font-style: italic;
 }
 
-/* -- Responsive -- */
+/* ── Responsive ── */
 @media (max-width: 500px) {
   html { font-size: 16px; }
   .container { padding: 1rem 0.75rem 2rem; }
@@ -441,8 +525,15 @@ h1 {
   <h1>RuleOfFaith</h1>
   <div class="subtitle">Creed &middot; 29 declarations</div>
 
-  
-  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;50, &sect;74, &sect;75, &sect;76, &sect;77, &sect;80, &sect;82, &sect;85, &sect;120</div>
+  <div class="flow-summary">
+  <span class="flow-count axioms">14 axioms</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count theorems">6 theorems</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count derived">9 derived</span>
+</div>
+  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;120, &sect;50, &sect;74, &sect;75, &sect;76, &sect;77, &sect;80, &sect;82, &sect;85</div>
+
   <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
 
   <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (4)</button><button class="filter-btn" data-filter="def">def (9)</button><button class="filter-btn" data-filter="opaque">opaque (10)</button><button class="filter-btn" data-filter="theorem">theorem (6)</button></div>
@@ -458,7 +549,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque ApostolicTeaching : Type</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="catholic_rule_of_faith">catholic_rule_of_faith</span><span class="dep-chip" data-target="dual_transmission">dual_transmission</span><span class="dep-chip" data-target="inScripture">inScripture</span><span class="dep-chip" data-target="inTradition">inTradition</span><span class="dep-chip" data-target="isRevealed">isRevealed</span><span class="dep-chip" data-target="not_everything_written">not_everything_written</span><span class="dep-chip" data-target="protestant_sola_scriptura_entails_no_unwritten">protestant_sola_scriptura_entails_no_unwritten</span><span class="dep-chip" data-target="scripture_materially_incomplete">scripture_materially_incomplete</span><span class="dep-chip" data-target="sola_scriptura_incompatible">sola_scriptura_incompatible</span><span class="dep-chip" data-target="tradition_only_teaching_exists">tradition_only_teaching_exists</span></div></div>
+<div class="node-desc">A unit of apostolic teaching — a specific doctrinal or moral claim</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="inScripture">inScripture</span><span class="dep-chip" data-target="inTradition">inTradition</span><span class="dep-chip" data-target="isRevealed">isRevealed</span><span class="dep-chip" data-target="dual_transmission">dual_transmission</span><span class="dep-chip" data-target="not_everything_written">not_everything_written</span><span class="dep-chip" data-target="scripture_materially_incomplete">scripture_materially_incomplete</span><span class="dep-chip" data-target="tradition_only_teaching_exists">tradition_only_teaching_exists</span><span class="dep-chip" data-target="sola_scriptura_incompatible">sola_scriptura_incompatible</span><span class="dep-chip" data-target="catholic_rule_of_faith">catholic_rule_of_faith</span><span class="dep-chip" data-target="protestant_sola_scriptura_entails_no_unwritten">protestant_sola_scriptura_entails_no_unwritten</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="inScripture">
@@ -469,8 +561,9 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque inScripture : ApostolicTeaching → Prop</code></pre></div>
+<div class="node-desc">Whether a specific teaching is contained in Sacred Scripture.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ApostolicTeaching">ApostolicTeaching</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="catholic_rule_of_faith">catholic_rule_of_faith</span><span class="dep-chip" data-target="dual_transmission">dual_transmission</span><span class="dep-chip" data-target="not_everything_written">not_everything_written</span><span class="dep-chip" data-target="protestant_sola_scriptura_entails_no_unwritten">protestant_sola_scriptura_entails_no_unwritten</span><span class="dep-chip" data-target="scripture_materially_incomplete">scripture_materially_incomplete</span><span class="dep-chip" data-target="sola_scriptura_incompatible">sola_scriptura_incompatible</span><span class="dep-chip" data-target="tradition_only_teaching_exists">tradition_only_teaching_exists</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="dual_transmission">dual_transmission</span><span class="dep-chip" data-target="not_everything_written">not_everything_written</span><span class="dep-chip" data-target="scripture_materially_incomplete">scripture_materially_incomplete</span><span class="dep-chip" data-target="tradition_only_teaching_exists">tradition_only_teaching_exists</span><span class="dep-chip" data-target="sola_scriptura_incompatible">sola_scriptura_incompatible</span><span class="dep-chip" data-target="catholic_rule_of_faith">catholic_rule_of_faith</span><span class="dep-chip" data-target="protestant_sola_scriptura_entails_no_unwritten">protestant_sola_scriptura_entails_no_unwritten</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="inTradition">
@@ -481,6 +574,7 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque inTradition : ApostolicTeaching → Prop</code></pre></div>
+<div class="node-desc">Whether a specific teaching is transmitted through Sacred Tradition.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ApostolicTeaching">ApostolicTeaching</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="dual_transmission">dual_transmission</span><span class="dep-chip" data-target="not_everything_written">not_everything_written</span><span class="dep-chip" data-target="scripture_materially_incomplete">scripture_materially_incomplete</span><span class="dep-chip" data-target="tradition_only_teaching_exists">tradition_only_teaching_exists</span></div></div>
   </div>
@@ -493,8 +587,9 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque isRevealed : ApostolicTeaching → Prop</code></pre></div>
+<div class="node-desc">Whether a teaching is part of divine revelation (regardless of</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ApostolicTeaching">ApostolicTeaching</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="catholic_rule_of_faith">catholic_rule_of_faith</span><span class="dep-chip" data-target="dual_transmission">dual_transmission</span><span class="dep-chip" data-target="not_everything_written">not_everything_written</span><span class="dep-chip" data-target="protestant_sola_scriptura_entails_no_unwritten">protestant_sola_scriptura_entails_no_unwritten</span><span class="dep-chip" data-target="scripture_materially_incomplete">scripture_materially_incomplete</span><span class="dep-chip" data-target="sola_scriptura_incompatible">sola_scriptura_incompatible</span><span class="dep-chip" data-target="tradition_only_teaching_exists">tradition_only_teaching_exists</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="dual_transmission">dual_transmission</span><span class="dep-chip" data-target="not_everything_written">not_everything_written</span><span class="dep-chip" data-target="scripture_materially_incomplete">scripture_materially_incomplete</span><span class="dep-chip" data-target="tradition_only_teaching_exists">tradition_only_teaching_exists</span><span class="dep-chip" data-target="sola_scriptura_incompatible">sola_scriptura_incompatible</span><span class="dep-chip" data-target="catholic_rule_of_faith">catholic_rule_of_faith</span><span class="dep-chip" data-target="protestant_sola_scriptura_entails_no_unwritten">protestant_sola_scriptura_entails_no_unwritten</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="WrittenText">
@@ -505,7 +600,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque WrittenText : Type</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="canon_act_not_in_scripture">canon_act_not_in_scripture</span><span class="dep-chip" data-target="canon_bootstrapping_problem">canon_bootstrapping_problem</span><span class="dep-chip" data-target="canon_depends_on_church">canon_depends_on_church</span><span class="dep-chip" data-target="catholic_rule_of_faith">catholic_rule_of_faith</span><span class="dep-chip" data-target="determinedCanon">determinedCanon</span><span class="dep-chip" data-target="isCanonical">isCanonical</span></div></div>
+<div class="node-desc">A written text — candidate for inclusion in the scriptural canon.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="isCanonical">isCanonical</span><span class="dep-chip" data-target="determinedCanon">determinedCanon</span><span class="dep-chip" data-target="canon_depends_on_church">canon_depends_on_church</span><span class="dep-chip" data-target="canon_act_not_in_scripture">canon_act_not_in_scripture</span><span class="dep-chip" data-target="canon_bootstrapping_problem">canon_bootstrapping_problem</span><span class="dep-chip" data-target="catholic_rule_of_faith">catholic_rule_of_faith</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="isCanonical">
@@ -516,8 +612,9 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque isCanonical : WrittenText → Prop</code></pre></div>
+<div class="node-desc">Whether a written text is part of the canonical Scriptures.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="WrittenText">WrittenText</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="canon_bootstrapping_problem">canon_bootstrapping_problem</span><span class="dep-chip" data-target="canon_depends_on_church">canon_depends_on_church</span><span class="dep-chip" data-target="catholic_rule_of_faith">catholic_rule_of_faith</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="canon_depends_on_church">canon_depends_on_church</span><span class="dep-chip" data-target="canon_bootstrapping_problem">canon_bootstrapping_problem</span><span class="dep-chip" data-target="catholic_rule_of_faith">catholic_rule_of_faith</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="MagisterialJudgment">
@@ -528,7 +625,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque MagisterialJudgment : Type</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="canon_act_not_in_scripture">canon_act_not_in_scripture</span><span class="dep-chip" data-target="canon_bootstrapping_problem">canon_bootstrapping_problem</span><span class="dep-chip" data-target="canon_depends_on_church">canon_depends_on_church</span><span class="dep-chip" data-target="catholic_rule_of_faith">catholic_rule_of_faith</span><span class="dep-chip" data-target="determinedCanon">determinedCanon</span></div></div>
+<div class="node-desc">A judgment by the Church's teaching authority — the Magisterium.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="determinedCanon">determinedCanon</span><span class="dep-chip" data-target="canon_depends_on_church">canon_depends_on_church</span><span class="dep-chip" data-target="canon_act_not_in_scripture">canon_act_not_in_scripture</span><span class="dep-chip" data-target="canon_bootstrapping_problem">canon_bootstrapping_problem</span><span class="dep-chip" data-target="catholic_rule_of_faith">catholic_rule_of_faith</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="determinedCanon">
@@ -539,8 +637,9 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque determinedCanon : MagisterialJudgment → WrittenText → Prop</code></pre></div>
+<div class="node-desc">Whether a magisterial judgment determined that a text is canonical.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MagisterialJudgment">MagisterialJudgment</span><span class="dep-chip" data-target="WrittenText">WrittenText</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="canon_act_not_in_scripture">canon_act_not_in_scripture</span><span class="dep-chip" data-target="canon_bootstrapping_problem">canon_bootstrapping_problem</span><span class="dep-chip" data-target="canon_depends_on_church">canon_depends_on_church</span><span class="dep-chip" data-target="catholic_rule_of_faith">catholic_rule_of_faith</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="canon_depends_on_church">canon_depends_on_church</span><span class="dep-chip" data-target="canon_act_not_in_scripture">canon_act_not_in_scripture</span><span class="dep-chip" data-target="canon_bootstrapping_problem">canon_bootstrapping_problem</span><span class="dep-chip" data-target="catholic_rule_of_faith">catholic_rule_of_faith</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="derivableFromScriptureAlone">
@@ -551,6 +650,7 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque derivableFromScriptureAlone : Prop → Prop</code></pre></div>
+<div class="node-desc">Whether a proposition is derivable from Scripture alone — i.e.,</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="canon_act_not_in_scripture">canon_act_not_in_scripture</span><span class="dep-chip" data-target="canon_bootstrapping_problem">canon_bootstrapping_problem</span><span class="dep-chip" data-target="catholic_rule_of_faith">catholic_rule_of_faith</span></div></div>
   </div>
 </div>
@@ -562,6 +662,7 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque scriptureIsCanonSelfAuthenticating : Prop</code></pre></div>
+<div class="node-desc">Whether Scripture authenticates its own canon — the Protestant</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="not_everything_written_tag">not_everything_written_tag</span></div></div>
   </div>
 </div>
@@ -575,8 +676,9 @@ h1 {
     <div class="node-prop"><pre><code>axiom dual_transmission :
   ∀ (t : ApostolicTeaching), isRevealed t →
     inScripture t ∨ inTradition t</code></pre></div>
+<div class="node-desc">**AXIOM (DUAL_TRANSMISSION)**: Every revealed teaching is transmitted</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ApostolicTeaching">ApostolicTeaching</span><span class="dep-chip" data-target="inScripture">inScripture</span><span class="dep-chip" data-target="inTradition">inTradition</span><span class="dep-chip" data-target="isRevealed">isRevealed</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="protestant_sola_scriptura_entails_no_unwritten">protestant_sola_scriptura_entails_no_unwritten</span><span class="dep-chip" data-target="ruleOfFaithDenominationalScope">ruleOfFaithDenominationalScope</span><span class="dep-chip" data-target="scripture_materially_incomplete">scripture_materially_incomplete</span><span class="dep-chip" data-target="tradition_only_teaching_exists">tradition_only_teaching_exists</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="scripture_materially_incomplete">scripture_materially_incomplete</span><span class="dep-chip" data-target="tradition_only_teaching_exists">tradition_only_teaching_exists</span><span class="dep-chip" data-target="protestant_sola_scriptura_entails_no_unwritten">protestant_sola_scriptura_entails_no_unwritten</span><span class="dep-chip" data-target="ruleOfFaithDenominationalScope">ruleOfFaithDenominationalScope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="dual_transmission_provenance">
@@ -586,8 +688,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def dual_transmission_provenance : Provenance :=
-  Provenance.tradition &quot;CCC §76; 2 Thess 2:15&quot;</code></pre></div>
+    <div class="node-prop"><pre><code>def dual_transmission_provenance : Provenance</code></pre></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="dual_transmission_tag">
@@ -597,9 +698,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def dual_transmission_tag : DenominationalTag :=
-  { acceptedBy := [Denomination.catholic]
-    note := &quot;Catholic + Orthodox; Protestants reject authoritative oral transmission&quot; }</code></pre></div>
+    <div class="node-prop"><pre><code>def dual_transmission_tag : DenominationalTag</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ruleOfFaithDenominationalScope">ruleOfFaithDenominationalScope</span></div></div>
   </div>
 </div>
@@ -612,8 +711,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom not_everything_written :
   ∃ (t : ApostolicTeaching), isRevealed t ∧ inTradition t ∧ ¬inScripture t</code></pre></div>
+<div class="node-desc">**AXIOM (NOT_EVERYTHING_WRITTEN)**: There exists at least one revealed</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ApostolicTeaching">ApostolicTeaching</span><span class="dep-chip" data-target="inScripture">inScripture</span><span class="dep-chip" data-target="inTradition">inTradition</span><span class="dep-chip" data-target="isRevealed">isRevealed</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="canon_act_not_in_scripture_tag">canon_act_not_in_scripture_tag</span><span class="dep-chip" data-target="canon_bootstrapping_problem">canon_bootstrapping_problem</span><span class="dep-chip" data-target="catholic_rule_of_faith">catholic_rule_of_faith</span><span class="dep-chip" data-target="protestant_sola_scriptura_entails_no_unwritten">protestant_sola_scriptura_entails_no_unwritten</span><span class="dep-chip" data-target="ruleOfFaithDenominationalScope">ruleOfFaithDenominationalScope</span><span class="dep-chip" data-target="scripture_materially_incomplete">scripture_materially_incomplete</span><span class="dep-chip" data-target="sola_scriptura_incompatible">sola_scriptura_incompatible</span><span class="dep-chip" data-target="tradition_only_teaching_exists">tradition_only_teaching_exists</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="canon_act_not_in_scripture_tag">canon_act_not_in_scripture_tag</span><span class="dep-chip" data-target="scripture_materially_incomplete">scripture_materially_incomplete</span><span class="dep-chip" data-target="tradition_only_teaching_exists">tradition_only_teaching_exists</span><span class="dep-chip" data-target="sola_scriptura_incompatible">sola_scriptura_incompatible</span><span class="dep-chip" data-target="canon_bootstrapping_problem">canon_bootstrapping_problem</span><span class="dep-chip" data-target="catholic_rule_of_faith">catholic_rule_of_faith</span><span class="dep-chip" data-target="protestant_sola_scriptura_entails_no_unwritten">protestant_sola_scriptura_entails_no_unwritten</span><span class="dep-chip" data-target="ruleOfFaithDenominationalScope">ruleOfFaithDenominationalScope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="not_everything_written_provenance">
@@ -623,8 +723,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def not_everything_written_provenance : Provenance :=
-  Provenance.tradition &quot;CCC §76; 2 Thess 2:15; Jn 21:25&quot;</code></pre></div>
+    <div class="node-prop"><pre><code>def not_everything_written_provenance : Provenance</code></pre></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="not_everything_written_tag">
@@ -634,9 +733,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def not_everything_written_tag : DenominationalTag :=
-  { acceptedBy := [Denomination.catholic]
-    note := &quot;Catholic + Orthodox; Protestants deny doctrinally relevant unwritten revelation&quot; }</code></pre></div>
+    <div class="node-prop"><pre><code>def not_everything_written_tag : DenominationalTag</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="scriptureIsCanonSelfAuthenticating">scriptureIsCanonSelfAuthenticating</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ruleOfFaithDenominationalScope">ruleOfFaithDenominationalScope</span></div></div>
   </div>
@@ -652,8 +749,9 @@ h1 {
   ∀ (text : WrittenText),
     isCanonical text →
     ∃ (j : MagisterialJudgment), determinedCanon j text</code></pre></div>
+<div class="node-desc">**AXIOM (CANON_DEPENDS_ON_CHURCH)**: The canon of Scripture was determined</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MagisterialJudgment">MagisterialJudgment</span><span class="dep-chip" data-target="WrittenText">WrittenText</span><span class="dep-chip" data-target="determinedCanon">determinedCanon</span><span class="dep-chip" data-target="isCanonical">isCanonical</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="canon_bootstrapping_problem">canon_bootstrapping_problem</span><span class="dep-chip" data-target="protestant_sola_scriptura_entails_no_unwritten">protestant_sola_scriptura_entails_no_unwritten</span><span class="dep-chip" data-target="ruleOfFaithDenominationalScope">ruleOfFaithDenominationalScope</span><span class="dep-chip" data-target="sola_scriptura_incompatible">sola_scriptura_incompatible</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="sola_scriptura_incompatible">sola_scriptura_incompatible</span><span class="dep-chip" data-target="canon_bootstrapping_problem">canon_bootstrapping_problem</span><span class="dep-chip" data-target="protestant_sola_scriptura_entails_no_unwritten">protestant_sola_scriptura_entails_no_unwritten</span><span class="dep-chip" data-target="ruleOfFaithDenominationalScope">ruleOfFaithDenominationalScope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="canon_depends_on_church_provenance">
@@ -663,8 +761,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def canon_depends_on_church_provenance : Provenance :=
-  Provenance.tradition &quot;CCC §120; Council of Hippo 393; Council of Carthage 397&quot;</code></pre></div>
+    <div class="node-prop"><pre><code>def canon_depends_on_church_provenance : Provenance</code></pre></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="canon_depends_on_church_tag">
@@ -674,9 +771,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def canon_depends_on_church_tag : DenominationalTag :=
-  { acceptedBy := [Denomination.catholic]
-    note := &quot;Catholic + Orthodox (historically); Protestants say Church recognized, not determined&quot; }</code></pre></div>
+    <div class="node-prop"><pre><code>def canon_depends_on_church_tag : DenominationalTag</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ruleOfFaithDenominationalScope">ruleOfFaithDenominationalScope</span></div></div>
   </div>
 </div>
@@ -691,8 +786,9 @@ h1 {
   ∀ (text : WrittenText) (j : MagisterialJudgment),
     determinedCanon j text →
     ¬derivableFromScriptureAlone (determinedCanon j text)</code></pre></div>
+<div class="node-desc">**AXIOM (CANON_ACT_NOT_IN_SCRIPTURE)**: The determination of the canon</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MagisterialJudgment">MagisterialJudgment</span><span class="dep-chip" data-target="WrittenText">WrittenText</span><span class="dep-chip" data-target="derivableFromScriptureAlone">derivableFromScriptureAlone</span><span class="dep-chip" data-target="determinedCanon">determinedCanon</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="canon_bootstrapping_problem">canon_bootstrapping_problem</span><span class="dep-chip" data-target="protestant_sola_scriptura_entails_no_unwritten">protestant_sola_scriptura_entails_no_unwritten</span><span class="dep-chip" data-target="ruleOfFaithDenominationalScope">ruleOfFaithDenominationalScope</span><span class="dep-chip" data-target="sola_scriptura_incompatible">sola_scriptura_incompatible</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="sola_scriptura_incompatible">sola_scriptura_incompatible</span><span class="dep-chip" data-target="canon_bootstrapping_problem">canon_bootstrapping_problem</span><span class="dep-chip" data-target="protestant_sola_scriptura_entails_no_unwritten">protestant_sola_scriptura_entails_no_unwritten</span><span class="dep-chip" data-target="ruleOfFaithDenominationalScope">ruleOfFaithDenominationalScope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="canon_act_not_in_scripture_provenance">
@@ -702,8 +798,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def canon_act_not_in_scripture_provenance : Provenance :=
-  Provenance.tradition &quot;Observation; no canonical list in Scripture&quot;</code></pre></div>
+    <div class="node-prop"><pre><code>def canon_act_not_in_scripture_provenance : Provenance</code></pre></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="canon_act_not_in_scripture_tag">
@@ -713,9 +808,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def canon_act_not_in_scripture_tag : DenominationalTag :=
-  { acceptedBy := [Denomination.catholic]
-    note := &quot;Broadly accepted factually; Protestants dispute the theological import&quot; }</code></pre></div>
+    <div class="node-prop"><pre><code>def canon_act_not_in_scripture_tag : DenominationalTag</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="not_everything_written">not_everything_written</span><span class="dep-chip" data-target="scripture_materially_incomplete">scripture_materially_incomplete</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ruleOfFaithDenominationalScope">ruleOfFaithDenominationalScope</span></div></div>
   </div>
@@ -728,9 +821,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem scripture_materially_incomplete :
-    ∃ (t : ApostolicTeaching), isRevealed t ∧ ¬inScripture t := by
-  obtain ⟨t, h_rev, _, h_not_s⟩ := not_everything_written
-  exact ⟨t, h_rev, h_not_s⟩</code></pre></div>
+    ∃ (t : ApostolicTeaching), isRevealed t ∧ ¬inScripture t</code></pre></div>
+<div class="node-desc">**THEOREM: scripture_materially_incomplete** — Under Catholic axioms,</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ApostolicTeaching">ApostolicTeaching</span><span class="dep-chip" data-target="dual_transmission">dual_transmission</span><span class="dep-chip" data-target="inScripture">inScripture</span><span class="dep-chip" data-target="inTradition">inTradition</span><span class="dep-chip" data-target="isRevealed">isRevealed</span><span class="dep-chip" data-target="not_everything_written">not_everything_written</span><span class="dep-chip" data-target="tradition_only_teaching_exists">tradition_only_teaching_exists</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="canon_act_not_in_scripture_tag">canon_act_not_in_scripture_tag</span><span class="dep-chip" data-target="catholic_rule_of_faith">catholic_rule_of_faith</span></div></div>
   </div>
@@ -743,13 +835,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem tradition_only_teaching_exists :
-    ∃ (t : ApostolicTeaching), isRevealed t ∧ inTradition t ∧ ¬inScripture t := by
-  obtain ⟨t, h_rev, h_trad, h_not_s⟩ := not_everything_written
-  -- dual_transmission confirms this teaching is in at least one mode
-  have h_mode := dual_transmission t h_rev
-  -- We already know it's in Tradition (from not_everything_written)
-  -- but dual_transmission confirms the two-mode model is complete
-  exact ⟨t, h_rev, h_trad, h_not_s⟩</code></pre></div>
+    ∃ (t : ApostolicTeaching), isRevealed t ∧ inTradition t ∧ ¬inScripture t</code></pre></div>
+<div class="node-desc">**THEOREM: tradition_only_teaching_exists** — There exists a revealed</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ApostolicTeaching">ApostolicTeaching</span><span class="dep-chip" data-target="dual_transmission">dual_transmission</span><span class="dep-chip" data-target="inScripture">inScripture</span><span class="dep-chip" data-target="inTradition">inTradition</span><span class="dep-chip" data-target="isRevealed">isRevealed</span><span class="dep-chip" data-target="not_everything_written">not_everything_written</span><span class="dep-chip" data-target="sola_scriptura_incompatible">sola_scriptura_incompatible</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="scripture_materially_incomplete">scripture_materially_incomplete</span></div></div>
   </div>
@@ -763,9 +850,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem sola_scriptura_incompatible
     (h_sola : ∀ (t : ApostolicTeaching), isRevealed t → inScripture t) :
-    False := by
-  obtain ⟨t, h_rev, _, h_not_s⟩ := not_everything_written
-  exact h_not_s (h_sola t h_rev)</code></pre></div>
+    False</code></pre></div>
+<div class="node-desc">**THEOREM: sola_scriptura_incompatible** — The sola scriptura claim</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ApostolicTeaching">ApostolicTeaching</span><span class="dep-chip" data-target="canon_act_not_in_scripture">canon_act_not_in_scripture</span><span class="dep-chip" data-target="canon_bootstrapping_problem">canon_bootstrapping_problem</span><span class="dep-chip" data-target="canon_depends_on_church">canon_depends_on_church</span><span class="dep-chip" data-target="inScripture">inScripture</span><span class="dep-chip" data-target="isRevealed">isRevealed</span><span class="dep-chip" data-target="not_everything_written">not_everything_written</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="tradition_only_teaching_exists">tradition_only_teaching_exists</span></div></div>
   </div>
@@ -781,12 +867,10 @@ h1 {
     ∀ (text : WrittenText),
       isCanonical text →
       ∃ (j : MagisterialJudgment),
-        determinedCanon j text ∧ ¬derivableFromScriptureAlone (determinedCanon j text) := by
-  intro text h_canonical
-  obtain ⟨j, h_det⟩ := canon_depends_on_church text h_canonical
-  exact ⟨j, h_det, canon_act_not_in_scripture text j h_det⟩</code></pre></div>
+        determinedCanon j text ∧ ¬derivableFromScriptureAlone (determinedCanon j text)</code></pre></div>
+<div class="node-desc">**THEOREM: canon_bootstrapping_problem** — The canon of Scripture</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MagisterialJudgment">MagisterialJudgment</span><span class="dep-chip" data-target="WrittenText">WrittenText</span><span class="dep-chip" data-target="canon_act_not_in_scripture">canon_act_not_in_scripture</span><span class="dep-chip" data-target="canon_depends_on_church">canon_depends_on_church</span><span class="dep-chip" data-target="catholic_rule_of_faith">catholic_rule_of_faith</span><span class="dep-chip" data-target="derivableFromScriptureAlone">derivableFromScriptureAlone</span><span class="dep-chip" data-target="determinedCanon">determinedCanon</span><span class="dep-chip" data-target="isCanonical">isCanonical</span><span class="dep-chip" data-target="not_everything_written">not_everything_written</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="catholic_rule_of_faith">catholic_rule_of_faith</span><span class="dep-chip" data-target="sola_scriptura_incompatible">sola_scriptura_incompatible</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="sola_scriptura_incompatible">sola_scriptura_incompatible</span><span class="dep-chip" data-target="catholic_rule_of_faith">catholic_rule_of_faith</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="catholic_rule_of_faith">
@@ -803,8 +887,8 @@ h1 {
     --     non-scriptural act
     (∀ (text : WrittenText), isCanonical text →
       ∃ (j : MagisterialJudgment),
-        determinedCanon j text ∧ ¬derivableFromScriptureAlone (determinedCanon j text)) := by
-  exact ⟨scripture_materially_incomplete, canon_bootstrapping_problem⟩</code></pre></div>
+        determinedCanon j text ∧ ¬derivableFromScriptureAlone (determinedCanon j text))</code></pre></div>
+<div class="node-desc">**THEOREM: catholic_rule_of_faith** — Under Catholic axioms, both</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ApostolicTeaching">ApostolicTeaching</span><span class="dep-chip" data-target="MagisterialJudgment">MagisterialJudgment</span><span class="dep-chip" data-target="WrittenText">WrittenText</span><span class="dep-chip" data-target="canon_bootstrapping_problem">canon_bootstrapping_problem</span><span class="dep-chip" data-target="derivableFromScriptureAlone">derivableFromScriptureAlone</span><span class="dep-chip" data-target="determinedCanon">determinedCanon</span><span class="dep-chip" data-target="inScripture">inScripture</span><span class="dep-chip" data-target="isCanonical">isCanonical</span><span class="dep-chip" data-target="isRevealed">isRevealed</span><span class="dep-chip" data-target="not_everything_written">not_everything_written</span><span class="dep-chip" data-target="protestant_sola_scriptura_entails_no_unwritten">protestant_sola_scriptura_entails_no_unwritten</span><span class="dep-chip" data-target="scripture_materially_incomplete">scripture_materially_incomplete</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="canon_bootstrapping_problem">canon_bootstrapping_problem</span></div></div>
   </div>
@@ -818,9 +902,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem protestant_sola_scriptura_entails_no_unwritten
     (h_sola : ∀ (t : ApostolicTeaching), isRevealed t → inScripture t) :
-    ¬∃ (t : ApostolicTeaching), isRevealed t ∧ ¬inScripture t := by
-  intro ⟨t, h_rev, h_not_s⟩
-  exact h_not_s (h_sola t h_rev)</code></pre></div>
+    ¬∃ (t : ApostolicTeaching), isRevealed t ∧ ¬inScripture t</code></pre></div>
+<div class="node-desc">**THEOREM: protestant_sola_scriptura_entails_no_unwritten** — Under</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ApostolicTeaching">ApostolicTeaching</span><span class="dep-chip" data-target="canon_act_not_in_scripture">canon_act_not_in_scripture</span><span class="dep-chip" data-target="canon_depends_on_church">canon_depends_on_church</span><span class="dep-chip" data-target="dual_transmission">dual_transmission</span><span class="dep-chip" data-target="inScripture">inScripture</span><span class="dep-chip" data-target="isRevealed">isRevealed</span><span class="dep-chip" data-target="not_everything_written">not_everything_written</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="catholic_rule_of_faith">catholic_rule_of_faith</span></div></div>
   </div>
@@ -832,12 +915,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def ruleOfFaithDenominationalScope : List (String × DenominationalTag) :=
-  [ (&quot;dual_transmission&quot;,                 dual_transmission_tag)
-  , (&quot;not_everything_written&quot;,            not_everything_written_tag)
-  , (&quot;canon_depends_on_church&quot;,           canon_depends_on_church_tag)
-  , (&quot;canon_act_not_in_scripture&quot;,        canon_act_not_in_scripture_tag)
-  ]</code></pre></div>
+    <div class="node-prop"><pre><code>def ruleOfFaithDenominationalScope : List (String × DenominationalTag)</code></pre></div>
+<div class="node-desc">Denominational scope of each axiom in the rule of faith formalization.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="canon_act_not_in_scripture">canon_act_not_in_scripture</span><span class="dep-chip" data-target="canon_act_not_in_scripture_tag">canon_act_not_in_scripture_tag</span><span class="dep-chip" data-target="canon_depends_on_church">canon_depends_on_church</span><span class="dep-chip" data-target="canon_depends_on_church_tag">canon_depends_on_church_tag</span><span class="dep-chip" data-target="dual_transmission">dual_transmission</span><span class="dep-chip" data-target="dual_transmission_tag">dual_transmission_tag</span><span class="dep-chip" data-target="not_everything_written">not_everything_written</span><span class="dep-chip" data-target="not_everything_written_tag">not_everything_written_tag</span></div></div>
   </div>
 </div>

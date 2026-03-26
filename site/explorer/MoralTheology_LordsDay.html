@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Lords Day — Catlib Explorer</title>
+  <title>LordsDay — Catlib Explorer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -143,7 +143,7 @@ h1 {
   line-height: 1.6;
 }
 
-/* Search */
+/* ── Search ── */
 .search-box {
   width: 100%;
   padding: 0.8rem 1rem;
@@ -167,7 +167,7 @@ h1 {
   font-style: italic;
 }
 
-/* Category sections */
+/* ── Category sections ── */
 .category-header {
   font-family: Cinzel, Georgia, serif;
   font-size: 1.1rem;
@@ -181,7 +181,7 @@ h1 {
   border-bottom: 1px solid var(--border);
 }
 
-/* File cards */
+/* ── File cards ── */
 .file-card {
   display: block;
   padding: 1rem 1.1rem;
@@ -237,7 +237,7 @@ h1 {
   margin-top: 0.3rem;
 }
 
-/* Summary stats */
+/* ── Summary stats ── */
 .stats-bar {
   display: flex;
   justify-content: center;
@@ -251,7 +251,7 @@ h1 {
 
 .stats-bar span { white-space: nowrap; }
 
-/* Node cards */
+/* ── Node cards (per-file page) ── */
 .node-card {
   margin-bottom: 0.4rem;
   border: 1px solid var(--border);
@@ -267,8 +267,6 @@ h1 {
 .node-card.kind-structure { border-left-color: var(--structure-dot); }
 .node-card.kind-inductive { border-left-color: var(--inductive-dot); }
 .node-card.kind-proposition { border-left-color: var(--proposition-dot); }
-.node-card.kind-instance { border-left-color: var(--def-dot); }
-.node-card.kind-abbrev { border-left-color: var(--def-dot); }
 
 .node-header {
   display: flex;
@@ -304,8 +302,6 @@ h1 {
 .kind-structure .node-kind-badge { background: var(--structure-bg); color: var(--structure-dot); }
 .kind-inductive .node-kind-badge { background: var(--inductive-bg); color: var(--inductive-dot); }
 .kind-proposition .node-kind-badge { background: var(--proposition-bg); color: var(--proposition-dot); }
-.kind-instance .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
-.kind-abbrev .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
 
 .node-name {
   flex: 1;
@@ -409,7 +405,7 @@ h1 {
   color: var(--text-muted);
 }
 
-/* Flow diagram header */
+/* ── Flow diagram header ── */
 .flow-summary {
   display: flex;
   justify-content: center;
@@ -435,7 +431,7 @@ h1 {
 .flow-count.theorems { background: var(--theorem-bg); color: var(--theorem-dot); }
 .flow-count.derived { background: var(--def-bg); color: var(--def-dot); }
 
-/* Legend */
+/* ── Legend ── */
 .legend {
   display: flex;
   flex-wrap: wrap;
@@ -467,7 +463,7 @@ h1 {
 .legend-dot.inductive { background: var(--inductive-dot); }
 .legend-dot.proposition { background: var(--proposition-dot); }
 
-/* Filter buttons */
+/* ── Filter buttons ── */
 .filter-bar {
   display: flex;
   flex-wrap: wrap;
@@ -496,7 +492,7 @@ h1 {
   border-color: var(--accent);
 }
 
-/* Back link */
+/* ── Back link ── */
 .back-link {
   display: inline-block;
   margin-bottom: 1rem;
@@ -505,7 +501,7 @@ h1 {
   letter-spacing: 0.04em;
 }
 
-/* Footer */
+/* ── Footer ── */
 .footer {
   text-align: center;
   padding-top: 2rem;
@@ -514,7 +510,7 @@ h1 {
   font-style: italic;
 }
 
-/* Responsive */
+/* ── Responsive ── */
 @media (max-width: 500px) {
   html { font-size: 16px; }
   .container { padding: 1rem 0.75rem 2rem; }
@@ -526,13 +522,21 @@ h1 {
 <body>
 <div class="container">
   <a href="index.html" class="back-link">&larr; All files</a>
-  <h1>Lords Day</h1>
-  <div class="subtitle">Moral Theology &middot; 28 declarations</div>
+  <h1>LordsDay</h1>
+  <div class="subtitle">MoralTheology &middot; 28 declarations</div>
 
-  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;638, &sect;2168, &sect;2174, &sect;2175, &sect;2176</div>
-  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span><span class="legend-item"><span class="legend-dot proposition"></span>proposition</span><span class="legend-item"><span class="legend-dot structure"></span>structure</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
+  <div class="flow-summary">
+  <span class="flow-count axioms">15 axioms</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count theorems">8 theorems</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count derived">5 derived</span>
+</div>
+  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;2168, &sect;2174, &sect;2175, &sect;2176, &sect;638</div>
 
-  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (7)</button><button class="filter-btn" data-filter="def">def (2)</button><button class="filter-btn" data-filter="inductive">inductive (2)</button><button class="filter-btn" data-filter="proposition">proposition (8)</button><button class="filter-btn" data-filter="structure">structure (1)</button><button class="filter-btn" data-filter="theorem">theorem (8)</button></div>
+  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot structure"></span>structure</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
+
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (7)</button><button class="filter-btn" data-filter="def">def (2)</button><button class="filter-btn" data-filter="inductive">inductive (2)</button><button class="filter-btn" data-filter="opaque">opaque (8)</button><button class="filter-btn" data-filter="structure">structure (1)</button><button class="filter-btn" data-filter="theorem">theorem (8)</button></div>
 
   <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
 
@@ -544,11 +548,9 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>inductive DayOfWorship where
-| seventhDay
-| firstDay</code></pre></div>
+    <div class="node-prop"><pre><code>inductive DayOfWorship where</code></pre></div>
 <div class="node-desc">A day of the week for worship.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="christ_rose_on_first_day">christ_rose_on_first_day</span><span class="dep-chip" data-target="isProperWorshipDay">isProperWorshipDay</span><span class="dep-chip" data-target="lords_day_argument">lords_day_argument</span><span class="dep-chip" data-target="new_creation_day_is_worship_day">new_creation_day_is_worship_day</span><span class="dep-chip" data-target="resurrection_day_is_new_creation">resurrection_day_is_new_creation</span><span class="dep-chip" data-target="roseOnDay">roseOnDay</span><span class="dep-chip" data-target="signifiesNewCreation">signifiesNewCreation</span><span class="dep-chip" data-target="sunday_is_new_creation">sunday_is_new_creation</span><span class="dep-chip" data-target="sunday_is_proper_worship_day">sunday_is_proper_worship_day</span><span class="dep-chip" data-target="sunday_worship_is_apostolic">sunday_worship_is_apostolic</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="roseOnDay">roseOnDay</span><span class="dep-chip" data-target="isProperWorshipDay">isProperWorshipDay</span><span class="dep-chip" data-target="signifiesNewCreation">signifiesNewCreation</span><span class="dep-chip" data-target="christ_rose_on_first_day">christ_rose_on_first_day</span><span class="dep-chip" data-target="resurrection_day_is_new_creation">resurrection_day_is_new_creation</span><span class="dep-chip" data-target="sunday_worship_is_apostolic">sunday_worship_is_apostolic</span><span class="dep-chip" data-target="new_creation_day_is_worship_day">new_creation_day_is_worship_day</span><span class="dep-chip" data-target="sunday_is_new_creation">sunday_is_new_creation</span><span class="dep-chip" data-target="sunday_is_proper_worship_day">sunday_is_proper_worship_day</span><span class="dep-chip" data-target="lords_day_argument">lords_day_argument</span></div></div>
   </div>
 </div>
 <div class="node-card kind-inductive" data-kind="inductive" data-name="CommandmentAspect">
@@ -560,7 +562,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>inductive CommandmentAspect where</code></pre></div>
 <div class="node-desc">The aspect of a commandment that determines its binding force.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="SabbathComponent">SabbathComponent</span><span class="dep-chip" data-target="catholic_sda_contradiction">catholic_sda_contradiction</span><span class="dep-chip" data-target="ceremonial_is_fulfilled">ceremonial_is_fulfilled</span><span class="dep-chip" data-target="moral_precepts_bind">moral_precepts_bind</span><span class="dep-chip" data-target="sda_seventh_day_binding">sda_seventh_day_binding</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="SabbathComponent">SabbathComponent</span><span class="dep-chip" data-target="moral_precepts_bind">moral_precepts_bind</span><span class="dep-chip" data-target="ceremonial_is_fulfilled">ceremonial_is_fulfilled</span><span class="dep-chip" data-target="sda_seventh_day_binding">sda_seventh_day_binding</span><span class="dep-chip" data-target="catholic_sda_contradiction">catholic_sda_contradiction</span></div></div>
   </div>
 </div>
 <div class="node-card kind-structure" data-kind="structure" data-name="SabbathComponent">
@@ -570,88 +572,92 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>structure SabbathComponent where
-content : Prop
-aspect : CommandmentAspect</code></pre></div>
+    <div class="node-prop"><pre><code>structure SabbathComponent where</code></pre></div>
 <div class="node-desc">A component of the Sabbath commandment.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CommandmentAspect">CommandmentAspect</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ceremonialComponent">ceremonialComponent</span><span class="dep-chip" data-target="ceremonial_is_fulfilled">ceremonial_is_fulfilled</span><span class="dep-chip" data-target="fulfilled_not_binding">fulfilled_not_binding</span><span class="dep-chip" data-target="isBinding">isBinding</span><span class="dep-chip" data-target="isFulfilled">isFulfilled</span><span class="dep-chip" data-target="moralComponent">moralComponent</span><span class="dep-chip" data-target="moral_precepts_bind">moral_precepts_bind</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CommandmentAspect">CommandmentAspect</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="isFulfilled">isFulfilled</span><span class="dep-chip" data-target="isBinding">isBinding</span><span class="dep-chip" data-target="moralComponent">moralComponent</span><span class="dep-chip" data-target="ceremonialComponent">ceremonialComponent</span><span class="dep-chip" data-target="moral_precepts_bind">moral_precepts_bind</span><span class="dep-chip" data-target="ceremonial_is_fulfilled">ceremonial_is_fulfilled</span><span class="dep-chip" data-target="fulfilled_not_binding">fulfilled_not_binding</span></div></div>
   </div>
 </div>
-<div class="node-card kind-proposition" data-kind="proposition" data-name="roseOnDay">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="roseOnDay">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
+    <span class="node-kind-badge">opaque</span>
     <span class="node-name">roseOnDay</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque roseOnDay : DayOfWorship → Prop</code></pre></div>
 <div class="node-desc">Whether Christ rose on a given day.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DayOfWorship">DayOfWorship</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="christ_rose_on_first_day">christ_rose_on_first_day</span><span class="dep-chip" data-target="resurrection_day_is_new_creation">resurrection_day_is_new_creation</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DayOfWorship">DayOfWorship</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="christ_rose_on_first_day">christ_rose_on_first_day</span><span class="dep-chip" data-target="resurrection_day_is_new_creation">resurrection_day_is_new_creation</span></div></div>
   </div>
 </div>
-<div class="node-card kind-proposition" data-kind="proposition" data-name="isApostolicPractice">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="isApostolicPractice">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
+    <span class="node-kind-badge">opaque</span>
     <span class="node-name">isApostolicPractice</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque isApostolicPractice : Prop → Prop</code></pre></div>
 <div class="node-desc">Whether a practice is attested in apostolic times.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="lords_day_argument">lords_day_argument</span><span class="dep-chip" data-target="sunday_worship_is_apostolic">sunday_worship_is_apostolic</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="sunday_worship_is_apostolic">sunday_worship_is_apostolic</span><span class="dep-chip" data-target="lords_day_argument">lords_day_argument</span></div></div>
   </div>
 </div>
-<div class="node-card kind-proposition" data-kind="proposition" data-name="isFulfilled">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="isFulfilled">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
+    <span class="node-kind-badge">opaque</span>
     <span class="node-name">isFulfilled</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque isFulfilled : SabbathComponent → Prop</code></pre></div>
-<div class="node-desc">Whether a ceremonial precept has been fulfilled (and thus its original form is no longer binding).</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SabbathComponent">SabbathComponent</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ceremonial_is_fulfilled">ceremonial_is_fulfilled</span><span class="dep-chip" data-target="fulfilled_not_binding">fulfilled_not_binding</span></div></div>
+<div class="node-desc">Whether a ceremonial precept has been fulfilled (and thus its original</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SabbathComponent">SabbathComponent</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ceremonial_is_fulfilled">ceremonial_is_fulfilled</span><span class="dep-chip" data-target="fulfilled_not_binding">fulfilled_not_binding</span></div></div>
   </div>
 </div>
-<div class="node-card kind-proposition" data-kind="proposition" data-name="isBinding">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="isBinding">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
+    <span class="node-kind-badge">opaque</span>
     <span class="node-name">isBinding</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque isBinding : SabbathComponent → Prop</code></pre></div>
 <div class="node-desc">Whether a commandment component is currently binding on Christians.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SabbathComponent">SabbathComponent</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="fulfilled_not_binding">fulfilled_not_binding</span><span class="dep-chip" data-target="lords_day_argument">lords_day_argument</span><span class="dep-chip" data-target="moral_precepts_bind">moral_precepts_bind</span><span class="dep-chip" data-target="sda_seventh_day_binding">sda_seventh_day_binding</span><span class="dep-chip" data-target="seventh_day_not_binding">seventh_day_not_binding</span><span class="dep-chip" data-target="worship_duty_persists">worship_duty_persists</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SabbathComponent">SabbathComponent</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="moral_precepts_bind">moral_precepts_bind</span><span class="dep-chip" data-target="fulfilled_not_binding">fulfilled_not_binding</span><span class="dep-chip" data-target="worship_duty_persists">worship_duty_persists</span><span class="dep-chip" data-target="seventh_day_not_binding">seventh_day_not_binding</span><span class="dep-chip" data-target="lords_day_argument">lords_day_argument</span><span class="dep-chip" data-target="sda_seventh_day_binding">sda_seventh_day_binding</span></div></div>
   </div>
 </div>
-<div class="node-card kind-proposition" data-kind="proposition" data-name="isProperWorshipDay">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="isProperWorshipDay">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
+    <span class="node-kind-badge">opaque</span>
     <span class="node-name">isProperWorshipDay</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque isProperWorshipDay : DayOfWorship → Prop</code></pre></div>
 <div class="node-desc">Whether a given day is the proper day for Christian worship.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DayOfWorship">DayOfWorship</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="lords_day_argument">lords_day_argument</span><span class="dep-chip" data-target="new_creation_day_is_worship_day">new_creation_day_is_worship_day</span><span class="dep-chip" data-target="sunday_is_proper_worship_day">sunday_is_proper_worship_day</span><span class="dep-chip" data-target="sunday_worship_is_apostolic">sunday_worship_is_apostolic</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DayOfWorship">DayOfWorship</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="sunday_worship_is_apostolic">sunday_worship_is_apostolic</span><span class="dep-chip" data-target="new_creation_day_is_worship_day">new_creation_day_is_worship_day</span><span class="dep-chip" data-target="sunday_is_proper_worship_day">sunday_is_proper_worship_day</span><span class="dep-chip" data-target="lords_day_argument">lords_day_argument</span></div></div>
   </div>
 </div>
-<div class="node-card kind-proposition" data-kind="proposition" data-name="signifiesNewCreation">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="signifiesNewCreation">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
+    <span class="node-kind-badge">opaque</span>
     <span class="node-name">signifiesNewCreation</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque signifiesNewCreation : DayOfWorship → Prop</code></pre></div>
 <div class="node-desc">Whether a day inaugurates or symbolizes new creation.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DayOfWorship">DayOfWorship</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="new_creation_day_is_worship_day">new_creation_day_is_worship_day</span><span class="dep-chip" data-target="resurrection_day_is_new_creation">resurrection_day_is_new_creation</span><span class="dep-chip" data-target="sunday_is_new_creation">sunday_is_new_creation</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DayOfWorship">DayOfWorship</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="resurrection_day_is_new_creation">resurrection_day_is_new_creation</span><span class="dep-chip" data-target="new_creation_day_is_worship_day">new_creation_day_is_worship_day</span><span class="dep-chip" data-target="sunday_is_new_creation">sunday_is_new_creation</span></div></div>
   </div>
 </div>
-<div class="node-card kind-proposition" data-kind="proposition" data-name="dutyOfRegularWorship">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="dutyOfRegularWorship">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
+    <span class="node-kind-badge">opaque</span>
     <span class="node-name">dutyOfRegularWorship</span>
     <span class="node-chevron">&#9654;</span>
   </div>
@@ -661,9 +667,9 @@ aspect : CommandmentAspect</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="moralComponent">moralComponent</span></div></div>
   </div>
 </div>
-<div class="node-card kind-proposition" data-kind="proposition" data-name="seventhDaySpecification">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="seventhDaySpecification">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
+    <span class="node-kind-badge">opaque</span>
     <span class="node-name">seventhDaySpecification</span>
     <span class="node-chevron">&#9654;</span>
   </div>
@@ -682,7 +688,8 @@ aspect : CommandmentAspect</code></pre></div>
   <div class="node-details">
     <div class="node-prop"><pre><code>def moralComponent : SabbathComponent</code></pre></div>
 <div class="node-desc">The moral component: regular worship is obligatory.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SabbathComponent">SabbathComponent</span><span class="dep-chip" data-target="dutyOfRegularWorship">dutyOfRegularWorship</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="lords_day_argument">lords_day_argument</span><span class="dep-chip" data-target="worship_duty_persists">worship_duty_persists</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SabbathComponent">SabbathComponent</span><span class="dep-chip" data-target="dutyOfRegularWorship">dutyOfRegularWorship</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="worship_duty_persists">worship_duty_persists</span><span class="dep-chip" data-target="lords_day_argument">lords_day_argument</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="ceremonialComponent">
@@ -694,7 +701,8 @@ aspect : CommandmentAspect</code></pre></div>
   <div class="node-details">
     <div class="node-prop"><pre><code>def ceremonialComponent : SabbathComponent</code></pre></div>
 <div class="node-desc">The ceremonial component: worship falls on Saturday.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SabbathComponent">SabbathComponent</span><span class="dep-chip" data-target="seventhDaySpecification">seventhDaySpecification</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="catholic_sda_contradiction">catholic_sda_contradiction</span><span class="dep-chip" data-target="lords_day_argument">lords_day_argument</span><span class="dep-chip" data-target="sda_seventh_day_binding">sda_seventh_day_binding</span><span class="dep-chip" data-target="seventh_day_not_binding">seventh_day_not_binding</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SabbathComponent">SabbathComponent</span><span class="dep-chip" data-target="seventhDaySpecification">seventhDaySpecification</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="seventh_day_not_binding">seventh_day_not_binding</span><span class="dep-chip" data-target="lords_day_argument">lords_day_argument</span><span class="dep-chip" data-target="sda_seventh_day_binding">sda_seventh_day_binding</span><span class="dep-chip" data-target="catholic_sda_contradiction">catholic_sda_contradiction</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="christ_rose_on_first_day">
@@ -706,7 +714,8 @@ aspect : CommandmentAspect</code></pre></div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom christ_rose_on_first_day : roseOnDay DayOfWorship.firstDay</code></pre></div>
 <div class="node-desc">AXIOM (§2174): Christ rose on the first day of the week (Sunday).</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DayOfWorship">DayOfWorship</span><span class="dep-chip" data-target="roseOnDay">roseOnDay</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="s3_natural_law_bridge">s3_natural_law_bridge</span><span class="dep-chip" data-target="seventh_day_not_binding">seventh_day_not_binding</span><span class="dep-chip" data-target="sunday_is_new_creation">sunday_is_new_creation</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DayOfWorship">DayOfWorship</span><span class="dep-chip" data-target="roseOnDay">roseOnDay</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="seventh_day_not_binding">seventh_day_not_binding</span><span class="dep-chip" data-target="sunday_is_new_creation">sunday_is_new_creation</span><span class="dep-chip" data-target="s3_natural_law_bridge">s3_natural_law_bridge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="resurrection_day_is_new_creation">
@@ -717,9 +726,10 @@ aspect : CommandmentAspect</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom resurrection_day_is_new_creation :
-∀ (d : DayOfWorship), roseOnDay d → signifiesNewCreation d</code></pre></div>
+  ∀ (d : DayOfWorship), roseOnDay d → signifiesNewCreation d</code></pre></div>
 <div class="node-desc">AXIOM (§2174): The day of resurrection signifies new creation.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DayOfWorship">DayOfWorship</span><span class="dep-chip" data-target="roseOnDay">roseOnDay</span><span class="dep-chip" data-target="signifiesNewCreation">signifiesNewCreation</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="s3_natural_law_bridge">s3_natural_law_bridge</span><span class="dep-chip" data-target="seventh_day_not_binding">seventh_day_not_binding</span><span class="dep-chip" data-target="sunday_is_new_creation">sunday_is_new_creation</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DayOfWorship">DayOfWorship</span><span class="dep-chip" data-target="roseOnDay">roseOnDay</span><span class="dep-chip" data-target="signifiesNewCreation">signifiesNewCreation</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="seventh_day_not_binding">seventh_day_not_binding</span><span class="dep-chip" data-target="sunday_is_new_creation">sunday_is_new_creation</span><span class="dep-chip" data-target="s3_natural_law_bridge">s3_natural_law_bridge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="sunday_worship_is_apostolic">
@@ -730,9 +740,10 @@ aspect : CommandmentAspect</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom sunday_worship_is_apostolic :
-isApostolicPractice (isProperWorshipDay DayOfWorship.firstDay)</code></pre></div>
-<div class="node-desc">AXIOM (§2175): Gathering for worship on the first day is an apostolic practice — attested in the New Testament itself.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DayOfWorship">DayOfWorship</span><span class="dep-chip" data-target="isApostolicPractice">isApostolicPractice</span><span class="dep-chip" data-target="isProperWorshipDay">isProperWorshipDay</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="lords_day_argument">lords_day_argument</span><span class="dep-chip" data-target="s3_natural_law_bridge">s3_natural_law_bridge</span></div></div>
+  isApostolicPractice (isProperWorshipDay DayOfWorship.firstDay)</code></pre></div>
+<div class="node-desc">AXIOM (§2175): Gathering for worship on the first day is an</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DayOfWorship">DayOfWorship</span><span class="dep-chip" data-target="isApostolicPractice">isApostolicPractice</span><span class="dep-chip" data-target="isProperWorshipDay">isProperWorshipDay</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="lords_day_argument">lords_day_argument</span><span class="dep-chip" data-target="s3_natural_law_bridge">s3_natural_law_bridge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="moral_precepts_bind">
@@ -743,9 +754,10 @@ isApostolicPractice (isProperWorshipDay DayOfWorship.firstDay)</code></pre></div
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom moral_precepts_bind :
-∀ (c : SabbathComponent), c.aspect = CommandmentAspect.moral → isBinding c</code></pre></div>
+  ∀ (c : SabbathComponent), c.aspect = CommandmentAspect.moral → isBinding c</code></pre></div>
 <div class="node-desc">AXIOM (§2176): Moral precepts remain binding under the new covenant.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CommandmentAspect">CommandmentAspect</span><span class="dep-chip" data-target="SabbathComponent">SabbathComponent</span><span class="dep-chip" data-target="isBinding">isBinding</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="lords_day_argument">lords_day_argument</span><span class="dep-chip" data-target="new_creation_day_is_worship_day">new_creation_day_is_worship_day</span><span class="dep-chip" data-target="s3_natural_law_bridge">s3_natural_law_bridge</span><span class="dep-chip" data-target="sda_seventh_day_binding">sda_seventh_day_binding</span><span class="dep-chip" data-target="worship_duty_persists">worship_duty_persists</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CommandmentAspect">CommandmentAspect</span><span class="dep-chip" data-target="SabbathComponent">SabbathComponent</span><span class="dep-chip" data-target="isBinding">isBinding</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="new_creation_day_is_worship_day">new_creation_day_is_worship_day</span><span class="dep-chip" data-target="worship_duty_persists">worship_duty_persists</span><span class="dep-chip" data-target="lords_day_argument">lords_day_argument</span><span class="dep-chip" data-target="sda_seventh_day_binding">sda_seventh_day_binding</span><span class="dep-chip" data-target="s3_natural_law_bridge">s3_natural_law_bridge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="ceremonial_is_fulfilled">
@@ -756,9 +768,10 @@ isApostolicPractice (isProperWorshipDay DayOfWorship.firstDay)</code></pre></div
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom ceremonial_is_fulfilled :
-∀ (c : SabbathComponent), c.aspect = CommandmentAspect.ceremonial → isFulfilled c</code></pre></div>
+  ∀ (c : SabbathComponent), c.aspect = CommandmentAspect.ceremonial → isFulfilled c</code></pre></div>
 <div class="node-desc">AXIOM (§2175): The ceremonial day-specification is fulfilled in Christ.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CommandmentAspect">CommandmentAspect</span><span class="dep-chip" data-target="SabbathComponent">SabbathComponent</span><span class="dep-chip" data-target="isFulfilled">isFulfilled</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="s3_natural_law_bridge">s3_natural_law_bridge</span><span class="dep-chip" data-target="seventh_day_not_binding">seventh_day_not_binding</span><span class="dep-chip" data-target="worship_duty_persists">worship_duty_persists</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CommandmentAspect">CommandmentAspect</span><span class="dep-chip" data-target="SabbathComponent">SabbathComponent</span><span class="dep-chip" data-target="isFulfilled">isFulfilled</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="worship_duty_persists">worship_duty_persists</span><span class="dep-chip" data-target="seventh_day_not_binding">seventh_day_not_binding</span><span class="dep-chip" data-target="s3_natural_law_bridge">s3_natural_law_bridge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="fulfilled_not_binding">
@@ -769,9 +782,10 @@ isApostolicPractice (isProperWorshipDay DayOfWorship.firstDay)</code></pre></div
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom fulfilled_not_binding :
-∀ (c : SabbathComponent), isFulfilled c → ¬ isBinding c</code></pre></div>
-<div class="node-desc">AXIOM (§2175): A fulfilled ceremonial precept is no longer binding in its original form.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SabbathComponent">SabbathComponent</span><span class="dep-chip" data-target="isBinding">isBinding</span><span class="dep-chip" data-target="isFulfilled">isFulfilled</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="s3_natural_law_bridge">s3_natural_law_bridge</span><span class="dep-chip" data-target="seventh_day_not_binding">seventh_day_not_binding</span><span class="dep-chip" data-target="worship_duty_persists">worship_duty_persists</span></div></div>
+  ∀ (c : SabbathComponent), isFulfilled c → ¬ isBinding c</code></pre></div>
+<div class="node-desc">AXIOM (§2175): A fulfilled ceremonial precept is no longer binding</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="SabbathComponent">SabbathComponent</span><span class="dep-chip" data-target="isBinding">isBinding</span><span class="dep-chip" data-target="isFulfilled">isFulfilled</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="worship_duty_persists">worship_duty_persists</span><span class="dep-chip" data-target="seventh_day_not_binding">seventh_day_not_binding</span><span class="dep-chip" data-target="s3_natural_law_bridge">s3_natural_law_bridge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="new_creation_day_is_worship_day">
@@ -782,9 +796,10 @@ isApostolicPractice (isProperWorshipDay DayOfWorship.firstDay)</code></pre></div
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom new_creation_day_is_worship_day :
-∀ (d : DayOfWorship), signifiesNewCreation d → isProperWorshipDay d</code></pre></div>
-<div class="node-desc">AXIOM (§2174): The day signifying new creation is the proper day for Christian worship.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DayOfWorship">DayOfWorship</span><span class="dep-chip" data-target="isProperWorshipDay">isProperWorshipDay</span><span class="dep-chip" data-target="moral_precepts_bind">moral_precepts_bind</span><span class="dep-chip" data-target="signifiesNewCreation">signifiesNewCreation</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="s3_natural_law_bridge">s3_natural_law_bridge</span><span class="dep-chip" data-target="sunday_is_new_creation">sunday_is_new_creation</span><span class="dep-chip" data-target="sunday_is_proper_worship_day">sunday_is_proper_worship_day</span></div></div>
+  ∀ (d : DayOfWorship), signifiesNewCreation d → isProperWorshipDay d</code></pre></div>
+<div class="node-desc">AXIOM (§2174): The day signifying new creation is the proper day</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DayOfWorship">DayOfWorship</span><span class="dep-chip" data-target="isProperWorshipDay">isProperWorshipDay</span><span class="dep-chip" data-target="moral_precepts_bind">moral_precepts_bind</span><span class="dep-chip" data-target="signifiesNewCreation">signifiesNewCreation</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="sunday_is_new_creation">sunday_is_new_creation</span><span class="dep-chip" data-target="sunday_is_proper_worship_day">sunday_is_proper_worship_day</span><span class="dep-chip" data-target="s3_natural_law_bridge">s3_natural_law_bridge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="worship_duty_persists">
@@ -795,9 +810,10 @@ isApostolicPractice (isProperWorshipDay DayOfWorship.firstDay)</code></pre></div
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem worship_duty_persists :
-isBinding moralComponent</code></pre></div>
+    isBinding moralComponent</code></pre></div>
 <div class="node-desc">THEOREM: The moral core of the Sabbath commandment remains binding.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ceremonial_is_fulfilled">ceremonial_is_fulfilled</span><span class="dep-chip" data-target="fulfilled_not_binding">fulfilled_not_binding</span><span class="dep-chip" data-target="isBinding">isBinding</span><span class="dep-chip" data-target="moralComponent">moralComponent</span><span class="dep-chip" data-target="moral_precepts_bind">moral_precepts_bind</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="lords_day_argument">lords_day_argument</span><span class="dep-chip" data-target="s3_natural_law_bridge">s3_natural_law_bridge</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ceremonial_is_fulfilled">ceremonial_is_fulfilled</span><span class="dep-chip" data-target="fulfilled_not_binding">fulfilled_not_binding</span><span class="dep-chip" data-target="isBinding">isBinding</span><span class="dep-chip" data-target="moralComponent">moralComponent</span><span class="dep-chip" data-target="moral_precepts_bind">moral_precepts_bind</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="lords_day_argument">lords_day_argument</span><span class="dep-chip" data-target="s3_natural_law_bridge">s3_natural_law_bridge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="seventh_day_not_binding">
@@ -808,9 +824,10 @@ isBinding moralComponent</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem seventh_day_not_binding :
-¬ isBinding ceremonialComponent</code></pre></div>
+    ¬ isBinding ceremonialComponent</code></pre></div>
 <div class="node-desc">THEOREM: The seventh-day specification is no longer binding.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ceremonialComponent">ceremonialComponent</span><span class="dep-chip" data-target="ceremonial_is_fulfilled">ceremonial_is_fulfilled</span><span class="dep-chip" data-target="christ_rose_on_first_day">christ_rose_on_first_day</span><span class="dep-chip" data-target="fulfilled_not_binding">fulfilled_not_binding</span><span class="dep-chip" data-target="isBinding">isBinding</span><span class="dep-chip" data-target="resurrection_day_is_new_creation">resurrection_day_is_new_creation</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="catholic_sda_contradiction">catholic_sda_contradiction</span><span class="dep-chip" data-target="lords_day_argument">lords_day_argument</span><span class="dep-chip" data-target="s3_natural_law_bridge">s3_natural_law_bridge</span><span class="dep-chip" data-target="sda_seventh_day_binding">sda_seventh_day_binding</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ceremonialComponent">ceremonialComponent</span><span class="dep-chip" data-target="ceremonial_is_fulfilled">ceremonial_is_fulfilled</span><span class="dep-chip" data-target="christ_rose_on_first_day">christ_rose_on_first_day</span><span class="dep-chip" data-target="fulfilled_not_binding">fulfilled_not_binding</span><span class="dep-chip" data-target="isBinding">isBinding</span><span class="dep-chip" data-target="resurrection_day_is_new_creation">resurrection_day_is_new_creation</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="lords_day_argument">lords_day_argument</span><span class="dep-chip" data-target="sda_seventh_day_binding">sda_seventh_day_binding</span><span class="dep-chip" data-target="catholic_sda_contradiction">catholic_sda_contradiction</span><span class="dep-chip" data-target="s3_natural_law_bridge">s3_natural_law_bridge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="sunday_is_new_creation">
@@ -821,9 +838,10 @@ isBinding moralComponent</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem sunday_is_new_creation :
-signifiesNewCreation DayOfWorship.firstDay</code></pre></div>
+    signifiesNewCreation DayOfWorship.firstDay</code></pre></div>
 <div class="node-desc">THEOREM: Sunday signifies new creation.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DayOfWorship">DayOfWorship</span><span class="dep-chip" data-target="christ_rose_on_first_day">christ_rose_on_first_day</span><span class="dep-chip" data-target="new_creation_day_is_worship_day">new_creation_day_is_worship_day</span><span class="dep-chip" data-target="resurrection_day_is_new_creation">resurrection_day_is_new_creation</span><span class="dep-chip" data-target="signifiesNewCreation">signifiesNewCreation</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="s3_natural_law_bridge">s3_natural_law_bridge</span><span class="dep-chip" data-target="sunday_is_proper_worship_day">sunday_is_proper_worship_day</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DayOfWorship">DayOfWorship</span><span class="dep-chip" data-target="christ_rose_on_first_day">christ_rose_on_first_day</span><span class="dep-chip" data-target="new_creation_day_is_worship_day">new_creation_day_is_worship_day</span><span class="dep-chip" data-target="resurrection_day_is_new_creation">resurrection_day_is_new_creation</span><span class="dep-chip" data-target="signifiesNewCreation">signifiesNewCreation</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="sunday_is_proper_worship_day">sunday_is_proper_worship_day</span><span class="dep-chip" data-target="s3_natural_law_bridge">s3_natural_law_bridge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="sunday_is_proper_worship_day">
@@ -834,9 +852,10 @@ signifiesNewCreation DayOfWorship.firstDay</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem sunday_is_proper_worship_day :
-isProperWorshipDay DayOfWorship.firstDay</code></pre></div>
+    isProperWorshipDay DayOfWorship.firstDay</code></pre></div>
 <div class="node-desc">THEOREM: Sunday is the proper day of Christian worship.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DayOfWorship">DayOfWorship</span><span class="dep-chip" data-target="isProperWorshipDay">isProperWorshipDay</span><span class="dep-chip" data-target="new_creation_day_is_worship_day">new_creation_day_is_worship_day</span><span class="dep-chip" data-target="sunday_is_new_creation">sunday_is_new_creation</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="lords_day_argument">lords_day_argument</span><span class="dep-chip" data-target="s3_natural_law_bridge">s3_natural_law_bridge</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DayOfWorship">DayOfWorship</span><span class="dep-chip" data-target="isProperWorshipDay">isProperWorshipDay</span><span class="dep-chip" data-target="new_creation_day_is_worship_day">new_creation_day_is_worship_day</span><span class="dep-chip" data-target="sunday_is_new_creation">sunday_is_new_creation</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="lords_day_argument">lords_day_argument</span><span class="dep-chip" data-target="s3_natural_law_bridge">s3_natural_law_bridge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="lords_day_argument">
@@ -846,9 +865,18 @@ isProperWorshipDay DayOfWorship.firstDay</code></pre></div>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>theorem lords_day_argument :</code></pre></div>
-<div class="node-desc">THEOREM (Main): The full Lord&#x27;s Day argument — all three components.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DayOfWorship">DayOfWorship</span><span class="dep-chip" data-target="ceremonialComponent">ceremonialComponent</span><span class="dep-chip" data-target="isApostolicPractice">isApostolicPractice</span><span class="dep-chip" data-target="isBinding">isBinding</span><span class="dep-chip" data-target="isProperWorshipDay">isProperWorshipDay</span><span class="dep-chip" data-target="moralComponent">moralComponent</span><span class="dep-chip" data-target="moral_precepts_bind">moral_precepts_bind</span><span class="dep-chip" data-target="seventh_day_not_binding">seventh_day_not_binding</span><span class="dep-chip" data-target="sunday_is_proper_worship_day">sunday_is_proper_worship_day</span><span class="dep-chip" data-target="sunday_worship_is_apostolic">sunday_worship_is_apostolic</span><span class="dep-chip" data-target="worship_duty_persists">worship_duty_persists</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="s3_natural_law_bridge">s3_natural_law_bridge</span></div></div>
+    <div class="node-prop"><pre><code>theorem lords_day_argument :
+    -- (a) Worship obligation persists
+    isBinding moralComponent
+    -- (b) Saturday specification no longer binding
+    ∧ ¬ isBinding ceremonialComponent
+    -- (c) Sunday is the proper day
+    ∧ isProperWorshipDay DayOfWorship.firstDay
+    -- (d) This is apostolic practice
+    ∧ isApostolicPractice (isProperWorshipDay DayOfWorship.firstDay)</code></pre></div>
+<div class="node-desc">THEOREM (Main): The full Lord's Day argument — all three components.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DayOfWorship">DayOfWorship</span><span class="dep-chip" data-target="ceremonialComponent">ceremonialComponent</span><span class="dep-chip" data-target="isApostolicPractice">isApostolicPractice</span><span class="dep-chip" data-target="isBinding">isBinding</span><span class="dep-chip" data-target="isProperWorshipDay">isProperWorshipDay</span><span class="dep-chip" data-target="moralComponent">moralComponent</span><span class="dep-chip" data-target="moral_precepts_bind">moral_precepts_bind</span><span class="dep-chip" data-target="seventh_day_not_binding">seventh_day_not_binding</span><span class="dep-chip" data-target="sunday_is_proper_worship_day">sunday_is_proper_worship_day</span><span class="dep-chip" data-target="sunday_worship_is_apostolic">sunday_worship_is_apostolic</span><span class="dep-chip" data-target="worship_duty_persists">worship_duty_persists</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="s3_natural_law_bridge">s3_natural_law_bridge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="sda_seventh_day_binding">
@@ -859,10 +887,11 @@ isProperWorshipDay DayOfWorship.firstDay</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem sda_seventh_day_binding
-(sda_day_is_moral : ceremonialComponent.aspect = CommandmentAspect.moral) :
-isBinding ceremonialComponent</code></pre></div>
+    (sda_day_is_moral : ceremonialComponent.aspect = CommandmentAspect.moral) :
+    isBinding ceremonialComponent</code></pre></div>
 <div class="node-desc">THEOREM (SDA): Under SDA axioms, the seventh-day specification is binding.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CommandmentAspect">CommandmentAspect</span><span class="dep-chip" data-target="ceremonialComponent">ceremonialComponent</span><span class="dep-chip" data-target="isBinding">isBinding</span><span class="dep-chip" data-target="moral_precepts_bind">moral_precepts_bind</span><span class="dep-chip" data-target="seventh_day_not_binding">seventh_day_not_binding</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="catholic_sda_contradiction">catholic_sda_contradiction</span><span class="dep-chip" data-target="s3_natural_law_bridge">s3_natural_law_bridge</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CommandmentAspect">CommandmentAspect</span><span class="dep-chip" data-target="ceremonialComponent">ceremonialComponent</span><span class="dep-chip" data-target="isBinding">isBinding</span><span class="dep-chip" data-target="moral_precepts_bind">moral_precepts_bind</span><span class="dep-chip" data-target="seventh_day_not_binding">seventh_day_not_binding</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="catholic_sda_contradiction">catholic_sda_contradiction</span><span class="dep-chip" data-target="s3_natural_law_bridge">s3_natural_law_bridge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="catholic_sda_contradiction">
@@ -873,10 +902,11 @@ isBinding ceremonialComponent</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem catholic_sda_contradiction
-(sda_day_is_moral : ceremonialComponent.aspect = CommandmentAspect.moral) :
-False</code></pre></div>
-<div class="node-desc">THEOREM: The Catholic and SDA positions are contradictory on the binding status of the seventh-day specification.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CommandmentAspect">CommandmentAspect</span><span class="dep-chip" data-target="ceremonialComponent">ceremonialComponent</span><span class="dep-chip" data-target="sda_seventh_day_binding">sda_seventh_day_binding</span><span class="dep-chip" data-target="seventh_day_not_binding">seventh_day_not_binding</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="s3_natural_law_bridge">s3_natural_law_bridge</span></div></div>
+    (sda_day_is_moral : ceremonialComponent.aspect = CommandmentAspect.moral) :
+    False</code></pre></div>
+<div class="node-desc">THEOREM: The Catholic and SDA positions are contradictory on the</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CommandmentAspect">CommandmentAspect</span><span class="dep-chip" data-target="ceremonialComponent">ceremonialComponent</span><span class="dep-chip" data-target="sda_seventh_day_binding">sda_seventh_day_binding</span><span class="dep-chip" data-target="seventh_day_not_binding">seventh_day_not_binding</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="s3_natural_law_bridge">s3_natural_law_bridge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="s3_natural_law_bridge">
@@ -887,13 +917,12 @@ False</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem s3_natural_law_bridge
-(p : Person) (h_intellect : p.hasIntellect = true) :
-moralLawInscribed p</code></pre></div>
-<div class="node-desc">Bridge to S3 (law on hearts): The moral core of the Sabbath commandment connects to S3 — God inscribes the moral law in ...</div>
+    (p : Person) (h_intellect : p.hasIntellect = true) :
+    moralLawInscribed p</code></pre></div>
+<div class="node-desc">Bridge to S3 (law on hearts): The moral core of the Sabbath commandment</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="catholic_sda_contradiction">catholic_sda_contradiction</span><span class="dep-chip" data-target="ceremonial_is_fulfilled">ceremonial_is_fulfilled</span><span class="dep-chip" data-target="christ_rose_on_first_day">christ_rose_on_first_day</span><span class="dep-chip" data-target="fulfilled_not_binding">fulfilled_not_binding</span><span class="dep-chip" data-target="lords_day_argument">lords_day_argument</span><span class="dep-chip" data-target="moral_precepts_bind">moral_precepts_bind</span><span class="dep-chip" data-target="new_creation_day_is_worship_day">new_creation_day_is_worship_day</span><span class="dep-chip" data-target="resurrection_day_is_new_creation">resurrection_day_is_new_creation</span><span class="dep-chip" data-target="sda_seventh_day_binding">sda_seventh_day_binding</span><span class="dep-chip" data-target="seventh_day_not_binding">seventh_day_not_binding</span><span class="dep-chip" data-target="sunday_is_new_creation">sunday_is_new_creation</span><span class="dep-chip" data-target="sunday_is_proper_worship_day">sunday_is_proper_worship_day</span><span class="dep-chip" data-target="sunday_worship_is_apostolic">sunday_worship_is_apostolic</span><span class="dep-chip" data-target="worship_duty_persists">worship_duty_persists</span></div></div>
   </div>
 </div>
-
   </div>
 
   <div class="footer">

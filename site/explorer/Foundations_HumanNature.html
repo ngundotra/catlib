@@ -267,8 +267,6 @@ h1 {
 .node-card.kind-structure { border-left-color: var(--structure-dot); }
 .node-card.kind-inductive { border-left-color: var(--inductive-dot); }
 .node-card.kind-proposition { border-left-color: var(--proposition-dot); }
-.node-card.kind-instance { border-left-color: var(--def-dot); }
-.node-card.kind-abbrev { border-left-color: var(--def-dot); }
 
 .node-header {
   display: flex;
@@ -304,8 +302,6 @@ h1 {
 .kind-structure .node-kind-badge { background: var(--structure-bg); color: var(--structure-dot); }
 .kind-inductive .node-kind-badge { background: var(--inductive-bg); color: var(--inductive-dot); }
 .kind-proposition .node-kind-badge { background: var(--proposition-bg); color: var(--proposition-dot); }
-.kind-instance .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
-.kind-abbrev .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
 
 .node-name {
   flex: 1;
@@ -466,8 +462,6 @@ h1 {
 .legend-dot.structure { background: var(--structure-dot); }
 .legend-dot.inductive { background: var(--inductive-dot); }
 .legend-dot.proposition { background: var(--proposition-dot); }
-.legend-dot.instance { background: var(--def-dot); }
-.legend-dot.abbrev { background: var(--def-dot); }
 
 /* ── Filter buttons ── */
 .filter-bar {
@@ -530,12 +524,19 @@ h1 {
   <a href="index.html" class="back-link">&larr; All files</a>
   <h1>HumanNature</h1>
   <div class="subtitle">Foundations &middot; 11 declarations</div>
-  
-  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;362, &sect;365, &sect;405, &sect;1705</div>
 
-  <div class="legend"><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span><span class="legend-item"><span class="legend-dot proposition"></span>proposition</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot structure"></span>structure</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span></div>
+  <div class="flow-summary">
+  <span class="flow-count axioms">0 axioms</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count theorems">2 theorems</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count derived">9 derived</span>
+</div>
+  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1705, &sect;362, &sect;363, &sect;364, &sect;365, &sect;405</div>
 
-  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="theorem">theorem (2)</button><button class="filter-btn" data-filter="proposition">proposition (1)</button><button class="filter-btn" data-filter="def">def (3)</button><button class="filter-btn" data-filter="structure">structure (3)</button><button class="filter-btn" data-filter="inductive">inductive (2)</button></div>
+  <div class="legend"><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span><span class="legend-item"><span class="legend-dot proposition"></span>proposition</span><span class="legend-item"><span class="legend-dot structure"></span>structure</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
+
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="def">def (3)</button><button class="filter-btn" data-filter="inductive">inductive (2)</button><button class="filter-btn" data-filter="proposition">proposition (1)</button><button class="filter-btn" data-filter="structure">structure (3)</button><button class="filter-btn" data-filter="theorem">theorem (2)</button></div>
 
   <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
 
@@ -571,6 +572,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>structure PowerState where</code></pre></div>
 <div class="node-desc">The state of a spiritual power — how wounded or healed it is.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanNature">HumanNature</span></div></div>
   </div>
 </div>
 <div class="node-card kind-structure" data-kind="structure" data-name="OriginalWounds">
@@ -582,6 +584,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>structure OriginalWounds where</code></pre></div>
 <div class="node-desc">The wounds of original sin, as the CCC describes them (§405).</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanNature">HumanNature</span></div></div>
   </div>
 </div>
 <div class="node-card kind-structure" data-kind="structure" data-name="HumanNature">
@@ -593,10 +596,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>structure HumanNature where</code></pre></div>
 <div class="node-desc">Human nature as the CCC describes it.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="fall_diminishes_freedom_from_nature">fall_diminishes_freedom_from_nature</span>
-<span class="dep-chip" data-target="freedom_survives_fall">freedom_survives_fall</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="OriginalWounds">OriginalWounds</span><span class="dep-chip" data-target="PowerState">PowerState</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanNature.freedomLevel">HumanNature.freedomLevel</span><span class="dep-chip" data-target="HumanNature.hasFreedom">HumanNature.hasFreedom</span><span class="dep-chip" data-target="originalIntegrity">originalIntegrity</span><span class="dep-chip" data-target="fallenNature">fallenNature</span><span class="dep-chip" data-target="fall_diminishes_freedom_from_nature">fall_diminishes_freedom_from_nature</span><span class="dep-chip" data-target="freedom_survives_fall">freedom_survives_fall</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="HumanNature.freedomLevel">
@@ -608,9 +609,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def HumanNature.freedomLevel (hn : HumanNature) : Nat</code></pre></div>
 <div class="node-desc">Freedom level is derived from intellect + will states.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="fall_diminishes_freedom_from_nature">fall_diminishes_freedom_from_nature</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanNature">HumanNature</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="fall_diminishes_freedom_from_nature">fall_diminishes_freedom_from_nature</span></div></div>
   </div>
 </div>
 <div class="node-card kind-proposition" data-kind="proposition" data-name="HumanNature.hasFreedom">
@@ -622,9 +622,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def HumanNature.hasFreedom (hn : HumanNature) : Prop</code></pre></div>
 <div class="node-desc">A person with unwounded intellect and will has full freedom.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="freedom_survives_fall">freedom_survives_fall</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanNature">HumanNature</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="freedom_survives_fall">freedom_survives_fall</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="originalIntegrity">
@@ -636,9 +635,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def originalIntegrity (p : Person) : HumanNature</code></pre></div>
 <div class="node-desc">The state of human nature before the Fall.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="fall_diminishes_freedom_from_nature">fall_diminishes_freedom_from_nature</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanNature">HumanNature</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="fall_diminishes_freedom_from_nature">fall_diminishes_freedom_from_nature</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="fallenNature">
@@ -650,10 +648,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def fallenNature (p : Person) : HumanNature</code></pre></div>
 <div class="node-desc">The state of human nature after the Fall (§405).</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="fall_diminishes_freedom_from_nature">fall_diminishes_freedom_from_nature</span>
-<span class="dep-chip" data-target="freedom_survives_fall">freedom_survives_fall</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanNature">HumanNature</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="fall_diminishes_freedom_from_nature">fall_diminishes_freedom_from_nature</span><span class="dep-chip" data-target="freedom_survives_fall">freedom_survives_fall</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="fall_diminishes_freedom_from_nature">
@@ -666,12 +662,7 @@ h1 {
     <div class="node-prop"><pre><code>theorem fall_diminishes_freedom_from_nature (p : Person) :
     (originalIntegrity p).freedomLevel &gt; (fallenNature p).freedomLevel</code></pre></div>
 <div class="node-desc">Freedom is diminished after the Fall — because both intellect</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="HumanNature">HumanNature</span>
-<span class="dep-chip" data-target="originalIntegrity">originalIntegrity</span>
-<span class="dep-chip" data-target="fallenNature">fallenNature</span>
-<span class="dep-chip" data-target="HumanNature.freedomLevel">HumanNature.freedomLevel</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanNature">HumanNature</span><span class="dep-chip" data-target="HumanNature.freedomLevel">HumanNature.freedomLevel</span><span class="dep-chip" data-target="fallenNature">fallenNature</span><span class="dep-chip" data-target="originalIntegrity">originalIntegrity</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="freedom_survives_fall">
@@ -684,11 +675,7 @@ h1 {
     <div class="node-prop"><pre><code>theorem freedom_survives_fall (p : Person) :
     (fallenNature p).hasFreedom</code></pre></div>
 <div class="node-desc">But freedom is NOT destroyed — the CCC says nature is wounded,</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="HumanNature.hasFreedom">HumanNature.hasFreedom</span>
-<span class="dep-chip" data-target="HumanNature">HumanNature</span>
-<span class="dep-chip" data-target="fallenNature">fallenNature</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanNature">HumanNature</span><span class="dep-chip" data-target="HumanNature.hasFreedom">HumanNature.hasFreedom</span><span class="dep-chip" data-target="fallenNature">fallenNature</span></div></div>
   </div>
 </div>
   </div>

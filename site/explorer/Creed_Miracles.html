@@ -143,7 +143,7 @@ h1 {
   line-height: 1.6;
 }
 
-/* -- Search -- */
+/* ── Search ── */
 .search-box {
   width: 100%;
   padding: 0.8rem 1rem;
@@ -167,7 +167,91 @@ h1 {
   font-style: italic;
 }
 
-/* -- Node cards -- */
+/* ── Category sections ── */
+.category-header {
+  font-family: Cinzel, Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-variant: small-caps;
+  margin: 1.8rem 0 0.8rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── File cards ── */
+.file-card {
+  display: block;
+  padding: 1rem 1.1rem;
+  margin-bottom: 0.5rem;
+  background: var(--bg-parchment);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  text-decoration: none;
+  color: var(--text);
+  transition: background 0.15s, border-color 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.file-card:hover, .file-card:active {
+  background: var(--bg-vellum);
+  border-color: var(--accent-gold);
+  text-decoration: none;
+}
+
+.file-card-name {
+  font-family: Cinzel, Georgia, serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.3rem;
+}
+
+.file-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  font-size: 0.82rem;
+  color: var(--text-light);
+}
+
+.file-card-meta .tag {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.75rem;
+  font-family: Cinzel, Georgia, serif;
+  letter-spacing: 0.03em;
+}
+
+.tag-axiom { background: var(--axiom-bg); color: var(--axiom-dot); border: 1px solid var(--axiom-border); }
+.tag-theorem { background: var(--theorem-bg); color: var(--theorem-dot); border: 1px solid var(--theorem-border); }
+.tag-def { background: var(--def-bg); color: var(--def-dot); border: 1px solid var(--def-border); }
+.tag-proposition { background: var(--proposition-bg); color: var(--proposition-dot); border: 1px solid var(--proposition-border); }
+
+.file-card-ccc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 0.3rem;
+}
+
+/* ── Summary stats ── */
+.stats-bar {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--text-light);
+  font-style: italic;
+}
+
+.stats-bar span { white-space: nowrap; }
+
+/* ── Node cards (per-file page) ── */
 .node-card {
   margin-bottom: 0.4rem;
   border: 1px solid var(--border);
@@ -321,7 +405,7 @@ h1 {
   color: var(--text-muted);
 }
 
-/* -- Flow diagram header -- */
+/* ── Flow diagram header ── */
 .flow-summary {
   display: flex;
   justify-content: center;
@@ -347,7 +431,7 @@ h1 {
 .flow-count.theorems { background: var(--theorem-bg); color: var(--theorem-dot); }
 .flow-count.derived { background: var(--def-bg); color: var(--def-dot); }
 
-/* -- Legend -- */
+/* ── Legend ── */
 .legend {
   display: flex;
   flex-wrap: wrap;
@@ -379,7 +463,7 @@ h1 {
 .legend-dot.inductive { background: var(--inductive-dot); }
 .legend-dot.proposition { background: var(--proposition-dot); }
 
-/* -- Filter buttons -- */
+/* ── Filter buttons ── */
 .filter-bar {
   display: flex;
   flex-wrap: wrap;
@@ -408,7 +492,7 @@ h1 {
   border-color: var(--accent);
 }
 
-/* -- Back link -- */
+/* ── Back link ── */
 .back-link {
   display: inline-block;
   margin-bottom: 1rem;
@@ -417,7 +501,7 @@ h1 {
   letter-spacing: 0.04em;
 }
 
-/* -- Footer -- */
+/* ── Footer ── */
 .footer {
   text-align: center;
   padding-top: 2rem;
@@ -426,7 +510,7 @@ h1 {
   font-style: italic;
 }
 
-/* -- Responsive -- */
+/* ── Responsive ── */
 @media (max-width: 500px) {
   html { font-size: 16px; }
   .container { padding: 1rem 0.75rem 2rem; }
@@ -441,8 +525,15 @@ h1 {
   <h1>Miracles</h1>
   <div class="subtitle">Creed &middot; 30 declarations</div>
 
-  
-  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;156, &sect;434, &sect;547, &sect;548, &sect;549, &sect;550, &sect;767, &sect;798, &sect;799, &sect;800, &sect;801, &sect;828 (+5 more)</div>
+  <div class="flow-summary">
+  <span class="flow-count axioms">17 axioms</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count theorems">10 theorems</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count derived">3 derived</span>
+</div>
+  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1127, &sect;1507, &sect;1508, &sect;156, &sect;1673, &sect;2003, &sect;434, &sect;547, &sect;548, &sect;549, &sect;550, &sect;767, &sect;798, &sect;799, &sect;800 +2 more</div>
+
   <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
 
   <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (10)</button><button class="filter-btn" data-filter="inductive">inductive (3)</button><button class="filter-btn" data-filter="opaque">opaque (7)</button><button class="filter-btn" data-filter="theorem">theorem (10)</button></div>
@@ -458,7 +549,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>inductive MiraclePurpose where</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="cessationism_reduces_purposes">cessationism_reduces_purposes</span><span class="dep-chip" data-target="cessationist_authentication_only">cessationist_authentication_only</span><span class="dep-chip" data-target="exorcism_continues">exorcism_continues</span><span class="dep-chip" data-target="healing_witnesses_kingdom">healing_witnesses_kingdom</span><span class="dep-chip" data-target="kingdom_signs_reduced">kingdom_signs_reduced</span><span class="dep-chip" data-target="miraclesServe">miraclesServe</span><span class="dep-chip" data-target="miracles_as_motiva_credibilitatis">miracles_as_motiva_credibilitatis</span><span class="dep-chip" data-target="miracles_serve_multiple_purposes">miracles_serve_multiple_purposes</span></div></div>
+<div class="node-desc">A miracle — a sign worked by God that transcends the natural order.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="miraclesServe">miraclesServe</span><span class="dep-chip" data-target="miracles_serve_multiple_purposes">miracles_serve_multiple_purposes</span><span class="dep-chip" data-target="exorcism_continues">exorcism_continues</span><span class="dep-chip" data-target="miracles_as_motiva_credibilitatis">miracles_as_motiva_credibilitatis</span><span class="dep-chip" data-target="cessationist_authentication_only">cessationist_authentication_only</span><span class="dep-chip" data-target="cessationism_reduces_purposes">cessationism_reduces_purposes</span><span class="dep-chip" data-target="kingdom_signs_reduced">kingdom_signs_reduced</span><span class="dep-chip" data-target="healing_witnesses_kingdom">healing_witnesses_kingdom</span></div></div>
   </div>
 </div>
 <div class="node-card kind-inductive" data-kind="inductive" data-name="CharismType">
@@ -469,7 +561,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>inductive CharismType where</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="all_charisms_continue">all_charisms_continue</span><span class="dep-chip" data-target="cessationism_internally_coherent">cessationism_internally_coherent</span><span class="dep-chip" data-target="cessationist_canon_closes_charisms">cessationist_canon_closes_charisms</span><span class="dep-chip" data-target="charismGivenInEra">charismGivenInEra</span><span class="dep-chip" data-target="charisms_in_every_era">charisms_in_every_era</span><span class="dep-chip" data-target="continuationism_from_catholic_axioms">continuationism_from_catholic_axioms</span><span class="dep-chip" data-target="healing_charism_continues">healing_charism_continues</span><span class="dep-chip" data-target="healing_witnesses_kingdom">healing_witnesses_kingdom</span></div></div>
+<div class="node-desc">A charism — a grace of the Holy Spirit for the good of the Church.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="charismGivenInEra">charismGivenInEra</span><span class="dep-chip" data-target="charisms_in_every_era">charisms_in_every_era</span><span class="dep-chip" data-target="healing_charism_continues">healing_charism_continues</span><span class="dep-chip" data-target="cessationist_canon_closes_charisms">cessationist_canon_closes_charisms</span><span class="dep-chip" data-target="cessationism_internally_coherent">cessationism_internally_coherent</span><span class="dep-chip" data-target="continuationism_from_catholic_axioms">continuationism_from_catholic_axioms</span><span class="dep-chip" data-target="healing_witnesses_kingdom">healing_witnesses_kingdom</span><span class="dep-chip" data-target="all_charisms_continue">all_charisms_continue</span></div></div>
   </div>
 </div>
 <div class="node-card kind-inductive" data-kind="inductive" data-name="TheologicalEra">
@@ -480,7 +573,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>inductive TheologicalEra where</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="all_charisms_continue">all_charisms_continue</span><span class="dep-chip" data-target="cessationism_internally_coherent">cessationism_internally_coherent</span><span class="dep-chip" data-target="cessationist_canon_closes_charisms">cessationist_canon_closes_charisms</span><span class="dep-chip" data-target="charismGivenInEra">charismGivenInEra</span><span class="dep-chip" data-target="charisms_in_every_era">charisms_in_every_era</span><span class="dep-chip" data-target="continuationism_from_catholic_axioms">continuationism_from_catholic_axioms</span><span class="dep-chip" data-target="healing_charism_continues">healing_charism_continues</span><span class="dep-chip" data-target="healing_witnesses_kingdom">healing_witnesses_kingdom</span></div></div>
+<div class="node-desc">A theological era — the distinction that cessationism requires.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="charismGivenInEra">charismGivenInEra</span><span class="dep-chip" data-target="charisms_in_every_era">charisms_in_every_era</span><span class="dep-chip" data-target="healing_charism_continues">healing_charism_continues</span><span class="dep-chip" data-target="cessationist_canon_closes_charisms">cessationist_canon_closes_charisms</span><span class="dep-chip" data-target="cessationism_internally_coherent">cessationism_internally_coherent</span><span class="dep-chip" data-target="continuationism_from_catholic_axioms">continuationism_from_catholic_axioms</span><span class="dep-chip" data-target="healing_witnesses_kingdom">healing_witnesses_kingdom</span><span class="dep-chip" data-target="all_charisms_continue">all_charisms_continue</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="solaScriptura">
@@ -491,6 +585,7 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque solaScriptura : Prop</code></pre></div>
+<div class="node-desc">Whether Scripture is the sole sufficient rule of faith.</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="cessationist_sola_scriptura">cessationist_sola_scriptura</span></div></div>
   </div>
 </div>
@@ -502,8 +597,9 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque charismGivenInEra : CharismType → TheologicalEra → Prop</code></pre></div>
+<div class="node-desc">Whether a charism type is given in a theological era.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CharismType">CharismType</span><span class="dep-chip" data-target="TheologicalEra">TheologicalEra</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="all_charisms_continue">all_charisms_continue</span><span class="dep-chip" data-target="cessationism_internally_coherent">cessationism_internally_coherent</span><span class="dep-chip" data-target="cessationist_canon_closes_charisms">cessationist_canon_closes_charisms</span><span class="dep-chip" data-target="charisms_in_every_era">charisms_in_every_era</span><span class="dep-chip" data-target="continuationism_from_catholic_axioms">continuationism_from_catholic_axioms</span><span class="dep-chip" data-target="healing_charism_continues">healing_charism_continues</span><span class="dep-chip" data-target="healing_witnesses_kingdom">healing_witnesses_kingdom</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="charisms_in_every_era">charisms_in_every_era</span><span class="dep-chip" data-target="healing_charism_continues">healing_charism_continues</span><span class="dep-chip" data-target="cessationist_canon_closes_charisms">cessationist_canon_closes_charisms</span><span class="dep-chip" data-target="cessationism_internally_coherent">cessationism_internally_coherent</span><span class="dep-chip" data-target="continuationism_from_catholic_axioms">continuationism_from_catholic_axioms</span><span class="dep-chip" data-target="healing_witnesses_kingdom">healing_witnesses_kingdom</span><span class="dep-chip" data-target="all_charisms_continue">all_charisms_continue</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="miraclesServe">
@@ -514,8 +610,9 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque miraclesServe : MiraclePurpose → Prop</code></pre></div>
+<div class="node-desc">Whether miracles serve a given purpose.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MiraclePurpose">MiraclePurpose</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="cessationism_reduces_purposes">cessationism_reduces_purposes</span><span class="dep-chip" data-target="cessationist_authentication_only">cessationist_authentication_only</span><span class="dep-chip" data-target="exorcism_continues">exorcism_continues</span><span class="dep-chip" data-target="healing_witnesses_kingdom">healing_witnesses_kingdom</span><span class="dep-chip" data-target="miracles_as_motiva_credibilitatis">miracles_as_motiva_credibilitatis</span><span class="dep-chip" data-target="miracles_serve_multiple_purposes">miracles_serve_multiple_purposes</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="miracles_serve_multiple_purposes">miracles_serve_multiple_purposes</span><span class="dep-chip" data-target="exorcism_continues">exorcism_continues</span><span class="dep-chip" data-target="miracles_as_motiva_credibilitatis">miracles_as_motiva_credibilitatis</span><span class="dep-chip" data-target="cessationist_authentication_only">cessationist_authentication_only</span><span class="dep-chip" data-target="cessationism_reduces_purposes">cessationism_reduces_purposes</span><span class="dep-chip" data-target="healing_witnesses_kingdom">healing_witnesses_kingdom</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="canonComplete">
@@ -526,7 +623,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque canonComplete : Prop</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="catholic_cessationist_incompatible">catholic_cessationist_incompatible</span><span class="dep-chip" data-target="cessationism_internally_coherent">cessationism_internally_coherent</span><span class="dep-chip" data-target="cessationist_canon_closes_charisms">cessationist_canon_closes_charisms</span></div></div>
+<div class="node-desc">Whether the biblical canon is complete (revelation closed).</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="cessationist_canon_closes_charisms">cessationist_canon_closes_charisms</span><span class="dep-chip" data-target="cessationism_internally_coherent">cessationism_internally_coherent</span><span class="dep-chip" data-target="catholic_cessationist_incompatible">catholic_cessationist_incompatible</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="miracleVerified">
@@ -537,7 +635,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque miracleVerified : Prop</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="canonization_implies_continuationism">canonization_implies_continuationism</span><span class="dep-chip" data-target="canonization_requires_miracles">canonization_requires_miracles</span></div></div>
+<div class="node-desc">Whether a miracle has been verified (as in the canonization process).</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="canonization_requires_miracles">canonization_requires_miracles</span><span class="dep-chip" data-target="canonization_implies_continuationism">canonization_implies_continuationism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="canonizationCanProceed">
@@ -548,7 +647,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque canonizationCanProceed : Prop</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="canonization_implies_continuationism">canonization_implies_continuationism</span><span class="dep-chip" data-target="canonization_requires_miracles">canonization_requires_miracles</span></div></div>
+<div class="node-desc">Whether the canonization process can proceed.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="canonization_requires_miracles">canonization_requires_miracles</span><span class="dep-chip" data-target="canonization_implies_continuationism">canonization_implies_continuationism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="sacramentEffectsSupernatural">
@@ -559,7 +659,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque sacramentEffectsSupernatural : Sacrament → Prop</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="sacramental_argument_against_cessationism">sacramental_argument_against_cessationism</span><span class="dep-chip" data-target="sacraments_are_supernatural">sacraments_are_supernatural</span></div></div>
+<div class="node-desc">Whether a sacrament effects a supernatural change.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="sacraments_are_supernatural">sacraments_are_supernatural</span><span class="dep-chip" data-target="sacramental_argument_against_cessationism">sacramental_argument_against_cessationism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="miracles_serve_multiple_purposes">
@@ -574,8 +675,9 @@ h1 {
   miraclesServe MiraclePurpose.kingdomSign ∧
   miraclesServe MiraclePurpose.ecclesialEdification ∧
   miraclesServe MiraclePurpose.liberation</code></pre></div>
+<div class="node-desc">AXIOM 1 (§547-548): Jesus' miracles served MULTIPLE purposes —</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MiraclePurpose">MiraclePurpose</span><span class="dep-chip" data-target="miraclesServe">miraclesServe</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="all_charisms_continue">all_charisms_continue</span><span class="dep-chip" data-target="cessationism_reduces_purposes">cessationism_reduces_purposes</span><span class="dep-chip" data-target="healing_witnesses_kingdom">healing_witnesses_kingdom</span><span class="dep-chip" data-target="kingdom_signs_reduced">kingdom_signs_reduced</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="cessationism_reduces_purposes">cessationism_reduces_purposes</span><span class="dep-chip" data-target="kingdom_signs_reduced">kingdom_signs_reduced</span><span class="dep-chip" data-target="healing_witnesses_kingdom">healing_witnesses_kingdom</span><span class="dep-chip" data-target="all_charisms_continue">all_charisms_continue</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="charisms_in_every_era">
@@ -589,8 +691,9 @@ h1 {
   ∀ (era : TheologicalEra),
     charismGivenInEra CharismType.extraordinary era ∧
     charismGivenInEra CharismType.ordinary era</code></pre></div>
+<div class="node-desc">AXIOM 2 (§798-799, §2003): The Holy Spirit gives charisms —</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CharismType">CharismType</span><span class="dep-chip" data-target="TheologicalEra">TheologicalEra</span><span class="dep-chip" data-target="charismGivenInEra">charismGivenInEra</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="all_charisms_continue">all_charisms_continue</span><span class="dep-chip" data-target="cessationism_internally_coherent">cessationism_internally_coherent</span><span class="dep-chip" data-target="continuationism_from_catholic_axioms">continuationism_from_catholic_axioms</span><span class="dep-chip" data-target="healing_witnesses_kingdom">healing_witnesses_kingdom</span><span class="dep-chip" data-target="sacramental_argument_against_cessationism">sacramental_argument_against_cessationism</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="cessationism_internally_coherent">cessationism_internally_coherent</span><span class="dep-chip" data-target="continuationism_from_catholic_axioms">continuationism_from_catholic_axioms</span><span class="dep-chip" data-target="sacramental_argument_against_cessationism">sacramental_argument_against_cessationism</span><span class="dep-chip" data-target="healing_witnesses_kingdom">healing_witnesses_kingdom</span><span class="dep-chip" data-target="all_charisms_continue">all_charisms_continue</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="healing_charism_continues">
@@ -602,8 +705,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom healing_charism_continues :
   charismGivenInEra CharismType.extraordinary TheologicalEra.postApostolic</code></pre></div>
+<div class="node-desc">AXIOM 3 (§1507-1508): The charism of healing continues in the Church.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CharismType">CharismType</span><span class="dep-chip" data-target="TheologicalEra">TheologicalEra</span><span class="dep-chip" data-target="charismGivenInEra">charismGivenInEra</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="all_charisms_continue">all_charisms_continue</span><span class="dep-chip" data-target="healing_witnesses_kingdom">healing_witnesses_kingdom</span><span class="dep-chip" data-target="sacramental_argument_against_cessationism">sacramental_argument_against_cessationism</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="sacramental_argument_against_cessationism">sacramental_argument_against_cessationism</span><span class="dep-chip" data-target="healing_witnesses_kingdom">healing_witnesses_kingdom</span><span class="dep-chip" data-target="all_charisms_continue">all_charisms_continue</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="exorcism_continues">
@@ -615,6 +719,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom exorcism_continues :
   miraclesServe MiraclePurpose.liberation</code></pre></div>
+<div class="node-desc">AXIOM 4 (§1673, §434): Exorcism is a current ministry of the Church.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MiraclePurpose">MiraclePurpose</span><span class="dep-chip" data-target="miraclesServe">miraclesServe</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="all_charisms_continue">all_charisms_continue</span></div></div>
   </div>
@@ -628,8 +733,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom canonization_requires_miracles :
   canonizationCanProceed → miracleVerified</code></pre></div>
+<div class="node-desc">AXIOM 5 (canonization process): The Church's canonization process</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="canonizationCanProceed">canonizationCanProceed</span><span class="dep-chip" data-target="miracleVerified">miracleVerified</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="all_charisms_continue">all_charisms_continue</span><span class="dep-chip" data-target="canonization_implies_continuationism">canonization_implies_continuationism</span><span class="dep-chip" data-target="kingdom_signs_reduced">kingdom_signs_reduced</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="kingdom_signs_reduced">kingdom_signs_reduced</span><span class="dep-chip" data-target="canonization_implies_continuationism">canonization_implies_continuationism</span><span class="dep-chip" data-target="all_charisms_continue">all_charisms_continue</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="miracles_as_motiva_credibilitatis">
@@ -642,6 +748,7 @@ h1 {
     <div class="node-prop"><pre><code>axiom miracles_as_motiva_credibilitatis :
   miraclesServe MiraclePurpose.authentication ∧
   miraclesServe MiraclePurpose.kingdomSign</code></pre></div>
+<div class="node-desc">AXIOM 6 (§156): Miracles are motives of credibility — NOT just for</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MiraclePurpose">MiraclePurpose</span><span class="dep-chip" data-target="miraclesServe">miraclesServe</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="all_charisms_continue">all_charisms_continue</span></div></div>
   </div>
@@ -655,8 +762,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom sacraments_are_supernatural :
   ∀ (s : Sacrament), signifies s → sacramentEffectsSupernatural s</code></pre></div>
+<div class="node-desc">AXIOM 7 (T3 bridge): Sacraments effect supernatural changes.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="sacramentEffectsSupernatural">sacramentEffectsSupernatural</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="all_charisms_continue">all_charisms_continue</span><span class="dep-chip" data-target="sacramental_argument_against_cessationism">sacramental_argument_against_cessationism</span><span class="dep-chip" data-target="spirit_mission_grounds_continuationism">spirit_mission_grounds_continuationism</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="spirit_mission_grounds_continuationism">spirit_mission_grounds_continuationism</span><span class="dep-chip" data-target="sacramental_argument_against_cessationism">sacramental_argument_against_cessationism</span><span class="dep-chip" data-target="all_charisms_continue">all_charisms_continue</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="cessationist_authentication_only">
@@ -670,8 +778,9 @@ h1 {
   miraclesServe MiraclePurpose.authentication →
   ∀ (purpose : MiraclePurpose),
     miraclesServe purpose → purpose = MiraclePurpose.authentication</code></pre></div>
+<div class="node-desc">Cessationist axiom C1: Miracles serve ONLY to authenticate revelation.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MiraclePurpose">MiraclePurpose</span><span class="dep-chip" data-target="miraclesServe">miraclesServe</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="all_charisms_continue">all_charisms_continue</span><span class="dep-chip" data-target="cessationism_reduces_purposes">cessationism_reduces_purposes</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="cessationism_reduces_purposes">cessationism_reduces_purposes</span><span class="dep-chip" data-target="all_charisms_continue">all_charisms_continue</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="cessationist_canon_closes_charisms">
@@ -684,8 +793,9 @@ h1 {
     <div class="node-prop"><pre><code>axiom cessationist_canon_closes_charisms :
   canonComplete →
   ¬ charismGivenInEra CharismType.extraordinary TheologicalEra.postApostolic</code></pre></div>
+<div class="node-desc">Cessationist axiom C2: Once the canon is complete, authentication</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CharismType">CharismType</span><span class="dep-chip" data-target="TheologicalEra">TheologicalEra</span><span class="dep-chip" data-target="canonComplete">canonComplete</span><span class="dep-chip" data-target="charismGivenInEra">charismGivenInEra</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="all_charisms_continue">all_charisms_continue</span><span class="dep-chip" data-target="cessationism_internally_coherent">cessationism_internally_coherent</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="cessationism_internally_coherent">cessationism_internally_coherent</span><span class="dep-chip" data-target="all_charisms_continue">all_charisms_continue</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="cessationist_sola_scriptura">
@@ -697,6 +807,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom cessationist_sola_scriptura :
   solaScriptura</code></pre></div>
+<div class="node-desc">Cessationist axiom C3: Sola scriptura — Scripture is the sole</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="solaScriptura">solaScriptura</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="all_charisms_continue">all_charisms_continue</span></div></div>
   </div>
@@ -710,10 +821,10 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem cessationism_internally_coherent
     (h_complete : canonComplete) :
-    ¬ charismGivenInEra CharismType.extraordinary TheologicalEra.postApostolic :=
-  cessationist_canon_closes_charisms h_complete</code></pre></div>
+    ¬ charismGivenInEra CharismType.extraordinary TheologicalEra.postApostolic</code></pre></div>
+<div class="node-desc">THEOREM: Cessationism is internally coherent — given its axioms,</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CharismType">CharismType</span><span class="dep-chip" data-target="TheologicalEra">TheologicalEra</span><span class="dep-chip" data-target="canonComplete">canonComplete</span><span class="dep-chip" data-target="cessationist_canon_closes_charisms">cessationist_canon_closes_charisms</span><span class="dep-chip" data-target="charismGivenInEra">charismGivenInEra</span><span class="dep-chip" data-target="charisms_in_every_era">charisms_in_every_era</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="all_charisms_continue">all_charisms_continue</span><span class="dep-chip" data-target="catholic_cessationist_incompatible">catholic_cessationist_incompatible</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="catholic_cessationist_incompatible">catholic_cessationist_incompatible</span><span class="dep-chip" data-target="all_charisms_continue">all_charisms_continue</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="continuationism_from_catholic_axioms">
@@ -724,10 +835,10 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem continuationism_from_catholic_axioms :
-    charismGivenInEra CharismType.extraordinary TheologicalEra.postApostolic :=
-  (charisms_in_every_era TheologicalEra.postApostolic).1</code></pre></div>
+    charismGivenInEra CharismType.extraordinary TheologicalEra.postApostolic</code></pre></div>
+<div class="node-desc">THEOREM: The Catholic axioms entail continuationism — extraordinary</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CharismType">CharismType</span><span class="dep-chip" data-target="TheologicalEra">TheologicalEra</span><span class="dep-chip" data-target="charismGivenInEra">charismGivenInEra</span><span class="dep-chip" data-target="charisms_in_every_era">charisms_in_every_era</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="all_charisms_continue">all_charisms_continue</span><span class="dep-chip" data-target="catholic_cessationist_incompatible">catholic_cessationist_incompatible</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="catholic_cessationist_incompatible">catholic_cessationist_incompatible</span><span class="dep-chip" data-target="all_charisms_continue">all_charisms_continue</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="catholic_cessationist_incompatible">
@@ -739,10 +850,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem catholic_cessationist_incompatible
     (h_complete : canonComplete) :
-    False := by
-  have h_continue := continuationism_from_catholic_axioms
-  have h_cease := cessationism_internally_coherent h_complete
-  exact h_cease h_continue</code></pre></div>
+    False</code></pre></div>
+<div class="node-desc">THEOREM: The Catholic and cessationist axiom sets are formally</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="canonComplete">canonComplete</span><span class="dep-chip" data-target="cessationism_internally_coherent">cessationism_internally_coherent</span><span class="dep-chip" data-target="continuationism_from_catholic_axioms">continuationism_from_catholic_axioms</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="all_charisms_continue">all_charisms_continue</span></div></div>
   </div>
@@ -757,12 +866,10 @@ h1 {
     <div class="node-prop"><pre><code>theorem cessationism_reduces_purposes
     (purpose : MiraclePurpose)
     (h_serves : miraclesServe purpose) :
-    purpose = MiraclePurpose.authentication := by
-  exact cessationist_authentication_only
-    miracles_serve_multiple_purposes.1
-    purpose h_serves</code></pre></div>
+    purpose = MiraclePurpose.authentication</code></pre></div>
+<div class="node-desc">THEOREM: Cessationism reduces miracle purposes to authentication alone.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MiraclePurpose">MiraclePurpose</span><span class="dep-chip" data-target="cessationist_authentication_only">cessationist_authentication_only</span><span class="dep-chip" data-target="miraclesServe">miraclesServe</span><span class="dep-chip" data-target="miracles_serve_multiple_purposes">miracles_serve_multiple_purposes</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="all_charisms_continue">all_charisms_continue</span><span class="dep-chip" data-target="kingdom_signs_reduced">kingdom_signs_reduced</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="kingdom_signs_reduced">kingdom_signs_reduced</span><span class="dep-chip" data-target="all_charisms_continue">all_charisms_continue</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="kingdom_signs_reduced">
@@ -773,10 +880,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem kingdom_signs_reduced :
-    MiraclePurpose.kingdomSign = MiraclePurpose.authentication := by
-  exact cessationism_reduces_purposes
-    MiraclePurpose.kingdomSign
-    miracles_serve_multiple_purposes.2.1</code></pre></div>
+    MiraclePurpose.kingdomSign = MiraclePurpose.authentication</code></pre></div>
+<div class="node-desc">THEOREM: Under cessationism, kingdom-sign miracles reduce to authentication.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MiraclePurpose">MiraclePurpose</span><span class="dep-chip" data-target="canonization_requires_miracles">canonization_requires_miracles</span><span class="dep-chip" data-target="cessationism_reduces_purposes">cessationism_reduces_purposes</span><span class="dep-chip" data-target="miracles_serve_multiple_purposes">miracles_serve_multiple_purposes</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="all_charisms_continue">all_charisms_continue</span></div></div>
   </div>
@@ -790,8 +895,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem canonization_implies_continuationism
     (h_can_proceed : canonizationCanProceed) :
-    miracleVerified :=
-  canonization_requires_miracles h_can_proceed</code></pre></div>
+    miracleVerified</code></pre></div>
+<div class="node-desc">THEOREM: The canonization structural argument — if canonization</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="canonizationCanProceed">canonizationCanProceed</span><span class="dep-chip" data-target="canonization_requires_miracles">canonization_requires_miracles</span><span class="dep-chip" data-target="miracleVerified">miracleVerified</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="all_charisms_continue">all_charisms_continue</span></div></div>
   </div>
@@ -804,8 +909,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem spirit_mission_grounds_continuationism :
-    hasMission holySpirit DivineMission.sanctification :=
-  son_reveals_spirit_sanctifies.2</code></pre></div>
+    hasMission holySpirit DivineMission.sanctification</code></pre></div>
+<div class="node-desc">THEOREM: The Spirit's sanctifying mission grounds continuationism.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="sacraments_are_supernatural">sacraments_are_supernatural</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="all_charisms_continue">all_charisms_continue</span></div></div>
   </div>
@@ -819,10 +924,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem sacramental_argument_against_cessationism
     (s : Sacrament) (h_sig : signifies s) :
-    confers s ∧ sacramentEffectsSupernatural s := by
-  constructor
-  · exact t3_sacramental_efficacy s h_sig
-  · exact sacraments_are_supernatural s h_sig</code></pre></div>
+    confers s ∧ sacramentEffectsSupernatural s</code></pre></div>
+<div class="node-desc">THEOREM: The sacramental argument against cessationism.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="charisms_in_every_era">charisms_in_every_era</span><span class="dep-chip" data-target="healing_charism_continues">healing_charism_continues</span><span class="dep-chip" data-target="sacramentEffectsSupernatural">sacramentEffectsSupernatural</span><span class="dep-chip" data-target="sacraments_are_supernatural">sacraments_are_supernatural</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="all_charisms_continue">all_charisms_continue</span></div></div>
   </div>
@@ -836,8 +939,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem healing_witnesses_kingdom :
     charismGivenInEra CharismType.extraordinary TheologicalEra.postApostolic ∧
-    miraclesServe MiraclePurpose.kingdomSign := by
-  exact ⟨healing_charism_continues, miracles_serve_multiple_purposes.2.1⟩</code></pre></div>
+    miraclesServe MiraclePurpose.kingdomSign</code></pre></div>
+<div class="node-desc">THEOREM: The healing charism witnesses to the Kingdom's presence.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CharismType">CharismType</span><span class="dep-chip" data-target="MiraclePurpose">MiraclePurpose</span><span class="dep-chip" data-target="TheologicalEra">TheologicalEra</span><span class="dep-chip" data-target="charismGivenInEra">charismGivenInEra</span><span class="dep-chip" data-target="charisms_in_every_era">charisms_in_every_era</span><span class="dep-chip" data-target="healing_charism_continues">healing_charism_continues</span><span class="dep-chip" data-target="miraclesServe">miraclesServe</span><span class="dep-chip" data-target="miracles_serve_multiple_purposes">miracles_serve_multiple_purposes</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="all_charisms_continue">all_charisms_continue</span></div></div>
   </div>
@@ -851,8 +954,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem all_charisms_continue (era : TheologicalEra) :
     charismGivenInEra CharismType.extraordinary era ∧
-    charismGivenInEra CharismType.ordinary era :=
-  charisms_in_every_era era</code></pre></div>
+    charismGivenInEra CharismType.ordinary era</code></pre></div>
+<div class="node-desc">THEOREM: Both ordinary and extraordinary charisms continue.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CharismType">CharismType</span><span class="dep-chip" data-target="TheologicalEra">TheologicalEra</span><span class="dep-chip" data-target="canonization_implies_continuationism">canonization_implies_continuationism</span><span class="dep-chip" data-target="canonization_requires_miracles">canonization_requires_miracles</span><span class="dep-chip" data-target="catholic_cessationist_incompatible">catholic_cessationist_incompatible</span><span class="dep-chip" data-target="cessationism_internally_coherent">cessationism_internally_coherent</span><span class="dep-chip" data-target="cessationism_reduces_purposes">cessationism_reduces_purposes</span><span class="dep-chip" data-target="cessationist_authentication_only">cessationist_authentication_only</span><span class="dep-chip" data-target="cessationist_canon_closes_charisms">cessationist_canon_closes_charisms</span><span class="dep-chip" data-target="cessationist_sola_scriptura">cessationist_sola_scriptura</span><span class="dep-chip" data-target="charismGivenInEra">charismGivenInEra</span><span class="dep-chip" data-target="charisms_in_every_era">charisms_in_every_era</span><span class="dep-chip" data-target="continuationism_from_catholic_axioms">continuationism_from_catholic_axioms</span><span class="dep-chip" data-target="exorcism_continues">exorcism_continues</span><span class="dep-chip" data-target="healing_charism_continues">healing_charism_continues</span><span class="dep-chip" data-target="healing_witnesses_kingdom">healing_witnesses_kingdom</span><span class="dep-chip" data-target="kingdom_signs_reduced">kingdom_signs_reduced</span><span class="dep-chip" data-target="miracles_as_motiva_credibilitatis">miracles_as_motiva_credibilitatis</span><span class="dep-chip" data-target="miracles_serve_multiple_purposes">miracles_serve_multiple_purposes</span><span class="dep-chip" data-target="sacramental_argument_against_cessationism">sacramental_argument_against_cessationism</span><span class="dep-chip" data-target="sacraments_are_supernatural">sacraments_are_supernatural</span><span class="dep-chip" data-target="spirit_mission_grounds_continuationism">spirit_mission_grounds_continuationism</span></div></div>
   </div>
 </div>

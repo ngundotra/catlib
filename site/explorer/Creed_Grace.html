@@ -526,11 +526,11 @@ h1 {
   <div class="subtitle">Creed &middot; 9 declarations</div>
 
   <div class="flow-summary">
-  <span class="flow-count axioms">5 axioms</span>
+  <span class="flow-count axioms">3 axioms</span>
   <span class="flow-arrow">&#10142;</span>
-  <span class="flow-count theorems">3 theorems</span>
+  <span class="flow-count theorems">4 theorems</span>
   <span class="flow-arrow">&#10142;</span>
-  <span class="flow-count derived">1 derived</span>
+  <span class="flow-count derived">2 derived</span>
 </div>
   <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;2001, &sect;2002</div>
 
@@ -562,11 +562,10 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom preparation_requires_prevenient :
   ∀ (r : Receptivity),
-    r.canReceiveSanctifying → r.hasPrevenient
-</code></pre></div>
-<div class="node-desc">1 (§2001): Preparation for sanctifying grace requires │   Source: [Definition] CCC §2001</div>
+    r.canReceiveSanctifying → r.hasPrevenient</code></pre></div>
+<div class="node-desc">AXIOM 1 (§2001): Preparation for sanctifying grace requires</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Receptivity">Receptivity</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="pelagianism_contradicts_2001">pelagianism_contradicts_2001</span><span class="dep-chip" data-target="Receptivity">Receptivity</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="pelagianism_contradicts_2001">pelagianism_contradicts_2001</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="prevenient_grace_unconditioned">
@@ -582,10 +581,8 @@ h1 {
     ∃ (g : Grace),
       g.graceType = GraceType.prevenient ∧
       g.recipient = p ∧
-      g.isFree
-</code></pre></div>
-<div class="node-desc">2 (§2001, implicit): Prevenient grace comes from God's │   Source: [Tradition] Council of Orange (529 AD), CCC §2001 │   ⚠ HIDDEN ASSUMPTION: This is the axiom that breaks the circle.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="GraceType">GraceType</span><span class="dep-chip" data-target="graceGiven">graceGiven</span><span class="dep-chip" data-target="graceTransforms">graceTransforms</span><span class="dep-chip" data-target="s8_grace_necessary_and_transformative">s8_grace_necessary_and_transformative</span><span class="dep-chip" data-target="t2_grace_preserves_freedom">t2_grace_preserves_freedom</span></div></div>
+      g.isFree</code></pre></div>
+<div class="node-desc">AXIOM 2 (§2001, implicit): Prevenient grace comes from God's</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="grace_bootstrapping_resolved">grace_bootstrapping_resolved</span></div></div>
   </div>
 </div>
@@ -604,10 +601,8 @@ h1 {
     p.hasFreeWill = true →
     -- They can freely respond (accept or reject)
     ∃ (choice : FreeChoice Bool),
-      choice.alternativesExist ∧ choice.uncoerced
-</code></pre></div>
-<div class="node-desc">3 (§2002): Divine initiative preserves human freedom. │   Source: [Definition] CCC §2002 │   ⚠ HIDDEN ASSUMPTION: How can God's initiative be the cause of our</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="GraceType">GraceType</span></div></div>
+      choice.alternativesExist ∧ choice.uncoerced</code></pre></div>
+<div class="node-desc">AXIOM 3 (§2002): Divine initiative preserves human freedom.</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="grace_and_freedom_compatible">grace_and_freedom_compatible</span></div></div>
   </div>
 </div>
@@ -622,7 +617,6 @@ h1 {
     (p : Person) (g : Grace) (h : graceGiven p g) :
     graceTransforms g p</code></pre></div>
 <div class="node-desc">Bridge to S8: grace is transformative, not merely forensic.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="graceGiven">graceGiven</span><span class="dep-chip" data-target="graceTransforms">graceTransforms</span><span class="dep-chip" data-target="s8_grace_necessary_and_transformative">s8_grace_necessary_and_transformative</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="grace_bootstrapping_resolved">
@@ -640,8 +634,7 @@ h1 {
       g.recipient = p ∧
       g.isFree</code></pre></div>
 <div class="node-desc">The bootstrapping problem is resolved: every person with free will</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="GraceType">GraceType</span><span class="dep-chip" data-target="prevenient_grace_unconditioned">prevenient_grace_unconditioned</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="prevenient_grace_unconditioned">prevenient_grace_unconditioned</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="prevenient_grace_unconditioned">prevenient_grace_unconditioned</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="grace_and_freedom_compatible">
@@ -660,8 +653,7 @@ h1 {
     ∃ (choice : FreeChoice Bool),
       choice.alternativesExist ∧ choice.uncoerced</code></pre></div>
 <div class="node-desc">The human response to grace is genuinely free — not coerced by</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="GraceType">GraceType</span><span class="dep-chip" data-target="divine_initiative_preserves_freedom">divine_initiative_preserves_freedom</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="divine_initiative_preserves_freedom">divine_initiative_preserves_freedom</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="divine_initiative_preserves_freedom">divine_initiative_preserves_freedom</span></div></div>
   </div>
 </div>
 <div class="node-card kind-proposition" data-kind="proposition" data-name="pelagian_preparation">
@@ -693,7 +685,6 @@ h1 {
     r.hasPrevenient</code></pre></div>
 <div class="node-desc">If Pelagianism were true, preparation wouldn't require prevenient</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Receptivity">Receptivity</span><span class="dep-chip" data-target="pelagian_preparation">pelagian_preparation</span><span class="dep-chip" data-target="preparation_requires_prevenient">preparation_requires_prevenient</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="Receptivity">Receptivity</span><span class="dep-chip" data-target="pelagian_preparation">pelagian_preparation</span><span class="dep-chip" data-target="preparation_requires_prevenient">preparation_requires_prevenient</span></div></div>
   </div>
 </div>
   </div>

@@ -267,8 +267,6 @@ h1 {
 .node-card.kind-structure { border-left-color: var(--structure-dot); }
 .node-card.kind-inductive { border-left-color: var(--inductive-dot); }
 .node-card.kind-proposition { border-left-color: var(--proposition-dot); }
-.node-card.kind-instance { border-left-color: var(--def-dot); }
-.node-card.kind-abbrev { border-left-color: var(--def-dot); }
 
 .node-header {
   display: flex;
@@ -304,8 +302,6 @@ h1 {
 .kind-structure .node-kind-badge { background: var(--structure-bg); color: var(--structure-dot); }
 .kind-inductive .node-kind-badge { background: var(--inductive-bg); color: var(--inductive-dot); }
 .kind-proposition .node-kind-badge { background: var(--proposition-bg); color: var(--proposition-dot); }
-.kind-instance .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
-.kind-abbrev .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
 
 .node-name {
   flex: 1;
@@ -466,8 +462,6 @@ h1 {
 .legend-dot.structure { background: var(--structure-dot); }
 .legend-dot.inductive { background: var(--inductive-dot); }
 .legend-dot.proposition { background: var(--proposition-dot); }
-.legend-dot.instance { background: var(--def-dot); }
-.legend-dot.abbrev { background: var(--def-dot); }
 
 /* ── Filter buttons ── */
 .filter-bar {
@@ -529,13 +523,20 @@ h1 {
 <div class="container">
   <a href="index.html" class="back-link">&larr; All files</a>
   <h1>Axioms</h1>
-  <div class="subtitle">Foundations &middot; 65 declarations</div>
-  
-  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;3, &sect;214, &sect;255, &sect;302, &sect;303, &sect;306, &sect;311, &sect;946, &sect;1024, &sect;1033, &sect;1037, &sect;1127, &sect;1730, &sect;1733, &sect;1790, &sect;1855, &sect;1861, &sect;1954, &sect;1999, &sect;2002</div>
+  <div class="subtitle">Foundations &middot; 64 declarations</div>
+
+  <div class="flow-summary">
+  <span class="flow-count axioms">47 axioms</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count theorems">0 theorems</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count derived">17 derived</span>
+</div>
+  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1024, &sect;1033, &sect;1037, &sect;1127, &sect;1730, &sect;1733, &sect;1790, &sect;1855, &sect;1861, &sect;1954, &sect;1999, &sect;2002, &sect;214, &sect;255, &sect;3 +5 more</div>
 
   <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span></div>
 
-  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (21)</button><button class="filter-btn" data-filter="def">def (17)</button><button class="filter-btn" data-filter="opaque">opaque (27)</button></div>
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (20)</button><button class="filter-btn" data-filter="def">def (17)</button><button class="filter-btn" data-filter="opaque">opaque (27)</button></div>
 
   <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
 
@@ -549,6 +550,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque MoralProposition : Type</code></pre></div>
 <div class="node-desc">A moral proposition — a claim about what is good, right, or obligatory.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="moralTruthValue">moralTruthValue</span><span class="dep-chip" data-target="accessibleToReason">accessibleToReason</span><span class="dep-chip" data-target="s6_moral_realism">s6_moral_realism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="moralTruthValue">
@@ -559,7 +561,9 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque moralTruthValue : MoralProposition → Prop</code></pre></div>
-<div class="node-desc">Truth value of a moral proposition, independent of any agent&#x27;s beliefs.</div>
+<div class="node-desc">Truth value of a moral proposition, independent of any agent's beliefs.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MoralProposition">MoralProposition</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="s6_moral_realism">s6_moral_realism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="accessibleToReason">
@@ -571,6 +575,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque accessibleToReason : MoralProposition → Prop</code></pre></div>
 <div class="node-desc">Accessibility of a moral truth to unaided reason.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MoralProposition">MoralProposition</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="s6_moral_realism">s6_moral_realism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="TheGood">
@@ -593,6 +599,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque couldChooseOtherwise : Person → Prop</code></pre></div>
 <div class="node-desc">Whether a person genuinely could have chosen otherwise in a given situation.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="God">God</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="t1_libertarian_free_will">t1_libertarian_free_will</span><span class="dep-chip" data-target="t2_grace_preserves_freedom">t2_grace_preserves_freedom</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="PrimaryCause">
@@ -603,7 +611,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque PrimaryCause : Type</code></pre></div>
-<div class="node-desc">Primary cause — God&#x27;s causal activity as first cause.</div>
+<div class="node-desc">Primary cause — God's causal activity as first cause.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="causesCompete">causesCompete</span><span class="dep-chip" data-target="p2_two_tier_causation">p2_two_tier_causation</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="SecondaryCause">
@@ -614,7 +623,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque SecondaryCause : Type</code></pre></div>
-<div class="node-desc">Secondary cause — a creature&#x27;s own genuine causal activity.</div>
+<div class="node-desc">Secondary cause — a creature's own genuine causal activity.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="causesCompete">causesCompete</span><span class="dep-chip" data-target="p2_two_tier_causation">p2_two_tier_causation</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="causesCompete">
@@ -626,6 +636,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque causesCompete : PrimaryCause → SecondaryCause → Prop</code></pre></div>
 <div class="node-desc">Whether two causes compete (i.e. more of one means less of the other).</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="God">God</span><span class="dep-chip" data-target="PrimaryCause">PrimaryCause</span><span class="dep-chip" data-target="SecondaryCause">SecondaryCause</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="p2_two_tier_causation">p2_two_tier_causation</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="God">
@@ -637,9 +649,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque God : Type</code></pre></div>
 <div class="node-desc">God, modeled as a distinguished entity.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="lutheranModifications">lutheranModifications</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="couldChooseOtherwise">couldChooseOtherwise</span><span class="dep-chip" data-target="causesCompete">causesCompete</span><span class="dep-chip" data-target="loveRequiresFreedom">loveRequiresFreedom</span><span class="dep-chip" data-target="moralLawInscribed">moralLawInscribed</span><span class="dep-chip" data-target="communion_not_self_reflexive">communion_not_self_reflexive</span><span class="dep-chip" data-target="isDueGoodAbsent">isDueGoodAbsent</span><span class="dep-chip" data-target="p2_provenance">p2_provenance</span><span class="dep-chip" data-target="p3_provenance">p3_provenance</span><span class="dep-chip" data-target="s1_provenance">s1_provenance</span><span class="dep-chip" data-target="s2_provenance">s2_provenance</span><span class="dep-chip" data-target="s3_provenance">s3_provenance</span><span class="dep-chip" data-target="s4_provenance">s4_provenance</span><span class="dep-chip" data-target="s5_provenance">s5_provenance</span><span class="dep-chip" data-target="s7_provenance">s7_provenance</span><span class="dep-chip" data-target="s8_provenance">s8_provenance</span><span class="dep-chip" data-target="s9_provenance">s9_provenance</span><span class="dep-chip" data-target="t1_provenance">t1_provenance</span><span class="dep-chip" data-target="lutheranModifications">lutheranModifications</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="godIsLove">
@@ -650,7 +660,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque godIsLove : Prop</code></pre></div>
-<div class="node-desc">God&#x27;s nature is love.</div>
+<div class="node-desc">God's nature is love.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="s1_god_is_love">s1_god_is_love</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="loves">
@@ -673,6 +684,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque loveRequiresFreedom : Prop</code></pre></div>
 <div class="node-desc">Whether genuine love requires freedom.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="God">God</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="p3_provenance">p3_provenance</span><span class="dep-chip" data-target="s1_god_is_love">s1_god_is_love</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="godWillsSalvation">
@@ -684,6 +697,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque godWillsSalvation : Person → Prop</code></pre></div>
 <div class="node-desc">God desires a given person to be saved.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="s2_universal_salvific_will">s2_universal_salvific_will</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="moralLawInscribed">
@@ -695,6 +709,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque moralLawInscribed : Person → Prop</code></pre></div>
 <div class="node-desc">The moral law written on the heart of a person.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="God">God</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="s3_law_on_hearts">s3_law_on_hearts</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="divinelyGoverned">
@@ -706,6 +722,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque divinelyGoverned : Prop → Prop</code></pre></div>
 <div class="node-desc">God governs (providentially orders) a given event or state.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="s4_universal_providence">s4_universal_providence</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="isGraveSin">
@@ -717,6 +734,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque isGraveSin : Sin → Prop</code></pre></div>
 <div class="node-desc">Whether a sin is grave (mortal).</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="s5_sin_separates">s5_sin_separates</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="inCommunion">
@@ -728,6 +746,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque inCommunion : CommunionParty → CommunionParty → Prop</code></pre></div>
 <div class="node-desc">Whether two parties are in communion with each other.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="communion_symmetric">communion_symmetric</span><span class="dep-chip" data-target="communion_not_self_reflexive">communion_not_self_reflexive</span><span class="dep-chip" data-target="god_self_communion">god_self_communion</span><span class="dep-chip" data-target="church_self_communion">church_self_communion</span><span class="dep-chip" data-target="s5_sin_separates">s5_sin_separates</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="communion_symmetric">
@@ -740,6 +759,7 @@ h1 {
     <div class="node-prop"><pre><code>axiom communion_symmetric :
   ∀ (a b : CommunionParty), inCommunion a b → inCommunion b a</code></pre></div>
 <div class="node-desc">Communion is symmetric: if A is in communion with B, B is in communion with A.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="inCommunion">inCommunion</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="communion_not_self_reflexive">
@@ -752,6 +772,7 @@ h1 {
     <div class="node-prop"><pre><code>axiom communion_not_self_reflexive :
   ∀ (p : Person), p.isMoralAgent = true → ¬ inCommunion (.person p) (.person p)</code></pre></div>
 <div class="node-desc">Persons are not in communion with themselves — communion requires an other.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="God">God</span><span class="dep-chip" data-target="inCommunion">inCommunion</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="god_self_communion">
@@ -763,6 +784,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom god_self_communion : inCommunion .god .god</code></pre></div>
 <div class="node-desc">God is in communion with Godself (the Trinity is eternal mutual communion).</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="inCommunion">inCommunion</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="church_self_communion">
@@ -774,6 +796,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom church_self_communion : inCommunion .church .church</code></pre></div>
 <div class="node-desc">The Church is in communion with itself (the communion of saints).</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="inCommunion">inCommunion</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="graceGiven">
@@ -785,6 +808,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque graceGiven : Person → Grace → Prop</code></pre></div>
 <div class="node-desc">Grace given to a person.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="s8_grace_necessary_and_transformative">s8_grace_necessary_and_transformative</span><span class="dep-chip" data-target="t2_grace_preserves_freedom">t2_grace_preserves_freedom</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="graceTransforms">
@@ -796,6 +820,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque graceTransforms : Grace → Person → Prop</code></pre></div>
 <div class="node-desc">Whether grace transforms (not merely covers) the person.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="s8_grace_necessary_and_transformative">s8_grace_necessary_and_transformative</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="cooperatesWithGrace">
@@ -818,6 +843,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque Sacrament : Type</code></pre></div>
 <div class="node-desc">A sacrament.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="signifies">signifies</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="signifies">signifies</span><span class="dep-chip" data-target="confers">confers</span><span class="dep-chip" data-target="t3_sacramental_efficacy">t3_sacramental_efficacy</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="signifies">
@@ -829,6 +856,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque signifies : Sacrament → Prop</code></pre></div>
 <div class="node-desc">What a sacrament signifies (its sign-content).</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Sacrament">Sacrament</span><span class="dep-chip" data-target="confers">confers</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="Sacrament">Sacrament</span><span class="dep-chip" data-target="t3_sacramental_efficacy">t3_sacramental_efficacy</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="confers">
@@ -840,6 +869,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque confers : Sacrament → Prop</code></pre></div>
 <div class="node-desc">What a sacrament actually confers (its effect).</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Sacrament">Sacrament</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="signifies">signifies</span><span class="dep-chip" data-target="t3_sacramental_efficacy">t3_sacramental_efficacy</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="conscienceJudges">
@@ -851,6 +882,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque conscienceJudges : Person → Action → Prop</code></pre></div>
 <div class="node-desc">The judgment of conscience about an action.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="obligated">obligated</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="s9_conscience_binds">s9_conscience_binds</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="obligated">
@@ -862,6 +895,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque obligated : Person → Action → Prop</code></pre></div>
 <div class="node-desc">Whether an agent is obligated to perform an action.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="conscienceJudges">conscienceJudges</span><span class="dep-chip" data-target="s9_conscience_binds">s9_conscience_binds</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="isEvil">
@@ -873,6 +907,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque isEvil : Prop → Prop</code></pre></div>
 <div class="node-desc">Whether something is evil.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="p3_evil_is_privation">p3_evil_is_privation</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="isDueGoodAbsent">
@@ -882,12 +917,10 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque isDueGoodAbsent : Prop → Prop
-
--- ============================================================================
--- P2-P3: PHILOSOPHICAL AXIOMS — the irreducible non-scriptural residue (2)
--- ============================================================================</code></pre></div>
+    <div class="node-prop"><pre><code>opaque isDueGoodAbsent : Prop → Prop</code></pre></div>
 <div class="node-desc">Whether something is a due good that is absent.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="God">God</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="p3_evil_is_privation">p3_evil_is_privation</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="p2_two_tier_causation">
@@ -899,7 +932,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom p2_two_tier_causation :
   ∀ (p : PrimaryCause) (s : SecondaryCause), ¬ causesCompete p s</code></pre></div>
-<div class="node-desc">2. TWO_TIER_CAUSATION**: Primary (divine) and secondary (creaturely)</div>
+<div class="node-desc">**P2. TWO_TIER_CAUSATION**: Primary (divine) and secondary (creaturely)</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="PrimaryCause">PrimaryCause</span><span class="dep-chip" data-target="SecondaryCause">SecondaryCause</span><span class="dep-chip" data-target="causesCompete">causesCompete</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="p2_provenance">
@@ -909,11 +943,11 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def p2_provenance : Provenance</code></pre></div>
+    <div class="node-prop"><pre><code>def p2_provenance : Provenance := Provenance.naturalLaw
+</code></pre></div>
 <div class="node-desc">Provenance tag for P2.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="baseAxiomProvenance">baseAxiomProvenance</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="God">God</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="baseAxiomProvenance">baseAxiomProvenance</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="p3_evil_is_privation">
@@ -925,7 +959,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom p3_evil_is_privation :
   ∀ (e : Prop), isEvil e → isDueGoodAbsent e</code></pre></div>
-<div class="node-desc">3. EVIL_IS_PRIVATION**: Evil is not a positive reality but the absence</div>
+<div class="node-desc">**P3. EVIL_IS_PRIVATION**: Evil is not a positive reality but the absence</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isDueGoodAbsent">isDueGoodAbsent</span><span class="dep-chip" data-target="isEvil">isEvil</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="p3_provenance">
@@ -935,11 +970,23 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def p3_provenance : Provenance</code></pre></div>
+    <div class="node-prop"><pre><code>def p3_provenance : Provenance := Provenance.naturalLaw
+
+-- ============================================================================
+-- S1-S9: SCRIPTURAL AXIOMS — with full verse references (9)
+--
+-- NOTE ON CLASSIFICATION: The &quot;Scriptural&quot; label means each axiom has direct
+-- scriptural grounding. It does NOT mean the formal claim is purely exegetical.
+-- Several axioms (especially S6, S7, S8) import substantial philosophical
+-- frameworks to INTERPRET the scriptural data. A Protestant or non-Thomist
+-- would reasonably classify some of these as Philosophical or Tradition
+-- rather than Scripture. The 2/9/3 split is defensible but debatable —
+-- see the individual docstrings for S6, S7, and S8 for details.
+-- ============================================================================
+</code></pre></div>
 <div class="node-desc">Provenance tag for P3.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="baseAxiomProvenance">baseAxiomProvenance</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="God">God</span><span class="dep-chip" data-target="loveRequiresFreedom">loveRequiresFreedom</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="baseAxiomProvenance">baseAxiomProvenance</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="s1_god_is_love">
@@ -951,7 +998,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom s1_god_is_love :
   godIsLove ∧ loveRequiresFreedom</code></pre></div>
-<div class="node-desc">1. GOD_IS_LOVE**: God&#x27;s very nature is love, and genuine love requires</div>
+<div class="node-desc">**S1. GOD_IS_LOVE**: God's very nature is love, and genuine love requires</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="godIsLove">godIsLove</span><span class="dep-chip" data-target="loveRequiresFreedom">loveRequiresFreedom</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="s1_provenance">
@@ -961,11 +1009,11 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def s1_provenance : Provenance</code></pre></div>
+    <div class="node-prop"><pre><code>def s1_provenance : Provenance := Provenance.scripture &quot;1 Jn 4:8; Dt 30:19&quot;
+</code></pre></div>
 <div class="node-desc">Provenance tag for S1.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="baseAxiomProvenance">baseAxiomProvenance</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="God">God</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="baseAxiomProvenance">baseAxiomProvenance</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="s2_universal_salvific_will">
@@ -977,7 +1025,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom s2_universal_salvific_will :
   ∀ (p : Person), godWillsSalvation p</code></pre></div>
-<div class="node-desc">2. UNIVERSAL_SALVIFIC_WILL**: God desires all human persons to be saved;</div>
+<div class="node-desc">**S2. UNIVERSAL_SALVIFIC_WILL**: God desires all human persons to be saved;</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="godWillsSalvation">godWillsSalvation</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="s2_provenance">
@@ -987,11 +1036,11 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def s2_provenance : Provenance</code></pre></div>
+    <div class="node-prop"><pre><code>def s2_provenance : Provenance := Provenance.scripture &quot;1 Tim 2:4&quot;
+</code></pre></div>
 <div class="node-desc">Provenance tag for S2.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="baseAxiomProvenance">baseAxiomProvenance</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="God">God</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="baseAxiomProvenance">baseAxiomProvenance</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="s3_law_on_hearts">
@@ -1003,7 +1052,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom s3_law_on_hearts :
   ∀ (p : Person), p.hasIntellect = true → moralLawInscribed p</code></pre></div>
-<div class="node-desc">3. LAW_ON_HEARTS**: God has inscribed the moral law in every human heart,</div>
+<div class="node-desc">**S3. LAW_ON_HEARTS**: God has inscribed the moral law in every human heart,</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="moralLawInscribed">moralLawInscribed</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="s3_provenance">
@@ -1013,11 +1063,11 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def s3_provenance : Provenance</code></pre></div>
+    <div class="node-prop"><pre><code>def s3_provenance : Provenance := Provenance.scripture &quot;Rom 2:14-15&quot;
+</code></pre></div>
 <div class="node-desc">Provenance tag for S3.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="baseAxiomProvenance">baseAxiomProvenance</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="God">God</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="baseAxiomProvenance">baseAxiomProvenance</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="s4_universal_providence">
@@ -1029,7 +1079,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom s4_universal_providence :
   ∀ (event : Prop), divinelyGoverned event</code></pre></div>
-<div class="node-desc">4. UNIVERSAL_PROVIDENCE**: God governs all things, including free actions,</div>
+<div class="node-desc">**S4. UNIVERSAL_PROVIDENCE**: God governs all things, including free actions,</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="divinelyGoverned">divinelyGoverned</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="s4_provenance">
@@ -1039,22 +1090,11 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def s4_provenance : Provenance</code></pre></div>
+    <div class="node-prop"><pre><code>def s4_provenance : Provenance := Provenance.scripture &quot;Mt 10:29; Is 46:10&quot;
+</code></pre></div>
 <div class="node-desc">Provenance tag for S4.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="baseAxiomProvenance">baseAxiomProvenance</span>
-</div></div>
-  </div>
-</div>
-<div class="node-card kind-axiom" data-kind="axiom" data-name="unnamed_285">
-  <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">axiom</span>
-    <span class="node-name">unnamed_285</span>
-    <span class="node-chevron">&#9654;</span>
-  </div>
-  <div class="node-details">
-    <div class="node-prop"><pre><code>axiom 31 (grave_sin_prevents_love). CCC §1855: &quot;Mortal sin destroys
-    charity in the heart of man.&quot; -/</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="God">God</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="baseAxiomProvenance">baseAxiomProvenance</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="s5_sin_separates">
@@ -1067,7 +1107,8 @@ h1 {
     <div class="node-prop"><pre><code>axiom s5_sin_separates :
   ∀ (p : Person) (s : Sin), isGraveSin s → s.action.agent = p →
     ¬ inCommunion (.person p) .god</code></pre></div>
-<div class="node-desc">5. SIN_SEPARATES**: Grave sin breaks communion with God.</div>
+<div class="node-desc">**S5. SIN_SEPARATES**: Grave sin breaks communion with God.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="inCommunion">inCommunion</span><span class="dep-chip" data-target="isGraveSin">isGraveSin</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="s5_provenance">
@@ -1077,11 +1118,11 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def s5_provenance : Provenance</code></pre></div>
+    <div class="node-prop"><pre><code>def s5_provenance : Provenance := Provenance.scripture &quot;1 Jn 3:14-15; Rom 6:23&quot;
+</code></pre></div>
 <div class="node-desc">Provenance tag for S5.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="baseAxiomProvenance">baseAxiomProvenance</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="God">God</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="baseAxiomProvenance">baseAxiomProvenance</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="s6_moral_realism">
@@ -1093,7 +1134,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom s6_moral_realism :
   ∀ (mp : MoralProposition), moralTruthValue mp → accessibleToReason mp</code></pre></div>
-<div class="node-desc">6. MORAL_REALISM**: Moral facts exist independently of opinion and are</div>
+<div class="node-desc">**S6. MORAL_REALISM**: Moral facts exist independently of opinion and are</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MoralProposition">MoralProposition</span><span class="dep-chip" data-target="accessibleToReason">accessibleToReason</span><span class="dep-chip" data-target="moralTruthValue">moralTruthValue</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="s6_provenance">
@@ -1103,11 +1145,11 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def s6_provenance : Provenance</code></pre></div>
+    <div class="node-prop"><pre><code>def s6_provenance : Provenance := Provenance.scripture &quot;Rom 1:20; Rom 2:14-15&quot;
+
+-- Helpers for S7</code></pre></div>
 <div class="node-desc">Provenance tag for S6.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="baseAxiomProvenance">baseAxiomProvenance</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="baseAxiomProvenance">baseAxiomProvenance</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="directedTowardGood">
@@ -1119,6 +1161,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom directedTowardGood : Person → Prop</code></pre></div>
 <div class="node-desc">Whether a person is directed toward the good.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="s7_teleological_freedom">s7_teleological_freedom</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="agentFreedom">
@@ -1130,6 +1173,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom agentFreedom : Person → FreedomDegree</code></pre></div>
 <div class="node-desc">The freedom degree a person possesses.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="s7_teleological_freedom">s7_teleological_freedom</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="s7_teleological_freedom">
@@ -1143,7 +1187,8 @@ h1 {
   ∀ (a1 a2 : Person),
     directedTowardGood a1 → ¬ directedTowardGood a2 →
     freedomLt (agentFreedom a2) (agentFreedom a1)</code></pre></div>
-<div class="node-desc">7. TELEOLOGICAL_FREEDOM**: Freedom is ordered toward the good; choosing</div>
+<div class="node-desc">**S7. TELEOLOGICAL_FREEDOM**: Freedom is ordered toward the good; choosing</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="agentFreedom">agentFreedom</span><span class="dep-chip" data-target="directedTowardGood">directedTowardGood</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="s7_provenance">
@@ -1153,11 +1198,11 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def s7_provenance : Provenance</code></pre></div>
+    <div class="node-prop"><pre><code>def s7_provenance : Provenance := Provenance.scripture &quot;Jn 8:34-36; Gal 5:1&quot;
+</code></pre></div>
 <div class="node-desc">Provenance tag for S7.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="baseAxiomProvenance">baseAxiomProvenance</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="God">God</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="baseAxiomProvenance">baseAxiomProvenance</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="s8_grace_necessary_and_transformative">
@@ -1170,7 +1215,8 @@ h1 {
     <div class="node-prop"><pre><code>axiom s8_grace_necessary_and_transformative :
   ∀ (p : Person) (g : Grace),
     graceGiven p g → graceTransforms g p</code></pre></div>
-<div class="node-desc">8. GRACE_NECESSARY_AND_TRANSFORMATIVE**: Without grace, humans cannot</div>
+<div class="node-desc">**S8. GRACE_NECESSARY_AND_TRANSFORMATIVE**: Without grace, humans cannot</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="graceGiven">graceGiven</span><span class="dep-chip" data-target="graceTransforms">graceTransforms</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="s8_provenance">
@@ -1180,11 +1226,11 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def s8_provenance : Provenance</code></pre></div>
+    <div class="node-prop"><pre><code>def s8_provenance : Provenance := Provenance.scripture &quot;Jn 15:5; 2 Cor 5:17; Ezek 36:26&quot;
+</code></pre></div>
 <div class="node-desc">Provenance tag for S8.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="baseAxiomProvenance">baseAxiomProvenance</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="God">God</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="baseAxiomProvenance">baseAxiomProvenance</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="s9_conscience_binds">
@@ -1196,7 +1242,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom s9_conscience_binds :
   ∀ (p : Person) (a : Action), conscienceJudges p a → obligated p a</code></pre></div>
-<div class="node-desc">9. CONSCIENCE_BINDS**: The certain judgment of practical reason about</div>
+<div class="node-desc">**S9. CONSCIENCE_BINDS**: The certain judgment of practical reason about</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="conscienceJudges">conscienceJudges</span><span class="dep-chip" data-target="obligated">obligated</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="s9_provenance">
@@ -1206,11 +1253,15 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def s9_provenance : Provenance</code></pre></div>
+    <div class="node-prop"><pre><code>def s9_provenance : Provenance := Provenance.scripture &quot;Rom 14:23; Acts 24:16&quot;
+
+-- ============================================================================
+-- T1-T3: SACRED TRADITION AXIOMS — with Council references (3)
+-- ============================================================================
+</code></pre></div>
 <div class="node-desc">Provenance tag for S9.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="baseAxiomProvenance">baseAxiomProvenance</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="God">God</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="baseAxiomProvenance">baseAxiomProvenance</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="t1_libertarian_free_will">
@@ -1222,7 +1273,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom t1_libertarian_free_will :
   ∀ (a : Person), couldChooseOtherwise a</code></pre></div>
-<div class="node-desc">1. LIBERTARIAN_FREE_WILL**: Agents can genuinely choose otherwise;</div>
+<div class="node-desc">**T1. LIBERTARIAN_FREE_WILL**: Agents can genuinely choose otherwise;</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="couldChooseOtherwise">couldChooseOtherwise</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="t1_provenance">
@@ -1232,11 +1284,11 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def t1_provenance : Provenance</code></pre></div>
+    <div class="node-prop"><pre><code>def t1_provenance : Provenance := Provenance.tradition &quot;Sir 15:14; Trent Session 6&quot;
+</code></pre></div>
 <div class="node-desc">Provenance tag for T1.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="baseAxiomProvenance">baseAxiomProvenance</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="God">God</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="baseAxiomProvenance">baseAxiomProvenance</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="t2_grace_preserves_freedom">
@@ -1253,7 +1305,8 @@ h1 {
     -- but &quot;the person could go either way&quot; (libertarian freedom under grace)
     -- A monergist denies this: under effective grace, refusal is impossible.
     couldChooseOtherwise p</code></pre></div>
-<div class="node-desc">2. GRACE_PRESERVES_FREEDOM**: Divine initiative and human freedom are</div>
+<div class="node-desc">**T2. GRACE_PRESERVES_FREEDOM**: Divine initiative and human freedom are</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="couldChooseOtherwise">couldChooseOtherwise</span><span class="dep-chip" data-target="graceGiven">graceGiven</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="t2_provenance">
@@ -1263,11 +1316,10 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def t2_provenance : Provenance</code></pre></div>
+    <div class="node-prop"><pre><code>def t2_provenance : Provenance := Provenance.tradition &quot;Phil 2:12-13; Trent Session 6&quot;
+</code></pre></div>
 <div class="node-desc">Provenance tag for T2.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="baseAxiomProvenance">baseAxiomProvenance</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="baseAxiomProvenance">baseAxiomProvenance</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="t3_sacramental_efficacy">
@@ -1279,7 +1331,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom t3_sacramental_efficacy :
   ∀ (s : Sacrament), signifies s → confers s</code></pre></div>
-<div class="node-desc">3. SACRAMENTAL_EFFICACY**: Sacraments are effective signs — they confer</div>
+<div class="node-desc">**T3. SACRAMENTAL_EFFICACY**: Sacraments are effective signs — they confer</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Sacrament">Sacrament</span><span class="dep-chip" data-target="confers">confers</span><span class="dep-chip" data-target="signifies">signifies</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="t3_provenance">
@@ -1289,11 +1342,14 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def t3_provenance : Provenance</code></pre></div>
+    <div class="node-prop"><pre><code>def t3_provenance : Provenance := Provenance.tradition &quot;Jn 3:5; Acts 2:38; Trent Session 7&quot;
+
+-- ============================================================================
+-- Summary: the complete axiom set with provenance
+-- ============================================================================
+</code></pre></div>
 <div class="node-desc">Provenance tag for T3.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="baseAxiomProvenance">baseAxiomProvenance</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="baseAxiomProvenance">baseAxiomProvenance</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="baseAxiomProvenance">
@@ -1305,22 +1361,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def baseAxiomProvenance : List (String × Provenance)</code></pre></div>
 <div class="node-desc">The 14 base axioms with their provenance tags, for programmatic access.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="s3_provenance">s3_provenance</span>
-<span class="dep-chip" data-target="s4_provenance">s4_provenance</span>
-<span class="dep-chip" data-target="t1_provenance">t1_provenance</span>
-<span class="dep-chip" data-target="s8_provenance">s8_provenance</span>
-<span class="dep-chip" data-target="s6_provenance">s6_provenance</span>
-<span class="dep-chip" data-target="t2_provenance">t2_provenance</span>
-<span class="dep-chip" data-target="s2_provenance">s2_provenance</span>
-<span class="dep-chip" data-target="p2_provenance">p2_provenance</span>
-<span class="dep-chip" data-target="s7_provenance">s7_provenance</span>
-<span class="dep-chip" data-target="p3_provenance">p3_provenance</span>
-<span class="dep-chip" data-target="t3_provenance">t3_provenance</span>
-<span class="dep-chip" data-target="s5_provenance">s5_provenance</span>
-<span class="dep-chip" data-target="s9_provenance">s9_provenance</span>
-<span class="dep-chip" data-target="s1_provenance">s1_provenance</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="p2_provenance">p2_provenance</span><span class="dep-chip" data-target="p3_provenance">p3_provenance</span><span class="dep-chip" data-target="s1_provenance">s1_provenance</span><span class="dep-chip" data-target="s2_provenance">s2_provenance</span><span class="dep-chip" data-target="s3_provenance">s3_provenance</span><span class="dep-chip" data-target="s4_provenance">s4_provenance</span><span class="dep-chip" data-target="s5_provenance">s5_provenance</span><span class="dep-chip" data-target="s6_provenance">s6_provenance</span><span class="dep-chip" data-target="s7_provenance">s7_provenance</span><span class="dep-chip" data-target="s8_provenance">s8_provenance</span><span class="dep-chip" data-target="s9_provenance">s9_provenance</span><span class="dep-chip" data-target="t1_provenance">t1_provenance</span><span class="dep-chip" data-target="t2_provenance">t2_provenance</span><span class="dep-chip" data-target="t3_provenance">t3_provenance</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="axiomDenominationalScope">
@@ -1343,9 +1384,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def lutheranModifications : List (String × String)</code></pre></div>
 <div class="node-desc">The Lutheran axiom modifications — what Luther changed.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="God">God</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="God">God</span></div></div>
   </div>
 </div>
   </div>

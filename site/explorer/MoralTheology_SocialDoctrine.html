@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Social Doctrine — Catlib Explorer</title>
+  <title>SocialDoctrine — Catlib Explorer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -143,7 +143,7 @@ h1 {
   line-height: 1.6;
 }
 
-/* Search */
+/* ── Search ── */
 .search-box {
   width: 100%;
   padding: 0.8rem 1rem;
@@ -167,7 +167,7 @@ h1 {
   font-style: italic;
 }
 
-/* Category sections */
+/* ── Category sections ── */
 .category-header {
   font-family: Cinzel, Georgia, serif;
   font-size: 1.1rem;
@@ -181,7 +181,7 @@ h1 {
   border-bottom: 1px solid var(--border);
 }
 
-/* File cards */
+/* ── File cards ── */
 .file-card {
   display: block;
   padding: 1rem 1.1rem;
@@ -237,7 +237,7 @@ h1 {
   margin-top: 0.3rem;
 }
 
-/* Summary stats */
+/* ── Summary stats ── */
 .stats-bar {
   display: flex;
   justify-content: center;
@@ -251,7 +251,7 @@ h1 {
 
 .stats-bar span { white-space: nowrap; }
 
-/* Node cards */
+/* ── Node cards (per-file page) ── */
 .node-card {
   margin-bottom: 0.4rem;
   border: 1px solid var(--border);
@@ -267,8 +267,6 @@ h1 {
 .node-card.kind-structure { border-left-color: var(--structure-dot); }
 .node-card.kind-inductive { border-left-color: var(--inductive-dot); }
 .node-card.kind-proposition { border-left-color: var(--proposition-dot); }
-.node-card.kind-instance { border-left-color: var(--def-dot); }
-.node-card.kind-abbrev { border-left-color: var(--def-dot); }
 
 .node-header {
   display: flex;
@@ -304,8 +302,6 @@ h1 {
 .kind-structure .node-kind-badge { background: var(--structure-bg); color: var(--structure-dot); }
 .kind-inductive .node-kind-badge { background: var(--inductive-bg); color: var(--inductive-dot); }
 .kind-proposition .node-kind-badge { background: var(--proposition-bg); color: var(--proposition-dot); }
-.kind-instance .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
-.kind-abbrev .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
 
 .node-name {
   flex: 1;
@@ -409,7 +405,7 @@ h1 {
   color: var(--text-muted);
 }
 
-/* Flow diagram header */
+/* ── Flow diagram header ── */
 .flow-summary {
   display: flex;
   justify-content: center;
@@ -435,7 +431,7 @@ h1 {
 .flow-count.theorems { background: var(--theorem-bg); color: var(--theorem-dot); }
 .flow-count.derived { background: var(--def-bg); color: var(--def-dot); }
 
-/* Legend */
+/* ── Legend ── */
 .legend {
   display: flex;
   flex-wrap: wrap;
@@ -467,7 +463,7 @@ h1 {
 .legend-dot.inductive { background: var(--inductive-dot); }
 .legend-dot.proposition { background: var(--proposition-dot); }
 
-/* Filter buttons */
+/* ── Filter buttons ── */
 .filter-bar {
   display: flex;
   flex-wrap: wrap;
@@ -496,7 +492,7 @@ h1 {
   border-color: var(--accent);
 }
 
-/* Back link */
+/* ── Back link ── */
 .back-link {
   display: inline-block;
   margin-bottom: 1rem;
@@ -505,7 +501,7 @@ h1 {
   letter-spacing: 0.04em;
 }
 
-/* Footer */
+/* ── Footer ── */
 .footer {
   text-align: center;
   padding-top: 2rem;
@@ -514,7 +510,7 @@ h1 {
   font-style: italic;
 }
 
-/* Responsive */
+/* ── Responsive ── */
 @media (max-width: 500px) {
   html { font-size: 16px; }
   .container { padding: 1rem 0.75rem 2rem; }
@@ -526,13 +522,21 @@ h1 {
 <body>
 <div class="container">
   <a href="index.html" class="back-link">&larr; All files</a>
-  <h1>Social Doctrine</h1>
-  <div class="subtitle">Moral Theology &middot; 24 declarations</div>
+  <h1>SocialDoctrine</h1>
+  <div class="subtitle">MoralTheology &middot; 24 declarations</div>
 
-  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;15, &sect;22, &sect;49, &sect;69, &sect;306, &sect;2401, &sect;2402, &sect;2403, &sect;2404, &sect;2406, &hellip;</div>
-  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot proposition"></span>proposition</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
+  <div class="flow-summary">
+  <span class="flow-count axioms">13 axioms</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count theorems">11 theorems</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count derived">0 derived</span>
+</div>
+  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;15, &sect;22, &sect;2401, &sect;2402, &sect;2403, &sect;2404, &sect;2406, &sect;2407, &sect;306, &sect;49, &sect;69</div>
 
-  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (7)</button><button class="filter-btn" data-filter="opaque">opaque (1)</button><button class="filter-btn" data-filter="proposition">proposition (5)</button><button class="filter-btn" data-filter="theorem">theorem (11)</button></div>
+  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
+
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (7)</button><button class="filter-btn" data-filter="opaque">opaque (6)</button><button class="filter-btn" data-filter="theorem">theorem (11)</button></div>
 
   <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
 
@@ -546,67 +550,72 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque MaterialGood : Type</code></pre></div>
 <div class="node-desc">A material good — something that can be owned, used, or shared.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="catholic_bounded_rights">catholic_bounded_rights</span><span class="dep-chip" data-target="destinedForAll">destinedForAll</span><span class="dep-chip" data-target="exercisesStewardship">exercisesStewardship</span><span class="dep-chip" data-target="hasPropertyRight">hasPropertyRight</span><span class="dep-chip" data-target="just_acquisition_yields_bounded_rights">just_acquisition_yields_bounded_rights</span><span class="dep-chip" data-target="justlyAcquired">justlyAcquired</span><span class="dep-chip" data-target="libertarian_absolute_property">libertarian_absolute_property</span><span class="dep-chip" data-target="libertarian_property_unbounded">libertarian_property_unbounded</span><span class="dep-chip" data-target="no_good_exempt_from_universal_destination">no_good_exempt_from_universal_destination</span><span class="dep-chip" data-target="political_regulation_of_property">political_regulation_of_property</span><span class="dep-chip" data-target="private_property_legitimate">private_property_legitimate</span><span class="dep-chip" data-target="property_distinguishes_from_socialism">property_distinguishes_from_socialism</span><span class="dep-chip" data-target="property_real_but_not_absolute">property_real_but_not_absolute</span><span class="dep-chip" data-target="property_subordinate_to_universal_destination">property_subordinate_to_universal_destination</span><span class="dep-chip" data-target="regulatesProperty">regulatesProperty</span><span class="dep-chip" data-target="regulation_legitimate">regulation_legitimate</span><span class="dep-chip" data-target="socialist_no_private_property">socialist_no_private_property</span><span class="dep-chip" data-target="socialist_property_impossible">socialist_property_impossible</span><span class="dep-chip" data-target="stewardship_not_absolute_ownership">stewardship_not_absolute_ownership</span><span class="dep-chip" data-target="subordination_distinguishes_from_libertarianism">subordination_distinguishes_from_libertarianism</span><span class="dep-chip" data-target="universal_destination">universal_destination</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hasPropertyRight">hasPropertyRight</span><span class="dep-chip" data-target="destinedForAll">destinedForAll</span><span class="dep-chip" data-target="exercisesStewardship">exercisesStewardship</span><span class="dep-chip" data-target="justlyAcquired">justlyAcquired</span><span class="dep-chip" data-target="regulatesProperty">regulatesProperty</span><span class="dep-chip" data-target="universal_destination">universal_destination</span><span class="dep-chip" data-target="private_property_legitimate">private_property_legitimate</span><span class="dep-chip" data-target="property_subordinate_to_universal_destination">property_subordinate_to_universal_destination</span><span class="dep-chip" data-target="stewardship_not_absolute_ownership">stewardship_not_absolute_ownership</span><span class="dep-chip" data-target="political_regulation_of_property">political_regulation_of_property</span><span class="dep-chip" data-target="property_real_but_not_absolute">property_real_but_not_absolute</span><span class="dep-chip" data-target="just_acquisition_yields_bounded_rights">just_acquisition_yields_bounded_rights</span><span class="dep-chip" data-target="no_good_exempt_from_universal_destination">no_good_exempt_from_universal_destination</span><span class="dep-chip" data-target="regulation_legitimate">regulation_legitimate</span><span class="dep-chip" data-target="libertarian_absolute_property">libertarian_absolute_property</span><span class="dep-chip" data-target="libertarian_property_unbounded">libertarian_property_unbounded</span><span class="dep-chip" data-target="socialist_no_private_property">socialist_no_private_property</span><span class="dep-chip" data-target="socialist_property_impossible">socialist_property_impossible</span><span class="dep-chip" data-target="catholic_bounded_rights">catholic_bounded_rights</span><span class="dep-chip" data-target="subordination_distinguishes_from_libertarianism">subordination_distinguishes_from_libertarianism</span><span class="dep-chip" data-target="property_distinguishes_from_socialism">property_distinguishes_from_socialism</span></div></div>
   </div>
 </div>
-<div class="node-card kind-proposition" data-kind="proposition" data-name="hasPropertyRight">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="hasPropertyRight">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
+    <span class="node-kind-badge">opaque</span>
     <span class="node-name">hasPropertyRight</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque hasPropertyRight : Person → MaterialGood → Prop</code></pre></div>
 <div class="node-desc">Whether a person has a legitimate right to use and dispose of a good.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MaterialGood">MaterialGood</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="catholic_bounded_rights">catholic_bounded_rights</span><span class="dep-chip" data-target="just_acquisition_yields_bounded_rights">just_acquisition_yields_bounded_rights</span><span class="dep-chip" data-target="libertarian_absolute_property">libertarian_absolute_property</span><span class="dep-chip" data-target="libertarian_property_unbounded">libertarian_property_unbounded</span><span class="dep-chip" data-target="private_property_legitimate">private_property_legitimate</span><span class="dep-chip" data-target="property_distinguishes_from_socialism">property_distinguishes_from_socialism</span><span class="dep-chip" data-target="property_real_but_not_absolute">property_real_but_not_absolute</span><span class="dep-chip" data-target="property_subordinate_to_universal_destination">property_subordinate_to_universal_destination</span><span class="dep-chip" data-target="socialist_no_private_property">socialist_no_private_property</span><span class="dep-chip" data-target="socialist_property_impossible">socialist_property_impossible</span><span class="dep-chip" data-target="stewardship_not_absolute_ownership">stewardship_not_absolute_ownership</span><span class="dep-chip" data-target="subordination_distinguishes_from_libertarianism">subordination_distinguishes_from_libertarianism</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MaterialGood">MaterialGood</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="private_property_legitimate">private_property_legitimate</span><span class="dep-chip" data-target="property_subordinate_to_universal_destination">property_subordinate_to_universal_destination</span><span class="dep-chip" data-target="stewardship_not_absolute_ownership">stewardship_not_absolute_ownership</span><span class="dep-chip" data-target="property_real_but_not_absolute">property_real_but_not_absolute</span><span class="dep-chip" data-target="just_acquisition_yields_bounded_rights">just_acquisition_yields_bounded_rights</span><span class="dep-chip" data-target="libertarian_absolute_property">libertarian_absolute_property</span><span class="dep-chip" data-target="libertarian_property_unbounded">libertarian_property_unbounded</span><span class="dep-chip" data-target="socialist_no_private_property">socialist_no_private_property</span><span class="dep-chip" data-target="socialist_property_impossible">socialist_property_impossible</span><span class="dep-chip" data-target="catholic_bounded_rights">catholic_bounded_rights</span><span class="dep-chip" data-target="subordination_distinguishes_from_libertarianism">subordination_distinguishes_from_libertarianism</span><span class="dep-chip" data-target="property_distinguishes_from_socialism">property_distinguishes_from_socialism</span></div></div>
   </div>
 </div>
-<div class="node-card kind-proposition" data-kind="proposition" data-name="destinedForAll">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="destinedForAll">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
+    <span class="node-kind-badge">opaque</span>
     <span class="node-name">destinedForAll</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque destinedForAll : MaterialGood → Prop</code></pre></div>
 <div class="node-desc">Whether the goods of the earth are destined for all humanity.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MaterialGood">MaterialGood</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="catholic_bounded_rights">catholic_bounded_rights</span><span class="dep-chip" data-target="just_acquisition_yields_bounded_rights">just_acquisition_yields_bounded_rights</span><span class="dep-chip" data-target="libertarian_absolute_property">libertarian_absolute_property</span><span class="dep-chip" data-target="libertarian_property_unbounded">libertarian_property_unbounded</span><span class="dep-chip" data-target="no_good_exempt_from_universal_destination">no_good_exempt_from_universal_destination</span><span class="dep-chip" data-target="property_distinguishes_from_socialism">property_distinguishes_from_socialism</span><span class="dep-chip" data-target="property_real_but_not_absolute">property_real_but_not_absolute</span><span class="dep-chip" data-target="property_subordinate_to_universal_destination">property_subordinate_to_universal_destination</span><span class="dep-chip" data-target="socialist_no_private_property">socialist_no_private_property</span><span class="dep-chip" data-target="universal_destination">universal_destination</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MaterialGood">MaterialGood</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="universal_destination">universal_destination</span><span class="dep-chip" data-target="property_subordinate_to_universal_destination">property_subordinate_to_universal_destination</span><span class="dep-chip" data-target="property_real_but_not_absolute">property_real_but_not_absolute</span><span class="dep-chip" data-target="just_acquisition_yields_bounded_rights">just_acquisition_yields_bounded_rights</span><span class="dep-chip" data-target="no_good_exempt_from_universal_destination">no_good_exempt_from_universal_destination</span><span class="dep-chip" data-target="libertarian_absolute_property">libertarian_absolute_property</span><span class="dep-chip" data-target="libertarian_property_unbounded">libertarian_property_unbounded</span><span class="dep-chip" data-target="socialist_no_private_property">socialist_no_private_property</span><span class="dep-chip" data-target="catholic_bounded_rights">catholic_bounded_rights</span><span class="dep-chip" data-target="property_distinguishes_from_socialism">property_distinguishes_from_socialism</span></div></div>
   </div>
 </div>
-<div class="node-card kind-proposition" data-kind="proposition" data-name="exercisesStewardship">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="exercisesStewardship">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
+    <span class="node-kind-badge">opaque</span>
     <span class="node-name">exercisesStewardship</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque exercisesStewardship : Person → MaterialGood → Prop</code></pre></div>
-<div class="node-desc">Whether a person exercises stewardship over a good — using it responsibly with regard for the common good, rather than t...</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MaterialGood">MaterialGood</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="catholic_bounded_rights">catholic_bounded_rights</span><span class="dep-chip" data-target="just_acquisition_yields_bounded_rights">just_acquisition_yields_bounded_rights</span><span class="dep-chip" data-target="property_real_but_not_absolute">property_real_but_not_absolute</span><span class="dep-chip" data-target="stewardship_not_absolute_ownership">stewardship_not_absolute_ownership</span><span class="dep-chip" data-target="subordination_distinguishes_from_libertarianism">subordination_distinguishes_from_libertarianism</span></div></div>
+<div class="node-desc">Whether a person exercises stewardship over a good — using it responsibly</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MaterialGood">MaterialGood</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="stewardship_not_absolute_ownership">stewardship_not_absolute_ownership</span><span class="dep-chip" data-target="property_real_but_not_absolute">property_real_but_not_absolute</span><span class="dep-chip" data-target="just_acquisition_yields_bounded_rights">just_acquisition_yields_bounded_rights</span><span class="dep-chip" data-target="catholic_bounded_rights">catholic_bounded_rights</span><span class="dep-chip" data-target="subordination_distinguishes_from_libertarianism">subordination_distinguishes_from_libertarianism</span></div></div>
   </div>
 </div>
-<div class="node-card kind-proposition" data-kind="proposition" data-name="justlyAcquired">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="justlyAcquired">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
+    <span class="node-kind-badge">opaque</span>
     <span class="node-name">justlyAcquired</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque justlyAcquired : Person → MaterialGood → Prop</code></pre></div>
 <div class="node-desc">Whether a person has justly acquired or received a good.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MaterialGood">MaterialGood</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="just_acquisition_yields_bounded_rights">just_acquisition_yields_bounded_rights</span><span class="dep-chip" data-target="private_property_legitimate">private_property_legitimate</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MaterialGood">MaterialGood</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="private_property_legitimate">private_property_legitimate</span><span class="dep-chip" data-target="just_acquisition_yields_bounded_rights">just_acquisition_yields_bounded_rights</span></div></div>
   </div>
 </div>
-<div class="node-card kind-proposition" data-kind="proposition" data-name="regulatesProperty">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="regulatesProperty">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
+    <span class="node-kind-badge">opaque</span>
     <span class="node-name">regulatesProperty</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque regulatesProperty : Authority → MaterialGood → Prop</code></pre></div>
 <div class="node-desc">Whether political authority regulates the exercise of property rights.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MaterialGood">MaterialGood</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="political_regulation_of_property">political_regulation_of_property</span><span class="dep-chip" data-target="regulation_legitimate">regulation_legitimate</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MaterialGood">MaterialGood</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="political_regulation_of_property">political_regulation_of_property</span><span class="dep-chip" data-target="regulation_legitimate">regulation_legitimate</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="universal_destination">
@@ -617,9 +626,10 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom universal_destination :
-∀ (g : MaterialGood), destinedForAll g</code></pre></div>
-<div class="node-desc">AXIOM 1 (§2402): Universal destination of goods — the earth&#x27;s goods belong to all humanity.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MaterialGood">MaterialGood</span><span class="dep-chip" data-target="destinedForAll">destinedForAll</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="just_acquisition_yields_bounded_rights">just_acquisition_yields_bounded_rights</span><span class="dep-chip" data-target="no_good_exempt_from_universal_destination">no_good_exempt_from_universal_destination</span><span class="dep-chip" data-target="p2_property_bridge">p2_property_bridge</span><span class="dep-chip" data-target="socialist_no_private_property">socialist_no_private_property</span><span class="dep-chip" data-target="socialist_property_impossible">socialist_property_impossible</span><span class="dep-chip" data-target="subordination_distinguishes_from_libertarianism">subordination_distinguishes_from_libertarianism</span></div></div>
+  ∀ (g : MaterialGood), destinedForAll g</code></pre></div>
+<div class="node-desc">AXIOM 1 (§2402): Universal destination of goods — the earth's goods</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MaterialGood">MaterialGood</span><span class="dep-chip" data-target="destinedForAll">destinedForAll</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="just_acquisition_yields_bounded_rights">just_acquisition_yields_bounded_rights</span><span class="dep-chip" data-target="no_good_exempt_from_universal_destination">no_good_exempt_from_universal_destination</span><span class="dep-chip" data-target="socialist_no_private_property">socialist_no_private_property</span><span class="dep-chip" data-target="socialist_property_impossible">socialist_property_impossible</span><span class="dep-chip" data-target="subordination_distinguishes_from_libertarianism">subordination_distinguishes_from_libertarianism</span><span class="dep-chip" data-target="p2_property_bridge">p2_property_bridge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="private_property_legitimate">
@@ -630,10 +640,14 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom private_property_legitimate :
-∀ (p : Person) (g : MaterialGood),
-justlyAcquired p g →</code></pre></div>
+  ∀ (p : Person) (g : MaterialGood),
+    justlyAcquired p g →
+    -- Just acquisition yields a genuine property right.
+    -- The right is real, not a mere convention.
+    hasPropertyRight p g</code></pre></div>
 <div class="node-desc">AXIOM 2 (§2403): Private property is a legitimate right.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MaterialGood">MaterialGood</span><span class="dep-chip" data-target="hasPropertyRight">hasPropertyRight</span><span class="dep-chip" data-target="justlyAcquired">justlyAcquired</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="just_acquisition_yields_bounded_rights">just_acquisition_yields_bounded_rights</span><span class="dep-chip" data-target="p2_property_bridge">p2_property_bridge</span><span class="dep-chip" data-target="property_real_but_not_absolute">property_real_but_not_absolute</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MaterialGood">MaterialGood</span><span class="dep-chip" data-target="hasPropertyRight">hasPropertyRight</span><span class="dep-chip" data-target="justlyAcquired">justlyAcquired</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="property_real_but_not_absolute">property_real_but_not_absolute</span><span class="dep-chip" data-target="just_acquisition_yields_bounded_rights">just_acquisition_yields_bounded_rights</span><span class="dep-chip" data-target="p2_property_bridge">p2_property_bridge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="property_subordinate_to_universal_destination">
@@ -644,11 +658,12 @@ justlyAcquired p g →</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom property_subordinate_to_universal_destination :
-∀ (p : Person) (g : MaterialGood),
-hasPropertyRight p g →
-destinedForAll g</code></pre></div>
+  ∀ (p : Person) (g : MaterialGood),
+    hasPropertyRight p g →
+    destinedForAll g</code></pre></div>
 <div class="node-desc">AXIOM 3 (§2403): Property is subordinate to universal destination.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MaterialGood">MaterialGood</span><span class="dep-chip" data-target="destinedForAll">destinedForAll</span><span class="dep-chip" data-target="hasPropertyRight">hasPropertyRight</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="catholic_bounded_rights">catholic_bounded_rights</span><span class="dep-chip" data-target="just_acquisition_yields_bounded_rights">just_acquisition_yields_bounded_rights</span><span class="dep-chip" data-target="p2_property_bridge">p2_property_bridge</span><span class="dep-chip" data-target="political_regulation_of_property">political_regulation_of_property</span><span class="dep-chip" data-target="property_distinguishes_from_socialism">property_distinguishes_from_socialism</span><span class="dep-chip" data-target="property_real_but_not_absolute">property_real_but_not_absolute</span><span class="dep-chip" data-target="socialist_property_impossible">socialist_property_impossible</span><span class="dep-chip" data-target="subordination_distinguishes_from_libertarianism">subordination_distinguishes_from_libertarianism</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MaterialGood">MaterialGood</span><span class="dep-chip" data-target="destinedForAll">destinedForAll</span><span class="dep-chip" data-target="hasPropertyRight">hasPropertyRight</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="political_regulation_of_property">political_regulation_of_property</span><span class="dep-chip" data-target="property_real_but_not_absolute">property_real_but_not_absolute</span><span class="dep-chip" data-target="just_acquisition_yields_bounded_rights">just_acquisition_yields_bounded_rights</span><span class="dep-chip" data-target="socialist_property_impossible">socialist_property_impossible</span><span class="dep-chip" data-target="catholic_bounded_rights">catholic_bounded_rights</span><span class="dep-chip" data-target="subordination_distinguishes_from_libertarianism">subordination_distinguishes_from_libertarianism</span><span class="dep-chip" data-target="property_distinguishes_from_socialism">property_distinguishes_from_socialism</span><span class="dep-chip" data-target="p2_property_bridge">p2_property_bridge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="stewardship_not_absolute_ownership">
@@ -659,11 +674,12 @@ destinedForAll g</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom stewardship_not_absolute_ownership :
-∀ (p : Person) (g : MaterialGood),
-hasPropertyRight p g →
-exercisesStewardship p g</code></pre></div>
+  ∀ (p : Person) (g : MaterialGood),
+    hasPropertyRight p g →
+    exercisesStewardship p g</code></pre></div>
 <div class="node-desc">AXIOM 4 (§2404): Stewardship, not absolute ownership.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MaterialGood">MaterialGood</span><span class="dep-chip" data-target="exercisesStewardship">exercisesStewardship</span><span class="dep-chip" data-target="hasPropertyRight">hasPropertyRight</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="catholic_bounded_rights">catholic_bounded_rights</span><span class="dep-chip" data-target="just_acquisition_yields_bounded_rights">just_acquisition_yields_bounded_rights</span><span class="dep-chip" data-target="p2_property_bridge">p2_property_bridge</span><span class="dep-chip" data-target="political_regulation_of_property">political_regulation_of_property</span><span class="dep-chip" data-target="property_real_but_not_absolute">property_real_but_not_absolute</span><span class="dep-chip" data-target="socialist_property_impossible">socialist_property_impossible</span><span class="dep-chip" data-target="subordination_distinguishes_from_libertarianism">subordination_distinguishes_from_libertarianism</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MaterialGood">MaterialGood</span><span class="dep-chip" data-target="exercisesStewardship">exercisesStewardship</span><span class="dep-chip" data-target="hasPropertyRight">hasPropertyRight</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="political_regulation_of_property">political_regulation_of_property</span><span class="dep-chip" data-target="property_real_but_not_absolute">property_real_but_not_absolute</span><span class="dep-chip" data-target="just_acquisition_yields_bounded_rights">just_acquisition_yields_bounded_rights</span><span class="dep-chip" data-target="socialist_property_impossible">socialist_property_impossible</span><span class="dep-chip" data-target="catholic_bounded_rights">catholic_bounded_rights</span><span class="dep-chip" data-target="subordination_distinguishes_from_libertarianism">subordination_distinguishes_from_libertarianism</span><span class="dep-chip" data-target="p2_property_bridge">p2_property_bridge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="political_regulation_of_property">
@@ -674,11 +690,12 @@ exercisesStewardship p g</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom political_regulation_of_property :
-∀ (a : Authority) (g : MaterialGood),
-a.source = AuthoritySource.naturalLaw →
-regulatesProperty a g</code></pre></div>
+  ∀ (a : Authority) (g : MaterialGood),
+    a.source = AuthoritySource.naturalLaw →
+    regulatesProperty a g</code></pre></div>
 <div class="node-desc">AXIOM 5 (§2406): Political authority can regulate property.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MaterialGood">MaterialGood</span><span class="dep-chip" data-target="property_subordinate_to_universal_destination">property_subordinate_to_universal_destination</span><span class="dep-chip" data-target="regulatesProperty">regulatesProperty</span><span class="dep-chip" data-target="stewardship_not_absolute_ownership">stewardship_not_absolute_ownership</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="no_good_exempt_from_universal_destination">no_good_exempt_from_universal_destination</span><span class="dep-chip" data-target="p2_property_bridge">p2_property_bridge</span><span class="dep-chip" data-target="regulation_legitimate">regulation_legitimate</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MaterialGood">MaterialGood</span><span class="dep-chip" data-target="property_subordinate_to_universal_destination">property_subordinate_to_universal_destination</span><span class="dep-chip" data-target="regulatesProperty">regulatesProperty</span><span class="dep-chip" data-target="stewardship_not_absolute_ownership">stewardship_not_absolute_ownership</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="no_good_exempt_from_universal_destination">no_good_exempt_from_universal_destination</span><span class="dep-chip" data-target="regulation_legitimate">regulation_legitimate</span><span class="dep-chip" data-target="p2_property_bridge">p2_property_bridge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="property_real_but_not_absolute">
@@ -689,10 +706,17 @@ regulatesProperty a g</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem property_real_but_not_absolute
-(p : Person) (g : MaterialGood)
-(h_owns : hasPropertyRight p g) :</code></pre></div>
+    (p : Person) (g : MaterialGood)
+    (h_owns : hasPropertyRight p g) :
+    -- The right is real
+    hasPropertyRight p g
+    -- AND the good remains destined for all (the right is bounded)
+    ∧ destinedForAll g
+    -- AND the owner is a steward (the right is not absolute dominion)
+    ∧ exercisesStewardship p g</code></pre></div>
 <div class="node-desc">THEOREM: Property rights are real but not absolute.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MaterialGood">MaterialGood</span><span class="dep-chip" data-target="destinedForAll">destinedForAll</span><span class="dep-chip" data-target="exercisesStewardship">exercisesStewardship</span><span class="dep-chip" data-target="hasPropertyRight">hasPropertyRight</span><span class="dep-chip" data-target="private_property_legitimate">private_property_legitimate</span><span class="dep-chip" data-target="property_subordinate_to_universal_destination">property_subordinate_to_universal_destination</span><span class="dep-chip" data-target="stewardship_not_absolute_ownership">stewardship_not_absolute_ownership</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="p2_property_bridge">p2_property_bridge</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MaterialGood">MaterialGood</span><span class="dep-chip" data-target="destinedForAll">destinedForAll</span><span class="dep-chip" data-target="exercisesStewardship">exercisesStewardship</span><span class="dep-chip" data-target="hasPropertyRight">hasPropertyRight</span><span class="dep-chip" data-target="private_property_legitimate">private_property_legitimate</span><span class="dep-chip" data-target="property_subordinate_to_universal_destination">property_subordinate_to_universal_destination</span><span class="dep-chip" data-target="stewardship_not_absolute_ownership">stewardship_not_absolute_ownership</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="p2_property_bridge">p2_property_bridge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="just_acquisition_yields_bounded_rights">
@@ -703,10 +727,17 @@ regulatesProperty a g</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem just_acquisition_yields_bounded_rights
-(p : Person) (g : MaterialGood)
-(h_just : justlyAcquired p g) :</code></pre></div>
+    (p : Person) (g : MaterialGood)
+    (h_just : justlyAcquired p g) :
+    -- Just acquisition yields a right
+    hasPropertyRight p g
+    -- AND the good remains destined for all
+    ∧ destinedForAll g
+    -- AND the holder is a steward
+    ∧ exercisesStewardship p g</code></pre></div>
 <div class="node-desc">THEOREM: Just acquisition yields bounded property — the full Catholic chain.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MaterialGood">MaterialGood</span><span class="dep-chip" data-target="destinedForAll">destinedForAll</span><span class="dep-chip" data-target="exercisesStewardship">exercisesStewardship</span><span class="dep-chip" data-target="hasPropertyRight">hasPropertyRight</span><span class="dep-chip" data-target="justlyAcquired">justlyAcquired</span><span class="dep-chip" data-target="private_property_legitimate">private_property_legitimate</span><span class="dep-chip" data-target="property_subordinate_to_universal_destination">property_subordinate_to_universal_destination</span><span class="dep-chip" data-target="stewardship_not_absolute_ownership">stewardship_not_absolute_ownership</span><span class="dep-chip" data-target="universal_destination">universal_destination</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="p2_property_bridge">p2_property_bridge</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MaterialGood">MaterialGood</span><span class="dep-chip" data-target="destinedForAll">destinedForAll</span><span class="dep-chip" data-target="exercisesStewardship">exercisesStewardship</span><span class="dep-chip" data-target="hasPropertyRight">hasPropertyRight</span><span class="dep-chip" data-target="justlyAcquired">justlyAcquired</span><span class="dep-chip" data-target="private_property_legitimate">private_property_legitimate</span><span class="dep-chip" data-target="property_subordinate_to_universal_destination">property_subordinate_to_universal_destination</span><span class="dep-chip" data-target="stewardship_not_absolute_ownership">stewardship_not_absolute_ownership</span><span class="dep-chip" data-target="universal_destination">universal_destination</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="p2_property_bridge">p2_property_bridge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="no_good_exempt_from_universal_destination">
@@ -717,10 +748,11 @@ regulatesProperty a g</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem no_good_exempt_from_universal_destination
-(g : MaterialGood) :
-destinedForAll g</code></pre></div>
+    (g : MaterialGood) :
+    destinedForAll g</code></pre></div>
 <div class="node-desc">THEOREM: Universal destination applies universally — no good is exempt.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MaterialGood">MaterialGood</span><span class="dep-chip" data-target="destinedForAll">destinedForAll</span><span class="dep-chip" data-target="political_regulation_of_property">political_regulation_of_property</span><span class="dep-chip" data-target="universal_destination">universal_destination</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="p2_property_bridge">p2_property_bridge</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MaterialGood">MaterialGood</span><span class="dep-chip" data-target="destinedForAll">destinedForAll</span><span class="dep-chip" data-target="political_regulation_of_property">political_regulation_of_property</span><span class="dep-chip" data-target="universal_destination">universal_destination</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="p2_property_bridge">p2_property_bridge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="regulation_legitimate">
@@ -731,11 +763,12 @@ destinedForAll g</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem regulation_legitimate
-(a : Authority) (g : MaterialGood)
-(h_auth : a.source = AuthoritySource.naturalLaw) :
-regulatesProperty a g</code></pre></div>
+    (a : Authority) (g : MaterialGood)
+    (h_auth : a.source = AuthoritySource.naturalLaw) :
+    regulatesProperty a g</code></pre></div>
 <div class="node-desc">THEOREM: Political authority can regulate all property for the common good.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MaterialGood">MaterialGood</span><span class="dep-chip" data-target="political_regulation_of_property">political_regulation_of_property</span><span class="dep-chip" data-target="regulatesProperty">regulatesProperty</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="p2_property_bridge">p2_property_bridge</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MaterialGood">MaterialGood</span><span class="dep-chip" data-target="political_regulation_of_property">political_regulation_of_property</span><span class="dep-chip" data-target="regulatesProperty">regulatesProperty</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="p2_property_bridge">p2_property_bridge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="libertarian_absolute_property">
@@ -746,10 +779,14 @@ regulatesProperty a g</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom libertarian_absolute_property :
-∀ (p : Person) (g : MaterialGood),
-hasPropertyRight p g →</code></pre></div>
+  ∀ (p : Person) (g : MaterialGood),
+    hasPropertyRight p g →
+    -- Property EXCLUDES universal destination — the good is no longer
+    -- &quot;destined for all&quot; once it is privately held.
+    ¬ destinedForAll g</code></pre></div>
 <div class="node-desc">The libertarian axiom: property rights exclude universal destination claims.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MaterialGood">MaterialGood</span><span class="dep-chip" data-target="destinedForAll">destinedForAll</span><span class="dep-chip" data-target="hasPropertyRight">hasPropertyRight</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="libertarian_property_unbounded">libertarian_property_unbounded</span><span class="dep-chip" data-target="p2_property_bridge">p2_property_bridge</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MaterialGood">MaterialGood</span><span class="dep-chip" data-target="destinedForAll">destinedForAll</span><span class="dep-chip" data-target="hasPropertyRight">hasPropertyRight</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="libertarian_property_unbounded">libertarian_property_unbounded</span><span class="dep-chip" data-target="p2_property_bridge">p2_property_bridge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="libertarian_property_unbounded">
@@ -760,10 +797,13 @@ hasPropertyRight p g →</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem libertarian_property_unbounded
-(p : Person) (g : MaterialGood)
-(h_owns : hasPropertyRight p g) :</code></pre></div>
+    (p : Person) (g : MaterialGood)
+    (h_owns : hasPropertyRight p g) :
+    -- Under libertarian axioms, ownership EXCLUDES universal destination
+    ¬ destinedForAll g</code></pre></div>
 <div class="node-desc">THEOREM: Under libertarian axioms, private property excludes universal destination.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MaterialGood">MaterialGood</span><span class="dep-chip" data-target="destinedForAll">destinedForAll</span><span class="dep-chip" data-target="hasPropertyRight">hasPropertyRight</span><span class="dep-chip" data-target="libertarian_absolute_property">libertarian_absolute_property</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="p2_property_bridge">p2_property_bridge</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MaterialGood">MaterialGood</span><span class="dep-chip" data-target="destinedForAll">destinedForAll</span><span class="dep-chip" data-target="hasPropertyRight">hasPropertyRight</span><span class="dep-chip" data-target="libertarian_absolute_property">libertarian_absolute_property</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="p2_property_bridge">p2_property_bridge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="socialist_no_private_property">
@@ -774,11 +814,12 @@ hasPropertyRight p g →</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom socialist_no_private_property :
-∀ (p : Person) (g : MaterialGood),
-destinedForAll g →
-¬ hasPropertyRight p g</code></pre></div>
-<div class="node-desc">The socialist axiom: universal destination requires collective control — private property rights are illegitimate for pr...</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MaterialGood">MaterialGood</span><span class="dep-chip" data-target="destinedForAll">destinedForAll</span><span class="dep-chip" data-target="hasPropertyRight">hasPropertyRight</span><span class="dep-chip" data-target="universal_destination">universal_destination</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="p2_property_bridge">p2_property_bridge</span><span class="dep-chip" data-target="socialist_property_impossible">socialist_property_impossible</span></div></div>
+  ∀ (p : Person) (g : MaterialGood),
+    destinedForAll g →
+    ¬ hasPropertyRight p g</code></pre></div>
+<div class="node-desc">The socialist axiom: universal destination requires collective control —</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MaterialGood">MaterialGood</span><span class="dep-chip" data-target="destinedForAll">destinedForAll</span><span class="dep-chip" data-target="hasPropertyRight">hasPropertyRight</span><span class="dep-chip" data-target="universal_destination">universal_destination</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="socialist_property_impossible">socialist_property_impossible</span><span class="dep-chip" data-target="p2_property_bridge">p2_property_bridge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="socialist_property_impossible">
@@ -789,10 +830,11 @@ destinedForAll g →
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem socialist_property_impossible
-(p : Person) (g : MaterialGood) :
-¬ hasPropertyRight p g</code></pre></div>
+    (p : Person) (g : MaterialGood) :
+    ¬ hasPropertyRight p g</code></pre></div>
 <div class="node-desc">THEOREM: Under socialist axioms, property rights are impossible.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MaterialGood">MaterialGood</span><span class="dep-chip" data-target="hasPropertyRight">hasPropertyRight</span><span class="dep-chip" data-target="property_subordinate_to_universal_destination">property_subordinate_to_universal_destination</span><span class="dep-chip" data-target="socialist_no_private_property">socialist_no_private_property</span><span class="dep-chip" data-target="stewardship_not_absolute_ownership">stewardship_not_absolute_ownership</span><span class="dep-chip" data-target="universal_destination">universal_destination</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="p2_property_bridge">p2_property_bridge</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MaterialGood">MaterialGood</span><span class="dep-chip" data-target="hasPropertyRight">hasPropertyRight</span><span class="dep-chip" data-target="property_subordinate_to_universal_destination">property_subordinate_to_universal_destination</span><span class="dep-chip" data-target="socialist_no_private_property">socialist_no_private_property</span><span class="dep-chip" data-target="stewardship_not_absolute_ownership">stewardship_not_absolute_ownership</span><span class="dep-chip" data-target="universal_destination">universal_destination</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="p2_property_bridge">p2_property_bridge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="catholic_bounded_rights">
@@ -803,10 +845,17 @@ destinedForAll g →
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem catholic_bounded_rights
-(p : Person) (g : MaterialGood)
-(h_owns : hasPropertyRight p g) :</code></pre></div>
+    (p : Person) (g : MaterialGood)
+    (h_owns : hasPropertyRight p g) :
+    -- (a) The property right is genuine
+    hasPropertyRight p g
+    -- (b) The good remains destined for all (the right is bounded)
+    ∧ destinedForAll g
+    -- (c) The owner is a steward (not absolute owner)
+    ∧ exercisesStewardship p g</code></pre></div>
 <div class="node-desc">THEOREM (Main): The Catholic social doctrine is a bounded-rights theory.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MaterialGood">MaterialGood</span><span class="dep-chip" data-target="destinedForAll">destinedForAll</span><span class="dep-chip" data-target="exercisesStewardship">exercisesStewardship</span><span class="dep-chip" data-target="hasPropertyRight">hasPropertyRight</span><span class="dep-chip" data-target="property_subordinate_to_universal_destination">property_subordinate_to_universal_destination</span><span class="dep-chip" data-target="stewardship_not_absolute_ownership">stewardship_not_absolute_ownership</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="p2_property_bridge">p2_property_bridge</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MaterialGood">MaterialGood</span><span class="dep-chip" data-target="destinedForAll">destinedForAll</span><span class="dep-chip" data-target="exercisesStewardship">exercisesStewardship</span><span class="dep-chip" data-target="hasPropertyRight">hasPropertyRight</span><span class="dep-chip" data-target="property_subordinate_to_universal_destination">property_subordinate_to_universal_destination</span><span class="dep-chip" data-target="stewardship_not_absolute_ownership">stewardship_not_absolute_ownership</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="p2_property_bridge">p2_property_bridge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="subordination_distinguishes_from_libertarianism">
@@ -817,10 +866,13 @@ destinedForAll g →
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem subordination_distinguishes_from_libertarianism
-(p : Person) (g : MaterialGood)
-(h_owns : hasPropertyRight p g) :</code></pre></div>
-<div class="node-desc">THEOREM: The subordination axiom is what separates Catholic teaching from libertarianism.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MaterialGood">MaterialGood</span><span class="dep-chip" data-target="exercisesStewardship">exercisesStewardship</span><span class="dep-chip" data-target="hasPropertyRight">hasPropertyRight</span><span class="dep-chip" data-target="property_subordinate_to_universal_destination">property_subordinate_to_universal_destination</span><span class="dep-chip" data-target="stewardship_not_absolute_ownership">stewardship_not_absolute_ownership</span><span class="dep-chip" data-target="universal_destination">universal_destination</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="p2_property_bridge">p2_property_bridge</span></div></div>
+    (p : Person) (g : MaterialGood)
+    (h_owns : hasPropertyRight p g) :
+    -- Under Catholic axioms, the property right ENTAILS stewardship obligations
+    exercisesStewardship p g</code></pre></div>
+<div class="node-desc">THEOREM: The subordination axiom is what separates Catholic teaching</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MaterialGood">MaterialGood</span><span class="dep-chip" data-target="exercisesStewardship">exercisesStewardship</span><span class="dep-chip" data-target="hasPropertyRight">hasPropertyRight</span><span class="dep-chip" data-target="property_subordinate_to_universal_destination">property_subordinate_to_universal_destination</span><span class="dep-chip" data-target="stewardship_not_absolute_ownership">stewardship_not_absolute_ownership</span><span class="dep-chip" data-target="universal_destination">universal_destination</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="p2_property_bridge">p2_property_bridge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="property_distinguishes_from_socialism">
@@ -831,10 +883,13 @@ destinedForAll g →
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem property_distinguishes_from_socialism
-(p : Person) (g : MaterialGood)
-(h_owns : hasPropertyRight p g) :</code></pre></div>
-<div class="node-desc">THEOREM: The property axiom is what separates Catholic teaching from socialism.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MaterialGood">MaterialGood</span><span class="dep-chip" data-target="destinedForAll">destinedForAll</span><span class="dep-chip" data-target="hasPropertyRight">hasPropertyRight</span><span class="dep-chip" data-target="property_subordinate_to_universal_destination">property_subordinate_to_universal_destination</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="p2_property_bridge">p2_property_bridge</span></div></div>
+    (p : Person) (g : MaterialGood)
+    (h_owns : hasPropertyRight p g) :
+    -- Under Catholic axioms, property AND universal destination hold together
+    hasPropertyRight p g ∧ destinedForAll g</code></pre></div>
+<div class="node-desc">THEOREM: The property axiom is what separates Catholic teaching</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MaterialGood">MaterialGood</span><span class="dep-chip" data-target="destinedForAll">destinedForAll</span><span class="dep-chip" data-target="hasPropertyRight">hasPropertyRight</span><span class="dep-chip" data-target="property_subordinate_to_universal_destination">property_subordinate_to_universal_destination</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="p2_property_bridge">p2_property_bridge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="universal_destination_is_natural_law">
@@ -845,10 +900,10 @@ destinedForAll g →
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem universal_destination_is_natural_law
-(precept : MoralPrecept)
-(h_access : precept.accessibleToReason) :
-precept.content</code></pre></div>
-<div class="node-desc">Bridge to NaturalLaw.lean: the universal destination of goods is a natural law precept — accessible to reason and bindin...</div>
+    (precept : MoralPrecept)
+    (h_access : precept.accessibleToReason) :
+    precept.content</code></pre></div>
+<div class="node-desc">Bridge to NaturalLaw.lean: the universal destination of goods is a</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="p2_property_bridge">p2_property_bridge</span></div></div>
   </div>
 </div>
@@ -860,13 +915,12 @@ precept.content</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem p2_property_bridge
-(p : PrimaryCause) (s : SecondaryCause) :
-¬ causesCompete p s</code></pre></div>
-<div class="node-desc">Bridge to P2 (two-tier causation): property and universal destination are primary/secondary levels that do not compete.</div>
+    (p : PrimaryCause) (s : SecondaryCause) :
+    ¬ causesCompete p s</code></pre></div>
+<div class="node-desc">Bridge to P2 (two-tier causation): property and universal destination</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="catholic_bounded_rights">catholic_bounded_rights</span><span class="dep-chip" data-target="just_acquisition_yields_bounded_rights">just_acquisition_yields_bounded_rights</span><span class="dep-chip" data-target="libertarian_absolute_property">libertarian_absolute_property</span><span class="dep-chip" data-target="libertarian_property_unbounded">libertarian_property_unbounded</span><span class="dep-chip" data-target="no_good_exempt_from_universal_destination">no_good_exempt_from_universal_destination</span><span class="dep-chip" data-target="political_regulation_of_property">political_regulation_of_property</span><span class="dep-chip" data-target="private_property_legitimate">private_property_legitimate</span><span class="dep-chip" data-target="property_distinguishes_from_socialism">property_distinguishes_from_socialism</span><span class="dep-chip" data-target="property_real_but_not_absolute">property_real_but_not_absolute</span><span class="dep-chip" data-target="property_subordinate_to_universal_destination">property_subordinate_to_universal_destination</span><span class="dep-chip" data-target="regulation_legitimate">regulation_legitimate</span><span class="dep-chip" data-target="socialist_no_private_property">socialist_no_private_property</span><span class="dep-chip" data-target="socialist_property_impossible">socialist_property_impossible</span><span class="dep-chip" data-target="stewardship_not_absolute_ownership">stewardship_not_absolute_ownership</span><span class="dep-chip" data-target="subordination_distinguishes_from_libertarianism">subordination_distinguishes_from_libertarianism</span><span class="dep-chip" data-target="universal_destination">universal_destination</span><span class="dep-chip" data-target="universal_destination_is_natural_law">universal_destination_is_natural_law</span></div></div>
   </div>
 </div>
-
   </div>
 
   <div class="footer">

@@ -143,7 +143,7 @@ h1 {
   line-height: 1.6;
 }
 
-/* -- Search -- */
+/* ── Search ── */
 .search-box {
   width: 100%;
   padding: 0.8rem 1rem;
@@ -167,7 +167,91 @@ h1 {
   font-style: italic;
 }
 
-/* -- Node cards -- */
+/* ── Category sections ── */
+.category-header {
+  font-family: Cinzel, Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-variant: small-caps;
+  margin: 1.8rem 0 0.8rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── File cards ── */
+.file-card {
+  display: block;
+  padding: 1rem 1.1rem;
+  margin-bottom: 0.5rem;
+  background: var(--bg-parchment);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  text-decoration: none;
+  color: var(--text);
+  transition: background 0.15s, border-color 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.file-card:hover, .file-card:active {
+  background: var(--bg-vellum);
+  border-color: var(--accent-gold);
+  text-decoration: none;
+}
+
+.file-card-name {
+  font-family: Cinzel, Georgia, serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.3rem;
+}
+
+.file-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  font-size: 0.82rem;
+  color: var(--text-light);
+}
+
+.file-card-meta .tag {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.75rem;
+  font-family: Cinzel, Georgia, serif;
+  letter-spacing: 0.03em;
+}
+
+.tag-axiom { background: var(--axiom-bg); color: var(--axiom-dot); border: 1px solid var(--axiom-border); }
+.tag-theorem { background: var(--theorem-bg); color: var(--theorem-dot); border: 1px solid var(--theorem-border); }
+.tag-def { background: var(--def-bg); color: var(--def-dot); border: 1px solid var(--def-border); }
+.tag-proposition { background: var(--proposition-bg); color: var(--proposition-dot); border: 1px solid var(--proposition-border); }
+
+.file-card-ccc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 0.3rem;
+}
+
+/* ── Summary stats ── */
+.stats-bar {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--text-light);
+  font-style: italic;
+}
+
+.stats-bar span { white-space: nowrap; }
+
+/* ── Node cards (per-file page) ── */
 .node-card {
   margin-bottom: 0.4rem;
   border: 1px solid var(--border);
@@ -321,7 +405,7 @@ h1 {
   color: var(--text-muted);
 }
 
-/* -- Flow diagram header -- */
+/* ── Flow diagram header ── */
 .flow-summary {
   display: flex;
   justify-content: center;
@@ -347,7 +431,7 @@ h1 {
 .flow-count.theorems { background: var(--theorem-bg); color: var(--theorem-dot); }
 .flow-count.derived { background: var(--def-bg); color: var(--def-dot); }
 
-/* -- Legend -- */
+/* ── Legend ── */
 .legend {
   display: flex;
   flex-wrap: wrap;
@@ -379,7 +463,7 @@ h1 {
 .legend-dot.inductive { background: var(--inductive-dot); }
 .legend-dot.proposition { background: var(--proposition-dot); }
 
-/* -- Filter buttons -- */
+/* ── Filter buttons ── */
 .filter-bar {
   display: flex;
   flex-wrap: wrap;
@@ -408,7 +492,7 @@ h1 {
   border-color: var(--accent);
 }
 
-/* -- Back link -- */
+/* ── Back link ── */
 .back-link {
   display: inline-block;
   margin-bottom: 1rem;
@@ -417,7 +501,7 @@ h1 {
   letter-spacing: 0.04em;
 }
 
-/* -- Footer -- */
+/* ── Footer ── */
 .footer {
   text-align: center;
   padding-top: 2rem;
@@ -426,7 +510,7 @@ h1 {
   font-style: italic;
 }
 
-/* -- Responsive -- */
+/* ── Responsive ── */
 @media (max-width: 500px) {
   html { font-size: 16px; }
   .container { padding: 1rem 0.75rem 2rem; }
@@ -441,8 +525,15 @@ h1 {
   <h1>ScientificInquiry</h1>
   <div class="subtitle">Creed &middot; 15 declarations</div>
 
-  
-  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;36, &sect;299, &sect;302, &sect;306, &sect;1700</div>
+  <div class="flow-summary">
+  <span class="flow-count axioms">10 axioms</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count theorems">5 theorems</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count derived">0 derived</span>
+</div>
+  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1700, &sect;299, &sect;302, &sect;306, &sect;36</div>
+
   <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
 
   <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (5)</button><button class="filter-btn" data-filter="opaque">opaque (5)</button><button class="filter-btn" data-filter="theorem">theorem (5)</button></div>
@@ -458,7 +549,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque worldIsLogical : Prop</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="creatures_have_genuine_natures">creatures_have_genuine_natures</span><span class="dep-chip" data-target="rational_creature_understands_rational_world">rational_creature_understands_rational_world</span><span class="dep-chip" data-target="science_is_grounded">science_is_grounded</span><span class="dep-chip" data-target="the_world_is_logical">the_world_is_logical</span></div></div>
+<div class="node-desc">**Proposition A**: The world has stable, discoverable order —</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="creatures_have_genuine_natures">creatures_have_genuine_natures</span><span class="dep-chip" data-target="rational_creature_understands_rational_world">rational_creature_understands_rational_world</span><span class="dep-chip" data-target="the_world_is_logical">the_world_is_logical</span><span class="dep-chip" data-target="science_is_grounded">science_is_grounded</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="humansCanUnderstandIt">
@@ -469,7 +561,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque humansCanUnderstandIt : Prop</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="humans_can_understand_the_world">humans_can_understand_the_world</span><span class="dep-chip" data-target="rational_creature_understands_rational_world">rational_creature_understands_rational_world</span><span class="dep-chip" data-target="science_is_grounded">science_is_grounded</span></div></div>
+<div class="node-desc">**Proposition B**: Human reason is fitted to the world's order —</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rational_creature_understands_rational_world">rational_creature_understands_rational_world</span><span class="dep-chip" data-target="humans_can_understand_the_world">humans_can_understand_the_world</span><span class="dep-chip" data-target="science_is_grounded">science_is_grounded</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="godCreatesThruWisdom">
@@ -480,7 +573,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque godCreatesThruWisdom : Prop</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="god_creates_through_wisdom">god_creates_through_wisdom</span><span class="dep-chip" data-target="image_of_rational_god_is_rational">image_of_rational_god_is_rational</span><span class="dep-chip" data-target="wisdom_produces_order">wisdom_produces_order</span></div></div>
+<div class="node-desc">Whether God creates through wisdom (rationality) rather than</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="god_creates_through_wisdom">god_creates_through_wisdom</span><span class="dep-chip" data-target="wisdom_produces_order">wisdom_produces_order</span><span class="dep-chip" data-target="image_of_rational_god_is_rational">image_of_rational_god_is_rational</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="creationReflectsWisdom">
@@ -491,7 +585,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque creationReflectsWisdom : Prop</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="creatures_have_genuine_natures">creatures_have_genuine_natures</span><span class="dep-chip" data-target="wisdom_produces_order">wisdom_produces_order</span></div></div>
+<div class="node-desc">Whether something created through wisdom inherits that wisdom's</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="wisdom_produces_order">wisdom_produces_order</span><span class="dep-chip" data-target="creatures_have_genuine_natures">creatures_have_genuine_natures</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="imageSharesRationality">
@@ -502,6 +597,7 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque imageSharesRationality : Person → Prop</code></pre></div>
+<div class="node-desc">Whether the image of a rational being shares in that rationality.</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="image_of_rational_god_is_rational">image_of_rational_god_is_rational</span><span class="dep-chip" data-target="rational_creature_understands_rational_world">rational_creature_understands_rational_world</span></div></div>
   </div>
 </div>
@@ -514,8 +610,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom god_creates_through_wisdom :
   godCreatesThruWisdom</code></pre></div>
+<div class="node-desc">AXIOM (§299): God creates through wisdom.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="godCreatesThruWisdom">godCreatesThruWisdom</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="humans_can_understand_the_world">humans_can_understand_the_world</span><span class="dep-chip" data-target="rational_creature_understands_rational_world">rational_creature_understands_rational_world</span><span class="dep-chip" data-target="science_and_theology_compatible">science_and_theology_compatible</span><span class="dep-chip" data-target="the_world_is_logical">the_world_is_logical</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rational_creature_understands_rational_world">rational_creature_understands_rational_world</span><span class="dep-chip" data-target="the_world_is_logical">the_world_is_logical</span><span class="dep-chip" data-target="humans_can_understand_the_world">humans_can_understand_the_world</span><span class="dep-chip" data-target="science_and_theology_compatible">science_and_theology_compatible</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="wisdom_produces_order">
@@ -527,8 +624,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom wisdom_produces_order :
   godCreatesThruWisdom → creationReflectsWisdom</code></pre></div>
+<div class="node-desc">AXIOM (§299): What is created through wisdom has order.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="creationReflectsWisdom">creationReflectsWisdom</span><span class="dep-chip" data-target="godCreatesThruWisdom">godCreatesThruWisdom</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rational_creature_understands_rational_world">rational_creature_understands_rational_world</span><span class="dep-chip" data-target="science_and_theology_compatible">science_and_theology_compatible</span><span class="dep-chip" data-target="the_world_is_logical">the_world_is_logical</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rational_creature_understands_rational_world">rational_creature_understands_rational_world</span><span class="dep-chip" data-target="the_world_is_logical">the_world_is_logical</span><span class="dep-chip" data-target="science_and_theology_compatible">science_and_theology_compatible</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="creatures_have_genuine_natures">
@@ -542,8 +640,9 @@ h1 {
   creationReflectsWisdom →
   (∀ (p : PrimaryCause) (s : SecondaryCause), ¬ causesCompete p s) →
   worldIsLogical</code></pre></div>
+<div class="node-desc">AXIOM (§306, P2): Creatures have genuine causal powers.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="creationReflectsWisdom">creationReflectsWisdom</span><span class="dep-chip" data-target="worldIsLogical">worldIsLogical</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rational_creature_understands_rational_world">rational_creature_understands_rational_world</span><span class="dep-chip" data-target="science_and_theology_compatible">science_and_theology_compatible</span><span class="dep-chip" data-target="the_world_is_logical">the_world_is_logical</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rational_creature_understands_rational_world">rational_creature_understands_rational_world</span><span class="dep-chip" data-target="the_world_is_logical">the_world_is_logical</span><span class="dep-chip" data-target="science_and_theology_compatible">science_and_theology_compatible</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="image_of_rational_god_is_rational">
@@ -558,8 +657,9 @@ h1 {
     isImageOfGod p →
     godCreatesThruWisdom →
     imageSharesRationality p</code></pre></div>
+<div class="node-desc">AXIOM (§1700, Gen 1:27 + §299): The image of a rational God</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="godCreatesThruWisdom">godCreatesThruWisdom</span><span class="dep-chip" data-target="imageSharesRationality">imageSharesRationality</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="humans_can_understand_the_world">humans_can_understand_the_world</span><span class="dep-chip" data-target="science_and_theology_compatible">science_and_theology_compatible</span><span class="dep-chip" data-target="the_world_is_logical">the_world_is_logical</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="the_world_is_logical">the_world_is_logical</span><span class="dep-chip" data-target="humans_can_understand_the_world">humans_can_understand_the_world</span><span class="dep-chip" data-target="science_and_theology_compatible">science_and_theology_compatible</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="rational_creature_understands_rational_world">
@@ -574,8 +674,9 @@ h1 {
     imageSharesRationality p →
     worldIsLogical →
     humansCanUnderstandIt</code></pre></div>
+<div class="node-desc">AXIOM (§36): A rational creature in a rational world can understand</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="creatures_have_genuine_natures">creatures_have_genuine_natures</span><span class="dep-chip" data-target="god_creates_through_wisdom">god_creates_through_wisdom</span><span class="dep-chip" data-target="humansCanUnderstandIt">humansCanUnderstandIt</span><span class="dep-chip" data-target="imageSharesRationality">imageSharesRationality</span><span class="dep-chip" data-target="wisdom_produces_order">wisdom_produces_order</span><span class="dep-chip" data-target="worldIsLogical">worldIsLogical</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="humans_can_understand_the_world">humans_can_understand_the_world</span><span class="dep-chip" data-target="science_and_theology_compatible">science_and_theology_compatible</span><span class="dep-chip" data-target="the_world_is_logical">the_world_is_logical</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="the_world_is_logical">the_world_is_logical</span><span class="dep-chip" data-target="humans_can_understand_the_world">humans_can_understand_the_world</span><span class="dep-chip" data-target="science_and_theology_compatible">science_and_theology_compatible</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="the_world_is_logical">
@@ -585,13 +686,10 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>theorem the_world_is_logical : worldIsLogical := by
-  have h_wisdom := god_creates_through_wisdom
-  have h_order := wisdom_produces_order h_wisdom
-  have h_p2 := p2_two_tier_causation
-  exact creatures_have_genuine_natures h_order h_p2</code></pre></div>
+    <div class="node-prop"><pre><code>theorem the_world_is_logical : worldIsLogical</code></pre></div>
+<div class="node-desc">THEOREM (Proposition A): The world is logical.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="creatures_have_genuine_natures">creatures_have_genuine_natures</span><span class="dep-chip" data-target="god_creates_through_wisdom">god_creates_through_wisdom</span><span class="dep-chip" data-target="image_of_rational_god_is_rational">image_of_rational_god_is_rational</span><span class="dep-chip" data-target="rational_creature_understands_rational_world">rational_creature_understands_rational_world</span><span class="dep-chip" data-target="wisdom_produces_order">wisdom_produces_order</span><span class="dep-chip" data-target="worldIsLogical">worldIsLogical</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="humans_can_understand_the_world">humans_can_understand_the_world</span><span class="dep-chip" data-target="science_and_theology_compatible">science_and_theology_compatible</span><span class="dep-chip" data-target="science_is_grounded">science_is_grounded</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="humans_can_understand_the_world">humans_can_understand_the_world</span><span class="dep-chip" data-target="science_is_grounded">science_is_grounded</span><span class="dep-chip" data-target="science_and_theology_compatible">science_and_theology_compatible</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="humans_can_understand_the_world">
@@ -601,21 +699,10 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>theorem humans_can_understand_the_world : humansCanUnderstandIt := by
-  -- Step 1: A human person has intellect
-  have h_intellect : Person.human.hasIntellect = true := rfl
-  -- Step 2: Persons with intellect are God's image (imago_dei)
-  have h_image := imago_dei Person.human h_intellect
-  -- Step 3: God creates through wisdom
-  have h_wisdom := god_creates_through_wisdom
-  -- Step 4: Image of rational God → shares rationality
-  have h_rational := image_of_rational_god_is_rational Person.human h_image h_wisdom
-  -- Step 5: The world is logical (Proposition A)
-  have h_logical := the_world_is_logical
-  -- Step 6: Rational creature + logical world → understanding
-  exact rational_creature_understands_rational_world Person.human h_rational h_logical</code></pre></div>
+    <div class="node-prop"><pre><code>theorem humans_can_understand_the_world : humansCanUnderstandIt</code></pre></div>
+<div class="node-desc">THEOREM (Proposition B): Humans can understand the world's logic.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="god_creates_through_wisdom">god_creates_through_wisdom</span><span class="dep-chip" data-target="humansCanUnderstandIt">humansCanUnderstandIt</span><span class="dep-chip" data-target="image_of_rational_god_is_rational">image_of_rational_god_is_rational</span><span class="dep-chip" data-target="rational_creature_understands_rational_world">rational_creature_understands_rational_world</span><span class="dep-chip" data-target="the_world_is_logical">the_world_is_logical</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="science_and_theology_compatible">science_and_theology_compatible</span><span class="dep-chip" data-target="science_is_grounded">science_is_grounded</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="science_is_grounded">science_is_grounded</span><span class="dep-chip" data-target="science_and_theology_compatible">science_and_theology_compatible</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="science_is_grounded">
@@ -626,8 +713,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem science_is_grounded :
-    worldIsLogical ∧ humansCanUnderstandIt :=
-  ⟨the_world_is_logical, humans_can_understand_the_world⟩</code></pre></div>
+    worldIsLogical ∧ humansCanUnderstandIt</code></pre></div>
+<div class="node-desc">THEOREM: Both propositions together — science is grounded.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="humansCanUnderstandIt">humansCanUnderstandIt</span><span class="dep-chip" data-target="humans_can_understand_the_world">humans_can_understand_the_world</span><span class="dep-chip" data-target="the_world_is_logical">the_world_is_logical</span><span class="dep-chip" data-target="worldIsLogical">worldIsLogical</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="science_and_theology_compatible">science_and_theology_compatible</span></div></div>
   </div>
@@ -642,8 +729,8 @@ h1 {
     <div class="node-prop"><pre><code>theorem providence_supports_proposition_a
     (e : CausedEvent)
     (h_free : e.secondaryCause.hasFreeWill = true) :
-    e.isFreeAct :=
-  creaturely_causation_genuine e h_free</code></pre></div>
+    e.isFreeAct</code></pre></div>
+<div class="node-desc">THEOREM: Providence.lean's creaturely causation bridges to our model.</div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="science_and_theology_compatible">
@@ -655,8 +742,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem science_and_theology_compatible
     (p : PrimaryCause) (s : SecondaryCause) :
-    ¬ causesCompete p s :=
-  p2_two_tier_causation p s</code></pre></div>
+    ¬ causesCompete p s</code></pre></div>
+<div class="node-desc">THEOREM: P2 from Axioms.lean means science and theology study</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="creatures_have_genuine_natures">creatures_have_genuine_natures</span><span class="dep-chip" data-target="god_creates_through_wisdom">god_creates_through_wisdom</span><span class="dep-chip" data-target="humans_can_understand_the_world">humans_can_understand_the_world</span><span class="dep-chip" data-target="image_of_rational_god_is_rational">image_of_rational_god_is_rational</span><span class="dep-chip" data-target="rational_creature_understands_rational_world">rational_creature_understands_rational_world</span><span class="dep-chip" data-target="science_is_grounded">science_is_grounded</span><span class="dep-chip" data-target="the_world_is_logical">the_world_is_logical</span><span class="dep-chip" data-target="wisdom_produces_order">wisdom_produces_order</span></div></div>
   </div>
 </div>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>First Commandment — Catlib Explorer</title>
+  <title>FirstCommandment — Catlib Explorer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -143,7 +143,7 @@ h1 {
   line-height: 1.6;
 }
 
-/* Search */
+/* ── Search ── */
 .search-box {
   width: 100%;
   padding: 0.8rem 1rem;
@@ -167,7 +167,7 @@ h1 {
   font-style: italic;
 }
 
-/* Category sections */
+/* ── Category sections ── */
 .category-header {
   font-family: Cinzel, Georgia, serif;
   font-size: 1.1rem;
@@ -181,7 +181,7 @@ h1 {
   border-bottom: 1px solid var(--border);
 }
 
-/* File cards */
+/* ── File cards ── */
 .file-card {
   display: block;
   padding: 1rem 1.1rem;
@@ -237,7 +237,7 @@ h1 {
   margin-top: 0.3rem;
 }
 
-/* Summary stats */
+/* ── Summary stats ── */
 .stats-bar {
   display: flex;
   justify-content: center;
@@ -251,7 +251,7 @@ h1 {
 
 .stats-bar span { white-space: nowrap; }
 
-/* Node cards */
+/* ── Node cards (per-file page) ── */
 .node-card {
   margin-bottom: 0.4rem;
   border: 1px solid var(--border);
@@ -267,8 +267,6 @@ h1 {
 .node-card.kind-structure { border-left-color: var(--structure-dot); }
 .node-card.kind-inductive { border-left-color: var(--inductive-dot); }
 .node-card.kind-proposition { border-left-color: var(--proposition-dot); }
-.node-card.kind-instance { border-left-color: var(--def-dot); }
-.node-card.kind-abbrev { border-left-color: var(--def-dot); }
 
 .node-header {
   display: flex;
@@ -304,8 +302,6 @@ h1 {
 .kind-structure .node-kind-badge { background: var(--structure-bg); color: var(--structure-dot); }
 .kind-inductive .node-kind-badge { background: var(--inductive-bg); color: var(--inductive-dot); }
 .kind-proposition .node-kind-badge { background: var(--proposition-bg); color: var(--proposition-dot); }
-.kind-instance .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
-.kind-abbrev .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
 
 .node-name {
   flex: 1;
@@ -409,7 +405,7 @@ h1 {
   color: var(--text-muted);
 }
 
-/* Flow diagram header */
+/* ── Flow diagram header ── */
 .flow-summary {
   display: flex;
   justify-content: center;
@@ -435,7 +431,7 @@ h1 {
 .flow-count.theorems { background: var(--theorem-bg); color: var(--theorem-dot); }
 .flow-count.derived { background: var(--def-bg); color: var(--def-dot); }
 
-/* Legend */
+/* ── Legend ── */
 .legend {
   display: flex;
   flex-wrap: wrap;
@@ -467,7 +463,7 @@ h1 {
 .legend-dot.inductive { background: var(--inductive-dot); }
 .legend-dot.proposition { background: var(--proposition-dot); }
 
-/* Filter buttons */
+/* ── Filter buttons ── */
 .filter-bar {
   display: flex;
   flex-wrap: wrap;
@@ -496,7 +492,7 @@ h1 {
   border-color: var(--accent);
 }
 
-/* Back link */
+/* ── Back link ── */
 .back-link {
   display: inline-block;
   margin-bottom: 1rem;
@@ -505,7 +501,7 @@ h1 {
   letter-spacing: 0.04em;
 }
 
-/* Footer */
+/* ── Footer ── */
 .footer {
   text-align: center;
   padding-top: 2rem;
@@ -514,7 +510,7 @@ h1 {
   font-style: italic;
 }
 
-/* Responsive */
+/* ── Responsive ── */
 @media (max-width: 500px) {
   html { font-size: 16px; }
   .container { padding: 1rem 0.75rem 2rem; }
@@ -526,32 +522,40 @@ h1 {
 <body>
 <div class="container">
   <a href="index.html" class="back-link">&larr; All files</a>
-  <h1>First Commandment</h1>
-  <div class="subtitle">Moral Theology &middot; 19 declarations</div>
+  <h1>FirstCommandment</h1>
+  <div class="subtitle">MoralTheology &middot; 19 declarations</div>
 
-  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;36, &sect;37, &sect;2084, &sect;2096, &sect;2110, &sect;2111, &sect;2112, &sect;2113, &sect;2114, &sect;2123, &hellip;</div>
-  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot proposition"></span>proposition</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
+  <div class="flow-summary">
+  <span class="flow-count axioms">11 axioms</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count theorems">8 theorems</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count derived">0 derived</span>
+</div>
+  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;2084, &sect;2096, &sect;2110, &sect;2111, &sect;2112, &sect;2113, &sect;2114, &sect;2123, &sect;2125, &sect;2128, &sect;36, &sect;37</div>
 
-  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (6)</button><button class="filter-btn" data-filter="proposition">proposition (5)</button><button class="filter-btn" data-filter="theorem">theorem (8)</button></div>
+  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
+
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (6)</button><button class="filter-btn" data-filter="opaque">opaque (5)</button><button class="filter-btn" data-filter="theorem">theorem (8)</button></div>
 
   <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
 
   <div id="nodeList">
-    <div class="node-card kind-proposition" data-kind="proposition" data-name="treatsAsUltimate">
+    <div class="node-card kind-opaque" data-kind="opaque" data-name="treatsAsUltimate">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
+    <span class="node-kind-badge">opaque</span>
     <span class="node-name">treatsAsUltimate</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque treatsAsUltimate : Person → Person → Prop</code></pre></div>
-<div class="node-desc">Whether a person&#x27;s functional ultimate concern is directed at a given entity.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="everyone_has_ultimate_concern">everyone_has_ultimate_concern</span><span class="dep-chip" data-target="idolatry_is_treating_non_god_as_ultimate">idolatry_is_treating_non_god_as_ultimate</span><span class="dep-chip" data-target="natural_knowability_bridge">natural_knowability_bridge</span><span class="dep-chip" data-target="practical_atheism_excludes_god_as_ultimate">practical_atheism_excludes_god_as_ultimate</span><span class="dep-chip" data-target="practical_atheism_reduces_to_idolatry">practical_atheism_reduces_to_idolatry</span><span class="dep-chip" data-target="practical_atheist_does_not_treat_god_as_ultimate">practical_atheist_does_not_treat_god_as_ultimate</span><span class="dep-chip" data-target="three_violations_distinct">three_violations_distinct</span></div></div>
+<div class="node-desc">Whether a person's functional ultimate concern is directed at a given entity.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="idolatry_is_treating_non_god_as_ultimate">idolatry_is_treating_non_god_as_ultimate</span><span class="dep-chip" data-target="everyone_has_ultimate_concern">everyone_has_ultimate_concern</span><span class="dep-chip" data-target="practical_atheist_does_not_treat_god_as_ultimate">practical_atheist_does_not_treat_god_as_ultimate</span><span class="dep-chip" data-target="practical_atheism_excludes_god_as_ultimate">practical_atheism_excludes_god_as_ultimate</span><span class="dep-chip" data-target="practical_atheism_reduces_to_idolatry">practical_atheism_reduces_to_idolatry</span><span class="dep-chip" data-target="three_violations_distinct">three_violations_distinct</span><span class="dep-chip" data-target="natural_knowability_bridge">natural_knowability_bridge</span></div></div>
   </div>
 </div>
-<div class="node-card kind-proposition" data-kind="proposition" data-name="deniesGodExists">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="deniesGodExists">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
+    <span class="node-kind-badge">opaque</span>
     <span class="node-name">deniesGodExists</span>
     <span class="node-chevron">&#9654;</span>
   </div>
@@ -561,40 +565,40 @@ h1 {
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="atheism_is_sin_against_religion">atheism_is_sin_against_religion</span><span class="dep-chip" data-target="practical_atheism_reduces_to_idolatry">practical_atheism_reduces_to_idolatry</span><span class="dep-chip" data-target="theoretical_atheism_needs_extra_step">theoretical_atheism_needs_extra_step</span></div></div>
   </div>
 </div>
-<div class="node-card kind-proposition" data-kind="proposition" data-name="livesAsIfNoGod">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="livesAsIfNoGod">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
+    <span class="node-kind-badge">opaque</span>
     <span class="node-name">livesAsIfNoGod</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque livesAsIfNoGod : Person → Prop</code></pre></div>
-<div class="node-desc">Whether a person lives as if God does not exist — organizing their life without reference to God.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="practical_atheism_excludes_god_as_ultimate">practical_atheism_excludes_god_as_ultimate</span><span class="dep-chip" data-target="practical_atheism_reduces_to_idolatry">practical_atheism_reduces_to_idolatry</span><span class="dep-chip" data-target="practical_atheist_does_not_treat_god_as_ultimate">practical_atheist_does_not_treat_god_as_ultimate</span><span class="dep-chip" data-target="theoretical_atheism_needs_extra_step">theoretical_atheism_needs_extra_step</span></div></div>
+<div class="node-desc">Whether a person lives as if God does not exist — organizing their life</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="practical_atheist_does_not_treat_god_as_ultimate">practical_atheist_does_not_treat_god_as_ultimate</span><span class="dep-chip" data-target="practical_atheism_excludes_god_as_ultimate">practical_atheism_excludes_god_as_ultimate</span><span class="dep-chip" data-target="practical_atheism_reduces_to_idolatry">practical_atheism_reduces_to_idolatry</span><span class="dep-chip" data-target="theoretical_atheism_needs_extra_step">theoretical_atheism_needs_extra_step</span></div></div>
   </div>
 </div>
-<div class="node-card kind-proposition" data-kind="proposition" data-name="attributesMagicalPower">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="attributesMagicalPower">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
+    <span class="node-kind-badge">opaque</span>
     <span class="node-name">attributesMagicalPower</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque attributesMagicalPower : Person → Prop → Prop</code></pre></div>
 <div class="node-desc">Whether a practice is attributed magical causal power independent of God.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="superstition_contradicts_p2">superstition_contradicts_p2</span><span class="dep-chip" data-target="superstition_violates_causal_order">superstition_violates_causal_order</span><span class="dep-chip" data-target="three_violations_distinct">three_violations_distinct</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="superstition_violates_causal_order">superstition_violates_causal_order</span><span class="dep-chip" data-target="superstition_contradicts_p2">superstition_contradicts_p2</span><span class="dep-chip" data-target="three_violations_distinct">three_violations_distinct</span></div></div>
   </div>
 </div>
-<div class="node-card kind-proposition" data-kind="proposition" data-name="godKnowableByReason">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="godKnowableByReason">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
+    <span class="node-kind-badge">opaque</span>
     <span class="node-name">godKnowableByReason</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque godKnowableByReason : Prop</code></pre></div>
-<div class="node-desc">Whether God&#x27;s existence is knowable by natural reason.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="atheism_is_sin_against_religion">atheism_is_sin_against_religion</span><span class="dep-chip" data-target="god_knowable_by_reason">god_knowable_by_reason</span><span class="dep-chip" data-target="natural_knowability_bridge">natural_knowability_bridge</span><span class="dep-chip" data-target="theoretical_atheism_needs_extra_step">theoretical_atheism_needs_extra_step</span></div></div>
+<div class="node-desc">Whether God's existence is knowable by natural reason.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="god_knowable_by_reason">god_knowable_by_reason</span><span class="dep-chip" data-target="atheism_is_sin_against_religion">atheism_is_sin_against_religion</span><span class="dep-chip" data-target="theoretical_atheism_needs_extra_step">theoretical_atheism_needs_extra_step</span><span class="dep-chip" data-target="natural_knowability_bridge">natural_knowability_bridge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="idolatry_is_treating_non_god_as_ultimate">
@@ -605,12 +609,13 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom idolatry_is_treating_non_god_as_ultimate :
-∀ (p honoree : Person),
-treatsAsUltimate p honoree →
-¬ hasUltimateStatus honoree →
-False  -- contradiction: cannot legitimately treat non-God as ultimate</code></pre></div>
+  ∀ (p honoree : Person),
+    treatsAsUltimate p honoree →
+    ¬ hasUltimateStatus honoree →
+    False  -- contradiction: cannot legitimately treat non-God as ultimate</code></pre></div>
 <div class="node-desc">AXIOM 1 (§2112-2114): Idolatry is treating a non-divine being as ultimate.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="treatsAsUltimate">treatsAsUltimate</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="natural_knowability_bridge">natural_knowability_bridge</span><span class="dep-chip" data-target="practical_atheism_excludes_god_as_ultimate">practical_atheism_excludes_god_as_ultimate</span><span class="dep-chip" data-target="theoretical_atheism_needs_extra_step">theoretical_atheism_needs_extra_step</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="treatsAsUltimate">treatsAsUltimate</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="practical_atheism_excludes_god_as_ultimate">practical_atheism_excludes_god_as_ultimate</span><span class="dep-chip" data-target="theoretical_atheism_needs_extra_step">theoretical_atheism_needs_extra_step</span><span class="dep-chip" data-target="natural_knowability_bridge">natural_knowability_bridge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="superstition_violates_causal_order">
@@ -621,10 +626,14 @@ False  -- contradiction: cannot legitimately treat non-God as ultimate</code></p
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom superstition_violates_causal_order :
-∀ (p : Person) (practice : Prop),
-attributesMagicalPower p practice →</code></pre></div>
-<div class="node-desc">AXIOM 2 (§2110-2111): Superstition attributes independent causal power to what has none — violating the two-tier causal ...</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="attributesMagicalPower">attributesMagicalPower</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="natural_knowability_bridge">natural_knowability_bridge</span><span class="dep-chip" data-target="practical_atheist_does_not_treat_god_as_ultimate">practical_atheist_does_not_treat_god_as_ultimate</span><span class="dep-chip" data-target="superstition_contradicts_p2">superstition_contradicts_p2</span></div></div>
+  ∀ (p : Person) (practice : Prop),
+    attributesMagicalPower p practice →
+    -- This contradicts P2: secondary causes don't have independent
+    -- primary-level power
+    ∃ (pc : PrimaryCause) (sc : SecondaryCause), causesCompete pc sc</code></pre></div>
+<div class="node-desc">AXIOM 2 (§2110-2111): Superstition attributes independent causal power</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="attributesMagicalPower">attributesMagicalPower</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="practical_atheist_does_not_treat_god_as_ultimate">practical_atheist_does_not_treat_god_as_ultimate</span><span class="dep-chip" data-target="superstition_contradicts_p2">superstition_contradicts_p2</span><span class="dep-chip" data-target="natural_knowability_bridge">natural_knowability_bridge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="god_knowable_by_reason">
@@ -635,8 +644,9 @@ attributesMagicalPower p practice →</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom god_knowable_by_reason : godKnowableByReason</code></pre></div>
-<div class="node-desc">AXIOM 3 (§36, Vatican I): God&#x27;s existence is knowable by natural reason.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="godKnowableByReason">godKnowableByReason</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="natural_knowability_bridge">natural_knowability_bridge</span><span class="dep-chip" data-target="p2_bridge">p2_bridge</span><span class="dep-chip" data-target="theoretical_atheism_needs_extra_step">theoretical_atheism_needs_extra_step</span></div></div>
+<div class="node-desc">AXIOM 3 (§36, Vatican I): God's existence is knowable by natural reason.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="godKnowableByReason">godKnowableByReason</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="theoretical_atheism_needs_extra_step">theoretical_atheism_needs_extra_step</span><span class="dep-chip" data-target="p2_bridge">p2_bridge</span><span class="dep-chip" data-target="natural_knowability_bridge">natural_knowability_bridge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="atheism_is_sin_against_religion">
@@ -647,11 +657,16 @@ attributesMagicalPower p practice →</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom atheism_is_sin_against_religion :
-∀ (p : Person),
-deniesGodExists p →
-godKnowableByReason →</code></pre></div>
+  ∀ (p : Person),
+    deniesGodExists p →
+    godKnowableByReason →
+    -- Atheism contradicts what reason can know
+    ¬ (p.hasIntellect = true → ¬ deniesGodExists p) →
+    -- This is a violation of the first commandment
+    False</code></pre></div>
 <div class="node-desc">AXIOM 4 (§2128): Atheism is a sin against the virtue of religion.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="deniesGodExists">deniesGodExists</span><span class="dep-chip" data-target="godKnowableByReason">godKnowableByReason</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="natural_knowability_bridge">natural_knowability_bridge</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="deniesGodExists">deniesGodExists</span><span class="dep-chip" data-target="godKnowableByReason">godKnowableByReason</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="natural_knowability_bridge">natural_knowability_bridge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="everyone_has_ultimate_concern">
@@ -662,10 +677,11 @@ godKnowableByReason →</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom everyone_has_ultimate_concern :
-∀ (p : Person), p.isMoralAgent = true →
-∃ (ultimate : Person), treatsAsUltimate p ultimate</code></pre></div>
+  ∀ (p : Person), p.isMoralAgent = true →
+    ∃ (ultimate : Person), treatsAsUltimate p ultimate</code></pre></div>
 <div class="node-desc">AXIOM 5 (§2114, Tillich): Every person has a functional ultimate concern.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="treatsAsUltimate">treatsAsUltimate</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="natural_knowability_bridge">natural_knowability_bridge</span><span class="dep-chip" data-target="practical_atheism_excludes_god_as_ultimate">practical_atheism_excludes_god_as_ultimate</span><span class="dep-chip" data-target="practical_atheism_reduces_to_idolatry">practical_atheism_reduces_to_idolatry</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="treatsAsUltimate">treatsAsUltimate</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="practical_atheism_excludes_god_as_ultimate">practical_atheism_excludes_god_as_ultimate</span><span class="dep-chip" data-target="practical_atheism_reduces_to_idolatry">practical_atheism_reduces_to_idolatry</span><span class="dep-chip" data-target="natural_knowability_bridge">natural_knowability_bridge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="practical_atheist_does_not_treat_god_as_ultimate">
@@ -676,12 +692,13 @@ godKnowableByReason →</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom practical_atheist_does_not_treat_god_as_ultimate :
-∀ (p god : Person),
-livesAsIfNoGod p →
-hasUltimateStatus god →
-¬ treatsAsUltimate p god</code></pre></div>
-<div class="node-desc">AXIOM 6 (§2113-2114): A person who lives as if God doesn&#x27;t exist does not treat God as their ultimate concern.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="livesAsIfNoGod">livesAsIfNoGod</span><span class="dep-chip" data-target="superstition_violates_causal_order">superstition_violates_causal_order</span><span class="dep-chip" data-target="treatsAsUltimate">treatsAsUltimate</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="natural_knowability_bridge">natural_knowability_bridge</span><span class="dep-chip" data-target="practical_atheism_excludes_god_as_ultimate">practical_atheism_excludes_god_as_ultimate</span><span class="dep-chip" data-target="practical_atheism_reduces_to_idolatry">practical_atheism_reduces_to_idolatry</span><span class="dep-chip" data-target="superstition_contradicts_p2">superstition_contradicts_p2</span></div></div>
+  ∀ (p god : Person),
+    livesAsIfNoGod p →
+    hasUltimateStatus god →
+    ¬ treatsAsUltimate p god</code></pre></div>
+<div class="node-desc">AXIOM 6 (§2113-2114): A person who lives as if God doesn't exist</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="livesAsIfNoGod">livesAsIfNoGod</span><span class="dep-chip" data-target="superstition_violates_causal_order">superstition_violates_causal_order</span><span class="dep-chip" data-target="treatsAsUltimate">treatsAsUltimate</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="superstition_contradicts_p2">superstition_contradicts_p2</span><span class="dep-chip" data-target="practical_atheism_excludes_god_as_ultimate">practical_atheism_excludes_god_as_ultimate</span><span class="dep-chip" data-target="practical_atheism_reduces_to_idolatry">practical_atheism_reduces_to_idolatry</span><span class="dep-chip" data-target="natural_knowability_bridge">natural_knowability_bridge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="superstition_contradicts_p2">
@@ -692,11 +709,12 @@ hasUltimateStatus god →
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem superstition_contradicts_p2
-(p : Person) (practice : Prop)
-(h_super : attributesMagicalPower p practice) :
-False</code></pre></div>
+    (p : Person) (practice : Prop)
+    (h_super : attributesMagicalPower p practice) :
+    False</code></pre></div>
 <div class="node-desc">THEOREM: Superstition contradicts P2 (two-tier causation).</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="attributesMagicalPower">attributesMagicalPower</span><span class="dep-chip" data-target="practical_atheist_does_not_treat_god_as_ultimate">practical_atheist_does_not_treat_god_as_ultimate</span><span class="dep-chip" data-target="superstition_violates_causal_order">superstition_violates_causal_order</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="natural_knowability_bridge">natural_knowability_bridge</span><span class="dep-chip" data-target="theoretical_atheism_needs_extra_step">theoretical_atheism_needs_extra_step</span><span class="dep-chip" data-target="three_violations_distinct">three_violations_distinct</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="attributesMagicalPower">attributesMagicalPower</span><span class="dep-chip" data-target="practical_atheist_does_not_treat_god_as_ultimate">practical_atheist_does_not_treat_god_as_ultimate</span><span class="dep-chip" data-target="superstition_violates_causal_order">superstition_violates_causal_order</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="theoretical_atheism_needs_extra_step">theoretical_atheism_needs_extra_step</span><span class="dep-chip" data-target="three_violations_distinct">three_violations_distinct</span><span class="dep-chip" data-target="natural_knowability_bridge">natural_knowability_bridge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="practical_atheism_excludes_god_as_ultimate">
@@ -707,12 +725,13 @@ False</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem practical_atheism_excludes_god_as_ultimate
-(p god : Person)
-(h_lives : livesAsIfNoGod p)
-(h_god : hasUltimateStatus god) :
-¬ treatsAsUltimate p god</code></pre></div>
+    (p god : Person)
+    (h_lives : livesAsIfNoGod p)
+    (h_god : hasUltimateStatus god) :
+    ¬ treatsAsUltimate p god</code></pre></div>
 <div class="node-desc">THEOREM: Practical atheism implies not treating God as ultimate.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="everyone_has_ultimate_concern">everyone_has_ultimate_concern</span><span class="dep-chip" data-target="idolatry_is_treating_non_god_as_ultimate">idolatry_is_treating_non_god_as_ultimate</span><span class="dep-chip" data-target="livesAsIfNoGod">livesAsIfNoGod</span><span class="dep-chip" data-target="practical_atheist_does_not_treat_god_as_ultimate">practical_atheist_does_not_treat_god_as_ultimate</span><span class="dep-chip" data-target="treatsAsUltimate">treatsAsUltimate</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="natural_knowability_bridge">natural_knowability_bridge</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="everyone_has_ultimate_concern">everyone_has_ultimate_concern</span><span class="dep-chip" data-target="idolatry_is_treating_non_god_as_ultimate">idolatry_is_treating_non_god_as_ultimate</span><span class="dep-chip" data-target="livesAsIfNoGod">livesAsIfNoGod</span><span class="dep-chip" data-target="practical_atheist_does_not_treat_god_as_ultimate">practical_atheist_does_not_treat_god_as_ultimate</span><span class="dep-chip" data-target="treatsAsUltimate">treatsAsUltimate</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="natural_knowability_bridge">natural_knowability_bridge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="practical_atheism_reduces_to_idolatry">
@@ -723,12 +742,16 @@ False</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem practical_atheism_reduces_to_idolatry
-(p god : Person)
-(h_agent : p.isMoralAgent = true)
-(h_lives : livesAsIfNoGod p)
-(h_god : hasUltimateStatus god) :</code></pre></div>
+    (p god : Person)
+    (h_agent : p.isMoralAgent = true)
+    (h_lives : livesAsIfNoGod p)
+    (h_god : hasUltimateStatus god) :
+    -- The practical atheist's ultimate concern is an idol
+    ∃ (idol : Person),
+      treatsAsUltimate p idol ∧ ¬ hasUltimateStatus idol</code></pre></div>
 <div class="node-desc">THEOREM (Main): Practical atheism reduces to a form of idolatry.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="deniesGodExists">deniesGodExists</span><span class="dep-chip" data-target="everyone_has_ultimate_concern">everyone_has_ultimate_concern</span><span class="dep-chip" data-target="livesAsIfNoGod">livesAsIfNoGod</span><span class="dep-chip" data-target="practical_atheist_does_not_treat_god_as_ultimate">practical_atheist_does_not_treat_god_as_ultimate</span><span class="dep-chip" data-target="treatsAsUltimate">treatsAsUltimate</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="natural_knowability_bridge">natural_knowability_bridge</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="deniesGodExists">deniesGodExists</span><span class="dep-chip" data-target="everyone_has_ultimate_concern">everyone_has_ultimate_concern</span><span class="dep-chip" data-target="livesAsIfNoGod">livesAsIfNoGod</span><span class="dep-chip" data-target="practical_atheist_does_not_treat_god_as_ultimate">practical_atheist_does_not_treat_god_as_ultimate</span><span class="dep-chip" data-target="treatsAsUltimate">treatsAsUltimate</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="natural_knowability_bridge">natural_knowability_bridge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="theoretical_atheism_needs_extra_step">
@@ -739,9 +762,15 @@ False</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem theoretical_atheism_needs_extra_step
-(p : Person) (h_denies : deniesGodExists p) :</code></pre></div>
+    (p : Person) (h_denies : deniesGodExists p) :
+    -- From mere denial, we CANNOT derive that p has an idol
+    -- (we would need livesAsIfNoGod p as an additional premise)
+    -- So we state what we CAN derive: atheism contradicts natural knowability
+    godKnowableByReason →
+    godKnowableByReason ∧ deniesGodExists p</code></pre></div>
 <div class="node-desc">THEOREM: Theoretical atheism does NOT automatically reduce to idolatry.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="deniesGodExists">deniesGodExists</span><span class="dep-chip" data-target="godKnowableByReason">godKnowableByReason</span><span class="dep-chip" data-target="god_knowable_by_reason">god_knowable_by_reason</span><span class="dep-chip" data-target="idolatry_is_treating_non_god_as_ultimate">idolatry_is_treating_non_god_as_ultimate</span><span class="dep-chip" data-target="livesAsIfNoGod">livesAsIfNoGod</span><span class="dep-chip" data-target="superstition_contradicts_p2">superstition_contradicts_p2</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="natural_knowability_bridge">natural_knowability_bridge</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="deniesGodExists">deniesGodExists</span><span class="dep-chip" data-target="godKnowableByReason">godKnowableByReason</span><span class="dep-chip" data-target="god_knowable_by_reason">god_knowable_by_reason</span><span class="dep-chip" data-target="idolatry_is_treating_non_god_as_ultimate">idolatry_is_treating_non_god_as_ultimate</span><span class="dep-chip" data-target="livesAsIfNoGod">livesAsIfNoGod</span><span class="dep-chip" data-target="superstition_contradicts_p2">superstition_contradicts_p2</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="natural_knowability_bridge">natural_knowability_bridge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="three_violations_distinct">
@@ -752,9 +781,16 @@ False</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem three_violations_distinct
-(p : Person)</code></pre></div>
+    (p : Person)
+    -- Superstition scenario
+    (practice : Prop) (h_super : attributesMagicalPower p practice)
+    -- Idolatry scenario
+    (idol : Person) (_h_treats : treatsAsUltimate p idol) (_h_not_ult : ¬ hasUltimateStatus idol)
+    -- All three are independently derivable contradictions
+    : False</code></pre></div>
 <div class="node-desc">THEOREM: The three violations are structurally distinct.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="attributesMagicalPower">attributesMagicalPower</span><span class="dep-chip" data-target="superstition_contradicts_p2">superstition_contradicts_p2</span><span class="dep-chip" data-target="treatsAsUltimate">treatsAsUltimate</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="natural_knowability_bridge">natural_knowability_bridge</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="attributesMagicalPower">attributesMagicalPower</span><span class="dep-chip" data-target="superstition_contradicts_p2">superstition_contradicts_p2</span><span class="dep-chip" data-target="treatsAsUltimate">treatsAsUltimate</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="natural_knowability_bridge">natural_knowability_bridge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="liturgical_idolatry_bridge">
@@ -765,10 +801,10 @@ False</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem liturgical_idolatry_bridge
-(honorer honoree : Person)
-(h_not_ult : ¬ hasUltimateStatus honoree)
-(h_ack : acknowledgesAsUltimate honorer honoree) :
-False</code></pre></div>
+    (honorer honoree : Person)
+    (h_not_ult : ¬ hasUltimateStatus honoree)
+    (h_ack : acknowledgesAsUltimate honorer honoree) :
+    False</code></pre></div>
 <div class="node-desc">Bridge to Veneration.lean: idolatry in the worship context.</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="natural_knowability_bridge">natural_knowability_bridge</span></div></div>
   </div>
@@ -781,9 +817,10 @@ False</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem p2_bridge (pc : PrimaryCause) (sc : SecondaryCause) :
-¬ causesCompete pc sc</code></pre></div>
+    ¬ causesCompete pc sc</code></pre></div>
 <div class="node-desc">Bridge to P2: superstition as the causal-order violation of P2.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="god_knowable_by_reason">god_knowable_by_reason</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="natural_knowability_bridge">natural_knowability_bridge</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="god_knowable_by_reason">god_knowable_by_reason</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="natural_knowability_bridge">natural_knowability_bridge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="natural_knowability_bridge">
@@ -794,14 +831,13 @@ False</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem natural_knowability_bridge
-(mp : MoralProposition)
-(h_true : moralTruthValue mp) :
-accessibleToReason mp ∧ godKnowableByReason</code></pre></div>
-<div class="node-desc">Bridge to NaturalLaw.lean: atheism contradicts the knowability of moral truth.</div>
+    (mp : MoralProposition)
+    (h_true : moralTruthValue mp) :
+    accessibleToReason mp ∧ godKnowableByReason</code></pre></div>
+<div class="node-desc">Bridge to NaturalLaw.lean: atheism contradicts the knowability</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="atheism_is_sin_against_religion">atheism_is_sin_against_religion</span><span class="dep-chip" data-target="everyone_has_ultimate_concern">everyone_has_ultimate_concern</span><span class="dep-chip" data-target="godKnowableByReason">godKnowableByReason</span><span class="dep-chip" data-target="god_knowable_by_reason">god_knowable_by_reason</span><span class="dep-chip" data-target="idolatry_is_treating_non_god_as_ultimate">idolatry_is_treating_non_god_as_ultimate</span><span class="dep-chip" data-target="liturgical_idolatry_bridge">liturgical_idolatry_bridge</span><span class="dep-chip" data-target="p2_bridge">p2_bridge</span><span class="dep-chip" data-target="practical_atheism_excludes_god_as_ultimate">practical_atheism_excludes_god_as_ultimate</span><span class="dep-chip" data-target="practical_atheism_reduces_to_idolatry">practical_atheism_reduces_to_idolatry</span><span class="dep-chip" data-target="practical_atheist_does_not_treat_god_as_ultimate">practical_atheist_does_not_treat_god_as_ultimate</span><span class="dep-chip" data-target="superstition_contradicts_p2">superstition_contradicts_p2</span><span class="dep-chip" data-target="superstition_violates_causal_order">superstition_violates_causal_order</span><span class="dep-chip" data-target="theoretical_atheism_needs_extra_step">theoretical_atheism_needs_extra_step</span><span class="dep-chip" data-target="three_violations_distinct">three_violations_distinct</span><span class="dep-chip" data-target="treatsAsUltimate">treatsAsUltimate</span></div></div>
   </div>
 </div>
-
   </div>
 
   <div class="footer">

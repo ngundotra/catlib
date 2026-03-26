@@ -525,7 +525,13 @@ h1 {
   <h1>EssenceExistence</h1>
   <div class="subtitle">Creed &middot; 28 declarations</div>
 
-  
+  <div class="flow-summary">
+  <span class="flow-count axioms">18 axioms</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count theorems">9 theorems</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count derived">1 derived</span>
+</div>
   <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;213, &sect;271, &sect;290, &sect;301, &sect;302, &sect;42</div>
 
   <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
@@ -542,8 +548,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque Being : Type
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque Being : Type</code></pre></div>
 <div class="node-desc">A being — anything that is or could be.</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="isCreature">isCreature</span><span class="dep-chip" data-target="isDivine">isDivine</span><span class="dep-chip" data-target="essenceOf">essenceOf</span><span class="dep-chip" data-target="actuallyExists">actuallyExists</span><span class="dep-chip" data-target="essenceEntailsExistence">essenceEntailsExistence</span><span class="dep-chip" data-target="receivesExistence">receivesExistence</span><span class="dep-chip" data-target="isContingent">isContingent</span><span class="dep-chip" data-target="real_distinction">real_distinction</span><span class="dep-chip" data-target="creatures_receive_existence">creatures_receive_existence</span><span class="dep-chip" data-target="creatures_are_contingent">creatures_are_contingent</span><span class="dep-chip" data-target="divine_essence_is_existence">divine_essence_is_existence</span><span class="dep-chip" data-target="god_does_not_receive_existence">god_does_not_receive_existence</span><span class="dep-chip" data-target="god_is_not_contingent">god_is_not_contingent</span><span class="dep-chip" data-target="creature_or_divine">creature_or_divine</span><span class="dep-chip" data-target="creature_and_divine_exclusive">creature_and_divine_exclusive</span><span class="dep-chip" data-target="sustaining_required_because_contingent">sustaining_required_because_contingent</span><span class="dep-chip" data-target="essence_existence_identity_grounds_simplicity">essence_existence_identity_grounds_simplicity</span><span class="dep-chip" data-target="distinction_implies_reception">distinction_implies_reception</span><span class="dep-chip" data-target="distinction_implies_contingency">distinction_implies_contingency</span><span class="dep-chip" data-target="god_unique_essence_existence_identity">god_unique_essence_existence_identity</span><span class="dep-chip" data-target="contingent_implies_creature">contingent_implies_creature</span><span class="dep-chip" data-target="creatures_need_sustaining">creatures_need_sustaining</span><span class="dep-chip" data-target="divine_simplicity_from_essence_existence">divine_simplicity_from_essence_existence</span><span class="dep-chip" data-target="total_creator_creature_distinction">total_creator_creature_distinction</span><span class="dep-chip" data-target="divine_self_existence">divine_self_existence</span><span class="dep-chip" data-target="creation_presupposes_distinction">creation_presupposes_distinction</span><span class="dep-chip" data-target="essence_existence_scope">essence_existence_scope</span></div></div>
   </div>
@@ -555,11 +560,10 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque isCreature : Being → Prop
-</code></pre></div>
-<div class="node-desc">Whether a being is a creature (created, not God). │   ⚠ HIDDEN ASSUMPTION: the creature/creator binary is exhaustive.</div>
+    <div class="node-prop"><pre><code>opaque isCreature : Being → Prop</code></pre></div>
+<div class="node-desc">Whether a being is a creature (created, not God).</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Being">Being</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="real_distinction">real_distinction</span><span class="dep-chip" data-target="creatures_receive_existence">creatures_receive_existence</span><span class="dep-chip" data-target="creatures_are_contingent">creatures_are_contingent</span><span class="dep-chip" data-target="creature_or_divine">creature_or_divine</span><span class="dep-chip" data-target="creature_and_divine_exclusive">creature_and_divine_exclusive</span><span class="dep-chip" data-target="sustaining_required_because_contingent">sustaining_required_because_contingent</span><span class="dep-chip" data-target="distinction_implies_reception">distinction_implies_reception</span><span class="dep-chip" data-target="distinction_implies_contingency">distinction_implies_contingency</span><span class="dep-chip" data-target="contingent_implies_creature">contingent_implies_creature</span><span class="dep-chip" data-target="creatures_need_sustaining">creatures_need_sustaining</span><span class="dep-chip" data-target="total_creator_creature_distinction">total_creator_creature_distinction</span><span class="dep-chip" data-target="creation_presupposes_distinction">creation_presupposes_distinction</span><span class="dep-chip" data-target="Being">Being</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="real_distinction">real_distinction</span><span class="dep-chip" data-target="creatures_receive_existence">creatures_receive_existence</span><span class="dep-chip" data-target="creatures_are_contingent">creatures_are_contingent</span><span class="dep-chip" data-target="creature_or_divine">creature_or_divine</span><span class="dep-chip" data-target="creature_and_divine_exclusive">creature_and_divine_exclusive</span><span class="dep-chip" data-target="sustaining_required_because_contingent">sustaining_required_because_contingent</span><span class="dep-chip" data-target="distinction_implies_reception">distinction_implies_reception</span><span class="dep-chip" data-target="distinction_implies_contingency">distinction_implies_contingency</span><span class="dep-chip" data-target="contingent_implies_creature">contingent_implies_creature</span><span class="dep-chip" data-target="creatures_need_sustaining">creatures_need_sustaining</span><span class="dep-chip" data-target="total_creator_creature_distinction">total_creator_creature_distinction</span><span class="dep-chip" data-target="creation_presupposes_distinction">creation_presupposes_distinction</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="isDivine">
@@ -569,11 +573,10 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque isDivine : Being → Prop
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque isDivine : Being → Prop</code></pre></div>
 <div class="node-desc">Whether a being is divine (God).</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Being">Being</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="divine_essence_is_existence">divine_essence_is_existence</span><span class="dep-chip" data-target="god_does_not_receive_existence">god_does_not_receive_existence</span><span class="dep-chip" data-target="god_is_not_contingent">god_is_not_contingent</span><span class="dep-chip" data-target="creature_or_divine">creature_or_divine</span><span class="dep-chip" data-target="creature_and_divine_exclusive">creature_and_divine_exclusive</span><span class="dep-chip" data-target="essence_existence_identity_grounds_simplicity">essence_existence_identity_grounds_simplicity</span><span class="dep-chip" data-target="god_unique_essence_existence_identity">god_unique_essence_existence_identity</span><span class="dep-chip" data-target="divine_simplicity_from_essence_existence">divine_simplicity_from_essence_existence</span><span class="dep-chip" data-target="total_creator_creature_distinction">total_creator_creature_distinction</span><span class="dep-chip" data-target="divine_self_existence">divine_self_existence</span><span class="dep-chip" data-target="Being">Being</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="divine_essence_is_existence">divine_essence_is_existence</span><span class="dep-chip" data-target="god_does_not_receive_existence">god_does_not_receive_existence</span><span class="dep-chip" data-target="god_is_not_contingent">god_is_not_contingent</span><span class="dep-chip" data-target="creature_or_divine">creature_or_divine</span><span class="dep-chip" data-target="creature_and_divine_exclusive">creature_and_divine_exclusive</span><span class="dep-chip" data-target="essence_existence_identity_grounds_simplicity">essence_existence_identity_grounds_simplicity</span><span class="dep-chip" data-target="god_unique_essence_existence_identity">god_unique_essence_existence_identity</span><span class="dep-chip" data-target="divine_simplicity_from_essence_existence">divine_simplicity_from_essence_existence</span><span class="dep-chip" data-target="total_creator_creature_distinction">total_creator_creature_distinction</span><span class="dep-chip" data-target="divine_self_existence">divine_self_existence</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="essenceOf">
@@ -583,11 +586,10 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque essenceOf : Being → Prop
-</code></pre></div>
-<div class="node-desc">The essence of a being — WHAT it is, its nature or quiddity. │   Source: [Aquinas] De Ente et Essentia, ch. 1-2.</div>
+    <div class="node-prop"><pre><code>opaque essenceOf : Being → Prop</code></pre></div>
+<div class="node-desc">The essence of a being — WHAT it is, its nature or quiddity.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Being">Being</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="essence_existence_identity_grounds_simplicity">essence_existence_identity_grounds_simplicity</span><span class="dep-chip" data-target="divine_simplicity_from_essence_existence">divine_simplicity_from_essence_existence</span><span class="dep-chip" data-target="Being">Being</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="essence_existence_identity_grounds_simplicity">essence_existence_identity_grounds_simplicity</span><span class="dep-chip" data-target="divine_simplicity_from_essence_existence">divine_simplicity_from_essence_existence</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="actuallyExists">
@@ -597,11 +599,10 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque actuallyExists : Being → Prop
-</code></pre></div>
-<div class="node-desc">Whether a being actually exists — THAT it is. │   Source: [Aquinas] De Ente et Essentia, ch. 4.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Being">Being</span><span class="dep-chip" data-target="participation">participation</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="creatures_are_contingent">creatures_are_contingent</span><span class="dep-chip" data-target="sustaining_required_because_contingent">sustaining_required_because_contingent</span><span class="dep-chip" data-target="creatures_need_sustaining">creatures_need_sustaining</span><span class="dep-chip" data-target="Being">Being</span></div></div>
+    <div class="node-prop"><pre><code>opaque actuallyExists : Being → Prop</code></pre></div>
+<div class="node-desc">Whether a being actually exists — THAT it is.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Being">Being</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="creatures_are_contingent">creatures_are_contingent</span><span class="dep-chip" data-target="sustaining_required_because_contingent">sustaining_required_because_contingent</span><span class="dep-chip" data-target="creatures_need_sustaining">creatures_need_sustaining</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="essenceEntailsExistence">
@@ -611,11 +612,10 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque essenceEntailsExistence : Being → Prop
-</code></pre></div>
-<div class="node-desc">Whether a being's essence entails its existence — i.e., whether │   Source: [Aquinas] ST I q.3 a.4; De Ente ch. 4. │   ⚠ HIDDEN ASSUMPTION: This is a metaphysical entailment, not merely</div>
+    <div class="node-prop"><pre><code>opaque essenceEntailsExistence : Being → Prop</code></pre></div>
+<div class="node-desc">Whether a being's essence entails its existence — i.e., whether</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Being">Being</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="real_distinction">real_distinction</span><span class="dep-chip" data-target="divine_essence_is_existence">divine_essence_is_existence</span><span class="dep-chip" data-target="essence_existence_identity_grounds_simplicity">essence_existence_identity_grounds_simplicity</span><span class="dep-chip" data-target="distinction_implies_reception">distinction_implies_reception</span><span class="dep-chip" data-target="distinction_implies_contingency">distinction_implies_contingency</span><span class="dep-chip" data-target="god_unique_essence_existence_identity">god_unique_essence_existence_identity</span><span class="dep-chip" data-target="total_creator_creature_distinction">total_creator_creature_distinction</span><span class="dep-chip" data-target="divine_self_existence">divine_self_existence</span><span class="dep-chip" data-target="Being">Being</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="real_distinction">real_distinction</span><span class="dep-chip" data-target="divine_essence_is_existence">divine_essence_is_existence</span><span class="dep-chip" data-target="essence_existence_identity_grounds_simplicity">essence_existence_identity_grounds_simplicity</span><span class="dep-chip" data-target="distinction_implies_reception">distinction_implies_reception</span><span class="dep-chip" data-target="distinction_implies_contingency">distinction_implies_contingency</span><span class="dep-chip" data-target="god_unique_essence_existence_identity">god_unique_essence_existence_identity</span><span class="dep-chip" data-target="total_creator_creature_distinction">total_creator_creature_distinction</span><span class="dep-chip" data-target="divine_self_existence">divine_self_existence</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="receivesExistence">
@@ -625,11 +625,10 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque receivesExistence : Being → Prop
-</code></pre></div>
-<div class="node-desc">Whether a being receives its existence from another. │   Source: [Aquinas] De Ente ch. 4; [CCC] §290-292. │   ⚠ HIDDEN ASSUMPTION: &quot;received&quot; implies a giver. The real distinction</div>
+    <div class="node-prop"><pre><code>opaque receivesExistence : Being → Prop</code></pre></div>
+<div class="node-desc">Whether a being receives its existence from another.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Being">Being</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="creatures_receive_existence">creatures_receive_existence</span><span class="dep-chip" data-target="god_does_not_receive_existence">god_does_not_receive_existence</span><span class="dep-chip" data-target="distinction_implies_reception">distinction_implies_reception</span><span class="dep-chip" data-target="divine_self_existence">divine_self_existence</span><span class="dep-chip" data-target="creation_presupposes_distinction">creation_presupposes_distinction</span><span class="dep-chip" data-target="Being">Being</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="creatures_receive_existence">creatures_receive_existence</span><span class="dep-chip" data-target="god_does_not_receive_existence">god_does_not_receive_existence</span><span class="dep-chip" data-target="distinction_implies_reception">distinction_implies_reception</span><span class="dep-chip" data-target="divine_self_existence">divine_self_existence</span><span class="dep-chip" data-target="creation_presupposes_distinction">creation_presupposes_distinction</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="isContingent">
@@ -639,11 +638,10 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque isContingent : Being → Prop
-</code></pre></div>
-<div class="node-desc">Whether a being could fail to exist (is contingent). │   Source: [Aquinas] De Ente ch. 4; ST I q.2 a.3 (Third Way). │   ⚠ HIDDEN ASSUMPTION: non-entailment of existence by essence implies</div>
+    <div class="node-prop"><pre><code>opaque isContingent : Being → Prop</code></pre></div>
+<div class="node-desc">Whether a being could fail to exist (is contingent).</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Being">Being</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="creatures_are_contingent">creatures_are_contingent</span><span class="dep-chip" data-target="god_is_not_contingent">god_is_not_contingent</span><span class="dep-chip" data-target="sustaining_required_because_contingent">sustaining_required_because_contingent</span><span class="dep-chip" data-target="distinction_implies_contingency">distinction_implies_contingency</span><span class="dep-chip" data-target="contingent_implies_creature">contingent_implies_creature</span><span class="dep-chip" data-target="Being">Being</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="creatures_are_contingent">creatures_are_contingent</span><span class="dep-chip" data-target="god_is_not_contingent">god_is_not_contingent</span><span class="dep-chip" data-target="sustaining_required_because_contingent">sustaining_required_because_contingent</span><span class="dep-chip" data-target="distinction_implies_contingency">distinction_implies_contingency</span><span class="dep-chip" data-target="contingent_implies_creature">contingent_implies_creature</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="real_distinction">
@@ -654,11 +652,10 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom real_distinction :
-  ∀ (b : Being), isCreature b → ¬ essenceEntailsExistence b
-</code></pre></div>
-<div class="node-desc">In every creature, essence does NOT entail │   Source: [Aquinas] De Ente et Essentia, ch. 4: &quot;In everything that is | Scope: THOMISTIC — broadly accepted in Catholi... │   ⚠ HIDDEN ASSUMPTION: This is the deepest hidden assumption in the CCC.</div>
+  ∀ (b : Being), isCreature b → ¬ essenceEntailsExistence b</code></pre></div>
+<div class="node-desc">AXIOM (De Ente ch. 4-5): In every creature, essence does NOT entail</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Being">Being</span><span class="dep-chip" data-target="essenceEntailsExistence">essenceEntailsExistence</span><span class="dep-chip" data-target="isCreature">isCreature</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="essence_existence_identity_grounds_simplicity">essence_existence_identity_grounds_simplicity</span><span class="dep-chip" data-target="distinction_implies_reception">distinction_implies_reception</span><span class="dep-chip" data-target="distinction_implies_contingency">distinction_implies_contingency</span><span class="dep-chip" data-target="god_unique_essence_existence_identity">god_unique_essence_existence_identity</span><span class="dep-chip" data-target="divine_simplicity_from_essence_existence">divine_simplicity_from_essence_existence</span><span class="dep-chip" data-target="total_creator_creature_distinction">total_creator_creature_distinction</span><span class="dep-chip" data-target="essence_existence_scope">essence_existence_scope</span><span class="dep-chip" data-target="Being">Being</span><span class="dep-chip" data-target="essenceEntailsExistence">essenceEntailsExistence</span><span class="dep-chip" data-target="isCreature">isCreature</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="essence_existence_identity_grounds_simplicity">essence_existence_identity_grounds_simplicity</span><span class="dep-chip" data-target="distinction_implies_reception">distinction_implies_reception</span><span class="dep-chip" data-target="distinction_implies_contingency">distinction_implies_contingency</span><span class="dep-chip" data-target="god_unique_essence_existence_identity">god_unique_essence_existence_identity</span><span class="dep-chip" data-target="divine_simplicity_from_essence_existence">divine_simplicity_from_essence_existence</span><span class="dep-chip" data-target="total_creator_creature_distinction">total_creator_creature_distinction</span><span class="dep-chip" data-target="essence_existence_scope">essence_existence_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="creatures_receive_existence">
@@ -669,11 +666,10 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom creatures_receive_existence :
-  ∀ (b : Being), isCreature b → receivesExistence b
-</code></pre></div>
-<div class="node-desc">Creatures receive their existence. │   Source: [Aquinas] De Ente ch. 4; [CCC] §290: &quot;In the beginning God | Scope: ECUMENICAL — all Christians affirm creation.</div>
+  ∀ (b : Being), isCreature b → receivesExistence b</code></pre></div>
+<div class="node-desc">AXIOM (De Ente ch. 4; CCC §290-292): Creatures receive their existence.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Being">Being</span><span class="dep-chip" data-target="isCreature">isCreature</span><span class="dep-chip" data-target="receivesExistence">receivesExistence</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="essence_existence_identity_grounds_simplicity">essence_existence_identity_grounds_simplicity</span><span class="dep-chip" data-target="distinction_implies_reception">distinction_implies_reception</span><span class="dep-chip" data-target="divine_self_existence">divine_self_existence</span><span class="dep-chip" data-target="creation_presupposes_distinction">creation_presupposes_distinction</span><span class="dep-chip" data-target="essence_existence_scope">essence_existence_scope</span><span class="dep-chip" data-target="Being">Being</span><span class="dep-chip" data-target="isCreature">isCreature</span><span class="dep-chip" data-target="receivesExistence">receivesExistence</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="essence_existence_identity_grounds_simplicity">essence_existence_identity_grounds_simplicity</span><span class="dep-chip" data-target="distinction_implies_reception">distinction_implies_reception</span><span class="dep-chip" data-target="divine_self_existence">divine_self_existence</span><span class="dep-chip" data-target="creation_presupposes_distinction">creation_presupposes_distinction</span><span class="dep-chip" data-target="essence_existence_scope">essence_existence_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="creatures_are_contingent">
@@ -684,11 +680,10 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom creatures_are_contingent :
-  ∀ (b : Being), isCreature b → isContingent b
-</code></pre></div>
-<div class="node-desc">Creatures are contingent. │   Source: [Aquinas] De Ente ch. 4; ST I q.2 a.3 (Third Way); | Scope: ECUMENICAL — all Christians affirm creaturely</div>
+  ∀ (b : Being), isCreature b → isContingent b</code></pre></div>
+<div class="node-desc">AXIOM (De Ente ch. 4; ST I q.2 a.3): Creatures are contingent.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Being">Being</span><span class="dep-chip" data-target="actuallyExists">actuallyExists</span><span class="dep-chip" data-target="isContingent">isContingent</span><span class="dep-chip" data-target="isCreature">isCreature</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="distinction_implies_reception">distinction_implies_reception</span><span class="dep-chip" data-target="distinction_implies_contingency">distinction_implies_contingency</span><span class="dep-chip" data-target="contingent_implies_creature">contingent_implies_creature</span><span class="dep-chip" data-target="creatures_need_sustaining">creatures_need_sustaining</span><span class="dep-chip" data-target="essence_existence_scope">essence_existence_scope</span><span class="dep-chip" data-target="Being">Being</span><span class="dep-chip" data-target="actuallyExists">actuallyExists</span><span class="dep-chip" data-target="isContingent">isContingent</span><span class="dep-chip" data-target="isCreature">isCreature</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="distinction_implies_reception">distinction_implies_reception</span><span class="dep-chip" data-target="distinction_implies_contingency">distinction_implies_contingency</span><span class="dep-chip" data-target="contingent_implies_creature">contingent_implies_creature</span><span class="dep-chip" data-target="creatures_need_sustaining">creatures_need_sustaining</span><span class="dep-chip" data-target="essence_existence_scope">essence_existence_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="divine_essence_is_existence">
@@ -699,11 +694,10 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom divine_essence_is_existence :
-  ∀ (b : Being), isDivine b → essenceEntailsExistence b
-</code></pre></div>
-<div class="node-desc">In God, essence = existence. │   Source: [Aquinas] ST I q.3 a.4: &quot;In God alone are essence and existence | Scope: ECUMENICAL — all classical theists a...</div>
+  ∀ (b : Being), isDivine b → essenceEntailsExistence b</code></pre></div>
+<div class="node-desc">AXIOM (ST I q.3 a.4; CCC §213; Ex 3:14): In God, essence = existence.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Being">Being</span><span class="dep-chip" data-target="essenceEntailsExistence">essenceEntailsExistence</span><span class="dep-chip" data-target="isDivine">isDivine</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="distinction_implies_contingency">distinction_implies_contingency</span><span class="dep-chip" data-target="creatures_need_sustaining">creatures_need_sustaining</span><span class="dep-chip" data-target="divine_simplicity_from_essence_existence">divine_simplicity_from_essence_existence</span><span class="dep-chip" data-target="total_creator_creature_distinction">total_creator_creature_distinction</span><span class="dep-chip" data-target="divine_self_existence">divine_self_existence</span><span class="dep-chip" data-target="essence_existence_scope">essence_existence_scope</span><span class="dep-chip" data-target="Being">Being</span><span class="dep-chip" data-target="essenceEntailsExistence">essenceEntailsExistence</span><span class="dep-chip" data-target="isDivine">isDivine</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="distinction_implies_contingency">distinction_implies_contingency</span><span class="dep-chip" data-target="creatures_need_sustaining">creatures_need_sustaining</span><span class="dep-chip" data-target="divine_simplicity_from_essence_existence">divine_simplicity_from_essence_existence</span><span class="dep-chip" data-target="total_creator_creature_distinction">total_creator_creature_distinction</span><span class="dep-chip" data-target="divine_self_existence">divine_self_existence</span><span class="dep-chip" data-target="essence_existence_scope">essence_existence_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="god_does_not_receive_existence">
@@ -714,11 +708,10 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom god_does_not_receive_existence :
-  ∀ (b : Being), isDivine b → ¬ receivesExistence b
-</code></pre></div>
-<div class="node-desc">God does not receive existence from another. │   Source: [Aquinas] ST I q.3 a.4; [CCC] §213. | Scope: ECUMENICAL — divine aseity is affirmed</div>
+  ∀ (b : Being), isDivine b → ¬ receivesExistence b</code></pre></div>
+<div class="node-desc">AXIOM (ST I q.3 a.4): God does not receive existence from another.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Being">Being</span><span class="dep-chip" data-target="isDivine">isDivine</span><span class="dep-chip" data-target="receivesExistence">receivesExistence</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="total_creator_creature_distinction">total_creator_creature_distinction</span><span class="dep-chip" data-target="divine_self_existence">divine_self_existence</span><span class="dep-chip" data-target="essence_existence_scope">essence_existence_scope</span><span class="dep-chip" data-target="Being">Being</span><span class="dep-chip" data-target="isDivine">isDivine</span><span class="dep-chip" data-target="receivesExistence">receivesExistence</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="total_creator_creature_distinction">total_creator_creature_distinction</span><span class="dep-chip" data-target="divine_self_existence">divine_self_existence</span><span class="dep-chip" data-target="essence_existence_scope">essence_existence_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="god_is_not_contingent">
@@ -729,11 +722,10 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom god_is_not_contingent :
-  ∀ (b : Being), isDivine b → ¬ isContingent b
-</code></pre></div>
-<div class="node-desc">God is not contingent. │   Source: [Aquinas] ST I q.3 a.4; [CCC] §213: &quot;without beginning | Scope: ECUMENICAL.</div>
+  ∀ (b : Being), isDivine b → ¬ isContingent b</code></pre></div>
+<div class="node-desc">AXIOM (ST I q.3 a.4): God is not contingent.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Being">Being</span><span class="dep-chip" data-target="isContingent">isContingent</span><span class="dep-chip" data-target="isDivine">isDivine</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="god_unique_essence_existence_identity">god_unique_essence_existence_identity</span><span class="dep-chip" data-target="contingent_implies_creature">contingent_implies_creature</span><span class="dep-chip" data-target="essence_existence_scope">essence_existence_scope</span><span class="dep-chip" data-target="Being">Being</span><span class="dep-chip" data-target="isContingent">isContingent</span><span class="dep-chip" data-target="isDivine">isDivine</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="god_unique_essence_existence_identity">god_unique_essence_existence_identity</span><span class="dep-chip" data-target="contingent_implies_creature">contingent_implies_creature</span><span class="dep-chip" data-target="essence_existence_scope">essence_existence_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="creature_or_divine">
@@ -744,11 +736,10 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom creature_or_divine :
-  ∀ (b : Being), isCreature b ∨ isDivine b
-</code></pre></div>
-<div class="node-desc">Everything is either a creature or divine. │   Source: [CCC] §290-292; [Aquinas] De Ente ch. 4-5.</div>
+  ∀ (b : Being), isCreature b ∨ isDivine b</code></pre></div>
+<div class="node-desc">AXIOM: Everything is either a creature or divine.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Being">Being</span><span class="dep-chip" data-target="isCreature">isCreature</span><span class="dep-chip" data-target="isDivine">isDivine</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="distinction_implies_contingency">distinction_implies_contingency</span><span class="dep-chip" data-target="god_unique_essence_existence_identity">god_unique_essence_existence_identity</span><span class="dep-chip" data-target="contingent_implies_creature">contingent_implies_creature</span><span class="dep-chip" data-target="divine_simplicity_from_essence_existence">divine_simplicity_from_essence_existence</span><span class="dep-chip" data-target="total_creator_creature_distinction">total_creator_creature_distinction</span><span class="dep-chip" data-target="essence_existence_scope">essence_existence_scope</span><span class="dep-chip" data-target="Being">Being</span><span class="dep-chip" data-target="isCreature">isCreature</span><span class="dep-chip" data-target="isDivine">isDivine</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="distinction_implies_contingency">distinction_implies_contingency</span><span class="dep-chip" data-target="god_unique_essence_existence_identity">god_unique_essence_existence_identity</span><span class="dep-chip" data-target="contingent_implies_creature">contingent_implies_creature</span><span class="dep-chip" data-target="divine_simplicity_from_essence_existence">divine_simplicity_from_essence_existence</span><span class="dep-chip" data-target="total_creator_creature_distinction">total_creator_creature_distinction</span><span class="dep-chip" data-target="essence_existence_scope">essence_existence_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="creature_and_divine_exclusive">
@@ -759,11 +750,10 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom creature_and_divine_exclusive :
-  ∀ (b : Being), ¬ (isCreature b ∧ isDivine b)
-</code></pre></div>
-<div class="node-desc">Nothing is both a creature and divine. │   Source: [CCC] §42-43; [Aquinas] ST I q.3 a.4; Lateran IV (§271). | Scope: ECUMENICAL — all Christians affirm this.</div>
+  ∀ (b : Being), ¬ (isCreature b ∧ isDivine b)</code></pre></div>
+<div class="node-desc">AXIOM: Nothing is both a creature and divine.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Being">Being</span><span class="dep-chip" data-target="isCreature">isCreature</span><span class="dep-chip" data-target="isDivine">isDivine</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="divine_simplicity_from_essence_existence">divine_simplicity_from_essence_existence</span><span class="dep-chip" data-target="total_creator_creature_distinction">total_creator_creature_distinction</span><span class="dep-chip" data-target="essence_existence_scope">essence_existence_scope</span><span class="dep-chip" data-target="Being">Being</span><span class="dep-chip" data-target="isCreature">isCreature</span><span class="dep-chip" data-target="isDivine">isDivine</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="divine_simplicity_from_essence_existence">divine_simplicity_from_essence_existence</span><span class="dep-chip" data-target="total_creator_creature_distinction">total_creator_creature_distinction</span><span class="dep-chip" data-target="essence_existence_scope">essence_existence_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="sustaining_required_because_contingent">
@@ -776,11 +766,10 @@ h1 {
     <div class="node-prop"><pre><code>axiom sustaining_required_because_contingent :
   ∀ (b : Being), isCreature b →
     isContingent b →
-    divinelyGoverned (actuallyExists b)
-</code></pre></div>
-<div class="node-desc">Creatures need divine sustaining because their essence does not │   Source: [CCC] §301: &quot;With creation, God does not abandon his creatures │   ⚠ HIDDEN ASSUMPTION: Sustaining is CONTINUOUS giving of existence, not a</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Being">Being</span><span class="dep-chip" data-target="actuallyExists">actuallyExists</span><span class="dep-chip" data-target="divinelyGoverned">divinelyGoverned</span><span class="dep-chip" data-target="isContingent">isContingent</span><span class="dep-chip" data-target="isCreature">isCreature</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="contingent_implies_creature">contingent_implies_creature</span><span class="dep-chip" data-target="creatures_need_sustaining">creatures_need_sustaining</span><span class="dep-chip" data-target="essence_existence_scope">essence_existence_scope</span><span class="dep-chip" data-target="Being">Being</span><span class="dep-chip" data-target="actuallyExists">actuallyExists</span><span class="dep-chip" data-target="isContingent">isContingent</span><span class="dep-chip" data-target="isCreature">isCreature</span></div></div>
+    divinelyGoverned (actuallyExists b)</code></pre></div>
+<div class="node-desc">AXIOM: Creatures need divine sustaining because their essence does not</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Being">Being</span><span class="dep-chip" data-target="actuallyExists">actuallyExists</span><span class="dep-chip" data-target="isContingent">isContingent</span><span class="dep-chip" data-target="isCreature">isCreature</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="contingent_implies_creature">contingent_implies_creature</span><span class="dep-chip" data-target="creatures_need_sustaining">creatures_need_sustaining</span><span class="dep-chip" data-target="essence_existence_scope">essence_existence_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="essence_existence_identity_grounds_simplicity">
@@ -795,11 +784,10 @@ h1 {
     isDivine b →
     essenceEntailsExistence b →
     -- All divine attributes are identical with the essence
-    identicalWithEssence (essenceOf b) e
-</code></pre></div>
-<div class="node-desc">The divine essence/existence identity grounds divine simplicity. │   Source: [Aquinas] ST I q.3 a.4-7; [CCC] §271; Lateran IV. │   ⚠ HIDDEN ASSUMPTION: essence/existence identity implies no composition</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Being">Being</span><span class="dep-chip" data-target="DivineEssence">DivineEssence</span><span class="dep-chip" data-target="creatures_receive_existence">creatures_receive_existence</span><span class="dep-chip" data-target="essenceEntailsExistence">essenceEntailsExistence</span><span class="dep-chip" data-target="essenceOf">essenceOf</span><span class="dep-chip" data-target="identicalWithEssence">identicalWithEssence</span><span class="dep-chip" data-target="isDivine">isDivine</span><span class="dep-chip" data-target="real_distinction">real_distinction</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="creatures_need_sustaining">creatures_need_sustaining</span><span class="dep-chip" data-target="divine_simplicity_from_essence_existence">divine_simplicity_from_essence_existence</span><span class="dep-chip" data-target="essence_existence_scope">essence_existence_scope</span><span class="dep-chip" data-target="Being">Being</span><span class="dep-chip" data-target="essenceEntailsExistence">essenceEntailsExistence</span><span class="dep-chip" data-target="essenceOf">essenceOf</span><span class="dep-chip" data-target="isDivine">isDivine</span><span class="dep-chip" data-target="creatures_receive_existence">creatures_receive_existence</span><span class="dep-chip" data-target="real_distinction">real_distinction</span></div></div>
+    identicalWithEssence (essenceOf b) e</code></pre></div>
+<div class="node-desc">AXIOM: The divine essence/existence identity grounds divine simplicity.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Being">Being</span><span class="dep-chip" data-target="creatures_receive_existence">creatures_receive_existence</span><span class="dep-chip" data-target="essenceEntailsExistence">essenceEntailsExistence</span><span class="dep-chip" data-target="essenceOf">essenceOf</span><span class="dep-chip" data-target="isDivine">isDivine</span><span class="dep-chip" data-target="real_distinction">real_distinction</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="creatures_need_sustaining">creatures_need_sustaining</span><span class="dep-chip" data-target="divine_simplicity_from_essence_existence">divine_simplicity_from_essence_existence</span><span class="dep-chip" data-target="essence_existence_scope">essence_existence_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="distinction_implies_reception">
@@ -811,9 +799,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem distinction_implies_reception (b : Being) (h : isCreature b) :
     ¬ essenceEntailsExistence b ∧ receivesExistence b</code></pre></div>
-<div class="node-desc">The real distinction implies creatures receive existence.</div>
+<div class="node-desc">THEOREM: The real distinction implies creatures receive existence.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Being">Being</span><span class="dep-chip" data-target="creatures_are_contingent">creatures_are_contingent</span><span class="dep-chip" data-target="creatures_receive_existence">creatures_receive_existence</span><span class="dep-chip" data-target="essenceEntailsExistence">essenceEntailsExistence</span><span class="dep-chip" data-target="isCreature">isCreature</span><span class="dep-chip" data-target="real_distinction">real_distinction</span><span class="dep-chip" data-target="receivesExistence">receivesExistence</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="total_creator_creature_distinction">total_creator_creature_distinction</span><span class="dep-chip" data-target="essence_existence_scope">essence_existence_scope</span><span class="dep-chip" data-target="Being">Being</span><span class="dep-chip" data-target="essenceEntailsExistence">essenceEntailsExistence</span><span class="dep-chip" data-target="isCreature">isCreature</span><span class="dep-chip" data-target="receivesExistence">receivesExistence</span><span class="dep-chip" data-target="creatures_are_contingent">creatures_are_contingent</span><span class="dep-chip" data-target="creatures_receive_existence">creatures_receive_existence</span><span class="dep-chip" data-target="real_distinction">real_distinction</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="total_creator_creature_distinction">total_creator_creature_distinction</span><span class="dep-chip" data-target="essence_existence_scope">essence_existence_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="distinction_implies_contingency">
@@ -825,9 +813,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem distinction_implies_contingency (b : Being) (h : isCreature b) :
     ¬ essenceEntailsExistence b ∧ isContingent b</code></pre></div>
-<div class="node-desc">The real distinction implies contingency.</div>
+<div class="node-desc">THEOREM: The real distinction implies contingency.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Being">Being</span><span class="dep-chip" data-target="creature_or_divine">creature_or_divine</span><span class="dep-chip" data-target="creatures_are_contingent">creatures_are_contingent</span><span class="dep-chip" data-target="divine_essence_is_existence">divine_essence_is_existence</span><span class="dep-chip" data-target="essenceEntailsExistence">essenceEntailsExistence</span><span class="dep-chip" data-target="isContingent">isContingent</span><span class="dep-chip" data-target="isCreature">isCreature</span><span class="dep-chip" data-target="real_distinction">real_distinction</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="essence_existence_scope">essence_existence_scope</span><span class="dep-chip" data-target="Being">Being</span><span class="dep-chip" data-target="essenceEntailsExistence">essenceEntailsExistence</span><span class="dep-chip" data-target="isContingent">isContingent</span><span class="dep-chip" data-target="isCreature">isCreature</span><span class="dep-chip" data-target="creature_or_divine">creature_or_divine</span><span class="dep-chip" data-target="creatures_are_contingent">creatures_are_contingent</span><span class="dep-chip" data-target="divine_essence_is_existence">divine_essence_is_existence</span><span class="dep-chip" data-target="real_distinction">real_distinction</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="essence_existence_scope">essence_existence_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="god_unique_essence_existence_identity">
@@ -839,9 +827,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem god_unique_essence_existence_identity (b : Being) :
     essenceEntailsExistence b → isDivine b</code></pre></div>
-<div class="node-desc">God is the unique exception — essence = existence.</div>
+<div class="node-desc">THEOREM: God is the unique exception — essence = existence.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Being">Being</span><span class="dep-chip" data-target="creature_or_divine">creature_or_divine</span><span class="dep-chip" data-target="essenceEntailsExistence">essenceEntailsExistence</span><span class="dep-chip" data-target="god_is_not_contingent">god_is_not_contingent</span><span class="dep-chip" data-target="isDivine">isDivine</span><span class="dep-chip" data-target="real_distinction">real_distinction</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="essence_existence_scope">essence_existence_scope</span><span class="dep-chip" data-target="Being">Being</span><span class="dep-chip" data-target="essenceEntailsExistence">essenceEntailsExistence</span><span class="dep-chip" data-target="isDivine">isDivine</span><span class="dep-chip" data-target="creature_or_divine">creature_or_divine</span><span class="dep-chip" data-target="god_is_not_contingent">god_is_not_contingent</span><span class="dep-chip" data-target="real_distinction">real_distinction</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="essence_existence_scope">essence_existence_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="contingent_implies_creature">
@@ -853,9 +841,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem contingent_implies_creature (b : Being) (h : isContingent b) :
     isCreature b</code></pre></div>
-<div class="node-desc">Contingency implies createdness.</div>
+<div class="node-desc">THEOREM: Contingency implies createdness.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Being">Being</span><span class="dep-chip" data-target="creature_or_divine">creature_or_divine</span><span class="dep-chip" data-target="creatures_are_contingent">creatures_are_contingent</span><span class="dep-chip" data-target="god_is_not_contingent">god_is_not_contingent</span><span class="dep-chip" data-target="isContingent">isContingent</span><span class="dep-chip" data-target="isCreature">isCreature</span><span class="dep-chip" data-target="sustaining_required_because_contingent">sustaining_required_because_contingent</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="essence_existence_scope">essence_existence_scope</span><span class="dep-chip" data-target="Being">Being</span><span class="dep-chip" data-target="isContingent">isContingent</span><span class="dep-chip" data-target="isCreature">isCreature</span><span class="dep-chip" data-target="creature_or_divine">creature_or_divine</span><span class="dep-chip" data-target="creatures_are_contingent">creatures_are_contingent</span><span class="dep-chip" data-target="god_is_not_contingent">god_is_not_contingent</span><span class="dep-chip" data-target="sustaining_required_because_contingent">sustaining_required_because_contingent</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="essence_existence_scope">essence_existence_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="creatures_need_sustaining">
@@ -867,9 +855,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem creatures_need_sustaining (b : Being) (h : isCreature b) :
     divinelyGoverned (actuallyExists b)</code></pre></div>
-<div class="node-desc">Creatures need sustaining — the Providence bridge.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Being">Being</span><span class="dep-chip" data-target="actuallyExists">actuallyExists</span><span class="dep-chip" data-target="creatures_are_contingent">creatures_are_contingent</span><span class="dep-chip" data-target="divine_essence_is_existence">divine_essence_is_existence</span><span class="dep-chip" data-target="divinelyGoverned">divinelyGoverned</span><span class="dep-chip" data-target="essence_existence_identity_grounds_simplicity">essence_existence_identity_grounds_simplicity</span><span class="dep-chip" data-target="isCreature">isCreature</span><span class="dep-chip" data-target="sustaining_required_because_contingent">sustaining_required_because_contingent</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="essence_existence_scope">essence_existence_scope</span><span class="dep-chip" data-target="Being">Being</span><span class="dep-chip" data-target="actuallyExists">actuallyExists</span><span class="dep-chip" data-target="isCreature">isCreature</span><span class="dep-chip" data-target="creatures_are_contingent">creatures_are_contingent</span><span class="dep-chip" data-target="divine_essence_is_existence">divine_essence_is_existence</span><span class="dep-chip" data-target="sustaining_required_because_contingent">sustaining_required_because_contingent</span><span class="dep-chip" data-target="essence_existence_identity_grounds_simplicity">essence_existence_identity_grounds_simplicity</span></div></div>
+<div class="node-desc">THEOREM: Creatures need sustaining — the Providence bridge.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Being">Being</span><span class="dep-chip" data-target="actuallyExists">actuallyExists</span><span class="dep-chip" data-target="creatures_are_contingent">creatures_are_contingent</span><span class="dep-chip" data-target="divine_essence_is_existence">divine_essence_is_existence</span><span class="dep-chip" data-target="essence_existence_identity_grounds_simplicity">essence_existence_identity_grounds_simplicity</span><span class="dep-chip" data-target="isCreature">isCreature</span><span class="dep-chip" data-target="sustaining_required_because_contingent">sustaining_required_because_contingent</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="essence_existence_scope">essence_existence_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="divine_simplicity_from_essence_existence">
@@ -882,9 +870,9 @@ h1 {
     <div class="node-prop"><pre><code>theorem divine_simplicity_from_essence_existence
     (b : Being) (e : DivineEssence) (h : isDivine b) :
     identicalWithEssence (essenceOf b) e</code></pre></div>
-<div class="node-desc">The divine identity grounds simplicity.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Being">Being</span><span class="dep-chip" data-target="DivineEssence">DivineEssence</span><span class="dep-chip" data-target="creature_and_divine_exclusive">creature_and_divine_exclusive</span><span class="dep-chip" data-target="creature_or_divine">creature_or_divine</span><span class="dep-chip" data-target="divine_essence_is_existence">divine_essence_is_existence</span><span class="dep-chip" data-target="essenceOf">essenceOf</span><span class="dep-chip" data-target="essence_existence_identity_grounds_simplicity">essence_existence_identity_grounds_simplicity</span><span class="dep-chip" data-target="identicalWithEssence">identicalWithEssence</span><span class="dep-chip" data-target="isDivine">isDivine</span><span class="dep-chip" data-target="real_distinction">real_distinction</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="essence_existence_scope">essence_existence_scope</span><span class="dep-chip" data-target="Being">Being</span><span class="dep-chip" data-target="essenceOf">essenceOf</span><span class="dep-chip" data-target="isDivine">isDivine</span><span class="dep-chip" data-target="creature_and_divine_exclusive">creature_and_divine_exclusive</span><span class="dep-chip" data-target="creature_or_divine">creature_or_divine</span><span class="dep-chip" data-target="divine_essence_is_existence">divine_essence_is_existence</span><span class="dep-chip" data-target="real_distinction">real_distinction</span><span class="dep-chip" data-target="essence_existence_identity_grounds_simplicity">essence_existence_identity_grounds_simplicity</span></div></div>
+<div class="node-desc">THEOREM: The divine identity grounds simplicity.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Being">Being</span><span class="dep-chip" data-target="creature_and_divine_exclusive">creature_and_divine_exclusive</span><span class="dep-chip" data-target="creature_or_divine">creature_or_divine</span><span class="dep-chip" data-target="divine_essence_is_existence">divine_essence_is_existence</span><span class="dep-chip" data-target="essenceOf">essenceOf</span><span class="dep-chip" data-target="essence_existence_identity_grounds_simplicity">essence_existence_identity_grounds_simplicity</span><span class="dep-chip" data-target="isDivine">isDivine</span><span class="dep-chip" data-target="real_distinction">real_distinction</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="essence_existence_scope">essence_existence_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="total_creator_creature_distinction">
@@ -897,9 +885,9 @@ h1 {
     <div class="node-prop"><pre><code>theorem total_creator_creature_distinction (b : Being) :
     (isCreature b ∧ ¬ essenceEntailsExistence b) ∨
     (isDivine b ∧ essenceEntailsExistence b)</code></pre></div>
-<div class="node-desc">The creator/creature distinction is TOTAL and EXCLUSIVE.</div>
+<div class="node-desc">THEOREM: The creator/creature distinction is TOTAL and EXCLUSIVE.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Being">Being</span><span class="dep-chip" data-target="creature_and_divine_exclusive">creature_and_divine_exclusive</span><span class="dep-chip" data-target="creature_or_divine">creature_or_divine</span><span class="dep-chip" data-target="distinction_implies_reception">distinction_implies_reception</span><span class="dep-chip" data-target="divine_essence_is_existence">divine_essence_is_existence</span><span class="dep-chip" data-target="essenceEntailsExistence">essenceEntailsExistence</span><span class="dep-chip" data-target="god_does_not_receive_existence">god_does_not_receive_existence</span><span class="dep-chip" data-target="isCreature">isCreature</span><span class="dep-chip" data-target="isDivine">isDivine</span><span class="dep-chip" data-target="real_distinction">real_distinction</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="essence_existence_scope">essence_existence_scope</span><span class="dep-chip" data-target="Being">Being</span><span class="dep-chip" data-target="essenceEntailsExistence">essenceEntailsExistence</span><span class="dep-chip" data-target="isCreature">isCreature</span><span class="dep-chip" data-target="isDivine">isDivine</span><span class="dep-chip" data-target="creature_and_divine_exclusive">creature_and_divine_exclusive</span><span class="dep-chip" data-target="creature_or_divine">creature_or_divine</span><span class="dep-chip" data-target="divine_essence_is_existence">divine_essence_is_existence</span><span class="dep-chip" data-target="god_does_not_receive_existence">god_does_not_receive_existence</span><span class="dep-chip" data-target="real_distinction">real_distinction</span><span class="dep-chip" data-target="distinction_implies_reception">distinction_implies_reception</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="essence_existence_scope">essence_existence_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="divine_self_existence">
@@ -911,9 +899,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem divine_self_existence (b : Being) (h : isDivine b) :
     essenceEntailsExistence b ∧ ¬ receivesExistence b</code></pre></div>
-<div class="node-desc">God is self-existent — not dependent on another for being.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Being">Being</span><span class="dep-chip" data-target="creatures_receive_existence">creatures_receive_existence</span><span class="dep-chip" data-target="divine_essence_is_existence">divine_essence_is_existence</span><span class="dep-chip" data-target="essenceEntailsExistence">essenceEntailsExistence</span><span class="dep-chip" data-target="god_creates_through_wisdom">god_creates_through_wisdom</span><span class="dep-chip" data-target="god_does_not_receive_existence">god_does_not_receive_existence</span><span class="dep-chip" data-target="isDivine">isDivine</span><span class="dep-chip" data-target="receivesExistence">receivesExistence</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="Being">Being</span><span class="dep-chip" data-target="essenceEntailsExistence">essenceEntailsExistence</span><span class="dep-chip" data-target="isDivine">isDivine</span><span class="dep-chip" data-target="receivesExistence">receivesExistence</span><span class="dep-chip" data-target="creatures_receive_existence">creatures_receive_existence</span><span class="dep-chip" data-target="divine_essence_is_existence">divine_essence_is_existence</span><span class="dep-chip" data-target="god_does_not_receive_existence">god_does_not_receive_existence</span></div></div>
+<div class="node-desc">THEOREM: God is self-existent — not dependent on another for being.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Being">Being</span><span class="dep-chip" data-target="creatures_receive_existence">creatures_receive_existence</span><span class="dep-chip" data-target="divine_essence_is_existence">divine_essence_is_existence</span><span class="dep-chip" data-target="essenceEntailsExistence">essenceEntailsExistence</span><span class="dep-chip" data-target="god_does_not_receive_existence">god_does_not_receive_existence</span><span class="dep-chip" data-target="isDivine">isDivine</span><span class="dep-chip" data-target="receivesExistence">receivesExistence</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="creation_presupposes_distinction">
@@ -925,9 +912,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem creation_presupposes_distinction (b : Being) (h : isCreature b) :
     godCreatesThruWisdom ∧ receivesExistence b</code></pre></div>
-<div class="node-desc">Creation through wisdom presupposes the real distinction.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Being">Being</span><span class="dep-chip" data-target="creatures_receive_existence">creatures_receive_existence</span><span class="dep-chip" data-target="godCreatesThruWisdom">godCreatesThruWisdom</span><span class="dep-chip" data-target="god_creates_through_wisdom">god_creates_through_wisdom</span><span class="dep-chip" data-target="isCreature">isCreature</span><span class="dep-chip" data-target="receivesExistence">receivesExistence</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="essence_existence_scope">essence_existence_scope</span><span class="dep-chip" data-target="Being">Being</span><span class="dep-chip" data-target="isCreature">isCreature</span><span class="dep-chip" data-target="receivesExistence">receivesExistence</span><span class="dep-chip" data-target="creatures_receive_existence">creatures_receive_existence</span></div></div>
+<div class="node-desc">THEOREM: Creation through wisdom presupposes the real distinction.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Being">Being</span><span class="dep-chip" data-target="creatures_receive_existence">creatures_receive_existence</span><span class="dep-chip" data-target="isCreature">isCreature</span><span class="dep-chip" data-target="receivesExistence">receivesExistence</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="essence_existence_scope">essence_existence_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="essence_existence_scope">
@@ -939,9 +926,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def essence_existence_scope : DenominationalTag := ecumenical
 </code></pre></div>
-<div class="node-desc">Its CONSEQUENCES (contingency, creation, divine aseity) are ecumenical. Scope: The essence/existence distinction is Thomistic.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Being">Being</span><span class="dep-chip" data-target="DivineEssence">DivineEssence</span><span class="dep-chip" data-target="contingent_implies_creature">contingent_implies_creature</span><span class="dep-chip" data-target="creation_presupposes_distinction">creation_presupposes_distinction</span><span class="dep-chip" data-target="creature_and_divine_exclusive">creature_and_divine_exclusive</span><span class="dep-chip" data-target="creature_or_divine">creature_or_divine</span><span class="dep-chip" data-target="creatures_are_contingent">creatures_are_contingent</span><span class="dep-chip" data-target="creatures_need_sustaining">creatures_need_sustaining</span><span class="dep-chip" data-target="creatures_receive_existence">creatures_receive_existence</span><span class="dep-chip" data-target="distinction_implies_contingency">distinction_implies_contingency</span><span class="dep-chip" data-target="distinction_implies_reception">distinction_implies_reception</span><span class="dep-chip" data-target="divine_essence_is_existence">divine_essence_is_existence</span><span class="dep-chip" data-target="divine_simplicity_from_essence_existence">divine_simplicity_from_essence_existence</span><span class="dep-chip" data-target="divinelyGoverned">divinelyGoverned</span><span class="dep-chip" data-target="essence_existence_identity_grounds_simplicity">essence_existence_identity_grounds_simplicity</span><span class="dep-chip" data-target="godCreatesThruWisdom">godCreatesThruWisdom</span><span class="dep-chip" data-target="godIsLove">godIsLove</span><span class="dep-chip" data-target="god_creates_through_wisdom">god_creates_through_wisdom</span><span class="dep-chip" data-target="god_does_not_receive_existence">god_does_not_receive_existence</span><span class="dep-chip" data-target="god_is_not_contingent">god_is_not_contingent</span><span class="dep-chip" data-target="god_unique_essence_existence_identity">god_unique_essence_existence_identity</span><span class="dep-chip" data-target="identicalWithEssence">identicalWithEssence</span><span class="dep-chip" data-target="real_distinction">real_distinction</span><span class="dep-chip" data-target="s4_universal_providence">s4_universal_providence</span><span class="dep-chip" data-target="sustaining_required_because_contingent">sustaining_required_because_contingent</span><span class="dep-chip" data-target="total_creator_creature_distinction">total_creator_creature_distinction</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="Being">Being</span><span class="dep-chip" data-target="creature_and_divine_exclusive">creature_and_divine_exclusive</span><span class="dep-chip" data-target="creature_or_divine">creature_or_divine</span><span class="dep-chip" data-target="creatures_are_contingent">creatures_are_contingent</span><span class="dep-chip" data-target="creatures_receive_existence">creatures_receive_existence</span><span class="dep-chip" data-target="divine_essence_is_existence">divine_essence_is_existence</span><span class="dep-chip" data-target="god_does_not_receive_existence">god_does_not_receive_existence</span><span class="dep-chip" data-target="god_is_not_contingent">god_is_not_contingent</span><span class="dep-chip" data-target="real_distinction">real_distinction</span><span class="dep-chip" data-target="sustaining_required_because_contingent">sustaining_required_because_contingent</span><span class="dep-chip" data-target="contingent_implies_creature">contingent_implies_creature</span><span class="dep-chip" data-target="creation_presupposes_distinction">creation_presupposes_distinction</span><span class="dep-chip" data-target="distinction_implies_contingency">distinction_implies_contingency</span><span class="dep-chip" data-target="distinction_implies_reception">distinction_implies_reception</span><span class="dep-chip" data-target="essence_existence_identity_grounds_simplicity">essence_existence_identity_grounds_simplicity</span><span class="dep-chip" data-target="god_unique_essence_existence_identity">god_unique_essence_existence_identity</span><span class="dep-chip" data-target="creatures_need_sustaining">creatures_need_sustaining</span><span class="dep-chip" data-target="divine_simplicity_from_essence_existence">divine_simplicity_from_essence_existence</span><span class="dep-chip" data-target="total_creator_creature_distinction">total_creator_creature_distinction</span></div></div>
+<div class="node-desc">Denominational scope: The essence/existence distinction is Thomistic.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Being">Being</span><span class="dep-chip" data-target="contingent_implies_creature">contingent_implies_creature</span><span class="dep-chip" data-target="creation_presupposes_distinction">creation_presupposes_distinction</span><span class="dep-chip" data-target="creature_and_divine_exclusive">creature_and_divine_exclusive</span><span class="dep-chip" data-target="creature_or_divine">creature_or_divine</span><span class="dep-chip" data-target="creatures_are_contingent">creatures_are_contingent</span><span class="dep-chip" data-target="creatures_need_sustaining">creatures_need_sustaining</span><span class="dep-chip" data-target="creatures_receive_existence">creatures_receive_existence</span><span class="dep-chip" data-target="distinction_implies_contingency">distinction_implies_contingency</span><span class="dep-chip" data-target="distinction_implies_reception">distinction_implies_reception</span><span class="dep-chip" data-target="divine_essence_is_existence">divine_essence_is_existence</span><span class="dep-chip" data-target="divine_simplicity_from_essence_existence">divine_simplicity_from_essence_existence</span><span class="dep-chip" data-target="essence_existence_identity_grounds_simplicity">essence_existence_identity_grounds_simplicity</span><span class="dep-chip" data-target="god_does_not_receive_existence">god_does_not_receive_existence</span><span class="dep-chip" data-target="god_is_not_contingent">god_is_not_contingent</span><span class="dep-chip" data-target="god_unique_essence_existence_identity">god_unique_essence_existence_identity</span><span class="dep-chip" data-target="real_distinction">real_distinction</span><span class="dep-chip" data-target="sustaining_required_because_contingent">sustaining_required_because_contingent</span><span class="dep-chip" data-target="total_creator_creature_distinction">total_creator_creature_distinction</span></div></div>
   </div>
 </div>
   </div>

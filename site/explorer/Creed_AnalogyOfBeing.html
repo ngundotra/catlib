@@ -523,14 +523,20 @@ h1 {
 <div class="container">
   <a href="index.html" class="back-link">&larr; All files</a>
   <h1>AnalogyOfBeing</h1>
-  <div class="subtitle">Creed &middot; 22 declarations</div>
+  <div class="subtitle">Creed &middot; 23 declarations</div>
 
-  
+  <div class="flow-summary">
+  <span class="flow-count axioms">14 axioms</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count theorems">6 theorems</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count derived">2 derived</span>
+</div>
   <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1028, &sect;36, &sect;40, &sect;41, &sect;42, &sect;43, &sect;806</div>
 
-  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
+  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span><span class="legend-item"><span class="legend-dot instance"></span>instance</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
 
-  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (7)</button><button class="filter-btn" data-filter="def">def (1)</button><button class="filter-btn" data-filter="inductive">inductive (1)</button><button class="filter-btn" data-filter="opaque">opaque (7)</button><button class="filter-btn" data-filter="theorem">theorem (6)</button></div>
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (7)</button><button class="filter-btn" data-filter="def">def (1)</button><button class="filter-btn" data-filter="inductive">inductive (1)</button><button class="filter-btn" data-filter="instance">instance (1)</button><button class="filter-btn" data-filter="opaque">opaque (7)</button><button class="filter-btn" data-filter="theorem">theorem (6)</button></div>
 
   <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
 
@@ -543,9 +549,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>inductive PredicationMode where</code></pre></div>
-<div class="node-desc">The three modes of predication: how a term relates when applied │   Source: [Aquinas] ST I q.13 a.5. Aquinas argues that these three</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="godCanBringAbout">godCanBringAbout</span><span class="dep-chip" data-target="godCreatesThruWisdom">godCreatesThruWisdom</span><span class="dep-chip" data-target="godIsLove">godIsLove</span><span class="dep-chip" data-target="identicalWithEssence">identicalWithEssence</span><span class="dep-chip" data-target="knownToGod">knownToGod</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="TheologicalPredicate">TheologicalPredicate</span><span class="dep-chip" data-target="predicationMode">predicationMode</span><span class="dep-chip" data-target="god_talk_is_analogical">god_talk_is_analogical</span><span class="dep-chip" data-target="analogy_carries_truth">analogy_carries_truth</span><span class="dep-chip" data-target="resemblance_grounds_analogy">resemblance_grounds_analogy</span><span class="dep-chip" data-target="analogy_denominational_scope">analogy_denominational_scope</span></div></div>
+<div class="node-desc">The three modes of predication: how a term relates when applied</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target=":">:</span><span class="dep-chip" data-target="predicationMode">predicationMode</span><span class="dep-chip" data-target="god_talk_is_analogical">god_talk_is_analogical</span><span class="dep-chip" data-target="analogy_carries_truth">analogy_carries_truth</span><span class="dep-chip" data-target="resemblance_grounds_analogy">resemblance_grounds_analogy</span><span class="dep-chip" data-target="analogy_denominational_scope">analogy_denominational_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="TheologicalPredicate">
@@ -555,11 +560,23 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque TheologicalPredicate : Type
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque TheologicalPredicate : Type</code></pre></div>
 <div class="node-desc">A theological predicate — a term applied to God.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="predicationMode">predicationMode</span><span class="dep-chip" data-target="hasGenuineTruthContent">hasGenuineTruthContent</span><span class="dep-chip" data-target="capturesCompletely">capturesCompletely</span><span class="dep-chip" data-target="god_talk_is_analogical">god_talk_is_analogical</span><span class="dep-chip" data-target="analogy_carries_truth">analogy_carries_truth</span><span class="dep-chip" data-target="human_language_falls_short">human_language_falls_short</span><span class="dep-chip" data-target="resemblance_grounds_analogy">resemblance_grounds_analogy</span><span class="dep-chip" data-target="analogy_grounds_methodology">analogy_grounds_methodology</span><span class="dep-chip" data-target="analogical_truth_is_genuine_but_partial">analogical_truth_is_genuine_but_partial</span><span class="dep-chip" data-target="resemblance_grounds_all_god_talk">resemblance_grounds_all_god_talk</span><span class="dep-chip" data-target="analogy_and_simplicity_complementary">analogy_and_simplicity_complementary</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-instance" data-kind="instance" data-name=":">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">instance</span>
+    <span class="node-name">:</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>instance : Inhabited PredicationMode := ⟨PredicationMode.analogical⟩
+</code></pre></div>
+<div class="node-desc">The mode of predication for a given theological predicate when</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="PredicationMode">PredicationMode</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="predicationMode">predicationMode</span><span class="dep-chip" data-target="hasGenuineTruthContent">hasGenuineTruthContent</span><span class="dep-chip" data-target="capturesCompletely">capturesCompletely</span><span class="dep-chip" data-target="god_talk_is_analogical">god_talk_is_analogical</span><span class="dep-chip" data-target="analogy_carries_truth">analogy_carries_truth</span><span class="dep-chip" data-target="human_language_falls_short">human_language_falls_short</span><span class="dep-chip" data-target="resemblance_grounds_analogy">resemblance_grounds_analogy</span><span class="dep-chip" data-target="analogy_grounds_methodology">analogy_grounds_methodology</span><span class="dep-chip" data-target="analogical_truth_is_genuine_but_partial">analogical_truth_is_genuine_but_partial</span><span class="dep-chip" data-target="resemblance_grounds_all_god_talk">resemblance_grounds_all_god_talk</span><span class="dep-chip" data-target="analogy_and_simplicity_complementary">analogy_and_simplicity_complementary</span><span class="dep-chip" data-target="PredicationMode">PredicationMode</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="capturesCompletely">capturesCompletely</span><span class="dep-chip" data-target="human_language_falls_short">human_language_falls_short</span><span class="dep-chip" data-target="analogy_denominational_scope">analogy_denominational_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="predicationMode">
@@ -569,11 +586,9 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque predicationMode : TheologicalPredicate → PredicationMode
-</code></pre></div>
-<div class="node-desc">The mode of predication for a given theological predicate when │   Source: [Aquinas] ST I q.13 a.5. Every predicate shared between</div>
+    <div class="node-prop"><pre><code>opaque predicationMode : TheologicalPredicate → PredicationMode</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="PredicationMode">PredicationMode</span><span class="dep-chip" data-target="TheologicalPredicate">TheologicalPredicate</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="god_talk_is_analogical">god_talk_is_analogical</span><span class="dep-chip" data-target="analogy_carries_truth">analogy_carries_truth</span><span class="dep-chip" data-target="resemblance_grounds_analogy">resemblance_grounds_analogy</span><span class="dep-chip" data-target="PredicationMode">PredicationMode</span><span class="dep-chip" data-target="TheologicalPredicate">TheologicalPredicate</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="god_talk_is_analogical">god_talk_is_analogical</span><span class="dep-chip" data-target="analogy_carries_truth">analogy_carries_truth</span><span class="dep-chip" data-target="resemblance_grounds_analogy">resemblance_grounds_analogy</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="hasGenuineTruthContent">
@@ -583,11 +598,10 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque hasGenuineTruthContent : TheologicalPredicate → Prop
-</code></pre></div>
-<div class="node-desc">Whether a predicate, applied to God, carries genuine truth content │   Source: [CCC] §43: &quot;our language... really does attain to God</div>
+    <div class="node-prop"><pre><code>opaque hasGenuineTruthContent : TheologicalPredicate → Prop</code></pre></div>
+<div class="node-desc">Whether a predicate, applied to God, carries genuine truth content</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="TheologicalPredicate">TheologicalPredicate</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="analogy_carries_truth">analogy_carries_truth</span><span class="dep-chip" data-target="resemblance_grounds_analogy">resemblance_grounds_analogy</span><span class="dep-chip" data-target="analogy_grounds_methodology">analogy_grounds_methodology</span><span class="dep-chip" data-target="analogical_truth_is_genuine_but_partial">analogical_truth_is_genuine_but_partial</span><span class="dep-chip" data-target="resemblance_grounds_all_god_talk">resemblance_grounds_all_god_talk</span><span class="dep-chip" data-target="catlib_methodology_is_sound">catlib_methodology_is_sound</span><span class="dep-chip" data-target="analogy_and_simplicity_complementary">analogy_and_simplicity_complementary</span><span class="dep-chip" data-target="TheologicalPredicate">TheologicalPredicate</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="analogy_carries_truth">analogy_carries_truth</span><span class="dep-chip" data-target="resemblance_grounds_analogy">resemblance_grounds_analogy</span><span class="dep-chip" data-target="analogy_grounds_methodology">analogy_grounds_methodology</span><span class="dep-chip" data-target="analogical_truth_is_genuine_but_partial">analogical_truth_is_genuine_but_partial</span><span class="dep-chip" data-target="resemblance_grounds_all_god_talk">resemblance_grounds_all_god_talk</span><span class="dep-chip" data-target="catlib_methodology_is_sound">catlib_methodology_is_sound</span><span class="dep-chip" data-target="analogy_and_simplicity_complementary">analogy_and_simplicity_complementary</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="capturesCompletely">
@@ -597,11 +611,10 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque capturesCompletely : TheologicalPredicate → Prop
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque capturesCompletely : TheologicalPredicate → Prop</code></pre></div>
 <div class="node-desc">Whether a predicate applied to God captures the divine reality</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="TheologicalPredicate">TheologicalPredicate</span><span class="dep-chip" data-target="beingIsIntelligible">beingIsIntelligible</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="human_language_falls_short">human_language_falls_short</span><span class="dep-chip" data-target="analogical_truth_is_genuine_but_partial">analogical_truth_is_genuine_but_partial</span><span class="dep-chip" data-target="analogy_and_simplicity_complementary">analogy_and_simplicity_complementary</span><span class="dep-chip" data-target="TheologicalPredicate">TheologicalPredicate</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target=":">:</span><span class="dep-chip" data-target="TheologicalPredicate">TheologicalPredicate</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="human_language_falls_short">human_language_falls_short</span><span class="dep-chip" data-target="analogical_truth_is_genuine_but_partial">analogical_truth_is_genuine_but_partial</span><span class="dep-chip" data-target="analogy_and_simplicity_complementary">analogy_and_simplicity_complementary</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="creaturesResembleGod">
@@ -611,9 +624,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque creaturesResembleGod : Prop
-</code></pre></div>
-<div class="node-desc">Whether creatures bear a genuine resemblance to God — │   Source: [CCC] §41: &quot;All creatures bear a certain resemblance │   ⚠ HIDDEN ASSUMPTION: This resemblance is REAL, not merely projected</div>
+    <div class="node-prop"><pre><code>opaque creaturesResembleGod : Prop</code></pre></div>
+<div class="node-desc">Whether creatures bear a genuine resemblance to God —</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="creatures_resemble_god">creatures_resemble_god</span><span class="dep-chip" data-target="resemblance_grounds_analogy">resemblance_grounds_analogy</span><span class="dep-chip" data-target="analogy_grounds_methodology">analogy_grounds_methodology</span><span class="dep-chip" data-target="analogy_and_simplicity_complementary">analogy_and_simplicity_complementary</span><span class="dep-chip" data-target="intelligibility_grounds_analogy">intelligibility_grounds_analogy</span><span class="dep-chip" data-target="analogy_denominational_scope">analogy_denominational_scope</span></div></div>
   </div>
 </div>
@@ -626,11 +638,10 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom god_talk_is_analogical :
   ∀ (pred : TheologicalPredicate),
-    predicationMode pred = PredicationMode.analogical
-</code></pre></div>
-<div class="node-desc">God-talk is ANALOGICAL — │   Source: [Definition] CCC §40-43; [Philosophical] Aquinas, | Scope: BROADLY ECUMENICAL in practice, though the</div>
+    predicationMode pred = PredicationMode.analogical</code></pre></div>
+<div class="node-desc">AXIOM (CCC §40-43; ST I q.13 a.5): God-talk is ANALOGICAL —</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="PredicationMode">PredicationMode</span><span class="dep-chip" data-target="TheologicalPredicate">TheologicalPredicate</span><span class="dep-chip" data-target="predicationMode">predicationMode</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="barth_challenge">barth_challenge</span><span class="dep-chip" data-target="analogical_truth_is_genuine_but_partial">analogical_truth_is_genuine_but_partial</span><span class="dep-chip" data-target="resemblance_grounds_all_god_talk">resemblance_grounds_all_god_talk</span><span class="dep-chip" data-target="catlib_methodology_is_sound">catlib_methodology_is_sound</span><span class="dep-chip" data-target="analogy_denominational_scope">analogy_denominational_scope</span><span class="dep-chip" data-target="PredicationMode">PredicationMode</span><span class="dep-chip" data-target="TheologicalPredicate">TheologicalPredicate</span><span class="dep-chip" data-target="predicationMode">predicationMode</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="barth_challenge">barth_challenge</span><span class="dep-chip" data-target="analogical_truth_is_genuine_but_partial">analogical_truth_is_genuine_but_partial</span><span class="dep-chip" data-target="resemblance_grounds_all_god_talk">resemblance_grounds_all_god_talk</span><span class="dep-chip" data-target="catlib_methodology_is_sound">catlib_methodology_is_sound</span><span class="dep-chip" data-target="analogy_denominational_scope">analogy_denominational_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="analogy_carries_truth">
@@ -643,11 +654,10 @@ h1 {
     <div class="node-prop"><pre><code>axiom analogy_carries_truth :
   ∀ (pred : TheologicalPredicate),
     predicationMode pred = PredicationMode.analogical →
-    hasGenuineTruthContent pred
-</code></pre></div>
-<div class="node-desc">Analogical predication carries genuine truth content. │   Source: [Definition] CCC §43; [Philosophical] Aquinas, | Scope: ECUMENICAL.</div>
+    hasGenuineTruthContent pred</code></pre></div>
+<div class="node-desc">AXIOM (CCC §43): Analogical predication carries genuine truth content.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="PredicationMode">PredicationMode</span><span class="dep-chip" data-target="TheologicalPredicate">TheologicalPredicate</span><span class="dep-chip" data-target="hasGenuineTruthContent">hasGenuineTruthContent</span><span class="dep-chip" data-target="predicationMode">predicationMode</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="barth_challenge">barth_challenge</span><span class="dep-chip" data-target="analogical_truth_is_genuine_but_partial">analogical_truth_is_genuine_but_partial</span><span class="dep-chip" data-target="catlib_methodology_is_sound">catlib_methodology_is_sound</span><span class="dep-chip" data-target="analogy_denominational_scope">analogy_denominational_scope</span><span class="dep-chip" data-target="PredicationMode">PredicationMode</span><span class="dep-chip" data-target="TheologicalPredicate">TheologicalPredicate</span><span class="dep-chip" data-target="hasGenuineTruthContent">hasGenuineTruthContent</span><span class="dep-chip" data-target="predicationMode">predicationMode</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="barth_challenge">barth_challenge</span><span class="dep-chip" data-target="analogical_truth_is_genuine_but_partial">analogical_truth_is_genuine_but_partial</span><span class="dep-chip" data-target="catlib_methodology_is_sound">catlib_methodology_is_sound</span><span class="dep-chip" data-target="analogy_denominational_scope">analogy_denominational_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="human_language_falls_short">
@@ -659,11 +669,10 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom human_language_falls_short :
   ∀ (pred : TheologicalPredicate),
-    ¬ capturesCompletely pred
-</code></pre></div>
-<div class="node-desc">No human predicate captures God completely. │   Source: [Definition] CCC §42; [Philosophical] Aquinas, | Scope: ECUMENICAL. │   ⚠ HIDDEN ASSUMPTION: &quot;Always fall short&quot; means IN PRINCIPLE, not</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="TheologicalPredicate">TheologicalPredicate</span><span class="dep-chip" data-target="beingIsIntelligible">beingIsIntelligible</span><span class="dep-chip" data-target="capturesCompletely">capturesCompletely</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="barth_challenge">barth_challenge</span><span class="dep-chip" data-target="analogical_truth_is_genuine_but_partial">analogical_truth_is_genuine_but_partial</span><span class="dep-chip" data-target="catlib_methodology_is_sound">catlib_methodology_is_sound</span><span class="dep-chip" data-target="analogy_denominational_scope">analogy_denominational_scope</span><span class="dep-chip" data-target="TheologicalPredicate">TheologicalPredicate</span><span class="dep-chip" data-target="capturesCompletely">capturesCompletely</span></div></div>
+    ¬ capturesCompletely pred</code></pre></div>
+<div class="node-desc">AXIOM (CCC §42): No human predicate captures God completely.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target=":">:</span><span class="dep-chip" data-target="TheologicalPredicate">TheologicalPredicate</span><span class="dep-chip" data-target="capturesCompletely">capturesCompletely</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="barth_challenge">barth_challenge</span><span class="dep-chip" data-target="analogical_truth_is_genuine_but_partial">analogical_truth_is_genuine_but_partial</span><span class="dep-chip" data-target="catlib_methodology_is_sound">catlib_methodology_is_sound</span><span class="dep-chip" data-target="analogy_denominational_scope">analogy_denominational_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="creatures_resemble_god">
@@ -674,11 +683,10 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom creatures_resemble_god :
-  creaturesResembleGod
-</code></pre></div>
-<div class="node-desc">Creatures genuinely resemble God. │   Source: [Scripture] Wis 13:5; [Definition] CCC §41. | Scope: ECUMENICAL.</div>
+  creaturesResembleGod</code></pre></div>
+<div class="node-desc">AXIOM (CCC §41; Wis 13:5): Creatures genuinely resemble God.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="creaturesResembleGod">creaturesResembleGod</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="analogical_truth_is_genuine_but_partial">analogical_truth_is_genuine_but_partial</span><span class="dep-chip" data-target="resemblance_grounds_all_god_talk">resemblance_grounds_all_god_talk</span><span class="dep-chip" data-target="catlib_methodology_is_sound">catlib_methodology_is_sound</span><span class="dep-chip" data-target="analogy_and_simplicity_complementary">analogy_and_simplicity_complementary</span><span class="dep-chip" data-target="intelligibility_grounds_analogy">intelligibility_grounds_analogy</span><span class="dep-chip" data-target="analogy_denominational_scope">analogy_denominational_scope</span><span class="dep-chip" data-target="creaturesResembleGod">creaturesResembleGod</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="analogical_truth_is_genuine_but_partial">analogical_truth_is_genuine_but_partial</span><span class="dep-chip" data-target="resemblance_grounds_all_god_talk">resemblance_grounds_all_god_talk</span><span class="dep-chip" data-target="catlib_methodology_is_sound">catlib_methodology_is_sound</span><span class="dep-chip" data-target="analogy_and_simplicity_complementary">analogy_and_simplicity_complementary</span><span class="dep-chip" data-target="intelligibility_grounds_analogy">intelligibility_grounds_analogy</span><span class="dep-chip" data-target="analogy_denominational_scope">analogy_denominational_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="resemblance_grounds_analogy">
@@ -692,11 +700,10 @@ h1 {
   creaturesResembleGod →
   ∀ (pred : TheologicalPredicate),
     predicationMode pred = PredicationMode.analogical →
-    hasGenuineTruthContent pred
-</code></pre></div>
-<div class="node-desc">Creaturely resemblance grounds analogical │   Source: [Philosophical] Aquinas, ST I q.13 a.5, q.4 a.3; | Scope: CATHOLIC (the specific causal-resemblance | [Defini... │   ⚠ HIDDEN ASSUMPTION: Causal resemblance is sufficient for analogical</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="PredicationMode">PredicationMode</span><span class="dep-chip" data-target="TheologicalPredicate">TheologicalPredicate</span><span class="dep-chip" data-target="creaturesResembleGod">creaturesResembleGod</span><span class="dep-chip" data-target="divinelyGoverned">divinelyGoverned</span><span class="dep-chip" data-target="godCanBringAbout">godCanBringAbout</span><span class="dep-chip" data-target="godCreatesThruWisdom">godCreatesThruWisdom</span><span class="dep-chip" data-target="godIsLove">godIsLove</span><span class="dep-chip" data-target="hasGenuineTruthContent">hasGenuineTruthContent</span><span class="dep-chip" data-target="identicalWithEssence">identicalWithEssence</span><span class="dep-chip" data-target="knownToGod">knownToGod</span><span class="dep-chip" data-target="predicationMode">predicationMode</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="analogical_truth_is_genuine_but_partial">analogical_truth_is_genuine_but_partial</span><span class="dep-chip" data-target="resemblance_grounds_all_god_talk">resemblance_grounds_all_god_talk</span><span class="dep-chip" data-target="analogy_denominational_scope">analogy_denominational_scope</span><span class="dep-chip" data-target="PredicationMode">PredicationMode</span><span class="dep-chip" data-target="creaturesResembleGod">creaturesResembleGod</span><span class="dep-chip" data-target="TheologicalPredicate">TheologicalPredicate</span><span class="dep-chip" data-target="hasGenuineTruthContent">hasGenuineTruthContent</span><span class="dep-chip" data-target="predicationMode">predicationMode</span></div></div>
+    hasGenuineTruthContent pred</code></pre></div>
+<div class="node-desc">AXIOM (CCC §41, §43): Creaturely resemblance grounds analogical</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="PredicationMode">PredicationMode</span><span class="dep-chip" data-target="TheologicalPredicate">TheologicalPredicate</span><span class="dep-chip" data-target="creaturesResembleGod">creaturesResembleGod</span><span class="dep-chip" data-target="hasGenuineTruthContent">hasGenuineTruthContent</span><span class="dep-chip" data-target="predicationMode">predicationMode</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="analogical_truth_is_genuine_but_partial">analogical_truth_is_genuine_but_partial</span><span class="dep-chip" data-target="resemblance_grounds_all_god_talk">resemblance_grounds_all_god_talk</span><span class="dep-chip" data-target="analogy_denominational_scope">analogy_denominational_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="catlibMethodologySound">
@@ -706,8 +713,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque catlibMethodologySound : Prop
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque catlibMethodologySound : Prop</code></pre></div>
 <div class="node-desc">Whether the entire catlib project's methodology is sound —</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="analogy_grounds_methodology">analogy_grounds_methodology</span><span class="dep-chip" data-target="barth_challenge">barth_challenge</span><span class="dep-chip" data-target="catlib_methodology_is_sound">catlib_methodology_is_sound</span></div></div>
   </div>
@@ -719,9 +725,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque barthRejectionCorrect : Prop
-</code></pre></div>
-<div class="node-desc">Whether Barth's rejection of the analogia entis is correct — │   Source: Barth, KD I/1 p. viii: the analogia entis is &quot;the</div>
+    <div class="node-prop"><pre><code>opaque barthRejectionCorrect : Prop</code></pre></div>
+<div class="node-desc">Whether Barth's rejection of the analogia entis is correct —</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="analogy_grounds_methodology">analogy_grounds_methodology</span><span class="dep-chip" data-target="barth_challenge">barth_challenge</span><span class="dep-chip" data-target="barth_and_catlib_incompatible">barth_and_catlib_incompatible</span></div></div>
   </div>
 </div>
@@ -735,11 +740,10 @@ h1 {
     <div class="node-prop"><pre><code>axiom analogy_grounds_methodology :
   (∀ (pred : TheologicalPredicate), hasGenuineTruthContent pred) →
   creaturesResembleGod →
-  catlibMethodologySound
-</code></pre></div>
-<div class="node-desc">The catlib methodology is sound BECAUSE │   Source: [Definition] CCC §40-43, §36 (Vatican I, Dei Filius 2); | Scope: CATHOLIC — Barth explicitly denies this.</div>
+  catlibMethodologySound</code></pre></div>
+<div class="node-desc">AXIOM (CCC §40-43, §36): The catlib methodology is sound BECAUSE</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="TheologicalPredicate">TheologicalPredicate</span><span class="dep-chip" data-target="barthRejectionCorrect">barthRejectionCorrect</span><span class="dep-chip" data-target="catlibMethodologySound">catlibMethodologySound</span><span class="dep-chip" data-target="creaturesResembleGod">creaturesResembleGod</span><span class="dep-chip" data-target="hasGenuineTruthContent">hasGenuineTruthContent</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="resemblance_grounds_all_god_talk">resemblance_grounds_all_god_talk</span><span class="dep-chip" data-target="catlib_methodology_is_sound">catlib_methodology_is_sound</span><span class="dep-chip" data-target="analogy_denominational_scope">analogy_denominational_scope</span><span class="dep-chip" data-target="barthRejectionCorrect">barthRejectionCorrect</span><span class="dep-chip" data-target="catlibMethodologySound">catlibMethodologySound</span><span class="dep-chip" data-target="creaturesResembleGod">creaturesResembleGod</span><span class="dep-chip" data-target="TheologicalPredicate">TheologicalPredicate</span><span class="dep-chip" data-target="hasGenuineTruthContent">hasGenuineTruthContent</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="resemblance_grounds_all_god_talk">resemblance_grounds_all_god_talk</span><span class="dep-chip" data-target="catlib_methodology_is_sound">catlib_methodology_is_sound</span><span class="dep-chip" data-target="analogy_denominational_scope">analogy_denominational_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="barth_challenge">
@@ -750,11 +754,10 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom barth_challenge :
-  barthRejectionCorrect → ¬ catlibMethodologySound
-</code></pre></div>
-<div class="node-desc">If Barth's rejection is correct, the catlib methodology is │   Source: Barth, KD I/1 p. viii.; [Philosophical] Karl Barth, KD I/1 (1932). | Scope: REFORMED (Barthian).</div>
+  barthRejectionCorrect → ¬ catlibMethodologySound</code></pre></div>
+<div class="node-desc">AXIOM: If Barth's rejection is correct, the catlib methodology is</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="analogy_carries_truth">analogy_carries_truth</span><span class="dep-chip" data-target="barthRejectionCorrect">barthRejectionCorrect</span><span class="dep-chip" data-target="catlibMethodologySound">catlibMethodologySound</span><span class="dep-chip" data-target="god_talk_is_analogical">god_talk_is_analogical</span><span class="dep-chip" data-target="human_language_falls_short">human_language_falls_short</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="intelligibility_grounds_analogy">intelligibility_grounds_analogy</span><span class="dep-chip" data-target="barth_and_catlib_incompatible">barth_and_catlib_incompatible</span><span class="dep-chip" data-target="analogy_denominational_scope">analogy_denominational_scope</span><span class="dep-chip" data-target="barthRejectionCorrect">barthRejectionCorrect</span><span class="dep-chip" data-target="catlibMethodologySound">catlibMethodologySound</span><span class="dep-chip" data-target="analogy_carries_truth">analogy_carries_truth</span><span class="dep-chip" data-target="god_talk_is_analogical">god_talk_is_analogical</span><span class="dep-chip" data-target="human_language_falls_short">human_language_falls_short</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="intelligibility_grounds_analogy">intelligibility_grounds_analogy</span><span class="dep-chip" data-target="barth_and_catlib_incompatible">barth_and_catlib_incompatible</span><span class="dep-chip" data-target="analogy_denominational_scope">analogy_denominational_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="analogical_truth_is_genuine_but_partial">
@@ -767,9 +770,9 @@ h1 {
     <div class="node-prop"><pre><code>theorem analogical_truth_is_genuine_but_partial
     (pred : TheologicalPredicate) :
     hasGenuineTruthContent pred ∧ ¬ capturesCompletely pred</code></pre></div>
-<div class="node-desc">God-talk carries genuine but incomplete truth content.</div>
+<div class="node-desc">THEOREM: God-talk carries genuine but incomplete truth content.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="TheologicalPredicate">TheologicalPredicate</span><span class="dep-chip" data-target="analogy_carries_truth">analogy_carries_truth</span><span class="dep-chip" data-target="capturesCompletely">capturesCompletely</span><span class="dep-chip" data-target="creatures_resemble_god">creatures_resemble_god</span><span class="dep-chip" data-target="god_talk_is_analogical">god_talk_is_analogical</span><span class="dep-chip" data-target="hasGenuineTruthContent">hasGenuineTruthContent</span><span class="dep-chip" data-target="human_language_falls_short">human_language_falls_short</span><span class="dep-chip" data-target="resemblance_grounds_analogy">resemblance_grounds_analogy</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="analogy_and_simplicity_complementary">analogy_and_simplicity_complementary</span><span class="dep-chip" data-target="analogy_denominational_scope">analogy_denominational_scope</span><span class="dep-chip" data-target="TheologicalPredicate">TheologicalPredicate</span><span class="dep-chip" data-target="creatures_resemble_god">creatures_resemble_god</span><span class="dep-chip" data-target="capturesCompletely">capturesCompletely</span><span class="dep-chip" data-target="hasGenuineTruthContent">hasGenuineTruthContent</span><span class="dep-chip" data-target="analogy_carries_truth">analogy_carries_truth</span><span class="dep-chip" data-target="god_talk_is_analogical">god_talk_is_analogical</span><span class="dep-chip" data-target="human_language_falls_short">human_language_falls_short</span><span class="dep-chip" data-target="resemblance_grounds_analogy">resemblance_grounds_analogy</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="analogy_and_simplicity_complementary">analogy_and_simplicity_complementary</span><span class="dep-chip" data-target="analogy_denominational_scope">analogy_denominational_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="resemblance_grounds_all_god_talk">
@@ -782,9 +785,9 @@ h1 {
     <div class="node-prop"><pre><code>theorem resemblance_grounds_all_god_talk
     (pred : TheologicalPredicate) :
     hasGenuineTruthContent pred</code></pre></div>
-<div class="node-desc">Creaturely resemblance grounds all theological predication.</div>
+<div class="node-desc">THEOREM: Creaturely resemblance grounds all theological predication.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="TheologicalPredicate">TheologicalPredicate</span><span class="dep-chip" data-target="analogy_grounds_methodology">analogy_grounds_methodology</span><span class="dep-chip" data-target="creatures_resemble_god">creatures_resemble_god</span><span class="dep-chip" data-target="god_talk_is_analogical">god_talk_is_analogical</span><span class="dep-chip" data-target="hasGenuineTruthContent">hasGenuineTruthContent</span><span class="dep-chip" data-target="resemblance_grounds_analogy">resemblance_grounds_analogy</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="catlib_methodology_is_sound">catlib_methodology_is_sound</span><span class="dep-chip" data-target="analogy_denominational_scope">analogy_denominational_scope</span><span class="dep-chip" data-target="TheologicalPredicate">TheologicalPredicate</span><span class="dep-chip" data-target="creatures_resemble_god">creatures_resemble_god</span><span class="dep-chip" data-target="hasGenuineTruthContent">hasGenuineTruthContent</span><span class="dep-chip" data-target="analogy_grounds_methodology">analogy_grounds_methodology</span><span class="dep-chip" data-target="god_talk_is_analogical">god_talk_is_analogical</span><span class="dep-chip" data-target="resemblance_grounds_analogy">resemblance_grounds_analogy</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="catlib_methodology_is_sound">catlib_methodology_is_sound</span><span class="dep-chip" data-target="analogy_denominational_scope">analogy_denominational_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="catlib_methodology_is_sound">
@@ -795,9 +798,9 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem catlib_methodology_is_sound : catlibMethodologySound</code></pre></div>
-<div class="node-desc">The catlib methodology is sound.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="analogy_carries_truth">analogy_carries_truth</span><span class="dep-chip" data-target="analogy_grounds_methodology">analogy_grounds_methodology</span><span class="dep-chip" data-target="catlibMethodologySound">catlibMethodologySound</span><span class="dep-chip" data-target="creatures_resemble_god">creatures_resemble_god</span><span class="dep-chip" data-target="god_talk_is_analogical">god_talk_is_analogical</span><span class="dep-chip" data-target="hasGenuineTruthContent">hasGenuineTruthContent</span><span class="dep-chip" data-target="human_language_falls_short">human_language_falls_short</span><span class="dep-chip" data-target="resemblance_grounds_all_god_talk">resemblance_grounds_all_god_talk</span><span class="dep-chip" data-target="simplicity_love">simplicity_love</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="intelligibility_grounds_analogy">intelligibility_grounds_analogy</span><span class="dep-chip" data-target="barth_and_catlib_incompatible">barth_and_catlib_incompatible</span><span class="dep-chip" data-target="analogy_denominational_scope">analogy_denominational_scope</span><span class="dep-chip" data-target="catlibMethodologySound">catlibMethodologySound</span><span class="dep-chip" data-target="creatures_resemble_god">creatures_resemble_god</span><span class="dep-chip" data-target="hasGenuineTruthContent">hasGenuineTruthContent</span><span class="dep-chip" data-target="analogy_carries_truth">analogy_carries_truth</span><span class="dep-chip" data-target="analogy_grounds_methodology">analogy_grounds_methodology</span><span class="dep-chip" data-target="god_talk_is_analogical">god_talk_is_analogical</span><span class="dep-chip" data-target="human_language_falls_short">human_language_falls_short</span><span class="dep-chip" data-target="resemblance_grounds_all_god_talk">resemblance_grounds_all_god_talk</span></div></div>
+<div class="node-desc">THEOREM: The catlib methodology is sound.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="analogy_carries_truth">analogy_carries_truth</span><span class="dep-chip" data-target="analogy_grounds_methodology">analogy_grounds_methodology</span><span class="dep-chip" data-target="catlibMethodologySound">catlibMethodologySound</span><span class="dep-chip" data-target="creatures_resemble_god">creatures_resemble_god</span><span class="dep-chip" data-target="god_talk_is_analogical">god_talk_is_analogical</span><span class="dep-chip" data-target="hasGenuineTruthContent">hasGenuineTruthContent</span><span class="dep-chip" data-target="human_language_falls_short">human_language_falls_short</span><span class="dep-chip" data-target="resemblance_grounds_all_god_talk">resemblance_grounds_all_god_talk</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="intelligibility_grounds_analogy">intelligibility_grounds_analogy</span><span class="dep-chip" data-target="barth_and_catlib_incompatible">barth_and_catlib_incompatible</span><span class="dep-chip" data-target="analogy_denominational_scope">analogy_denominational_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="analogy_and_simplicity_complementary">
@@ -813,9 +816,9 @@ h1 {
     (hasGenuineTruthContent pred ∧ ¬ capturesCompletely pred) ∧
     -- Simplicity asserts identity with essence (for love, as example)
     identicalWithEssence godIsLove e</code></pre></div>
-<div class="node-desc">Analogy and divine simplicity are COMPLEMENTARY, not conflicting.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DivineEssence">DivineEssence</span><span class="dep-chip" data-target="TheologicalPredicate">TheologicalPredicate</span><span class="dep-chip" data-target="analogical_truth_is_genuine_but_partial">analogical_truth_is_genuine_but_partial</span><span class="dep-chip" data-target="beingIsIntelligible">beingIsIntelligible</span><span class="dep-chip" data-target="being_is_intelligible">being_is_intelligible</span><span class="dep-chip" data-target="capturesCompletely">capturesCompletely</span><span class="dep-chip" data-target="creaturesResembleGod">creaturesResembleGod</span><span class="dep-chip" data-target="creatures_resemble_god">creatures_resemble_god</span><span class="dep-chip" data-target="godIsLove">godIsLove</span><span class="dep-chip" data-target="hasGenuineTruthContent">hasGenuineTruthContent</span><span class="dep-chip" data-target="identicalWithEssence">identicalWithEssence</span><span class="dep-chip" data-target="simplicity_love">simplicity_love</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="analogy_denominational_scope">analogy_denominational_scope</span><span class="dep-chip" data-target="creaturesResembleGod">creaturesResembleGod</span><span class="dep-chip" data-target="TheologicalPredicate">TheologicalPredicate</span><span class="dep-chip" data-target="creatures_resemble_god">creatures_resemble_god</span><span class="dep-chip" data-target="capturesCompletely">capturesCompletely</span><span class="dep-chip" data-target="hasGenuineTruthContent">hasGenuineTruthContent</span><span class="dep-chip" data-target="analogical_truth_is_genuine_but_partial">analogical_truth_is_genuine_but_partial</span></div></div>
+<div class="node-desc">THEOREM: Analogy and divine simplicity are COMPLEMENTARY, not conflicting.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="TheologicalPredicate">TheologicalPredicate</span><span class="dep-chip" data-target="analogical_truth_is_genuine_but_partial">analogical_truth_is_genuine_but_partial</span><span class="dep-chip" data-target="capturesCompletely">capturesCompletely</span><span class="dep-chip" data-target="creaturesResembleGod">creaturesResembleGod</span><span class="dep-chip" data-target="creatures_resemble_god">creatures_resemble_god</span><span class="dep-chip" data-target="hasGenuineTruthContent">hasGenuineTruthContent</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="analogy_denominational_scope">analogy_denominational_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="intelligibility_grounds_analogy">
@@ -827,9 +830,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem intelligibility_grounds_analogy :
     beingIsIntelligible ∧ creaturesResembleGod</code></pre></div>
-<div class="node-desc">Analogy connects to intelligibility — both rest on the</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="barth_challenge">barth_challenge</span><span class="dep-chip" data-target="beingIsIntelligible">beingIsIntelligible</span><span class="dep-chip" data-target="being_is_intelligible">being_is_intelligible</span><span class="dep-chip" data-target="catlib_methodology_is_sound">catlib_methodology_is_sound</span><span class="dep-chip" data-target="creaturesResembleGod">creaturesResembleGod</span><span class="dep-chip" data-target="creatures_resemble_god">creatures_resemble_god</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="analogy_denominational_scope">analogy_denominational_scope</span><span class="dep-chip" data-target="creaturesResembleGod">creaturesResembleGod</span><span class="dep-chip" data-target="creatures_resemble_god">creatures_resemble_god</span><span class="dep-chip" data-target="barth_challenge">barth_challenge</span><span class="dep-chip" data-target="catlib_methodology_is_sound">catlib_methodology_is_sound</span></div></div>
+<div class="node-desc">THEOREM: Analogy connects to intelligibility — both rest on the</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="barth_challenge">barth_challenge</span><span class="dep-chip" data-target="catlib_methodology_is_sound">catlib_methodology_is_sound</span><span class="dep-chip" data-target="creaturesResembleGod">creaturesResembleGod</span><span class="dep-chip" data-target="creatures_resemble_god">creatures_resemble_god</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="analogy_denominational_scope">analogy_denominational_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="barth_and_catlib_incompatible">
@@ -841,9 +844,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem barth_and_catlib_incompatible :
     ¬ barthRejectionCorrect</code></pre></div>
-<div class="node-desc">The Barthian challenge — if Barth is right, catlib fails.</div>
+<div class="node-desc">THEOREM: The Barthian challenge — if Barth is right, catlib fails.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="barthRejectionCorrect">barthRejectionCorrect</span><span class="dep-chip" data-target="barth_challenge">barth_challenge</span><span class="dep-chip" data-target="catlib_methodology_is_sound">catlib_methodology_is_sound</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="analogy_denominational_scope">analogy_denominational_scope</span><span class="dep-chip" data-target="barthRejectionCorrect">barthRejectionCorrect</span><span class="dep-chip" data-target="barth_challenge">barth_challenge</span><span class="dep-chip" data-target="catlib_methodology_is_sound">catlib_methodology_is_sound</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="analogy_denominational_scope">analogy_denominational_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="analogy_denominational_scope">
@@ -854,9 +857,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>def analogy_denominational_scope : DenominationalTag</code></pre></div>
-<div class="node-desc">in its full Thomistic form. The broader claim that God-talk is Scope: the analogy of being is a Catholic distinctive</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DivineEssence">DivineEssence</span><span class="dep-chip" data-target="PredicationMode">PredicationMode</span><span class="dep-chip" data-target="analogical_truth_is_genuine_but_partial">analogical_truth_is_genuine_but_partial</span><span class="dep-chip" data-target="analogy_and_simplicity_complementary">analogy_and_simplicity_complementary</span><span class="dep-chip" data-target="analogy_carries_truth">analogy_carries_truth</span><span class="dep-chip" data-target="analogy_grounds_methodology">analogy_grounds_methodology</span><span class="dep-chip" data-target="barth_and_catlib_incompatible">barth_and_catlib_incompatible</span><span class="dep-chip" data-target="barth_challenge">barth_challenge</span><span class="dep-chip" data-target="beingIsIntelligible">beingIsIntelligible</span><span class="dep-chip" data-target="being_is_intelligible">being_is_intelligible</span><span class="dep-chip" data-target="catlib_methodology_is_sound">catlib_methodology_is_sound</span><span class="dep-chip" data-target="creaturesResembleGod">creaturesResembleGod</span><span class="dep-chip" data-target="creatures_resemble_god">creatures_resemble_god</span><span class="dep-chip" data-target="godCreatesThruWisdom">godCreatesThruWisdom</span><span class="dep-chip" data-target="godIsLove">godIsLove</span><span class="dep-chip" data-target="god_talk_is_analogical">god_talk_is_analogical</span><span class="dep-chip" data-target="human_language_falls_short">human_language_falls_short</span><span class="dep-chip" data-target="identicalWithEssence">identicalWithEssence</span><span class="dep-chip" data-target="intelligibility_grounds_analogy">intelligibility_grounds_analogy</span><span class="dep-chip" data-target="omnipotence">omnipotence</span><span class="dep-chip" data-target="omniscience">omniscience</span><span class="dep-chip" data-target="resemblance_grounds_all_god_talk">resemblance_grounds_all_god_talk</span><span class="dep-chip" data-target="resemblance_grounds_analogy">resemblance_grounds_analogy</span><span class="dep-chip" data-target="simplicity_love">simplicity_love</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="PredicationMode">PredicationMode</span><span class="dep-chip" data-target="creaturesResembleGod">creaturesResembleGod</span><span class="dep-chip" data-target="creatures_resemble_god">creatures_resemble_god</span><span class="dep-chip" data-target="analogy_carries_truth">analogy_carries_truth</span><span class="dep-chip" data-target="analogy_grounds_methodology">analogy_grounds_methodology</span><span class="dep-chip" data-target="god_talk_is_analogical">god_talk_is_analogical</span><span class="dep-chip" data-target="human_language_falls_short">human_language_falls_short</span><span class="dep-chip" data-target="resemblance_grounds_analogy">resemblance_grounds_analogy</span><span class="dep-chip" data-target="analogical_truth_is_genuine_but_partial">analogical_truth_is_genuine_but_partial</span><span class="dep-chip" data-target="barth_challenge">barth_challenge</span><span class="dep-chip" data-target="resemblance_grounds_all_god_talk">resemblance_grounds_all_god_talk</span><span class="dep-chip" data-target="analogy_and_simplicity_complementary">analogy_and_simplicity_complementary</span><span class="dep-chip" data-target="catlib_methodology_is_sound">catlib_methodology_is_sound</span><span class="dep-chip" data-target="barth_and_catlib_incompatible">barth_and_catlib_incompatible</span><span class="dep-chip" data-target="intelligibility_grounds_analogy">intelligibility_grounds_analogy</span></div></div>
+<div class="node-desc">Denominational scope: the analogy of being is a Catholic distinctive</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target=":">:</span><span class="dep-chip" data-target="PredicationMode">PredicationMode</span><span class="dep-chip" data-target="analogical_truth_is_genuine_but_partial">analogical_truth_is_genuine_but_partial</span><span class="dep-chip" data-target="analogy_and_simplicity_complementary">analogy_and_simplicity_complementary</span><span class="dep-chip" data-target="analogy_carries_truth">analogy_carries_truth</span><span class="dep-chip" data-target="analogy_grounds_methodology">analogy_grounds_methodology</span><span class="dep-chip" data-target="barth_and_catlib_incompatible">barth_and_catlib_incompatible</span><span class="dep-chip" data-target="barth_challenge">barth_challenge</span><span class="dep-chip" data-target="catlib_methodology_is_sound">catlib_methodology_is_sound</span><span class="dep-chip" data-target="creaturesResembleGod">creaturesResembleGod</span><span class="dep-chip" data-target="creatures_resemble_god">creatures_resemble_god</span><span class="dep-chip" data-target="god_talk_is_analogical">god_talk_is_analogical</span><span class="dep-chip" data-target="human_language_falls_short">human_language_falls_short</span><span class="dep-chip" data-target="intelligibility_grounds_analogy">intelligibility_grounds_analogy</span><span class="dep-chip" data-target="resemblance_grounds_all_god_talk">resemblance_grounds_all_god_talk</span><span class="dep-chip" data-target="resemblance_grounds_analogy">resemblance_grounds_analogy</span></div></div>
   </div>
 </div>
   </div>

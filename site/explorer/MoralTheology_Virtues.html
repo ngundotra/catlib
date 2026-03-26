@@ -143,7 +143,7 @@ h1 {
   line-height: 1.6;
 }
 
-/* Search */
+/* ── Search ── */
 .search-box {
   width: 100%;
   padding: 0.8rem 1rem;
@@ -167,7 +167,7 @@ h1 {
   font-style: italic;
 }
 
-/* Category sections */
+/* ── Category sections ── */
 .category-header {
   font-family: Cinzel, Georgia, serif;
   font-size: 1.1rem;
@@ -181,7 +181,7 @@ h1 {
   border-bottom: 1px solid var(--border);
 }
 
-/* File cards */
+/* ── File cards ── */
 .file-card {
   display: block;
   padding: 1rem 1.1rem;
@@ -237,7 +237,7 @@ h1 {
   margin-top: 0.3rem;
 }
 
-/* Summary stats */
+/* ── Summary stats ── */
 .stats-bar {
   display: flex;
   justify-content: center;
@@ -251,7 +251,7 @@ h1 {
 
 .stats-bar span { white-space: nowrap; }
 
-/* Node cards */
+/* ── Node cards (per-file page) ── */
 .node-card {
   margin-bottom: 0.4rem;
   border: 1px solid var(--border);
@@ -267,8 +267,6 @@ h1 {
 .node-card.kind-structure { border-left-color: var(--structure-dot); }
 .node-card.kind-inductive { border-left-color: var(--inductive-dot); }
 .node-card.kind-proposition { border-left-color: var(--proposition-dot); }
-.node-card.kind-instance { border-left-color: var(--def-dot); }
-.node-card.kind-abbrev { border-left-color: var(--def-dot); }
 
 .node-header {
   display: flex;
@@ -304,8 +302,6 @@ h1 {
 .kind-structure .node-kind-badge { background: var(--structure-bg); color: var(--structure-dot); }
 .kind-inductive .node-kind-badge { background: var(--inductive-bg); color: var(--inductive-dot); }
 .kind-proposition .node-kind-badge { background: var(--proposition-bg); color: var(--proposition-dot); }
-.kind-instance .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
-.kind-abbrev .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
 
 .node-name {
   flex: 1;
@@ -409,7 +405,7 @@ h1 {
   color: var(--text-muted);
 }
 
-/* Flow diagram header */
+/* ── Flow diagram header ── */
 .flow-summary {
   display: flex;
   justify-content: center;
@@ -435,7 +431,7 @@ h1 {
 .flow-count.theorems { background: var(--theorem-bg); color: var(--theorem-dot); }
 .flow-count.derived { background: var(--def-bg); color: var(--def-dot); }
 
-/* Legend */
+/* ── Legend ── */
 .legend {
   display: flex;
   flex-wrap: wrap;
@@ -467,7 +463,7 @@ h1 {
 .legend-dot.inductive { background: var(--inductive-dot); }
 .legend-dot.proposition { background: var(--proposition-dot); }
 
-/* Filter buttons */
+/* ── Filter buttons ── */
 .filter-bar {
   display: flex;
   flex-wrap: wrap;
@@ -496,7 +492,7 @@ h1 {
   border-color: var(--accent);
 }
 
-/* Back link */
+/* ── Back link ── */
 .back-link {
   display: inline-block;
   margin-bottom: 1rem;
@@ -505,7 +501,7 @@ h1 {
   letter-spacing: 0.04em;
 }
 
-/* Footer */
+/* ── Footer ── */
 .footer {
   text-align: center;
   padding-top: 2rem;
@@ -514,7 +510,7 @@ h1 {
   font-style: italic;
 }
 
-/* Responsive */
+/* ── Responsive ── */
 @media (max-width: 500px) {
   html { font-size: 16px; }
   .container { padding: 1rem 0.75rem 2rem; }
@@ -527,12 +523,20 @@ h1 {
 <div class="container">
   <a href="index.html" class="back-link">&larr; All files</a>
   <h1>Virtues</h1>
-  <div class="subtitle">Moral Theology &middot; 27 declarations</div>
+  <div class="subtitle">MoralTheology &middot; 27 declarations</div>
 
-  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;388, &sect;1733, &sect;1803, &sect;1805, &sect;1806, &sect;1807, &sect;1808, &sect;1809, &sect;1810, &sect;1811, &hellip;</div>
-  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span><span class="legend-item"><span class="legend-dot proposition"></span>proposition</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
+  <div class="flow-summary">
+  <span class="flow-count axioms">13 axioms</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count theorems">8 theorems</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count derived">6 derived</span>
+</div>
+  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1733, &sect;1803, &sect;1805, &sect;1806, &sect;1807, &sect;1808, &sect;1809, &sect;1810, &sect;1811, &sect;1812, &sect;1813, &sect;1814, &sect;1817, &sect;1822, &sect;1827 +1 more</div>
 
-  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (7)</button><button class="filter-btn" data-filter="def">def (3)</button><button class="filter-btn" data-filter="inductive">inductive (3)</button><button class="filter-btn" data-filter="proposition">proposition (6)</button><button class="filter-btn" data-filter="theorem">theorem (8)</button></div>
+  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
+
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (7)</button><button class="filter-btn" data-filter="def">def (3)</button><button class="filter-btn" data-filter="inductive">inductive (3)</button><button class="filter-btn" data-filter="opaque">opaque (6)</button><button class="filter-btn" data-filter="theorem">theorem (8)</button></div>
 
   <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
 
@@ -545,8 +549,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>inductive CardinalVirtue where</code></pre></div>
-<div class="node-desc">The four cardinal virtues.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="Virtue">Virtue</span><span class="dep-chip" data-target="cardinal_naturally_acquirable">cardinal_naturally_acquirable</span><span class="dep-chip" data-target="cardinal_need_grace_for_perseverance">cardinal_need_grace_for_perseverance</span><span class="dep-chip" data-target="catholic_differs_from_total_depravity">catholic_differs_from_total_depravity</span><span class="dep-chip" data-target="charity_informs_cardinal">charity_informs_cardinal</span><span class="dep-chip" data-target="charity_is_form_of_all_cardinal">charity_is_form_of_all_cardinal</span><span class="dep-chip" data-target="natural_acquisition_compatible_with_grace_dependence">natural_acquisition_compatible_with_grace_dependence</span></div></div>
+<div class="node-desc">The four cardinal virtues. CCC §1805: &quot;Four virtues play a pivotal role.&quot;</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="Virtue">Virtue</span><span class="dep-chip" data-target="cardinal_naturally_acquirable">cardinal_naturally_acquirable</span><span class="dep-chip" data-target="charity_informs_cardinal">charity_informs_cardinal</span><span class="dep-chip" data-target="cardinal_need_grace_for_perseverance">cardinal_need_grace_for_perseverance</span><span class="dep-chip" data-target="natural_acquisition_compatible_with_grace_dependence">natural_acquisition_compatible_with_grace_dependence</span><span class="dep-chip" data-target="charity_is_form_of_all_cardinal">charity_is_form_of_all_cardinal</span><span class="dep-chip" data-target="catholic_differs_from_total_depravity">catholic_differs_from_total_depravity</span></div></div>
   </div>
 </div>
 <div class="node-card kind-inductive" data-kind="inductive" data-name="TheologicalVirtue">
@@ -557,8 +561,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>inductive TheologicalVirtue where</code></pre></div>
-<div class="node-desc">The three theological virtues.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="Virtue">Virtue</span><span class="dep-chip" data-target="charity_entails_agape">charity_entails_agape</span><span class="dep-chip" data-target="charity_informs_cardinal">charity_informs_cardinal</span><span class="dep-chip" data-target="charity_is_agape">charity_is_agape</span><span class="dep-chip" data-target="charity_is_form_of_all_cardinal">charity_is_form_of_all_cardinal</span><span class="dep-chip" data-target="theological_not_naturally_acquired">theological_not_naturally_acquired</span><span class="dep-chip" data-target="theological_only_by_infusion">theological_only_by_infusion</span><span class="dep-chip" data-target="theological_require_infusion">theological_require_infusion</span></div></div>
+<div class="node-desc">The three theological virtues. CCC §1812-1813.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="Virtue">Virtue</span><span class="dep-chip" data-target="theological_require_infusion">theological_require_infusion</span><span class="dep-chip" data-target="theological_not_naturally_acquired">theological_not_naturally_acquired</span><span class="dep-chip" data-target="charity_informs_cardinal">charity_informs_cardinal</span><span class="dep-chip" data-target="charity_is_agape">charity_is_agape</span><span class="dep-chip" data-target="theological_only_by_infusion">theological_only_by_infusion</span><span class="dep-chip" data-target="charity_entails_agape">charity_entails_agape</span><span class="dep-chip" data-target="charity_is_form_of_all_cardinal">charity_is_form_of_all_cardinal</span></div></div>
   </div>
 </div>
 <div class="node-card kind-inductive" data-kind="inductive" data-name="Virtue">
@@ -568,83 +572,88 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>inductive Virtue where
-| cardinal (v : CardinalVirtue)
-| theological (v : TheologicalVirtue)</code></pre></div>
+    <div class="node-prop"><pre><code>inductive Virtue where</code></pre></div>
 <div class="node-desc">A virtue — either cardinal or theological.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CardinalVirtue">CardinalVirtue</span><span class="dep-chip" data-target="TheologicalVirtue">TheologicalVirtue</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="canPersevereIn">canPersevereIn</span><span class="dep-chip" data-target="cardinal_naturally_acquirable">cardinal_naturally_acquirable</span><span class="dep-chip" data-target="cardinal_need_grace_for_perseverance">cardinal_need_grace_for_perseverance</span><span class="dep-chip" data-target="catholic_differs_from_total_depravity">catholic_differs_from_total_depravity</span><span class="dep-chip" data-target="catholic_excludes_pelagianism">catholic_excludes_pelagianism</span><span class="dep-chip" data-target="charity_entails_agape">charity_entails_agape</span><span class="dep-chip" data-target="charity_informs_cardinal">charity_informs_cardinal</span><span class="dep-chip" data-target="charity_is_agape">charity_is_agape</span><span class="dep-chip" data-target="charity_is_form_of_all_cardinal">charity_is_form_of_all_cardinal</span><span class="dep-chip" data-target="divinelyInfused">divinelyInfused</span><span class="dep-chip" data-target="grace_needed_for_perseverance">grace_needed_for_perseverance</span><span class="dep-chip" data-target="hasVirtue">hasVirtue</span><span class="dep-chip" data-target="informs">informs</span><span class="dep-chip" data-target="natural_acquisition_compatible_with_grace_dependence">natural_acquisition_compatible_with_grace_dependence</span><span class="dep-chip" data-target="naturallyAcquired">naturallyAcquired</span><span class="dep-chip" data-target="theological_not_naturally_acquired">theological_not_naturally_acquired</span><span class="dep-chip" data-target="theological_only_by_infusion">theological_only_by_infusion</span><span class="dep-chip" data-target="theological_require_infusion">theological_require_infusion</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CardinalVirtue">CardinalVirtue</span><span class="dep-chip" data-target="TheologicalVirtue">TheologicalVirtue</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hasVirtue">hasVirtue</span><span class="dep-chip" data-target="naturallyAcquired">naturallyAcquired</span><span class="dep-chip" data-target="divinelyInfused">divinelyInfused</span><span class="dep-chip" data-target="canPersevereIn">canPersevereIn</span><span class="dep-chip" data-target="informs">informs</span><span class="dep-chip" data-target="cardinal_naturally_acquirable">cardinal_naturally_acquirable</span><span class="dep-chip" data-target="theological_require_infusion">theological_require_infusion</span><span class="dep-chip" data-target="theological_not_naturally_acquired">theological_not_naturally_acquired</span><span class="dep-chip" data-target="grace_needed_for_perseverance">grace_needed_for_perseverance</span><span class="dep-chip" data-target="charity_informs_cardinal">charity_informs_cardinal</span><span class="dep-chip" data-target="charity_is_agape">charity_is_agape</span><span class="dep-chip" data-target="cardinal_need_grace_for_perseverance">cardinal_need_grace_for_perseverance</span><span class="dep-chip" data-target="theological_only_by_infusion">theological_only_by_infusion</span><span class="dep-chip" data-target="charity_entails_agape">charity_entails_agape</span><span class="dep-chip" data-target="natural_acquisition_compatible_with_grace_dependence">natural_acquisition_compatible_with_grace_dependence</span><span class="dep-chip" data-target="charity_is_form_of_all_cardinal">charity_is_form_of_all_cardinal</span><span class="dep-chip" data-target="catholic_excludes_pelagianism">catholic_excludes_pelagianism</span><span class="dep-chip" data-target="catholic_differs_from_total_depravity">catholic_differs_from_total_depravity</span></div></div>
   </div>
 </div>
-<div class="node-card kind-proposition" data-kind="proposition" data-name="hasVirtue">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="hasVirtue">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
+    <span class="node-kind-badge">opaque</span>
     <span class="node-name">hasVirtue</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque hasVirtue : Person → Virtue → Prop</code></pre></div>
 <div class="node-desc">Whether a person possesses a given virtue (as a habitual disposition).</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Virtue">Virtue</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="charity_entails_agape">charity_entails_agape</span><span class="dep-chip" data-target="charity_is_agape">charity_is_agape</span><span class="dep-chip" data-target="theological_only_by_infusion">theological_only_by_infusion</span><span class="dep-chip" data-target="theological_require_infusion">theological_require_infusion</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Virtue">Virtue</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="theological_require_infusion">theological_require_infusion</span><span class="dep-chip" data-target="charity_is_agape">charity_is_agape</span><span class="dep-chip" data-target="theological_only_by_infusion">theological_only_by_infusion</span><span class="dep-chip" data-target="charity_entails_agape">charity_entails_agape</span></div></div>
   </div>
 </div>
-<div class="node-card kind-proposition" data-kind="proposition" data-name="naturallyAcquired">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="naturallyAcquired">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
+    <span class="node-kind-badge">opaque</span>
     <span class="node-name">naturallyAcquired</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque naturallyAcquired : Person → Virtue → Prop</code></pre></div>
-<div class="node-desc">Whether a virtue was acquired through natural human effort (education, deliberate acts, perseverance).</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Virtue">Virtue</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="cardinal_naturally_acquirable">cardinal_naturally_acquirable</span><span class="dep-chip" data-target="catholic_differs_from_total_depravity">catholic_differs_from_total_depravity</span><span class="dep-chip" data-target="natural_acquisition_compatible_with_grace_dependence">natural_acquisition_compatible_with_grace_dependence</span><span class="dep-chip" data-target="theological_not_naturally_acquired">theological_not_naturally_acquired</span><span class="dep-chip" data-target="theological_only_by_infusion">theological_only_by_infusion</span></div></div>
+<div class="node-desc">Whether a virtue was acquired through natural human effort (education,</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Virtue">Virtue</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="cardinal_naturally_acquirable">cardinal_naturally_acquirable</span><span class="dep-chip" data-target="theological_not_naturally_acquired">theological_not_naturally_acquired</span><span class="dep-chip" data-target="theological_only_by_infusion">theological_only_by_infusion</span><span class="dep-chip" data-target="natural_acquisition_compatible_with_grace_dependence">natural_acquisition_compatible_with_grace_dependence</span><span class="dep-chip" data-target="catholic_differs_from_total_depravity">catholic_differs_from_total_depravity</span></div></div>
   </div>
 </div>
-<div class="node-card kind-proposition" data-kind="proposition" data-name="divinelyInfused">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="divinelyInfused">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
+    <span class="node-kind-badge">opaque</span>
     <span class="node-name">divinelyInfused</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque divinelyInfused : Person → Virtue → Prop</code></pre></div>
 <div class="node-desc">Whether a virtue was infused by God (supernatural gift).</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Virtue">Virtue</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="theological_only_by_infusion">theological_only_by_infusion</span><span class="dep-chip" data-target="theological_require_infusion">theological_require_infusion</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Virtue">Virtue</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="theological_require_infusion">theological_require_infusion</span><span class="dep-chip" data-target="theological_only_by_infusion">theological_only_by_infusion</span></div></div>
   </div>
 </div>
-<div class="node-card kind-proposition" data-kind="proposition" data-name="canPersevereIn">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="canPersevereIn">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
+    <span class="node-kind-badge">opaque</span>
     <span class="node-name">canPersevereIn</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque canPersevereIn : Person → Virtue → Prop</code></pre></div>
 <div class="node-desc">Whether a person can sustain (persevere in) a virtue over time.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Virtue">Virtue</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="cardinal_need_grace_for_perseverance">cardinal_need_grace_for_perseverance</span><span class="dep-chip" data-target="catholic_excludes_pelagianism">catholic_excludes_pelagianism</span><span class="dep-chip" data-target="grace_needed_for_perseverance">grace_needed_for_perseverance</span><span class="dep-chip" data-target="natural_acquisition_compatible_with_grace_dependence">natural_acquisition_compatible_with_grace_dependence</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Virtue">Virtue</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="grace_needed_for_perseverance">grace_needed_for_perseverance</span><span class="dep-chip" data-target="cardinal_need_grace_for_perseverance">cardinal_need_grace_for_perseverance</span><span class="dep-chip" data-target="natural_acquisition_compatible_with_grace_dependence">natural_acquisition_compatible_with_grace_dependence</span><span class="dep-chip" data-target="catholic_excludes_pelagianism">catholic_excludes_pelagianism</span></div></div>
   </div>
 </div>
-<div class="node-card kind-proposition" data-kind="proposition" data-name="woundedBySin">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="woundedBySin">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
+    <span class="node-kind-badge">opaque</span>
     <span class="node-name">woundedBySin</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque woundedBySin : Person → Prop</code></pre></div>
 <div class="node-desc">Whether a person is &quot;wounded by sin&quot; — in the post-Fall condition.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="informs">informs</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="grace_needed_for_perseverance">grace_needed_for_perseverance</span><span class="dep-chip" data-target="universal_woundedness">universal_woundedness</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="informs">informs</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="grace_needed_for_perseverance">grace_needed_for_perseverance</span><span class="dep-chip" data-target="universal_woundedness">universal_woundedness</span></div></div>
   </div>
 </div>
-<div class="node-card kind-proposition" data-kind="proposition" data-name="informs">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="informs">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
+    <span class="node-kind-badge">opaque</span>
     <span class="node-name">informs</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque informs : Virtue → Virtue → Prop</code></pre></div>
 <div class="node-desc">Whether a virtue informs (gives life to) another virtue.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Virtue">Virtue</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="charity_informs_cardinal">charity_informs_cardinal</span><span class="dep-chip" data-target="charity_is_form_of_all_cardinal">charity_is_form_of_all_cardinal</span><span class="dep-chip" data-target="grace_needed_for_perseverance">grace_needed_for_perseverance</span><span class="dep-chip" data-target="natural_acquisition_compatible_with_grace_dependence">natural_acquisition_compatible_with_grace_dependence</span><span class="dep-chip" data-target="woundedBySin">woundedBySin</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Virtue">Virtue</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="woundedBySin">woundedBySin</span><span class="dep-chip" data-target="grace_needed_for_perseverance">grace_needed_for_perseverance</span><span class="dep-chip" data-target="charity_informs_cardinal">charity_informs_cardinal</span><span class="dep-chip" data-target="natural_acquisition_compatible_with_grace_dependence">natural_acquisition_compatible_with_grace_dependence</span><span class="dep-chip" data-target="charity_is_form_of_all_cardinal">charity_is_form_of_all_cardinal</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="cardinal_naturally_acquirable">
@@ -655,11 +664,14 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom cardinal_naturally_acquirable :
-∀ (p : Person) (v : CardinalVirtue),
-p.hasFreeWill = true →
-p.hasIntellect = true →</code></pre></div>
-<div class="node-desc">Cardinal virtues are naturally acquirable.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CardinalVirtue">CardinalVirtue</span><span class="dep-chip" data-target="Virtue">Virtue</span><span class="dep-chip" data-target="naturallyAcquired">naturallyAcquired</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="catholic_differs_from_total_depravity">catholic_differs_from_total_depravity</span><span class="dep-chip" data-target="natural_acquisition_compatible_with_grace_dependence">natural_acquisition_compatible_with_grace_dependence</span></div></div>
+  ∀ (p : Person) (v : CardinalVirtue),
+    p.hasFreeWill = true →
+    p.hasIntellect = true →
+    -- A person with reason and will CAN acquire cardinal virtues naturally
+    naturallyAcquired p (Virtue.cardinal v)</code></pre></div>
+<div class="node-desc">**A1. Cardinal virtues are naturally acquirable.**</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CardinalVirtue">CardinalVirtue</span><span class="dep-chip" data-target="Virtue">Virtue</span><span class="dep-chip" data-target="naturallyAcquired">naturallyAcquired</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="natural_acquisition_compatible_with_grace_dependence">natural_acquisition_compatible_with_grace_dependence</span><span class="dep-chip" data-target="catholic_differs_from_total_depravity">catholic_differs_from_total_depravity</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="theological_require_infusion">
@@ -670,11 +682,12 @@ p.hasIntellect = true →</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom theological_require_infusion :
-∀ (p : Person) (v : TheologicalVirtue),
-hasVirtue p (Virtue.theological v) →
-divinelyInfused p (Virtue.theological v)</code></pre></div>
-<div class="node-desc">Theological virtues are divinely infused, not naturally acquired.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="TheologicalVirtue">TheologicalVirtue</span><span class="dep-chip" data-target="Virtue">Virtue</span><span class="dep-chip" data-target="divinelyInfused">divinelyInfused</span><span class="dep-chip" data-target="hasVirtue">hasVirtue</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="theological_only_by_infusion">theological_only_by_infusion</span></div></div>
+  ∀ (p : Person) (v : TheologicalVirtue),
+    hasVirtue p (Virtue.theological v) →
+    divinelyInfused p (Virtue.theological v)</code></pre></div>
+<div class="node-desc">**A2. Theological virtues are divinely infused, not naturally acquired.**</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="TheologicalVirtue">TheologicalVirtue</span><span class="dep-chip" data-target="Virtue">Virtue</span><span class="dep-chip" data-target="divinelyInfused">divinelyInfused</span><span class="dep-chip" data-target="hasVirtue">hasVirtue</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="theological_only_by_infusion">theological_only_by_infusion</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="theological_not_naturally_acquired">
@@ -685,10 +698,11 @@ divinelyInfused p (Virtue.theological v)</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom theological_not_naturally_acquired :
-∀ (p : Person) (v : TheologicalVirtue),
-naturallyAcquired p (Virtue.theological v) → False</code></pre></div>
-<div class="node-desc">Theological virtues cannot be naturally acquired.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="TheologicalVirtue">TheologicalVirtue</span><span class="dep-chip" data-target="Virtue">Virtue</span><span class="dep-chip" data-target="naturallyAcquired">naturallyAcquired</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="theological_only_by_infusion">theological_only_by_infusion</span></div></div>
+  ∀ (p : Person) (v : TheologicalVirtue),
+    naturallyAcquired p (Virtue.theological v) → False</code></pre></div>
+<div class="node-desc">**A3. Theological virtues cannot be naturally acquired.**</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="TheologicalVirtue">TheologicalVirtue</span><span class="dep-chip" data-target="Virtue">Virtue</span><span class="dep-chip" data-target="naturallyAcquired">naturallyAcquired</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="theological_only_by_infusion">theological_only_by_infusion</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="grace_needed_for_perseverance">
@@ -699,12 +713,13 @@ naturallyAcquired p (Virtue.theological v) → False</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom grace_needed_for_perseverance :
-∀ (p : Person) (v : Virtue) (g : Grace),
-woundedBySin p →
-canPersevereIn p v →
-graceGiven p g</code></pre></div>
-<div class="node-desc">Grace is necessary for perseverance after the Fall.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Virtue">Virtue</span><span class="dep-chip" data-target="canPersevereIn">canPersevereIn</span><span class="dep-chip" data-target="informs">informs</span><span class="dep-chip" data-target="woundedBySin">woundedBySin</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="cardinal_need_grace_for_perseverance">cardinal_need_grace_for_perseverance</span><span class="dep-chip" data-target="catholic_excludes_pelagianism">catholic_excludes_pelagianism</span></div></div>
+  ∀ (p : Person) (v : Virtue) (g : Grace),
+    woundedBySin p →
+    canPersevereIn p v →
+    graceGiven p g</code></pre></div>
+<div class="node-desc">**A4. Grace is necessary for perseverance after the Fall.**</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Virtue">Virtue</span><span class="dep-chip" data-target="canPersevereIn">canPersevereIn</span><span class="dep-chip" data-target="informs">informs</span><span class="dep-chip" data-target="woundedBySin">woundedBySin</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="cardinal_need_grace_for_perseverance">cardinal_need_grace_for_perseverance</span><span class="dep-chip" data-target="catholic_excludes_pelagianism">catholic_excludes_pelagianism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="charity_informs_cardinal">
@@ -715,10 +730,11 @@ graceGiven p g</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom charity_informs_cardinal :
-∀ (v : CardinalVirtue),
-informs (Virtue.theological TheologicalVirtue.charity) (Virtue.cardinal v)</code></pre></div>
-<div class="node-desc">Charity informs all cardinal virtues.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CardinalVirtue">CardinalVirtue</span><span class="dep-chip" data-target="TheologicalVirtue">TheologicalVirtue</span><span class="dep-chip" data-target="Virtue">Virtue</span><span class="dep-chip" data-target="informs">informs</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="charity_is_form_of_all_cardinal">charity_is_form_of_all_cardinal</span></div></div>
+  ∀ (v : CardinalVirtue),
+    informs (Virtue.theological TheologicalVirtue.charity) (Virtue.cardinal v)</code></pre></div>
+<div class="node-desc">**A5. Charity informs all cardinal virtues.**</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CardinalVirtue">CardinalVirtue</span><span class="dep-chip" data-target="TheologicalVirtue">TheologicalVirtue</span><span class="dep-chip" data-target="Virtue">Virtue</span><span class="dep-chip" data-target="informs">informs</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="charity_is_form_of_all_cardinal">charity_is_form_of_all_cardinal</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="charity_is_agape">
@@ -729,14 +745,15 @@ informs (Virtue.theological TheologicalVirtue.charity) (Virtue.cardinal v)</code
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom charity_is_agape :
-∀ (p : Person),
-hasVirtue p (Virtue.theological TheologicalVirtue.charity) →
-∃ (tl : TypedLove),
-tl.kind = LoveKind.agape ∧
-tl.lover = p ∧
-tl.degree &gt; 0</code></pre></div>
-<div class="node-desc">Charity is agape.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="TheologicalVirtue">TheologicalVirtue</span><span class="dep-chip" data-target="Virtue">Virtue</span><span class="dep-chip" data-target="hasVirtue">hasVirtue</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="charity_entails_agape">charity_entails_agape</span><span class="dep-chip" data-target="theological_only_by_infusion">theological_only_by_infusion</span></div></div>
+  ∀ (p : Person),
+    hasVirtue p (Virtue.theological TheologicalVirtue.charity) →
+    ∃ (tl : TypedLove),
+      tl.kind = LoveKind.agape ∧
+      tl.lover = p ∧
+      tl.degree &gt; 0</code></pre></div>
+<div class="node-desc">**A6. Charity is agape.**</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="TheologicalVirtue">TheologicalVirtue</span><span class="dep-chip" data-target="Virtue">Virtue</span><span class="dep-chip" data-target="hasVirtue">hasVirtue</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="theological_only_by_infusion">theological_only_by_infusion</span><span class="dep-chip" data-target="charity_entails_agape">charity_entails_agape</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="universal_woundedness">
@@ -747,9 +764,10 @@ tl.degree &gt; 0</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom universal_woundedness :
-∀ (p : Person), p.isMoralAgent = true → woundedBySin p</code></pre></div>
-<div class="node-desc">All persons are wounded by sin.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="woundedBySin">woundedBySin</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="cardinal_need_grace_for_perseverance">cardinal_need_grace_for_perseverance</span><span class="dep-chip" data-target="catholic_excludes_pelagianism">catholic_excludes_pelagianism</span></div></div>
+  ∀ (p : Person), p.isMoralAgent = true → woundedBySin p</code></pre></div>
+<div class="node-desc">**A7. All persons are wounded by sin.**</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="woundedBySin">woundedBySin</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="cardinal_need_grace_for_perseverance">cardinal_need_grace_for_perseverance</span><span class="dep-chip" data-target="catholic_excludes_pelagianism">catholic_excludes_pelagianism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="cardinal_need_grace_for_perseverance">
@@ -760,12 +778,13 @@ tl.degree &gt; 0</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem cardinal_need_grace_for_perseverance
-(p : Person) (v : CardinalVirtue) (g : Grace)
-(h_moral : p.isMoralAgent = true)
-(h_persevere : canPersevereIn p (Virtue.cardinal v)) :
-graceGiven p g</code></pre></div>
-<div class="node-desc">Cardinal virtues are acquirable by nature but require grace for perseverance after the Fall.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CardinalVirtue">CardinalVirtue</span><span class="dep-chip" data-target="Virtue">Virtue</span><span class="dep-chip" data-target="canPersevereIn">canPersevereIn</span><span class="dep-chip" data-target="grace_needed_for_perseverance">grace_needed_for_perseverance</span><span class="dep-chip" data-target="universal_woundedness">universal_woundedness</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="natural_acquisition_compatible_with_grace_dependence">natural_acquisition_compatible_with_grace_dependence</span></div></div>
+    (p : Person) (v : CardinalVirtue) (g : Grace)
+    (h_moral : p.isMoralAgent = true)
+    (h_persevere : canPersevereIn p (Virtue.cardinal v)) :
+    graceGiven p g</code></pre></div>
+<div class="node-desc">Cardinal virtues are acquirable by nature but require grace for</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CardinalVirtue">CardinalVirtue</span><span class="dep-chip" data-target="Virtue">Virtue</span><span class="dep-chip" data-target="canPersevereIn">canPersevereIn</span><span class="dep-chip" data-target="grace_needed_for_perseverance">grace_needed_for_perseverance</span><span class="dep-chip" data-target="universal_woundedness">universal_woundedness</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="natural_acquisition_compatible_with_grace_dependence">natural_acquisition_compatible_with_grace_dependence</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="theological_only_by_infusion">
@@ -776,9 +795,9 @@ graceGiven p g</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem theological_only_by_infusion
-(p : Person) (v : TheologicalVirtue) :
-(hasVirtue p (Virtue.theological v) → divinelyInfused p (Virtue.theological v)) ∧
-(naturallyAcquired p (Virtue.theological v) → False)</code></pre></div>
+    (p : Person) (v : TheologicalVirtue) :
+    (hasVirtue p (Virtue.theological v) → divinelyInfused p (Virtue.theological v)) ∧
+    (naturallyAcquired p (Virtue.theological v) → False)</code></pre></div>
 <div class="node-desc">Theological virtues are obtainable ONLY by divine infusion.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="TheologicalVirtue">TheologicalVirtue</span><span class="dep-chip" data-target="Virtue">Virtue</span><span class="dep-chip" data-target="charity_is_agape">charity_is_agape</span><span class="dep-chip" data-target="divinelyInfused">divinelyInfused</span><span class="dep-chip" data-target="hasVirtue">hasVirtue</span><span class="dep-chip" data-target="naturallyAcquired">naturallyAcquired</span><span class="dep-chip" data-target="theological_not_naturally_acquired">theological_not_naturally_acquired</span><span class="dep-chip" data-target="theological_require_infusion">theological_require_infusion</span></div></div>
   </div>
@@ -791,12 +810,12 @@ graceGiven p g</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem charity_entails_agape
-(p : Person)
-(h : hasVirtue p (Virtue.theological TheologicalVirtue.charity)) :
-∃ (tl : TypedLove),
-tl.kind = LoveKind.agape ∧
-tl.lover = p ∧
-tl.degree &gt; 0</code></pre></div>
+    (p : Person)
+    (h : hasVirtue p (Virtue.theological TheologicalVirtue.charity)) :
+    ∃ (tl : TypedLove),
+      tl.kind = LoveKind.agape ∧
+      tl.lover = p ∧
+      tl.degree &gt; 0</code></pre></div>
 <div class="node-desc">A person with charity has agape-love (positive degree).</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="TheologicalVirtue">TheologicalVirtue</span><span class="dep-chip" data-target="Virtue">Virtue</span><span class="dep-chip" data-target="charity_is_agape">charity_is_agape</span><span class="dep-chip" data-target="hasVirtue">hasVirtue</span></div></div>
   </div>
@@ -809,12 +828,16 @@ tl.degree &gt; 0</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem natural_acquisition_compatible_with_grace_dependence
-(p : Person) (v : CardinalVirtue) (g : Grace)
-(h_moral : p.isMoralAgent = true)
-(h_will : p.hasFreeWill = true)
-(h_intel : p.hasIntellect = true)
-(h_persevere : canPersevereIn p (Virtue.cardinal v)) :</code></pre></div>
-<div class="node-desc">Even a naturally-acquired cardinal virtue requires grace for perseverance in a fallen person.</div>
+    (p : Person) (v : CardinalVirtue) (g : Grace)
+    (h_moral : p.isMoralAgent = true)
+    (h_will : p.hasFreeWill = true)
+    (h_intel : p.hasIntellect = true)
+    (h_persevere : canPersevereIn p (Virtue.cardinal v)) :
+    -- Natural acquisition is possible...
+    naturallyAcquired p (Virtue.cardinal v) ∧
+    -- ...AND grace is given for perseverance
+    graceGiven p g</code></pre></div>
+<div class="node-desc">Even a naturally-acquired cardinal virtue requires grace for perseverance</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CardinalVirtue">CardinalVirtue</span><span class="dep-chip" data-target="Virtue">Virtue</span><span class="dep-chip" data-target="canPersevereIn">canPersevereIn</span><span class="dep-chip" data-target="cardinal_naturally_acquirable">cardinal_naturally_acquirable</span><span class="dep-chip" data-target="cardinal_need_grace_for_perseverance">cardinal_need_grace_for_perseverance</span><span class="dep-chip" data-target="informs">informs</span><span class="dep-chip" data-target="naturallyAcquired">naturallyAcquired</span></div></div>
   </div>
 </div>
@@ -826,10 +849,10 @@ tl.degree &gt; 0</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem charity_is_form_of_all_cardinal :
-informs (Virtue.theological TheologicalVirtue.charity) (Virtue.cardinal CardinalVirtue.prudence) ∧
-informs (Virtue.theological TheologicalVirtue.charity) (Virtue.cardinal CardinalVirtue.justice) ∧
-informs (Virtue.theological TheologicalVirtue.charity) (Virtue.cardinal CardinalVirtue.fortitude) ∧
-informs (Virtue.theological TheologicalVirtue.charity) (Virtue.cardinal CardinalVirtue.temperance)</code></pre></div>
+    informs (Virtue.theological TheologicalVirtue.charity) (Virtue.cardinal CardinalVirtue.prudence) ∧
+    informs (Virtue.theological TheologicalVirtue.charity) (Virtue.cardinal CardinalVirtue.justice) ∧
+    informs (Virtue.theological TheologicalVirtue.charity) (Virtue.cardinal CardinalVirtue.fortitude) ∧
+    informs (Virtue.theological TheologicalVirtue.charity) (Virtue.cardinal CardinalVirtue.temperance)</code></pre></div>
 <div class="node-desc">Every cardinal virtue is informed by charity.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CardinalVirtue">CardinalVirtue</span><span class="dep-chip" data-target="TheologicalVirtue">TheologicalVirtue</span><span class="dep-chip" data-target="Virtue">Virtue</span><span class="dep-chip" data-target="charity_informs_cardinal">charity_informs_cardinal</span><span class="dep-chip" data-target="informs">informs</span></div></div>
   </div>
@@ -842,10 +865,13 @@ informs (Virtue.theological TheologicalVirtue.charity) (Virtue.cardinal Cardinal
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem catholic_excludes_pelagianism
-(p : Person) (v : Virtue) (g : Grace)
-(h_moral : p.isMoralAgent = true)
-(h_persevere : canPersevereIn p v)</code></pre></div>
-<div class="node-desc">The Catholic position excludes Pelagianism: grace IS needed for perseverance (§1811).</div>
+    (p : Person) (v : Virtue) (g : Grace)
+    (h_moral : p.isMoralAgent = true)
+    (h_persevere : canPersevereIn p v)
+    -- Pelagian claim: perseverance without grace
+    (h_pelagian : ¬ graceGiven p g) :
+    False</code></pre></div>
+<div class="node-desc">The Catholic position excludes Pelagianism: grace IS needed for</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Virtue">Virtue</span><span class="dep-chip" data-target="canPersevereIn">canPersevereIn</span><span class="dep-chip" data-target="grace_needed_for_perseverance">grace_needed_for_perseverance</span><span class="dep-chip" data-target="universal_woundedness">universal_woundedness</span></div></div>
   </div>
 </div>
@@ -857,10 +883,12 @@ informs (Virtue.theological TheologicalVirtue.charity) (Virtue.cardinal Cardinal
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem catholic_differs_from_total_depravity
-(p : Person) (v : CardinalVirtue)
-(h_will : p.hasFreeWill = true)
-(h_intel : p.hasIntellect = true) :</code></pre></div>
-<div class="node-desc">The Catholic position also differs from total depravity: cardinal virtues CAN be acquired naturally (§1810).</div>
+    (p : Person) (v : CardinalVirtue)
+    (h_will : p.hasFreeWill = true)
+    (h_intel : p.hasIntellect = true) :
+    -- Under Catholic axioms, natural acquisition of cardinal virtues is possible
+    naturallyAcquired p (Virtue.cardinal v)</code></pre></div>
+<div class="node-desc">The Catholic position also differs from total depravity: cardinal</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CardinalVirtue">CardinalVirtue</span><span class="dep-chip" data-target="Virtue">Virtue</span><span class="dep-chip" data-target="cardinal_naturally_acquirable">cardinal_naturally_acquirable</span><span class="dep-chip" data-target="naturallyAcquired">naturallyAcquired</span></div></div>
   </div>
 </div>
@@ -872,11 +900,10 @@ informs (Virtue.theological TheologicalVirtue.charity) (Virtue.cardinal Cardinal
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem virtue_increases_freedom
-(fd : FreedomDegree)
-(h_oriented : fd.orientedToGood) :
-fd.level &gt; 0</code></pre></div>
-<div class="node-desc">Virtue connects to teleological freedom: a person with virtue who is oriented toward the good has positive freedom.</div>
-
+    (fd : FreedomDegree)
+    (h_oriented : fd.orientedToGood) :
+    fd.level &gt; 0</code></pre></div>
+<div class="node-desc">Virtue connects to teleological freedom: a person with virtue who is</div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="virtue_distinction_tag">
@@ -888,7 +915,6 @@ fd.level &gt; 0</code></pre></div>
   <div class="node-details">
     <div class="node-prop"><pre><code>def virtue_distinction_tag : DenominationalTag</code></pre></div>
 <div class="node-desc">The cardinal/theological distinction: broadly ecumenical.</div>
-
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="grace_for_perseverance_tag">
@@ -900,7 +926,6 @@ fd.level &gt; 0</code></pre></div>
   <div class="node-details">
     <div class="node-prop"><pre><code>def grace_for_perseverance_tag : DenominationalTag</code></pre></div>
 <div class="node-desc">The §1811 claim (grace for perseverance): Catholic distinctive.</div>
-
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="theological_infusion_tag">
@@ -912,10 +937,8 @@ fd.level &gt; 0</code></pre></div>
   <div class="node-details">
     <div class="node-prop"><pre><code>def theological_infusion_tag : DenominationalTag</code></pre></div>
 <div class="node-desc">Theological virtues require infusion: broadly ecumenical.</div>
-
   </div>
 </div>
-
   </div>
 
   <div class="footer">

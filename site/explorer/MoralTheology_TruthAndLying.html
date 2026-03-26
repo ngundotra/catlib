@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Truth And Lying — Catlib Explorer</title>
+  <title>TruthAndLying — Catlib Explorer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -143,7 +143,7 @@ h1 {
   line-height: 1.6;
 }
 
-/* Search */
+/* ── Search ── */
 .search-box {
   width: 100%;
   padding: 0.8rem 1rem;
@@ -167,7 +167,7 @@ h1 {
   font-style: italic;
 }
 
-/* Category sections */
+/* ── Category sections ── */
 .category-header {
   font-family: Cinzel, Georgia, serif;
   font-size: 1.1rem;
@@ -181,7 +181,7 @@ h1 {
   border-bottom: 1px solid var(--border);
 }
 
-/* File cards */
+/* ── File cards ── */
 .file-card {
   display: block;
   padding: 1rem 1.1rem;
@@ -237,7 +237,7 @@ h1 {
   margin-top: 0.3rem;
 }
 
-/* Summary stats */
+/* ── Summary stats ── */
 .stats-bar {
   display: flex;
   justify-content: center;
@@ -251,7 +251,7 @@ h1 {
 
 .stats-bar span { white-space: nowrap; }
 
-/* Node cards */
+/* ── Node cards (per-file page) ── */
 .node-card {
   margin-bottom: 0.4rem;
   border: 1px solid var(--border);
@@ -267,8 +267,6 @@ h1 {
 .node-card.kind-structure { border-left-color: var(--structure-dot); }
 .node-card.kind-inductive { border-left-color: var(--inductive-dot); }
 .node-card.kind-proposition { border-left-color: var(--proposition-dot); }
-.node-card.kind-instance { border-left-color: var(--def-dot); }
-.node-card.kind-abbrev { border-left-color: var(--def-dot); }
 
 .node-header {
   display: flex;
@@ -304,8 +302,6 @@ h1 {
 .kind-structure .node-kind-badge { background: var(--structure-bg); color: var(--structure-dot); }
 .kind-inductive .node-kind-badge { background: var(--inductive-bg); color: var(--inductive-dot); }
 .kind-proposition .node-kind-badge { background: var(--proposition-bg); color: var(--proposition-dot); }
-.kind-instance .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
-.kind-abbrev .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
 
 .node-name {
   flex: 1;
@@ -409,7 +405,7 @@ h1 {
   color: var(--text-muted);
 }
 
-/* Flow diagram header */
+/* ── Flow diagram header ── */
 .flow-summary {
   display: flex;
   justify-content: center;
@@ -435,7 +431,7 @@ h1 {
 .flow-count.theorems { background: var(--theorem-bg); color: var(--theorem-dot); }
 .flow-count.derived { background: var(--def-bg); color: var(--def-dot); }
 
-/* Legend */
+/* ── Legend ── */
 .legend {
   display: flex;
   flex-wrap: wrap;
@@ -467,7 +463,7 @@ h1 {
 .legend-dot.inductive { background: var(--inductive-dot); }
 .legend-dot.proposition { background: var(--proposition-dot); }
 
-/* Filter buttons */
+/* ── Filter buttons ── */
 .filter-bar {
   display: flex;
   flex-wrap: wrap;
@@ -496,7 +492,7 @@ h1 {
   border-color: var(--accent);
 }
 
-/* Back link */
+/* ── Back link ── */
 .back-link {
   display: inline-block;
   margin-bottom: 1rem;
@@ -505,7 +501,7 @@ h1 {
   letter-spacing: 0.04em;
 }
 
-/* Footer */
+/* ── Footer ── */
 .footer {
   text-align: center;
   padding-top: 2rem;
@@ -514,7 +510,7 @@ h1 {
   font-style: italic;
 }
 
-/* Responsive */
+/* ── Responsive ── */
 @media (max-width: 500px) {
   html { font-size: 16px; }
   .container { padding: 1rem 0.75rem 2rem; }
@@ -526,44 +522,52 @@ h1 {
 <body>
 <div class="container">
   <a href="index.html" class="back-link">&larr; All files</a>
-  <h1>Truth And Lying</h1>
-  <div class="subtitle">Moral Theology &middot; 23 declarations</div>
+  <h1>TruthAndLying</h1>
+  <div class="subtitle">MoralTheology &middot; 23 declarations</div>
 
-  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1750, &sect;1755, &sect;2464, &sect;2465, &sect;2468, &sect;2477, &sect;2482, &sect;2483, &sect;2484, &sect;2488, &hellip;</div>
-  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot proposition"></span>proposition</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
+  <div class="flow-summary">
+  <span class="flow-count axioms">10 axioms</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count theorems">10 theorems</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count derived">3 derived</span>
+</div>
+  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1750, &sect;1755, &sect;2464, &sect;2465, &sect;2468, &sect;2477, &sect;2482, &sect;2483, &sect;2484, &sect;2488, &sect;2489, &sect;2490</div>
 
-  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (5)</button><button class="filter-btn" data-filter="def">def (2)</button><button class="filter-btn" data-filter="proposition">proposition (6)</button><button class="filter-btn" data-filter="theorem">theorem (10)</button></div>
+  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot proposition"></span>proposition</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
+
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (5)</button><button class="filter-btn" data-filter="def">def (2)</button><button class="filter-btn" data-filter="opaque">opaque (5)</button><button class="filter-btn" data-filter="proposition">proposition (1)</button><button class="filter-btn" data-filter="theorem">theorem (10)</button></div>
 
   <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
 
   <div id="nodeList">
-    <div class="node-card kind-proposition" data-kind="proposition" data-name="contentIsTrue">
+    <div class="node-card kind-opaque" data-kind="opaque" data-name="contentIsTrue">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
+    <span class="node-kind-badge">opaque</span>
     <span class="node-name">contentIsTrue</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque contentIsTrue : Action → Prop</code></pre></div>
-<div class="node-desc">Whether a statement&#x27;s propositional content is true.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="detraction_is_evil">detraction_is_evil</span><span class="dep-chip" data-target="false_without_intent_is_not_lie">false_without_intent_is_not_lie</span><span class="dep-chip" data-target="isLie">isLie</span><span class="dep-chip" data-target="lie_has_bad_object">lie_has_bad_object</span><span class="dep-chip" data-target="lying_condemned_by_three_sources">lying_condemned_by_three_sources</span><span class="dep-chip" data-target="non_disclosure_is_not_lying">non_disclosure_is_not_lying</span><span class="dep-chip" data-target="true_with_intent_is_not_lie">true_with_intent_is_not_lie</span></div></div>
+<div class="node-desc">Whether a statement's propositional content is true.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="isLie">isLie</span><span class="dep-chip" data-target="false_without_intent_is_not_lie">false_without_intent_is_not_lie</span><span class="dep-chip" data-target="true_with_intent_is_not_lie">true_with_intent_is_not_lie</span><span class="dep-chip" data-target="lie_has_bad_object">lie_has_bad_object</span><span class="dep-chip" data-target="lying_condemned_by_three_sources">lying_condemned_by_three_sources</span><span class="dep-chip" data-target="detraction_is_evil">detraction_is_evil</span><span class="dep-chip" data-target="non_disclosure_is_not_lying">non_disclosure_is_not_lying</span></div></div>
   </div>
 </div>
-<div class="node-card kind-proposition" data-kind="proposition" data-name="hasDeceptiveIntent">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="hasDeceptiveIntent">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
+    <span class="node-kind-badge">opaque</span>
     <span class="node-name">hasDeceptiveIntent</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque hasDeceptiveIntent : Action → Prop</code></pre></div>
 <div class="node-desc">Whether the speaker intends to deceive the hearer.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="false_without_intent_is_not_lie">false_without_intent_is_not_lie</span><span class="dep-chip" data-target="isLie">isLie</span><span class="dep-chip" data-target="lie_has_bad_intention">lie_has_bad_intention</span><span class="dep-chip" data-target="lying_condemned_by_three_sources">lying_condemned_by_three_sources</span><span class="dep-chip" data-target="true_with_intent_is_not_lie">true_with_intent_is_not_lie</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="isLie">isLie</span><span class="dep-chip" data-target="false_without_intent_is_not_lie">false_without_intent_is_not_lie</span><span class="dep-chip" data-target="true_with_intent_is_not_lie">true_with_intent_is_not_lie</span><span class="dep-chip" data-target="lie_has_bad_intention">lie_has_bad_intention</span><span class="dep-chip" data-target="lying_condemned_by_three_sources">lying_condemned_by_three_sources</span></div></div>
   </div>
 </div>
-<div class="node-card kind-proposition" data-kind="proposition" data-name="hasRightToKnow">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="hasRightToKnow">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
+    <span class="node-kind-badge">opaque</span>
     <span class="node-name">hasRightToKnow</span>
     <span class="node-chevron">&#9654;</span>
   </div>
@@ -573,21 +577,21 @@ h1 {
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="no_obligation_without_right">no_obligation_without_right</span><span class="dep-chip" data-target="professional_secrecy_limits_right">professional_secrecy_limits_right</span></div></div>
   </div>
 </div>
-<div class="node-card kind-proposition" data-kind="proposition" data-name="harmsReputation">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="harmsReputation">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
+    <span class="node-kind-badge">opaque</span>
     <span class="node-name">harmsReputation</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque harmsReputation : Action → Person → Prop</code></pre></div>
 <div class="node-desc">Whether a speech act harms the reputation of another person.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="calumny_is_grave">calumny_is_grave</span><span class="dep-chip" data-target="detraction_is_evil">detraction_is_evil</span><span class="dep-chip" data-target="lying_gravity_depends_on_circumstances">lying_gravity_depends_on_circumstances</span><span class="dep-chip" data-target="reputation_harm_is_evil">reputation_harm_is_evil</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="lying_gravity_depends_on_circumstances">lying_gravity_depends_on_circumstances</span><span class="dep-chip" data-target="reputation_harm_is_evil">reputation_harm_is_evil</span><span class="dep-chip" data-target="detraction_is_evil">detraction_is_evil</span><span class="dep-chip" data-target="calumny_is_grave">calumny_is_grave</span></div></div>
   </div>
 </div>
-<div class="node-card kind-proposition" data-kind="proposition" data-name="underProfessionalSecrecy">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="underProfessionalSecrecy">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
+    <span class="node-kind-badge">opaque</span>
     <span class="node-name">underProfessionalSecrecy</span>
     <span class="node-chevron">&#9654;</span>
   </div>
@@ -606,7 +610,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def isLie (act : Action) : Prop</code></pre></div>
 <div class="node-desc">A lie requires BOTH falsehood AND deceptive intent.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="contentIsTrue">contentIsTrue</span><span class="dep-chip" data-target="hasDeceptiveIntent">hasDeceptiveIntent</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="calumny_is_grave">calumny_is_grave</span><span class="dep-chip" data-target="false_without_intent_is_not_lie">false_without_intent_is_not_lie</span><span class="dep-chip" data-target="lie_has_bad_intention">lie_has_bad_intention</span><span class="dep-chip" data-target="lie_has_bad_object">lie_has_bad_object</span><span class="dep-chip" data-target="lying_condemned_by_three_sources">lying_condemned_by_three_sources</span><span class="dep-chip" data-target="lying_gravity_depends_on_circumstances">lying_gravity_depends_on_circumstances</span><span class="dep-chip" data-target="lying_is_intrinsically_evil">lying_is_intrinsically_evil</span><span class="dep-chip" data-target="lying_never_good">lying_never_good</span><span class="dep-chip" data-target="non_disclosure_is_not_lying">non_disclosure_is_not_lying</span><span class="dep-chip" data-target="true_with_intent_is_not_lie">true_with_intent_is_not_lie</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="contentIsTrue">contentIsTrue</span><span class="dep-chip" data-target="hasDeceptiveIntent">hasDeceptiveIntent</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="lying_is_intrinsically_evil">lying_is_intrinsically_evil</span><span class="dep-chip" data-target="lying_gravity_depends_on_circumstances">lying_gravity_depends_on_circumstances</span><span class="dep-chip" data-target="false_without_intent_is_not_lie">false_without_intent_is_not_lie</span><span class="dep-chip" data-target="true_with_intent_is_not_lie">true_with_intent_is_not_lie</span><span class="dep-chip" data-target="lie_has_bad_object">lie_has_bad_object</span><span class="dep-chip" data-target="lie_has_bad_intention">lie_has_bad_intention</span><span class="dep-chip" data-target="lying_never_good">lying_never_good</span><span class="dep-chip" data-target="lying_condemned_by_three_sources">lying_condemned_by_three_sources</span><span class="dep-chip" data-target="non_disclosure_is_not_lying">non_disclosure_is_not_lying</span><span class="dep-chip" data-target="calumny_is_grave">calumny_is_grave</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="lying_is_intrinsically_evil">
@@ -617,10 +622,11 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom lying_is_intrinsically_evil :
-∀ (act : Action) (eval : MoralEvaluation),
-isLie act → eval.action = act → ¬eval.objectIsGood</code></pre></div>
-<div class="node-desc">§2483: &quot;Lying is the most direct offense against the truth.&quot; Lying is intrinsically evil: for ANY moral evaluation of a ...</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isLie">isLie</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="lie_has_bad_intention">lie_has_bad_intention</span><span class="dep-chip" data-target="lying_never_good">lying_never_good</span></div></div>
+  ∀ (act : Action) (eval : MoralEvaluation),
+    isLie act → eval.action = act → ¬eval.objectIsGood</code></pre></div>
+<div class="node-desc">§2483: &quot;Lying is the most direct offense against the truth.&quot;</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isLie">isLie</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="lie_has_bad_intention">lie_has_bad_intention</span><span class="dep-chip" data-target="lying_never_good">lying_never_good</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="lying_gravity_depends_on_circumstances">
@@ -631,10 +637,16 @@ isLie act → eval.action = act → ¬eval.objectIsGood</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom lying_gravity_depends_on_circumstances :
-∀ (act : Action) (s : Sin),
-isLie act → s.action = act →</code></pre></div>
-<div class="node-desc">§2484: &quot;The gravity of a lie is measured against the nature of the truth it deforms, the circumstances, the intentions o...</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="harmsReputation">harmsReputation</span><span class="dep-chip" data-target="isLie">isLie</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="calumny_is_grave">calumny_is_grave</span></div></div>
+  ∀ (act : Action) (s : Sin),
+    isLie act → s.action = act →
+    -- Gravity depends on what truth is deformed (the &quot;nature of the truth&quot;)
+    -- This connects to the three-source framework: circumstances affect
+    -- the evaluation even though the object is already evil.
+    (s.gravity = MatterGravity.grave ↔
+      ∃ (victim : Person), harmsReputation act victim)</code></pre></div>
+<div class="node-desc">§2484: &quot;The gravity of a lie is measured against the nature of the truth</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="harmsReputation">harmsReputation</span><span class="dep-chip" data-target="isLie">isLie</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="calumny_is_grave">calumny_is_grave</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="reputation_harm_is_evil">
@@ -645,11 +657,12 @@ isLie act → s.action = act →</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom reputation_harm_is_evil :
-∀ (eval : MoralEvaluation) (victim : Person),
-harmsReputation eval.action victim →
-¬eval.circumstancesAppropriate</code></pre></div>
-<div class="node-desc">§2477: Speaking harmful truths (detraction) or harmful falsehoods (calumny) about another person is morally evil.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="harmsReputation">harmsReputation</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="detraction_is_evil">detraction_is_evil</span></div></div>
+  ∀ (eval : MoralEvaluation) (victim : Person),
+    harmsReputation eval.action victim →
+    ¬eval.circumstancesAppropriate</code></pre></div>
+<div class="node-desc">§2477: Speaking harmful truths (detraction) or harmful falsehoods (calumny)</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="harmsReputation">harmsReputation</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="detraction_is_evil">detraction_is_evil</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="no_obligation_without_right">
@@ -660,10 +673,13 @@ harmsReputation eval.action victim →
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom no_obligation_without_right :
-∀ (p : Person) (act : Action),
-¬hasRightToKnow p act →</code></pre></div>
-<div class="node-desc">§2489: &quot;No one is bound to reveal the truth to someone who does not have the right to know it.&quot; This is the RIGHT TO TRU...</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="hasRightToKnow">hasRightToKnow</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="non_disclosure_is_not_lying">non_disclosure_is_not_lying</span><span class="dep-chip" data-target="secrecy_removes_disclosure_obligation">secrecy_removes_disclosure_obligation</span></div></div>
+  ∀ (p : Person) (act : Action),
+    ¬hasRightToKnow p act →
+    -- The speaker is not obligated to disclose the truth to this person
+    ¬obligated act.agent act</code></pre></div>
+<div class="node-desc">§2489: &quot;No one is bound to reveal the truth to someone who does not have</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="hasRightToKnow">hasRightToKnow</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="non_disclosure_is_not_lying">non_disclosure_is_not_lying</span><span class="dep-chip" data-target="secrecy_removes_disclosure_obligation">secrecy_removes_disclosure_obligation</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="professional_secrecy_limits_right">
@@ -674,11 +690,12 @@ harmsReputation eval.action victim →
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom professional_secrecy_limits_right :
-∀ (p : Person) (act : Action),
-underProfessionalSecrecy act →
-¬hasRightToKnow p act</code></pre></div>
+  ∀ (p : Person) (act : Action),
+    underProfessionalSecrecy act →
+    ¬hasRightToKnow p act</code></pre></div>
 <div class="node-desc">§2490-2491: Professional secrets must be kept except in cases of grave harm.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="hasRightToKnow">hasRightToKnow</span><span class="dep-chip" data-target="underProfessionalSecrecy">underProfessionalSecrecy</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="non_disclosure_is_not_lying">non_disclosure_is_not_lying</span><span class="dep-chip" data-target="secrecy_removes_disclosure_obligation">secrecy_removes_disclosure_obligation</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="hasRightToKnow">hasRightToKnow</span><span class="dep-chip" data-target="underProfessionalSecrecy">underProfessionalSecrecy</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="non_disclosure_is_not_lying">non_disclosure_is_not_lying</span><span class="dep-chip" data-target="secrecy_removes_disclosure_obligation">secrecy_removes_disclosure_obligation</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="false_without_intent_is_not_lie">
@@ -689,10 +706,10 @@ underProfessionalSecrecy act →
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem false_without_intent_is_not_lie
-(act : Action)
-(_h_false : ¬contentIsTrue act)
-(h_no_intent : ¬hasDeceptiveIntent act) :
-¬isLie act</code></pre></div>
+    (act : Action)
+    (_h_false : ¬contentIsTrue act)
+    (h_no_intent : ¬hasDeceptiveIntent act) :
+    ¬isLie act</code></pre></div>
 <div class="node-desc">False statements without deceptive intent are NOT lies.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="contentIsTrue">contentIsTrue</span><span class="dep-chip" data-target="hasDeceptiveIntent">hasDeceptiveIntent</span><span class="dep-chip" data-target="isLie">isLie</span></div></div>
   </div>
@@ -705,10 +722,10 @@ underProfessionalSecrecy act →
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem true_with_intent_is_not_lie
-(act : Action)
-(h_true : contentIsTrue act)
-(_h_intent : hasDeceptiveIntent act) :
-¬isLie act</code></pre></div>
+    (act : Action)
+    (h_true : contentIsTrue act)
+    (_h_intent : hasDeceptiveIntent act) :
+    ¬isLie act</code></pre></div>
 <div class="node-desc">True statements with deceptive intent are NOT lies (by definition).</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="contentIsTrue">contentIsTrue</span><span class="dep-chip" data-target="hasDeceptiveIntent">hasDeceptiveIntent</span><span class="dep-chip" data-target="isLie">isLie</span></div></div>
   </div>
@@ -721,9 +738,9 @@ underProfessionalSecrecy act →
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem lie_has_bad_object
-(act : Action)
-(h_lie : isLie act) :
-¬contentIsTrue act</code></pre></div>
+    (act : Action)
+    (h_lie : isLie act) :
+    ¬contentIsTrue act</code></pre></div>
 <div class="node-desc">A lie always has a bad object (the false statement).</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="contentIsTrue">contentIsTrue</span><span class="dep-chip" data-target="isLie">isLie</span></div></div>
   </div>
@@ -736,9 +753,9 @@ underProfessionalSecrecy act →
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem lie_has_bad_intention
-(act : Action)
-(h_lie : isLie act) :
-hasDeceptiveIntent act</code></pre></div>
+    (act : Action)
+    (h_lie : isLie act) :
+    hasDeceptiveIntent act</code></pre></div>
 <div class="node-desc">A lie always has a bad intention (deceptive intent).</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="hasDeceptiveIntent">hasDeceptiveIntent</span><span class="dep-chip" data-target="isLie">isLie</span><span class="dep-chip" data-target="lying_is_intrinsically_evil">lying_is_intrinsically_evil</span></div></div>
   </div>
@@ -751,11 +768,11 @@ hasDeceptiveIntent act</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem lying_never_good
-(act : Action)
-(eval : MoralEvaluation)
-(h_lie : isLie act)
-(h_eval_act : eval.action = act) :
-¬eval.isGood</code></pre></div>
+    (act : Action)
+    (eval : MoralEvaluation)
+    (h_lie : isLie act)
+    (h_eval_act : eval.action = act) :
+    ¬eval.isGood</code></pre></div>
 <div class="node-desc">Lying is never good under the three-source framework.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isLie">isLie</span><span class="dep-chip" data-target="lying_is_intrinsically_evil">lying_is_intrinsically_evil</span></div></div>
   </div>
@@ -768,13 +785,13 @@ hasDeceptiveIntent act</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem lying_condemned_by_three_sources
-(act : Action)
-(eval : MoralEvaluation)
-(h_lie : isLie act)
-(_h_eval_act : eval.action = act)
-(h_object : eval.objectIsGood ↔ contentIsTrue act)
-(_h_intent : eval.intentionIsGood ↔ ¬hasDeceptiveIntent act) :
-eval.isEvil</code></pre></div>
+    (act : Action)
+    (eval : MoralEvaluation)
+    (h_lie : isLie act)
+    (_h_eval_act : eval.action = act)
+    (h_object : eval.objectIsGood ↔ contentIsTrue act)
+    (_h_intent : eval.intentionIsGood ↔ ¬hasDeceptiveIntent act) :
+    eval.isEvil</code></pre></div>
 <div class="node-desc">KEY THEOREM: Lying maps onto the three-source framework.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="contentIsTrue">contentIsTrue</span><span class="dep-chip" data-target="hasDeceptiveIntent">hasDeceptiveIntent</span><span class="dep-chip" data-target="isLie">isLie</span></div></div>
   </div>
@@ -787,11 +804,11 @@ eval.isEvil</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem detraction_is_evil
-(eval : MoralEvaluation)
-(victim : Person)
-(_h_true : contentIsTrue eval.action)
-(h_harms : harmsReputation eval.action victim) :
-¬eval.isGood</code></pre></div>
+    (eval : MoralEvaluation)
+    (victim : Person)
+    (_h_true : contentIsTrue eval.action)
+    (h_harms : harmsReputation eval.action victim) :
+    ¬eval.isGood</code></pre></div>
 <div class="node-desc">True statements that harm reputation are evil through circumstances.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="contentIsTrue">contentIsTrue</span><span class="dep-chip" data-target="harmsReputation">harmsReputation</span><span class="dep-chip" data-target="reputation_harm_is_evil">reputation_harm_is_evil</span></div></div>
   </div>
@@ -804,9 +821,9 @@ eval.isEvil</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem non_disclosure_is_not_lying
-(act : Action)
-(h_true : contentIsTrue act) :
-¬isLie act</code></pre></div>
+    (act : Action)
+    (h_true : contentIsTrue act) :
+    ¬isLie act</code></pre></div>
 <div class="node-desc">Withholding truth from someone without a right to know is NOT lying.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="contentIsTrue">contentIsTrue</span><span class="dep-chip" data-target="isLie">isLie</span><span class="dep-chip" data-target="no_obligation_without_right">no_obligation_without_right</span><span class="dep-chip" data-target="professional_secrecy_limits_right">professional_secrecy_limits_right</span></div></div>
   </div>
@@ -819,9 +836,9 @@ eval.isEvil</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem secrecy_removes_disclosure_obligation
-(p : Person) (act : Action)
-(h_secret : underProfessionalSecrecy act) :
-¬obligated act.agent act</code></pre></div>
+    (p : Person) (act : Action)
+    (h_secret : underProfessionalSecrecy act) :
+    ¬obligated act.agent act</code></pre></div>
 <div class="node-desc">Under professional secrecy, the speaker has no obligation to disclose.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="no_obligation_without_right">no_obligation_without_right</span><span class="dep-chip" data-target="professional_secrecy_limits_right">professional_secrecy_limits_right</span><span class="dep-chip" data-target="underProfessionalSecrecy">underProfessionalSecrecy</span></div></div>
   </div>
@@ -834,13 +851,13 @@ eval.isEvil</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem calumny_is_grave
-(act : Action)
-(s : Sin)
-(victim : Person)
-(h_lie : isLie act)
-(h_sin_act : s.action = act)
-(h_harms : harmsReputation act victim) :
-s.gravity = MatterGravity.grave</code></pre></div>
+    (act : Action)
+    (s : Sin)
+    (victim : Person)
+    (h_lie : isLie act)
+    (h_sin_act : s.action = act)
+    (h_harms : harmsReputation act victim) :
+    s.gravity = MatterGravity.grave</code></pre></div>
 <div class="node-desc">Calumny (false + harmful) is graver than simple lying.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="harmsReputation">harmsReputation</span><span class="dep-chip" data-target="isLie">isLie</span><span class="dep-chip" data-target="lying_gravity_depends_on_circumstances">lying_gravity_depends_on_circumstances</span></div></div>
   </div>
@@ -854,7 +871,6 @@ s.gravity = MatterGravity.grave</code></pre></div>
   <div class="node-details">
     <div class="node-prop"><pre><code>def lying_denominational_scope : DenominationalTag</code></pre></div>
 <div class="node-desc">Denominational tag: the core lying doctrine is ecumenical.</div>
-
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="mental_reservation_scope">
@@ -865,11 +881,9 @@ s.gravity = MatterGravity.grave</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>def mental_reservation_scope : DenominationalTag</code></pre></div>
-<div class="node-desc">The mental reservation / right-to-truth doctrine is more specifically Catholic in its developed form, though the underly...</div>
-
+<div class="node-desc">The mental reservation / right-to-truth doctrine is more specifically</div>
   </div>
 </div>
-
   </div>
 
   <div class="footer">

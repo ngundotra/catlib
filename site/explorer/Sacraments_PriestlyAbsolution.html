@@ -267,8 +267,6 @@ h1 {
 .node-card.kind-structure { border-left-color: var(--structure-dot); }
 .node-card.kind-inductive { border-left-color: var(--inductive-dot); }
 .node-card.kind-proposition { border-left-color: var(--proposition-dot); }
-.node-card.kind-instance { border-left-color: var(--def-dot); }
-.node-card.kind-abbrev { border-left-color: var(--def-dot); }
 
 .node-header {
   display: flex;
@@ -304,8 +302,6 @@ h1 {
 .kind-structure .node-kind-badge { background: var(--structure-bg); color: var(--structure-dot); }
 .kind-inductive .node-kind-badge { background: var(--inductive-bg); color: var(--inductive-dot); }
 .kind-proposition .node-kind-badge { background: var(--proposition-bg); color: var(--proposition-dot); }
-.kind-instance .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
-.kind-abbrev .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
 
 .node-name {
   flex: 1;
@@ -466,8 +462,6 @@ h1 {
 .legend-dot.structure { background: var(--structure-dot); }
 .legend-dot.inductive { background: var(--inductive-dot); }
 .legend-dot.proposition { background: var(--proposition-dot); }
-.legend-dot.instance { background: var(--def-dot); }
-.legend-dot.abbrev { background: var(--def-dot); }
 
 /* ── Filter buttons ── */
 .filter-bar {
@@ -530,12 +524,19 @@ h1 {
   <a href="index.html" class="back-link">&larr; All files</a>
   <h1>PriestlyAbsolution</h1>
   <div class="subtitle">Sacraments &middot; 17 declarations</div>
-  
-  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1441, &sect;1443, &sect;1444, &sect;1445, &sect;1449, &sect;1461, &sect;1462</div>
 
-  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span></div>
+  <div class="flow-summary">
+  <span class="flow-count axioms">11 axioms</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count theorems">6 theorems</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count derived">0 derived</span>
+</div>
+  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1441, &sect;1443, &sect;1444, &sect;1445, &sect;1449, &sect;1461, &sect;1462, &sect;1467</div>
 
-  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (6)</button><button class="filter-btn" data-filter="theorem">theorem (6)</button><button class="filter-btn" data-filter="opaque">opaque (5)</button></div>
+  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
+
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (6)</button><button class="filter-btn" data-filter="opaque">opaque (5)</button><button class="filter-btn" data-filter="theorem">theorem (6)</button></div>
 
   <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
 
@@ -549,9 +550,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque forgivesAsPrincipalCause : Person → Prop</code></pre></div>
 <div class="node-desc">Whether a person acts as PRINCIPAL cause of forgiveness — forgiving</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="priestly_absolution_coherent">priestly_absolution_coherent</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="god_alone_forgives_principally">god_alone_forgives_principally</span><span class="dep-chip" data-target="forgiveness_non_competition">forgiveness_non_competition</span><span class="dep-chip" data-target="absolution_is_instrumental_not_rival">absolution_is_instrumental_not_rival</span><span class="dep-chip" data-target="priestly_absolution_coherent">priestly_absolution_coherent</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="forgivesAsInstrumentalCause">
@@ -563,6 +562,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque forgivesAsInstrumentalCause : Person → Prop</code></pre></div>
 <div class="node-desc">Whether a person acts as INSTRUMENTAL cause of forgiveness —</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="priest_is_instrumental_cause">priest_is_instrumental_cause</span><span class="dep-chip" data-target="forgiveness_non_competition">forgiveness_non_competition</span><span class="dep-chip" data-target="absolution_is_instrumental_not_rival">absolution_is_instrumental_not_rival</span><span class="dep-chip" data-target="priestly_absolution_coherent">priestly_absolution_coherent</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="reconciledWithChurch">
@@ -574,6 +574,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque reconciledWithChurch : Person → Prop</code></pre></div>
 <div class="node-desc">Whether a person is reconciled with the Church as a visible body.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="sin_has_ecclesial_dimension">sin_has_ecclesial_dimension</span><span class="dep-chip" data-target="three_load_bearing_steps">three_load_bearing_steps</span><span class="dep-chip" data-target="priestly_absolution_coherent">priestly_absolution_coherent</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="forgivenessLevelsCompete">
@@ -585,6 +586,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque forgivenessLevelsCompete : Person → Person → Prop</code></pre></div>
 <div class="node-desc">Whether the principal and instrumental causes of forgiveness</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="forgiveness_non_competition">forgiveness_non_competition</span><span class="dep-chip" data-target="absolution_is_instrumental_not_rival">absolution_is_instrumental_not_rival</span><span class="dep-chip" data-target="priestly_absolution_coherent">priestly_absolution_coherent</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="reconciliationDimensionsCompete">
@@ -594,12 +596,9 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque reconciliationDimensionsCompete : Prop
-
--- ============================================================================
--- § 2. Axioms
--- ============================================================================</code></pre></div>
+    <div class="node-prop"><pre><code>opaque reconciliationDimensionsCompete : Prop</code></pre></div>
 <div class="node-desc">Whether reconciliation with God and reconciliation with the Church</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="reconciliation_dimensions_unified">reconciliation_dimensions_unified</span><span class="dep-chip" data-target="priestly_absolution_coherent">priestly_absolution_coherent</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="god_alone_forgives_principally">
@@ -615,9 +614,8 @@ h1 {
     forgivesAsPrincipalCause q →
     p = q</code></pre></div>
 <div class="node-desc">AXIOM 1 (§1441): Only God forgives sins as principal cause.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="priestly_absolution_coherent">priestly_absolution_coherent</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="forgivesAsPrincipalCause">forgivesAsPrincipalCause</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="delegation_chain_bridge">delegation_chain_bridge</span><span class="dep-chip" data-target="three_load_bearing_steps">three_load_bearing_steps</span><span class="dep-chip" data-target="priestly_absolution_coherent">priestly_absolution_coherent</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="priest_is_instrumental_cause">
@@ -633,10 +631,8 @@ h1 {
     a.isPronounced →
     forgivesAsInstrumentalCause a.priest</code></pre></div>
 <div class="node-desc">AXIOM 2 (§1461-1462, Jn 20:23): Christ delegates the ministry of</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="absolution_is_instrumental_not_rival">absolution_is_instrumental_not_rival</span>
-<span class="dep-chip" data-target="priestly_absolution_coherent">priestly_absolution_coherent</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="forgivesAsInstrumentalCause">forgivesAsInstrumentalCause</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="forgiveness_non_competition">forgiveness_non_competition</span><span class="dep-chip" data-target="delegation_chain_bridge">delegation_chain_bridge</span><span class="dep-chip" data-target="absolution_is_instrumental_not_rival">absolution_is_instrumental_not_rival</span><span class="dep-chip" data-target="three_load_bearing_steps">three_load_bearing_steps</span><span class="dep-chip" data-target="priestly_absolution_coherent">priestly_absolution_coherent</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="forgiveness_non_competition">
@@ -652,10 +648,8 @@ h1 {
     forgivesAsInstrumentalCause priest →
     ¬ forgivenessLevelsCompete god priest</code></pre></div>
 <div class="node-desc">AXIOM 3 (P2 applied to forgiveness): Principal and instrumental</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="absolution_is_instrumental_not_rival">absolution_is_instrumental_not_rival</span>
-<span class="dep-chip" data-target="priestly_absolution_coherent">priestly_absolution_coherent</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="forgivenessLevelsCompete">forgivenessLevelsCompete</span><span class="dep-chip" data-target="forgivesAsInstrumentalCause">forgivesAsInstrumentalCause</span><span class="dep-chip" data-target="forgivesAsPrincipalCause">forgivesAsPrincipalCause</span><span class="dep-chip" data-target="priest_is_instrumental_cause">priest_is_instrumental_cause</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="delegation_chain_bridge">delegation_chain_bridge</span><span class="dep-chip" data-target="absolution_is_instrumental_not_rival">absolution_is_instrumental_not_rival</span><span class="dep-chip" data-target="three_load_bearing_steps">three_load_bearing_steps</span><span class="dep-chip" data-target="priestly_absolution_coherent">priestly_absolution_coherent</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="absolution_signifies_forgiveness">
@@ -672,10 +666,7 @@ h1 {
     -- The sacramental act of absolution signifies forgiveness
     signifies s</code></pre></div>
 <div class="node-desc">AXIOM 4 (T3 applied to absolution): Sacramental absolution SIGNIFIES</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="three_load_bearing_steps">three_load_bearing_steps</span>
-<span class="dep-chip" data-target="priestly_absolution_coherent">priestly_absolution_coherent</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="absolution_is_instrumental_not_rival">absolution_is_instrumental_not_rival</span><span class="dep-chip" data-target="three_load_bearing_steps">three_load_bearing_steps</span><span class="dep-chip" data-target="priestly_absolution_coherent">priestly_absolution_coherent</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="sin_has_ecclesial_dimension">
@@ -692,10 +683,8 @@ h1 {
     r.contrition.genuineSorrow →
     reconciledWithChurch r.contrition.penitent</code></pre></div>
 <div class="node-desc">AXIOM 5 (§1443-1445): Sin wounds the Church; reconciliation with</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="three_load_bearing_steps">three_load_bearing_steps</span>
-<span class="dep-chip" data-target="priestly_absolution_coherent">priestly_absolution_coherent</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="reconciledWithChurch">reconciledWithChurch</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="absolution_is_instrumental_not_rival">absolution_is_instrumental_not_rival</span><span class="dep-chip" data-target="three_load_bearing_steps">three_load_bearing_steps</span><span class="dep-chip" data-target="priestly_absolution_coherent">priestly_absolution_coherent</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="reconciliation_dimensions_unified">
@@ -706,15 +695,10 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom reconciliation_dimensions_unified :
-  ¬ reconciliationDimensionsCompete
-
--- ============================================================================
--- § 3. Bridge theorems to base axioms
--- ============================================================================</code></pre></div>
+  ¬ reconciliationDimensionsCompete</code></pre></div>
 <div class="node-desc">AXIOM 6 (§1445): The two dimensions of reconciliation do not compete.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="priestly_absolution_coherent">priestly_absolution_coherent</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="reconciliationDimensionsCompete">reconciliationDimensionsCompete</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="three_load_bearing_steps">three_load_bearing_steps</span><span class="dep-chip" data-target="priestly_absolution_coherent">priestly_absolution_coherent</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="causation_non_competition_bridge">
@@ -727,7 +711,7 @@ h1 {
     <div class="node-prop"><pre><code>theorem causation_non_competition_bridge
     (p : PrimaryCause) (s : SecondaryCause) :
     ¬ causesCompete p s</code></pre></div>
-<div class="node-desc">Bridge to P2: primary and secondary causes don&#x27;t compete.</div>
+<div class="node-desc">Bridge to P2: primary and secondary causes don't compete.</div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="t3_bridge">
@@ -752,6 +736,7 @@ h1 {
     <div class="node-prop"><pre><code>theorem delegation_chain_bridge :
     absolutionDomain.christHasIt ∧ absolutionDomain.christDelegatedIt</code></pre></div>
 <div class="node-desc">Bridge to Authority.lean: the absolution delegation chain is established.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="forgiveness_non_competition">forgiveness_non_competition</span><span class="dep-chip" data-target="god_alone_forgives_principally">god_alone_forgives_principally</span><span class="dep-chip" data-target="priest_is_instrumental_cause">priest_is_instrumental_cause</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="absolution_is_instrumental_not_rival">
@@ -769,10 +754,8 @@ h1 {
     forgivesAsInstrumentalCause a.priest ∧
     ¬ forgivenessLevelsCompete god a.priest</code></pre></div>
 <div class="node-desc">THEOREM: Priestly absolution is instrumental, not rival.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="priest_is_instrumental_cause">priest_is_instrumental_cause</span>
-<span class="dep-chip" data-target="forgiveness_non_competition">forgiveness_non_competition</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="absolution_signifies_forgiveness">absolution_signifies_forgiveness</span><span class="dep-chip" data-target="forgivenessLevelsCompete">forgivenessLevelsCompete</span><span class="dep-chip" data-target="forgiveness_non_competition">forgiveness_non_competition</span><span class="dep-chip" data-target="forgivesAsInstrumentalCause">forgivesAsInstrumentalCause</span><span class="dep-chip" data-target="forgivesAsPrincipalCause">forgivesAsPrincipalCause</span><span class="dep-chip" data-target="priest_is_instrumental_cause">priest_is_instrumental_cause</span><span class="dep-chip" data-target="sin_has_ecclesial_dimension">sin_has_ecclesial_dimension</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="priestly_absolution_coherent">priestly_absolution_coherent</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="three_load_bearing_steps">
@@ -793,10 +776,8 @@ h1 {
     -- (c) WHY: the penitent is reconciled with the Church
     ∧ reconciledWithChurch r.contrition.penitent</code></pre></div>
 <div class="node-desc">THEOREM: The three load-bearing steps are all present in valid</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="sin_has_ecclesial_dimension">sin_has_ecclesial_dimension</span>
-<span class="dep-chip" data-target="absolution_signifies_forgiveness">absolution_signifies_forgiveness</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="absolution_signifies_forgiveness">absolution_signifies_forgiveness</span><span class="dep-chip" data-target="forgiveness_non_competition">forgiveness_non_competition</span><span class="dep-chip" data-target="god_alone_forgives_principally">god_alone_forgives_principally</span><span class="dep-chip" data-target="priest_is_instrumental_cause">priest_is_instrumental_cause</span><span class="dep-chip" data-target="reconciledWithChurch">reconciledWithChurch</span><span class="dep-chip" data-target="reconciliation_dimensions_unified">reconciliation_dimensions_unified</span><span class="dep-chip" data-target="sin_has_ecclesial_dimension">sin_has_ecclesial_dimension</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="priestly_absolution_coherent">priestly_absolution_coherent</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="priestly_absolution_coherent">
@@ -815,24 +796,16 @@ h1 {
     (∀ (q : Person), forgivesAsPrincipalCause q → q = god)
     -- (b) The priest acts instrumentally (WHO — delegation)
     ∧ forgivesAsInstrumentalCause r.absolution.priest
-    -- (c) Principal and instrumental don&#x27;t compete (P2)
+    -- (c) Principal and instrumental don't compete (P2)
     ∧ ¬ forgivenessLevelsCompete god r.absolution.priest
     -- (d) The sacrament confers forgiveness (HOW — T3)
     ∧ confers s
     -- (e) The penitent is reconciled with the Church (WHY — ecclesial)
     ∧ reconciledWithChurch r.contrition.penitent
-    -- (f) God-reconciliation and Church-reconciliation don&#x27;t compete
+    -- (f) God-reconciliation and Church-reconciliation don't compete
     ∧ ¬ reconciliationDimensionsCompete</code></pre></div>
 <div class="node-desc">THEOREM (Main): Priestly absolution is coherent with &quot;only God forgives.&quot;</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="sin_has_ecclesial_dimension">sin_has_ecclesial_dimension</span>
-<span class="dep-chip" data-target="reconciliation_dimensions_unified">reconciliation_dimensions_unified</span>
-<span class="dep-chip" data-target="absolution_signifies_forgiveness">absolution_signifies_forgiveness</span>
-<span class="dep-chip" data-target="god_alone_forgives_principally">god_alone_forgives_principally</span>
-<span class="dep-chip" data-target="forgivesAsPrincipalCause">forgivesAsPrincipalCause</span>
-<span class="dep-chip" data-target="priest_is_instrumental_cause">priest_is_instrumental_cause</span>
-<span class="dep-chip" data-target="forgiveness_non_competition">forgiveness_non_competition</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="absolution_is_instrumental_not_rival">absolution_is_instrumental_not_rival</span><span class="dep-chip" data-target="absolution_signifies_forgiveness">absolution_signifies_forgiveness</span><span class="dep-chip" data-target="forgivenessLevelsCompete">forgivenessLevelsCompete</span><span class="dep-chip" data-target="forgiveness_non_competition">forgiveness_non_competition</span><span class="dep-chip" data-target="forgivesAsInstrumentalCause">forgivesAsInstrumentalCause</span><span class="dep-chip" data-target="forgivesAsPrincipalCause">forgivesAsPrincipalCause</span><span class="dep-chip" data-target="god_alone_forgives_principally">god_alone_forgives_principally</span><span class="dep-chip" data-target="priest_is_instrumental_cause">priest_is_instrumental_cause</span><span class="dep-chip" data-target="reconciledWithChurch">reconciledWithChurch</span><span class="dep-chip" data-target="reconciliationDimensionsCompete">reconciliationDimensionsCompete</span><span class="dep-chip" data-target="reconciliation_dimensions_unified">reconciliation_dimensions_unified</span><span class="dep-chip" data-target="sin_has_ecclesial_dimension">sin_has_ecclesial_dimension</span><span class="dep-chip" data-target="three_load_bearing_steps">three_load_bearing_steps</span></div></div>
   </div>
 </div>
   </div>

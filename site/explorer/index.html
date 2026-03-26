@@ -6,45 +6,84 @@
   <title>Catlib Explorer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
   <style>
 :root {
-  --text: #e2d9c8;
-  --text-light: #b0a48e;
-  --text-muted: #706558;
-  --bg: #0e0c0a;
-  --bg-parchment: #171411;
-  --bg-vellum: #1e1a16;
-  --accent: #c9a84c;
-  --accent-gold: #c9a84c;
-  --accent-gold-light: #e4c65c;
-  --border: #2a2520;
-  --border-dark: #3a3228;
-  --code-bg: #0a0908;
-  --code-text: #d4c8a8;
+  --text: #2a1f14;
+  --text-light: #5c4a3a;
+  --text-muted: #8a7a6a;
+  --bg: #f4ead5;
+  --bg-parchment: #efe3c8;
+  --bg-vellum: #e8d9b8;
+  --accent: #7a2e0e;
+  --accent-gold: #b8860b;
+  --accent-gold-light: #d4a937;
+  --border: #c4a872;
+  --border-dark: #a08050;
+  --code-bg: #1e1a15;
+  --code-text: #e8d9b8;
 
-  /* Node type colors — dark mode */
-  --axiom-bg: #2a1e14;
-  --axiom-border: #8a4a20;
-  --axiom-dot: #d4856a;
-  --theorem-bg: #14202a;
-  --theorem-border: #3a6a8a;
-  --theorem-dot: #6aaad4;
-  --def-bg: #1a2214;
-  --def-border: #4a6a3a;
-  --def-dot: #8aba6a;
-  --opaque-bg: #221c14;
-  --opaque-border: #6a5030;
-  --opaque-dot: #b8a060;
-  --structure-bg: #201a28;
-  --structure-border: #6a4a8a;
-  --structure-dot: #aa8ad4;
-  --inductive-bg: #201a28;
-  --inductive-border: #6a4a8a;
-  --inductive-dot: #aa8ad4;
-  --proposition-bg: #2a1420;
-  --proposition-border: #8a3a5a;
-  --proposition-dot: #d46a8a;
+  /* Node type colors */
+  --axiom-bg: #f5e6d8;
+  --axiom-border: #c4713a;
+  --axiom-dot: #b8510e;
+  --theorem-bg: #dde8f0;
+  --theorem-border: #5a8aaa;
+  --theorem-dot: #2a6a8a;
+  --def-bg: #e4ead4;
+  --def-border: #7a9a5a;
+  --def-dot: #4a7a2a;
+  --opaque-bg: #ebe0d0;
+  --opaque-border: #a08050;
+  --opaque-dot: #7a6030;
+  --structure-bg: #e8daf0;
+  --structure-border: #8a6aaa;
+  --structure-dot: #6a4a8a;
+  --inductive-bg: #e8daf0;
+  --inductive-border: #8a6aaa;
+  --inductive-dot: #6a4a8a;
+  --proposition-bg: #f0e0e4;
+  --proposition-border: #aa5a6a;
+  --proposition-dot: #8a2a4a;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #e0d5c0;
+    --text-light: #b8a890;
+    --text-muted: #8a7a6a;
+    --bg: #1a1510;
+    --bg-parchment: #221c14;
+    --bg-vellum: #2a2218;
+    --accent: #d4856a;
+    --accent-gold: #d4a937;
+    --accent-gold-light: #e8c050;
+    --border: #4a3a28;
+    --border-dark: #6a5a40;
+    --code-bg: #0e0c08;
+    --code-text: #e8d9b8;
+
+    --axiom-bg: #2a1e14;
+    --axiom-border: #8a4a20;
+    --axiom-dot: #d4856a;
+    --theorem-bg: #14202a;
+    --theorem-border: #3a6a8a;
+    --theorem-dot: #6aaad4;
+    --def-bg: #1a2214;
+    --def-border: #4a6a3a;
+    --def-dot: #8aba6a;
+    --opaque-bg: #221c14;
+    --opaque-border: #6a5030;
+    --opaque-dot: #b8a060;
+    --structure-bg: #201a28;
+    --structure-border: #6a4a8a;
+    --structure-dot: #aa8ad4;
+    --inductive-bg: #201a28;
+    --inductive-border: #6a4a8a;
+    --inductive-dot: #aa8ad4;
+    --proposition-bg: #2a1420;
+    --proposition-border: #8a3a5a;
+    --proposition-dot: #d46a8a;
   }
 }
 
@@ -88,8 +127,8 @@ h1 {
   text-align: center;
   font-size: 0.95rem;
   color: var(--text-light);
-  font-style: normal;
-  margin-bottom: 0.8rem;
+  font-style: italic;
+  margin-bottom: 1.5rem;
 }
 
 .serve-note {
@@ -120,7 +159,7 @@ h1 {
 
 .search-box:focus {
   border-color: var(--accent-gold);
-  box-shadow: 0 0 0 2px rgba(201, 168, 76, 0.15);
+  box-shadow: 0 0 0 2px rgba(184, 134, 11, 0.2);
 }
 
 .search-box::placeholder {
@@ -739,17 +778,12 @@ h1 {
 </head>
 <body>
 <div class="container">
-  <nav style="display: flex; gap: 2rem; justify-content: center; padding: 0.5rem 0 0.3rem; font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;">
-    <a href="../index.html" style="color: var(--text-light); text-decoration: none; transition: color 0.3s;">Home</a>
-    <a href="../axioms/index.html" style="color: var(--text-light); text-decoration: none; transition: color 0.3s;">Axiom Wiki</a>
-    <a href="../articles/index.html" style="color: var(--text-light); text-decoration: none; transition: color 0.3s;">Articles</a>
-  </nav>
   <h1>Catlib Explorer</h1>
   <div class="subtitle">Browse the formal structure of every formalization</div>
 
   <div class="stats-bar">
-    <span>54 files</span>
-    <span>1239 declarations</span>
+    <span>92 files</span>
+    <span>2543 declarations</span>
   </div>
 
   <!-- Interactive Flow Tree -->
@@ -762,14 +796,6 @@ h1 {
 <button class="chain-btn" data-chain="eucharist">Eucharist</button>
 <button class="chain-btn" data-chain="science">Scientific Inquiry</button>
 <button class="chain-btn" data-chain="sacraments">Sacrament Layers</button>
-<button class="chain-btn" data-chain="hell">Hell</button>
-<button class="chain-btn" data-chain="grace">Grace</button>
-<button class="chain-btn" data-chain="lordsprayer">Lord's Prayer</button>
-<button class="chain-btn" data-chain="soulstate">Soul State</button>
-<button class="chain-btn" data-chain="saints">Saints</button>
-<button class="chain-btn" data-chain="miracles">Miracles</button>
-<button class="chain-btn" data-chain="justification">Justification</button>
-<button class="chain-btn" data-chain="freedom">Freedom</button>
 
     </div>
 
@@ -976,473 +1002,6 @@ h1 {
   <div class="flow-node-detail"></div>
 </div>
 </div>
-<div class="chain-canvas" id="chain-hell">
-<div class="flow-node kind-axiom flow-depth-0" data-desc="Union with God requires freely choosing to love him. Without free will, communion is impossible." data-ccc="CCC &amp;sect;1033" data-link="Creed_Hell.html">
-  <div class="flow-node-header">
-    <span class="flow-node-badge">axiom</span>
-    <span class="flow-node-name">Love Requires Freedom</span>
-    <span class="flow-node-arrow">&#9654;</span>
-  </div>
-  <div class="flow-node-detail"></div>
-</div>
-<div class="flow-connector flow-depth-0"></div>
-<div class="flow-node kind-axiom flow-depth-0" data-desc="The freedom model is libertarian &mdash; for self-exclusion to carry moral weight, the person must have been able to genuinely choose otherwise." data-ccc="CCC &amp;sect;1033, Tradition" data-link="Creed_Hell.html">
-  <div class="flow-node-header">
-    <span class="flow-node-badge">axiom</span>
-    <span class="flow-node-name">Libertarian Free Will</span>
-    <span class="flow-node-arrow">&#9654;</span>
-  </div>
-  <div class="flow-node-detail"></div>
-</div>
-<div class="flow-connector flow-depth-0"></div>
-<div class="flow-node kind-axiom flow-depth-0" data-desc="Death is final &mdash; no post-mortem change of state. A brute axiom the Catechism asserts but never argues." data-ccc="CCC &amp;sect;1033, Tradition" data-link="Creed_Hell.html">
-  <div class="flow-node-header">
-    <span class="flow-node-badge">axiom</span>
-    <span class="flow-node-name">Death Is Final</span>
-    <span class="flow-node-arrow">&#9654;</span>
-  </div>
-  <div class="flow-node-detail"></div>
-</div>
-<div class="flow-connector flow-depth-0"></div>
-<div class="flow-node kind-axiom flow-depth-0" data-desc="God predestines no one to hell &mdash; hell is always the result of free choice." data-ccc="CCC &amp;sect;1037" data-link="Creed_Hell.html">
-  <div class="flow-node-header">
-    <span class="flow-node-badge">axiom</span>
-    <span class="flow-node-name">No Predestination to Hell</span>
-    <span class="flow-node-arrow">&#9654;</span>
-  </div>
-  <div class="flow-node-detail"></div>
-</div>
-<div class="flow-connector flow-depth-0"></div>
-<div class="flow-node kind-theorem flow-depth-1" data-desc="Dying in mortal sin with free will and uncoerced choice leads to eternal separation from God." data-ccc="CCC &amp;sect;1033" data-link="Creed_Hell.html">
-  <div class="flow-node-header">
-    <span class="flow-node-badge">thm</span>
-    <span class="flow-node-name">Mortal Sin &rarr; Separation</span>
-    <span class="flow-node-arrow">&#9654;</span>
-  </div>
-  <div class="flow-node-detail"></div>
-</div>
-<div class="flow-connector flow-depth-1"></div>
-<div class="flow-node kind-theorem flow-depth-2" data-desc="Self-exclusion requires libertarian freedom &mdash; under compatibilism, the moral weight of 'by our own free choice' is lost." data-ccc="CCC &amp;sect;1033" data-link="Creed_Hell.html">
-  <div class="flow-node-header">
-    <span class="flow-node-badge">thm</span>
-    <span class="flow-node-name">Self-Exclusion Requires Libertarian Freedom</span>
-    <span class="flow-node-arrow">&#9654;</span>
-  </div>
-  <div class="flow-node-detail"></div>
-</div>
-<div class="flow-connector flow-depth-2"></div>
-<div class="flow-node kind-theorem flow-depth-3" data-desc="A dead person in hell has their spiritual aspect (soul persists) but NOT their corporeal aspect. Hell is not annihilation." data-ccc="CCC &amp;sect;997, &amp;sect;366" data-link="Creed_Hell.html">
-  <div class="flow-node-header">
-    <span class="flow-node-badge">thm</span>
-    <span class="flow-node-name">Damned Soul Persists</span>
-    <span class="flow-node-arrow">&#9654;</span>
-  </div>
-  <div class="flow-node-detail"></div>
-</div>
-</div>
-<div class="chain-canvas" id="chain-grace">
-<div class="flow-node kind-axiom flow-depth-0" data-desc="Preparation for sanctifying grace requires prevenient grace. 'The preparation of man for the reception of grace is already a work of grace.'" data-ccc="CCC &amp;sect;2001" data-link="Creed_Grace.html">
-  <div class="flow-node-header">
-    <span class="flow-node-badge">axiom</span>
-    <span class="flow-node-name">Preparation Requires Prevenient Grace</span>
-    <span class="flow-node-arrow">&#9654;</span>
-  </div>
-  <div class="flow-node-detail"></div>
-</div>
-<div class="flow-connector flow-depth-0"></div>
-<div class="flow-node kind-axiom flow-depth-0" data-desc="Prevenient grace comes from God's initiative alone &mdash; no prior human preparation needed. This breaks the infinite regress." data-ccc="CCC &amp;sect;2001, Council of Orange (529)" data-link="Creed_Grace.html">
-  <div class="flow-node-header">
-    <span class="flow-node-badge">axiom</span>
-    <span class="flow-node-name">Prevenient Grace Unconditioned</span>
-    <span class="flow-node-arrow">&#9654;</span>
-  </div>
-  <div class="flow-node-detail"></div>
-</div>
-<div class="flow-connector flow-depth-0"></div>
-<div class="flow-node kind-axiom flow-depth-0" data-desc="Divine initiative preserves human freedom &mdash; after receiving prevenient grace, the person can still freely accept or reject." data-ccc="CCC &amp;sect;2002" data-link="Creed_Grace.html">
-  <div class="flow-node-header">
-    <span class="flow-node-badge">axiom</span>
-    <span class="flow-node-name">Divine Initiative Preserves Freedom</span>
-    <span class="flow-node-arrow">&#9654;</span>
-  </div>
-  <div class="flow-node-detail"></div>
-</div>
-<div class="flow-connector flow-depth-0"></div>
-<div class="flow-node kind-proposition flow-depth-1" data-desc="The typed hierarchy of graces: prevenient (preparing) and sanctifying are distinct types. Without this distinction, &sect;2001 is circular." data-ccc="CCC &amp;sect;2001, Council of Trent" data-link="Creed_Grace.html">
-  <div class="flow-node-header">
-    <span class="flow-node-badge">prop</span>
-    <span class="flow-node-name">Grace Type Hierarchy</span>
-    <span class="flow-node-arrow">&#9654;</span>
-  </div>
-  <div class="flow-node-detail"></div>
-</div>
-<div class="flow-connector flow-depth-1"></div>
-<div class="flow-node kind-theorem flow-depth-1" data-desc="Every person with free will can receive sanctifying grace, because prevenient grace is unconditionally available. The bootstrapping problem is resolved." data-ccc="CCC &amp;sect;2001" data-link="Creed_Grace.html">
-  <div class="flow-node-header">
-    <span class="flow-node-badge">thm</span>
-    <span class="flow-node-name">Bootstrapping Resolved</span>
-    <span class="flow-node-arrow">&#9654;</span>
-  </div>
-  <div class="flow-node-detail"></div>
-</div>
-<div class="flow-connector flow-depth-1"></div>
-<div class="flow-node kind-theorem flow-depth-2" data-desc="Grace and freedom are compatible &mdash; the human response to grace is genuinely free, not coerced. Catholic resolution to the Pelagian controversy." data-ccc="CCC &amp;sect;2002" data-link="Creed_Grace.html">
-  <div class="flow-node-header">
-    <span class="flow-node-badge">thm</span>
-    <span class="flow-node-name">Grace &amp; Freedom Compatible</span>
-    <span class="flow-node-arrow">&#9654;</span>
-  </div>
-  <div class="flow-node-detail"></div>
-</div>
-<div class="flow-connector flow-depth-2"></div>
-<div class="flow-node kind-theorem flow-depth-3" data-desc="Under Pelagianism, preparation wouldn't require prevenient grace &mdash; contradicting &sect;2001. The anti-Pelagian axiom does real work." data-ccc="CCC &amp;sect;2001" data-link="Creed_Grace.html">
-  <div class="flow-node-header">
-    <span class="flow-node-badge">thm</span>
-    <span class="flow-node-name">Pelagianism Contradicts &sect;2001</span>
-    <span class="flow-node-arrow">&#9654;</span>
-  </div>
-  <div class="flow-node-detail"></div>
-</div>
-</div>
-<div class="chain-canvas" id="chain-lordsprayer">
-<div class="flow-node kind-axiom flow-depth-0" data-desc="Divine forgiveness requires human forgiveness. 'This outpouring of mercy cannot penetrate our hearts as long as we have not forgiven.'" data-ccc="CCC &amp;sect;2838-2845" data-link="Creed_LordsPrayer.html">
-  <div class="flow-node-header">
-    <span class="flow-node-badge">axiom</span>
-    <span class="flow-node-name">Forgiveness Reciprocity</span>
-    <span class="flow-node-arrow">&#9654;</span>
-  </div>
-  <div class="flow-node-detail"></div>
-</div>
-<div class="flow-connector flow-depth-0"></div>
-<div class="flow-node kind-proposition flow-depth-0" data-desc="A person is divinely forgiven when their guilt layer (Layer 2 of the sin profile) is removed. NOT Layer 3 (temporal punishment)." data-ccc="CCC &amp;sect;1472, &amp;sect;2838" data-link="Creed_LordsPrayer.html">
-  <div class="flow-node-header">
-    <span class="flow-node-badge">prop</span>
-    <span class="flow-node-name">divinelyForgiven = Guilt Removed</span>
-    <span class="flow-node-arrow">&#9654;</span>
-  </div>
-  <div class="flow-node-detail"></div>
-</div>
-<div class="flow-connector flow-depth-0"></div>
-<div class="flow-node kind-theorem flow-depth-1" data-desc="Petition 5 forgiveness specifically targets Layer 2 (guilt). Temporal punishment (Layer 3) is addressed by penance, not the Lord's Prayer." data-ccc="CCC &amp;sect;1472, &amp;sect;2838" data-link="Creed_LordsPrayer.html">
-  <div class="flow-node-header">
-    <span class="flow-node-badge">thm</span>
-    <span class="flow-node-name">Forgiveness Is Guilt Removal</span>
-    <span class="flow-node-arrow">&#9654;</span>
-  </div>
-  <div class="flow-node-detail"></div>
-</div>
-<div class="flow-connector flow-depth-1"></div>
-<div class="flow-node kind-theorem flow-depth-1" data-desc="The first three petitions are God-ward (his name, kingdom, will); the last four are human-ward (our bread, forgiveness, protection, deliverance)." data-ccc="CCC &amp;sect;2803" data-link="Creed_LordsPrayer.html">
-  <div class="flow-node-header">
-    <span class="flow-node-badge">thm</span>
-    <span class="flow-node-name">3 + 4 Partition</span>
-    <span class="flow-node-arrow">&#9654;</span>
-  </div>
-  <div class="flow-node-detail"></div>
-</div>
-<div class="flow-connector flow-depth-1"></div>
-<div class="flow-node kind-theorem flow-depth-2" data-desc="Petitions 6 and 7 form a linked pair: full deliverance from evil (7) implies freedom from temptation (6). The seventh subsumes the sixth." data-ccc="CCC &amp;sect;2850-2854" data-link="Creed_LordsPrayer.html">
-  <div class="flow-node-header">
-    <span class="flow-node-badge">thm</span>
-    <span class="flow-node-name">Deliverance Subsumes Protection</span>
-    <span class="flow-node-arrow">&#9654;</span>
-  </div>
-  <div class="flow-node-detail"></div>
-</div>
-<div class="flow-connector flow-depth-2"></div>
-<div class="flow-node kind-theorem flow-depth-3" data-desc="Praying 'thy will be done' does NOT override freedom. Under T2, a person cooperating with grace still has libertarian free will." data-ccc="CCC &amp;sect;2822-2827" data-link="Creed_LordsPrayer.html">
-  <div class="flow-node-header">
-    <span class="flow-node-badge">thm</span>
-    <span class="flow-node-name">Thy Will Done Preserves Freedom</span>
-    <span class="flow-node-arrow">&#9654;</span>
-  </div>
-  <div class="flow-node-detail"></div>
-</div>
-</div>
-<div class="chain-canvas" id="chain-soulstate">
-<div class="flow-node kind-inductive flow-depth-0" data-desc="The three afterlife states: heaven (sustained, chose God, purified, beatific vision), purgatory (sustained, chose God, not purified), hell (sustained, rejected God)." data-ccc="CCC &amp;sect;1023, &amp;sect;1030, &amp;sect;1033" data-link="Creed_DivineModes.html">
-  <div class="flow-node-header">
-    <span class="flow-node-badge">inductive</span>
-    <span class="flow-node-name">SoulState (heaven | purgatory | hell)</span>
-    <span class="flow-node-arrow">&#9654;</span>
-  </div>
-  <div class="flow-node-detail"></div>
-</div>
-<div class="flow-connector flow-depth-0"></div>
-<div class="flow-node kind-def flow-depth-0" data-desc="God sustains all souls in existence &mdash; true for all three states by definition. This is NOT optional." data-ccc="CCC &amp;sect;301, Col 1:17" data-link="Creed_DivineModes.html">
-  <div class="flow-node-header">
-    <span class="flow-node-badge">def</span>
-    <span class="flow-node-name">SoulState.sustained (always True)</span>
-    <span class="flow-node-arrow">&#9654;</span>
-  </div>
-  <div class="flow-node-detail"></div>
-</div>
-<div class="flow-connector flow-depth-0"></div>
-<div class="flow-node kind-theorem flow-depth-1" data-desc="God sustains ALL that exists. All three constructors define sustained as True &mdash; now provable, not axiomatic." data-ccc="CCC &amp;sect;301, Col 1:17, Heb 1:3" data-link="Creed_DivineModes.html">
-  <div class="flow-node-header">
-    <span class="flow-node-badge">thm</span>
-    <span class="flow-node-name">god_sustains_all</span>
-    <span class="flow-node-arrow">&#9654;</span>
-  </div>
-  <div class="flow-node-detail"></div>
-</div>
-<div class="flow-connector flow-depth-1"></div>
-<div class="flow-node kind-theorem flow-depth-1" data-desc="The damned are sustained (they exist) but did not choose God. The hell paradox resolved: separation from beatifying mode, not sustaining mode." data-ccc="CCC &amp;sect;1033, &amp;sect;301" data-link="Creed_DivineModes.html">
-  <div class="flow-node-header">
-    <span class="flow-node-badge">thm</span>
-    <span class="flow-node-name">Hell Paradox Resolved</span>
-    <span class="flow-node-arrow">&#9654;</span>
-  </div>
-  <div class="flow-node-detail"></div>
-</div>
-<div class="flow-connector flow-depth-1"></div>
-<div class="flow-node kind-theorem flow-depth-2" data-desc="The beatific vision requires full purification. Only heaven has both. Provable by case-split on the inductive type." data-ccc="CCC &amp;sect;1023, Rev 21:27" data-link="Creed_DivineModes.html">
-  <div class="flow-node-header">
-    <span class="flow-node-badge">thm</span>
-    <span class="flow-node-name">Beatific Vision Requires Purity</span>
-    <span class="flow-node-arrow">&#9654;</span>
-  </div>
-  <div class="flow-node-detail"></div>
-</div>
-<div class="flow-connector flow-depth-2"></div>
-<div class="flow-node kind-theorem flow-depth-3" data-desc="Purgatory is transitional: the soul chose God (salvation assured) but is not yet purified. Once purified, the soul transitions to heaven." data-ccc="CCC &amp;sect;1030-1031" data-link="Creed_DivineModes.html">
-  <div class="flow-node-header">
-    <span class="flow-node-badge">thm</span>
-    <span class="flow-node-name">Purgatory Is Transitional</span>
-    <span class="flow-node-arrow">&#9654;</span>
-  </div>
-  <div class="flow-node-detail"></div>
-</div>
-</div>
-<div class="chain-canvas" id="chain-saints">
-<div class="flow-node kind-axiom flow-depth-0" data-desc="The communion of saints spans all three states (militant, suffering, triumphant). Communion is connected across death." data-ccc="CCC &amp;sect;946, &amp;sect;954" data-link="Creed_SaintsIntercession.html">
-  <div class="flow-node-header">
-    <span class="flow-node-badge">axiom</span>
-    <span class="flow-node-name">Communion Spans All States</span>
-    <span class="flow-node-arrow">&#9654;</span>
-  </div>
-  <div class="flow-node-detail"></div>
-</div>
-<div class="flow-connector flow-depth-0"></div>
-<div class="flow-node kind-axiom flow-depth-0" data-desc="Worship (latria) is owed to God alone. Veneration (dulia) is categorically different &mdash; not worship-lite but a different KIND of honor." data-ccc="CCC &amp;sect;2096, Ex 20:3" data-link="Creed_SaintsIntercession.html">
-  <div class="flow-node-header">
-    <span class="flow-node-badge">axiom</span>
-    <span class="flow-node-name">Latria God Alone + Dulia Distinct</span>
-    <span class="flow-node-arrow">&#9654;</span>
-  </div>
-  <div class="flow-node-detail"></div>
-</div>
-<div class="flow-connector flow-depth-0"></div>
-<div class="flow-node kind-axiom flow-depth-0" data-desc="A canonized person is a glorified saint. Canonization is infallible &mdash; connecting PapalInfallibility to eschatology." data-ccc="CCC &amp;sect;828, &amp;sect;891" data-link="Creed_SaintsIntercession.html">
-  <div class="flow-node-header">
-    <span class="flow-node-badge">axiom</span>
-    <span class="flow-node-name">Canonization Is Infallible</span>
-    <span class="flow-node-arrow">&#9654;</span>
-  </div>
-  <div class="flow-node-detail"></div>
-</div>
-<div class="flow-connector flow-depth-0"></div>
-<div class="flow-node kind-theorem flow-depth-1" data-desc="Veneration of saints is not idolatry: dulia is appropriate for canonized saints AND dulia is categorically not latria." data-ccc="CCC &amp;sect;2132, &amp;sect;971" data-link="Creed_SaintsIntercession.html">
-  <div class="flow-node-header">
-    <span class="flow-node-badge">thm</span>
-    <span class="flow-node-name">Veneration Is Not Idolatry</span>
-    <span class="flow-node-arrow">&#9654;</span>
-  </div>
-  <div class="flow-node-detail"></div>
-</div>
-<div class="flow-connector flow-depth-1"></div>
-<div class="flow-node kind-theorem flow-depth-2" data-desc="Bidirectional prayer: saints intercede for the living AND can receive prayer from the living. The communion is not metaphorical." data-ccc="CCC &amp;sect;956, &amp;sect;2683" data-link="Creed_SaintsIntercession.html">
-  <div class="flow-node-header">
-    <span class="flow-node-badge">thm</span>
-    <span class="flow-node-name">Bidirectional Prayer in Communion</span>
-    <span class="flow-node-arrow">&#9654;</span>
-  </div>
-  <div class="flow-node-detail"></div>
-</div>
-<div class="flow-connector flow-depth-2"></div>
-<div class="flow-node kind-theorem flow-depth-3" data-desc="Merit is transferable within the communion. Christ's merit is primary (infinite); saints' merit participates secondarily via P2." data-ccc="CCC &amp;sect;1475-1477" data-link="Creed_SaintsIntercession.html">
-  <div class="flow-node-header">
-    <span class="flow-node-badge">thm</span>
-    <span class="flow-node-name">Treasury of Merit (P2)</span>
-    <span class="flow-node-arrow">&#9654;</span>
-  </div>
-  <div class="flow-node-detail"></div>
-</div>
-</div>
-<div class="chain-canvas" id="chain-miracles">
-<div class="flow-node kind-axiom flow-depth-0" data-desc="Miracles serve MULTIPLE purposes: authentication, kingdom-sign, ecclesial edification, and liberation. Not just authentication." data-ccc="CCC &amp;sect;547-550" data-link="Creed_Miracles.html">
-  <div class="flow-node-header">
-    <span class="flow-node-badge">axiom</span>
-    <span class="flow-node-name">Miracles Serve Multiple Purposes</span>
-    <span class="flow-node-arrow">&#9654;</span>
-  </div>
-  <div class="flow-node-detail"></div>
-</div>
-<div class="flow-connector flow-depth-0"></div>
-<div class="flow-node kind-axiom flow-depth-0" data-desc="The Holy Spirit gives charisms &mdash; including extraordinary ones &mdash; in every era. Present tense, no temporal restriction." data-ccc="CCC &amp;sect;799, &amp;sect;2003" data-link="Creed_Miracles.html">
-  <div class="flow-node-header">
-    <span class="flow-node-badge">axiom</span>
-    <span class="flow-node-name">Charisms In Every Era</span>
-    <span class="flow-node-arrow">&#9654;</span>
-  </div>
-  <div class="flow-node-detail"></div>
-</div>
-<div class="flow-connector flow-depth-0"></div>
-<div class="flow-node kind-axiom flow-depth-0" data-desc="Cessationist axiom: miracles serve ONLY authentication. Once the canon is complete, extraordinary charisms cease." data-ccc="1 Cor 13:10, Warfield" data-link="Creed_Miracles.html">
-  <div class="flow-node-header">
-    <span class="flow-node-badge">axiom</span>
-    <span class="flow-node-name">Cessationist: Authentication Only</span>
-    <span class="flow-node-arrow">&#9654;</span>
-  </div>
-  <div class="flow-node-detail"></div>
-</div>
-<div class="flow-connector flow-depth-0"></div>
-<div class="flow-node kind-theorem flow-depth-1" data-desc="Cessationism is internally coherent &mdash; given its axioms, the conclusion follows. The dispute is about the axioms, not the logic." data-ccc="CCC &amp;sect;156" data-link="Creed_Miracles.html">
-  <div class="flow-node-header">
-    <span class="flow-node-badge">thm</span>
-    <span class="flow-node-name">Cessationism Internally Coherent</span>
-    <span class="flow-node-arrow">&#9654;</span>
-  </div>
-  <div class="flow-node-detail"></div>
-</div>
-<div class="flow-connector flow-depth-1"></div>
-<div class="flow-node kind-theorem flow-depth-1" data-desc="The Catholic axioms entail continuationism &mdash; extraordinary charisms continue in the post-apostolic era." data-ccc="CCC &amp;sect;799, &amp;sect;1508" data-link="Creed_Miracles.html">
-  <div class="flow-node-header">
-    <span class="flow-node-badge">thm</span>
-    <span class="flow-node-name">Continuationism from Catholic Axioms</span>
-    <span class="flow-node-arrow">&#9654;</span>
-  </div>
-  <div class="flow-node-detail"></div>
-</div>
-<div class="flow-connector flow-depth-1"></div>
-<div class="flow-node kind-theorem flow-depth-2" data-desc="Catholic and cessationist axiom sets are formally incompatible. Given the canon is complete, they yield contradictory conclusions." data-ccc="CCC &amp;sect;799 vs. 1 Cor 13:10" data-link="Creed_Miracles.html">
-  <div class="flow-node-header">
-    <span class="flow-node-badge">thm</span>
-    <span class="flow-node-name">Catholic-Cessationist Incompatible</span>
-    <span class="flow-node-arrow">&#9654;</span>
-  </div>
-  <div class="flow-node-detail"></div>
-</div>
-<div class="flow-connector flow-depth-2"></div>
-<div class="flow-node kind-theorem flow-depth-3" data-desc="If sacraments effect supernatural changes (T3), then supernatural acts occur at every valid sacrament. Cessationism must deny T3 to be consistent." data-ccc="CCC &amp;sect;1127, Council of Trent" data-link="Creed_Miracles.html">
-  <div class="flow-node-header">
-    <span class="flow-node-badge">thm</span>
-    <span class="flow-node-name">Sacramental Argument vs. Cessationism</span>
-    <span class="flow-node-arrow">&#9654;</span>
-  </div>
-  <div class="flow-node-detail"></div>
-</div>
-</div>
-<div class="chain-canvas" id="chain-justification">
-<div class="flow-node kind-structure flow-depth-0" data-desc="A model of justification: type (transformative vs forensic), human role (cooperation vs reception-only), instrument (baptism vs faith alone), and process vs event." data-ccc="CCC &amp;sect;1987-1993" data-link="MoralTheology_Justification.html">
-  <div class="flow-node-header">
-    <span class="flow-node-badge">struct</span>
-    <span class="flow-node-name">JustificationModel</span>
-    <span class="flow-node-arrow">&#9654;</span>
-  </div>
-  <div class="flow-node-detail"></div>
-</div>
-<div class="flow-connector flow-depth-0"></div>
-<div class="flow-node kind-def flow-depth-0" data-desc="Catholic model: transformative grace, human cooperation, baptism as instrument, justification as process." data-ccc="CCC &amp;sect;1987-1993, Trent Session 6" data-link="MoralTheology_Justification.html">
-  <div class="flow-node-header">
-    <span class="flow-node-badge">def</span>
-    <span class="flow-node-name">catholicModel</span>
-    <span class="flow-node-arrow">&#9654;</span>
-  </div>
-  <div class="flow-node-detail"></div>
-</div>
-<div class="flow-connector flow-depth-0"></div>
-<div class="flow-node kind-def flow-depth-0" data-desc="Protestant model: forensic grace, reception only, faith alone as instrument, justification as single event." data-ccc="Luther, sola fide" data-link="MoralTheology_Justification.html">
-  <div class="flow-node-header">
-    <span class="flow-node-badge">def</span>
-    <span class="flow-node-name">protestantModel</span>
-    <span class="flow-node-arrow">&#9654;</span>
-  </div>
-  <div class="flow-node-detail"></div>
-</div>
-<div class="flow-connector flow-depth-0"></div>
-<div class="flow-node kind-theorem flow-depth-1" data-desc="The denominational difference is an axiom-set difference. Catholic and Protestant models differ on exactly three axes." data-ccc="CCC &amp;sect;1987-1993" data-link="MoralTheology_Justification.html">
-  <div class="flow-node-header">
-    <span class="flow-node-badge">thm</span>
-    <span class="flow-node-name">Models Differ on Three Axes</span>
-    <span class="flow-node-arrow">&#9654;</span>
-  </div>
-  <div class="flow-node-detail"></div>
-</div>
-<div class="flow-connector flow-depth-1"></div>
-<div class="flow-node kind-theorem flow-depth-2" data-desc="The Catholic model requires all four commitments: transformative, cooperation, baptism, process." data-ccc="CCC &amp;sect;1990-1993" data-link="MoralTheology_Justification.html">
-  <div class="flow-node-header">
-    <span class="flow-node-badge">thm</span>
-    <span class="flow-node-name">Catholic Requires All Four</span>
-    <span class="flow-node-arrow">&#9654;</span>
-  </div>
-  <div class="flow-node-detail"></div>
-</div>
-<div class="flow-connector flow-depth-2"></div>
-<div class="flow-node kind-theorem flow-depth-2" data-desc="The Protestant model drops or replaces all four: forensic, reception-only, faith alone, single event. The axiom set IS the denomination." data-ccc="Luther, WCF" data-link="MoralTheology_Justification.html">
-  <div class="flow-node-header">
-    <span class="flow-node-badge">thm</span>
-    <span class="flow-node-name">Protestant Drops All Four</span>
-    <span class="flow-node-arrow">&#9654;</span>
-  </div>
-  <div class="flow-node-detail"></div>
-</div>
-</div>
-<div class="chain-canvas" id="chain-freedom">
-<div class="flow-node kind-axiom flow-depth-0" data-desc="Doing good increases freedom. 'The more one does what is good, the freer one becomes.' Freedom has a teleological direction." data-ccc="CCC &amp;sect;1733" data-link="MoralTheology_Freedom.html">
-  <div class="flow-node-header">
-    <span class="flow-node-badge">axiom</span>
-    <span class="flow-node-name">Good Increases Freedom</span>
-    <span class="flow-node-arrow">&#9654;</span>
-  </div>
-  <div class="flow-node-detail"></div>
-</div>
-<div class="flow-connector flow-depth-0"></div>
-<div class="flow-node kind-proposition flow-depth-0" data-desc="Two concepts of freedom in tension: freedom-as-choice (&sect;1731 &mdash; having options) vs freedom-as-flourishing (&sect;1733 &mdash; power to do good)." data-ccc="CCC &amp;sect;1731, &amp;sect;1733" data-link="MoralTheology_Freedom.html">
-  <div class="flow-node-header">
-    <span class="flow-node-badge">prop</span>
-    <span class="flow-node-name">Two Concepts of Freedom</span>
-    <span class="flow-node-arrow">&#9654;</span>
-  </div>
-  <div class="flow-node-detail"></div>
-</div>
-<div class="flow-connector flow-depth-0"></div>
-<div class="flow-node kind-structure flow-depth-0" data-desc="Perfect freedom: fully oriented to good, can no longer choose evil. The state of the blessed in heaven and always of God." data-ccc="CCC &amp;sect;1732" data-link="MoralTheology_Freedom.html">
-  <div class="flow-node-header">
-    <span class="flow-node-badge">struct</span>
-    <span class="flow-node-name">PerfectFreedom</span>
-    <span class="flow-node-arrow">&#9654;</span>
-  </div>
-  <div class="flow-node-detail"></div>
-</div>
-<div class="flow-connector flow-depth-0"></div>
-<div class="flow-node kind-theorem flow-depth-1" data-desc="A person oriented toward good has positive freedom level. Formal content of &sect;1733." data-ccc="CCC &amp;sect;1733" data-link="MoralTheology_Freedom.html">
-  <div class="flow-node-header">
-    <span class="flow-node-badge">thm</span>
-    <span class="flow-node-name">Oriented Person Has Freedom</span>
-    <span class="flow-node-arrow">&#9654;</span>
-  </div>
-  <div class="flow-node-detail"></div>
-</div>
-<div class="flow-connector flow-depth-1"></div>
-<div class="flow-node kind-theorem flow-depth-2" data-desc="The perfect freedom paradox: inability to choose evil IS the perfection of freedom. God (who cannot sin) is the FREEST being." data-ccc="CCC &amp;sect;1732-1733" data-link="MoralTheology_Freedom.html">
-  <div class="flow-node-header">
-    <span class="flow-node-badge">thm</span>
-    <span class="flow-node-name">Perfect Freedom = Cannot Sin</span>
-    <span class="flow-node-arrow">&#9654;</span>
-  </div>
-  <div class="flow-node-detail"></div>
-</div>
-<div class="flow-connector flow-depth-2"></div>
-<div class="flow-node kind-theorem flow-depth-3" data-desc="Teleological freedom from S7: the good-directed agent is freer than the non-good-directed agent." data-ccc="CCC &amp;sect;1733, S7" data-link="MoralTheology_Freedom.html">
-  <div class="flow-node-header">
-    <span class="flow-node-badge">thm</span>
-    <span class="flow-node-name">Teleological Freedom (S7)</span>
-    <span class="flow-node-arrow">&#9654;</span>
-  </div>
-  <div class="flow-node-detail"></div>
-</div>
-</div>
 
     </div>
   </div>
@@ -1455,35 +1014,50 @@ h1 {
     <h2 class="category-header">Foundations</h2>
 <a href="Foundations_Authority.html" class="file-card" data-search="authority 77 862">
   <div class="file-card-name">Authority</div>
-  <div class="file-card-meta"><span class="tag tag-axiom">9 axioms</span><span class="tag tag-theorem">9 thms</span><span class="tag tag-def">16 defs</span></div>
+  <div class="file-card-meta"><span class="tag tag-axiom">9 axioms</span><span class="tag tag-theorem">9 thms</span><span class="tag tag-def">21 defs</span></div>
   <div class="file-card-ccc">CCC &sect;77, &sect;862</div>
 </a>
-<a href="Foundations_Axioms.html" class="file-card" data-search="axioms 3 214 255 302 303 306 311 946 1024 1033 1037 1127 1730 1733 1790 1855 1861 1954 1999 2002">
+<a href="Foundations_Axioms.html" class="file-card" data-search="axioms 1024 1033 1037 1127 1730 1733 1790 1855 1861 1954 1999 2002 214 255 3 302 303 306 311 946">
   <div class="file-card-name">Axioms</div>
-  <div class="file-card-meta"><span class="tag tag-axiom">21 axioms</span><span class="tag tag-def">17 defs</span></div>
-  <div class="file-card-ccc">CCC &sect;3, &sect;214, &sect;255, &sect;302, &sect;303 +15</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">47 axioms</span><span class="tag tag-def">17 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1024, &sect;1033, &sect;1037, &sect;1127, &sect;1730 +15</div>
 </a>
-<a href="Foundations_Basic.html" class="file-card" data-search="basic 255 946 1024 1033 1700 1733 1750 1752 1754 1755 1849 1857 1859 1897 1996 2001">
+<a href="Foundations_Basic.html" class="file-card" data-search="basic 1024 1033 1700 1733 1750 1752 1754 1755 1849 1857 1859 1897 1996 2001 255 946">
   <div class="file-card-name">Basic</div>
-  <div class="file-card-meta"><span class="tag tag-theorem">2 thms</span><span class="tag tag-proposition">3 props</span><span class="tag tag-def">5 defs</span></div>
-  <div class="file-card-ccc">CCC &sect;255, &sect;946, &sect;1024, &sect;1033, &sect;1700 +11</div>
+  <div class="file-card-meta"><span class="tag tag-theorem">2 thms</span><span class="tag tag-proposition">3 props</span><span class="tag tag-def">23 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1024, &sect;1033, &sect;1700, &sect;1733, &sect;1750 +11</div>
 </a>
-<a href="Foundations_HumanNature.html" class="file-card" data-search="humannature 362 365 405 1705">
+<a href="Foundations_HumanNature.html" class="file-card" data-search="humannature 1705 362 363 364 365 405">
   <div class="file-card-name">HumanNature</div>
-  <div class="file-card-meta"><span class="tag tag-theorem">2 thms</span><span class="tag tag-proposition">1 prop</span><span class="tag tag-def">3 defs</span></div>
-  <div class="file-card-ccc">CCC &sect;362, &sect;365, &sect;405, &sect;1705</div>
+  <div class="file-card-meta"><span class="tag tag-theorem">2 thms</span><span class="tag tag-proposition">1 prop</span><span class="tag tag-def">8 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1705, &sect;362, &sect;363, &sect;364, &sect;365 +1</div>
 </a>
-<a href="Foundations_Love.html" class="file-card" data-search="love 3 1264 1822 1827 1855 2264">
+<a href="Foundations_Love.html" class="file-card" data-search="love 1 1264 1822 1827 1855 2264 3 6">
   <div class="file-card-name">Love</div>
-  <div class="file-card-meta"><span class="tag tag-axiom">8 axioms</span><span class="tag tag-theorem">7 thms</span><span class="tag tag-def">5 defs</span></div>
-  <div class="file-card-ccc">CCC &sect;3, &sect;1264, &sect;1822, &sect;1827, &sect;1855 +1</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">8 axioms</span><span class="tag tag-theorem">7 thms</span><span class="tag tag-def">8 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1, &sect;1264, &sect;1822, &sect;1827, &sect;1855 +3</div>
 </a>
-<a href="Foundations_SinEffects.html" class="file-card" data-search="sineffects 405 847 1023 1030 1033 1472">
+<a href="Foundations_SinEffects.html" class="file-card" data-search="sineffects 1023 1030 1033 1260 1472 405 847">
   <div class="file-card-name">SinEffects</div>
-  <div class="file-card-meta"><span class="tag tag-theorem">5 thms</span><span class="tag tag-def">7 defs</span></div>
-  <div class="file-card-ccc">CCC &sect;405, &sect;847, &sect;1023, &sect;1030, &sect;1033 +1</div>
+  <div class="file-card-meta"><span class="tag tag-theorem">5 thms</span><span class="tag tag-def">11 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1023, &sect;1030, &sect;1033, &sect;1260, &sect;1472 +2</div>
 </a>
 <h2 class="category-header">Creed</h2>
+<a href="Creed_AnalogyOfBeing.html" class="file-card" data-search="analogyofbeing 1028 36 40 41 42 43 806">
+  <div class="file-card-name">AnalogyOfBeing</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">14 axioms</span><span class="tag tag-theorem">6 thms</span><span class="tag tag-def">2 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1028, &sect;36, &sect;40, &sect;41, &sect;42 +2</div>
+</a>
+<a href="Creed_AngelicNature.html" class="file-card" data-search="angelicnature 1700 328 330 335 336 40">
+  <div class="file-card-name">AngelicNature</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">11 axioms</span><span class="tag tag-theorem">6 thms</span><span class="tag tag-def">4 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1700, &sect;328, &sect;330, &sect;335, &sect;336 +1</div>
+</a>
+<a href="Creed_Angels.html" class="file-card" data-search="angels 1033 1705 325 328 329 330 335 350 362 365 391 392 393">
+  <div class="file-card-name">Angels</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">15 axioms</span><span class="tag tag-theorem">11 thms</span><span class="tag tag-proposition">2 props</span></div>
+  <div class="file-card-ccc">CCC &sect;1033, &sect;1705, &sect;325, &sect;328, &sect;329 +8</div>
+</a>
 <a href="Creed_ArgumentGaps.html" class="file-card" data-search="argumentgaps 1374 1376 230 302 311 491 74 80">
   <div class="file-card-name">ArgumentGaps</div>
   <div class="file-card-meta"><span class="tag tag-theorem">8 thms</span><span class="tag tag-proposition">1 prop</span><span class="tag tag-def">8 defs</span></div>
@@ -1491,7 +1065,7 @@ h1 {
 </a>
 <a href="Creed_Atonement.html" class="file-card" data-search="atonement 1849 599 601 604 613 615 616">
   <div class="file-card-name">Atonement</div>
-  <div class="file-card-meta"><span class="tag tag-axiom">18 axioms</span><span class="tag tag-theorem">11 thms</span><span class="tag tag-def">2 defs</span></div>
+  <div class="file-card-meta"><span class="tag tag-axiom">18 axioms</span><span class="tag tag-theorem">11 thms</span><span class="tag tag-def">10 defs</span></div>
   <div class="file-card-ccc">CCC &sect;1849, &sect;599, &sect;601, &sect;604, &sect;613 +2</div>
 </a>
 <a href="Creed_Christology.html" class="file-card" data-search="christology 1374 365 464 466 467 470 471 474 475 624 645 650">
@@ -1501,17 +1075,22 @@ h1 {
 </a>
 <a href="Creed_ConciliarAuthority.html" class="file-card" data-search="conciliarauthority 120 250 465 76 77 861 862 884 891">
   <div class="file-card-name">ConciliarAuthority</div>
-  <div class="file-card-meta"><span class="tag tag-axiom">12 axioms</span><span class="tag tag-theorem">6 thms</span><span class="tag tag-def">1 def</span></div>
+  <div class="file-card-meta"><span class="tag tag-axiom">12 axioms</span><span class="tag tag-theorem">6 thms</span><span class="tag tag-def">11 defs</span></div>
   <div class="file-card-ccc">CCC &sect;120, &sect;250, &sect;465, &sect;76, &sect;77 +4</div>
+</a>
+<a href="Creed_CosmicRedemption.html" class="file-card" data-search="cosmicredemption 1038 1042 1046 1047 1048 365 997">
+  <div class="file-card-name">CosmicRedemption</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">10 axioms</span><span class="tag tag-theorem">11 thms</span></div>
+  <div class="file-card-ccc">CCC &sect;1038, &sect;1042, &sect;1046, &sect;1047, &sect;1048 +2</div>
 </a>
 <a href="Creed_CurDeusHomo.html" class="file-card" data-search="curdeushomo 456 457 458 459 460 461">
   <div class="file-card-name">CurDeusHomo</div>
-  <div class="file-card-meta"><span class="tag tag-axiom">14 axioms</span><span class="tag tag-theorem">12 thms</span><span class="tag tag-proposition">1 prop</span></div>
+  <div class="file-card-meta"><span class="tag tag-axiom">14 axioms</span><span class="tag tag-theorem">12 thms</span><span class="tag tag-proposition">1 prop</span><span class="tag tag-def">8 defs</span></div>
   <div class="file-card-ccc">CCC &sect;456, &sect;457, &sect;458, &sect;459, &sect;460 +1</div>
 </a>
 <a href="Creed_DevelopmentOfDoctrine.html" class="file-card" data-search="developmentofdoctrine 66 76 84 88 891 94">
   <div class="file-card-name">DevelopmentOfDoctrine</div>
-  <div class="file-card-meta"><span class="tag tag-axiom">15 axioms</span><span class="tag tag-theorem">7 thms</span><span class="tag tag-def">1 def</span></div>
+  <div class="file-card-meta"><span class="tag tag-axiom">15 axioms</span><span class="tag tag-theorem">7 thms</span><span class="tag tag-def">11 defs</span></div>
   <div class="file-card-ccc">CCC &sect;66, &sect;76, &sect;84, &sect;88, &sect;891 +1</div>
 </a>
 <a href="Creed_DivineAttributes.html" class="file-card" data-search="divineattributes 198 202 213 268 269 271 272 274 302 365 847">
@@ -1519,10 +1098,25 @@ h1 {
   <div class="file-card-meta"><span class="tag tag-axiom">17 axioms</span><span class="tag tag-theorem">10 thms</span><span class="tag tag-def">2 defs</span></div>
   <div class="file-card-ccc">CCC &sect;198, &sect;202, &sect;213, &sect;268, &sect;269 +6</div>
 </a>
+<a href="Creed_DivineInsights.html" class="file-card" data-search="divineinsights 1505 1700 1733 1804 1810 1954 1999 2125 2500 3 32 391 395 405 41 815">
+  <div class="file-card-name">DivineInsights</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">15 axioms</span><span class="tag tag-theorem">13 thms</span><span class="tag tag-proposition">2 props</span><span class="tag tag-def">13 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1505, &sect;1700, &sect;1733, &sect;1804, &sect;1810 +11</div>
+</a>
 <a href="Creed_DivineModes.html" class="file-card" data-search="divinemodes 1023 1030 1033 1260 1472 301 847 997">
   <div class="file-card-name">DivineModes</div>
-  <div class="file-card-meta"><span class="tag tag-axiom">6 axioms</span><span class="tag tag-theorem">22 thms</span><span class="tag tag-proposition">9 props</span><span class="tag tag-def">4 defs</span></div>
+  <div class="file-card-meta"><span class="tag tag-axiom">3 axioms</span><span class="tag tag-theorem">24 thms</span><span class="tag tag-proposition">9 props</span><span class="tag tag-def">5 defs</span></div>
   <div class="file-card-ccc">CCC &sect;1023, &sect;1030, &sect;1033, &sect;1260, &sect;1472 +3</div>
+</a>
+<a href="Creed_EssenceExistence.html" class="file-card" data-search="essenceexistence 213 271 290 301 302 42">
+  <div class="file-card-name">EssenceExistence</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">18 axioms</span><span class="tag tag-theorem">9 thms</span><span class="tag tag-def">1 def</span></div>
+  <div class="file-card-ccc">CCC &sect;213, &sect;271, &sect;290, &sect;301, &sect;302 +1</div>
+</a>
+<a href="Creed_FaithAndReason.html" class="file-card" data-search="faithandreason 1 156 157 158 159 1954 237 299 35 36 37 38 405 43 76">
+  <div class="file-card-name">FaithAndReason</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">19 axioms</span><span class="tag tag-theorem">9 thms</span><span class="tag tag-proposition">1 prop</span><span class="tag tag-def">1 def</span></div>
+  <div class="file-card-ccc">CCC &sect;1, &sect;156, &sect;157, &sect;158, &sect;159 +10</div>
 </a>
 <a href="Creed_Grace.html" class="file-card" data-search="grace 2001 2002">
   <div class="file-card-name">Grace</div>
@@ -1539,6 +1133,11 @@ h1 {
   <div class="file-card-meta"><span class="tag tag-theorem">13 thms</span><span class="tag tag-proposition">6 props</span><span class="tag tag-def">6 defs</span></div>
   <div class="file-card-ccc">CCC &sect;1374, &sect;242, &sect;253, &sect;254, &sect;405 +4</div>
 </a>
+<a href="Creed_HolySpirit.html" class="file-card" data-search="holyspirit 246 248 253 255 258 683 685 687 688 689 690 733">
+  <div class="file-card-name">HolySpirit</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">11 axioms</span><span class="tag tag-theorem">7 thms</span><span class="tag tag-def">4 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;246, &sect;248, &sect;253, &sect;255, &sect;258 +7</div>
+</a>
 <a href="Creed_HylomorphicFormation.html" class="file-card" data-search="hylomorphicformation 364 365 366 997">
   <div class="file-card-name">HylomorphicFormation</div>
   <div class="file-card-meta"><span class="tag tag-axiom">11 axioms</span><span class="tag tag-theorem">11 thms</span></div>
@@ -1554,25 +1153,55 @@ h1 {
   <div class="file-card-meta"><span class="tag tag-axiom">9 axioms</span><span class="tag tag-theorem">5 thms</span></div>
   <div class="file-card-ccc">CCC &sect;1023, &sect;2634, &sect;2683, &sect;2692, &sect;366 +1</div>
 </a>
+<a href="Creed_Judgment.html" class="file-card" data-search="judgment 1021 1022 1038 1039 1040 365 997">
+  <div class="file-card-name">Judgment</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">6 axioms</span><span class="tag tag-theorem">10 thms</span></div>
+  <div class="file-card-ccc">CCC &sect;1021, &sect;1022, &sect;1038, &sect;1039, &sect;1040 +2</div>
+</a>
 <a href="Creed_Logos.html" class="file-card" data-search="logos 241 291 292 295 299 320">
   <div class="file-card-name">Logos</div>
   <div class="file-card-meta"><span class="tag tag-axiom">8 axioms</span><span class="tag tag-theorem">7 thms</span><span class="tag tag-def">1 def</span></div>
   <div class="file-card-ccc">CCC &sect;241, &sect;291, &sect;292, &sect;295, &sect;299 +1</div>
 </a>
+<a href="Creed_LordsPrayer.html" class="file-card" data-search="lordsprayer 1472 2761 2774 2803 2807 2809 2812 2816 2818 2820 2822 2825 2828 2830 2835 2837 2838 2840 2843 2846 2847 2850 2851 2853 2855 2857">
+  <div class="file-card-name">LordsPrayer</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">14 axioms</span><span class="tag tag-theorem">13 thms</span><span class="tag tag-proposition">1 prop</span><span class="tag tag-def">7 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1472, &sect;2761, &sect;2774, &sect;2803, &sect;2807 +21</div>
+</a>
 <a href="Creed_MarianDogma.html" class="file-card" data-search="mariandogma 1008 404 466 491 493 495 509 966 974">
   <div class="file-card-name">MarianDogma</div>
-  <div class="file-card-meta"><span class="tag tag-axiom">16 axioms</span><span class="tag tag-theorem">16 thms</span><span class="tag tag-proposition">1 prop</span><span class="tag tag-def">1 def</span></div>
+  <div class="file-card-meta"><span class="tag tag-axiom">16 axioms</span><span class="tag tag-theorem">16 thms</span><span class="tag tag-proposition">1 prop</span><span class="tag tag-def">19 defs</span></div>
   <div class="file-card-ccc">CCC &sect;1008, &sect;404, &sect;466, &sect;491, &sect;493 +4</div>
+</a>
+<a href="Creed_MarksOfChurch.html" class="file-card" data-search="marksofchurch 1396 2 20 8 811 813 815 819 823 824 827 830 831 838 857 862">
+  <div class="file-card-name">MarksOfChurch</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">26 axioms</span><span class="tag tag-theorem">7 thms</span><span class="tag tag-def">20 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1396, &sect;2, &sect;20, &sect;8, &sect;811 +11</div>
+</a>
+<a href="Creed_Miracles.html" class="file-card" data-search="miracles 1127 1507 1508 156 1673 2003 434 547 548 549 550 767 798 799 800 801 828">
+  <div class="file-card-name">Miracles</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">17 axioms</span><span class="tag tag-theorem">10 thms</span><span class="tag tag-def">3 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1127, &sect;1507, &sect;1508, &sect;156, &sect;1673 +12</div>
+</a>
+<a href="Creed_OriginalJustice.html" class="file-card" data-search="originaljustice 1472 1705 374 375 376 377 378 379 400 405">
+  <div class="file-card-name">OriginalJustice</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">8 axioms</span><span class="tag tag-theorem">9 thms</span><span class="tag tag-proposition">1 prop</span><span class="tag tag-def">8 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1472, &sect;1705, &sect;374, &sect;375, &sect;376 +5</div>
 </a>
 <a href="Creed_OriginalSin.html" class="file-card" data-search="originalsin 1708 1999 365 366 374 376 396 397 404 405 416">
   <div class="file-card-name">OriginalSin</div>
-  <div class="file-card-meta"><span class="tag tag-axiom">9 axioms</span><span class="tag tag-theorem">7 thms</span><span class="tag tag-def">2 defs</span></div>
+  <div class="file-card-meta"><span class="tag tag-axiom">9 axioms</span><span class="tag tag-theorem">7 thms</span><span class="tag tag-def">7 defs</span></div>
   <div class="file-card-ccc">CCC &sect;1708, &sect;1999, &sect;365, &sect;366, &sect;374 +6</div>
 </a>
 <a href="Creed_PapalInfallibility.html" class="file-card" data-search="papalinfallibility 552 882 891">
   <div class="file-card-name">PapalInfallibility</div>
-  <div class="file-card-meta"><span class="tag tag-axiom">19 axioms</span><span class="tag tag-theorem">6 thms</span><span class="tag tag-def">2 defs</span></div>
+  <div class="file-card-meta"><span class="tag tag-axiom">19 axioms</span><span class="tag tag-theorem">6 thms</span><span class="tag tag-def">16 defs</span></div>
   <div class="file-card-ccc">CCC &sect;552, &sect;882, &sect;891</div>
+</a>
+<a href="Creed_Parousia.html" class="file-card" data-search="parousia 1040 1042 1048 1928 2401 306 668 671 675 676 677">
+  <div class="file-card-name">Parousia</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">15 axioms</span><span class="tag tag-theorem">9 thms</span></div>
+  <div class="file-card-ccc">CCC &sect;1040, &sect;1042, &sect;1048, &sect;1928, &sect;2401 +6</div>
 </a>
 <a href="Creed_Prayer.html" class="file-card" data-search="prayer 2725 2734 2735 2737 2738 2745 307 314">
   <div class="file-card-name">Prayer</div>
@@ -1581,7 +1210,7 @@ h1 {
 </a>
 <a href="Creed_PrivateJudgment.html" class="file-card" data-search="privatejudgment 100 74 76 85 889">
   <div class="file-card-name">PrivateJudgment</div>
-  <div class="file-card-meta"><span class="tag tag-axiom">13 axioms</span><span class="tag tag-theorem">5 thms</span><span class="tag tag-def">1 def</span></div>
+  <div class="file-card-meta"><span class="tag tag-axiom">13 axioms</span><span class="tag tag-theorem">5 thms</span><span class="tag tag-def">9 defs</span></div>
   <div class="file-card-ccc">CCC &sect;100, &sect;74, &sect;76, &sect;85, &sect;889</div>
 </a>
 <a href="Creed_Providence.html" class="file-card" data-search="providence 302 306 308 311 312">
@@ -1591,13 +1220,18 @@ h1 {
 </a>
 <a href="Creed_Purgatory.html" class="file-card" data-search="purgatory 1023 1030 1031 1032 1033 997">
   <div class="file-card-name">Purgatory</div>
-  <div class="file-card-meta"><span class="tag tag-axiom">19 axioms</span><span class="tag tag-theorem">12 thms</span><span class="tag tag-def">2 defs</span></div>
+  <div class="file-card-meta"><span class="tag tag-axiom">19 axioms</span><span class="tag tag-theorem">14 thms</span><span class="tag tag-def">18 defs</span></div>
   <div class="file-card-ccc">CCC &sect;1023, &sect;1030, &sect;1031, &sect;1032, &sect;1033 +1</div>
 </a>
 <a href="Creed_RuleOfFaith.html" class="file-card" data-search="ruleoffaith 120 50 74 75 76 77 80 82 85">
   <div class="file-card-name">RuleOfFaith</div>
-  <div class="file-card-meta"><span class="tag tag-axiom">14 axioms</span><span class="tag tag-theorem">6 thms</span><span class="tag tag-def">1 def</span></div>
+  <div class="file-card-meta"><span class="tag tag-axiom">14 axioms</span><span class="tag tag-theorem">6 thms</span><span class="tag tag-def">9 defs</span></div>
   <div class="file-card-ccc">CCC &sect;120, &sect;50, &sect;74, &sect;75, &sect;76 +4</div>
+</a>
+<a href="Creed_SaintsIntercession.html" class="file-card" data-search="saintsintercession 1023 1030 1032 1475 1476 1477 2096 2132 2683 366 828 847 891 946 954 956 971">
+  <div class="file-card-name">SaintsIntercession</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">16 axioms</span><span class="tag tag-theorem">10 thms</span><span class="tag tag-proposition">1 prop</span><span class="tag tag-def">18 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1023, &sect;1030, &sect;1032, &sect;1475, &sect;1476 +12</div>
 </a>
 <a href="Creed_ScientificInquiry.html" class="file-card" data-search="scientificinquiry 1700 299 302 306 36">
   <div class="file-card-name">ScientificInquiry</div>
@@ -1609,15 +1243,20 @@ h1 {
   <div class="file-card-meta"><span class="tag tag-axiom">6 axioms</span><span class="tag tag-theorem">11 thms</span><span class="tag tag-def">1 def</span></div>
   <div class="file-card-ccc">CCC &sect;1023, &sect;1030, &sect;1033, &sect;1705, &sect;365 +2</div>
 </a>
+<a href="Creed_SolaScriptura.html" class="file-card" data-search="solascriptura 120 17 465 7 74 76 85">
+  <div class="file-card-name">SolaScriptura</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">1 axiom</span><span class="tag tag-theorem">16 thms</span><span class="tag tag-proposition">5 props</span><span class="tag tag-def">8 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;120, &sect;17, &sect;465, &sect;7, &sect;74 +2</div>
+</a>
 <a href="Creed_Soteriology.html" class="file-card" data-search="soteriology 1213 1257 1258 1814 1861 1987 1989 1996 2001 2007 2008 2016 405 432">
   <div class="file-card-name">Soteriology</div>
-  <div class="file-card-meta"><span class="tag tag-axiom">19 axioms</span><span class="tag tag-theorem">9 thms</span><span class="tag tag-proposition">4 props</span><span class="tag tag-def">5 defs</span></div>
+  <div class="file-card-meta"><span class="tag tag-axiom">19 axioms</span><span class="tag tag-theorem">9 thms</span><span class="tag tag-proposition">4 props</span><span class="tag tag-def">13 defs</span></div>
   <div class="file-card-ccc">CCC &sect;1213, &sect;1257, &sect;1258, &sect;1814, &sect;1861 +9</div>
 </a>
-<a href="Creed_Soul.html" class="file-card" data-search="soul 1015 1023 1705 362 363 364 365 366 405 988 990 997">
+<a href="Creed_Soul.html" class="file-card" data-search="soul 1015 1023 1700 1705 362 363 364 365 366 405 988 990 997">
   <div class="file-card-name">Soul</div>
-  <div class="file-card-meta"><span class="tag tag-axiom">11 axioms</span><span class="tag tag-theorem">17 thms</span><span class="tag tag-proposition">3 props</span></div>
-  <div class="file-card-ccc">CCC &sect;1015, &sect;1023, &sect;1705, &sect;362, &sect;363 +7</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">12 axioms</span><span class="tag tag-theorem">19 thms</span><span class="tag tag-proposition">3 props</span><span class="tag tag-def">1 def</span></div>
+  <div class="file-card-ccc">CCC &sect;1015, &sect;1023, &sect;1700, &sect;1705, &sect;362 +8</div>
 </a>
 <a href="Creed_Trinity.html" class="file-card" data-search="trinity 253 254 255">
   <div class="file-card-name">Trinity</div>
@@ -1625,29 +1264,64 @@ h1 {
   <div class="file-card-ccc">CCC &sect;253, &sect;254, &sect;255</div>
 </a>
 <h2 class="category-header">Moral Theology</h2>
+<a href="MoralTheology_Beatitudes.html" class="file-card" data-search="beatitudes 1716 1717 1718 1720 1723 1811 1822 1827">
+  <div class="file-card-name">Beatitudes</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">13 axioms</span><span class="tag tag-theorem">9 thms</span><span class="tag tag-def">5 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1716, &sect;1717, &sect;1718, &sect;1720, &sect;1723 +3</div>
+</a>
+<a href="MoralTheology_Chastity.html" class="file-card" data-search="chastity 12 1733 2331 2337 2338 2339 2341 2348 2349 2350 2366 2514 2517 2518 2531 914">
+  <div class="file-card-name">Chastity</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">10 axioms</span><span class="tag tag-theorem">7 thms</span><span class="tag tag-def">3 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;12, &sect;1733, &sect;2331, &sect;2337, &sect;2338 +11</div>
+</a>
 <a href="MoralTheology_ConjugalEthics.html" class="file-card" data-search="conjugalethics 11 12 13 14 16 1750 2366 2368 2370 2372 365 37 78">
   <div class="file-card-name">ConjugalEthics</div>
-  <div class="file-card-meta"><span class="tag tag-axiom">5 axioms</span><span class="tag tag-theorem">7 thms</span><span class="tag tag-proposition">5 props</span><span class="tag tag-def">5 defs</span></div>
+  <div class="file-card-meta"><span class="tag tag-axiom">5 axioms</span><span class="tag tag-theorem">7 thms</span><span class="tag tag-proposition">5 props</span><span class="tag tag-def">9 defs</span></div>
   <div class="file-card-ccc">CCC &sect;11, &sect;12, &sect;13, &sect;14, &sect;16 +8</div>
 </a>
 <a href="MoralTheology_Conscience.html" class="file-card" data-search="conscience 1776 1778 1783 1790 1791">
   <div class="file-card-name">Conscience</div>
-  <div class="file-card-meta"><span class="tag tag-axiom">5 axioms</span><span class="tag tag-theorem">2 thms</span><span class="tag tag-proposition">1 prop</span><span class="tag tag-def">4 defs</span></div>
+  <div class="file-card-meta"><span class="tag tag-axiom">2 axioms</span><span class="tag tag-theorem">2 thms</span><span class="tag tag-proposition">1 prop</span><span class="tag tag-def">4 defs</span></div>
   <div class="file-card-ccc">CCC &sect;1776, &sect;1778, &sect;1783, &sect;1790, &sect;1791</div>
+</a>
+<a href="MoralTheology_EvangelicalCounsels.html" class="file-card" data-search="evangelicalcounsels 1601 1731 1732 1733 2052 44 914 915 916 925 931">
+  <div class="file-card-name">EvangelicalCounsels</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">13 axioms</span><span class="tag tag-theorem">8 thms</span><span class="tag tag-proposition">1 prop</span><span class="tag tag-def">5 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1601, &sect;1731, &sect;1732, &sect;1733, &sect;2052 +6</div>
+</a>
+<a href="MoralTheology_FifthCommandment.html" class="file-card" data-search="fifthcommandment 1700 1756 2258 2261 2263 2267 2270 2271 2272 2274 2302 2309">
+  <div class="file-card-name">FifthCommandment</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">9 axioms</span><span class="tag tag-theorem">6 thms</span><span class="tag tag-def">4 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1700, &sect;1756, &sect;2258, &sect;2261, &sect;2263 +7</div>
+</a>
+<a href="MoralTheology_FirstCommandment.html" class="file-card" data-search="firstcommandment 2084 2096 2110 2111 2112 2113 2114 2123 2125 2128 36 37">
+  <div class="file-card-name">FirstCommandment</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">11 axioms</span><span class="tag tag-theorem">8 thms</span></div>
+  <div class="file-card-ccc">CCC &sect;2084, &sect;2096, &sect;2110, &sect;2111, &sect;2112 +7</div>
+</a>
+<a href="MoralTheology_Forgiveness.html" class="file-card" data-search="forgiveness 1864 2001 2838 2840 2842 2843 2844">
+  <div class="file-card-name">Forgiveness</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">11 axioms</span><span class="tag tag-theorem">10 thms</span><span class="tag tag-def">3 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1864, &sect;2001, &sect;2838, &sect;2840, &sect;2842 +2</div>
 </a>
 <a href="MoralTheology_Freedom.html" class="file-card" data-search="freedom 1730 1731 1732 1733 1734">
   <div class="file-card-name">Freedom</div>
   <div class="file-card-meta"><span class="tag tag-axiom">1 axiom</span><span class="tag tag-theorem">4 thms</span><span class="tag tag-proposition">2 props</span><span class="tag tag-def">1 def</span></div>
   <div class="file-card-ccc">CCC &sect;1730, &sect;1731, &sect;1732, &sect;1733, &sect;1734</div>
 </a>
+<a href="MoralTheology_JustWar.html" class="file-card" data-search="justwar 1750 2263 2265 2267 2302 2306 2309">
+  <div class="file-card-name">JustWar</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">5 axioms</span><span class="tag tag-theorem">8 thms</span><span class="tag tag-proposition">2 props</span><span class="tag tag-def">6 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1750, &sect;2263, &sect;2265, &sect;2267, &sect;2302 +2</div>
+</a>
 <a href="MoralTheology_Justification.html" class="file-card" data-search="justification 1987 1989 1990 1991 1992 1993 2001">
   <div class="file-card-name">Justification</div>
-  <div class="file-card-meta"><span class="tag tag-axiom">4 axioms</span><span class="tag tag-theorem">5 thms</span><span class="tag tag-def">6 defs</span></div>
+  <div class="file-card-meta"><span class="tag tag-axiom">3 axioms</span><span class="tag tag-theorem">5 thms</span><span class="tag tag-def">6 defs</span></div>
   <div class="file-card-ccc">CCC &sect;1987, &sect;1989, &sect;1990, &sect;1991, &sect;1992 +2</div>
 </a>
 <a href="MoralTheology_LegitimateDefense.html" class="file-card" data-search="legitimatedefense 2263 2264 2265">
   <div class="file-card-name">LegitimateDefense</div>
-  <div class="file-card-meta"><span class="tag tag-axiom">3 axioms</span><span class="tag tag-theorem">2 thms</span><span class="tag tag-proposition">4 props</span><span class="tag tag-def">4 defs</span></div>
+  <div class="file-card-meta"><span class="tag tag-axiom">2 axioms</span><span class="tag tag-theorem">2 thms</span><span class="tag tag-proposition">4 props</span><span class="tag tag-def">4 defs</span></div>
   <div class="file-card-ccc">CCC &sect;2263, &sect;2264, &sect;2265</div>
 </a>
 <a href="MoralTheology_LordsDay.html" class="file-card" data-search="lordsday 2168 2174 2175 2176 638">
@@ -1662,7 +1336,7 @@ h1 {
 </a>
 <a href="MoralTheology_MortalSinThreshold.html" class="file-card" data-search="mortalsinthreshold 1854 1857 1858 1859 1860 1861 1862 1863">
   <div class="file-card-name">MortalSinThreshold</div>
-  <div class="file-card-meta"><span class="tag tag-axiom">4 axioms</span><span class="tag tag-theorem">8 thms</span><span class="tag tag-proposition">5 props</span><span class="tag tag-def">2 defs</span></div>
+  <div class="file-card-meta"><span class="tag tag-axiom">4 axioms</span><span class="tag tag-theorem">8 thms</span><span class="tag tag-proposition">5 props</span><span class="tag tag-def">4 defs</span></div>
   <div class="file-card-ccc">CCC &sect;1854, &sect;1857, &sect;1858, &sect;1859, &sect;1860 +3</div>
 </a>
 <a href="MoralTheology_NaturalLaw.html" class="file-card" data-search="naturallaw 1756 1954 1956 1957">
@@ -1670,10 +1344,25 @@ h1 {
   <div class="file-card-meta"><span class="tag tag-axiom">8 axioms</span><span class="tag tag-theorem">6 thms</span><span class="tag tag-def">5 defs</span></div>
   <div class="file-card-ccc">CCC &sect;1756, &sect;1954, &sect;1956, &sect;1957</div>
 </a>
+<a href="MoralTheology_NaturalLawDepth.html" class="file-card" data-search="naturallawdepth 1954 302">
+  <div class="file-card-name">NaturalLawDepth</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">18 axioms</span><span class="tag tag-theorem">12 thms</span></div>
+  <div class="file-card-ccc">CCC &sect;1954, &sect;302</div>
+</a>
+<a href="MoralTheology_SeventhCommandment.html" class="file-card" data-search="seventhcommandment 1753 1807 19 20 2401 2408 2409 2434 2435 45">
+  <div class="file-card-name">SeventhCommandment</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">10 axioms</span><span class="tag tag-theorem">7 thms</span><span class="tag tag-def">2 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1753, &sect;1807, &sect;19, &sect;20, &sect;2401 +5</div>
+</a>
 <a href="MoralTheology_Sin.html" class="file-card" data-search="sin 1756 1849 1850 1857 1859 1861 1862">
   <div class="file-card-name">Sin</div>
   <div class="file-card-meta"><span class="tag tag-axiom">1 axiom</span><span class="tag tag-theorem">4 thms</span><span class="tag tag-proposition">2 props</span><span class="tag tag-def">2 defs</span></div>
   <div class="file-card-ccc">CCC &sect;1756, &sect;1849, &sect;1850, &sect;1857, &sect;1859 +2</div>
+</a>
+<a href="MoralTheology_SocialDoctrine.html" class="file-card" data-search="socialdoctrine 15 22 2401 2402 2403 2404 2406 2407 306 49 69">
+  <div class="file-card-name">SocialDoctrine</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">13 axioms</span><span class="tag tag-theorem">11 thms</span></div>
+  <div class="file-card-ccc">CCC &sect;15, &sect;22, &sect;2401, &sect;2402, &sect;2403 +6</div>
 </a>
 <a href="MoralTheology_SourcesOfMorality.html" class="file-card" data-search="sourcesofmorality 1750 1752 1755 1756">
   <div class="file-card-name">SourcesOfMorality</div>
@@ -1682,79 +1371,110 @@ h1 {
 </a>
 <a href="MoralTheology_Suicide.html" class="file-card" data-search="suicide 2264 2280 2281 2282 2283">
   <div class="file-card-name">Suicide</div>
-  <div class="file-card-meta"><span class="tag tag-axiom">9 axioms</span><span class="tag tag-theorem">4 thms</span><span class="tag tag-def">1 def</span></div>
+  <div class="file-card-meta"><span class="tag tag-axiom">9 axioms</span><span class="tag tag-theorem">5 thms</span><span class="tag tag-def">5 defs</span></div>
   <div class="file-card-ccc">CCC &sect;2264, &sect;2280, &sect;2281, &sect;2282, &sect;2283</div>
 </a>
 <a href="MoralTheology_TheologyOfBody.html" class="file-card" data-search="theologyofbody 1146 1148 12 1700 1987 1999 2001 2002 2370 374 396 405">
   <div class="file-card-name">TheologyOfBody</div>
-  <div class="file-card-meta"><span class="tag tag-axiom">17 axioms</span><span class="tag tag-theorem">9 thms</span><span class="tag tag-proposition">3 props</span><span class="tag tag-def">5 defs</span></div>
+  <div class="file-card-meta"><span class="tag tag-axiom">17 axioms</span><span class="tag tag-theorem">10 thms</span><span class="tag tag-proposition">3 props</span><span class="tag tag-def">21 defs</span></div>
   <div class="file-card-ccc">CCC &sect;1146, &sect;1148, &sect;12, &sect;1700, &sect;1987 +7</div>
+</a>
+<a href="MoralTheology_TruthAndLying.html" class="file-card" data-search="truthandlying 1750 1755 2464 2465 2468 2477 2482 2483 2484 2488 2489 2490">
+  <div class="file-card-name">TruthAndLying</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">10 axioms</span><span class="tag tag-theorem">10 thms</span><span class="tag tag-proposition">1 prop</span><span class="tag tag-def">2 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1750, &sect;1755, &sect;2464, &sect;2465, &sect;2468 +7</div>
 </a>
 <a href="MoralTheology_Veneration.html" class="file-card" data-search="veneration 2096 2097 2112 2113 2132 828 971">
   <div class="file-card-name">Veneration</div>
   <div class="file-card-meta"><span class="tag tag-axiom">9 axioms</span><span class="tag tag-theorem">8 thms</span><span class="tag tag-def">1 def</span></div>
   <div class="file-card-ccc">CCC &sect;2096, &sect;2097, &sect;2112, &sect;2113, &sect;2132 +2</div>
 </a>
+<a href="MoralTheology_VirtueConnection.html" class="file-card" data-search="virtueconnection 1733 1827 1830 1831">
+  <div class="file-card-name">VirtueConnection</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">9 axioms</span><span class="tag tag-theorem">9 thms</span><span class="tag tag-def">5 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1733, &sect;1827, &sect;1830, &sect;1831</div>
+</a>
+<a href="MoralTheology_Virtues.html" class="file-card" data-search="virtues 1733 1803 1805 1806 1807 1808 1809 1810 1811 1812 1813 1814 1817 1822 1827 388">
+  <div class="file-card-name">Virtues</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">13 axioms</span><span class="tag tag-theorem">8 thms</span><span class="tag tag-def">6 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1733, &sect;1803, &sect;1805, &sect;1806, &sect;1807 +11</div>
+</a>
 <h2 class="category-header">Sacraments</h2>
-<a href="Sacraments_Anointing.html" class="file-card" data-search="anointing 1499 1514 1520 1521 1523">
+<a href="Sacraments_Anointing.html" class="file-card" data-search="anointing 1023 1263 1303 1376 1468 1499 1514 1520 1521 1523 1581 1582 1639">
   <div class="file-card-name">Anointing</div>
-  <div class="file-card-meta"><span class="tag tag-axiom">14 axioms</span><span class="tag tag-theorem">10 thms</span><span class="tag tag-def">2 defs</span></div>
-  <div class="file-card-ccc">CCC &sect;1514, &sect;1520, &sect;1521, &sect;1523</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">24 axioms</span><span class="tag tag-theorem">10 thms</span><span class="tag tag-def">2 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1023, &sect;1263, &sect;1303, &sect;1376, &sect;1468 +8</div>
 </a>
-<a href="Sacraments_Baptism.html" class="file-card" data-search="baptism 405 1127 1250 1251 1263 1272">
+<a href="Sacraments_Baptism.html" class="file-card" data-search="baptism 1127 1131 1213 1250 1251 1252 1253 1263 1272 1282 405">
   <div class="file-card-name">Baptism</div>
-  <div class="file-card-meta"><span class="tag tag-axiom">5 axioms</span><span class="tag tag-theorem">5 thms</span><span class="tag tag-def">2 defs</span></div>
-  <div class="file-card-ccc">CCC &sect;405, &sect;1127, &sect;1250, &sect;1251, &sect;1263 +1</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">11 axioms</span><span class="tag tag-theorem">5 thms</span><span class="tag tag-def">2 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1127, &sect;1131, &sect;1213, &sect;1250, &sect;1251 +6</div>
 </a>
-<a href="Sacraments_Confirmation.html" class="file-card" data-search="confirmation 1285 1290 1292 1302 1303 1304 1305">
+<a href="Sacraments_Confirmation.html" class="file-card" data-search="confirmation 1212 1266 1285 1290 1292 1302 1303 1304 1306">
   <div class="file-card-name">Confirmation</div>
-  <div class="file-card-meta"><span class="tag tag-axiom">8 axioms</span><span class="tag tag-theorem">12 thms</span><span class="tag tag-proposition">1 prop</span><span class="tag tag-def">2 defs</span></div>
-  <div class="file-card-ccc">CCC &sect;1285, &sect;1290, &sect;1302, &sect;1303, &sect;1304 +2</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">14 axioms</span><span class="tag tag-theorem">12 thms</span><span class="tag tag-proposition">1 prop</span><span class="tag tag-def">3 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1212, &sect;1266, &sect;1285, &sect;1290, &sect;1292 +4</div>
 </a>
-<a href="Sacraments_Eucharist.html" class="file-card" data-search="eucharist 365 1023 1263 1355 1373 1374 1376 1377 1385 1391 1394 1395 1468">
+<a href="Sacraments_Eucharist.html" class="file-card" data-search="eucharist 1023 1263 1322 1355 1373 1374 1376 1377 1385 1387 1391 1394 1395 1396 1401 1468 365">
   <div class="file-card-name">Eucharist</div>
-  <div class="file-card-meta"><span class="tag tag-axiom">8 axioms</span><span class="tag tag-theorem">21 thms</span><span class="tag tag-proposition">2 props</span><span class="tag tag-def">7 defs</span></div>
-  <div class="file-card-ccc">CCC &sect;365, &sect;1023, &sect;1263, &sect;1355, &sect;1373 +8</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">12 axioms</span><span class="tag tag-theorem">21 thms</span><span class="tag tag-proposition">2 props</span><span class="tag tag-def">13 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1023, &sect;1263, &sect;1322, &sect;1355, &sect;1373 +12</div>
 </a>
-<a href="Sacraments_Exorcism.html" class="file-card" data-search="exorcism 77 391 861 1673">
+<a href="Sacraments_Exorcism.html" class="file-card" data-search="exorcism 1673 328 391 77 861">
   <div class="file-card-name">Exorcism</div>
-  <div class="file-card-meta"><span class="tag tag-axiom">6 axioms</span><span class="tag tag-theorem">3 thms</span><span class="tag tag-def">1 def</span></div>
-  <div class="file-card-ccc">CCC &sect;77, &sect;391, &sect;861, &sect;1673</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">6 axioms</span><span class="tag tag-theorem">3 thms</span><span class="tag tag-def">4 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1673, &sect;328, &sect;391, &sect;77, &sect;861</div>
 </a>
-<a href="Sacraments_HolyOrders.html" class="file-card" data-search="holyorders 1536 1546 1547 1554 1555 1557 1562 1569 1581 1582">
+<a href="Sacraments_HolyOrders.html" class="file-card" data-search="holyorders 1536 1546 1547 1548 1554 1555 1557 1562 1566 1569 1576 1581 1582 1583">
   <div class="file-card-name">HolyOrders</div>
-  <div class="file-card-meta"><span class="tag tag-axiom">6 axioms</span><span class="tag tag-theorem">7 thms</span><span class="tag tag-def">3 defs</span></div>
-  <div class="file-card-ccc">CCC &sect;1536, &sect;1546, &sect;1547, &sect;1554, &sect;1562 +5</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">13 axioms</span><span class="tag tag-theorem">7 thms</span><span class="tag tag-def">4 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1536, &sect;1546, &sect;1547, &sect;1548, &sect;1554 +9</div>
 </a>
-<a href="Sacraments_Liturgy.html" class="file-card" data-search="liturgy 1066 1085 1104 1106">
+<a href="Sacraments_Liturgy.html" class="file-card" data-search="liturgy 1066 1067 1085 1104 1106 1382 4 5 571">
   <div class="file-card-name">Liturgy</div>
-  <div class="file-card-meta"><span class="tag tag-axiom">12 axioms</span><span class="tag tag-theorem">7 thms</span><span class="tag tag-def">3 defs</span></div>
-  <div class="file-card-ccc">CCC &sect;1066, &sect;1085, &sect;1104, &sect;1106</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">21 axioms</span><span class="tag tag-theorem">7 thms</span><span class="tag tag-def">5 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1066, &sect;1067, &sect;1085, &sect;1104, &sect;1106 +4</div>
 </a>
-<a href="Sacraments_MatterAndForm.html" class="file-card" data-search="matterandform 1127 1131 1239 1240 1300 1333 1449 1519 1573 1626">
+<a href="Sacraments_MatterAndForm.html" class="file-card" data-search="matterandform 1127 1131 1239 1240 1300 1333 1449 1519 1573 1626 1627 365">
   <div class="file-card-name">MatterAndForm</div>
-  <div class="file-card-meta"><span class="tag tag-axiom">7 axioms</span><span class="tag tag-theorem">10 thms</span><span class="tag tag-def">2 defs</span></div>
-  <div class="file-card-ccc">CCC &sect;1127, &sect;1131, &sect;1239, &sect;1300, &sect;1333 +5</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">13 axioms</span><span class="tag tag-theorem">10 thms</span><span class="tag tag-def">2 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1127, &sect;1131, &sect;1239, &sect;1240, &sect;1300 +7</div>
 </a>
 <a href="Sacraments_PriestlyAbsolution.html" class="file-card" data-search="priestlyabsolution 1441 1443 1444 1445 1449 1461 1462 1467">
   <div class="file-card-name">PriestlyAbsolution</div>
-  <div class="file-card-meta"><span class="tag tag-axiom">6 axioms</span><span class="tag tag-theorem">6 thms</span></div>
+  <div class="file-card-meta"><span class="tag tag-axiom">11 axioms</span><span class="tag tag-theorem">6 thms</span></div>
   <div class="file-card-ccc">CCC &sect;1441, &sect;1443, &sect;1444, &sect;1445, &sect;1449 +3</div>
 </a>
-<a href="Sacraments_Reconciliation.html" class="file-card" data-search="reconciliation 1451 1456 1459 1461 1468 1472 1473 1489 1491 2001">
+<a href="Sacraments_Reconciliation.html" class="file-card" data-search="reconciliation 1422 1423 1424 1450 1451 1455 1456 1459 1461 1468 1472 1473 1489 1491 2001">
   <div class="file-card-name">Reconciliation</div>
-  <div class="file-card-meta"><span class="tag tag-axiom">6 axioms</span><span class="tag tag-theorem">12 thms</span><span class="tag tag-def">5 defs</span></div>
-  <div class="file-card-ccc">CCC &sect;1451, &sect;1456, &sect;1459, &sect;1461, &sect;1468 +5</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">8 axioms</span><span class="tag tag-theorem">12 thms</span><span class="tag tag-def">10 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1422, &sect;1423, &sect;1424, &sect;1450, &sect;1451 +10</div>
 </a>
-<a href="Sacraments_SacramentalCausation.html" class="file-card" data-search="sacramentalcausation 1210 1213 1263 1265 1267 1272 1302 1303 1376 1391 1394 1468 1472 1520 1581 1582 1617 1639">
+<a href="Sacraments_SacramentalCausation.html" class="file-card" data-search="sacramentalcausation 1127 1131 1210 1213 1262 1263 1265 1267 1272 1302 1303 1304 1376 1391 1394 1468 1472 1520 1521 1581 1582 1617 1639">
   <div class="file-card-name">SacramentalCausation</div>
-  <div class="file-card-meta"><span class="tag tag-axiom">23 axioms</span><span class="tag tag-theorem">20 thms</span><span class="tag tag-def">4 defs</span></div>
-  <div class="file-card-ccc">CCC &sect;1210, &sect;1213, &sect;1263, &sect;1265, &sect;1267 +13</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">26 axioms</span><span class="tag tag-theorem">20 thms</span><span class="tag tag-def">6 defs</span></div>
+  <div class="file-card-ccc">CCC &sect;1127, &sect;1131, &sect;1210, &sect;1213, &sect;1262 +18</div>
 </a>
 <a href="Sacraments_TransubstantiationDepth.html" class="file-card" data-search="transubstantiationdepth 1374 1376 1399">
   <div class="file-card-name">TransubstantiationDepth</div>
-  <div class="file-card-meta"><span class="tag tag-axiom">6 axioms</span><span class="tag tag-theorem">7 thms</span><span class="tag tag-def">2 defs</span></div>
+  <div class="file-card-meta"><span class="tag tag-axiom">11 axioms</span><span class="tag tag-theorem">7 thms</span><span class="tag tag-def">2 defs</span></div>
   <div class="file-card-ccc">CCC &sect;1374, &sect;1376, &sect;1399</div>
+</a>
+<h2 class="category-header">Audit</h2>
+<a href="Audit_DenominationalConsistency.html" class="file-card" data-search="denominationalconsistency ">
+  <div class="file-card-name">DenominationalConsistency</div>
+  <div class="file-card-meta"><span class="tag tag-theorem">24 thms</span><span class="tag tag-proposition">26 props</span><span class="tag tag-def">1 def</span></div>
+  
+</a>
+<a href="Audit_Model.html" class="file-card" data-search="model ">
+  <div class="file-card-name">Model</div>
+  <div class="file-card-meta"><span class="tag tag-theorem">33 thms</span><span class="tag tag-proposition">27 props</span><span class="tag tag-def">3 defs</span></div>
+  
+</a>
+<a href="Audit_Nonempty.html" class="file-card" data-search="nonempty 1030 1210 199 213 2402 253 328 355 84 881">
+  <div class="file-card-name">Nonempty</div>
+  <div class="file-card-meta"><span class="tag tag-axiom">29 axioms</span></div>
+  <div class="file-card-ccc">CCC &sect;1030, &sect;1210, &sect;199, &sect;213, &sect;2402 +5</div>
 </a>
 
   </div>

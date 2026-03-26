@@ -525,7 +525,13 @@ h1 {
   <h1>Marriage</h1>
   <div class="subtitle">MoralTheology &middot; 34 declarations</div>
 
-  
+  <div class="flow-summary">
+  <span class="flow-count axioms">18 axioms</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count theorems">11 theorems</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count derived">5 derived</span>
+</div>
   <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1, &sect;1601, &sect;1612, &sect;1617, &sect;1638, &sect;1640, &sect;1644, &sect;2, &sect;2382, &sect;796</div>
 
   <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot structure"></span>structure</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
@@ -566,11 +572,10 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque isSacramental : MarriageBond → Prop
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque isSacramental : MarriageBond → Prop</code></pre></div>
 <div class="node-desc">Whether a marriage is sacramental — a sign of Christ's union with the</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MarriageBond">MarriageBond</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="covenant_grounds_permanence">covenant_grounds_permanence</span><span class="dep-chip" data-target="baptism_makes_sacramental">baptism_makes_sacramental</span><span class="dep-chip" data-target="sacramental_unconsummated_quasi">sacramental_unconsummated_quasi</span><span class="dep-chip" data-target="consummation_seals_bond">consummation_seals_bond</span><span class="dep-chip" data-target="no_economia_for_absolute">no_economia_for_absolute</span><span class="dep-chip" data-target="protestant_no_sacrament">protestant_no_sacrament</span><span class="dep-chip" data-target="orthodox_economia_applies">orthodox_economia_applies</span><span class="dep-chip" data-target="baptized_marriage_is_sacramental">baptized_marriage_is_sacramental</span><span class="dep-chip" data-target="protestant_marriage_not_sacramental">protestant_marriage_not_sacramental</span><span class="dep-chip" data-target="MarriageBond">MarriageBond</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="covenant_grounds_permanence">covenant_grounds_permanence</span><span class="dep-chip" data-target="baptism_makes_sacramental">baptism_makes_sacramental</span><span class="dep-chip" data-target="sacramental_unconsummated_quasi">sacramental_unconsummated_quasi</span><span class="dep-chip" data-target="consummation_seals_bond">consummation_seals_bond</span><span class="dep-chip" data-target="no_economia_for_absolute">no_economia_for_absolute</span><span class="dep-chip" data-target="protestant_no_sacrament">protestant_no_sacrament</span><span class="dep-chip" data-target="orthodox_economia_applies">orthodox_economia_applies</span><span class="dep-chip" data-target="baptized_marriage_is_sacramental">baptized_marriage_is_sacramental</span><span class="dep-chip" data-target="protestant_marriage_not_sacramental">protestant_marriage_not_sacramental</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="christChurchUnionPermanent">
@@ -580,10 +585,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque christChurchUnionPermanent : Prop
-</code></pre></div>
-<div class="node-desc">Whether Christ's union with the Church is permanent (indefectible). │   ⚠ HIDDEN ASSUMPTION: This is the deepest premise in the argument.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="signifies">signifies</span></div></div>
+    <div class="node-prop"><pre><code>opaque christChurchUnionPermanent : Prop</code></pre></div>
+<div class="node-desc">Whether Christ's union with the Church is permanent (indefectible).</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="divine_fidelity_indefectible">divine_fidelity_indefectible</span><span class="dep-chip" data-target="sign_mirrors_permanence">sign_mirrors_permanence</span></div></div>
   </div>
 </div>
@@ -594,9 +597,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque signMirrorsPermanence : Prop
-</code></pre></div>
-<div class="node-desc">Whether a sacramental sign must mirror the permanence of what it │   ⚠ HIDDEN ASSUMPTION: Signs of permanent realities must themselves be</div>
+    <div class="node-prop"><pre><code>opaque signMirrorsPermanence : Prop</code></pre></div>
+<div class="node-desc">Whether a sacramental sign must mirror the permanence of what it</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="sign_mirrors_permanence">sign_mirrors_permanence</span><span class="dep-chip" data-target="consummation_seals_bond">consummation_seals_bond</span><span class="dep-chip" data-target="sacramental_sign_is_permanent">sacramental_sign_is_permanent</span></div></div>
   </div>
 </div>
@@ -607,11 +609,10 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque economiaOverrides : MarriageBond → Prop
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque economiaOverrides : MarriageBond → Prop</code></pre></div>
 <div class="node-desc">Whether a pastoral override (economia) can dissolve a specific bond.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MarriageBond">MarriageBond</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="no_economia_for_absolute">no_economia_for_absolute</span><span class="dep-chip" data-target="orthodox_economia_applies">orthodox_economia_applies</span><span class="dep-chip" data-target="no_pastoral_dissolution">no_pastoral_dissolution</span><span class="dep-chip" data-target="orthodox_permits_dissolution">orthodox_permits_dissolution</span><span class="dep-chip" data-target="economia_is_the_catholic_orthodox_split">economia_is_the_catholic_orthodox_split</span><span class="dep-chip" data-target="MarriageBond">MarriageBond</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="no_economia_for_absolute">no_economia_for_absolute</span><span class="dep-chip" data-target="orthodox_economia_applies">orthodox_economia_applies</span><span class="dep-chip" data-target="no_pastoral_dissolution">no_pastoral_dissolution</span><span class="dep-chip" data-target="orthodox_permits_dissolution">orthodox_permits_dissolution</span><span class="dep-chip" data-target="economia_is_the_catholic_orthodox_split">economia_is_the_catholic_orthodox_split</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="bondStrength">
@@ -621,11 +622,10 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque bondStrength : MarriageBond → BondStrength
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque bondStrength : MarriageBond → BondStrength</code></pre></div>
 <div class="node-desc">The strength of a specific marriage bond. This is the key function</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="BondStrength">BondStrength</span><span class="dep-chip" data-target="MarriageBond">MarriageBond</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="covenant_grounds_permanence">covenant_grounds_permanence</span><span class="dep-chip" data-target="sacramental_unconsummated_quasi">sacramental_unconsummated_quasi</span><span class="dep-chip" data-target="consummation_seals_bond">consummation_seals_bond</span><span class="dep-chip" data-target="absolute_bond_not_dissolvable">absolute_bond_not_dissolvable</span><span class="dep-chip" data-target="defeasible_bond_dissolvable">defeasible_bond_dissolvable</span><span class="dep-chip" data-target="sacramental_sign_is_permanent">sacramental_sign_is_permanent</span><span class="dep-chip" data-target="catholic_absolute_indissolubility">catholic_absolute_indissolubility</span><span class="dep-chip" data-target="unconsummated_sacramental_is_quasi">unconsummated_sacramental_is_quasi</span><span class="dep-chip" data-target="protestant_bond_is_defeasible">protestant_bond_is_defeasible</span><span class="dep-chip" data-target="BondStrength">BondStrength</span><span class="dep-chip" data-target="MarriageBond">MarriageBond</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="covenant_grounds_permanence">covenant_grounds_permanence</span><span class="dep-chip" data-target="sacramental_unconsummated_quasi">sacramental_unconsummated_quasi</span><span class="dep-chip" data-target="consummation_seals_bond">consummation_seals_bond</span><span class="dep-chip" data-target="absolute_bond_not_dissolvable">absolute_bond_not_dissolvable</span><span class="dep-chip" data-target="defeasible_bond_dissolvable">defeasible_bond_dissolvable</span><span class="dep-chip" data-target="sacramental_sign_is_permanent">sacramental_sign_is_permanent</span><span class="dep-chip" data-target="catholic_absolute_indissolubility">catholic_absolute_indissolubility</span><span class="dep-chip" data-target="unconsummated_sacramental_is_quasi">unconsummated_sacramental_is_quasi</span><span class="dep-chip" data-target="protestant_bond_is_defeasible">protestant_bond_is_defeasible</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="isDissolvable">
@@ -635,11 +635,10 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque isDissolvable : MarriageBond → Prop
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque isDissolvable : MarriageBond → Prop</code></pre></div>
 <div class="node-desc">Whether a bond is dissoluble — can be dissolved by some authority.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MarriageBond">MarriageBond</span><span class="dep-chip" data-target="Teaching">Teaching</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="consummation_seals_bond">consummation_seals_bond</span><span class="dep-chip" data-target="absolute_bond_not_dissolvable">absolute_bond_not_dissolvable</span><span class="dep-chip" data-target="defeasible_bond_dissolvable">defeasible_bond_dissolvable</span><span class="dep-chip" data-target="catholic_marriage_not_dissolvable">catholic_marriage_not_dissolvable</span><span class="dep-chip" data-target="protestant_marriage_dissoluble">protestant_marriage_dissoluble</span><span class="dep-chip" data-target="MarriageBond">MarriageBond</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MarriageBond">MarriageBond</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="consummation_seals_bond">consummation_seals_bond</span><span class="dep-chip" data-target="absolute_bond_not_dissolvable">absolute_bond_not_dissolvable</span><span class="dep-chip" data-target="defeasible_bond_dissolvable">defeasible_bond_dissolvable</span><span class="dep-chip" data-target="catholic_marriage_not_dissolvable">catholic_marriage_not_dissolvable</span><span class="dep-chip" data-target="protestant_marriage_dissoluble">protestant_marriage_dissoluble</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="covenant_grounds_permanence">
@@ -651,11 +650,10 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom covenant_grounds_permanence :
   ∀ (m : MarriageBond), m.isCovenantal → ¬isSacramental m →
-    bondStrength m = BondStrength.defeasible
-</code></pre></div>
-<div class="node-desc">A covenantal marriage establishes a defeasible bond. │   Source: [Scripture] Gen 2:24 (&quot;the two become one flesh&quot;); | Scope: ECUMENICAL — all major traditions accept that</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="BondStrength">BondStrength</span><span class="dep-chip" data-target="MarriageBond">MarriageBond</span><span class="dep-chip" data-target="Teaching">Teaching</span><span class="dep-chip" data-target="bondStrength">bondStrength</span><span class="dep-chip" data-target="isSacramental">isSacramental</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="protestant_marriage_not_sacramental">protestant_marriage_not_sacramental</span><span class="dep-chip" data-target="protestant_bond_is_defeasible">protestant_bond_is_defeasible</span><span class="dep-chip" data-target="naturalPermanenceTag">naturalPermanenceTag</span><span class="dep-chip" data-target="BondStrength">BondStrength</span><span class="dep-chip" data-target="MarriageBond">MarriageBond</span><span class="dep-chip" data-target="bondStrength">bondStrength</span><span class="dep-chip" data-target="isSacramental">isSacramental</span></div></div>
+    bondStrength m = BondStrength.defeasible</code></pre></div>
+<div class="node-desc">AXIOM (§1601–1602): A covenantal marriage establishes a defeasible bond.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="BondStrength">BondStrength</span><span class="dep-chip" data-target="MarriageBond">MarriageBond</span><span class="dep-chip" data-target="bondStrength">bondStrength</span><span class="dep-chip" data-target="isSacramental">isSacramental</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="protestant_marriage_not_sacramental">protestant_marriage_not_sacramental</span><span class="dep-chip" data-target="protestant_bond_is_defeasible">protestant_bond_is_defeasible</span><span class="dep-chip" data-target="naturalPermanenceTag">naturalPermanenceTag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="baptism_makes_sacramental">
@@ -666,11 +664,10 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom baptism_makes_sacramental :
-  ∀ (m : MarriageBond), m.bothBaptized → isSacramental m
-</code></pre></div>
-<div class="node-desc">If both spouses are baptized, the │   Source: [Tradition] Council of Trent, Session 24; Canon 1055 §2. | Scope: CATHOLIC. Protestants deny marriage is a sa...</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MarriageBond">MarriageBond</span><span class="dep-chip" data-target="Teaching">Teaching</span><span class="dep-chip" data-target="isSacramental">isSacramental</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="protestantRejectsSacramentality">protestantRejectsSacramentality</span><span class="dep-chip" data-target="baptized_marriage_is_sacramental">baptized_marriage_is_sacramental</span><span class="dep-chip" data-target="sacramental_sign_is_permanent">sacramental_sign_is_permanent</span><span class="dep-chip" data-target="catholic_absolute_indissolubility">catholic_absolute_indissolubility</span><span class="dep-chip" data-target="no_pastoral_dissolution">no_pastoral_dissolution</span><span class="dep-chip" data-target="unconsummated_sacramental_is_quasi">unconsummated_sacramental_is_quasi</span><span class="dep-chip" data-target="orthodox_permits_dissolution">orthodox_permits_dissolution</span><span class="dep-chip" data-target="economia_is_the_catholic_orthodox_split">economia_is_the_catholic_orthodox_split</span><span class="dep-chip" data-target="naturalPermanenceTag">naturalPermanenceTag</span><span class="dep-chip" data-target="MarriageBond">MarriageBond</span><span class="dep-chip" data-target="isSacramental">isSacramental</span></div></div>
+  ∀ (m : MarriageBond), m.bothBaptized → isSacramental m</code></pre></div>
+<div class="node-desc">AXIOM (§1617, Canon 1055 §2): If both spouses are baptized, the</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MarriageBond">MarriageBond</span><span class="dep-chip" data-target="isSacramental">isSacramental</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="protestantRejectsSacramentality">protestantRejectsSacramentality</span><span class="dep-chip" data-target="baptized_marriage_is_sacramental">baptized_marriage_is_sacramental</span><span class="dep-chip" data-target="sacramental_sign_is_permanent">sacramental_sign_is_permanent</span><span class="dep-chip" data-target="catholic_absolute_indissolubility">catholic_absolute_indissolubility</span><span class="dep-chip" data-target="no_pastoral_dissolution">no_pastoral_dissolution</span><span class="dep-chip" data-target="unconsummated_sacramental_is_quasi">unconsummated_sacramental_is_quasi</span><span class="dep-chip" data-target="orthodox_permits_dissolution">orthodox_permits_dissolution</span><span class="dep-chip" data-target="economia_is_the_catholic_orthodox_split">economia_is_the_catholic_orthodox_split</span><span class="dep-chip" data-target="naturalPermanenceTag">naturalPermanenceTag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="divine_fidelity_indefectible">
@@ -680,11 +677,10 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>axiom divine_fidelity_indefectible : christChurchUnionPermanent
-</code></pre></div>
-<div class="node-desc">Christ's union with the Church is permanent. │   Source: [Scripture] Eph 5:25–32; Mt 28:20. | Scope: ECUMENICAL — all Christians affirm Christ's │   ⚠ HIDDEN ASSUMPTION: This is the deepest load-bearing premise. If divine</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Teaching">Teaching</span><span class="dep-chip" data-target="christChurchUnionPermanent">christChurchUnionPermanent</span><span class="dep-chip" data-target="signifies">signifies</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="baptized_marriage_is_sacramental">baptized_marriage_is_sacramental</span><span class="dep-chip" data-target="sacramental_sign_is_permanent">sacramental_sign_is_permanent</span><span class="dep-chip" data-target="naturalPermanenceTag">naturalPermanenceTag</span><span class="dep-chip" data-target="christChurchUnionPermanent">christChurchUnionPermanent</span></div></div>
+    <div class="node-prop"><pre><code>axiom divine_fidelity_indefectible : christChurchUnionPermanent</code></pre></div>
+<div class="node-desc">AXIOM (Eph 5:25–32, §796): Christ's union with the Church is permanent.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="christChurchUnionPermanent">christChurchUnionPermanent</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="baptized_marriage_is_sacramental">baptized_marriage_is_sacramental</span><span class="dep-chip" data-target="sacramental_sign_is_permanent">sacramental_sign_is_permanent</span><span class="dep-chip" data-target="naturalPermanenceTag">naturalPermanenceTag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="sign_mirrors_permanence">
@@ -695,11 +691,10 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom sign_mirrors_permanence :
-  christChurchUnionPermanent → signMirrorsPermanence
-</code></pre></div>
-<div class="node-desc">The sacramental sign of Christ's │   Source: [Tradition] Implicit in T3 (Council of Trent, Session 7); | Scope: CATHOLIC. Depends on T3.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Teaching">Teaching</span><span class="dep-chip" data-target="christChurchUnionPermanent">christChurchUnionPermanent</span><span class="dep-chip" data-target="signMirrorsPermanence">signMirrorsPermanence</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="baptized_marriage_is_sacramental">baptized_marriage_is_sacramental</span><span class="dep-chip" data-target="sacramental_sign_is_permanent">sacramental_sign_is_permanent</span><span class="dep-chip" data-target="naturalPermanenceTag">naturalPermanenceTag</span><span class="dep-chip" data-target="christChurchUnionPermanent">christChurchUnionPermanent</span><span class="dep-chip" data-target="signMirrorsPermanence">signMirrorsPermanence</span></div></div>
+  christChurchUnionPermanent → signMirrorsPermanence</code></pre></div>
+<div class="node-desc">AXIOM (§1617, implicit from T3): The sacramental sign of Christ's</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="christChurchUnionPermanent">christChurchUnionPermanent</span><span class="dep-chip" data-target="signMirrorsPermanence">signMirrorsPermanence</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="baptized_marriage_is_sacramental">baptized_marriage_is_sacramental</span><span class="dep-chip" data-target="sacramental_sign_is_permanent">sacramental_sign_is_permanent</span><span class="dep-chip" data-target="naturalPermanenceTag">naturalPermanenceTag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="sacramental_unconsummated_quasi">
@@ -712,11 +707,10 @@ h1 {
     <div class="node-prop"><pre><code>axiom sacramental_unconsummated_quasi :
   ∀ (m : MarriageBond),
     isSacramental m → ¬m.isConsummated →
-    bondStrength m = BondStrength.quasiAbsolute
-</code></pre></div>
-<div class="node-desc">A sacramental marriage that has NOT been │   Source: [Tradition] Canon 1142; long-standing papal practice. | Scope: CATHOLIC.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="BondStrength">BondStrength</span><span class="dep-chip" data-target="MarriageBond">MarriageBond</span><span class="dep-chip" data-target="Teaching">Teaching</span><span class="dep-chip" data-target="bondStrength">bondStrength</span><span class="dep-chip" data-target="isSacramental">isSacramental</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="unconsummated_sacramental_is_quasi">unconsummated_sacramental_is_quasi</span><span class="dep-chip" data-target="naturalPermanenceTag">naturalPermanenceTag</span><span class="dep-chip" data-target="BondStrength">BondStrength</span><span class="dep-chip" data-target="MarriageBond">MarriageBond</span><span class="dep-chip" data-target="bondStrength">bondStrength</span><span class="dep-chip" data-target="isSacramental">isSacramental</span></div></div>
+    bondStrength m = BondStrength.quasiAbsolute</code></pre></div>
+<div class="node-desc">AXIOM (§1640, Canon 1142): A sacramental marriage that has NOT been</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="BondStrength">BondStrength</span><span class="dep-chip" data-target="MarriageBond">MarriageBond</span><span class="dep-chip" data-target="bondStrength">bondStrength</span><span class="dep-chip" data-target="isSacramental">isSacramental</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="unconsummated_sacramental_is_quasi">unconsummated_sacramental_is_quasi</span><span class="dep-chip" data-target="naturalPermanenceTag">naturalPermanenceTag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="consummation_seals_bond">
@@ -729,11 +723,10 @@ h1 {
     <div class="node-prop"><pre><code>axiom consummation_seals_bond :
   ∀ (m : MarriageBond),
     isSacramental m → m.isConsummated → signMirrorsPermanence →
-    bondStrength m = BondStrength.absolute
-</code></pre></div>
-<div class="node-desc">A concluded and consummated marriage between baptized │   Source: [Tradition] Canon 1141: &quot;A marriage that is ratum et | Scope: CATHOLIC. | [Scripture]</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="BondStrength">BondStrength</span><span class="dep-chip" data-target="MarriageBond">MarriageBond</span><span class="dep-chip" data-target="Teaching">Teaching</span><span class="dep-chip" data-target="bondStrength">bondStrength</span><span class="dep-chip" data-target="isDissolvable">isDissolvable</span><span class="dep-chip" data-target="isSacramental">isSacramental</span><span class="dep-chip" data-target="signMirrorsPermanence">signMirrorsPermanence</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="sacramental_sign_is_permanent">sacramental_sign_is_permanent</span><span class="dep-chip" data-target="catholic_absolute_indissolubility">catholic_absolute_indissolubility</span><span class="dep-chip" data-target="naturalPermanenceTag">naturalPermanenceTag</span><span class="dep-chip" data-target="BondStrength">BondStrength</span><span class="dep-chip" data-target="MarriageBond">MarriageBond</span><span class="dep-chip" data-target="signMirrorsPermanence">signMirrorsPermanence</span><span class="dep-chip" data-target="bondStrength">bondStrength</span><span class="dep-chip" data-target="isDissolvable">isDissolvable</span><span class="dep-chip" data-target="isSacramental">isSacramental</span></div></div>
+    bondStrength m = BondStrength.absolute</code></pre></div>
+<div class="node-desc">AXIOM (§1640): A concluded and consummated marriage between baptized</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="BondStrength">BondStrength</span><span class="dep-chip" data-target="MarriageBond">MarriageBond</span><span class="dep-chip" data-target="bondStrength">bondStrength</span><span class="dep-chip" data-target="isDissolvable">isDissolvable</span><span class="dep-chip" data-target="isSacramental">isSacramental</span><span class="dep-chip" data-target="signMirrorsPermanence">signMirrorsPermanence</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="sacramental_sign_is_permanent">sacramental_sign_is_permanent</span><span class="dep-chip" data-target="catholic_absolute_indissolubility">catholic_absolute_indissolubility</span><span class="dep-chip" data-target="naturalPermanenceTag">naturalPermanenceTag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="absolute_bond_not_dissolvable">
@@ -745,11 +738,10 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom absolute_bond_not_dissolvable :
   ∀ (m : MarriageBond),
-    bondStrength m = BondStrength.absolute → ¬isDissolvable m
-</code></pre></div>
-<div class="node-desc">A bond of absolute strength cannot be dissolved. │   Source: [Tradition] Canon 1141; constant Catholic teaching. | Scope: CATHOLIC.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="BondStrength">BondStrength</span><span class="dep-chip" data-target="MarriageBond">MarriageBond</span><span class="dep-chip" data-target="Teaching">Teaching</span><span class="dep-chip" data-target="bondStrength">bondStrength</span><span class="dep-chip" data-target="isDissolvable">isDissolvable</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="catholic_absolute_indissolubility">catholic_absolute_indissolubility</span><span class="dep-chip" data-target="catholic_marriage_not_dissolvable">catholic_marriage_not_dissolvable</span><span class="dep-chip" data-target="naturalPermanenceTag">naturalPermanenceTag</span><span class="dep-chip" data-target="BondStrength">BondStrength</span><span class="dep-chip" data-target="MarriageBond">MarriageBond</span><span class="dep-chip" data-target="bondStrength">bondStrength</span><span class="dep-chip" data-target="isDissolvable">isDissolvable</span></div></div>
+    bondStrength m = BondStrength.absolute → ¬isDissolvable m</code></pre></div>
+<div class="node-desc">AXIOM (Canon 1141): A bond of absolute strength cannot be dissolved.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="BondStrength">BondStrength</span><span class="dep-chip" data-target="MarriageBond">MarriageBond</span><span class="dep-chip" data-target="bondStrength">bondStrength</span><span class="dep-chip" data-target="isDissolvable">isDissolvable</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="catholic_absolute_indissolubility">catholic_absolute_indissolubility</span><span class="dep-chip" data-target="catholic_marriage_not_dissolvable">catholic_marriage_not_dissolvable</span><span class="dep-chip" data-target="naturalPermanenceTag">naturalPermanenceTag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="no_economia_for_absolute">
@@ -761,11 +753,10 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom no_economia_for_absolute :
   ∀ (m : MarriageBond),
-    isSacramental m → m.isConsummated → ¬economiaOverrides m
-</code></pre></div>
-<div class="node-desc">Economia (pastoral mercy) cannot override │   Source: [Tradition] Canon 1141; constant Catholic teaching. | Scope: CATHOLIC (Orthodox disagree).</div>
+    isSacramental m → m.isConsummated → ¬economiaOverrides m</code></pre></div>
+<div class="node-desc">AXIOM (§1640, Canon 1141): Economia (pastoral mercy) cannot override</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MarriageBond">MarriageBond</span><span class="dep-chip" data-target="economiaOverrides">economiaOverrides</span><span class="dep-chip" data-target="isSacramental">isSacramental</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="no_pastoral_dissolution">no_pastoral_dissolution</span><span class="dep-chip" data-target="orthodox_permits_dissolution">orthodox_permits_dissolution</span><span class="dep-chip" data-target="economia_is_the_catholic_orthodox_split">economia_is_the_catholic_orthodox_split</span><span class="dep-chip" data-target="naturalPermanenceTag">naturalPermanenceTag</span><span class="dep-chip" data-target="MarriageBond">MarriageBond</span><span class="dep-chip" data-target="economiaOverrides">economiaOverrides</span><span class="dep-chip" data-target="isSacramental">isSacramental</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="no_pastoral_dissolution">no_pastoral_dissolution</span><span class="dep-chip" data-target="orthodox_permits_dissolution">orthodox_permits_dissolution</span><span class="dep-chip" data-target="economia_is_the_catholic_orthodox_split">economia_is_the_catholic_orthodox_split</span><span class="dep-chip" data-target="naturalPermanenceTag">naturalPermanenceTag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="protestantRejectsSacramentality">
@@ -775,11 +766,10 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque protestantRejectsSacramentality : MarriageBond → Prop
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque protestantRejectsSacramentality : MarriageBond → Prop</code></pre></div>
 <div class="node-desc">The Protestant rejection of marriage as sacrament.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MarriageBond">MarriageBond</span><span class="dep-chip" data-target="baptism_makes_sacramental">baptism_makes_sacramental</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="protestant_no_sacrament">protestant_no_sacrament</span><span class="dep-chip" data-target="protestant_marriage_not_sacramental">protestant_marriage_not_sacramental</span><span class="dep-chip" data-target="protestant_bond_is_defeasible">protestant_bond_is_defeasible</span><span class="dep-chip" data-target="protestant_marriage_dissoluble">protestant_marriage_dissoluble</span><span class="dep-chip" data-target="MarriageBond">MarriageBond</span><span class="dep-chip" data-target="baptism_makes_sacramental">baptism_makes_sacramental</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="protestant_no_sacrament">protestant_no_sacrament</span><span class="dep-chip" data-target="protestant_marriage_not_sacramental">protestant_marriage_not_sacramental</span><span class="dep-chip" data-target="protestant_bond_is_defeasible">protestant_bond_is_defeasible</span><span class="dep-chip" data-target="protestant_marriage_dissoluble">protestant_marriage_dissoluble</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="protestant_no_sacrament">
@@ -791,11 +781,10 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom protestant_no_sacrament :
   ∀ (m : MarriageBond),
-    protestantRejectsSacramentality m → ¬isSacramental m
-</code></pre></div>
-<div class="node-desc">Marriage between Christians is NOT sacramental. │   Scope: PROTESTANT.</div>
+    protestantRejectsSacramentality m → ¬isSacramental m</code></pre></div>
+<div class="node-desc">AXIOM (Protestant): Marriage between Christians is NOT sacramental.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MarriageBond">MarriageBond</span><span class="dep-chip" data-target="isSacramental">isSacramental</span><span class="dep-chip" data-target="protestantRejectsSacramentality">protestantRejectsSacramentality</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="protestant_marriage_not_sacramental">protestant_marriage_not_sacramental</span><span class="dep-chip" data-target="protestant_bond_is_defeasible">protestant_bond_is_defeasible</span><span class="dep-chip" data-target="MarriageBond">MarriageBond</span><span class="dep-chip" data-target="isSacramental">isSacramental</span><span class="dep-chip" data-target="protestantRejectsSacramentality">protestantRejectsSacramentality</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="protestant_marriage_not_sacramental">protestant_marriage_not_sacramental</span><span class="dep-chip" data-target="protestant_bond_is_defeasible">protestant_bond_is_defeasible</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="defeasible_bond_dissolvable">
@@ -807,11 +796,10 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom defeasible_bond_dissolvable :
   ∀ (m : MarriageBond),
-    bondStrength m = BondStrength.defeasible → isDissolvable m
-</code></pre></div>
-<div class="node-desc">A defeasible bond is dissoluble — divorce is │   Scope: PROTESTANT.</div>
+    bondStrength m = BondStrength.defeasible → isDissolvable m</code></pre></div>
+<div class="node-desc">AXIOM (Protestant): A defeasible bond is dissoluble — divorce is</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="BondStrength">BondStrength</span><span class="dep-chip" data-target="MarriageBond">MarriageBond</span><span class="dep-chip" data-target="bondStrength">bondStrength</span><span class="dep-chip" data-target="isDissolvable">isDissolvable</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="protestant_marriage_dissoluble">protestant_marriage_dissoluble</span><span class="dep-chip" data-target="BondStrength">BondStrength</span><span class="dep-chip" data-target="MarriageBond">MarriageBond</span><span class="dep-chip" data-target="bondStrength">bondStrength</span><span class="dep-chip" data-target="isDissolvable">isDissolvable</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="protestant_marriage_dissoluble">protestant_marriage_dissoluble</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="orthodox_economia_applies">
@@ -823,11 +811,10 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom orthodox_economia_applies :
   ∀ (m : MarriageBond),
-    isSacramental m → economiaOverrides m
-</code></pre></div>
-<div class="node-desc">Economia can override the marital bond, even for │   Scope: ORTHODOX.</div>
+    isSacramental m → economiaOverrides m</code></pre></div>
+<div class="node-desc">AXIOM (Orthodox): Economia can override the marital bond, even for</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MarriageBond">MarriageBond</span><span class="dep-chip" data-target="economiaOverrides">economiaOverrides</span><span class="dep-chip" data-target="isSacramental">isSacramental</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="orthodox_permits_dissolution">orthodox_permits_dissolution</span><span class="dep-chip" data-target="MarriageBond">MarriageBond</span><span class="dep-chip" data-target="economiaOverrides">economiaOverrides</span><span class="dep-chip" data-target="isSacramental">isSacramental</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="orthodox_permits_dissolution">orthodox_permits_dissolution</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="baptized_marriage_is_sacramental">
@@ -841,9 +828,8 @@ h1 {
     (m : MarriageBond)
     (h_baptized : m.bothBaptized) :
     isSacramental m</code></pre></div>
-<div class="node-desc">A baptized marriage is sacramental. │   Scope: CATHOLIC.</div>
+<div class="node-desc">THEOREM: A baptized marriage is sacramental.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MarriageBond">MarriageBond</span><span class="dep-chip" data-target="baptism_makes_sacramental">baptism_makes_sacramental</span><span class="dep-chip" data-target="divine_fidelity_indefectible">divine_fidelity_indefectible</span><span class="dep-chip" data-target="isSacramental">isSacramental</span><span class="dep-chip" data-target="sign_mirrors_permanence">sign_mirrors_permanence</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="MarriageBond">MarriageBond</span><span class="dep-chip" data-target="divine_fidelity_indefectible">divine_fidelity_indefectible</span><span class="dep-chip" data-target="isSacramental">isSacramental</span><span class="dep-chip" data-target="sign_mirrors_permanence">sign_mirrors_permanence</span><span class="dep-chip" data-target="baptism_makes_sacramental">baptism_makes_sacramental</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="sacramental_sign_is_permanent">
@@ -854,9 +840,9 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem sacramental_sign_is_permanent : signMirrorsPermanence</code></pre></div>
-<div class="node-desc">The sign of Christ's union must be permanent. │   Scope: CATHOLIC (depends on T3).</div>
+<div class="node-desc">THEOREM: The sign of Christ's union must be permanent.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="BondStrength">BondStrength</span><span class="dep-chip" data-target="baptism_makes_sacramental">baptism_makes_sacramental</span><span class="dep-chip" data-target="bondStrength">bondStrength</span><span class="dep-chip" data-target="consummation_seals_bond">consummation_seals_bond</span><span class="dep-chip" data-target="divine_fidelity_indefectible">divine_fidelity_indefectible</span><span class="dep-chip" data-target="signMirrorsPermanence">signMirrorsPermanence</span><span class="dep-chip" data-target="sign_mirrors_permanence">sign_mirrors_permanence</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="catholic_absolute_indissolubility">catholic_absolute_indissolubility</span><span class="dep-chip" data-target="BondStrength">BondStrength</span><span class="dep-chip" data-target="signMirrorsPermanence">signMirrorsPermanence</span><span class="dep-chip" data-target="bondStrength">bondStrength</span><span class="dep-chip" data-target="divine_fidelity_indefectible">divine_fidelity_indefectible</span><span class="dep-chip" data-target="sign_mirrors_permanence">sign_mirrors_permanence</span><span class="dep-chip" data-target="baptism_makes_sacramental">baptism_makes_sacramental</span><span class="dep-chip" data-target="consummation_seals_bond">consummation_seals_bond</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="catholic_absolute_indissolubility">catholic_absolute_indissolubility</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="catholic_absolute_indissolubility">
@@ -871,9 +857,9 @@ h1 {
     (h_baptized : m.bothBaptized)
     (h_consummated : m.isConsummated) :
     bondStrength m = BondStrength.absolute</code></pre></div>
-<div class="node-desc">A concluded and consummated │   Scope: CATHOLIC.</div>
+<div class="node-desc">THEOREM (§1640 — the key Catholic result): A concluded and consummated</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="BondStrength">BondStrength</span><span class="dep-chip" data-target="MarriageBond">MarriageBond</span><span class="dep-chip" data-target="absolute_bond_not_dissolvable">absolute_bond_not_dissolvable</span><span class="dep-chip" data-target="baptism_makes_sacramental">baptism_makes_sacramental</span><span class="dep-chip" data-target="bondStrength">bondStrength</span><span class="dep-chip" data-target="consummation_seals_bond">consummation_seals_bond</span><span class="dep-chip" data-target="sacramental_sign_is_permanent">sacramental_sign_is_permanent</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="catholic_marriage_not_dissolvable">catholic_marriage_not_dissolvable</span><span class="dep-chip" data-target="BondStrength">BondStrength</span><span class="dep-chip" data-target="MarriageBond">MarriageBond</span><span class="dep-chip" data-target="bondStrength">bondStrength</span><span class="dep-chip" data-target="absolute_bond_not_dissolvable">absolute_bond_not_dissolvable</span><span class="dep-chip" data-target="baptism_makes_sacramental">baptism_makes_sacramental</span><span class="dep-chip" data-target="consummation_seals_bond">consummation_seals_bond</span><span class="dep-chip" data-target="sacramental_sign_is_permanent">sacramental_sign_is_permanent</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="catholic_marriage_not_dissolvable">catholic_marriage_not_dissolvable</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="catholic_marriage_not_dissolvable">
@@ -888,9 +874,8 @@ h1 {
     (h_baptized : m.bothBaptized)
     (h_consummated : m.isConsummated) :
     ¬isDissolvable m</code></pre></div>
-<div class="node-desc">A consummated sacramental marriage cannot be dissolved. │   Scope: CATHOLIC.</div>
+<div class="node-desc">THEOREM (§1640): A consummated sacramental marriage cannot be dissolved.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MarriageBond">MarriageBond</span><span class="dep-chip" data-target="absolute_bond_not_dissolvable">absolute_bond_not_dissolvable</span><span class="dep-chip" data-target="catholic_absolute_indissolubility">catholic_absolute_indissolubility</span><span class="dep-chip" data-target="isDissolvable">isDissolvable</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="MarriageBond">MarriageBond</span><span class="dep-chip" data-target="isDissolvable">isDissolvable</span><span class="dep-chip" data-target="absolute_bond_not_dissolvable">absolute_bond_not_dissolvable</span><span class="dep-chip" data-target="catholic_absolute_indissolubility">catholic_absolute_indissolubility</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="no_pastoral_dissolution">
@@ -905,9 +890,8 @@ h1 {
     (h_baptized : m.bothBaptized)
     (h_consummated : m.isConsummated) :
     ¬economiaOverrides m</code></pre></div>
-<div class="node-desc">Economia cannot dissolve a consummated sacramental marriage │   Scope: CATHOLIC.</div>
+<div class="node-desc">THEOREM: Economia cannot dissolve a consummated sacramental marriage</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MarriageBond">MarriageBond</span><span class="dep-chip" data-target="baptism_makes_sacramental">baptism_makes_sacramental</span><span class="dep-chip" data-target="economiaOverrides">economiaOverrides</span><span class="dep-chip" data-target="no_economia_for_absolute">no_economia_for_absolute</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="MarriageBond">MarriageBond</span><span class="dep-chip" data-target="economiaOverrides">economiaOverrides</span><span class="dep-chip" data-target="baptism_makes_sacramental">baptism_makes_sacramental</span><span class="dep-chip" data-target="no_economia_for_absolute">no_economia_for_absolute</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="unconsummated_sacramental_is_quasi">
@@ -922,9 +906,8 @@ h1 {
     (h_baptized : m.bothBaptized)
     (h_not_consummated : ¬m.isConsummated) :
     bondStrength m = BondStrength.quasiAbsolute</code></pre></div>
-<div class="node-desc">A sacramental-but-unconsummated marriage is quasi-absolute. │   Scope: CATHOLIC.</div>
+<div class="node-desc">THEOREM: A sacramental-but-unconsummated marriage is quasi-absolute.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="BondStrength">BondStrength</span><span class="dep-chip" data-target="MarriageBond">MarriageBond</span><span class="dep-chip" data-target="baptism_makes_sacramental">baptism_makes_sacramental</span><span class="dep-chip" data-target="bondStrength">bondStrength</span><span class="dep-chip" data-target="sacramental_unconsummated_quasi">sacramental_unconsummated_quasi</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="BondStrength">BondStrength</span><span class="dep-chip" data-target="MarriageBond">MarriageBond</span><span class="dep-chip" data-target="bondStrength">bondStrength</span><span class="dep-chip" data-target="baptism_makes_sacramental">baptism_makes_sacramental</span><span class="dep-chip" data-target="sacramental_unconsummated_quasi">sacramental_unconsummated_quasi</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="protestant_marriage_not_sacramental">
@@ -938,9 +921,8 @@ h1 {
     (m : MarriageBond)
     (h_reject : protestantRejectsSacramentality m) :
     ¬isSacramental m</code></pre></div>
-<div class="node-desc">Under Protestant axioms, marriage is not sacramental, so │   Scope: PROTESTANT.</div>
+<div class="node-desc">THEOREM: Under Protestant axioms, marriage is not sacramental, so</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MarriageBond">MarriageBond</span><span class="dep-chip" data-target="covenant_grounds_permanence">covenant_grounds_permanence</span><span class="dep-chip" data-target="isSacramental">isSacramental</span><span class="dep-chip" data-target="protestantRejectsSacramentality">protestantRejectsSacramentality</span><span class="dep-chip" data-target="protestant_no_sacrament">protestant_no_sacrament</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="MarriageBond">MarriageBond</span><span class="dep-chip" data-target="isSacramental">isSacramental</span><span class="dep-chip" data-target="covenant_grounds_permanence">covenant_grounds_permanence</span><span class="dep-chip" data-target="protestantRejectsSacramentality">protestantRejectsSacramentality</span><span class="dep-chip" data-target="protestant_no_sacrament">protestant_no_sacrament</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="protestant_bond_is_defeasible">
@@ -955,9 +937,9 @@ h1 {
     (h_covenantal : m.isCovenantal)
     (h_reject : protestantRejectsSacramentality m) :
     bondStrength m = BondStrength.defeasible</code></pre></div>
-<div class="node-desc">Under Protestant axioms, a covenantal marriage has only │   Scope: PROTESTANT.</div>
+<div class="node-desc">THEOREM: Under Protestant axioms, a covenantal marriage has only</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="BondStrength">BondStrength</span><span class="dep-chip" data-target="MarriageBond">MarriageBond</span><span class="dep-chip" data-target="bondStrength">bondStrength</span><span class="dep-chip" data-target="covenant_grounds_permanence">covenant_grounds_permanence</span><span class="dep-chip" data-target="protestantRejectsSacramentality">protestantRejectsSacramentality</span><span class="dep-chip" data-target="protestant_no_sacrament">protestant_no_sacrament</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="protestant_marriage_dissoluble">protestant_marriage_dissoluble</span><span class="dep-chip" data-target="BondStrength">BondStrength</span><span class="dep-chip" data-target="MarriageBond">MarriageBond</span><span class="dep-chip" data-target="bondStrength">bondStrength</span><span class="dep-chip" data-target="covenant_grounds_permanence">covenant_grounds_permanence</span><span class="dep-chip" data-target="protestantRejectsSacramentality">protestantRejectsSacramentality</span><span class="dep-chip" data-target="protestant_no_sacrament">protestant_no_sacrament</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="protestant_marriage_dissoluble">protestant_marriage_dissoluble</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="protestant_marriage_dissoluble">
@@ -972,9 +954,8 @@ h1 {
     (h_covenantal : m.isCovenantal)
     (h_reject : protestantRejectsSacramentality m) :
     isDissolvable m</code></pre></div>
-<div class="node-desc">Under Protestant axioms, marriage is dissoluble. │   Scope: PROTESTANT.</div>
+<div class="node-desc">THEOREM: Under Protestant axioms, marriage is dissoluble.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MarriageBond">MarriageBond</span><span class="dep-chip" data-target="defeasible_bond_dissolvable">defeasible_bond_dissolvable</span><span class="dep-chip" data-target="isDissolvable">isDissolvable</span><span class="dep-chip" data-target="protestantRejectsSacramentality">protestantRejectsSacramentality</span><span class="dep-chip" data-target="protestant_bond_is_defeasible">protestant_bond_is_defeasible</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="MarriageBond">MarriageBond</span><span class="dep-chip" data-target="isDissolvable">isDissolvable</span><span class="dep-chip" data-target="defeasible_bond_dissolvable">defeasible_bond_dissolvable</span><span class="dep-chip" data-target="protestantRejectsSacramentality">protestantRejectsSacramentality</span><span class="dep-chip" data-target="protestant_bond_is_defeasible">protestant_bond_is_defeasible</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="orthodox_permits_dissolution">
@@ -988,9 +969,8 @@ h1 {
     (m : MarriageBond)
     (h_baptized : m.bothBaptized) :
     economiaOverrides m</code></pre></div>
-<div class="node-desc">Under Orthodox axioms, even a sacramental marriage can be │   Scope: ORTHODOX.</div>
+<div class="node-desc">THEOREM: Under Orthodox axioms, even a sacramental marriage can be</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MarriageBond">MarriageBond</span><span class="dep-chip" data-target="baptism_makes_sacramental">baptism_makes_sacramental</span><span class="dep-chip" data-target="economiaOverrides">economiaOverrides</span><span class="dep-chip" data-target="no_economia_for_absolute">no_economia_for_absolute</span><span class="dep-chip" data-target="orthodox_economia_applies">orthodox_economia_applies</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="MarriageBond">MarriageBond</span><span class="dep-chip" data-target="economiaOverrides">economiaOverrides</span><span class="dep-chip" data-target="baptism_makes_sacramental">baptism_makes_sacramental</span><span class="dep-chip" data-target="no_economia_for_absolute">no_economia_for_absolute</span><span class="dep-chip" data-target="orthodox_economia_applies">orthodox_economia_applies</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="economia_is_the_catholic_orthodox_split">
@@ -1005,9 +985,8 @@ h1 {
     (h_baptized : m.bothBaptized)
     (h_consummated : m.isConsummated) :
     ¬economiaOverrides m</code></pre></div>
-<div class="node-desc">Catholic and Orthodox DISAGREE on whether economia applies. │   Scope: ANALYSIS.</div>
+<div class="node-desc">THEOREM: Catholic and Orthodox DISAGREE on whether economia applies.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MarriageBond">MarriageBond</span><span class="dep-chip" data-target="baptism_makes_sacramental">baptism_makes_sacramental</span><span class="dep-chip" data-target="economiaOverrides">economiaOverrides</span><span class="dep-chip" data-target="no_economia_for_absolute">no_economia_for_absolute</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="MarriageBond">MarriageBond</span><span class="dep-chip" data-target="economiaOverrides">economiaOverrides</span><span class="dep-chip" data-target="baptism_makes_sacramental">baptism_makes_sacramental</span><span class="dep-chip" data-target="no_economia_for_absolute">no_economia_for_absolute</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="absoluteIndissolubilityTag">
@@ -1041,8 +1020,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def naturalPermanenceTag : DenominationalTag</code></pre></div>
 <div class="node-desc">Denominational tag for the natural-law permanence of marriage.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Sacrament">Sacrament</span><span class="dep-chip" data-target="absolute_bond_not_dissolvable">absolute_bond_not_dissolvable</span><span class="dep-chip" data-target="baptism_makes_sacramental">baptism_makes_sacramental</span><span class="dep-chip" data-target="consummation_seals_bond">consummation_seals_bond</span><span class="dep-chip" data-target="covenant_grounds_permanence">covenant_grounds_permanence</span><span class="dep-chip" data-target="divine_fidelity_indefectible">divine_fidelity_indefectible</span><span class="dep-chip" data-target="no_economia_for_absolute">no_economia_for_absolute</span><span class="dep-chip" data-target="sacramental_unconsummated_quasi">sacramental_unconsummated_quasi</span><span class="dep-chip" data-target="sign_mirrors_permanence">sign_mirrors_permanence</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="divine_fidelity_indefectible">divine_fidelity_indefectible</span><span class="dep-chip" data-target="sign_mirrors_permanence">sign_mirrors_permanence</span><span class="dep-chip" data-target="absolute_bond_not_dissolvable">absolute_bond_not_dissolvable</span><span class="dep-chip" data-target="baptism_makes_sacramental">baptism_makes_sacramental</span><span class="dep-chip" data-target="consummation_seals_bond">consummation_seals_bond</span><span class="dep-chip" data-target="covenant_grounds_permanence">covenant_grounds_permanence</span><span class="dep-chip" data-target="no_economia_for_absolute">no_economia_for_absolute</span><span class="dep-chip" data-target="sacramental_unconsummated_quasi">sacramental_unconsummated_quasi</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="absolute_bond_not_dissolvable">absolute_bond_not_dissolvable</span><span class="dep-chip" data-target="baptism_makes_sacramental">baptism_makes_sacramental</span><span class="dep-chip" data-target="consummation_seals_bond">consummation_seals_bond</span><span class="dep-chip" data-target="covenant_grounds_permanence">covenant_grounds_permanence</span><span class="dep-chip" data-target="divine_fidelity_indefectible">divine_fidelity_indefectible</span><span class="dep-chip" data-target="no_economia_for_absolute">no_economia_for_absolute</span><span class="dep-chip" data-target="sacramental_unconsummated_quasi">sacramental_unconsummated_quasi</span><span class="dep-chip" data-target="sign_mirrors_permanence">sign_mirrors_permanence</span></div></div>
   </div>
 </div>
   </div>

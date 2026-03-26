@@ -523,14 +523,20 @@ h1 {
 <div class="container">
   <a href="index.html" class="back-link">&larr; All files</a>
   <h1>SeparatedSoul</h1>
-  <div class="subtitle">Creed &middot; 18 declarations</div>
+  <div class="subtitle">Creed &middot; 19 declarations</div>
 
-  
+  <div class="flow-summary">
+  <span class="flow-count axioms">6 axioms</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count theorems">11 theorems</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count derived">1 derived</span>
+</div>
   <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1023, &sect;1030, &sect;1033, &sect;1705, &sect;365, &sect;366, &sect;997</div>
 
-  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
+  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span><span class="legend-item"><span class="legend-dot instance"></span>instance</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
 
-  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (4)</button><button class="filter-btn" data-filter="inductive">inductive (1)</button><button class="filter-btn" data-filter="opaque">opaque (2)</button><button class="filter-btn" data-filter="theorem">theorem (11)</button></div>
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (4)</button><button class="filter-btn" data-filter="inductive">inductive (1)</button><button class="filter-btn" data-filter="instance">instance (1)</button><button class="filter-btn" data-filter="opaque">opaque (2)</button><button class="filter-btn" data-filter="theorem">theorem (11)</button></div>
 
   <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
 
@@ -543,8 +549,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>inductive CognitionMode where</code></pre></div>
-<div class="node-desc">How a soul exercises its spiritual powers (intellect and will). │   ⚠ HIDDEN ASSUMPTION: The soul has at least two modes of cognition.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="isExercisingPowers">isExercisingPowers</span><span class="dep-chip" data-target="cognitionModeOf">cognitionModeOf</span><span class="dep-chip" data-target="living_person_cognition_is_embodied">living_person_cognition_is_embodied</span><span class="dep-chip" data-target="separated_soul_cognition_mode">separated_soul_cognition_mode</span><span class="dep-chip" data-target="cognition_modes_are_distinct">cognition_modes_are_distinct</span><span class="dep-chip" data-target="cognition_mode_changes_at_death">cognition_mode_changes_at_death</span><span class="dep-chip" data-target="ccc_requires_subsistent_hylomorphism">ccc_requires_subsistent_hylomorphism</span></div></div>
+<div class="node-desc">How a soul exercises its spiritual powers (intellect and will).</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target=":">:</span><span class="dep-chip" data-target="cognitionModeOf">cognitionModeOf</span><span class="dep-chip" data-target="living_person_cognition_is_embodied">living_person_cognition_is_embodied</span><span class="dep-chip" data-target="separated_soul_cognition_mode">separated_soul_cognition_mode</span><span class="dep-chip" data-target="cognition_modes_are_distinct">cognition_modes_are_distinct</span><span class="dep-chip" data-target="cognition_mode_changes_at_death">cognition_mode_changes_at_death</span><span class="dep-chip" data-target="ccc_requires_subsistent_hylomorphism">ccc_requires_subsistent_hylomorphism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="isExercisingPowers">
@@ -554,11 +560,22 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque isExercisingPowers : HumanPerson → Prop
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque isExercisingPowers : HumanPerson → Prop</code></pre></div>
 <div class="node-desc">Whether a soul is currently exercising its spiritual powers</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CognitionMode">CognitionMode</span><span class="dep-chip" data-target="HumanPerson">HumanPerson</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="spiritual_powers_persist_through_death">spiritual_powers_persist_through_death</span><span class="dep-chip" data-target="afterlife_states_imply_activity">afterlife_states_imply_activity</span><span class="dep-chip" data-target="separated_soul_can_think_and_will">separated_soul_can_think_and_will</span><span class="dep-chip" data-target="incomplete_but_not_inert">incomplete_but_not_inert</span><span class="dep-chip" data-target="heaven_requires_active_soul">heaven_requires_active_soul</span><span class="dep-chip" data-target="purgatory_requires_active_soul">purgatory_requires_active_soul</span><span class="dep-chip" data-target="hell_requires_active_soul">hell_requires_active_soul</span><span class="dep-chip" data-target="rejects_soul_sleep">rejects_soul_sleep</span><span class="dep-chip" data-target="afterlife_refutes_inertness">afterlife_refutes_inertness</span><span class="dep-chip" data-target="minimal_hylomorphism_predicts_inertness">minimal_hylomorphism_predicts_inertness</span><span class="dep-chip" data-target="ccc_requires_subsistent_hylomorphism">ccc_requires_subsistent_hylomorphism</span><span class="dep-chip" data-target="CognitionMode">CognitionMode</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="spiritual_powers_persist_through_death">spiritual_powers_persist_through_death</span><span class="dep-chip" data-target="afterlife_states_imply_activity">afterlife_states_imply_activity</span><span class="dep-chip" data-target="separated_soul_can_think_and_will">separated_soul_can_think_and_will</span><span class="dep-chip" data-target="incomplete_but_not_inert">incomplete_but_not_inert</span><span class="dep-chip" data-target="heaven_requires_active_soul">heaven_requires_active_soul</span><span class="dep-chip" data-target="purgatory_requires_active_soul">purgatory_requires_active_soul</span><span class="dep-chip" data-target="hell_requires_active_soul">hell_requires_active_soul</span><span class="dep-chip" data-target="rejects_soul_sleep">rejects_soul_sleep</span><span class="dep-chip" data-target="afterlife_refutes_inertness">afterlife_refutes_inertness</span><span class="dep-chip" data-target="minimal_hylomorphism_predicts_inertness">minimal_hylomorphism_predicts_inertness</span><span class="dep-chip" data-target="ccc_requires_subsistent_hylomorphism">ccc_requires_subsistent_hylomorphism</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-instance" data-kind="instance" data-name=":">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">instance</span>
+    <span class="node-name">:</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>instance : Inhabited CognitionMode := ⟨CognitionMode.embodied⟩
+</code></pre></div>
+<div class="node-desc">The cognition mode currently active for a person.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CognitionMode">CognitionMode</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="cognitionModeOf">
@@ -568,11 +585,9 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque cognitionModeOf : HumanPerson → CognitionMode
-</code></pre></div>
-<div class="node-desc">The cognition mode currently active for a person.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CognitionMode">CognitionMode</span><span class="dep-chip" data-target="HumanPerson">HumanPerson</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="living_person_cognition_is_embodied">living_person_cognition_is_embodied</span><span class="dep-chip" data-target="separated_soul_cognition_mode">separated_soul_cognition_mode</span><span class="dep-chip" data-target="cognition_mode_changes_at_death">cognition_mode_changes_at_death</span><span class="dep-chip" data-target="ccc_requires_subsistent_hylomorphism">ccc_requires_subsistent_hylomorphism</span><span class="dep-chip" data-target="CognitionMode">CognitionMode</span></div></div>
+    <div class="node-prop"><pre><code>opaque cognitionModeOf : HumanPerson → CognitionMode</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CognitionMode">CognitionMode</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="living_person_cognition_is_embodied">living_person_cognition_is_embodied</span><span class="dep-chip" data-target="separated_soul_cognition_mode">separated_soul_cognition_mode</span><span class="dep-chip" data-target="cognition_mode_changes_at_death">cognition_mode_changes_at_death</span><span class="dep-chip" data-target="ccc_requires_subsistent_hylomorphism">ccc_requires_subsistent_hylomorphism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="spiritual_powers_persist_through_death">
@@ -586,11 +601,10 @@ h1 {
   ∀ (p : HumanPerson),
     isDead p →
     hasSpiritualAspect p →
-    isExercisingPowers p
-</code></pre></div>
-<div class="node-desc">1 (§1705): Intellect and will are powers of the SOUL. │   Source: [Definition] CCC §1705; [Philosophical] Aquinas ST I q.77 a.5. | Scope: Ecumenical (§1705 language), Catholic...</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="isExercisingPowers">isExercisingPowers</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="afterlife_states_imply_activity">afterlife_states_imply_activity</span><span class="dep-chip" data-target="separated_soul_can_think_and_will">separated_soul_can_think_and_will</span><span class="dep-chip" data-target="ccc_requires_subsistent_hylomorphism">ccc_requires_subsistent_hylomorphism</span><span class="dep-chip" data-target="isExercisingPowers">isExercisingPowers</span></div></div>
+    isExercisingPowers p</code></pre></div>
+<div class="node-desc">AXIOM 1 (§1705): Intellect and will are powers of the SOUL.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isExercisingPowers">isExercisingPowers</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="afterlife_states_imply_activity">afterlife_states_imply_activity</span><span class="dep-chip" data-target="separated_soul_can_think_and_will">separated_soul_can_think_and_will</span><span class="dep-chip" data-target="ccc_requires_subsistent_hylomorphism">ccc_requires_subsistent_hylomorphism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="living_person_cognition_is_embodied">
@@ -604,11 +618,10 @@ h1 {
   ∀ (p : HumanPerson),
     ¬isDead p →
     ¬isRisen p →
-    cognitionModeOf p = CognitionMode.embodied
-</code></pre></div>
-<div class="node-desc">2: A living person exercises spiritual powers in embodied mode. │   Source: [Philosophical] Aquinas ST I q.84 a.7 (&quot;the proper object | Scope: Catholic distinctive (Thomistic epistemolo...</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CognitionMode">CognitionMode</span><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="cognitionModeOf">cognitionModeOf</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="isRisen">isRisen</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="cognition_modes_are_distinct">cognition_modes_are_distinct</span><span class="dep-chip" data-target="cognition_mode_changes_at_death">cognition_mode_changes_at_death</span><span class="dep-chip" data-target="ccc_requires_subsistent_hylomorphism">ccc_requires_subsistent_hylomorphism</span><span class="dep-chip" data-target="CognitionMode">CognitionMode</span><span class="dep-chip" data-target="cognitionModeOf">cognitionModeOf</span></div></div>
+    cognitionModeOf p = CognitionMode.embodied</code></pre></div>
+<div class="node-desc">AXIOM 2: A living person exercises spiritual powers in embodied mode.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CognitionMode">CognitionMode</span><span class="dep-chip" data-target="cognitionModeOf">cognitionModeOf</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="cognition_modes_are_distinct">cognition_modes_are_distinct</span><span class="dep-chip" data-target="cognition_mode_changes_at_death">cognition_mode_changes_at_death</span><span class="dep-chip" data-target="ccc_requires_subsistent_hylomorphism">ccc_requires_subsistent_hylomorphism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="separated_soul_cognition_mode">
@@ -621,11 +634,10 @@ h1 {
     <div class="node-prop"><pre><code>axiom separated_soul_cognition_mode :
   ∀ (p : HumanPerson),
     isDead p →
-    cognitionModeOf p = CognitionMode.separated
-</code></pre></div>
-<div class="node-desc">3: A separated soul exercises spiritual powers in separated mode. │   Source: [Philosophical] Aquinas ST I q.89 a.1 (&quot;the soul, | Scope: Catholic distinctive (the Thomistic mechanism), | ...</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CognitionMode">CognitionMode</span><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="cognitionModeOf">cognitionModeOf</span><span class="dep-chip" data-target="isDead">isDead</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="cognition_modes_are_distinct">cognition_modes_are_distinct</span><span class="dep-chip" data-target="cognition_mode_changes_at_death">cognition_mode_changes_at_death</span><span class="dep-chip" data-target="ccc_requires_subsistent_hylomorphism">ccc_requires_subsistent_hylomorphism</span><span class="dep-chip" data-target="CognitionMode">CognitionMode</span><span class="dep-chip" data-target="cognitionModeOf">cognitionModeOf</span></div></div>
+    cognitionModeOf p = CognitionMode.separated</code></pre></div>
+<div class="node-desc">AXIOM 3: A separated soul exercises spiritual powers in separated mode.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CognitionMode">CognitionMode</span><span class="dep-chip" data-target="cognitionModeOf">cognitionModeOf</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="cognition_modes_are_distinct">cognition_modes_are_distinct</span><span class="dep-chip" data-target="cognition_mode_changes_at_death">cognition_mode_changes_at_death</span><span class="dep-chip" data-target="ccc_requires_subsistent_hylomorphism">ccc_requires_subsistent_hylomorphism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="afterlife_states_imply_activity">
@@ -639,11 +651,10 @@ h1 {
   ∀ (p : HumanPerson),
     (personInHeaven p → isExercisingPowers p) ∧
     (personInPurgatory p → isExercisingPowers p) ∧
-    (personInHell p → isExercisingPowers p)
-</code></pre></div>
-<div class="node-desc">4: All three afterlife states imply the soul is exercising │   Source: [Definition] CCC §1023, §1030-1032, §1033-1037. | Scope: Catholic (purgatory is Catholic distinctive; │   ⚠ HIDDEN ASSUMPTION: Purification, vision, and awareness all require</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="isExercisingPowers">isExercisingPowers</span><span class="dep-chip" data-target="personInHeaven">personInHeaven</span><span class="dep-chip" data-target="personInHell">personInHell</span><span class="dep-chip" data-target="personInPurgatory">personInPurgatory</span><span class="dep-chip" data-target="soul_is_immortal">soul_is_immortal</span><span class="dep-chip" data-target="spiritual_powers_persist_through_death">spiritual_powers_persist_through_death</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="incomplete_but_not_inert">incomplete_but_not_inert</span><span class="dep-chip" data-target="heaven_requires_active_soul">heaven_requires_active_soul</span><span class="dep-chip" data-target="purgatory_requires_active_soul">purgatory_requires_active_soul</span><span class="dep-chip" data-target="hell_requires_active_soul">hell_requires_active_soul</span><span class="dep-chip" data-target="ccc_requires_subsistent_hylomorphism">ccc_requires_subsistent_hylomorphism</span><span class="dep-chip" data-target="isExercisingPowers">isExercisingPowers</span><span class="dep-chip" data-target="spiritual_powers_persist_through_death">spiritual_powers_persist_through_death</span></div></div>
+    (personInHell p → isExercisingPowers p)</code></pre></div>
+<div class="node-desc">AXIOM 4: All three afterlife states imply the soul is exercising</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isExercisingPowers">isExercisingPowers</span><span class="dep-chip" data-target="spiritual_powers_persist_through_death">spiritual_powers_persist_through_death</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="incomplete_but_not_inert">incomplete_but_not_inert</span><span class="dep-chip" data-target="heaven_requires_active_soul">heaven_requires_active_soul</span><span class="dep-chip" data-target="purgatory_requires_active_soul">purgatory_requires_active_soul</span><span class="dep-chip" data-target="hell_requires_active_soul">hell_requires_active_soul</span><span class="dep-chip" data-target="ccc_requires_subsistent_hylomorphism">ccc_requires_subsistent_hylomorphism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="separated_soul_can_think_and_will">
@@ -657,8 +668,8 @@ h1 {
     (h_dead : isDead p) :
     isExercisingPowers p</code></pre></div>
 <div class="node-desc">The separated soul retains its spiritual powers.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="isExercisingPowers">isExercisingPowers</span><span class="dep-chip" data-target="soul_is_immortal">soul_is_immortal</span><span class="dep-chip" data-target="spiritual_powers_persist_through_death">spiritual_powers_persist_through_death</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="cognition_mode_changes_at_death">cognition_mode_changes_at_death</span><span class="dep-chip" data-target="incomplete_but_not_inert">incomplete_but_not_inert</span><span class="dep-chip" data-target="ccc_requires_subsistent_hylomorphism">ccc_requires_subsistent_hylomorphism</span><span class="dep-chip" data-target="isExercisingPowers">isExercisingPowers</span><span class="dep-chip" data-target="spiritual_powers_persist_through_death">spiritual_powers_persist_through_death</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isExercisingPowers">isExercisingPowers</span><span class="dep-chip" data-target="spiritual_powers_persist_through_death">spiritual_powers_persist_through_death</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="cognition_mode_changes_at_death">cognition_mode_changes_at_death</span><span class="dep-chip" data-target="incomplete_but_not_inert">incomplete_but_not_inert</span><span class="dep-chip" data-target="ccc_requires_subsistent_hylomorphism">ccc_requires_subsistent_hylomorphism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="cognition_modes_are_distinct">
@@ -672,7 +683,6 @@ h1 {
     CognitionMode.embodied ≠ CognitionMode.separated</code></pre></div>
 <div class="node-desc">The two cognition modes are distinct — embodied and separated</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CognitionMode">CognitionMode</span><span class="dep-chip" data-target="living_person_cognition_is_embodied">living_person_cognition_is_embodied</span><span class="dep-chip" data-target="separated_soul_cognition_mode">separated_soul_cognition_mode</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="CognitionMode">CognitionMode</span><span class="dep-chip" data-target="living_person_cognition_is_embodied">living_person_cognition_is_embodied</span><span class="dep-chip" data-target="separated_soul_cognition_mode">separated_soul_cognition_mode</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="cognition_mode_changes_at_death">
@@ -688,8 +698,8 @@ h1 {
     cognitionModeOf p = CognitionMode.embodied ∧
     cognitionModeOf q = CognitionMode.separated</code></pre></div>
 <div class="node-desc">The embodied and separated modes are the two possible cognition</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CognitionMode">CognitionMode</span><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="cognitionModeOf">cognitionModeOf</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="isRisen">isRisen</span><span class="dep-chip" data-target="living_person_cognition_is_embodied">living_person_cognition_is_embodied</span><span class="dep-chip" data-target="separated_soul_can_think_and_will">separated_soul_can_think_and_will</span><span class="dep-chip" data-target="separated_soul_cognition_mode">separated_soul_cognition_mode</span><span class="dep-chip" data-target="separated_soul_is_incomplete">separated_soul_is_incomplete</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ccc_requires_subsistent_hylomorphism">ccc_requires_subsistent_hylomorphism</span><span class="dep-chip" data-target="CognitionMode">CognitionMode</span><span class="dep-chip" data-target="cognitionModeOf">cognitionModeOf</span><span class="dep-chip" data-target="living_person_cognition_is_embodied">living_person_cognition_is_embodied</span><span class="dep-chip" data-target="separated_soul_cognition_mode">separated_soul_cognition_mode</span><span class="dep-chip" data-target="separated_soul_can_think_and_will">separated_soul_can_think_and_will</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CognitionMode">CognitionMode</span><span class="dep-chip" data-target="cognitionModeOf">cognitionModeOf</span><span class="dep-chip" data-target="living_person_cognition_is_embodied">living_person_cognition_is_embodied</span><span class="dep-chip" data-target="separated_soul_can_think_and_will">separated_soul_can_think_and_will</span><span class="dep-chip" data-target="separated_soul_cognition_mode">separated_soul_cognition_mode</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ccc_requires_subsistent_hylomorphism">ccc_requires_subsistent_hylomorphism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="incomplete_but_not_inert">
@@ -703,8 +713,8 @@ h1 {
     (h_dead : isDead p) :
     ¬isCompletePerson p ∧ isExercisingPowers p</code></pre></div>
 <div class="node-desc">The separated soul is incomplete but not inert.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="afterlife_states_imply_activity">afterlife_states_imply_activity</span><span class="dep-chip" data-target="isCompletePerson">isCompletePerson</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="isExercisingPowers">isExercisingPowers</span><span class="dep-chip" data-target="separated_soul_can_think_and_will">separated_soul_can_think_and_will</span><span class="dep-chip" data-target="separated_soul_is_incomplete">separated_soul_is_incomplete</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ccc_requires_subsistent_hylomorphism">ccc_requires_subsistent_hylomorphism</span><span class="dep-chip" data-target="isExercisingPowers">isExercisingPowers</span><span class="dep-chip" data-target="afterlife_states_imply_activity">afterlife_states_imply_activity</span><span class="dep-chip" data-target="separated_soul_can_think_and_will">separated_soul_can_think_and_will</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="afterlife_states_imply_activity">afterlife_states_imply_activity</span><span class="dep-chip" data-target="isExercisingPowers">isExercisingPowers</span><span class="dep-chip" data-target="separated_soul_can_think_and_will">separated_soul_can_think_and_will</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ccc_requires_subsistent_hylomorphism">ccc_requires_subsistent_hylomorphism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="heaven_requires_active_soul">
@@ -718,8 +728,8 @@ h1 {
     (h : personInHeaven p) :
     isExercisingPowers p</code></pre></div>
 <div class="node-desc">A person in heaven is actively aware — the beatific vision</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="afterlife_states_imply_activity">afterlife_states_imply_activity</span><span class="dep-chip" data-target="isExercisingPowers">isExercisingPowers</span><span class="dep-chip" data-target="personInHeaven">personInHeaven</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejects_soul_sleep">rejects_soul_sleep</span><span class="dep-chip" data-target="afterlife_refutes_inertness">afterlife_refutes_inertness</span><span class="dep-chip" data-target="ccc_requires_subsistent_hylomorphism">ccc_requires_subsistent_hylomorphism</span><span class="dep-chip" data-target="isExercisingPowers">isExercisingPowers</span><span class="dep-chip" data-target="afterlife_states_imply_activity">afterlife_states_imply_activity</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="afterlife_states_imply_activity">afterlife_states_imply_activity</span><span class="dep-chip" data-target="isExercisingPowers">isExercisingPowers</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejects_soul_sleep">rejects_soul_sleep</span><span class="dep-chip" data-target="afterlife_refutes_inertness">afterlife_refutes_inertness</span><span class="dep-chip" data-target="ccc_requires_subsistent_hylomorphism">ccc_requires_subsistent_hylomorphism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="purgatory_requires_active_soul">
@@ -733,8 +743,8 @@ h1 {
     (h : personInPurgatory p) :
     isExercisingPowers p</code></pre></div>
 <div class="node-desc">A person in purgatory is actively undergoing purification —</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="afterlife_states_imply_activity">afterlife_states_imply_activity</span><span class="dep-chip" data-target="isExercisingPowers">isExercisingPowers</span><span class="dep-chip" data-target="personInPurgatory">personInPurgatory</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejects_soul_sleep">rejects_soul_sleep</span><span class="dep-chip" data-target="afterlife_refutes_inertness">afterlife_refutes_inertness</span><span class="dep-chip" data-target="ccc_requires_subsistent_hylomorphism">ccc_requires_subsistent_hylomorphism</span><span class="dep-chip" data-target="isExercisingPowers">isExercisingPowers</span><span class="dep-chip" data-target="afterlife_states_imply_activity">afterlife_states_imply_activity</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="afterlife_states_imply_activity">afterlife_states_imply_activity</span><span class="dep-chip" data-target="isExercisingPowers">isExercisingPowers</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejects_soul_sleep">rejects_soul_sleep</span><span class="dep-chip" data-target="afterlife_refutes_inertness">afterlife_refutes_inertness</span><span class="dep-chip" data-target="ccc_requires_subsistent_hylomorphism">ccc_requires_subsistent_hylomorphism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="hell_requires_active_soul">
@@ -748,8 +758,8 @@ h1 {
     (h : personInHell p) :
     isExercisingPowers p</code></pre></div>
 <div class="node-desc">A person in hell is aware of their separation from God —</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="afterlife_states_imply_activity">afterlife_states_imply_activity</span><span class="dep-chip" data-target="isExercisingPowers">isExercisingPowers</span><span class="dep-chip" data-target="personInHell">personInHell</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejects_soul_sleep">rejects_soul_sleep</span><span class="dep-chip" data-target="afterlife_refutes_inertness">afterlife_refutes_inertness</span><span class="dep-chip" data-target="ccc_requires_subsistent_hylomorphism">ccc_requires_subsistent_hylomorphism</span><span class="dep-chip" data-target="isExercisingPowers">isExercisingPowers</span><span class="dep-chip" data-target="afterlife_states_imply_activity">afterlife_states_imply_activity</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="afterlife_states_imply_activity">afterlife_states_imply_activity</span><span class="dep-chip" data-target="isExercisingPowers">isExercisingPowers</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejects_soul_sleep">rejects_soul_sleep</span><span class="dep-chip" data-target="afterlife_refutes_inertness">afterlife_refutes_inertness</span><span class="dep-chip" data-target="ccc_requires_subsistent_hylomorphism">ccc_requires_subsistent_hylomorphism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="rejects_soul_sleep">
@@ -766,8 +776,8 @@ h1 {
     -- in any of the three afterlife states (all require activity)
     ¬personInHeaven p ∧ ¬personInPurgatory p ∧ ¬personInHell p</code></pre></div>
 <div class="node-desc">The inert soul hypothesis: after death, the soul exists but</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="heaven_requires_active_soul">heaven_requires_active_soul</span><span class="dep-chip" data-target="hell_requires_active_soul">hell_requires_active_soul</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="isExercisingPowers">isExercisingPowers</span><span class="dep-chip" data-target="personInHeaven">personInHeaven</span><span class="dep-chip" data-target="personInHell">personInHell</span><span class="dep-chip" data-target="personInPurgatory">personInPurgatory</span><span class="dep-chip" data-target="purgatory_requires_active_soul">purgatory_requires_active_soul</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="minimal_hylomorphism_predicts_inertness">minimal_hylomorphism_predicts_inertness</span><span class="dep-chip" data-target="ccc_requires_subsistent_hylomorphism">ccc_requires_subsistent_hylomorphism</span><span class="dep-chip" data-target="isExercisingPowers">isExercisingPowers</span><span class="dep-chip" data-target="heaven_requires_active_soul">heaven_requires_active_soul</span><span class="dep-chip" data-target="hell_requires_active_soul">hell_requires_active_soul</span><span class="dep-chip" data-target="purgatory_requires_active_soul">purgatory_requires_active_soul</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="heaven_requires_active_soul">heaven_requires_active_soul</span><span class="dep-chip" data-target="hell_requires_active_soul">hell_requires_active_soul</span><span class="dep-chip" data-target="isExercisingPowers">isExercisingPowers</span><span class="dep-chip" data-target="purgatory_requires_active_soul">purgatory_requires_active_soul</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="minimal_hylomorphism_predicts_inertness">minimal_hylomorphism_predicts_inertness</span><span class="dep-chip" data-target="ccc_requires_subsistent_hylomorphism">ccc_requires_subsistent_hylomorphism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="afterlife_refutes_inertness">
@@ -782,8 +792,8 @@ h1 {
     (h_in_state : personInHeaven p ∨ personInPurgatory p ∨ personInHell p) :
     isExercisingPowers p</code></pre></div>
 <div class="node-desc">Contrapositive: if the person IS in an afterlife state (which the</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="heaven_requires_active_soul">heaven_requires_active_soul</span><span class="dep-chip" data-target="hell_requires_active_soul">hell_requires_active_soul</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="isExercisingPowers">isExercisingPowers</span><span class="dep-chip" data-target="personInHeaven">personInHeaven</span><span class="dep-chip" data-target="personInHell">personInHell</span><span class="dep-chip" data-target="personInPurgatory">personInPurgatory</span><span class="dep-chip" data-target="purgatory_requires_active_soul">purgatory_requires_active_soul</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ccc_requires_subsistent_hylomorphism">ccc_requires_subsistent_hylomorphism</span><span class="dep-chip" data-target="isExercisingPowers">isExercisingPowers</span><span class="dep-chip" data-target="heaven_requires_active_soul">heaven_requires_active_soul</span><span class="dep-chip" data-target="hell_requires_active_soul">hell_requires_active_soul</span><span class="dep-chip" data-target="purgatory_requires_active_soul">purgatory_requires_active_soul</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="heaven_requires_active_soul">heaven_requires_active_soul</span><span class="dep-chip" data-target="hell_requires_active_soul">hell_requires_active_soul</span><span class="dep-chip" data-target="isExercisingPowers">isExercisingPowers</span><span class="dep-chip" data-target="purgatory_requires_active_soul">purgatory_requires_active_soul</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ccc_requires_subsistent_hylomorphism">ccc_requires_subsistent_hylomorphism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="minimal_hylomorphism_predicts_inertness">
@@ -798,8 +808,8 @@ h1 {
     (p : HumanPerson) (h_dead : isDead p) :
     ¬personInHeaven p ∧ ¬personInPurgatory p ∧ ¬personInHell p</code></pre></div>
 <div class="node-desc">Under minimal hylomorphism (form = mere organizational principle),</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="isExercisingPowers">isExercisingPowers</span><span class="dep-chip" data-target="personInHeaven">personInHeaven</span><span class="dep-chip" data-target="personInHell">personInHell</span><span class="dep-chip" data-target="personInPurgatory">personInPurgatory</span><span class="dep-chip" data-target="rejects_soul_sleep">rejects_soul_sleep</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ccc_requires_subsistent_hylomorphism">ccc_requires_subsistent_hylomorphism</span><span class="dep-chip" data-target="isExercisingPowers">isExercisingPowers</span><span class="dep-chip" data-target="rejects_soul_sleep">rejects_soul_sleep</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isExercisingPowers">isExercisingPowers</span><span class="dep-chip" data-target="rejects_soul_sleep">rejects_soul_sleep</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ccc_requires_subsistent_hylomorphism">ccc_requires_subsistent_hylomorphism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="ccc_requires_subsistent_hylomorphism">
@@ -818,8 +828,7 @@ h1 {
     -- (3) The soul is active (eschatology requires cognition)
     isExercisingPowers p</code></pre></div>
 <div class="node-desc">The CCC's actual position requires SUBSISTENT hylomorphism:</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CognitionMode">CognitionMode</span><span class="dep-chip" data-target="HumanNature">HumanNature</span><span class="dep-chip" data-target="HumanNature.hasFreedom">HumanNature.hasFreedom</span><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="PersonAspect">PersonAspect</span><span class="dep-chip" data-target="SpiritualPower">SpiritualPower</span><span class="dep-chip" data-target="afterlife_refutes_inertness">afterlife_refutes_inertness</span><span class="dep-chip" data-target="afterlife_states_imply_activity">afterlife_states_imply_activity</span><span class="dep-chip" data-target="cognitionModeOf">cognitionModeOf</span><span class="dep-chip" data-target="cognition_mode_changes_at_death">cognition_mode_changes_at_death</span><span class="dep-chip" data-target="death_separates">death_separates</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="heavenState">heavenState</span><span class="dep-chip" data-target="heaven_requires_active_soul">heaven_requires_active_soul</span><span class="dep-chip" data-target="hellState">hellState</span><span class="dep-chip" data-target="hell_requires_active_soul">hell_requires_active_soul</span><span class="dep-chip" data-target="incomplete_but_not_inert">incomplete_but_not_inert</span><span class="dep-chip" data-target="isCompletePerson">isCompletePerson</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="isExercisingPowers">isExercisingPowers</span><span class="dep-chip" data-target="living_person_cognition_is_embodied">living_person_cognition_is_embodied</span><span class="dep-chip" data-target="minimal_hylomorphism_predicts_inertness">minimal_hylomorphism_predicts_inertness</span><span class="dep-chip" data-target="personInHeaven">personInHeaven</span><span class="dep-chip" data-target="personInHell">personInHell</span><span class="dep-chip" data-target="personInPurgatory">personInPurgatory</span><span class="dep-chip" data-target="purgatoryState">purgatoryState</span><span class="dep-chip" data-target="purgatory_requires_active_soul">purgatory_requires_active_soul</span><span class="dep-chip" data-target="rejects_soul_sleep">rejects_soul_sleep</span><span class="dep-chip" data-target="separated_soul_can_think_and_will">separated_soul_can_think_and_will</span><span class="dep-chip" data-target="separated_soul_cognition_mode">separated_soul_cognition_mode</span><span class="dep-chip" data-target="separated_soul_is_incomplete">separated_soul_is_incomplete</span><span class="dep-chip" data-target="soul_is_immortal">soul_is_immortal</span><span class="dep-chip" data-target="spiritual_powers_persist_through_death">spiritual_powers_persist_through_death</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="CognitionMode">CognitionMode</span><span class="dep-chip" data-target="cognitionModeOf">cognitionModeOf</span><span class="dep-chip" data-target="isExercisingPowers">isExercisingPowers</span><span class="dep-chip" data-target="living_person_cognition_is_embodied">living_person_cognition_is_embodied</span><span class="dep-chip" data-target="separated_soul_cognition_mode">separated_soul_cognition_mode</span><span class="dep-chip" data-target="spiritual_powers_persist_through_death">spiritual_powers_persist_through_death</span><span class="dep-chip" data-target="afterlife_states_imply_activity">afterlife_states_imply_activity</span><span class="dep-chip" data-target="separated_soul_can_think_and_will">separated_soul_can_think_and_will</span><span class="dep-chip" data-target="cognition_mode_changes_at_death">cognition_mode_changes_at_death</span><span class="dep-chip" data-target="heaven_requires_active_soul">heaven_requires_active_soul</span><span class="dep-chip" data-target="hell_requires_active_soul">hell_requires_active_soul</span><span class="dep-chip" data-target="incomplete_but_not_inert">incomplete_but_not_inert</span><span class="dep-chip" data-target="purgatory_requires_active_soul">purgatory_requires_active_soul</span><span class="dep-chip" data-target="afterlife_refutes_inertness">afterlife_refutes_inertness</span><span class="dep-chip" data-target="rejects_soul_sleep">rejects_soul_sleep</span><span class="dep-chip" data-target="minimal_hylomorphism_predicts_inertness">minimal_hylomorphism_predicts_inertness</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="CognitionMode">CognitionMode</span><span class="dep-chip" data-target="afterlife_refutes_inertness">afterlife_refutes_inertness</span><span class="dep-chip" data-target="afterlife_states_imply_activity">afterlife_states_imply_activity</span><span class="dep-chip" data-target="cognitionModeOf">cognitionModeOf</span><span class="dep-chip" data-target="cognition_mode_changes_at_death">cognition_mode_changes_at_death</span><span class="dep-chip" data-target="heaven_requires_active_soul">heaven_requires_active_soul</span><span class="dep-chip" data-target="hell_requires_active_soul">hell_requires_active_soul</span><span class="dep-chip" data-target="incomplete_but_not_inert">incomplete_but_not_inert</span><span class="dep-chip" data-target="isExercisingPowers">isExercisingPowers</span><span class="dep-chip" data-target="living_person_cognition_is_embodied">living_person_cognition_is_embodied</span><span class="dep-chip" data-target="minimal_hylomorphism_predicts_inertness">minimal_hylomorphism_predicts_inertness</span><span class="dep-chip" data-target="purgatory_requires_active_soul">purgatory_requires_active_soul</span><span class="dep-chip" data-target="rejects_soul_sleep">rejects_soul_sleep</span><span class="dep-chip" data-target="separated_soul_can_think_and_will">separated_soul_can_think_and_will</span><span class="dep-chip" data-target="separated_soul_cognition_mode">separated_soul_cognition_mode</span><span class="dep-chip" data-target="spiritual_powers_persist_through_death">spiritual_powers_persist_through_death</span></div></div>
   </div>
 </div>
   </div>

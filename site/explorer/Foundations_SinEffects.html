@@ -267,8 +267,6 @@ h1 {
 .node-card.kind-structure { border-left-color: var(--structure-dot); }
 .node-card.kind-inductive { border-left-color: var(--inductive-dot); }
 .node-card.kind-proposition { border-left-color: var(--proposition-dot); }
-.node-card.kind-instance { border-left-color: var(--def-dot); }
-.node-card.kind-abbrev { border-left-color: var(--def-dot); }
 
 .node-header {
   display: flex;
@@ -304,8 +302,6 @@ h1 {
 .kind-structure .node-kind-badge { background: var(--structure-bg); color: var(--structure-dot); }
 .kind-inductive .node-kind-badge { background: var(--inductive-bg); color: var(--inductive-dot); }
 .kind-proposition .node-kind-badge { background: var(--proposition-bg); color: var(--proposition-dot); }
-.kind-instance .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
-.kind-abbrev .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
 
 .node-name {
   flex: 1;
@@ -466,8 +462,6 @@ h1 {
 .legend-dot.structure { background: var(--structure-dot); }
 .legend-dot.inductive { background: var(--inductive-dot); }
 .legend-dot.proposition { background: var(--proposition-dot); }
-.legend-dot.instance { background: var(--def-dot); }
-.legend-dot.abbrev { background: var(--def-dot); }
 
 /* ── Filter buttons ── */
 .filter-bar {
@@ -530,12 +524,19 @@ h1 {
   <a href="index.html" class="back-link">&larr; All files</a>
   <h1>SinEffects</h1>
   <div class="subtitle">Foundations &middot; 16 declarations</div>
-  
-  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;405, &sect;847, &sect;1023, &sect;1030, &sect;1033, &sect;1472</div>
 
-  <div class="legend"><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot structure"></span>structure</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span></div>
+  <div class="flow-summary">
+  <span class="flow-count axioms">0 axioms</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count theorems">5 theorems</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count derived">11 derived</span>
+</div>
+  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1023, &sect;1030, &sect;1033, &sect;1260, &sect;1472, &sect;405, &sect;847</div>
 
-  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="theorem">theorem (5)</button><button class="filter-btn" data-filter="def">def (7)</button><button class="filter-btn" data-filter="structure">structure (1)</button><button class="filter-btn" data-filter="inductive">inductive (3)</button></div>
+  <div class="legend"><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span><span class="legend-item"><span class="legend-dot structure"></span>structure</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
+
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="def">def (7)</button><button class="filter-btn" data-filter="inductive">inductive (3)</button><button class="filter-btn" data-filter="structure">structure (1)</button><button class="filter-btn" data-filter="theorem">theorem (5)</button></div>
 
   <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
 
@@ -560,15 +561,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>inductive EffectState where</code></pre></div>
 <div class="node-desc">The state of a particular sin-effect for a person.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="baptizedInGrace">baptizedInGrace</span>
-<span class="dep-chip" data-target="baptizedInMortalSin">baptizedInMortalSin</span>
-<span class="dep-chip" data-target="afterReconciliation">afterReconciliation</span>
-<span class="dep-chip" data-target="fullyPurified">fullyPurified</span>
-<span class="dep-chip" data-target="unevangelized">unevangelized</span>
-<span class="dep-chip" data-target="nativeWithOriginalSin">nativeWithOriginalSin</span>
-<span class="dep-chip" data-target="afterlifeFromProfile">afterlifeFromProfile</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="SinProfile">SinProfile</span><span class="dep-chip" data-target="baptizedInGrace">baptizedInGrace</span><span class="dep-chip" data-target="baptizedInMortalSin">baptizedInMortalSin</span><span class="dep-chip" data-target="afterReconciliation">afterReconciliation</span><span class="dep-chip" data-target="fullyPurified">fullyPurified</span><span class="dep-chip" data-target="unevangelized">unevangelized</span><span class="dep-chip" data-target="nativeWithOriginalSin">nativeWithOriginalSin</span><span class="dep-chip" data-target="afterlifeFromProfile">afterlifeFromProfile</span></div></div>
   </div>
 </div>
 <div class="node-card kind-structure" data-kind="structure" data-name="SinProfile">
@@ -580,6 +573,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>structure SinProfile where</code></pre></div>
 <div class="node-desc">The complete sin-effect profile of a person.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EffectState">EffectState</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="baptizedInGrace">baptizedInGrace</span><span class="dep-chip" data-target="baptizedInMortalSin">baptizedInMortalSin</span><span class="dep-chip" data-target="afterReconciliation">afterReconciliation</span><span class="dep-chip" data-target="fullyPurified">fullyPurified</span><span class="dep-chip" data-target="unevangelized">unevangelized</span><span class="dep-chip" data-target="nativeWithOriginalSin">nativeWithOriginalSin</span><span class="dep-chip" data-target="afterlifeFromProfile">afterlifeFromProfile</span><span class="dep-chip" data-target="native_with_original_sin_still_unknown">native_with_original_sin_still_unknown</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="baptizedInGrace">
@@ -591,9 +586,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def baptizedInGrace : SinProfile</code></pre></div>
 <div class="node-desc">A baptized person in good standing — original sin removed,</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="EffectState">EffectState</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EffectState">EffectState</span><span class="dep-chip" data-target="SinProfile">SinProfile</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="baptizedInMortalSin">
@@ -605,12 +598,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def baptizedInMortalSin : SinProfile</code></pre></div>
 <div class="node-desc">A baptized person who committed mortal sin — guilt returned,</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="EffectState">EffectState</span>
-</div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="mortal_sin_goes_to_hell">mortal_sin_goes_to_hell</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EffectState">EffectState</span><span class="dep-chip" data-target="SinProfile">SinProfile</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="mortal_sin_goes_to_hell">mortal_sin_goes_to_hell</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="afterReconciliation">
@@ -622,12 +611,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def afterReconciliation : SinProfile</code></pre></div>
 <div class="node-desc">After Reconciliation — guilt removed, but temporal punishment</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="EffectState">EffectState</span>
-</div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="attachments_go_to_purgatory">attachments_go_to_purgatory</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EffectState">EffectState</span><span class="dep-chip" data-target="SinProfile">SinProfile</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="attachments_go_to_purgatory">attachments_go_to_purgatory</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="fullyPurified">
@@ -639,12 +624,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def fullyPurified : SinProfile</code></pre></div>
 <div class="node-desc">Fully purified — all three layers removed. Ready for heaven.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="EffectState">EffectState</span>
-</div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="purified_go_to_heaven">purified_go_to_heaven</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EffectState">EffectState</span><span class="dep-chip" data-target="SinProfile">SinProfile</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="purified_go_to_heaven">purified_go_to_heaven</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="unevangelized">
@@ -656,12 +637,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def unevangelized : SinProfile</code></pre></div>
 <div class="node-desc">A person who never heard the Gospel — all layers unknown (§847).</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="EffectState">EffectState</span>
-</div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="unevangelized_is_unknown">unevangelized_is_unknown</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EffectState">EffectState</span><span class="dep-chip" data-target="SinProfile">SinProfile</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="attachments_go_to_purgatory">attachments_go_to_purgatory</span><span class="dep-chip" data-target="unevangelized_is_unknown">unevangelized_is_unknown</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="nativeWithOriginalSin">
@@ -672,13 +649,9 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>def nativeWithOriginalSin : SinProfile</code></pre></div>
-<div class="node-desc">A more precise model: someone born with original sin (they&#x27;re</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="EffectState">EffectState</span>
-</div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="native_with_original_sin_still_unknown">native_with_original_sin_still_unknown</span>
-</div></div>
+<div class="node-desc">A more precise model: someone born with original sin (they're</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EffectState">EffectState</span><span class="dep-chip" data-target="SinProfile">SinProfile</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="native_with_original_sin_still_unknown">native_with_original_sin_still_unknown</span></div></div>
   </div>
 </div>
 <div class="node-card kind-inductive" data-kind="inductive" data-name="AfterlifeOutcome">
@@ -690,9 +663,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>inductive AfterlifeOutcome where</code></pre></div>
 <div class="node-desc">The possible afterlife outcomes.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="afterlifeFromProfile">afterlifeFromProfile</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="afterlifeFromProfile">afterlifeFromProfile</span><span class="dep-chip" data-target="purified_go_to_heaven">purified_go_to_heaven</span><span class="dep-chip" data-target="mortal_sin_goes_to_hell">mortal_sin_goes_to_hell</span><span class="dep-chip" data-target="attachments_go_to_purgatory">attachments_go_to_purgatory</span><span class="dep-chip" data-target="unevangelized_is_unknown">unevangelized_is_unknown</span><span class="dep-chip" data-target="native_with_original_sin_still_unknown">native_with_original_sin_still_unknown</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="afterlifeFromProfile">
@@ -704,17 +675,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def afterlifeFromProfile (sp : SinProfile) : AfterlifeOutcome</code></pre></div>
 <div class="node-desc">Determine the afterlife outcome from a sin profile.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="EffectState">EffectState</span>
-<span class="dep-chip" data-target="AfterlifeOutcome">AfterlifeOutcome</span>
-</div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="purified_go_to_heaven">purified_go_to_heaven</span>
-<span class="dep-chip" data-target="mortal_sin_goes_to_hell">mortal_sin_goes_to_hell</span>
-<span class="dep-chip" data-target="attachments_go_to_purgatory">attachments_go_to_purgatory</span>
-<span class="dep-chip" data-target="unevangelized_is_unknown">unevangelized_is_unknown</span>
-<span class="dep-chip" data-target="native_with_original_sin_still_unknown">native_with_original_sin_still_unknown</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="AfterlifeOutcome">AfterlifeOutcome</span><span class="dep-chip" data-target="EffectState">EffectState</span><span class="dep-chip" data-target="SinProfile">SinProfile</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="purified_go_to_heaven">purified_go_to_heaven</span><span class="dep-chip" data-target="mortal_sin_goes_to_hell">mortal_sin_goes_to_hell</span><span class="dep-chip" data-target="attachments_go_to_purgatory">attachments_go_to_purgatory</span><span class="dep-chip" data-target="unevangelized_is_unknown">unevangelized_is_unknown</span><span class="dep-chip" data-target="native_with_original_sin_still_unknown">native_with_original_sin_still_unknown</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="purified_go_to_heaven">
@@ -727,10 +689,7 @@ h1 {
     <div class="node-prop"><pre><code>theorem purified_go_to_heaven :
     afterlifeFromProfile fullyPurified = AfterlifeOutcome.heaven</code></pre></div>
 <div class="node-desc">The fully purified go to heaven. (Determinate — CCC §1023.)</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="fullyPurified">fullyPurified</span>
-<span class="dep-chip" data-target="afterlifeFromProfile">afterlifeFromProfile</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="AfterlifeOutcome">AfterlifeOutcome</span><span class="dep-chip" data-target="afterlifeFromProfile">afterlifeFromProfile</span><span class="dep-chip" data-target="fullyPurified">fullyPurified</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="mortal_sin_goes_to_hell">
@@ -743,10 +702,7 @@ h1 {
     <div class="node-prop"><pre><code>theorem mortal_sin_goes_to_hell :
     afterlifeFromProfile baptizedInMortalSin = AfterlifeOutcome.hell</code></pre></div>
 <div class="node-desc">Those who die in mortal sin go to hell. (Determinate — CCC §1033.)</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="baptizedInMortalSin">baptizedInMortalSin</span>
-<span class="dep-chip" data-target="afterlifeFromProfile">afterlifeFromProfile</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="AfterlifeOutcome">AfterlifeOutcome</span><span class="dep-chip" data-target="afterlifeFromProfile">afterlifeFromProfile</span><span class="dep-chip" data-target="baptizedInMortalSin">baptizedInMortalSin</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="attachments_go_to_purgatory">
@@ -759,10 +715,7 @@ h1 {
     <div class="node-prop"><pre><code>theorem attachments_go_to_purgatory :
     afterlifeFromProfile afterReconciliation = AfterlifeOutcome.purgatory</code></pre></div>
 <div class="node-desc">Those in grace but with attachments go to purgatory. (Determinate — CCC §1030.)</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="afterReconciliation">afterReconciliation</span>
-<span class="dep-chip" data-target="afterlifeFromProfile">afterlifeFromProfile</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="AfterlifeOutcome">AfterlifeOutcome</span><span class="dep-chip" data-target="afterReconciliation">afterReconciliation</span><span class="dep-chip" data-target="afterlifeFromProfile">afterlifeFromProfile</span><span class="dep-chip" data-target="unevangelized">unevangelized</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="unevangelized_is_unknown">
@@ -775,10 +728,7 @@ h1 {
     <div class="node-prop"><pre><code>theorem unevangelized_is_unknown :
     afterlifeFromProfile unevangelized = AfterlifeOutcome.knownToGodAlone</code></pre></div>
 <div class="node-desc">The unevangelized → &quot;known to God alone.&quot; (CCC §847.)</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="unevangelized">unevangelized</span>
-<span class="dep-chip" data-target="afterlifeFromProfile">afterlifeFromProfile</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="AfterlifeOutcome">AfterlifeOutcome</span><span class="dep-chip" data-target="afterlifeFromProfile">afterlifeFromProfile</span><span class="dep-chip" data-target="unevangelized">unevangelized</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="native_with_original_sin_still_unknown">
@@ -790,11 +740,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem native_with_original_sin_still_unknown :
     afterlifeFromProfile nativeWithOriginalSin = AfterlifeOutcome.knownToGodAlone</code></pre></div>
-<div class="node-desc">Even knowing someone has original sin (they&#x27;re human), if we</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="nativeWithOriginalSin">nativeWithOriginalSin</span>
-<span class="dep-chip" data-target="afterlifeFromProfile">afterlifeFromProfile</span>
-</div></div>
+<div class="node-desc">Even knowing someone has original sin (they're human), if we</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="AfterlifeOutcome">AfterlifeOutcome</span><span class="dep-chip" data-target="SinProfile">SinProfile</span><span class="dep-chip" data-target="afterlifeFromProfile">afterlifeFromProfile</span><span class="dep-chip" data-target="nativeWithOriginalSin">nativeWithOriginalSin</span></div></div>
   </div>
 </div>
   </div>

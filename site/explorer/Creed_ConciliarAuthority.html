@@ -523,14 +523,20 @@ h1 {
 <div class="container">
   <a href="index.html" class="back-link">&larr; All files</a>
   <h1>ConciliarAuthority</h1>
-  <div class="subtitle">Creed &middot; 19 declarations</div>
+  <div class="subtitle">Creed &middot; 29 declarations</div>
 
-  
+  <div class="flow-summary">
+  <span class="flow-count axioms">12 axioms</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count theorems">6 theorems</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count derived">11 derived</span>
+</div>
   <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;120, &sect;250, &sect;465, &sect;76, &sect;77, &sect;861, &sect;862, &sect;884, &sect;891</div>
 
   <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
 
-  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (5)</button><button class="filter-btn" data-filter="def">def (1)</button><button class="filter-btn" data-filter="opaque">opaque (7)</button><button class="filter-btn" data-filter="theorem">theorem (6)</button></div>
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (5)</button><button class="filter-btn" data-filter="def">def (11)</button><button class="filter-btn" data-filter="opaque">opaque (7)</button><button class="filter-btn" data-filter="theorem">theorem (6)</button></div>
 
   <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
 
@@ -542,8 +548,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque EcumenicalCouncil : Type
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque EcumenicalCouncil : Type</code></pre></div>
 <div class="node-desc">An ecumenical council — a gathering of bishops with authority to define</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="authorityFromSuccession">authorityFromSuccession</span><span class="dep-chip" data-target="nicaea_defined_binding_doctrine">nicaea_defined_binding_doctrine</span><span class="dep-chip" data-target="conciliar_authority_from_succession">conciliar_authority_from_succession</span><span class="dep-chip" data-target="succession_not_sola_scriptura">succession_not_sola_scriptura</span><span class="dep-chip" data-target="pre_canon_binding_authority">pre_canon_binding_authority</span><span class="dep-chip" data-target="pre_canon_authority_not_from_scripture">pre_canon_authority_not_from_scripture</span><span class="dep-chip" data-target="conciliar_authority_non_scriptural">conciliar_authority_non_scriptural</span><span class="dep-chip" data-target="temporal_argument_against_sola_scriptura">temporal_argument_against_sola_scriptura</span><span class="dep-chip" data-target="three_arguments_converge">three_arguments_converge</span><span class="dep-chip" data-target="protestant_ministerial_contradicts_succession_axiom">protestant_ministerial_contradicts_succession_axiom</span></div></div>
   </div>
@@ -555,8 +560,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque ConciliarDefinition : Type
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque ConciliarDefinition : Type</code></pre></div>
 <div class="node-desc">A doctrinal definition issued by an ecumenical council — a binding</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="isBindingDefinition">isBindingDefinition</span><span class="dep-chip" data-target="epochOfDefinition">epochOfDefinition</span><span class="dep-chip" data-target="nicaea_defined_binding_doctrine">nicaea_defined_binding_doctrine</span><span class="dep-chip" data-target="nicaea_precedes_canon">nicaea_precedes_canon</span><span class="dep-chip" data-target="pre_canon_not_from_settled_scripture">pre_canon_not_from_settled_scripture</span><span class="dep-chip" data-target="pre_canon_binding_authority">pre_canon_binding_authority</span><span class="dep-chip" data-target="pre_canon_authority_not_from_scripture">pre_canon_authority_not_from_scripture</span><span class="dep-chip" data-target="temporal_argument_against_sola_scriptura">temporal_argument_against_sola_scriptura</span><span class="dep-chip" data-target="three_arguments_converge">three_arguments_converge</span></div></div>
   </div>
@@ -568,11 +572,10 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque isBindingDefinition : ConciliarDefinition → Prop
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque isBindingDefinition : ConciliarDefinition → Prop</code></pre></div>
 <div class="node-desc">Whether a conciliar definition is binding on the whole Church.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ConciliarDefinition">ConciliarDefinition</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="nicaea_defined_binding_doctrine">nicaea_defined_binding_doctrine</span><span class="dep-chip" data-target="nicaea_precedes_canon">nicaea_precedes_canon</span><span class="dep-chip" data-target="pre_canon_not_from_settled_scripture">pre_canon_not_from_settled_scripture</span><span class="dep-chip" data-target="pre_canon_binding_authority">pre_canon_binding_authority</span><span class="dep-chip" data-target="pre_canon_authority_not_from_scripture">pre_canon_authority_not_from_scripture</span><span class="dep-chip" data-target="temporal_argument_against_sola_scriptura">temporal_argument_against_sola_scriptura</span><span class="dep-chip" data-target="three_arguments_converge">three_arguments_converge</span><span class="dep-chip" data-target="conciliarAuthorityDenominationalScope">conciliarAuthorityDenominationalScope</span><span class="dep-chip" data-target="ConciliarDefinition">ConciliarDefinition</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="nicaea_defined_binding_doctrine">nicaea_defined_binding_doctrine</span><span class="dep-chip" data-target="nicaea_precedes_canon">nicaea_precedes_canon</span><span class="dep-chip" data-target="pre_canon_not_from_settled_scripture">pre_canon_not_from_settled_scripture</span><span class="dep-chip" data-target="pre_canon_binding_authority">pre_canon_binding_authority</span><span class="dep-chip" data-target="pre_canon_authority_not_from_scripture">pre_canon_authority_not_from_scripture</span><span class="dep-chip" data-target="temporal_argument_against_sola_scriptura">temporal_argument_against_sola_scriptura</span><span class="dep-chip" data-target="three_arguments_converge">three_arguments_converge</span><span class="dep-chip" data-target="conciliarAuthorityDenominationalScope">conciliarAuthorityDenominationalScope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="epochOfDefinition">
@@ -582,11 +585,10 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque epochOfDefinition : ConciliarDefinition → Epoch
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque epochOfDefinition : ConciliarDefinition → Epoch</code></pre></div>
 <div class="node-desc">The epoch at which a council issued its definition.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ConciliarDefinition">ConciliarDefinition</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="nicaea_precedes_canon">nicaea_precedes_canon</span><span class="dep-chip" data-target="pre_canon_not_from_settled_scripture">pre_canon_not_from_settled_scripture</span><span class="dep-chip" data-target="pre_canon_binding_authority">pre_canon_binding_authority</span><span class="dep-chip" data-target="pre_canon_authority_not_from_scripture">pre_canon_authority_not_from_scripture</span><span class="dep-chip" data-target="temporal_argument_against_sola_scriptura">temporal_argument_against_sola_scriptura</span><span class="dep-chip" data-target="three_arguments_converge">three_arguments_converge</span><span class="dep-chip" data-target="ConciliarDefinition">ConciliarDefinition</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="nicaea_precedes_canon">nicaea_precedes_canon</span><span class="dep-chip" data-target="pre_canon_not_from_settled_scripture">pre_canon_not_from_settled_scripture</span><span class="dep-chip" data-target="pre_canon_binding_authority">pre_canon_binding_authority</span><span class="dep-chip" data-target="pre_canon_authority_not_from_scripture">pre_canon_authority_not_from_scripture</span><span class="dep-chip" data-target="temporal_argument_against_sola_scriptura">temporal_argument_against_sola_scriptura</span><span class="dep-chip" data-target="three_arguments_converge">three_arguments_converge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="canonClosureEpoch">
@@ -596,8 +598,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque canonClosureEpoch : Epoch
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque canonClosureEpoch : Epoch</code></pre></div>
 <div class="node-desc">The epoch at which the New Testament canon was functionally closed —</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="nicaea_precedes_canon">nicaea_precedes_canon</span><span class="dep-chip" data-target="pre_canon_not_from_settled_scripture">pre_canon_not_from_settled_scripture</span><span class="dep-chip" data-target="pre_canon_binding_authority">pre_canon_binding_authority</span><span class="dep-chip" data-target="temporal_argument_against_sola_scriptura">temporal_argument_against_sola_scriptura</span><span class="dep-chip" data-target="three_arguments_converge">three_arguments_converge</span></div></div>
   </div>
@@ -609,8 +610,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque derivableFromCanonAtEpoch : Prop → Epoch → Prop
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque derivableFromCanonAtEpoch : Prop → Epoch → Prop</code></pre></div>
 <div class="node-desc">Whether a proposition was derivable from the canon at a given epoch.</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="pre_canon_not_from_settled_scripture">pre_canon_not_from_settled_scripture</span><span class="dep-chip" data-target="pre_canon_authority_not_from_scripture">pre_canon_authority_not_from_scripture</span><span class="dep-chip" data-target="temporal_argument_against_sola_scriptura">temporal_argument_against_sola_scriptura</span></div></div>
   </div>
@@ -622,11 +622,10 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque authorityFromSuccession : EcumenicalCouncil → Prop
-</code></pre></div>
-<div class="node-desc">Whether a conciliar definition derives its authority from apostolic │   ⚠ HIDDEN ASSUMPTION: This is precisely what Protestants deny — they hold</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Doctrine">Doctrine</span><span class="dep-chip" data-target="EcumenicalCouncil">EcumenicalCouncil</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="conciliar_authority_from_succession">conciliar_authority_from_succession</span><span class="dep-chip" data-target="succession_not_sola_scriptura">succession_not_sola_scriptura</span><span class="dep-chip" data-target="conciliar_authority_non_scriptural">conciliar_authority_non_scriptural</span><span class="dep-chip" data-target="temporal_argument_against_sola_scriptura">temporal_argument_against_sola_scriptura</span><span class="dep-chip" data-target="three_arguments_converge">three_arguments_converge</span><span class="dep-chip" data-target="protestant_ministerial_contradicts_succession_axiom">protestant_ministerial_contradicts_succession_axiom</span><span class="dep-chip" data-target="EcumenicalCouncil">EcumenicalCouncil</span></div></div>
+    <div class="node-prop"><pre><code>opaque authorityFromSuccession : EcumenicalCouncil → Prop</code></pre></div>
+<div class="node-desc">Whether a conciliar definition derives its authority from apostolic</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EcumenicalCouncil">EcumenicalCouncil</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="conciliar_authority_from_succession">conciliar_authority_from_succession</span><span class="dep-chip" data-target="succession_not_sola_scriptura">succession_not_sola_scriptura</span><span class="dep-chip" data-target="conciliar_authority_non_scriptural">conciliar_authority_non_scriptural</span><span class="dep-chip" data-target="temporal_argument_against_sola_scriptura">temporal_argument_against_sola_scriptura</span><span class="dep-chip" data-target="three_arguments_converge">three_arguments_converge</span><span class="dep-chip" data-target="protestant_ministerial_contradicts_succession_axiom">protestant_ministerial_contradicts_succession_axiom</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="nicaea_defined_binding_doctrine">
@@ -638,12 +637,32 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom nicaea_defined_binding_doctrine :
   ∃ (_ : EcumenicalCouncil) (def_ : ConciliarDefinition),
-    isBindingDefinition def_
-
-def nicaea_defined_binding_doctrine_provenance : Provenance</code></pre></div>
-<div class="node-desc">There exists an ecumenical │   Source: CCC §465; Council of Nicaea (325 AD); Nicene Creed. | Scope: ECUMENICAL — all Nicene Christians accept that │   ⚠ HIDDEN ASSUMPTION: &quot;Binding&quot; means the definition is obligatory for all</div>
+    isBindingDefinition def_</code></pre></div>
+<div class="node-desc">**AXIOM (NICAEA_DEFINED_BINDING_DOCTRINE)**: There exists an ecumenical</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ConciliarDefinition">ConciliarDefinition</span><span class="dep-chip" data-target="EcumenicalCouncil">EcumenicalCouncil</span><span class="dep-chip" data-target="isBindingDefinition">isBindingDefinition</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="pre_canon_binding_authority">pre_canon_binding_authority</span><span class="dep-chip" data-target="pre_canon_authority_not_from_scripture">pre_canon_authority_not_from_scripture</span><span class="dep-chip" data-target="conciliar_authority_non_scriptural">conciliar_authority_non_scriptural</span><span class="dep-chip" data-target="temporal_argument_against_sola_scriptura">temporal_argument_against_sola_scriptura</span><span class="dep-chip" data-target="protestant_ministerial_contradicts_succession_axiom">protestant_ministerial_contradicts_succession_axiom</span><span class="dep-chip" data-target="conciliarAuthorityDenominationalScope">conciliarAuthorityDenominationalScope</span><span class="dep-chip" data-target="ConciliarDefinition">ConciliarDefinition</span><span class="dep-chip" data-target="EcumenicalCouncil">EcumenicalCouncil</span><span class="dep-chip" data-target="isBindingDefinition">isBindingDefinition</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="succession_not_sola_scriptura_tag">succession_not_sola_scriptura_tag</span><span class="dep-chip" data-target="pre_canon_binding_authority">pre_canon_binding_authority</span><span class="dep-chip" data-target="pre_canon_authority_not_from_scripture">pre_canon_authority_not_from_scripture</span><span class="dep-chip" data-target="conciliar_authority_non_scriptural">conciliar_authority_non_scriptural</span><span class="dep-chip" data-target="temporal_argument_against_sola_scriptura">temporal_argument_against_sola_scriptura</span><span class="dep-chip" data-target="protestant_ministerial_contradicts_succession_axiom">protestant_ministerial_contradicts_succession_axiom</span><span class="dep-chip" data-target="conciliarAuthorityDenominationalScope">conciliarAuthorityDenominationalScope</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="nicaea_defined_binding_doctrine_provenance">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">nicaea_defined_binding_doctrine_provenance</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def nicaea_defined_binding_doctrine_provenance : Provenance</code></pre></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="nicaea_defined_binding_doctrine_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">nicaea_defined_binding_doctrine_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def nicaea_defined_binding_doctrine_tag : DenominationalTag := ecumenical
+</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="conciliarAuthorityDenominationalScope">conciliarAuthorityDenominationalScope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="nicaea_precedes_canon">
@@ -656,12 +675,32 @@ def nicaea_defined_binding_doctrine_provenance : Provenance</code></pre></div>
     <div class="node-prop"><pre><code>axiom nicaea_precedes_canon :
   ∀ (def_ : ConciliarDefinition),
     isBindingDefinition def_ →
-    epochOfDefinition def_ &lt; canonClosureEpoch
-
-def nicaea_precedes_canon_provenance : Provenance</code></pre></div>
-<div class="node-desc">The binding doctrinal definition from │   Source: Historical chronology — Nicaea 325 AD; canon closure c. 367-397 AD. | Scope: FACTUAL — the chronology is undi... │   ⚠ HIDDEN ASSUMPTION: The temporal ordering is theologically significant.</div>
+    epochOfDefinition def_ &lt; canonClosureEpoch</code></pre></div>
+<div class="node-desc">**AXIOM (NICAEA_PRECEDES_CANON)**: The binding doctrinal definition from</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ConciliarDefinition">ConciliarDefinition</span><span class="dep-chip" data-target="canonClosureEpoch">canonClosureEpoch</span><span class="dep-chip" data-target="epochOfDefinition">epochOfDefinition</span><span class="dep-chip" data-target="isBindingDefinition">isBindingDefinition</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="pre_canon_binding_authority">pre_canon_binding_authority</span><span class="dep-chip" data-target="pre_canon_authority_not_from_scripture">pre_canon_authority_not_from_scripture</span><span class="dep-chip" data-target="conciliar_authority_non_scriptural">conciliar_authority_non_scriptural</span><span class="dep-chip" data-target="temporal_argument_against_sola_scriptura">temporal_argument_against_sola_scriptura</span><span class="dep-chip" data-target="conciliarAuthorityDenominationalScope">conciliarAuthorityDenominationalScope</span><span class="dep-chip" data-target="ConciliarDefinition">ConciliarDefinition</span><span class="dep-chip" data-target="canonClosureEpoch">canonClosureEpoch</span><span class="dep-chip" data-target="epochOfDefinition">epochOfDefinition</span><span class="dep-chip" data-target="isBindingDefinition">isBindingDefinition</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="succession_not_sola_scriptura_tag">succession_not_sola_scriptura_tag</span><span class="dep-chip" data-target="pre_canon_binding_authority">pre_canon_binding_authority</span><span class="dep-chip" data-target="pre_canon_authority_not_from_scripture">pre_canon_authority_not_from_scripture</span><span class="dep-chip" data-target="conciliar_authority_non_scriptural">conciliar_authority_non_scriptural</span><span class="dep-chip" data-target="temporal_argument_against_sola_scriptura">temporal_argument_against_sola_scriptura</span><span class="dep-chip" data-target="conciliarAuthorityDenominationalScope">conciliarAuthorityDenominationalScope</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="nicaea_precedes_canon_provenance">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">nicaea_precedes_canon_provenance</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def nicaea_precedes_canon_provenance : Provenance</code></pre></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="nicaea_precedes_canon_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">nicaea_precedes_canon_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def nicaea_precedes_canon_tag : DenominationalTag := ecumenical
+</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="conciliarAuthorityDenominationalScope">conciliarAuthorityDenominationalScope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="pre_canon_not_from_settled_scripture">
@@ -675,12 +714,31 @@ def nicaea_precedes_canon_provenance : Provenance</code></pre></div>
   ∀ (def_ : ConciliarDefinition) (p : Prop),
     isBindingDefinition def_ →
     epochOfDefinition def_ &lt; canonClosureEpoch →
-    ¬derivableFromCanonAtEpoch p (epochOfDefinition def_)
-
-def pre_canon_not_from_settled_scripture_provenance : Provenance</code></pre></div>
-<div class="node-desc">A binding definition │   Source: Historical observation — the scriptural corpus varied by region | Scope: CATHOLIC + ORTHODOX. │   ⚠ HIDDEN ASSUMPTION: &quot;Derivable from the settled canon&quot; requires a SETTLED</div>
+    ¬derivableFromCanonAtEpoch p (epochOfDefinition def_)</code></pre></div>
+<div class="node-desc">**AXIOM (PRE_CANON_NOT_FROM_SETTLED_SCRIPTURE)**: A binding definition</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ConciliarDefinition">ConciliarDefinition</span><span class="dep-chip" data-target="canonClosureEpoch">canonClosureEpoch</span><span class="dep-chip" data-target="derivableFromCanonAtEpoch">derivableFromCanonAtEpoch</span><span class="dep-chip" data-target="epochOfDefinition">epochOfDefinition</span><span class="dep-chip" data-target="isBindingDefinition">isBindingDefinition</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="pre_canon_binding_authority">pre_canon_binding_authority</span><span class="dep-chip" data-target="pre_canon_authority_not_from_scripture">pre_canon_authority_not_from_scripture</span><span class="dep-chip" data-target="conciliar_authority_non_scriptural">conciliar_authority_non_scriptural</span><span class="dep-chip" data-target="temporal_argument_against_sola_scriptura">temporal_argument_against_sola_scriptura</span><span class="dep-chip" data-target="conciliarAuthorityDenominationalScope">conciliarAuthorityDenominationalScope</span><span class="dep-chip" data-target="ConciliarDefinition">ConciliarDefinition</span><span class="dep-chip" data-target="canonClosureEpoch">canonClosureEpoch</span><span class="dep-chip" data-target="derivableFromCanonAtEpoch">derivableFromCanonAtEpoch</span><span class="dep-chip" data-target="epochOfDefinition">epochOfDefinition</span><span class="dep-chip" data-target="isBindingDefinition">isBindingDefinition</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="pre_canon_binding_authority">pre_canon_binding_authority</span><span class="dep-chip" data-target="pre_canon_authority_not_from_scripture">pre_canon_authority_not_from_scripture</span><span class="dep-chip" data-target="conciliar_authority_non_scriptural">conciliar_authority_non_scriptural</span><span class="dep-chip" data-target="temporal_argument_against_sola_scriptura">temporal_argument_against_sola_scriptura</span><span class="dep-chip" data-target="conciliarAuthorityDenominationalScope">conciliarAuthorityDenominationalScope</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="pre_canon_not_from_settled_scripture_provenance">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">pre_canon_not_from_settled_scripture_provenance</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def pre_canon_not_from_settled_scripture_provenance : Provenance</code></pre></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="pre_canon_not_from_settled_scripture_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">pre_canon_not_from_settled_scripture_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def pre_canon_not_from_settled_scripture_tag : DenominationalTag</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="conciliarAuthorityDenominationalScope">conciliarAuthorityDenominationalScope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="conciliar_authority_from_succession">
@@ -692,12 +750,31 @@ def pre_canon_not_from_settled_scripture_provenance : Provenance</code></pre></d
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom conciliar_authority_from_succession :
   ∀ (council : EcumenicalCouncil),
-    authorityFromSuccession council
-
-def conciliar_authority_from_succession_provenance : Provenance</code></pre></div>
-<div class="node-desc">The ecumenical council │   Source: CCC §77, §861, §862; Acts 15 (Council of Jerusalem as model). | Scope: CATHOLIC + ORTHODOX. Protestants deny ... │   ⚠ HIDDEN ASSUMPTION: Apostolic succession is a REAL chain of transmitted</div>
+    authorityFromSuccession council</code></pre></div>
+<div class="node-desc">**AXIOM (CONCILIAR_AUTHORITY_FROM_SUCCESSION)**: The ecumenical council</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EcumenicalCouncil">EcumenicalCouncil</span><span class="dep-chip" data-target="authorityFromSuccession">authorityFromSuccession</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="pre_canon_authority_not_from_scripture">pre_canon_authority_not_from_scripture</span><span class="dep-chip" data-target="conciliar_authority_non_scriptural">conciliar_authority_non_scriptural</span><span class="dep-chip" data-target="temporal_argument_against_sola_scriptura">temporal_argument_against_sola_scriptura</span><span class="dep-chip" data-target="protestant_ministerial_contradicts_succession_axiom">protestant_ministerial_contradicts_succession_axiom</span><span class="dep-chip" data-target="conciliarAuthorityDenominationalScope">conciliarAuthorityDenominationalScope</span><span class="dep-chip" data-target="EcumenicalCouncil">EcumenicalCouncil</span><span class="dep-chip" data-target="authorityFromSuccession">authorityFromSuccession</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="pre_canon_authority_not_from_scripture">pre_canon_authority_not_from_scripture</span><span class="dep-chip" data-target="conciliar_authority_non_scriptural">conciliar_authority_non_scriptural</span><span class="dep-chip" data-target="temporal_argument_against_sola_scriptura">temporal_argument_against_sola_scriptura</span><span class="dep-chip" data-target="protestant_ministerial_contradicts_succession_axiom">protestant_ministerial_contradicts_succession_axiom</span><span class="dep-chip" data-target="conciliarAuthorityDenominationalScope">conciliarAuthorityDenominationalScope</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="conciliar_authority_from_succession_provenance">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">conciliar_authority_from_succession_provenance</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def conciliar_authority_from_succession_provenance : Provenance</code></pre></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="conciliar_authority_from_succession_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">conciliar_authority_from_succession_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def conciliar_authority_from_succession_tag : DenominationalTag</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="conciliarAuthorityDenominationalScope">conciliarAuthorityDenominationalScope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="succession_not_sola_scriptura">
@@ -710,12 +787,32 @@ def conciliar_authority_from_succession_provenance : Provenance</code></pre></di
     <div class="node-prop"><pre><code>axiom succession_not_sola_scriptura :
   ∀ (council : EcumenicalCouncil),
     authorityFromSuccession council →
-    ¬derivableFromScriptureAlone (authorityFromSuccession council)
-
-def succession_not_sola_scriptura_provenance : Provenance</code></pre></div>
-<div class="node-desc">The authority from apostolic │   Source: Observation — no Bible verse establishes the mechanism of | Scope: FACTUAL (as observation). │   ⚠ HIDDEN ASSUMPTION: &quot;Derivable from Scripture alone&quot; is strict enough to</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EcumenicalCouncil">EcumenicalCouncil</span><span class="dep-chip" data-target="authorityFromSuccession">authorityFromSuccession</span><span class="dep-chip" data-target="derivableFromScriptureAlone">derivableFromScriptureAlone</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="pre_canon_authority_not_from_scripture">pre_canon_authority_not_from_scripture</span><span class="dep-chip" data-target="conciliar_authority_non_scriptural">conciliar_authority_non_scriptural</span><span class="dep-chip" data-target="temporal_argument_against_sola_scriptura">temporal_argument_against_sola_scriptura</span><span class="dep-chip" data-target="protestant_ministerial_contradicts_succession_axiom">protestant_ministerial_contradicts_succession_axiom</span><span class="dep-chip" data-target="conciliarAuthorityDenominationalScope">conciliarAuthorityDenominationalScope</span><span class="dep-chip" data-target="EcumenicalCouncil">EcumenicalCouncil</span><span class="dep-chip" data-target="authorityFromSuccession">authorityFromSuccession</span></div></div>
+    ¬derivableFromScriptureAlone (authorityFromSuccession council)</code></pre></div>
+<div class="node-desc">**AXIOM (SUCCESSION_NOT_SOLA_SCRIPTURA)**: The authority from apostolic</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EcumenicalCouncil">EcumenicalCouncil</span><span class="dep-chip" data-target="authorityFromSuccession">authorityFromSuccession</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="pre_canon_authority_not_from_scripture">pre_canon_authority_not_from_scripture</span><span class="dep-chip" data-target="conciliar_authority_non_scriptural">conciliar_authority_non_scriptural</span><span class="dep-chip" data-target="temporal_argument_against_sola_scriptura">temporal_argument_against_sola_scriptura</span><span class="dep-chip" data-target="protestant_ministerial_contradicts_succession_axiom">protestant_ministerial_contradicts_succession_axiom</span><span class="dep-chip" data-target="conciliarAuthorityDenominationalScope">conciliarAuthorityDenominationalScope</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="succession_not_sola_scriptura_provenance">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">succession_not_sola_scriptura_provenance</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def succession_not_sola_scriptura_provenance : Provenance</code></pre></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="succession_not_sola_scriptura_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">succession_not_sola_scriptura_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def succession_not_sola_scriptura_tag : DenominationalTag</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="nicaea_defined_binding_doctrine">nicaea_defined_binding_doctrine</span><span class="dep-chip" data-target="nicaea_precedes_canon">nicaea_precedes_canon</span><span class="dep-chip" data-target="pre_canon_binding_authority">pre_canon_binding_authority</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="conciliarAuthorityDenominationalScope">conciliarAuthorityDenominationalScope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="pre_canon_binding_authority">
@@ -728,9 +825,9 @@ def succession_not_sola_scriptura_provenance : Provenance</code></pre></div>
     <div class="node-prop"><pre><code>theorem pre_canon_binding_authority :
     ∃ (_ : EcumenicalCouncil) (def_ : ConciliarDefinition),
       isBindingDefinition def_ ∧ epochOfDefinition def_ &lt; canonClosureEpoch</code></pre></div>
-<div class="node-desc">pre_canon_binding_authority — There exists a binding │   Source: Historical chronology. | Scope: ECUMENICAL (as historical fact).</div>
+<div class="node-desc">**THEOREM: pre_canon_binding_authority** — There exists a binding</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ConciliarDefinition">ConciliarDefinition</span><span class="dep-chip" data-target="EcumenicalCouncil">EcumenicalCouncil</span><span class="dep-chip" data-target="canonClosureEpoch">canonClosureEpoch</span><span class="dep-chip" data-target="epochOfDefinition">epochOfDefinition</span><span class="dep-chip" data-target="isBindingDefinition">isBindingDefinition</span><span class="dep-chip" data-target="nicaea_defined_binding_doctrine">nicaea_defined_binding_doctrine</span><span class="dep-chip" data-target="nicaea_precedes_canon">nicaea_precedes_canon</span><span class="dep-chip" data-target="pre_canon_authority_not_from_scripture">pre_canon_authority_not_from_scripture</span><span class="dep-chip" data-target="pre_canon_not_from_settled_scripture">pre_canon_not_from_settled_scripture</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="three_arguments_converge">three_arguments_converge</span><span class="dep-chip" data-target="ConciliarDefinition">ConciliarDefinition</span><span class="dep-chip" data-target="EcumenicalCouncil">EcumenicalCouncil</span><span class="dep-chip" data-target="canonClosureEpoch">canonClosureEpoch</span><span class="dep-chip" data-target="epochOfDefinition">epochOfDefinition</span><span class="dep-chip" data-target="isBindingDefinition">isBindingDefinition</span><span class="dep-chip" data-target="nicaea_defined_binding_doctrine">nicaea_defined_binding_doctrine</span><span class="dep-chip" data-target="nicaea_precedes_canon">nicaea_precedes_canon</span><span class="dep-chip" data-target="pre_canon_not_from_settled_scripture">pre_canon_not_from_settled_scripture</span><span class="dep-chip" data-target="pre_canon_authority_not_from_scripture">pre_canon_authority_not_from_scripture</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="succession_not_sola_scriptura_tag">succession_not_sola_scriptura_tag</span><span class="dep-chip" data-target="three_arguments_converge">three_arguments_converge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="pre_canon_authority_not_from_scripture">
@@ -744,9 +841,9 @@ def succession_not_sola_scriptura_provenance : Provenance</code></pre></div>
     ∃ (_ : EcumenicalCouncil) (def_ : ConciliarDefinition),
       isBindingDefinition def_ ∧
       ¬derivableFromCanonAtEpoch (isBindingDefinition def_) (epochOfDefinition def_)</code></pre></div>
-<div class="node-desc">pre_canon_authority_not_from_scripture — The binding │   Source: CCC §465, §120; historical chronology. | Scope: CATHOLIC + ORTHODOX.</div>
+<div class="node-desc">**THEOREM: pre_canon_authority_not_from_scripture** — The binding</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ConciliarDefinition">ConciliarDefinition</span><span class="dep-chip" data-target="EcumenicalCouncil">EcumenicalCouncil</span><span class="dep-chip" data-target="conciliar_authority_from_succession">conciliar_authority_from_succession</span><span class="dep-chip" data-target="conciliar_authority_non_scriptural">conciliar_authority_non_scriptural</span><span class="dep-chip" data-target="derivableFromCanonAtEpoch">derivableFromCanonAtEpoch</span><span class="dep-chip" data-target="epochOfDefinition">epochOfDefinition</span><span class="dep-chip" data-target="isBindingDefinition">isBindingDefinition</span><span class="dep-chip" data-target="nicaea_defined_binding_doctrine">nicaea_defined_binding_doctrine</span><span class="dep-chip" data-target="nicaea_precedes_canon">nicaea_precedes_canon</span><span class="dep-chip" data-target="pre_canon_not_from_settled_scripture">pre_canon_not_from_settled_scripture</span><span class="dep-chip" data-target="succession_not_sola_scriptura">succession_not_sola_scriptura</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="pre_canon_binding_authority">pre_canon_binding_authority</span><span class="dep-chip" data-target="ConciliarDefinition">ConciliarDefinition</span><span class="dep-chip" data-target="EcumenicalCouncil">EcumenicalCouncil</span><span class="dep-chip" data-target="derivableFromCanonAtEpoch">derivableFromCanonAtEpoch</span><span class="dep-chip" data-target="epochOfDefinition">epochOfDefinition</span><span class="dep-chip" data-target="isBindingDefinition">isBindingDefinition</span><span class="dep-chip" data-target="conciliar_authority_from_succession">conciliar_authority_from_succession</span><span class="dep-chip" data-target="nicaea_defined_binding_doctrine">nicaea_defined_binding_doctrine</span><span class="dep-chip" data-target="nicaea_precedes_canon">nicaea_precedes_canon</span><span class="dep-chip" data-target="pre_canon_not_from_settled_scripture">pre_canon_not_from_settled_scripture</span><span class="dep-chip" data-target="succession_not_sola_scriptura">succession_not_sola_scriptura</span><span class="dep-chip" data-target="conciliar_authority_non_scriptural">conciliar_authority_non_scriptural</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="pre_canon_binding_authority">pre_canon_binding_authority</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="conciliar_authority_non_scriptural">
@@ -760,9 +857,9 @@ def succession_not_sola_scriptura_provenance : Provenance</code></pre></div>
     ∃ (council : EcumenicalCouncil),
       authorityFromSuccession council ∧
       ¬derivableFromScriptureAlone (authorityFromSuccession council)</code></pre></div>
-<div class="node-desc">conciliar_authority_non_scriptural — The authority of │   Source: CCC §77, §861. | Scope: CATHOLIC + ORTHODOX.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EcumenicalCouncil">EcumenicalCouncil</span><span class="dep-chip" data-target="authorityFromSuccession">authorityFromSuccession</span><span class="dep-chip" data-target="conciliar_authority_from_succession">conciliar_authority_from_succession</span><span class="dep-chip" data-target="derivableFromScriptureAlone">derivableFromScriptureAlone</span><span class="dep-chip" data-target="nicaea_defined_binding_doctrine">nicaea_defined_binding_doctrine</span><span class="dep-chip" data-target="nicaea_precedes_canon">nicaea_precedes_canon</span><span class="dep-chip" data-target="pre_canon_not_from_settled_scripture">pre_canon_not_from_settled_scripture</span><span class="dep-chip" data-target="succession_not_sola_scriptura">succession_not_sola_scriptura</span><span class="dep-chip" data-target="temporal_argument_against_sola_scriptura">temporal_argument_against_sola_scriptura</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="pre_canon_authority_not_from_scripture">pre_canon_authority_not_from_scripture</span><span class="dep-chip" data-target="three_arguments_converge">three_arguments_converge</span><span class="dep-chip" data-target="EcumenicalCouncil">EcumenicalCouncil</span><span class="dep-chip" data-target="authorityFromSuccession">authorityFromSuccession</span><span class="dep-chip" data-target="conciliar_authority_from_succession">conciliar_authority_from_succession</span><span class="dep-chip" data-target="nicaea_defined_binding_doctrine">nicaea_defined_binding_doctrine</span><span class="dep-chip" data-target="nicaea_precedes_canon">nicaea_precedes_canon</span><span class="dep-chip" data-target="pre_canon_not_from_settled_scripture">pre_canon_not_from_settled_scripture</span><span class="dep-chip" data-target="succession_not_sola_scriptura">succession_not_sola_scriptura</span><span class="dep-chip" data-target="temporal_argument_against_sola_scriptura">temporal_argument_against_sola_scriptura</span></div></div>
+<div class="node-desc">**THEOREM: conciliar_authority_non_scriptural** — The authority of</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EcumenicalCouncil">EcumenicalCouncil</span><span class="dep-chip" data-target="authorityFromSuccession">authorityFromSuccession</span><span class="dep-chip" data-target="conciliar_authority_from_succession">conciliar_authority_from_succession</span><span class="dep-chip" data-target="nicaea_defined_binding_doctrine">nicaea_defined_binding_doctrine</span><span class="dep-chip" data-target="nicaea_precedes_canon">nicaea_precedes_canon</span><span class="dep-chip" data-target="pre_canon_not_from_settled_scripture">pre_canon_not_from_settled_scripture</span><span class="dep-chip" data-target="succession_not_sola_scriptura">succession_not_sola_scriptura</span><span class="dep-chip" data-target="temporal_argument_against_sola_scriptura">temporal_argument_against_sola_scriptura</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="pre_canon_authority_not_from_scripture">pre_canon_authority_not_from_scripture</span><span class="dep-chip" data-target="three_arguments_converge">three_arguments_converge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="temporal_argument_against_sola_scriptura">
@@ -782,9 +879,9 @@ def succession_not_sola_scriptura_provenance : Provenance</code></pre></div>
       -- (c) From non-scriptural succession
       authorityFromSuccession council ∧
       ¬derivableFromScriptureAlone (authorityFromSuccession council)</code></pre></div>
-<div class="node-desc">temporal_argument_against_sola_scriptura — There exists │   Source: CCC §465, §77, §120; historical chronology. | Scope: CATHOLIC.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ConciliarDefinition">ConciliarDefinition</span><span class="dep-chip" data-target="EcumenicalCouncil">EcumenicalCouncil</span><span class="dep-chip" data-target="authorityFromSuccession">authorityFromSuccession</span><span class="dep-chip" data-target="canonClosureEpoch">canonClosureEpoch</span><span class="dep-chip" data-target="conciliar_authority_from_succession">conciliar_authority_from_succession</span><span class="dep-chip" data-target="derivableFromCanonAtEpoch">derivableFromCanonAtEpoch</span><span class="dep-chip" data-target="derivableFromScriptureAlone">derivableFromScriptureAlone</span><span class="dep-chip" data-target="epochOfDefinition">epochOfDefinition</span><span class="dep-chip" data-target="isBindingDefinition">isBindingDefinition</span><span class="dep-chip" data-target="nicaea_defined_binding_doctrine">nicaea_defined_binding_doctrine</span><span class="dep-chip" data-target="nicaea_precedes_canon">nicaea_precedes_canon</span><span class="dep-chip" data-target="not_everything_written">not_everything_written</span><span class="dep-chip" data-target="pre_canon_not_from_settled_scripture">pre_canon_not_from_settled_scripture</span><span class="dep-chip" data-target="succession_not_sola_scriptura">succession_not_sola_scriptura</span><span class="dep-chip" data-target="three_arguments_converge">three_arguments_converge</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="conciliar_authority_non_scriptural">conciliar_authority_non_scriptural</span><span class="dep-chip" data-target="ConciliarDefinition">ConciliarDefinition</span><span class="dep-chip" data-target="EcumenicalCouncil">EcumenicalCouncil</span><span class="dep-chip" data-target="canonClosureEpoch">canonClosureEpoch</span><span class="dep-chip" data-target="derivableFromCanonAtEpoch">derivableFromCanonAtEpoch</span><span class="dep-chip" data-target="authorityFromSuccession">authorityFromSuccession</span><span class="dep-chip" data-target="epochOfDefinition">epochOfDefinition</span><span class="dep-chip" data-target="isBindingDefinition">isBindingDefinition</span><span class="dep-chip" data-target="conciliar_authority_from_succession">conciliar_authority_from_succession</span><span class="dep-chip" data-target="nicaea_defined_binding_doctrine">nicaea_defined_binding_doctrine</span><span class="dep-chip" data-target="nicaea_precedes_canon">nicaea_precedes_canon</span><span class="dep-chip" data-target="pre_canon_not_from_settled_scripture">pre_canon_not_from_settled_scripture</span><span class="dep-chip" data-target="succession_not_sola_scriptura">succession_not_sola_scriptura</span><span class="dep-chip" data-target="three_arguments_converge">three_arguments_converge</span></div></div>
+<div class="node-desc">**THEOREM: temporal_argument_against_sola_scriptura** — There exists</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ConciliarDefinition">ConciliarDefinition</span><span class="dep-chip" data-target="EcumenicalCouncil">EcumenicalCouncil</span><span class="dep-chip" data-target="authorityFromSuccession">authorityFromSuccession</span><span class="dep-chip" data-target="canonClosureEpoch">canonClosureEpoch</span><span class="dep-chip" data-target="conciliar_authority_from_succession">conciliar_authority_from_succession</span><span class="dep-chip" data-target="derivableFromCanonAtEpoch">derivableFromCanonAtEpoch</span><span class="dep-chip" data-target="epochOfDefinition">epochOfDefinition</span><span class="dep-chip" data-target="isBindingDefinition">isBindingDefinition</span><span class="dep-chip" data-target="nicaea_defined_binding_doctrine">nicaea_defined_binding_doctrine</span><span class="dep-chip" data-target="nicaea_precedes_canon">nicaea_precedes_canon</span><span class="dep-chip" data-target="pre_canon_not_from_settled_scripture">pre_canon_not_from_settled_scripture</span><span class="dep-chip" data-target="succession_not_sola_scriptura">succession_not_sola_scriptura</span><span class="dep-chip" data-target="three_arguments_converge">three_arguments_converge</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="conciliar_authority_non_scriptural">conciliar_authority_non_scriptural</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="three_arguments_converge">
@@ -805,9 +902,9 @@ def succession_not_sola_scriptura_provenance : Provenance</code></pre></div>
     (∃ (council : EcumenicalCouncil),
       authorityFromSuccession council ∧
       ¬derivableFromScriptureAlone (authorityFromSuccession council))</code></pre></div>
-<div class="node-desc">three_arguments_converge — The three anti-sola-scriptura │   Source: CCC §76, §120, §465, §77. | Scope: CATHOLIC.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ApostolicTeaching">ApostolicTeaching</span><span class="dep-chip" data-target="ConciliarDefinition">ConciliarDefinition</span><span class="dep-chip" data-target="EcumenicalCouncil">EcumenicalCouncil</span><span class="dep-chip" data-target="authorityFromSuccession">authorityFromSuccession</span><span class="dep-chip" data-target="canonClosureEpoch">canonClosureEpoch</span><span class="dep-chip" data-target="conciliar_authority_non_scriptural">conciliar_authority_non_scriptural</span><span class="dep-chip" data-target="derivableFromScriptureAlone">derivableFromScriptureAlone</span><span class="dep-chip" data-target="epochOfDefinition">epochOfDefinition</span><span class="dep-chip" data-target="inScripture">inScripture</span><span class="dep-chip" data-target="isBindingDefinition">isBindingDefinition</span><span class="dep-chip" data-target="isRevealed">isRevealed</span><span class="dep-chip" data-target="pre_canon_binding_authority">pre_canon_binding_authority</span><span class="dep-chip" data-target="protestant_ministerial_contradicts_succession_axiom">protestant_ministerial_contradicts_succession_axiom</span><span class="dep-chip" data-target="scripture_materially_incomplete">scripture_materially_incomplete</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="temporal_argument_against_sola_scriptura">temporal_argument_against_sola_scriptura</span><span class="dep-chip" data-target="ConciliarDefinition">ConciliarDefinition</span><span class="dep-chip" data-target="EcumenicalCouncil">EcumenicalCouncil</span><span class="dep-chip" data-target="canonClosureEpoch">canonClosureEpoch</span><span class="dep-chip" data-target="authorityFromSuccession">authorityFromSuccession</span><span class="dep-chip" data-target="epochOfDefinition">epochOfDefinition</span><span class="dep-chip" data-target="isBindingDefinition">isBindingDefinition</span><span class="dep-chip" data-target="protestant_ministerial_contradicts_succession_axiom">protestant_ministerial_contradicts_succession_axiom</span><span class="dep-chip" data-target="conciliar_authority_non_scriptural">conciliar_authority_non_scriptural</span><span class="dep-chip" data-target="pre_canon_binding_authority">pre_canon_binding_authority</span></div></div>
+<div class="node-desc">**THEOREM: three_arguments_converge** — The three anti-sola-scriptura</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ConciliarDefinition">ConciliarDefinition</span><span class="dep-chip" data-target="EcumenicalCouncil">EcumenicalCouncil</span><span class="dep-chip" data-target="authorityFromSuccession">authorityFromSuccession</span><span class="dep-chip" data-target="canonClosureEpoch">canonClosureEpoch</span><span class="dep-chip" data-target="conciliar_authority_non_scriptural">conciliar_authority_non_scriptural</span><span class="dep-chip" data-target="epochOfDefinition">epochOfDefinition</span><span class="dep-chip" data-target="isBindingDefinition">isBindingDefinition</span><span class="dep-chip" data-target="pre_canon_binding_authority">pre_canon_binding_authority</span><span class="dep-chip" data-target="protestant_ministerial_contradicts_succession_axiom">protestant_ministerial_contradicts_succession_axiom</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="temporal_argument_against_sola_scriptura">temporal_argument_against_sola_scriptura</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="protestant_ministerial_contradicts_succession_axiom">
@@ -822,9 +919,9 @@ def succession_not_sola_scriptura_provenance : Provenance</code></pre></div>
       authorityFromSuccession council →
       derivableFromScriptureAlone (authorityFromSuccession council)) :
     False</code></pre></div>
-<div class="node-desc">protestant_ministerial_contradicts_succession_axiom — │   Source: The incompatibility between Catholic and Protestant ecclesiology. | Scope: Meta-theological — shows the axiom...</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EcumenicalCouncil">EcumenicalCouncil</span><span class="dep-chip" data-target="authorityFromSuccession">authorityFromSuccession</span><span class="dep-chip" data-target="conciliar_authority_from_succession">conciliar_authority_from_succession</span><span class="dep-chip" data-target="derivableFromScriptureAlone">derivableFromScriptureAlone</span><span class="dep-chip" data-target="nicaea_defined_binding_doctrine">nicaea_defined_binding_doctrine</span><span class="dep-chip" data-target="succession_not_sola_scriptura">succession_not_sola_scriptura</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="three_arguments_converge">three_arguments_converge</span><span class="dep-chip" data-target="EcumenicalCouncil">EcumenicalCouncil</span><span class="dep-chip" data-target="authorityFromSuccession">authorityFromSuccession</span><span class="dep-chip" data-target="conciliar_authority_from_succession">conciliar_authority_from_succession</span><span class="dep-chip" data-target="nicaea_defined_binding_doctrine">nicaea_defined_binding_doctrine</span><span class="dep-chip" data-target="succession_not_sola_scriptura">succession_not_sola_scriptura</span></div></div>
+<div class="node-desc">**THEOREM: protestant_ministerial_contradicts_succession_axiom** —</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EcumenicalCouncil">EcumenicalCouncil</span><span class="dep-chip" data-target="authorityFromSuccession">authorityFromSuccession</span><span class="dep-chip" data-target="conciliar_authority_from_succession">conciliar_authority_from_succession</span><span class="dep-chip" data-target="nicaea_defined_binding_doctrine">nicaea_defined_binding_doctrine</span><span class="dep-chip" data-target="succession_not_sola_scriptura">succession_not_sola_scriptura</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="three_arguments_converge">three_arguments_converge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="conciliarAuthorityDenominationalScope">
@@ -836,8 +933,7 @@ def succession_not_sola_scriptura_provenance : Provenance</code></pre></div>
   <div class="node-details">
     <div class="node-prop"><pre><code>def conciliarAuthorityDenominationalScope : List (String × DenominationalTag)</code></pre></div>
 <div class="node-desc">Denominational scope of each axiom in the conciliar authority formalization.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="conciliar_authority_from_succession">conciliar_authority_from_succession</span><span class="dep-chip" data-target="isBindingDefinition">isBindingDefinition</span><span class="dep-chip" data-target="nicaea_defined_binding_doctrine">nicaea_defined_binding_doctrine</span><span class="dep-chip" data-target="nicaea_precedes_canon">nicaea_precedes_canon</span><span class="dep-chip" data-target="pre_canon_not_from_settled_scripture">pre_canon_not_from_settled_scripture</span><span class="dep-chip" data-target="succession_not_sola_scriptura">succession_not_sola_scriptura</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="isBindingDefinition">isBindingDefinition</span><span class="dep-chip" data-target="conciliar_authority_from_succession">conciliar_authority_from_succession</span><span class="dep-chip" data-target="nicaea_defined_binding_doctrine">nicaea_defined_binding_doctrine</span><span class="dep-chip" data-target="nicaea_precedes_canon">nicaea_precedes_canon</span><span class="dep-chip" data-target="pre_canon_not_from_settled_scripture">pre_canon_not_from_settled_scripture</span><span class="dep-chip" data-target="succession_not_sola_scriptura">succession_not_sola_scriptura</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="conciliar_authority_from_succession">conciliar_authority_from_succession</span><span class="dep-chip" data-target="conciliar_authority_from_succession_tag">conciliar_authority_from_succession_tag</span><span class="dep-chip" data-target="isBindingDefinition">isBindingDefinition</span><span class="dep-chip" data-target="nicaea_defined_binding_doctrine">nicaea_defined_binding_doctrine</span><span class="dep-chip" data-target="nicaea_defined_binding_doctrine_tag">nicaea_defined_binding_doctrine_tag</span><span class="dep-chip" data-target="nicaea_precedes_canon">nicaea_precedes_canon</span><span class="dep-chip" data-target="nicaea_precedes_canon_tag">nicaea_precedes_canon_tag</span><span class="dep-chip" data-target="pre_canon_not_from_settled_scripture">pre_canon_not_from_settled_scripture</span><span class="dep-chip" data-target="pre_canon_not_from_settled_scripture_tag">pre_canon_not_from_settled_scripture_tag</span><span class="dep-chip" data-target="succession_not_sola_scriptura">succession_not_sola_scriptura</span><span class="dep-chip" data-target="succession_not_sola_scriptura_tag">succession_not_sola_scriptura_tag</span></div></div>
   </div>
 </div>
   </div>

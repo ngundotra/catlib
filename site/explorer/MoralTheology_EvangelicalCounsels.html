@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Evangelical Counsels — Catlib Explorer</title>
+  <title>EvangelicalCounsels — Catlib Explorer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -143,7 +143,7 @@ h1 {
   line-height: 1.6;
 }
 
-/* Search */
+/* ── Search ── */
 .search-box {
   width: 100%;
   padding: 0.8rem 1rem;
@@ -167,7 +167,7 @@ h1 {
   font-style: italic;
 }
 
-/* Category sections */
+/* ── Category sections ── */
 .category-header {
   font-family: Cinzel, Georgia, serif;
   font-size: 1.1rem;
@@ -181,7 +181,7 @@ h1 {
   border-bottom: 1px solid var(--border);
 }
 
-/* File cards */
+/* ── File cards ── */
 .file-card {
   display: block;
   padding: 1rem 1.1rem;
@@ -237,7 +237,7 @@ h1 {
   margin-top: 0.3rem;
 }
 
-/* Summary stats */
+/* ── Summary stats ── */
 .stats-bar {
   display: flex;
   justify-content: center;
@@ -251,7 +251,7 @@ h1 {
 
 .stats-bar span { white-space: nowrap; }
 
-/* Node cards */
+/* ── Node cards (per-file page) ── */
 .node-card {
   margin-bottom: 0.4rem;
   border: 1px solid var(--border);
@@ -267,8 +267,6 @@ h1 {
 .node-card.kind-structure { border-left-color: var(--structure-dot); }
 .node-card.kind-inductive { border-left-color: var(--inductive-dot); }
 .node-card.kind-proposition { border-left-color: var(--proposition-dot); }
-.node-card.kind-instance { border-left-color: var(--def-dot); }
-.node-card.kind-abbrev { border-left-color: var(--def-dot); }
 
 .node-header {
   display: flex;
@@ -304,8 +302,6 @@ h1 {
 .kind-structure .node-kind-badge { background: var(--structure-bg); color: var(--structure-dot); }
 .kind-inductive .node-kind-badge { background: var(--inductive-bg); color: var(--inductive-dot); }
 .kind-proposition .node-kind-badge { background: var(--proposition-bg); color: var(--proposition-dot); }
-.kind-instance .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
-.kind-abbrev .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
 
 .node-name {
   flex: 1;
@@ -409,7 +405,7 @@ h1 {
   color: var(--text-muted);
 }
 
-/* Flow diagram header */
+/* ── Flow diagram header ── */
 .flow-summary {
   display: flex;
   justify-content: center;
@@ -435,7 +431,7 @@ h1 {
 .flow-count.theorems { background: var(--theorem-bg); color: var(--theorem-dot); }
 .flow-count.derived { background: var(--def-bg); color: var(--def-dot); }
 
-/* Legend */
+/* ── Legend ── */
 .legend {
   display: flex;
   flex-wrap: wrap;
@@ -467,7 +463,7 @@ h1 {
 .legend-dot.inductive { background: var(--inductive-dot); }
 .legend-dot.proposition { background: var(--proposition-dot); }
 
-/* Filter buttons */
+/* ── Filter buttons ── */
 .filter-bar {
   display: flex;
   flex-wrap: wrap;
@@ -496,7 +492,7 @@ h1 {
   border-color: var(--accent);
 }
 
-/* Back link */
+/* ── Back link ── */
 .back-link {
   display: inline-block;
   margin-bottom: 1rem;
@@ -505,7 +501,7 @@ h1 {
   letter-spacing: 0.04em;
 }
 
-/* Footer */
+/* ── Footer ── */
 .footer {
   text-align: center;
   padding-top: 2rem;
@@ -514,7 +510,7 @@ h1 {
   font-style: italic;
 }
 
-/* Responsive */
+/* ── Responsive ── */
 @media (max-width: 500px) {
   html { font-size: 16px; }
   .container { padding: 1rem 0.75rem 2rem; }
@@ -526,13 +522,21 @@ h1 {
 <body>
 <div class="container">
   <a href="index.html" class="back-link">&larr; All files</a>
-  <h1>Evangelical Counsels</h1>
-  <div class="subtitle">Moral Theology &middot; 27 declarations</div>
+  <h1>EvangelicalCounsels</h1>
+  <div class="subtitle">MoralTheology &middot; 27 declarations</div>
 
-  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;44, &sect;914, &sect;915, &sect;916, &sect;925, &sect;931, &sect;1601, &sect;1731, &sect;1732, &sect;1733, &hellip;</div>
+  <div class="flow-summary">
+  <span class="flow-count axioms">13 axioms</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count theorems">8 theorems</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count derived">6 derived</span>
+</div>
+  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1601, &sect;1731, &sect;1732, &sect;1733, &sect;2052, &sect;44, &sect;914, &sect;915, &sect;916, &sect;925, &sect;931</div>
+
   <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot proposition"></span>proposition</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
 
-  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (7)</button><button class="filter-btn" data-filter="def">def (3)</button><button class="filter-btn" data-filter="inductive">inductive (2)</button><button class="filter-btn" data-filter="opaque">opaque (2)</button><button class="filter-btn" data-filter="proposition">proposition (5)</button><button class="filter-btn" data-filter="theorem">theorem (8)</button></div>
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (8)</button><button class="filter-btn" data-filter="def">def (3)</button><button class="filter-btn" data-filter="inductive">inductive (2)</button><button class="filter-btn" data-filter="opaque">opaque (5)</button><button class="filter-btn" data-filter="proposition">proposition (1)</button><button class="filter-btn" data-filter="theorem">theorem (8)</button></div>
 
   <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
 
@@ -546,7 +550,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>inductive EvangelicalCounsel where</code></pre></div>
 <div class="node-desc">The three evangelical counsels.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="counselRenounces">counselRenounces</span><span class="dep-chip" data-target="counsels_are_supererogatory">counsels_are_supererogatory</span><span class="dep-chip" data-target="counsels_exceed_commandments">counsels_exceed_commandments</span><span class="dep-chip" data-target="counsels_remove_hindrances">counsels_remove_hindrances</span><span class="dep-chip" data-target="freelyChosen">freelyChosen</span><span class="dep-chip" data-target="luther_vows_redundant">luther_vows_redundant</span><span class="dep-chip" data-target="lutheran_vows_add_nothing">lutheran_vows_add_nothing</span><span class="dep-chip" data-target="professes">professes</span><span class="dep-chip" data-target="profession_must_be_free">profession_must_be_free</span><span class="dep-chip" data-target="profession_preserves_freedom">profession_preserves_freedom</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="LawfulGood.inhabitant">LawfulGood.inhabitant</span><span class="dep-chip" data-target="professes">professes</span><span class="dep-chip" data-target="freelyChosen">freelyChosen</span><span class="dep-chip" data-target="counsels_exceed_commandments">counsels_exceed_commandments</span><span class="dep-chip" data-target="counsels_remove_hindrances">counsels_remove_hindrances</span><span class="dep-chip" data-target="profession_must_be_free">profession_must_be_free</span><span class="dep-chip" data-target="luther_vows_redundant">luther_vows_redundant</span><span class="dep-chip" data-target="counsels_are_supererogatory">counsels_are_supererogatory</span><span class="dep-chip" data-target="profession_preserves_freedom">profession_preserves_freedom</span><span class="dep-chip" data-target="lutheran_vows_add_nothing">lutheran_vows_add_nothing</span></div></div>
   </div>
 </div>
 <div class="node-card kind-inductive" data-kind="inductive" data-name="StateOfLife">
@@ -556,11 +560,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>inductive StateOfLife where
-| lay
-| ordained</code></pre></div>
+    <div class="node-prop"><pre><code>inductive StateOfLife where</code></pre></div>
 <div class="node-desc">A state of life — the Catholic hierarchy distinguishes three principal states.</div>
-
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="LawfulGood">
@@ -572,43 +573,44 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom LawfulGood : Type</code></pre></div>
 <div class="node-desc">The lawful good that each counsel renounces.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="counselRenounces">counselRenounces</span><span class="dep-chip" data-target="hindersCharity">hindersCharity</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="LawfulGood.inhabitant">LawfulGood.inhabitant</span><span class="dep-chip" data-target="hindersCharity">hindersCharity</span></div></div>
   </div>
 </div>
-<div class="node-card kind-opaque" data-kind="opaque" data-name="counselRenounces">
+<div class="node-card kind-axiom" data-kind="axiom" data-name="LawfulGood.inhabitant">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">opaque</span>
-    <span class="node-name">counselRenounces</span>
+    <span class="node-kind-badge">axiom</span>
+    <span class="node-name">LawfulGood.inhabitant</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>noncomputable opaque counselRenounces : EvangelicalCounsel → LawfulGood</code></pre></div>
-<div class="node-desc">Which lawful good a given counsel renounces.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EvangelicalCounsel">EvangelicalCounsel</span><span class="dep-chip" data-target="LawfulGood">LawfulGood</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="all_hindrances_removed">all_hindrances_removed</span><span class="dep-chip" data-target="chastity_renounces_marriage_good">chastity_renounces_marriage_good</span><span class="dep-chip" data-target="counsels_remove_hindrances">counsels_remove_hindrances</span><span class="dep-chip" data-target="marriage_tension_explicit">marriage_tension_explicit</span></div></div>
+    <div class="node-prop"><pre><code>axiom LawfulGood.inhabitant : LawfulGood</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EvangelicalCounsel">EvangelicalCounsel</span><span class="dep-chip" data-target="LawfulGood">LawfulGood</span></div></div>
   </div>
 </div>
-<div class="node-card kind-proposition" data-kind="proposition" data-name="hindersCharity">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="hindersCharity">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
+    <span class="node-kind-badge">opaque</span>
     <span class="node-name">hindersCharity</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque hindersCharity : LawfulGood → Prop</code></pre></div>
 <div class="node-desc">Whether a lawful good hinders the development of charity.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="LawfulGood">LawfulGood</span><span class="dep-chip" data-target="professes">professes</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="all_hindrances_removed">all_hindrances_removed</span><span class="dep-chip" data-target="chastity_renounces_marriage_good">chastity_renounces_marriage_good</span><span class="dep-chip" data-target="counsels_remove_hindrances">counsels_remove_hindrances</span><span class="dep-chip" data-target="marriage_tension_explicit">marriage_tension_explicit</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="LawfulGood">LawfulGood</span><span class="dep-chip" data-target="professes">professes</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="counsels_remove_hindrances">counsels_remove_hindrances</span><span class="dep-chip" data-target="chastity_renounces_marriage_good">chastity_renounces_marriage_good</span><span class="dep-chip" data-target="all_hindrances_removed">all_hindrances_removed</span><span class="dep-chip" data-target="marriage_tension_explicit">marriage_tension_explicit</span></div></div>
   </div>
 </div>
-<div class="node-card kind-proposition" data-kind="proposition" data-name="professes">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="professes">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
+    <span class="node-kind-badge">opaque</span>
     <span class="node-name">professes</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque professes : Person → EvangelicalCounsel → Prop</code></pre></div>
-<div class="node-desc">Whether a person professes a given counsel — i.e., has voluntarily committed to the renunciation through a public vow.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EvangelicalCounsel">EvangelicalCounsel</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="catholic_consecrated_higher">catholic_consecrated_higher</span><span class="dep-chip" data-target="consecrated_life_higher">consecrated_life_higher</span><span class="dep-chip" data-target="counsels_are_supererogatory">counsels_are_supererogatory</span><span class="dep-chip" data-target="counsels_exceed_commandments">counsels_exceed_commandments</span><span class="dep-chip" data-target="hindersCharity">hindersCharity</span><span class="dep-chip" data-target="luther_no_hierarchy">luther_no_hierarchy</span><span class="dep-chip" data-target="luther_vows_redundant">luther_vows_redundant</span><span class="dep-chip" data-target="lutheran_no_advantage">lutheran_no_advantage</span><span class="dep-chip" data-target="lutheran_vows_add_nothing">lutheran_vows_add_nothing</span><span class="dep-chip" data-target="marriage_tension_explicit">marriage_tension_explicit</span><span class="dep-chip" data-target="professesAll">professesAll</span><span class="dep-chip" data-target="profession_must_be_free">profession_must_be_free</span><span class="dep-chip" data-target="profession_preserves_freedom">profession_preserves_freedom</span></div></div>
+<div class="node-desc">Whether a person professes a given counsel — i.e., has voluntarily</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EvangelicalCounsel">EvangelicalCounsel</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hindersCharity">hindersCharity</span><span class="dep-chip" data-target="counsels_exceed_commandments">counsels_exceed_commandments</span><span class="dep-chip" data-target="profession_must_be_free">profession_must_be_free</span><span class="dep-chip" data-target="professesAll">professesAll</span><span class="dep-chip" data-target="consecrated_life_higher">consecrated_life_higher</span><span class="dep-chip" data-target="luther_no_hierarchy">luther_no_hierarchy</span><span class="dep-chip" data-target="luther_vows_redundant">luther_vows_redundant</span><span class="dep-chip" data-target="counsels_are_supererogatory">counsels_are_supererogatory</span><span class="dep-chip" data-target="profession_preserves_freedom">profession_preserves_freedom</span><span class="dep-chip" data-target="marriage_tension_explicit">marriage_tension_explicit</span><span class="dep-chip" data-target="catholic_consecrated_higher">catholic_consecrated_higher</span><span class="dep-chip" data-target="lutheran_no_advantage">lutheran_no_advantage</span><span class="dep-chip" data-target="lutheran_vows_add_nothing">lutheran_vows_add_nothing</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="charityDegree">
@@ -620,19 +622,20 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque charityDegree : Person → Nat</code></pre></div>
 <div class="node-desc">The degree of charity a person has.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="catholic_consecrated_higher">catholic_consecrated_higher</span><span class="dep-chip" data-target="consecrated_life_higher">consecrated_life_higher</span><span class="dep-chip" data-target="counsels_are_supererogatory">counsels_are_supererogatory</span><span class="dep-chip" data-target="counsels_exceed_commandments">counsels_exceed_commandments</span><span class="dep-chip" data-target="luther_no_hierarchy">luther_no_hierarchy</span><span class="dep-chip" data-target="luther_vows_redundant">luther_vows_redundant</span><span class="dep-chip" data-target="lutheran_no_advantage">lutheran_no_advantage</span><span class="dep-chip" data-target="lutheran_vows_add_nothing">lutheran_vows_add_nothing</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="counsels_exceed_commandments">counsels_exceed_commandments</span><span class="dep-chip" data-target="consecrated_life_higher">consecrated_life_higher</span><span class="dep-chip" data-target="luther_no_hierarchy">luther_no_hierarchy</span><span class="dep-chip" data-target="luther_vows_redundant">luther_vows_redundant</span><span class="dep-chip" data-target="counsels_are_supererogatory">counsels_are_supererogatory</span><span class="dep-chip" data-target="catholic_consecrated_higher">catholic_consecrated_higher</span><span class="dep-chip" data-target="lutheran_no_advantage">lutheran_no_advantage</span><span class="dep-chip" data-target="lutheran_vows_add_nothing">lutheran_vows_add_nothing</span></div></div>
   </div>
 </div>
-<div class="node-card kind-proposition" data-kind="proposition" data-name="freelyChosen">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="freelyChosen">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
+    <span class="node-kind-badge">opaque</span>
     <span class="node-name">freelyChosen</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque freelyChosen : Person → EvangelicalCounsel → Prop</code></pre></div>
 <div class="node-desc">Whether an act of renunciation is freely chosen.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EvangelicalCounsel">EvangelicalCounsel</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="counsels_are_supererogatory">counsels_are_supererogatory</span><span class="dep-chip" data-target="counsels_exceed_commandments">counsels_exceed_commandments</span><span class="dep-chip" data-target="luther_vows_redundant">luther_vows_redundant</span><span class="dep-chip" data-target="lutheran_vows_add_nothing">lutheran_vows_add_nothing</span><span class="dep-chip" data-target="profession_must_be_free">profession_must_be_free</span><span class="dep-chip" data-target="profession_preserves_freedom">profession_preserves_freedom</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EvangelicalCounsel">EvangelicalCounsel</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="counsels_exceed_commandments">counsels_exceed_commandments</span><span class="dep-chip" data-target="profession_must_be_free">profession_must_be_free</span><span class="dep-chip" data-target="luther_vows_redundant">luther_vows_redundant</span><span class="dep-chip" data-target="counsels_are_supererogatory">counsels_are_supererogatory</span><span class="dep-chip" data-target="profession_preserves_freedom">profession_preserves_freedom</span><span class="dep-chip" data-target="lutheran_vows_add_nothing">lutheran_vows_add_nothing</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="counsels_exceed_commandments">
@@ -643,9 +646,14 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom counsels_exceed_commandments :
-∀ (p : Person) (c : EvangelicalCounsel),</code></pre></div>
-<div class="node-desc">AXIOM (§915): The evangelical counsels are not commanded — they exceed what the commandments require.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EvangelicalCounsel">EvangelicalCounsel</span><span class="dep-chip" data-target="charityDegree">charityDegree</span><span class="dep-chip" data-target="freelyChosen">freelyChosen</span><span class="dep-chip" data-target="professes">professes</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="celibacyHigherTag">celibacyHigherTag</span><span class="dep-chip" data-target="counsels_are_supererogatory">counsels_are_supererogatory</span><span class="dep-chip" data-target="luther_no_hierarchy">luther_no_hierarchy</span><span class="dep-chip" data-target="luther_vows_redundant">luther_vows_redundant</span></div></div>
+  ∀ (p : Person) (c : EvangelicalCounsel),
+    -- Salvation does not require professing the counsel
+    ¬(∀ (q : Person), q.isMoralAgent = true → professes q c) ∧
+    -- But professing is a genuine good (not morally neutral)
+    (professes p c → freelyChosen p c → charityDegree p &gt; 0)</code></pre></div>
+<div class="node-desc">AXIOM (§915): The evangelical counsels are not commanded — they exceed</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EvangelicalCounsel">EvangelicalCounsel</span><span class="dep-chip" data-target="charityDegree">charityDegree</span><span class="dep-chip" data-target="freelyChosen">freelyChosen</span><span class="dep-chip" data-target="professes">professes</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="luther_no_hierarchy">luther_no_hierarchy</span><span class="dep-chip" data-target="luther_vows_redundant">luther_vows_redundant</span><span class="dep-chip" data-target="counsels_are_supererogatory">counsels_are_supererogatory</span><span class="dep-chip" data-target="celibacyHigherTag">celibacyHigherTag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="counsels_remove_hindrances">
@@ -656,9 +664,10 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom counsels_remove_hindrances :
-∀ (c : EvangelicalCounsel), hindersCharity (counselRenounces c)</code></pre></div>
-<div class="node-desc">AXIOM (§915): Each evangelical counsel renounces a lawful good that hinders the development of charity.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EvangelicalCounsel">EvangelicalCounsel</span><span class="dep-chip" data-target="counselRenounces">counselRenounces</span><span class="dep-chip" data-target="hindersCharity">hindersCharity</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="all_hindrances_removed">all_hindrances_removed</span><span class="dep-chip" data-target="celibacyHigherTag">celibacyHigherTag</span><span class="dep-chip" data-target="chastity_renounces_marriage_good">chastity_renounces_marriage_good</span><span class="dep-chip" data-target="consecrated_life_higher">consecrated_life_higher</span><span class="dep-chip" data-target="counsels_are_supererogatory">counsels_are_supererogatory</span></div></div>
+  ∀ (c : EvangelicalCounsel), hindersCharity (counselRenounces c)</code></pre></div>
+<div class="node-desc">AXIOM (§915): Each evangelical counsel renounces a lawful good that</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EvangelicalCounsel">EvangelicalCounsel</span><span class="dep-chip" data-target="hindersCharity">hindersCharity</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="consecrated_life_higher">consecrated_life_higher</span><span class="dep-chip" data-target="chastity_renounces_marriage_good">chastity_renounces_marriage_good</span><span class="dep-chip" data-target="counsels_are_supererogatory">counsels_are_supererogatory</span><span class="dep-chip" data-target="all_hindrances_removed">all_hindrances_removed</span><span class="dep-chip" data-target="celibacyHigherTag">celibacyHigherTag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="profession_must_be_free">
@@ -669,10 +678,11 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom profession_must_be_free :
-∀ (p : Person) (c : EvangelicalCounsel),
-professes p c → freelyChosen p c</code></pre></div>
+  ∀ (p : Person) (c : EvangelicalCounsel),
+    professes p c → freelyChosen p c</code></pre></div>
 <div class="node-desc">AXIOM (§914, Canon 1191): Profession of a counsel must be a free act.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EvangelicalCounsel">EvangelicalCounsel</span><span class="dep-chip" data-target="freelyChosen">freelyChosen</span><span class="dep-chip" data-target="professes">professes</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="all_hindrances_removed">all_hindrances_removed</span><span class="dep-chip" data-target="celibacyHigherTag">celibacyHigherTag</span><span class="dep-chip" data-target="profession_preserves_freedom">profession_preserves_freedom</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EvangelicalCounsel">EvangelicalCounsel</span><span class="dep-chip" data-target="freelyChosen">freelyChosen</span><span class="dep-chip" data-target="professes">professes</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="all_hindrances_removed">all_hindrances_removed</span><span class="dep-chip" data-target="profession_preserves_freedom">profession_preserves_freedom</span><span class="dep-chip" data-target="celibacyHigherTag">celibacyHigherTag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-proposition" data-kind="proposition" data-name="professesAll">
@@ -684,7 +694,8 @@ professes p c → freelyChosen p c</code></pre></div>
   <div class="node-details">
     <div class="node-prop"><pre><code>def professesAll (p : Person) : Prop</code></pre></div>
 <div class="node-desc">Whether a person has professed ALL three evangelical counsels.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="professes">professes</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="all_hindrances_removed">all_hindrances_removed</span><span class="dep-chip" data-target="catholic_consecrated_higher">catholic_consecrated_higher</span><span class="dep-chip" data-target="consecrated_life_higher">consecrated_life_higher</span><span class="dep-chip" data-target="luther_no_hierarchy">luther_no_hierarchy</span><span class="dep-chip" data-target="lutheran_no_advantage">lutheran_no_advantage</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="professes">professes</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="consecrated_life_higher">consecrated_life_higher</span><span class="dep-chip" data-target="luther_no_hierarchy">luther_no_hierarchy</span><span class="dep-chip" data-target="all_hindrances_removed">all_hindrances_removed</span><span class="dep-chip" data-target="catholic_consecrated_higher">catholic_consecrated_higher</span><span class="dep-chip" data-target="lutheran_no_advantage">lutheran_no_advantage</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="consecrated_life_higher">
@@ -695,11 +706,14 @@ professes p c → freelyChosen p c</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom consecrated_life_higher :
-∀ (p q : Person),
-professesAll p →
-¬(professes q .poverty ∨ professes q .chastity ∨ professes q .obedience) →</code></pre></div>
-<div class="node-desc">AXIOM (§916): The consecrated life is a &quot;more intimate&quot; consecration than the lay or ordained state in its ordering towa...</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="charityDegree">charityDegree</span><span class="dep-chip" data-target="counsels_remove_hindrances">counsels_remove_hindrances</span><span class="dep-chip" data-target="professes">professes</span><span class="dep-chip" data-target="professesAll">professesAll</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="catholic_consecrated_higher">catholic_consecrated_higher</span><span class="dep-chip" data-target="celibacyHigherTag">celibacyHigherTag</span><span class="dep-chip" data-target="lutherRejectsHierarchy">lutherRejectsHierarchy</span><span class="dep-chip" data-target="marriage_tension_explicit">marriage_tension_explicit</span></div></div>
+  ∀ (p q : Person),
+    professesAll p →
+    ¬(professes q .poverty ∨ professes q .chastity ∨ professes q .obedience) →
+    -- Removing hindrances enables greater charity (ceteris paribus)
+    charityDegree p &gt; 0</code></pre></div>
+<div class="node-desc">AXIOM (§916): The consecrated life is a &quot;more intimate&quot; consecration</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="charityDegree">charityDegree</span><span class="dep-chip" data-target="counsels_remove_hindrances">counsels_remove_hindrances</span><span class="dep-chip" data-target="professes">professes</span><span class="dep-chip" data-target="professesAll">professesAll</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="lutherRejectsHierarchy">lutherRejectsHierarchy</span><span class="dep-chip" data-target="marriage_tension_explicit">marriage_tension_explicit</span><span class="dep-chip" data-target="catholic_consecrated_higher">catholic_consecrated_higher</span><span class="dep-chip" data-target="celibacyHigherTag">celibacyHigherTag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="chastity_renounces_marriage_good">
@@ -710,21 +724,23 @@ professesAll p →
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem chastity_renounces_marriage_good :
-hindersCharity (counselRenounces .chastity)</code></pre></div>
-<div class="node-desc">AXIOM (§915, 1 Cor 7:32-35): The lawful good renounced by the counsel of chastity hinders charity — specifically by divi...</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="counselRenounces">counselRenounces</span><span class="dep-chip" data-target="counsels_remove_hindrances">counsels_remove_hindrances</span><span class="dep-chip" data-target="hindersCharity">hindersCharity</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="celibacyHigherTag">celibacyHigherTag</span><span class="dep-chip" data-target="marriage_tension_explicit">marriage_tension_explicit</span></div></div>
+    hindersCharity (counselRenounces .chastity)</code></pre></div>
+<div class="node-desc">AXIOM (§915, 1 Cor 7:32-35): The lawful good renounced by the counsel</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="counsels_remove_hindrances">counsels_remove_hindrances</span><span class="dep-chip" data-target="hindersCharity">hindersCharity</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="marriage_tension_explicit">marriage_tension_explicit</span><span class="dep-chip" data-target="celibacyHigherTag">celibacyHigherTag</span></div></div>
   </div>
 </div>
-<div class="node-card kind-proposition" data-kind="proposition" data-name="lutherRejectsHierarchy">
+<div class="node-card kind-opaque" data-kind="opaque" data-name="lutherRejectsHierarchy">
   <div class="node-header" onclick="toggleNode(this)">
-    <span class="node-kind-badge">proposition</span>
+    <span class="node-kind-badge">opaque</span>
     <span class="node-name">lutherRejectsHierarchy</span>
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque lutherRejectsHierarchy : Prop</code></pre></div>
 <div class="node-desc">The Lutheran denial that any state of life is objectively higher.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="consecrated_life_higher">consecrated_life_higher</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="luther_no_hierarchy">luther_no_hierarchy</span><span class="dep-chip" data-target="luther_vows_redundant">luther_vows_redundant</span><span class="dep-chip" data-target="lutheran_no_advantage">lutheran_no_advantage</span><span class="dep-chip" data-target="lutheran_vows_add_nothing">lutheran_vows_add_nothing</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="consecrated_life_higher">consecrated_life_higher</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="luther_no_hierarchy">luther_no_hierarchy</span><span class="dep-chip" data-target="luther_vows_redundant">luther_vows_redundant</span><span class="dep-chip" data-target="lutheran_no_advantage">lutheran_no_advantage</span><span class="dep-chip" data-target="lutheran_vows_add_nothing">lutheran_vows_add_nothing</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="luther_no_hierarchy">
@@ -735,10 +751,17 @@ hindersCharity (counselRenounces .chastity)</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom luther_no_hierarchy :
-lutherRejectsHierarchy →
-∀ (p q : Person),</code></pre></div>
+  lutherRejectsHierarchy →
+  ∀ (p q : Person),
+    -- No state produces objectively more charity than another
+    -- (the hierarchy claim is false)
+    professesAll p →
+    ¬(professes q .poverty ∨ professes q .chastity ∨ professes q .obedience) →
+    -- Luther: profession does not give you a charity advantage
+    charityDegree p &gt; 0 → charityDegree q &gt; 0</code></pre></div>
 <div class="node-desc">AXIOM (Lutheran): There is no hierarchy of states of life.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="charityDegree">charityDegree</span><span class="dep-chip" data-target="counsels_exceed_commandments">counsels_exceed_commandments</span><span class="dep-chip" data-target="lutherRejectsHierarchy">lutherRejectsHierarchy</span><span class="dep-chip" data-target="professes">professes</span><span class="dep-chip" data-target="professesAll">professesAll</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="catholic_consecrated_higher">catholic_consecrated_higher</span><span class="dep-chip" data-target="celibacyHigherTag">celibacyHigherTag</span><span class="dep-chip" data-target="lutheran_no_advantage">lutheran_no_advantage</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="charityDegree">charityDegree</span><span class="dep-chip" data-target="counsels_exceed_commandments">counsels_exceed_commandments</span><span class="dep-chip" data-target="lutherRejectsHierarchy">lutherRejectsHierarchy</span><span class="dep-chip" data-target="professes">professes</span><span class="dep-chip" data-target="professesAll">professesAll</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="catholic_consecrated_higher">catholic_consecrated_higher</span><span class="dep-chip" data-target="lutheran_no_advantage">lutheran_no_advantage</span><span class="dep-chip" data-target="celibacyHigherTag">celibacyHigherTag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="luther_vows_redundant">
@@ -749,10 +772,15 @@ lutherRejectsHierarchy →
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom luther_vows_redundant :
-lutherRejectsHierarchy →
-∀ (p : Person) (c : EvangelicalCounsel),</code></pre></div>
-<div class="node-desc">AXIOM (Lutheran): Monastic vows are either redundant or contrary to the gospel.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EvangelicalCounsel">EvangelicalCounsel</span><span class="dep-chip" data-target="charityDegree">charityDegree</span><span class="dep-chip" data-target="counsels_exceed_commandments">counsels_exceed_commandments</span><span class="dep-chip" data-target="freelyChosen">freelyChosen</span><span class="dep-chip" data-target="lutherRejectsHierarchy">lutherRejectsHierarchy</span><span class="dep-chip" data-target="professes">professes</span></div></div><div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="celibacyHigherTag">celibacyHigherTag</span><span class="dep-chip" data-target="lutheran_no_advantage">lutheran_no_advantage</span><span class="dep-chip" data-target="lutheran_vows_add_nothing">lutheran_vows_add_nothing</span></div></div>
+  lutherRejectsHierarchy →
+  ∀ (p : Person) (c : EvangelicalCounsel),
+    -- Professing a counsel adds nothing beyond what baptism already requires
+    professes p c → freelyChosen p c → charityDegree p &gt; 0 →
+    -- A non-professing person with the same moral effort has equal charity
+    ∀ (q : Person), q.isMoralAgent = true → charityDegree q &gt; 0</code></pre></div>
+<div class="node-desc">AXIOM (Lutheran): Monastic vows are either redundant or contrary to</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EvangelicalCounsel">EvangelicalCounsel</span><span class="dep-chip" data-target="charityDegree">charityDegree</span><span class="dep-chip" data-target="counsels_exceed_commandments">counsels_exceed_commandments</span><span class="dep-chip" data-target="freelyChosen">freelyChosen</span><span class="dep-chip" data-target="lutherRejectsHierarchy">lutherRejectsHierarchy</span><span class="dep-chip" data-target="professes">professes</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="lutheran_no_advantage">lutheran_no_advantage</span><span class="dep-chip" data-target="lutheran_vows_add_nothing">lutheran_vows_add_nothing</span><span class="dep-chip" data-target="celibacyHigherTag">celibacyHigherTag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="counsels_are_supererogatory">
@@ -763,9 +791,13 @@ lutherRejectsHierarchy →
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem counsels_are_supererogatory
-(p : Person) (c : EvangelicalCounsel)
-(h_prof : professes p c) :
-freelyChosen p c →</code></pre></div>
+    (p : Person) (c : EvangelicalCounsel)
+    (h_prof : professes p c) :
+    freelyChosen p c →
+    -- It is a genuine good (charity degree &gt; 0) ...
+    charityDegree p &gt; 0 ∧
+    -- ... but not universally required
+    ¬(∀ (q : Person), q.isMoralAgent = true → professes q c)</code></pre></div>
 <div class="node-desc">THEOREM: Professing a counsel is supererogatory — good but not obligatory.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EvangelicalCounsel">EvangelicalCounsel</span><span class="dep-chip" data-target="charityDegree">charityDegree</span><span class="dep-chip" data-target="counsels_exceed_commandments">counsels_exceed_commandments</span><span class="dep-chip" data-target="counsels_remove_hindrances">counsels_remove_hindrances</span><span class="dep-chip" data-target="freelyChosen">freelyChosen</span><span class="dep-chip" data-target="professes">professes</span></div></div>
   </div>
@@ -778,12 +810,12 @@ freelyChosen p c →</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem all_hindrances_removed
-(_p : Person) (_h : professesAll _p) :
-hindersCharity (counselRenounces .poverty) ∧
-hindersCharity (counselRenounces .chastity) ∧
-hindersCharity (counselRenounces .obedience)</code></pre></div>
-<div class="node-desc">THEOREM: A person who professes all three counsels removes all three categories of hindrance to charity.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="counselRenounces">counselRenounces</span><span class="dep-chip" data-target="counsels_remove_hindrances">counsels_remove_hindrances</span><span class="dep-chip" data-target="hindersCharity">hindersCharity</span><span class="dep-chip" data-target="professesAll">professesAll</span><span class="dep-chip" data-target="profession_must_be_free">profession_must_be_free</span></div></div>
+    (_p : Person) (_h : professesAll _p) :
+    hindersCharity (counselRenounces .poverty) ∧
+    hindersCharity (counselRenounces .chastity) ∧
+    hindersCharity (counselRenounces .obedience)</code></pre></div>
+<div class="node-desc">THEOREM: A person who professes all three counsels removes all</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="counsels_remove_hindrances">counsels_remove_hindrances</span><span class="dep-chip" data-target="hindersCharity">hindersCharity</span><span class="dep-chip" data-target="professesAll">professesAll</span><span class="dep-chip" data-target="profession_must_be_free">profession_must_be_free</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="profession_preserves_freedom">
@@ -794,10 +826,10 @@ hindersCharity (counselRenounces .obedience)</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem profession_preserves_freedom
-(p : Person) (c : EvangelicalCounsel)
-(h_prof : professes p c) :
-freelyChosen p c</code></pre></div>
-<div class="node-desc">THEOREM: Every profession is freely chosen — the surrender of self-determination in obedience is itself a free act.</div>
+    (p : Person) (c : EvangelicalCounsel)
+    (h_prof : professes p c) :
+    freelyChosen p c</code></pre></div>
+<div class="node-desc">THEOREM: Every profession is freely chosen — the surrender of</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EvangelicalCounsel">EvangelicalCounsel</span><span class="dep-chip" data-target="freelyChosen">freelyChosen</span><span class="dep-chip" data-target="professes">professes</span><span class="dep-chip" data-target="profession_must_be_free">profession_must_be_free</span></div></div>
   </div>
 </div>
@@ -809,10 +841,14 @@ freelyChosen p c</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem marriage_tension_explicit
-(m : MarriageBond)
-(h_baptized : m.bothBaptized) :</code></pre></div>
-<div class="node-desc">THEOREM: The CCC&#x27;s claim that chastity removes a hindrance coexists with Marriage.lean&#x27;s claim that marriage is sacramen...</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="chastity_renounces_marriage_good">chastity_renounces_marriage_good</span><span class="dep-chip" data-target="consecrated_life_higher">consecrated_life_higher</span><span class="dep-chip" data-target="counselRenounces">counselRenounces</span><span class="dep-chip" data-target="hindersCharity">hindersCharity</span><span class="dep-chip" data-target="professes">professes</span></div></div>
+    (m : MarriageBond)
+    (h_baptized : m.bothBaptized) :
+    -- Marriage IS sacramental (from Marriage.lean)
+    isSacramental m ∧
+    -- AND the good it represents hinders charity (from this file)
+    hindersCharity (counselRenounces .chastity)</code></pre></div>
+<div class="node-desc">THEOREM: The CCC's claim that chastity removes a hindrance coexists</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="chastity_renounces_marriage_good">chastity_renounces_marriage_good</span><span class="dep-chip" data-target="consecrated_life_higher">consecrated_life_higher</span><span class="dep-chip" data-target="hindersCharity">hindersCharity</span><span class="dep-chip" data-target="professes">professes</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="catholic_consecrated_higher">
@@ -823,10 +859,10 @@ freelyChosen p c</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem catholic_consecrated_higher
-(p q : Person)
-(h_all : professesAll p)
-(h_none : ¬(professes q .poverty ∨ professes q .chastity ∨ professes q .obedience)) :
-charityDegree p &gt; 0</code></pre></div>
+    (p q : Person)
+    (h_all : professesAll p)
+    (h_none : ¬(professes q .poverty ∨ professes q .chastity ∨ professes q .obedience)) :
+    charityDegree p &gt; 0</code></pre></div>
 <div class="node-desc">THEOREM: Under Catholic axioms, consecrated life has a charity advantage.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="charityDegree">charityDegree</span><span class="dep-chip" data-target="consecrated_life_higher">consecrated_life_higher</span><span class="dep-chip" data-target="luther_no_hierarchy">luther_no_hierarchy</span><span class="dep-chip" data-target="professes">professes</span><span class="dep-chip" data-target="professesAll">professesAll</span></div></div>
   </div>
@@ -839,13 +875,13 @@ charityDegree p &gt; 0</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem lutheran_no_advantage
-(h_reject : lutherRejectsHierarchy)
-(p q : Person)
-(h_all : professesAll p)
-(h_none : ¬(professes q .poverty ∨ professes q .chastity ∨ professes q .obedience))
-(h_charity : charityDegree p &gt; 0) :
-charityDegree q &gt; 0</code></pre></div>
-<div class="node-desc">THEOREM: Under Lutheran axioms, if the consecrated person has positive charity, so does the non-consecrated person — no ...</div>
+    (h_reject : lutherRejectsHierarchy)
+    (p q : Person)
+    (h_all : professesAll p)
+    (h_none : ¬(professes q .poverty ∨ professes q .chastity ∨ professes q .obedience))
+    (h_charity : charityDegree p &gt; 0) :
+    charityDegree q &gt; 0</code></pre></div>
+<div class="node-desc">THEOREM: Under Lutheran axioms, if the consecrated person has positive</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="charityDegree">charityDegree</span><span class="dep-chip" data-target="lutherRejectsHierarchy">lutherRejectsHierarchy</span><span class="dep-chip" data-target="luther_no_hierarchy">luther_no_hierarchy</span><span class="dep-chip" data-target="luther_vows_redundant">luther_vows_redundant</span><span class="dep-chip" data-target="professes">professes</span><span class="dep-chip" data-target="professesAll">professesAll</span></div></div>
   </div>
 </div>
@@ -857,14 +893,14 @@ charityDegree q &gt; 0</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem lutheran_vows_add_nothing
-(h_reject : lutherRejectsHierarchy)
-(p : Person) (c : EvangelicalCounsel)
-(h_prof : professes p c)
-(h_free : freelyChosen p c)
-(h_charity : charityDegree p &gt; 0)
-(q : Person) (h_agent : q.isMoralAgent = true) :
-charityDegree q &gt; 0</code></pre></div>
-<div class="node-desc">THEOREM: Under Lutheran axioms, vows add nothing — any moral agent has positive charity regardless of profession.</div>
+    (h_reject : lutherRejectsHierarchy)
+    (p : Person) (c : EvangelicalCounsel)
+    (h_prof : professes p c)
+    (h_free : freelyChosen p c)
+    (h_charity : charityDegree p &gt; 0)
+    (q : Person) (h_agent : q.isMoralAgent = true) :
+    charityDegree q &gt; 0</code></pre></div>
+<div class="node-desc">THEOREM: Under Lutheran axioms, vows add nothing — any moral agent</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EvangelicalCounsel">EvangelicalCounsel</span><span class="dep-chip" data-target="charityDegree">charityDegree</span><span class="dep-chip" data-target="freelyChosen">freelyChosen</span><span class="dep-chip" data-target="lutherRejectsHierarchy">lutherRejectsHierarchy</span><span class="dep-chip" data-target="luther_vows_redundant">luther_vows_redundant</span><span class="dep-chip" data-target="professes">professes</span></div></div>
   </div>
 </div>
@@ -877,7 +913,6 @@ charityDegree q &gt; 0</code></pre></div>
   <div class="node-details">
     <div class="node-prop"><pre><code>def counselsTag : DenominationalTag</code></pre></div>
 <div class="node-desc">Denominational tag for the evangelical counsels as supererogatory acts.</div>
-
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="hierarchyOfStatesTag">
@@ -889,7 +924,6 @@ charityDegree q &gt; 0</code></pre></div>
   <div class="node-details">
     <div class="node-prop"><pre><code>def hierarchyOfStatesTag : DenominationalTag</code></pre></div>
 <div class="node-desc">Denominational tag for the hierarchy of states of life.</div>
-
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="celibacyHigherTag">
@@ -904,7 +938,6 @@ charityDegree q &gt; 0</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="chastity_renounces_marriage_good">chastity_renounces_marriage_good</span><span class="dep-chip" data-target="consecrated_life_higher">consecrated_life_higher</span><span class="dep-chip" data-target="counsels_exceed_commandments">counsels_exceed_commandments</span><span class="dep-chip" data-target="counsels_remove_hindrances">counsels_remove_hindrances</span><span class="dep-chip" data-target="luther_no_hierarchy">luther_no_hierarchy</span><span class="dep-chip" data-target="luther_vows_redundant">luther_vows_redundant</span><span class="dep-chip" data-target="profession_must_be_free">profession_must_be_free</span></div></div>
   </div>
 </div>
-
   </div>
 
   <div class="footer">

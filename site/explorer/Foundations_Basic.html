@@ -267,8 +267,6 @@ h1 {
 .node-card.kind-structure { border-left-color: var(--structure-dot); }
 .node-card.kind-inductive { border-left-color: var(--inductive-dot); }
 .node-card.kind-proposition { border-left-color: var(--proposition-dot); }
-.node-card.kind-instance { border-left-color: var(--def-dot); }
-.node-card.kind-abbrev { border-left-color: var(--def-dot); }
 
 .node-header {
   display: flex;
@@ -304,8 +302,6 @@ h1 {
 .kind-structure .node-kind-badge { background: var(--structure-bg); color: var(--structure-dot); }
 .kind-inductive .node-kind-badge { background: var(--inductive-bg); color: var(--inductive-dot); }
 .kind-proposition .node-kind-badge { background: var(--proposition-bg); color: var(--proposition-dot); }
-.kind-instance .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
-.kind-abbrev .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
 
 .node-name {
   flex: 1;
@@ -466,8 +462,6 @@ h1 {
 .legend-dot.structure { background: var(--structure-dot); }
 .legend-dot.inductive { background: var(--inductive-dot); }
 .legend-dot.proposition { background: var(--proposition-dot); }
-.legend-dot.instance { background: var(--def-dot); }
-.legend-dot.abbrev { background: var(--def-dot); }
 
 /* ── Filter buttons ── */
 .filter-bar {
@@ -530,12 +524,19 @@ h1 {
   <a href="index.html" class="back-link">&larr; All files</a>
   <h1>Basic</h1>
   <div class="subtitle">Foundations &middot; 28 declarations</div>
-  
-  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;255, &sect;946, &sect;1024, &sect;1033, &sect;1700, &sect;1733, &sect;1750, &sect;1755, &sect;1849, &sect;1857, &sect;1859, &sect;1897, &sect;1996, &sect;2001</div>
 
-  <div class="legend"><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span><span class="legend-item"><span class="legend-dot proposition"></span>proposition</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot structure"></span>structure</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span></div>
+  <div class="flow-summary">
+  <span class="flow-count axioms">0 axioms</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count theorems">2 theorems</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count derived">26 derived</span>
+</div>
+  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1024, &sect;1033, &sect;1700, &sect;1733, &sect;1750, &sect;1752, &sect;1754, &sect;1755, &sect;1849, &sect;1857, &sect;1859, &sect;1897, &sect;1996, &sect;2001, &sect;255 +1 more</div>
 
-  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="theorem">theorem (2)</button><button class="filter-btn" data-filter="proposition">proposition (3)</button><button class="filter-btn" data-filter="def">def (5)</button><button class="filter-btn" data-filter="structure">structure (9)</button><button class="filter-btn" data-filter="inductive">inductive (9)</button></div>
+  <div class="legend"><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span><span class="legend-item"><span class="legend-dot proposition"></span>proposition</span><span class="legend-item"><span class="legend-dot structure"></span>structure</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
+
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="def">def (5)</button><button class="filter-btn" data-filter="inductive">inductive (9)</button><button class="filter-btn" data-filter="proposition">proposition (3)</button><button class="filter-btn" data-filter="structure">structure (9)</button><button class="filter-btn" data-filter="theorem">theorem (2)</button></div>
 
   <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
 
@@ -548,7 +549,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>structure Person where</code></pre></div>
-<div class="node-desc">A person — human or divine. The Catechism&#x27;s anthropology distinguishes</div>
+<div class="node-desc">A person — human or divine. The Catechism's anthropology distinguishes</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="Person.human">Person.human</span><span class="dep-chip" data-target="Action">Action</span><span class="dep-chip" data-target="Grace">Grace</span><span class="dep-chip" data-target="AuthoritySource">AuthoritySource</span><span class="dep-chip" data-target="Authority">Authority</span><span class="dep-chip" data-target="FreeChoice">FreeChoice</span><span class="dep-chip" data-target="CommunionParty">CommunionParty</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="Person.human">
@@ -560,6 +562,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def Person.human : Person</code></pre></div>
 <div class="node-desc">A human person: has intellect, free will, and moral agency.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Person">Person</span></div></div>
   </div>
 </div>
 <div class="node-card kind-structure" data-kind="structure" data-name="Action">
@@ -571,9 +574,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>structure Action where</code></pre></div>
 <div class="node-desc">An action that a moral agent can perform.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="MoralEvaluation">MoralEvaluation</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Person">Person</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="MoralEvaluation">MoralEvaluation</span><span class="dep-chip" data-target="Sin">Sin</span></div></div>
   </div>
 </div>
 <div class="node-card kind-structure" data-kind="structure" data-name="MoralEvaluation">
@@ -585,12 +587,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>structure MoralEvaluation where</code></pre></div>
 <div class="node-desc">The three sources of morality (CCC §1750).</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="Action">Action</span>
-</div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="good_iff_not_evil">good_iff_not_evil</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Action">Action</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="MoralEvaluation.isGood">MoralEvaluation.isGood</span><span class="dep-chip" data-target="MoralEvaluation.isEvil">MoralEvaluation.isEvil</span><span class="dep-chip" data-target="good_iff_not_evil">good_iff_not_evil</span></div></div>
   </div>
 </div>
 <div class="node-card kind-proposition" data-kind="proposition" data-name="MoralEvaluation.isGood">
@@ -602,9 +600,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def MoralEvaluation.isGood (eval : MoralEvaluation) : Prop</code></pre></div>
 <div class="node-desc">An action is morally good when all three sources are good.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="good_iff_not_evil">good_iff_not_evil</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MoralEvaluation">MoralEvaluation</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="good_iff_not_evil">good_iff_not_evil</span></div></div>
   </div>
 </div>
 <div class="node-card kind-proposition" data-kind="proposition" data-name="MoralEvaluation.isEvil">
@@ -616,9 +613,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def MoralEvaluation.isEvil (eval : MoralEvaluation) : Prop</code></pre></div>
 <div class="node-desc">An action is morally evil if any source is evil.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="good_iff_not_evil">good_iff_not_evil</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="MoralEvaluation">MoralEvaluation</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="good_iff_not_evil">good_iff_not_evil</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="good_iff_not_evil">
@@ -631,11 +627,7 @@ h1 {
     <div class="node-prop"><pre><code>theorem good_iff_not_evil (eval : MoralEvaluation) :
     eval.isGood ↔ ¬eval.isEvil</code></pre></div>
 <div class="node-desc">Good and evil are contradictory (for the same evaluation).</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="MoralEvaluation.isGood">MoralEvaluation.isGood</span>
-<span class="dep-chip" data-target="MoralEvaluation">MoralEvaluation</span>
-<span class="dep-chip" data-target="MoralEvaluation.isEvil">MoralEvaluation.isEvil</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Grace">Grace</span><span class="dep-chip" data-target="MoralEvaluation">MoralEvaluation</span><span class="dep-chip" data-target="MoralEvaluation.isEvil">MoralEvaluation.isEvil</span><span class="dep-chip" data-target="MoralEvaluation.isGood">MoralEvaluation.isGood</span></div></div>
   </div>
 </div>
 <div class="node-card kind-inductive" data-kind="inductive" data-name="GraceType">
@@ -647,6 +639,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>inductive GraceType where</code></pre></div>
 <div class="node-desc">The type of grace — prevenient (preparing) vs sanctifying.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Grace">Grace</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="Grace">Grace</span></div></div>
   </div>
 </div>
 <div class="node-card kind-structure" data-kind="structure" data-name="Grace">
@@ -657,7 +651,9 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>structure Grace where</code></pre></div>
-<div class="node-desc">Grace — God&#x27;s free and undeserved help.</div>
+<div class="node-desc">Grace — God's free and undeserved help.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="GraceType">GraceType</span><span class="dep-chip" data-target="Person">Person</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="good_iff_not_evil">good_iff_not_evil</span><span class="dep-chip" data-target="GraceType">GraceType</span></div></div>
   </div>
 </div>
 <div class="node-card kind-inductive" data-kind="inductive" data-name="MoralKnowledge">
@@ -669,6 +665,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>inductive MoralKnowledge where</code></pre></div>
 <div class="node-desc">Knowledge in the context of moral action.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="Sin">Sin</span></div></div>
   </div>
 </div>
 <div class="node-card kind-inductive" data-kind="inductive" data-name="MoralConsent">
@@ -680,6 +677,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>inductive MoralConsent where</code></pre></div>
 <div class="node-desc">Consent in the context of moral action.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="Sin">Sin</span></div></div>
   </div>
 </div>
 <div class="node-card kind-inductive" data-kind="inductive" data-name="MatterGravity">
@@ -691,6 +689,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>inductive MatterGravity where</code></pre></div>
 <div class="node-desc">The gravity of the matter of an act.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Sin">Sin</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="Sin">Sin</span></div></div>
   </div>
 </div>
 <div class="node-card kind-structure" data-kind="structure" data-name="Sin">
@@ -702,6 +702,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>structure Sin where</code></pre></div>
 <div class="node-desc">Sin — an offense against reason, truth, and right conscience.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Action">Action</span><span class="dep-chip" data-target="MatterGravity">MatterGravity</span><span class="dep-chip" data-target="MoralConsent">MoralConsent</span><span class="dep-chip" data-target="MoralKnowledge">MoralKnowledge</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="MatterGravity">MatterGravity</span><span class="dep-chip" data-target="sin_requires_freedom">sin_requires_freedom</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="sin_requires_freedom">
@@ -714,6 +716,7 @@ h1 {
     <div class="node-prop"><pre><code>theorem sin_requires_freedom (s : Sin) (h : s.isFree) :
     s.action.agent.hasFreeWill = true → s.isFree</code></pre></div>
 <div class="node-desc">Sin requires free will — you cannot sin without choosing to.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Sin">Sin</span></div></div>
   </div>
 </div>
 <div class="node-card kind-inductive" data-kind="inductive" data-name="Provenance">
@@ -736,12 +739,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>inductive Denomination where</code></pre></div>
 <div class="node-desc">Which denominations accept a given axiom or theorem.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="ecumenical">ecumenical</span>
-<span class="dep-chip" data-target="catholicOnly">catholicOnly</span>
-<span class="dep-chip" data-target="catholicAndLutheran">catholicAndLutheran</span>
-<span class="dep-chip" data-target="lutheranOnly">lutheranOnly</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ecumenical">ecumenical</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="DenominationalTag">DenominationalTag</span><span class="dep-chip" data-target="ecumenical">ecumenical</span><span class="dep-chip" data-target="catholicOnly">catholicOnly</span><span class="dep-chip" data-target="catholicAndLutheran">catholicAndLutheran</span><span class="dep-chip" data-target="lutheranOnly">lutheranOnly</span></div></div>
   </div>
 </div>
 <div class="node-card kind-structure" data-kind="structure" data-name="DenominationalTag">
@@ -753,6 +752,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>structure DenominationalTag where</code></pre></div>
 <div class="node-desc">A denominational tag — which traditions accept this claim.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Denomination">Denomination</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ecumenical">ecumenical</span><span class="dep-chip" data-target="catholicOnly">catholicOnly</span><span class="dep-chip" data-target="catholicAndLutheran">catholicAndLutheran</span><span class="dep-chip" data-target="lutheranOnly">lutheranOnly</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="ecumenical">
@@ -764,9 +765,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def ecumenical : DenominationalTag</code></pre></div>
 <div class="node-desc">Shared across all major Christian denominations.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="Denomination">Denomination</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Denomination">Denomination</span><span class="dep-chip" data-target="DenominationalTag">DenominationalTag</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="Denomination">Denomination</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="catholicOnly">
@@ -778,9 +778,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def catholicOnly : DenominationalTag</code></pre></div>
 <div class="node-desc">Specifically Catholic — other denominations may reject.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="Denomination">Denomination</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Denomination">Denomination</span><span class="dep-chip" data-target="DenominationalTag">DenominationalTag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="catholicAndLutheran">
@@ -792,9 +790,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def catholicAndLutheran : DenominationalTag</code></pre></div>
 <div class="node-desc">Shared by Catholic and Lutheran but not all denominations.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="Denomination">Denomination</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Denomination">Denomination</span><span class="dep-chip" data-target="DenominationalTag">DenominationalTag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="lutheranOnly">
@@ -806,9 +802,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def lutheranOnly : DenominationalTag</code></pre></div>
 <div class="node-desc">Specifically Lutheran — Catholics would reject.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="Denomination">Denomination</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Denomination">Denomination</span><span class="dep-chip" data-target="DenominationalTag">DenominationalTag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-inductive" data-kind="inductive" data-name="AuthoritySource">
@@ -820,6 +814,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>inductive AuthoritySource where</code></pre></div>
 <div class="node-desc">The source from which authority derives.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Authority">Authority</span><span class="dep-chip" data-target="Person">Person</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="Authority">Authority</span></div></div>
   </div>
 </div>
 <div class="node-card kind-structure" data-kind="structure" data-name="Authority">
@@ -831,6 +827,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>structure Authority where</code></pre></div>
 <div class="node-desc">Authority — the quality by virtue of which persons or institutions</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="AuthoritySource">AuthoritySource</span><span class="dep-chip" data-target="Person">Person</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="AuthoritySource">AuthoritySource</span></div></div>
   </div>
 </div>
 <div class="node-card kind-inductive" data-kind="inductive" data-name="FreedomModel">
@@ -851,8 +849,9 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>structure FreeChoice (α : Type) where</code></pre></div>
+    <div class="node-prop"><pre><code>structure FreeChoice where</code></pre></div>
 <div class="node-desc">A free choice — models the act of choosing with a specific freedom model.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Person">Person</span></div></div>
   </div>
 </div>
 <div class="node-card kind-inductive" data-kind="inductive" data-name="CommunionParty">
@@ -864,6 +863,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>inductive CommunionParty where</code></pre></div>
 <div class="node-desc">A party that can participate in communion.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Person">Person</span></div></div>
   </div>
 </div>
 <div class="node-card kind-structure" data-kind="structure" data-name="FreedomDegree">
@@ -875,6 +875,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>structure FreedomDegree where</code></pre></div>
 <div class="node-desc">The degree of freedom a person has.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="freedomLt">freedomLt</span></div></div>
   </div>
 </div>
 <div class="node-card kind-proposition" data-kind="proposition" data-name="freedomLt">
@@ -884,8 +885,10 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def freedomLt (a b : FreedomDegree) : Prop</code></pre></div>
+    <div class="node-prop"><pre><code>def freedomLt (a b : FreedomDegree) : Prop := a.level &lt; b.level
+</code></pre></div>
 <div class="node-desc">A strict ordering on freedom degrees, by level.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="FreedomDegree">FreedomDegree</span></div></div>
   </div>
 </div>
   </div>

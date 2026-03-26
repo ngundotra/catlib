@@ -523,14 +523,20 @@ h1 {
 <div class="container">
   <a href="index.html" class="back-link">&larr; All files</a>
   <h1>PrivateJudgment</h1>
-  <div class="subtitle">Creed &middot; 19 declarations</div>
+  <div class="subtitle">Creed &middot; 27 declarations</div>
 
-  
+  <div class="flow-summary">
+  <span class="flow-count axioms">13 axioms</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count theorems">5 theorems</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count derived">9 derived</span>
+</div>
   <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;100, &sect;74, &sect;76, &sect;85, &sect;889</div>
 
   <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
 
-  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (5)</button><button class="filter-btn" data-filter="def">def (1)</button><button class="filter-btn" data-filter="opaque">opaque (8)</button><button class="filter-btn" data-filter="theorem">theorem (5)</button></div>
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (5)</button><button class="filter-btn" data-filter="def">def (9)</button><button class="filter-btn" data-filter="opaque">opaque (8)</button><button class="filter-btn" data-filter="theorem">theorem (5)</button></div>
 
   <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
 
@@ -542,8 +548,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque Interpretation : Type
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque Interpretation : Type</code></pre></div>
 <div class="node-desc">An interpretation of a teaching — the conclusion a reader draws from</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="interpretationsAgree">interpretationsAgree</span><span class="dep-chip" data-target="interprets">interprets</span><span class="dep-chip" data-target="magisterium_resolves_disputes">magisterium_resolves_disputes</span><span class="dep-chip" data-target="privateJudgmentDenominationalScope">privateJudgmentDenominationalScope</span></div></div>
   </div>
@@ -555,11 +560,10 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque interpretationsAgree : Interpretation → Interpretation → Prop
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque interpretationsAgree : Interpretation → Interpretation → Prop</code></pre></div>
 <div class="node-desc">Whether two interpretations agree on a given teaching.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Interpretation">Interpretation</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="sincere_disagreement">sincere_disagreement</span><span class="dep-chip" data-target="magisterium_can_adjudicate">magisterium_can_adjudicate</span><span class="dep-chip" data-target="private_judgment_insufficient">private_judgment_insufficient</span><span class="dep-chip" data-target="magisterium_resolves_disputes">magisterium_resolves_disputes</span><span class="dep-chip" data-target="interpretive_convergence_fails">interpretive_convergence_fails</span><span class="dep-chip" data-target="perspicuity_requires_essential_boundary">perspicuity_requires_essential_boundary</span><span class="dep-chip" data-target="combined_content_and_interpretation">combined_content_and_interpretation</span><span class="dep-chip" data-target="Interpretation">Interpretation</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="sincere_disagreement">sincere_disagreement</span><span class="dep-chip" data-target="magisterium_can_adjudicate">magisterium_can_adjudicate</span><span class="dep-chip" data-target="private_judgment_insufficient">private_judgment_insufficient</span><span class="dep-chip" data-target="magisterium_resolves_disputes">magisterium_resolves_disputes</span><span class="dep-chip" data-target="interpretive_convergence_fails">interpretive_convergence_fails</span><span class="dep-chip" data-target="perspicuity_requires_essential_boundary">perspicuity_requires_essential_boundary</span><span class="dep-chip" data-target="combined_content_and_interpretation">combined_content_and_interpretation</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="isSincereInterpreter">
@@ -569,8 +573,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque isSincereInterpreter : Person → Prop
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque isSincereInterpreter : Person → Prop</code></pre></div>
 <div class="node-desc">Whether a person is a sincere interpreter — someone who studies</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="sincere_disagreement">sincere_disagreement</span><span class="dep-chip" data-target="magisterium_can_adjudicate">magisterium_can_adjudicate</span><span class="dep-chip" data-target="private_judgment_insufficient">private_judgment_insufficient</span><span class="dep-chip" data-target="magisterium_resolves_disputes">magisterium_resolves_disputes</span><span class="dep-chip" data-target="interpretive_convergence_fails">interpretive_convergence_fails</span><span class="dep-chip" data-target="perspicuity_requires_essential_boundary">perspicuity_requires_essential_boundary</span><span class="dep-chip" data-target="combined_content_and_interpretation">combined_content_and_interpretation</span></div></div>
   </div>
@@ -582,11 +585,10 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>axiom interprets : Person → ApostolicTeaching → Interpretation
-</code></pre></div>
+    <div class="node-prop"><pre><code>axiom interprets : Person → ApostolicTeaching → Interpretation</code></pre></div>
 <div class="node-desc">The interpretation a given person produces of a given teaching.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ApostolicTeaching">ApostolicTeaching</span><span class="dep-chip" data-target="Interpretation">Interpretation</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="sincere_disagreement">sincere_disagreement</span><span class="dep-chip" data-target="magisterium_can_adjudicate">magisterium_can_adjudicate</span><span class="dep-chip" data-target="private_judgment_insufficient">private_judgment_insufficient</span><span class="dep-chip" data-target="magisterium_resolves_disputes">magisterium_resolves_disputes</span><span class="dep-chip" data-target="interpretive_convergence_fails">interpretive_convergence_fails</span><span class="dep-chip" data-target="perspicuity_requires_essential_boundary">perspicuity_requires_essential_boundary</span><span class="dep-chip" data-target="combined_content_and_interpretation">combined_content_and_interpretation</span><span class="dep-chip" data-target="Interpretation">Interpretation</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Interpretation">Interpretation</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="sincere_disagreement">sincere_disagreement</span><span class="dep-chip" data-target="magisterium_can_adjudicate">magisterium_can_adjudicate</span><span class="dep-chip" data-target="private_judgment_insufficient">private_judgment_insufficient</span><span class="dep-chip" data-target="magisterium_resolves_disputes">magisterium_resolves_disputes</span><span class="dep-chip" data-target="interpretive_convergence_fails">interpretive_convergence_fails</span><span class="dep-chip" data-target="perspicuity_requires_essential_boundary">perspicuity_requires_essential_boundary</span><span class="dep-chip" data-target="combined_content_and_interpretation">combined_content_and_interpretation</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="Adjudicator">
@@ -596,10 +598,9 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque Adjudicator : Type
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque Adjudicator : Type</code></pre></div>
 <div class="node-desc">An adjudicator — a mechanism for resolving interpretive disagreements.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="canResolve">canResolve</span><span class="dep-chip" data-target="magisterium_can_adjudicate">magisterium_can_adjudicate</span><span class="dep-chip" data-target="magisterium_resolves_disputes">magisterium_resolves_disputes</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="canResolve">canResolve</span><span class="dep-chip" data-target="sincere_disagreement_tag">sincere_disagreement_tag</span><span class="dep-chip" data-target="magisterium_can_adjudicate">magisterium_can_adjudicate</span><span class="dep-chip" data-target="magisterium_resolves_disputes">magisterium_resolves_disputes</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="canResolve">
@@ -609,11 +610,10 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque canResolve : Adjudicator → ApostolicTeaching → Prop
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque canResolve : Adjudicator → ApostolicTeaching → Prop</code></pre></div>
 <div class="node-desc">Whether an adjudicator can resolve a disagreement about a specific</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Adjudicator">Adjudicator</span><span class="dep-chip" data-target="ApostolicTeaching">ApostolicTeaching</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="magisterium_can_adjudicate">magisterium_can_adjudicate</span><span class="dep-chip" data-target="magisterium_resolves_disputes">magisterium_resolves_disputes</span><span class="dep-chip" data-target="Adjudicator">Adjudicator</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Adjudicator">Adjudicator</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="magisterium_can_adjudicate">magisterium_can_adjudicate</span><span class="dep-chip" data-target="magisterium_resolves_disputes">magisterium_resolves_disputes</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="privateJudgmentHasAdjudicator">
@@ -623,8 +623,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque privateJudgmentHasAdjudicator : Prop
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque privateJudgmentHasAdjudicator : Prop</code></pre></div>
 <div class="node-desc">Whether private judgment (as a method) provides its own adjudicator.</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="no_private_adjudicator">no_private_adjudicator</span><span class="dep-chip" data-target="private_judgment_insufficient">private_judgment_insufficient</span><span class="dep-chip" data-target="magisterium_resolves_disputes">magisterium_resolves_disputes</span><span class="dep-chip" data-target="combined_content_and_interpretation">combined_content_and_interpretation</span></div></div>
   </div>
@@ -636,10 +635,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque magisteriumIsAdjudicator : Prop
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque magisteriumIsAdjudicator : Prop</code></pre></div>
 <div class="node-desc">Whether the Magisterium functions as an adjudicator for doctrinal</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Confession">Confession</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="magisterium_established">magisterium_established</span><span class="dep-chip" data-target="magisterium_resolves_disputes">magisterium_resolves_disputes</span></div></div>
   </div>
 </div>
@@ -650,8 +647,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque scripturePerspicuous : Prop
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque scripturePerspicuous : Prop</code></pre></div>
 <div class="node-desc">Whether Scripture is perspicuous — clear enough on essential matters</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="perspicuity_requires_essential_boundary">perspicuity_requires_essential_boundary</span></div></div>
   </div>
@@ -667,12 +663,32 @@ h1 {
   ∃ (p1 p2 : Person) (t : ApostolicTeaching),
     isSincereInterpreter p1 ∧
     isSincereInterpreter p2 ∧
-    ¬interpretationsAgree (interprets p1 t) (interprets p2 t)
-
-def sincere_disagreement_provenance : Provenance</code></pre></div>
-<div class="node-desc">There exists a teaching on which two │   Source: CCC §85 (implied); empirical (denominational diversity). | Scope: BROADLY FACTUAL. Even Protestants acknowledge │   ⚠ HIDDEN ASSUMPTION: The disagreement is GENUINE, not merely verbal.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ApostolicTeaching">ApostolicTeaching</span><span class="dep-chip" data-target="interpretationsAgree">interpretationsAgree</span><span class="dep-chip" data-target="interprets">interprets</span><span class="dep-chip" data-target="isSincereInterpreter">isSincereInterpreter</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="private_judgment_insufficient">private_judgment_insufficient</span><span class="dep-chip" data-target="magisterium_resolves_disputes">magisterium_resolves_disputes</span><span class="dep-chip" data-target="interpretive_convergence_fails">interpretive_convergence_fails</span><span class="dep-chip" data-target="perspicuity_requires_essential_boundary">perspicuity_requires_essential_boundary</span><span class="dep-chip" data-target="privateJudgmentDenominationalScope">privateJudgmentDenominationalScope</span><span class="dep-chip" data-target="isSincereInterpreter">isSincereInterpreter</span><span class="dep-chip" data-target="interpretationsAgree">interpretationsAgree</span><span class="dep-chip" data-target="interprets">interprets</span></div></div>
+    ¬interpretationsAgree (interprets p1 t) (interprets p2 t)</code></pre></div>
+<div class="node-desc">**AXIOM (SINCERE_DISAGREEMENT)**: There exists a teaching on which two</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="interpretationsAgree">interpretationsAgree</span><span class="dep-chip" data-target="interprets">interprets</span><span class="dep-chip" data-target="isSincereInterpreter">isSincereInterpreter</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="magisterium_can_adjudicate_tag">magisterium_can_adjudicate_tag</span><span class="dep-chip" data-target="private_judgment_insufficient">private_judgment_insufficient</span><span class="dep-chip" data-target="magisterium_resolves_disputes">magisterium_resolves_disputes</span><span class="dep-chip" data-target="interpretive_convergence_fails">interpretive_convergence_fails</span><span class="dep-chip" data-target="perspicuity_requires_essential_boundary">perspicuity_requires_essential_boundary</span><span class="dep-chip" data-target="privateJudgmentDenominationalScope">privateJudgmentDenominationalScope</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="sincere_disagreement_provenance">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">sincere_disagreement_provenance</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def sincere_disagreement_provenance : Provenance</code></pre></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="sincere_disagreement_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">sincere_disagreement_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def sincere_disagreement_tag : DenominationalTag</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Adjudicator">Adjudicator</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="privateJudgmentDenominationalScope">privateJudgmentDenominationalScope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="no_private_adjudicator">
@@ -683,12 +699,31 @@ def sincere_disagreement_provenance : Provenance</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom no_private_adjudicator :
-  ¬privateJudgmentHasAdjudicator
-
-def no_private_adjudicator_provenance : Provenance</code></pre></div>
-<div class="node-desc">Private judgment, as a method, does │   Source: CCC §85. | Scope: CATHOLIC + ORTHODOX. Protestants deny this — │   ⚠ HIDDEN ASSUMPTION: An adjudicator must be EXTERNAL to the disputed</div>
+  ¬privateJudgmentHasAdjudicator</code></pre></div>
+<div class="node-desc">**AXIOM (NO_PRIVATE_ADJUDICATOR)**: Private judgment, as a method, does</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="privateJudgmentHasAdjudicator">privateJudgmentHasAdjudicator</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="private_judgment_insufficient">private_judgment_insufficient</span><span class="dep-chip" data-target="magisterium_resolves_disputes">magisterium_resolves_disputes</span><span class="dep-chip" data-target="perspicuity_requires_essential_boundary">perspicuity_requires_essential_boundary</span><span class="dep-chip" data-target="privateJudgmentDenominationalScope">privateJudgmentDenominationalScope</span><span class="dep-chip" data-target="privateJudgmentHasAdjudicator">privateJudgmentHasAdjudicator</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="magisterium_can_adjudicate_tag">magisterium_can_adjudicate_tag</span><span class="dep-chip" data-target="private_judgment_insufficient">private_judgment_insufficient</span><span class="dep-chip" data-target="magisterium_resolves_disputes">magisterium_resolves_disputes</span><span class="dep-chip" data-target="perspicuity_requires_essential_boundary">perspicuity_requires_essential_boundary</span><span class="dep-chip" data-target="privateJudgmentDenominationalScope">privateJudgmentDenominationalScope</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="no_private_adjudicator_provenance">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">no_private_adjudicator_provenance</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def no_private_adjudicator_provenance : Provenance</code></pre></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="no_private_adjudicator_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">no_private_adjudicator_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def no_private_adjudicator_tag : DenominationalTag</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="privateJudgmentDenominationalScope">privateJudgmentDenominationalScope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="magisterium_established">
@@ -699,12 +734,31 @@ def no_private_adjudicator_provenance : Provenance</code></pre></div>
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom magisterium_established :
-  magisteriumIsAdjudicator
-
-def magisterium_established_provenance : Provenance</code></pre></div>
-<div class="node-desc">Christ established the Magisterium │   Source: CCC §85, §100, §889; Mt 16:18-19; Mt 28:18-20. | Scope: CATHOLIC + ORTHODOX (with qualifications). │   ⚠ HIDDEN ASSUMPTION: A divinely established authority can be reliably</div>
+  magisteriumIsAdjudicator</code></pre></div>
+<div class="node-desc">**AXIOM (MAGISTERIUM_ESTABLISHED)**: Christ established the Magisterium</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="magisteriumIsAdjudicator">magisteriumIsAdjudicator</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="private_judgment_insufficient">private_judgment_insufficient</span><span class="dep-chip" data-target="magisterium_resolves_disputes">magisterium_resolves_disputes</span><span class="dep-chip" data-target="perspicuity_requires_essential_boundary">perspicuity_requires_essential_boundary</span><span class="dep-chip" data-target="privateJudgmentDenominationalScope">privateJudgmentDenominationalScope</span><span class="dep-chip" data-target="magisteriumIsAdjudicator">magisteriumIsAdjudicator</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="private_judgment_insufficient">private_judgment_insufficient</span><span class="dep-chip" data-target="magisterium_resolves_disputes">magisterium_resolves_disputes</span><span class="dep-chip" data-target="perspicuity_requires_essential_boundary">perspicuity_requires_essential_boundary</span><span class="dep-chip" data-target="privateJudgmentDenominationalScope">privateJudgmentDenominationalScope</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="magisterium_established_provenance">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">magisterium_established_provenance</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def magisterium_established_provenance : Provenance</code></pre></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="magisterium_established_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">magisterium_established_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def magisterium_established_tag : DenominationalTag</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="privateJudgmentDenominationalScope">privateJudgmentDenominationalScope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="magisterium_can_adjudicate">
@@ -720,12 +774,32 @@ def magisterium_established_provenance : Provenance</code></pre></div>
       isSincereInterpreter p1 ∧
       isSincereInterpreter p2 ∧
       ¬interpretationsAgree (interprets p1 t) (interprets p2 t)) →
-    ∃ (adj : Adjudicator), canResolve adj t
-
-def magisterium_can_adjudicate_provenance : Provenance</code></pre></div>
-<div class="node-desc">For any teaching on which sincere │   Source: CCC §85, §100. | Scope: CATHOLIC.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Adjudicator">Adjudicator</span><span class="dep-chip" data-target="ApostolicTeaching">ApostolicTeaching</span><span class="dep-chip" data-target="canResolve">canResolve</span><span class="dep-chip" data-target="interpretationsAgree">interpretationsAgree</span><span class="dep-chip" data-target="interprets">interprets</span><span class="dep-chip" data-target="isSincereInterpreter">isSincereInterpreter</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="private_judgment_insufficient">private_judgment_insufficient</span><span class="dep-chip" data-target="magisterium_resolves_disputes">magisterium_resolves_disputes</span><span class="dep-chip" data-target="perspicuity_requires_essential_boundary">perspicuity_requires_essential_boundary</span><span class="dep-chip" data-target="privateJudgmentDenominationalScope">privateJudgmentDenominationalScope</span><span class="dep-chip" data-target="Adjudicator">Adjudicator</span><span class="dep-chip" data-target="isSincereInterpreter">isSincereInterpreter</span><span class="dep-chip" data-target="canResolve">canResolve</span><span class="dep-chip" data-target="interpretationsAgree">interpretationsAgree</span><span class="dep-chip" data-target="interprets">interprets</span></div></div>
+    ∃ (adj : Adjudicator), canResolve adj t</code></pre></div>
+<div class="node-desc">**AXIOM (MAGISTERIUM_CAN_ADJUDICATE)**: For any teaching on which sincere</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Adjudicator">Adjudicator</span><span class="dep-chip" data-target="canResolve">canResolve</span><span class="dep-chip" data-target="interpretationsAgree">interpretationsAgree</span><span class="dep-chip" data-target="interprets">interprets</span><span class="dep-chip" data-target="isSincereInterpreter">isSincereInterpreter</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="private_judgment_insufficient">private_judgment_insufficient</span><span class="dep-chip" data-target="magisterium_resolves_disputes">magisterium_resolves_disputes</span><span class="dep-chip" data-target="perspicuity_requires_essential_boundary">perspicuity_requires_essential_boundary</span><span class="dep-chip" data-target="privateJudgmentDenominationalScope">privateJudgmentDenominationalScope</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="magisterium_can_adjudicate_provenance">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">magisterium_can_adjudicate_provenance</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def magisterium_can_adjudicate_provenance : Provenance</code></pre></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="magisterium_can_adjudicate_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">magisterium_can_adjudicate_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def magisterium_can_adjudicate_tag : DenominationalTag</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="no_private_adjudicator">no_private_adjudicator</span><span class="dep-chip" data-target="private_judgment_insufficient">private_judgment_insufficient</span><span class="dep-chip" data-target="sincere_disagreement">sincere_disagreement</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="privateJudgmentDenominationalScope">privateJudgmentDenominationalScope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="private_judgment_insufficient">
@@ -742,9 +816,9 @@ def magisterium_can_adjudicate_provenance : Provenance</code></pre></div>
       isSincereInterpreter p2 ∧
       ¬interpretationsAgree (interprets p1 t) (interprets p2 t)) ∧
     ¬privateJudgmentHasAdjudicator</code></pre></div>
-<div class="node-desc">private_judgment_insufficient — Private judgment is │   Source: CCC §85, §100. | Scope: CATHOLIC + ORTHODOX.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ApostolicTeaching">ApostolicTeaching</span><span class="dep-chip" data-target="interpretationsAgree">interpretationsAgree</span><span class="dep-chip" data-target="interprets">interprets</span><span class="dep-chip" data-target="isSincereInterpreter">isSincereInterpreter</span><span class="dep-chip" data-target="magisterium_can_adjudicate">magisterium_can_adjudicate</span><span class="dep-chip" data-target="magisterium_established">magisterium_established</span><span class="dep-chip" data-target="magisterium_resolves_disputes">magisterium_resolves_disputes</span><span class="dep-chip" data-target="no_private_adjudicator">no_private_adjudicator</span><span class="dep-chip" data-target="privateJudgmentHasAdjudicator">privateJudgmentHasAdjudicator</span><span class="dep-chip" data-target="sincere_disagreement">sincere_disagreement</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="combined_content_and_interpretation">combined_content_and_interpretation</span><span class="dep-chip" data-target="isSincereInterpreter">isSincereInterpreter</span><span class="dep-chip" data-target="privateJudgmentHasAdjudicator">privateJudgmentHasAdjudicator</span><span class="dep-chip" data-target="interpretationsAgree">interpretationsAgree</span><span class="dep-chip" data-target="interprets">interprets</span><span class="dep-chip" data-target="magisterium_established">magisterium_established</span><span class="dep-chip" data-target="no_private_adjudicator">no_private_adjudicator</span><span class="dep-chip" data-target="magisterium_can_adjudicate">magisterium_can_adjudicate</span><span class="dep-chip" data-target="sincere_disagreement">sincere_disagreement</span><span class="dep-chip" data-target="magisterium_resolves_disputes">magisterium_resolves_disputes</span></div></div>
+<div class="node-desc">**THEOREM: private_judgment_insufficient** — Private judgment is</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="interpretationsAgree">interpretationsAgree</span><span class="dep-chip" data-target="interprets">interprets</span><span class="dep-chip" data-target="isSincereInterpreter">isSincereInterpreter</span><span class="dep-chip" data-target="magisterium_can_adjudicate">magisterium_can_adjudicate</span><span class="dep-chip" data-target="magisterium_established">magisterium_established</span><span class="dep-chip" data-target="magisterium_resolves_disputes">magisterium_resolves_disputes</span><span class="dep-chip" data-target="no_private_adjudicator">no_private_adjudicator</span><span class="dep-chip" data-target="privateJudgmentHasAdjudicator">privateJudgmentHasAdjudicator</span><span class="dep-chip" data-target="sincere_disagreement">sincere_disagreement</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="magisterium_can_adjudicate_tag">magisterium_can_adjudicate_tag</span><span class="dep-chip" data-target="combined_content_and_interpretation">combined_content_and_interpretation</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="magisterium_resolves_disputes">
@@ -761,9 +835,9 @@ def magisterium_can_adjudicate_provenance : Provenance</code></pre></div>
     magisteriumIsAdjudicator ∧
     -- (3) For the disputed teaching, the Magisterium can resolve it
     (∃ (t : ApostolicTeaching) (adj : Adjudicator), canResolve adj t)</code></pre></div>
-<div class="node-desc">magisterium_resolves_disputes — The Magisterium can │   Source: CCC §85, §100, §889. | Scope: CATHOLIC.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Adjudicator">Adjudicator</span><span class="dep-chip" data-target="ApostolicTeaching">ApostolicTeaching</span><span class="dep-chip" data-target="Interpretation">Interpretation</span><span class="dep-chip" data-target="canResolve">canResolve</span><span class="dep-chip" data-target="interpretationsAgree">interpretationsAgree</span><span class="dep-chip" data-target="interpretive_convergence_fails">interpretive_convergence_fails</span><span class="dep-chip" data-target="interprets">interprets</span><span class="dep-chip" data-target="isSincereInterpreter">isSincereInterpreter</span><span class="dep-chip" data-target="magisteriumIsAdjudicator">magisteriumIsAdjudicator</span><span class="dep-chip" data-target="magisterium_can_adjudicate">magisterium_can_adjudicate</span><span class="dep-chip" data-target="magisterium_established">magisterium_established</span><span class="dep-chip" data-target="no_private_adjudicator">no_private_adjudicator</span><span class="dep-chip" data-target="privateJudgmentHasAdjudicator">privateJudgmentHasAdjudicator</span><span class="dep-chip" data-target="rational_accessibility">rational_accessibility</span><span class="dep-chip" data-target="rational_convergence">rational_convergence</span><span class="dep-chip" data-target="sincere_disagreement">sincere_disagreement</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="private_judgment_insufficient">private_judgment_insufficient</span><span class="dep-chip" data-target="Adjudicator">Adjudicator</span><span class="dep-chip" data-target="Interpretation">Interpretation</span><span class="dep-chip" data-target="isSincereInterpreter">isSincereInterpreter</span><span class="dep-chip" data-target="magisteriumIsAdjudicator">magisteriumIsAdjudicator</span><span class="dep-chip" data-target="privateJudgmentHasAdjudicator">privateJudgmentHasAdjudicator</span><span class="dep-chip" data-target="canResolve">canResolve</span><span class="dep-chip" data-target="interpretationsAgree">interpretationsAgree</span><span class="dep-chip" data-target="interprets">interprets</span><span class="dep-chip" data-target="magisterium_established">magisterium_established</span><span class="dep-chip" data-target="no_private_adjudicator">no_private_adjudicator</span><span class="dep-chip" data-target="magisterium_can_adjudicate">magisterium_can_adjudicate</span><span class="dep-chip" data-target="sincere_disagreement">sincere_disagreement</span><span class="dep-chip" data-target="interpretive_convergence_fails">interpretive_convergence_fails</span></div></div>
+<div class="node-desc">**THEOREM: magisterium_resolves_disputes** — The Magisterium can</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Adjudicator">Adjudicator</span><span class="dep-chip" data-target="Interpretation">Interpretation</span><span class="dep-chip" data-target="canResolve">canResolve</span><span class="dep-chip" data-target="interpretationsAgree">interpretationsAgree</span><span class="dep-chip" data-target="interpretive_convergence_fails">interpretive_convergence_fails</span><span class="dep-chip" data-target="interprets">interprets</span><span class="dep-chip" data-target="isSincereInterpreter">isSincereInterpreter</span><span class="dep-chip" data-target="magisteriumIsAdjudicator">magisteriumIsAdjudicator</span><span class="dep-chip" data-target="magisterium_can_adjudicate">magisterium_can_adjudicate</span><span class="dep-chip" data-target="magisterium_established">magisterium_established</span><span class="dep-chip" data-target="no_private_adjudicator">no_private_adjudicator</span><span class="dep-chip" data-target="privateJudgmentHasAdjudicator">privateJudgmentHasAdjudicator</span><span class="dep-chip" data-target="sincere_disagreement">sincere_disagreement</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="private_judgment_insufficient">private_judgment_insufficient</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="interpretive_convergence_fails">
@@ -778,9 +852,9 @@ def magisterium_can_adjudicate_provenance : Provenance</code></pre></div>
       isSincereInterpreter p1 ∧
       isSincereInterpreter p2 ∧
       ¬interpretationsAgree (interprets p1 t) (interprets p2 t)</code></pre></div>
-<div class="node-desc">interpretive_convergence_fails — Sincere interpreters │   Source: CCC §85; empirical observation. | Scope: BROADLY FACTUAL.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ApostolicTeaching">ApostolicTeaching</span><span class="dep-chip" data-target="Confession">Confession</span><span class="dep-chip" data-target="interpretationsAgree">interpretationsAgree</span><span class="dep-chip" data-target="interprets">interprets</span><span class="dep-chip" data-target="isSincereInterpreter">isSincereInterpreter</span><span class="dep-chip" data-target="perspicuity_requires_essential_boundary">perspicuity_requires_essential_boundary</span><span class="dep-chip" data-target="sincere_disagreement">sincere_disagreement</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="magisterium_resolves_disputes">magisterium_resolves_disputes</span><span class="dep-chip" data-target="isSincereInterpreter">isSincereInterpreter</span><span class="dep-chip" data-target="interpretationsAgree">interpretationsAgree</span><span class="dep-chip" data-target="interprets">interprets</span><span class="dep-chip" data-target="sincere_disagreement">sincere_disagreement</span><span class="dep-chip" data-target="perspicuity_requires_essential_boundary">perspicuity_requires_essential_boundary</span></div></div>
+<div class="node-desc">**THEOREM: interpretive_convergence_fails** — Sincere interpreters</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="interpretationsAgree">interpretationsAgree</span><span class="dep-chip" data-target="interprets">interprets</span><span class="dep-chip" data-target="isSincereInterpreter">isSincereInterpreter</span><span class="dep-chip" data-target="perspicuity_requires_essential_boundary">perspicuity_requires_essential_boundary</span><span class="dep-chip" data-target="sincere_disagreement">sincere_disagreement</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="magisterium_resolves_disputes">magisterium_resolves_disputes</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="perspicuity_requires_essential_boundary">
@@ -814,9 +888,9 @@ def magisterium_can_adjudicate_provenance : Provenance</code></pre></div>
       -- the disagreement)
       ∀ (isEssential : ApostolicTeaching → Prop),
         ¬isEssential t</code></pre></div>
-<div class="node-desc">perspicuity_requires_essential_boundary — The perspicuity │   Source: Westminster Confession 1.7; CCC §85. | Scope: ANALYSIS OF PROTESTANT POSITION.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ApostolicTeaching">ApostolicTeaching</span><span class="dep-chip" data-target="combined_content_and_interpretation">combined_content_and_interpretation</span><span class="dep-chip" data-target="interpretationsAgree">interpretationsAgree</span><span class="dep-chip" data-target="interprets">interprets</span><span class="dep-chip" data-target="isSincereInterpreter">isSincereInterpreter</span><span class="dep-chip" data-target="magisterium_can_adjudicate">magisterium_can_adjudicate</span><span class="dep-chip" data-target="magisterium_established">magisterium_established</span><span class="dep-chip" data-target="no_private_adjudicator">no_private_adjudicator</span><span class="dep-chip" data-target="not_everything_written">not_everything_written</span><span class="dep-chip" data-target="scripturePerspicuous">scripturePerspicuous</span><span class="dep-chip" data-target="sincere_disagreement">sincere_disagreement</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="interpretive_convergence_fails">interpretive_convergence_fails</span><span class="dep-chip" data-target="isSincereInterpreter">isSincereInterpreter</span><span class="dep-chip" data-target="scripturePerspicuous">scripturePerspicuous</span><span class="dep-chip" data-target="interpretationsAgree">interpretationsAgree</span><span class="dep-chip" data-target="interprets">interprets</span><span class="dep-chip" data-target="magisterium_established">magisterium_established</span><span class="dep-chip" data-target="no_private_adjudicator">no_private_adjudicator</span><span class="dep-chip" data-target="magisterium_can_adjudicate">magisterium_can_adjudicate</span><span class="dep-chip" data-target="sincere_disagreement">sincere_disagreement</span><span class="dep-chip" data-target="combined_content_and_interpretation">combined_content_and_interpretation</span></div></div>
+<div class="node-desc">**THEOREM: perspicuity_requires_essential_boundary** — The perspicuity</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="combined_content_and_interpretation">combined_content_and_interpretation</span><span class="dep-chip" data-target="interpretationsAgree">interpretationsAgree</span><span class="dep-chip" data-target="interprets">interprets</span><span class="dep-chip" data-target="isSincereInterpreter">isSincereInterpreter</span><span class="dep-chip" data-target="magisterium_can_adjudicate">magisterium_can_adjudicate</span><span class="dep-chip" data-target="magisterium_established">magisterium_established</span><span class="dep-chip" data-target="no_private_adjudicator">no_private_adjudicator</span><span class="dep-chip" data-target="scripturePerspicuous">scripturePerspicuous</span><span class="dep-chip" data-target="sincere_disagreement">sincere_disagreement</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="interpretive_convergence_fails">interpretive_convergence_fails</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="combined_content_and_interpretation">
@@ -836,9 +910,9 @@ def magisterium_can_adjudicate_provenance : Provenance</code></pre></div>
       isSincereInterpreter p2 ∧
       ¬interpretationsAgree (interprets p1 t) (interprets p2 t)) ∧
     ¬privateJudgmentHasAdjudicator)</code></pre></div>
-<div class="node-desc">combined_content_and_interpretation — The Catholic position │   Source: CCC §74-100. | Scope: CATHOLIC.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ApostolicTeaching">ApostolicTeaching</span><span class="dep-chip" data-target="inScripture">inScripture</span><span class="dep-chip" data-target="interpretationsAgree">interpretationsAgree</span><span class="dep-chip" data-target="interprets">interprets</span><span class="dep-chip" data-target="isRevealed">isRevealed</span><span class="dep-chip" data-target="isSincereInterpreter">isSincereInterpreter</span><span class="dep-chip" data-target="privateJudgmentHasAdjudicator">privateJudgmentHasAdjudicator</span><span class="dep-chip" data-target="private_judgment_insufficient">private_judgment_insufficient</span><span class="dep-chip" data-target="scripture_materially_incomplete">scripture_materially_incomplete</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="perspicuity_requires_essential_boundary">perspicuity_requires_essential_boundary</span><span class="dep-chip" data-target="isSincereInterpreter">isSincereInterpreter</span><span class="dep-chip" data-target="privateJudgmentHasAdjudicator">privateJudgmentHasAdjudicator</span><span class="dep-chip" data-target="interpretationsAgree">interpretationsAgree</span><span class="dep-chip" data-target="interprets">interprets</span><span class="dep-chip" data-target="private_judgment_insufficient">private_judgment_insufficient</span></div></div>
+<div class="node-desc">**THEOREM: combined_content_and_interpretation** — The Catholic position</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="interpretationsAgree">interpretationsAgree</span><span class="dep-chip" data-target="interprets">interprets</span><span class="dep-chip" data-target="isSincereInterpreter">isSincereInterpreter</span><span class="dep-chip" data-target="privateJudgmentHasAdjudicator">privateJudgmentHasAdjudicator</span><span class="dep-chip" data-target="private_judgment_insufficient">private_judgment_insufficient</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="perspicuity_requires_essential_boundary">perspicuity_requires_essential_boundary</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="privateJudgmentDenominationalScope">
@@ -850,8 +924,7 @@ def magisterium_can_adjudicate_provenance : Provenance</code></pre></div>
   <div class="node-details">
     <div class="node-prop"><pre><code>def privateJudgmentDenominationalScope : List (String × DenominationalTag)</code></pre></div>
 <div class="node-desc">Denominational scope of each axiom in the private judgment formalization.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Interpretation">Interpretation</span><span class="dep-chip" data-target="magisterium_can_adjudicate">magisterium_can_adjudicate</span><span class="dep-chip" data-target="magisterium_established">magisterium_established</span><span class="dep-chip" data-target="no_private_adjudicator">no_private_adjudicator</span><span class="dep-chip" data-target="sincere_disagreement">sincere_disagreement</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="Interpretation">Interpretation</span><span class="dep-chip" data-target="magisterium_established">magisterium_established</span><span class="dep-chip" data-target="no_private_adjudicator">no_private_adjudicator</span><span class="dep-chip" data-target="magisterium_can_adjudicate">magisterium_can_adjudicate</span><span class="dep-chip" data-target="sincere_disagreement">sincere_disagreement</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Interpretation">Interpretation</span><span class="dep-chip" data-target="magisterium_can_adjudicate">magisterium_can_adjudicate</span><span class="dep-chip" data-target="magisterium_can_adjudicate_tag">magisterium_can_adjudicate_tag</span><span class="dep-chip" data-target="magisterium_established">magisterium_established</span><span class="dep-chip" data-target="magisterium_established_tag">magisterium_established_tag</span><span class="dep-chip" data-target="no_private_adjudicator">no_private_adjudicator</span><span class="dep-chip" data-target="no_private_adjudicator_tag">no_private_adjudicator_tag</span><span class="dep-chip" data-target="sincere_disagreement">sincere_disagreement</span><span class="dep-chip" data-target="sincere_disagreement_tag">sincere_disagreement_tag</span></div></div>
   </div>
 </div>
   </div>

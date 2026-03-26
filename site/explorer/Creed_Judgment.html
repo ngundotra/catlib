@@ -525,7 +525,13 @@ h1 {
   <h1>Judgment</h1>
   <div class="subtitle">Creed &middot; 16 declarations</div>
 
-  
+  <div class="flow-summary">
+  <span class="flow-count axioms">6 axioms</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count theorems">10 theorems</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count derived">0 derived</span>
+</div>
   <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1021, &sect;1022, &sect;1038, &sect;1039, &sect;1040, &sect;365, &sect;997</div>
 
   <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
@@ -542,10 +548,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque justicePubliclyManifest : HumanPerson → Prop
-</code></pre></div>
-<div class="node-desc">Whether a person's judgment (their relationship with God and its │   Source: [CCC] §1039. │   ⚠ HIDDEN ASSUMPTION: There is a meaningful difference between justice</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span></div></div>
+    <div class="node-prop"><pre><code>opaque justicePubliclyManifest : HumanPerson → Prop</code></pre></div>
+<div class="node-desc">Whether a person's judgment (their relationship with God and its</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="particular_judgment_not_public">particular_judgment_not_public</span><span class="dep-chip" data-target="last_judgment_makes_public">last_judgment_makes_public</span><span class="dep-chip" data-target="last_judgment_reveals_history">last_judgment_reveals_history</span><span class="dep-chip" data-target="public_vindication_contrast">public_vindication_contrast</span><span class="dep-chip" data-target="two_judgments_are_non_redundant">two_judgments_are_non_redundant</span><span class="dep-chip" data-target="three_additions_are_independent">three_additions_are_independent</span><span class="dep-chip" data-target="last_judgment_enacts_complete_public_judgment">last_judgment_enacts_complete_public_judgment</span><span class="dep-chip" data-target="last_judgment_full_content">last_judgment_full_content</span></div></div>
   </div>
 </div>
@@ -556,9 +560,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque revealsCosmicMeaning : Prop
-</code></pre></div>
-<div class="node-desc">Whether a judgment reveals the meaning of history as a whole — │   Source: [CCC] §1040.</div>
+    <div class="node-prop"><pre><code>opaque revealsCosmicMeaning : Prop</code></pre></div>
+<div class="node-desc">Whether a judgment reveals the meaning of history as a whole —</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="last_judgment_reveals_history">last_judgment_reveals_history</span><span class="dep-chip" data-target="last_judgment_reveals_cosmic_meaning">last_judgment_reveals_cosmic_meaning</span><span class="dep-chip" data-target="two_judgments_are_non_redundant">two_judgments_are_non_redundant</span><span class="dep-chip" data-target="three_additions_are_independent">three_additions_are_independent</span><span class="dep-chip" data-target="last_judgment_full_content">last_judgment_full_content</span></div></div>
   </div>
 </div>
@@ -572,10 +575,8 @@ h1 {
     <div class="node-prop"><pre><code>axiom particular_judgment_at_death :
   ∀ (p : HumanPerson),
     isDead p →
-    personInHeaven p ∨ personInPurgatory p ∨ personInHell p
-</code></pre></div>
-<div class="node-desc">Each soul receives particular judgment at death. │   Source: [CCC] §1022. | Scope: Ecumenical (the concept of immediate judgment).</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="death_separates">death_separates</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="personInHeaven">personInHeaven</span><span class="dep-chip" data-target="personInHell">personInHell</span><span class="dep-chip" data-target="personInPurgatory">personInPurgatory</span></div></div>
+    personInHeaven p ∨ personInPurgatory p ∨ personInHell p</code></pre></div>
+<div class="node-desc">AXIOM (§1022): Each soul receives particular judgment at death.</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="three_additions_are_independent">three_additions_are_independent</span><span class="dep-chip" data-target="particular_judgment_assigns_state">particular_judgment_assigns_state</span><span class="dep-chip" data-target="last_judgment_full_content">last_judgment_full_content</span></div></div>
   </div>
 </div>
@@ -589,11 +590,10 @@ h1 {
     <div class="node-prop"><pre><code>axiom particular_judgment_not_public :
   ∀ (p : HumanPerson),
     isDead p → ¬isRisen p →
-    ¬justicePubliclyManifest p
-</code></pre></div>
-<div class="node-desc">Particular judgment is NOT publicly │   Source: [CCC] §1039 (by implication — &quot;laid bare&quot; implies prior hiddenness). | Scope: Catholic (the particular/genera... │   ⚠ HIDDEN ASSUMPTION: Private judgment is genuinely private, not just</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="isRisen">isRisen</span><span class="dep-chip" data-target="justicePubliclyManifest">justicePubliclyManifest</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="last_judgment_reveals_history">last_judgment_reveals_history</span><span class="dep-chip" data-target="public_vindication_contrast">public_vindication_contrast</span><span class="dep-chip" data-target="two_judgments_are_non_redundant">two_judgments_are_non_redundant</span><span class="dep-chip" data-target="last_judgment_full_content">last_judgment_full_content</span><span class="dep-chip" data-target="justicePubliclyManifest">justicePubliclyManifest</span></div></div>
+    ¬justicePubliclyManifest p</code></pre></div>
+<div class="node-desc">AXIOM (§1039, by implication): Particular judgment is NOT publicly</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="justicePubliclyManifest">justicePubliclyManifest</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="last_judgment_reveals_history">last_judgment_reveals_history</span><span class="dep-chip" data-target="public_vindication_contrast">public_vindication_contrast</span><span class="dep-chip" data-target="two_judgments_are_non_redundant">two_judgments_are_non_redundant</span><span class="dep-chip" data-target="last_judgment_full_content">last_judgment_full_content</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="last_judgment_makes_public">
@@ -606,11 +606,10 @@ h1 {
     <div class="node-prop"><pre><code>axiom last_judgment_makes_public :
   ∀ (p : HumanPerson),
     isRisen p →
-    justicePubliclyManifest p
-</code></pre></div>
-<div class="node-desc">The Last Judgment makes justice publicly manifest. │   Source: [CCC] §1039. | Scope: Ecumenical (the Last Judgment is in the Nicene Creed).</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="isRisen">isRisen</span><span class="dep-chip" data-target="justicePubliclyManifest">justicePubliclyManifest</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="last_judgment_reveals_history">last_judgment_reveals_history</span><span class="dep-chip" data-target="public_vindication_contrast">public_vindication_contrast</span><span class="dep-chip" data-target="two_judgments_are_non_redundant">two_judgments_are_non_redundant</span><span class="dep-chip" data-target="three_additions_are_independent">three_additions_are_independent</span><span class="dep-chip" data-target="particular_judgment_assigns_state">particular_judgment_assigns_state</span><span class="dep-chip" data-target="last_judgment_enacts_complete_public_judgment">last_judgment_enacts_complete_public_judgment</span><span class="dep-chip" data-target="last_judgment_full_content">last_judgment_full_content</span><span class="dep-chip" data-target="justicePubliclyManifest">justicePubliclyManifest</span></div></div>
+    justicePubliclyManifest p</code></pre></div>
+<div class="node-desc">AXIOM (§1038-1040): The Last Judgment makes justice publicly manifest.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="justicePubliclyManifest">justicePubliclyManifest</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="last_judgment_reveals_history">last_judgment_reveals_history</span><span class="dep-chip" data-target="public_vindication_contrast">public_vindication_contrast</span><span class="dep-chip" data-target="two_judgments_are_non_redundant">two_judgments_are_non_redundant</span><span class="dep-chip" data-target="three_additions_are_independent">three_additions_are_independent</span><span class="dep-chip" data-target="particular_judgment_assigns_state">particular_judgment_assigns_state</span><span class="dep-chip" data-target="last_judgment_enacts_complete_public_judgment">last_judgment_enacts_complete_public_judgment</span><span class="dep-chip" data-target="last_judgment_full_content">last_judgment_full_content</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="last_judgment_reveals_history">
@@ -621,11 +620,10 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom last_judgment_reveals_history :
-  revealsCosmicMeaning
-</code></pre></div>
-<div class="node-desc">The Last Judgment reveals the meaning of history. │   Source: [CCC] §1040. | Scope: Ecumenical.</div>
+  revealsCosmicMeaning</code></pre></div>
+<div class="node-desc">AXIOM (§1040): The Last Judgment reveals the meaning of history.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="justicePubliclyManifest">justicePubliclyManifest</span><span class="dep-chip" data-target="last_judgment_makes_public">last_judgment_makes_public</span><span class="dep-chip" data-target="particular_judgment_not_public">particular_judgment_not_public</span><span class="dep-chip" data-target="revealsCosmicMeaning">revealsCosmicMeaning</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="bodily_judgment_contrast">bodily_judgment_contrast</span><span class="dep-chip" data-target="last_judgment_reveals_cosmic_meaning">last_judgment_reveals_cosmic_meaning</span><span class="dep-chip" data-target="two_judgments_are_non_redundant">two_judgments_are_non_redundant</span><span class="dep-chip" data-target="three_additions_are_independent">three_additions_are_independent</span><span class="dep-chip" data-target="last_judgment_enacts_complete_public_judgment">last_judgment_enacts_complete_public_judgment</span><span class="dep-chip" data-target="last_judgment_full_content">last_judgment_full_content</span><span class="dep-chip" data-target="justicePubliclyManifest">justicePubliclyManifest</span><span class="dep-chip" data-target="revealsCosmicMeaning">revealsCosmicMeaning</span><span class="dep-chip" data-target="last_judgment_makes_public">last_judgment_makes_public</span><span class="dep-chip" data-target="particular_judgment_not_public">particular_judgment_not_public</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="bodily_judgment_contrast">bodily_judgment_contrast</span><span class="dep-chip" data-target="last_judgment_reveals_cosmic_meaning">last_judgment_reveals_cosmic_meaning</span><span class="dep-chip" data-target="two_judgments_are_non_redundant">two_judgments_are_non_redundant</span><span class="dep-chip" data-target="three_additions_are_independent">three_additions_are_independent</span><span class="dep-chip" data-target="last_judgment_enacts_complete_public_judgment">last_judgment_enacts_complete_public_judgment</span><span class="dep-chip" data-target="last_judgment_full_content">last_judgment_full_content</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="public_vindication_contrast">
@@ -639,9 +637,9 @@ h1 {
     (h_dead : isDead p) (h_not_risen : ¬isRisen p)
     (q : HumanPerson) (h_risen : isRisen q) :
     ¬justicePubliclyManifest p ∧ justicePubliclyManifest q</code></pre></div>
-<div class="node-desc">Addition 1: Public vindication (§1039-1040).</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="isRisen">isRisen</span><span class="dep-chip" data-target="justicePubliclyManifest">justicePubliclyManifest</span><span class="dep-chip" data-target="last_judgment_makes_public">last_judgment_makes_public</span><span class="dep-chip" data-target="particular_judgment_not_public">particular_judgment_not_public</span><span class="dep-chip" data-target="separated_soul_is_incomplete">separated_soul_is_incomplete</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="last_judgment_full_content">last_judgment_full_content</span><span class="dep-chip" data-target="justicePubliclyManifest">justicePubliclyManifest</span><span class="dep-chip" data-target="last_judgment_makes_public">last_judgment_makes_public</span><span class="dep-chip" data-target="particular_judgment_not_public">particular_judgment_not_public</span></div></div>
+<div class="node-desc">**Addition 1: Public vindication (§1039-1040).**</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="justicePubliclyManifest">justicePubliclyManifest</span><span class="dep-chip" data-target="last_judgment_makes_public">last_judgment_makes_public</span><span class="dep-chip" data-target="particular_judgment_not_public">particular_judgment_not_public</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="last_judgment_full_content">last_judgment_full_content</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="particular_judgment_judges_incomplete_person">
@@ -654,8 +652,7 @@ h1 {
     <div class="node-prop"><pre><code>theorem particular_judgment_judges_incomplete_person (p : HumanPerson)
     (h_dead : isDead p) :
     ¬isCompletePerson p</code></pre></div>
-<div class="node-desc">Addition 2: Bodily judgment (§365 + §997 + §1038).</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="isCompletePerson">isCompletePerson</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="resurrection_reunites">resurrection_reunites</span><span class="dep-chip" data-target="separated_soul_is_incomplete">separated_soul_is_incomplete</span></div></div>
+<div class="node-desc">**Addition 2: Bodily judgment (§365 + §997 + §1038).**</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="last_judgment_full_content">last_judgment_full_content</span></div></div>
   </div>
 </div>
@@ -670,7 +667,6 @@ h1 {
     (h_risen : isRisen p) :
     isCompletePerson p</code></pre></div>
 <div class="node-desc">The Last Judgment judges the COMPLETE person — both aspects restored.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="isCompletePerson">isCompletePerson</span><span class="dep-chip" data-target="isRisen">isRisen</span><span class="dep-chip" data-target="resurrection_reunites">resurrection_reunites</span><span class="dep-chip" data-target="separated_soul_is_incomplete">separated_soul_is_incomplete</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="last_judgment_full_content">last_judgment_full_content</span></div></div>
   </div>
 </div>
@@ -686,8 +682,8 @@ h1 {
     (q : HumanPerson) (h_risen : isRisen q) :
     ¬isCompletePerson p ∧ isCompletePerson q</code></pre></div>
 <div class="node-desc">The bodily contrast: at particular judgment the person is incomplete;</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="isCompletePerson">isCompletePerson</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="isRisen">isRisen</span><span class="dep-chip" data-target="last_judgment_reveals_history">last_judgment_reveals_history</span><span class="dep-chip" data-target="resurrection_reunites">resurrection_reunites</span><span class="dep-chip" data-target="separated_soul_is_incomplete">separated_soul_is_incomplete</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="last_judgment_full_content">last_judgment_full_content</span><span class="dep-chip" data-target="last_judgment_reveals_history">last_judgment_reveals_history</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="last_judgment_reveals_history">last_judgment_reveals_history</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="last_judgment_full_content">last_judgment_full_content</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="last_judgment_reveals_cosmic_meaning">
@@ -699,9 +695,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem last_judgment_reveals_cosmic_meaning :
     revealsCosmicMeaning</code></pre></div>
-<div class="node-desc">Addition 3: Cosmic completion (§1040).</div>
+<div class="node-desc">**Addition 3: Cosmic completion (§1040).**</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="last_judgment_reveals_history">last_judgment_reveals_history</span><span class="dep-chip" data-target="revealsCosmicMeaning">revealsCosmicMeaning</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="last_judgment_full_content">last_judgment_full_content</span><span class="dep-chip" data-target="revealsCosmicMeaning">revealsCosmicMeaning</span><span class="dep-chip" data-target="last_judgment_reveals_history">last_judgment_reveals_history</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="last_judgment_full_content">last_judgment_full_content</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="two_judgments_are_non_redundant">
@@ -726,9 +722,9 @@ h1 {
      isCompletePerson q ∧
     -- (3) Cosmic meaning revealed
      revealsCosmicMeaning)</code></pre></div>
-<div class="node-desc">THE KEY THEOREM: The Last Judgment is non-redundant.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="isCompletePerson">isCompletePerson</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="isRisen">isRisen</span><span class="dep-chip" data-target="justicePubliclyManifest">justicePubliclyManifest</span><span class="dep-chip" data-target="last_judgment_makes_public">last_judgment_makes_public</span><span class="dep-chip" data-target="last_judgment_reveals_history">last_judgment_reveals_history</span><span class="dep-chip" data-target="particular_judgment_not_public">particular_judgment_not_public</span><span class="dep-chip" data-target="resurrection_reunites">resurrection_reunites</span><span class="dep-chip" data-target="revealsCosmicMeaning">revealsCosmicMeaning</span><span class="dep-chip" data-target="separated_soul_is_incomplete">separated_soul_is_incomplete</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="last_judgment_full_content">last_judgment_full_content</span><span class="dep-chip" data-target="justicePubliclyManifest">justicePubliclyManifest</span><span class="dep-chip" data-target="revealsCosmicMeaning">revealsCosmicMeaning</span><span class="dep-chip" data-target="last_judgment_makes_public">last_judgment_makes_public</span><span class="dep-chip" data-target="particular_judgment_not_public">particular_judgment_not_public</span><span class="dep-chip" data-target="last_judgment_reveals_history">last_judgment_reveals_history</span></div></div>
+<div class="node-desc">**THE KEY THEOREM: The Last Judgment is non-redundant.**</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="justicePubliclyManifest">justicePubliclyManifest</span><span class="dep-chip" data-target="last_judgment_makes_public">last_judgment_makes_public</span><span class="dep-chip" data-target="last_judgment_reveals_history">last_judgment_reveals_history</span><span class="dep-chip" data-target="particular_judgment_not_public">particular_judgment_not_public</span><span class="dep-chip" data-target="revealsCosmicMeaning">revealsCosmicMeaning</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="last_judgment_full_content">last_judgment_full_content</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="three_additions_are_independent">
@@ -746,8 +742,8 @@ h1 {
     -- (3) The risen have justice publicly manifest (epistemic)
     (∀ (p : HumanPerson), isRisen p → justicePubliclyManifest p)</code></pre></div>
 <div class="node-desc">The three additions are genuinely independent — each addresses</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="SinProfile">SinProfile</span><span class="dep-chip" data-target="SoulState">SoulState</span><span class="dep-chip" data-target="isCompletePerson">isCompletePerson</span><span class="dep-chip" data-target="isRisen">isRisen</span><span class="dep-chip" data-target="justicePubliclyManifest">justicePubliclyManifest</span><span class="dep-chip" data-target="last_judgment_makes_public">last_judgment_makes_public</span><span class="dep-chip" data-target="last_judgment_reveals_history">last_judgment_reveals_history</span><span class="dep-chip" data-target="particular_judgment_at_death">particular_judgment_at_death</span><span class="dep-chip" data-target="resurrection_reunites">resurrection_reunites</span><span class="dep-chip" data-target="revealsCosmicMeaning">revealsCosmicMeaning</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="last_judgment_full_content">last_judgment_full_content</span><span class="dep-chip" data-target="justicePubliclyManifest">justicePubliclyManifest</span><span class="dep-chip" data-target="particular_judgment_at_death">particular_judgment_at_death</span><span class="dep-chip" data-target="revealsCosmicMeaning">revealsCosmicMeaning</span><span class="dep-chip" data-target="last_judgment_makes_public">last_judgment_makes_public</span><span class="dep-chip" data-target="last_judgment_reveals_history">last_judgment_reveals_history</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="justicePubliclyManifest">justicePubliclyManifest</span><span class="dep-chip" data-target="last_judgment_makes_public">last_judgment_makes_public</span><span class="dep-chip" data-target="last_judgment_reveals_history">last_judgment_reveals_history</span><span class="dep-chip" data-target="particular_judgment_at_death">particular_judgment_at_death</span><span class="dep-chip" data-target="revealsCosmicMeaning">revealsCosmicMeaning</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="last_judgment_full_content">last_judgment_full_content</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="particular_judgment_assigns_state">
@@ -761,8 +757,8 @@ h1 {
     (h_dead : isDead p) :
     personInHeaven p ∨ personInPurgatory p ∨ personInHell p</code></pre></div>
 <div class="node-desc">Particular judgment assigns the soul to one of the three afterlife</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="last_judgment_makes_public">last_judgment_makes_public</span><span class="dep-chip" data-target="particular_judgment_at_death">particular_judgment_at_death</span><span class="dep-chip" data-target="personInHeaven">personInHeaven</span><span class="dep-chip" data-target="personInHell">personInHell</span><span class="dep-chip" data-target="personInPurgatory">personInPurgatory</span><span class="dep-chip" data-target="resurrection_reunites">resurrection_reunites</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="last_judgment_full_content">last_judgment_full_content</span><span class="dep-chip" data-target="particular_judgment_at_death">particular_judgment_at_death</span><span class="dep-chip" data-target="last_judgment_makes_public">last_judgment_makes_public</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="last_judgment_makes_public">last_judgment_makes_public</span><span class="dep-chip" data-target="particular_judgment_at_death">particular_judgment_at_death</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="last_judgment_full_content">last_judgment_full_content</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="last_judgment_enacts_complete_public_judgment">
@@ -776,8 +772,8 @@ h1 {
     (h_risen : isRisen p) :
     isCompletePerson p ∧ justicePubliclyManifest p</code></pre></div>
 <div class="node-desc">A risen saint at the Last Judgment is a COMPLETE person with justice</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="isCompletePerson">isCompletePerson</span><span class="dep-chip" data-target="isRisen">isRisen</span><span class="dep-chip" data-target="justicePubliclyManifest">justicePubliclyManifest</span><span class="dep-chip" data-target="last_judgment_makes_public">last_judgment_makes_public</span><span class="dep-chip" data-target="last_judgment_reveals_history">last_judgment_reveals_history</span><span class="dep-chip" data-target="resurrection_reunites">resurrection_reunites</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="last_judgment_full_content">last_judgment_full_content</span><span class="dep-chip" data-target="justicePubliclyManifest">justicePubliclyManifest</span><span class="dep-chip" data-target="last_judgment_makes_public">last_judgment_makes_public</span><span class="dep-chip" data-target="last_judgment_reveals_history">last_judgment_reveals_history</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="justicePubliclyManifest">justicePubliclyManifest</span><span class="dep-chip" data-target="last_judgment_makes_public">last_judgment_makes_public</span><span class="dep-chip" data-target="last_judgment_reveals_history">last_judgment_reveals_history</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="last_judgment_full_content">last_judgment_full_content</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="last_judgment_full_content">
@@ -791,8 +787,7 @@ h1 {
     (h_risen : isRisen p) :
     isCompletePerson p ∧ justicePubliclyManifest p ∧ revealsCosmicMeaning</code></pre></div>
 <div class="node-desc">A risen saint has BOTH completeness AND public justice AND cosmic</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="SinProfile">SinProfile</span><span class="dep-chip" data-target="afterlifeFromProfile">afterlifeFromProfile</span><span class="dep-chip" data-target="bodily_judgment_contrast">bodily_judgment_contrast</span><span class="dep-chip" data-target="fullHumanBeatitude">fullHumanBeatitude</span><span class="dep-chip" data-target="inBeatifyingCommunion">inBeatifyingCommunion</span><span class="dep-chip" data-target="isCompletePerson">isCompletePerson</span><span class="dep-chip" data-target="isPurified">isPurified</span><span class="dep-chip" data-target="isRisen">isRisen</span><span class="dep-chip" data-target="justicePubliclyManifest">justicePubliclyManifest</span><span class="dep-chip" data-target="last_judgment_enacts_complete_public_judgment">last_judgment_enacts_complete_public_judgment</span><span class="dep-chip" data-target="last_judgment_judges_complete_person">last_judgment_judges_complete_person</span><span class="dep-chip" data-target="last_judgment_makes_public">last_judgment_makes_public</span><span class="dep-chip" data-target="last_judgment_reveals_cosmic_meaning">last_judgment_reveals_cosmic_meaning</span><span class="dep-chip" data-target="last_judgment_reveals_history">last_judgment_reveals_history</span><span class="dep-chip" data-target="particular_judgment_assigns_state">particular_judgment_assigns_state</span><span class="dep-chip" data-target="particular_judgment_at_death">particular_judgment_at_death</span><span class="dep-chip" data-target="particular_judgment_judges_incomplete_person">particular_judgment_judges_incomplete_person</span><span class="dep-chip" data-target="particular_judgment_not_public">particular_judgment_not_public</span><span class="dep-chip" data-target="personInHeaven">personInHeaven</span><span class="dep-chip" data-target="personInHell">personInHell</span><span class="dep-chip" data-target="personInPurgatory">personInPurgatory</span><span class="dep-chip" data-target="public_vindication_contrast">public_vindication_contrast</span><span class="dep-chip" data-target="resurrection_reunites">resurrection_reunites</span><span class="dep-chip" data-target="revealsCosmicMeaning">revealsCosmicMeaning</span><span class="dep-chip" data-target="separated_soul_is_incomplete">separated_soul_is_incomplete</span><span class="dep-chip" data-target="three_additions_are_independent">three_additions_are_independent</span><span class="dep-chip" data-target="two_judgments_are_non_redundant">two_judgments_are_non_redundant</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="justicePubliclyManifest">justicePubliclyManifest</span><span class="dep-chip" data-target="last_judgment_judges_complete_person">last_judgment_judges_complete_person</span><span class="dep-chip" data-target="particular_judgment_at_death">particular_judgment_at_death</span><span class="dep-chip" data-target="particular_judgment_judges_incomplete_person">particular_judgment_judges_incomplete_person</span><span class="dep-chip" data-target="revealsCosmicMeaning">revealsCosmicMeaning</span><span class="dep-chip" data-target="last_judgment_makes_public">last_judgment_makes_public</span><span class="dep-chip" data-target="particular_judgment_not_public">particular_judgment_not_public</span><span class="dep-chip" data-target="last_judgment_reveals_history">last_judgment_reveals_history</span><span class="dep-chip" data-target="particular_judgment_assigns_state">particular_judgment_assigns_state</span><span class="dep-chip" data-target="public_vindication_contrast">public_vindication_contrast</span><span class="dep-chip" data-target="bodily_judgment_contrast">bodily_judgment_contrast</span><span class="dep-chip" data-target="last_judgment_enacts_complete_public_judgment">last_judgment_enacts_complete_public_judgment</span><span class="dep-chip" data-target="last_judgment_reveals_cosmic_meaning">last_judgment_reveals_cosmic_meaning</span><span class="dep-chip" data-target="three_additions_are_independent">three_additions_are_independent</span><span class="dep-chip" data-target="two_judgments_are_non_redundant">two_judgments_are_non_redundant</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="bodily_judgment_contrast">bodily_judgment_contrast</span><span class="dep-chip" data-target="justicePubliclyManifest">justicePubliclyManifest</span><span class="dep-chip" data-target="last_judgment_enacts_complete_public_judgment">last_judgment_enacts_complete_public_judgment</span><span class="dep-chip" data-target="last_judgment_judges_complete_person">last_judgment_judges_complete_person</span><span class="dep-chip" data-target="last_judgment_makes_public">last_judgment_makes_public</span><span class="dep-chip" data-target="last_judgment_reveals_cosmic_meaning">last_judgment_reveals_cosmic_meaning</span><span class="dep-chip" data-target="last_judgment_reveals_history">last_judgment_reveals_history</span><span class="dep-chip" data-target="particular_judgment_assigns_state">particular_judgment_assigns_state</span><span class="dep-chip" data-target="particular_judgment_at_death">particular_judgment_at_death</span><span class="dep-chip" data-target="particular_judgment_judges_incomplete_person">particular_judgment_judges_incomplete_person</span><span class="dep-chip" data-target="particular_judgment_not_public">particular_judgment_not_public</span><span class="dep-chip" data-target="public_vindication_contrast">public_vindication_contrast</span><span class="dep-chip" data-target="revealsCosmicMeaning">revealsCosmicMeaning</span><span class="dep-chip" data-target="three_additions_are_independent">three_additions_are_independent</span><span class="dep-chip" data-target="two_judgments_are_non_redundant">two_judgments_are_non_redundant</span></div></div>
   </div>
 </div>
   </div>

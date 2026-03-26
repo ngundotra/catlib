@@ -143,7 +143,7 @@ h1 {
   line-height: 1.6;
 }
 
-/* -- Search -- */
+/* ── Search ── */
 .search-box {
   width: 100%;
   padding: 0.8rem 1rem;
@@ -167,7 +167,91 @@ h1 {
   font-style: italic;
 }
 
-/* -- Node cards -- */
+/* ── Category sections ── */
+.category-header {
+  font-family: Cinzel, Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-variant: small-caps;
+  margin: 1.8rem 0 0.8rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── File cards ── */
+.file-card {
+  display: block;
+  padding: 1rem 1.1rem;
+  margin-bottom: 0.5rem;
+  background: var(--bg-parchment);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  text-decoration: none;
+  color: var(--text);
+  transition: background 0.15s, border-color 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.file-card:hover, .file-card:active {
+  background: var(--bg-vellum);
+  border-color: var(--accent-gold);
+  text-decoration: none;
+}
+
+.file-card-name {
+  font-family: Cinzel, Georgia, serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.3rem;
+}
+
+.file-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  font-size: 0.82rem;
+  color: var(--text-light);
+}
+
+.file-card-meta .tag {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.75rem;
+  font-family: Cinzel, Georgia, serif;
+  letter-spacing: 0.03em;
+}
+
+.tag-axiom { background: var(--axiom-bg); color: var(--axiom-dot); border: 1px solid var(--axiom-border); }
+.tag-theorem { background: var(--theorem-bg); color: var(--theorem-dot); border: 1px solid var(--theorem-border); }
+.tag-def { background: var(--def-bg); color: var(--def-dot); border: 1px solid var(--def-border); }
+.tag-proposition { background: var(--proposition-bg); color: var(--proposition-dot); border: 1px solid var(--proposition-border); }
+
+.file-card-ccc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 0.3rem;
+}
+
+/* ── Summary stats ── */
+.stats-bar {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--text-light);
+  font-style: italic;
+}
+
+.stats-bar span { white-space: nowrap; }
+
+/* ── Node cards (per-file page) ── */
 .node-card {
   margin-bottom: 0.4rem;
   border: 1px solid var(--border);
@@ -321,7 +405,7 @@ h1 {
   color: var(--text-muted);
 }
 
-/* -- Flow diagram header -- */
+/* ── Flow diagram header ── */
 .flow-summary {
   display: flex;
   justify-content: center;
@@ -347,7 +431,7 @@ h1 {
 .flow-count.theorems { background: var(--theorem-bg); color: var(--theorem-dot); }
 .flow-count.derived { background: var(--def-bg); color: var(--def-dot); }
 
-/* -- Legend -- */
+/* ── Legend ── */
 .legend {
   display: flex;
   flex-wrap: wrap;
@@ -379,7 +463,7 @@ h1 {
 .legend-dot.inductive { background: var(--inductive-dot); }
 .legend-dot.proposition { background: var(--proposition-dot); }
 
-/* -- Filter buttons -- */
+/* ── Filter buttons ── */
 .filter-bar {
   display: flex;
   flex-wrap: wrap;
@@ -408,7 +492,7 @@ h1 {
   border-color: var(--accent);
 }
 
-/* -- Back link -- */
+/* ── Back link ── */
 .back-link {
   display: inline-block;
   margin-bottom: 1rem;
@@ -417,7 +501,7 @@ h1 {
   letter-spacing: 0.04em;
 }
 
-/* -- Footer -- */
+/* ── Footer ── */
 .footer {
   text-align: center;
   padding-top: 2rem;
@@ -426,7 +510,7 @@ h1 {
   font-style: italic;
 }
 
-/* -- Responsive -- */
+/* ── Responsive ── */
 @media (max-width: 500px) {
   html { font-size: 16px; }
   .container { padding: 1rem 0.75rem 2rem; }
@@ -441,8 +525,15 @@ h1 {
   <h1>MarianDogma</h1>
   <div class="subtitle">Creed &middot; 52 declarations</div>
 
-  
-  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;404, &sect;466, &sect;491, &sect;493, &sect;495, &sect;509, &sect;966, &sect;974, &sect;1008</div>
+  <div class="flow-summary">
+  <span class="flow-count axioms">16 axioms</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count theorems">16 theorems</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count derived">20 derived</span>
+</div>
+  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1008, &sect;404, &sect;466, &sect;491, &sect;493, &sect;495, &sect;509, &sect;966, &sect;974</div>
+
   <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot proposition"></span>proposition</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
 
   <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (10)</button><button class="filter-btn" data-filter="def">def (19)</button><button class="filter-btn" data-filter="opaque">opaque (6)</button><button class="filter-btn" data-filter="proposition">proposition (1)</button><button class="filter-btn" data-filter="theorem">theorem (16)</button></div>
@@ -458,7 +549,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque bore : HumanPerson → IncarnateSubject → Prop</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="(about">(about</span><span class="dep-chip" data-target="chain_breaks_without_union">chain_breaks_without_union</span><span class="dep-chip" data-target="full_marian_chain">full_marian_chain</span><span class="dep-chip" data-target="hypostatic_union_tag">hypostatic_union_tag</span><span class="dep-chip" data-target="mary_bore_christ">mary_bore_christ</span><span class="dep-chip" data-target="mary_bore_christ_tag">mary_bore_christ_tag</span><span class="dep-chip" data-target="motherhood_targets_persons">motherhood_targets_persons</span><span class="dep-chip" data-target="motherhood_targets_persons_tag">motherhood_targets_persons_tag</span><span class="dep-chip" data-target="rejecting_theotokos_implies_nestorianism">rejecting_theotokos_implies_nestorianism</span><span class="dep-chip" data-target="theotokos">theotokos</span><span class="dep-chip" data-target="theotokos_required_for_ic">theotokos_required_for_ic</span></div></div>
+<div class="node-desc">The motherhood relation: one human person bore another.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hypostatic_union_tag">hypostatic_union_tag</span><span class="dep-chip" data-target="motherhood_targets_persons">motherhood_targets_persons</span><span class="dep-chip" data-target="motherhood_targets_persons_tag">motherhood_targets_persons_tag</span><span class="dep-chip" data-target="mary_bore_christ">mary_bore_christ</span><span class="dep-chip" data-target="mary_bore_christ_tag">mary_bore_christ_tag</span><span class="dep-chip" data-target="theotokos">theotokos</span><span class="dep-chip" data-target="rejecting_theotokos_implies_nestorianism">rejecting_theotokos_implies_nestorianism</span><span class="dep-chip" data-target="theotokos_required_for_ic">theotokos_required_for_ic</span><span class="dep-chip" data-target="full_marian_chain">full_marian_chain</span><span class="dep-chip" data-target="chain_breaks_without_union">chain_breaks_without_union</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="isMotherOf">
@@ -469,6 +561,7 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque isMotherOf : HumanPerson → IncarnateSubject → Prop</code></pre></div>
+<div class="node-desc">Whether a human person is the mother of another (including all their natures).</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="motherhood_targets_persons">motherhood_targets_persons</span><span class="dep-chip" data-target="rejecting_theotokos_implies_nestorianism">rejecting_theotokos_implies_nestorianism</span></div></div>
   </div>
 </div>
@@ -480,7 +573,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque hasOriginalSin : HumanPerson → Prop</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="death_is_consequence_of_sin">death_is_consequence_of_sin</span><span class="dep-chip" data-target="everyone_has_original_sin_except_mary">everyone_has_original_sin_except_mary</span><span class="dep-chip" data-target="full_marian_chain">full_marian_chain</span><span class="dep-chip" data-target="immaculate_conception_proper">immaculate_conception_proper</span><span class="dep-chip" data-target="mary_is_the_exception">mary_is_the_exception</span><span class="dep-chip" data-target="original_sin_inherited">original_sin_inherited</span><span class="dep-chip" data-target="preservation_excludes_sin">preservation_excludes_sin</span><span class="dep-chip" data-target="sinlessness_implies_bodily_integrity">sinlessness_implies_bodily_integrity</span></div></div>
+<div class="node-desc">Whether a human person has original sin.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="original_sin_inherited">original_sin_inherited</span><span class="dep-chip" data-target="preservation_excludes_sin">preservation_excludes_sin</span><span class="dep-chip" data-target="immaculate_conception_proper">immaculate_conception_proper</span><span class="dep-chip" data-target="everyone_has_original_sin_except_mary">everyone_has_original_sin_except_mary</span><span class="dep-chip" data-target="mary_is_the_exception">mary_is_the_exception</span><span class="dep-chip" data-target="death_is_consequence_of_sin">death_is_consequence_of_sin</span><span class="dep-chip" data-target="sinlessness_implies_bodily_integrity">sinlessness_implies_bodily_integrity</span><span class="dep-chip" data-target="full_marian_chain">full_marian_chain</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="preservedFromOriginalSin">
@@ -491,7 +585,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque preservedFromOriginalSin : HumanPerson → Prop</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="everyone_has_original_sin_except_mary">everyone_has_original_sin_except_mary</span><span class="dep-chip" data-target="full_marian_chain">full_marian_chain</span><span class="dep-chip" data-target="ic_required_for_assumption">ic_required_for_assumption</span><span class="dep-chip" data-target="mary_is_the_exception">mary_is_the_exception</span><span class="dep-chip" data-target="mary_preserved">mary_preserved</span><span class="dep-chip" data-target="non_preserved_body_corrupts">non_preserved_body_corrupts</span><span class="dep-chip" data-target="original_sin_inherited">original_sin_inherited</span><span class="dep-chip" data-target="preservation_excludes_sin">preservation_excludes_sin</span><span class="dep-chip" data-target="theotokos_required_for_ic">theotokos_required_for_ic</span></div></div>
+<div class="node-desc">Whether a human person is preserved from original sin at conception.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="original_sin_inherited">original_sin_inherited</span><span class="dep-chip" data-target="mary_preserved">mary_preserved</span><span class="dep-chip" data-target="preservation_excludes_sin">preservation_excludes_sin</span><span class="dep-chip" data-target="everyone_has_original_sin_except_mary">everyone_has_original_sin_except_mary</span><span class="dep-chip" data-target="mary_is_the_exception">mary_is_the_exception</span><span class="dep-chip" data-target="non_preserved_body_corrupts">non_preserved_body_corrupts</span><span class="dep-chip" data-target="theotokos_required_for_ic">theotokos_required_for_ic</span><span class="dep-chip" data-target="ic_required_for_assumption">ic_required_for_assumption</span><span class="dep-chip" data-target="full_marian_chain">full_marian_chain</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="committedPersonalSin">
@@ -502,7 +597,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque committedPersonalSin : HumanPerson → Prop</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="death_is_consequence_of_sin">death_is_consequence_of_sin</span><span class="dep-chip" data-target="ic_required_for_assumption">ic_required_for_assumption</span><span class="dep-chip" data-target="mary_sinless">mary_sinless</span><span class="dep-chip" data-target="sinlessness_implies_bodily_integrity">sinlessness_implies_bodily_integrity</span></div></div>
+<div class="node-desc">Whether a human person ever committed any personal sin.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="mary_sinless">mary_sinless</span><span class="dep-chip" data-target="death_is_consequence_of_sin">death_is_consequence_of_sin</span><span class="dep-chip" data-target="sinlessness_implies_bodily_integrity">sinlessness_implies_bodily_integrity</span><span class="dep-chip" data-target="ic_required_for_assumption">ic_required_for_assumption</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="bodySubjectToCorruption">
@@ -513,7 +609,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque bodySubjectToCorruption : HumanPerson → Prop</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="assumption_tag">assumption_tag</span><span class="dep-chip" data-target="bodilyAssumed">bodilyAssumed</span><span class="dep-chip" data-target="death_is_consequence_of_sin">death_is_consequence_of_sin</span><span class="dep-chip" data-target="non_preserved_body_corrupts">non_preserved_body_corrupts</span><span class="dep-chip" data-target="sinlessness_implies_bodily_integrity">sinlessness_implies_bodily_integrity</span><span class="dep-chip" data-target="sinlessness_to_integrity">sinlessness_to_integrity</span></div></div>
+<div class="node-desc">Whether a person's body is subject to the corruption that results from sin.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="bodilyAssumed">bodilyAssumed</span><span class="dep-chip" data-target="death_is_consequence_of_sin">death_is_consequence_of_sin</span><span class="dep-chip" data-target="non_preserved_body_corrupts">non_preserved_body_corrupts</span><span class="dep-chip" data-target="sinlessness_implies_bodily_integrity">sinlessness_implies_bodily_integrity</span><span class="dep-chip" data-target="sinlessness_to_integrity">sinlessness_to_integrity</span><span class="dep-chip" data-target="assumption_tag">assumption_tag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-proposition" data-kind="proposition" data-name="bodilyAssumed">
@@ -523,10 +620,10 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def bodilyAssumed (p : HumanPerson) : Prop :=
-  hasCorporealAspect p ∧ hasSpiritualAspect p ∧ ¬bodySubjectToCorruption p</code></pre></div>
+    <div class="node-prop"><pre><code>def bodilyAssumed (p : HumanPerson) : Prop</code></pre></div>
+<div class="node-desc">A person is bodily assumed when they are taken up body and soul into</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="bodySubjectToCorruption">bodySubjectToCorruption</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="assumption_follows_from_ic">assumption_follows_from_ic</span><span class="dep-chip" data-target="assumption_means_complete_person">assumption_means_complete_person</span><span class="dep-chip" data-target="assumption_tag">assumption_tag</span><span class="dep-chip" data-target="full_marian_chain">full_marian_chain</span><span class="dep-chip" data-target="ic_required_for_assumption">ic_required_for_assumption</span><span class="dep-chip" data-target="mary_bodily_assumed">mary_bodily_assumed</span><span class="dep-chip" data-target="sinlessness_to_integrity">sinlessness_to_integrity</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="mary_bodily_assumed">mary_bodily_assumed</span><span class="dep-chip" data-target="sinlessness_to_integrity">sinlessness_to_integrity</span><span class="dep-chip" data-target="assumption_follows_from_ic">assumption_follows_from_ic</span><span class="dep-chip" data-target="assumption_tag">assumption_tag</span><span class="dep-chip" data-target="assumption_means_complete_person">assumption_means_complete_person</span><span class="dep-chip" data-target="ic_required_for_assumption">ic_required_for_assumption</span><span class="dep-chip" data-target="full_marian_chain">full_marian_chain</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="mary">
@@ -537,7 +634,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom mary : HumanPerson</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="assumption_differs_from_normal_death">assumption_differs_from_normal_death</span><span class="dep-chip" data-target="assumption_follows_from_ic">assumption_follows_from_ic</span><span class="dep-chip" data-target="assumption_means_complete_person">assumption_means_complete_person</span><span class="dep-chip" data-target="chain_breaks_without_union">chain_breaks_without_union</span><span class="dep-chip" data-target="full_marian_chain">full_marian_chain</span><span class="dep-chip" data-target="ic_required_for_assumption">ic_required_for_assumption</span><span class="dep-chip" data-target="immaculate_conception_proper">immaculate_conception_proper</span><span class="dep-chip" data-target="mary_bodily_assumed">mary_bodily_assumed</span><span class="dep-chip" data-target="mary_bore_christ">mary_bore_christ</span><span class="dep-chip" data-target="mary_is_complete_in_heaven">mary_is_complete_in_heaven</span><span class="dep-chip" data-target="mary_is_the_exception">mary_is_the_exception</span><span class="dep-chip" data-target="mary_preserved">mary_preserved</span><span class="dep-chip" data-target="mary_sinless">mary_sinless</span><span class="dep-chip" data-target="rejecting_theotokos_implies_nestorianism">rejecting_theotokos_implies_nestorianism</span><span class="dep-chip" data-target="sinlessness_to_integrity">sinlessness_to_integrity</span><span class="dep-chip" data-target="theotokos">theotokos</span><span class="dep-chip" data-target="theotokos_required_for_ic">theotokos_required_for_ic</span></div></div>
+<div class="node-desc">Mary, as a HumanPerson (Soul.lean).</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="mary_bore_christ">mary_bore_christ</span><span class="dep-chip" data-target="theotokos">theotokos</span><span class="dep-chip" data-target="rejecting_theotokos_implies_nestorianism">rejecting_theotokos_implies_nestorianism</span><span class="dep-chip" data-target="mary_preserved">mary_preserved</span><span class="dep-chip" data-target="immaculate_conception_proper">immaculate_conception_proper</span><span class="dep-chip" data-target="mary_sinless">mary_sinless</span><span class="dep-chip" data-target="mary_is_the_exception">mary_is_the_exception</span><span class="dep-chip" data-target="mary_bodily_assumed">mary_bodily_assumed</span><span class="dep-chip" data-target="sinlessness_to_integrity">sinlessness_to_integrity</span><span class="dep-chip" data-target="assumption_follows_from_ic">assumption_follows_from_ic</span><span class="dep-chip" data-target="assumption_means_complete_person">assumption_means_complete_person</span><span class="dep-chip" data-target="mary_is_complete_in_heaven">mary_is_complete_in_heaven</span><span class="dep-chip" data-target="assumption_differs_from_normal_death">assumption_differs_from_normal_death</span><span class="dep-chip" data-target="theotokos_required_for_ic">theotokos_required_for_ic</span><span class="dep-chip" data-target="ic_required_for_assumption">ic_required_for_assumption</span><span class="dep-chip" data-target="full_marian_chain">full_marian_chain</span><span class="dep-chip" data-target="chain_breaks_without_union">chain_breaks_without_union</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="hypostatic_union_provenance">
@@ -548,6 +646,7 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>def hypostatic_union_provenance : Provenance := Provenance.tradition &quot;Chalcedon 451; CCC §466-469&quot;</code></pre></div>
+<div class="node-desc">The key insight: Theotokos is a CHRISTOLOGICAL test disguised as a Marian title.</div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="hypostatic_union_tag">
@@ -557,7 +656,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def hypostatic_union_tag : DenominationalTag := ecumenical</code></pre></div>
+    <div class="node-prop"><pre><code>def hypostatic_union_tag : DenominationalTag := ecumenical
+</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="bore">bore</span><span class="dep-chip" data-target="motherhood_targets_persons">motherhood_targets_persons</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="marianDenominationalScope">marianDenominationalScope</span></div></div>
   </div>
@@ -572,8 +672,9 @@ h1 {
     <div class="node-prop"><pre><code>axiom motherhood_targets_persons :
   ∀ (mother : HumanPerson) (child : IncarnateSubject),
     bore mother child → isMotherOf mother child</code></pre></div>
+<div class="node-desc">**AXIOM: motherhood_targets_persons** — Motherhood is a relation to a PERSON,</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="bore">bore</span><span class="dep-chip" data-target="isMotherOf">isMotherOf</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hypostatic_union_tag">hypostatic_union_tag</span><span class="dep-chip" data-target="marianDenominationalScope">marianDenominationalScope</span><span class="dep-chip" data-target="rejecting_theotokos_implies_nestorianism">rejecting_theotokos_implies_nestorianism</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hypostatic_union_tag">hypostatic_union_tag</span><span class="dep-chip" data-target="rejecting_theotokos_implies_nestorianism">rejecting_theotokos_implies_nestorianism</span><span class="dep-chip" data-target="marianDenominationalScope">marianDenominationalScope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="motherhood_targets_persons_provenance">
@@ -583,8 +684,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def motherhood_targets_persons_provenance : Provenance :=
-  Provenance.tradition &quot;Ephesus 431; CCC §466, §495&quot;</code></pre></div>
+    <div class="node-prop"><pre><code>def motherhood_targets_persons_provenance : Provenance</code></pre></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="motherhood_targets_persons_tag">
@@ -594,7 +694,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def motherhood_targets_persons_tag : DenominationalTag := ecumenical</code></pre></div>
+    <div class="node-prop"><pre><code>def motherhood_targets_persons_tag : DenominationalTag := ecumenical
+</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="bore">bore</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="marianDenominationalScope">marianDenominationalScope</span></div></div>
   </div>
@@ -608,8 +709,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom mary_bore_christ :
   bore mary christ</code></pre></div>
+<div class="node-desc">**GIVEN (Scripture)**: Mary bore Jesus Christ.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="bore">bore</span><span class="dep-chip" data-target="mary">mary</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="assumption_differs_from_normal_death">assumption_differs_from_normal_death</span><span class="dep-chip" data-target="marianDenominationalScope">marianDenominationalScope</span><span class="dep-chip" data-target="rejecting_theotokos_implies_nestorianism">rejecting_theotokos_implies_nestorianism</span><span class="dep-chip" data-target="theotokos">theotokos</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="theotokos">theotokos</span><span class="dep-chip" data-target="rejecting_theotokos_implies_nestorianism">rejecting_theotokos_implies_nestorianism</span><span class="dep-chip" data-target="assumption_differs_from_normal_death">assumption_differs_from_normal_death</span><span class="dep-chip" data-target="marianDenominationalScope">marianDenominationalScope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="mary_bore_christ_provenance">
@@ -629,7 +731,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def mary_bore_christ_tag : DenominationalTag := ecumenical</code></pre></div>
+    <div class="node-prop"><pre><code>def mary_bore_christ_tag : DenominationalTag := ecumenical
+</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="bore">bore</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="marianDenominationalScope">marianDenominationalScope</span></div></div>
   </div>
@@ -642,10 +745,10 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem theotokos :
-    bore mary christ ∧ christ.isDivine :=
-  ⟨mary_bore_christ, hypostatic_union.1⟩</code></pre></div>
+    bore mary christ ∧ christ.isDivine</code></pre></div>
+<div class="node-desc">**THEOREM: Theotokos** — Mary is the Mother of God.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="bore">bore</span><span class="dep-chip" data-target="mary">mary</span><span class="dep-chip" data-target="mary_bore_christ">mary_bore_christ</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="full_marian_chain">full_marian_chain</span><span class="dep-chip" data-target="marianDenominationalScope">marianDenominationalScope</span><span class="dep-chip" data-target="rejecting_theotokos_implies_nestorianism">rejecting_theotokos_implies_nestorianism</span><span class="dep-chip" data-target="theotokos_required_for_ic">theotokos_required_for_ic</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejecting_theotokos_implies_nestorianism">rejecting_theotokos_implies_nestorianism</span><span class="dep-chip" data-target="theotokos_required_for_ic">theotokos_required_for_ic</span><span class="dep-chip" data-target="full_marian_chain">full_marian_chain</span><span class="dep-chip" data-target="marianDenominationalScope">marianDenominationalScope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="theotokos_tag">
@@ -655,9 +758,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def theotokos_tag : DenominationalTag :=
-  { acceptedBy := [Denomination.catholic, Denomination.lutheran, Denomination.reformed]
-    note := &quot;Nearly ecumenical — Luther and Calvin both accepted; some modern Protestants avoid the title&quot; }</code></pre></div>
+    <div class="node-prop"><pre><code>def theotokos_tag : DenominationalTag</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="rejecting_theotokos_implies_nestorianism">rejecting_theotokos_implies_nestorianism</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="marianDenominationalScope">marianDenominationalScope</span></div></div>
   </div>
@@ -672,8 +773,8 @@ h1 {
     <div class="node-prop"><pre><code>theorem rejecting_theotokos_implies_nestorianism :
     -- From axioms alone: Mary bore Christ, motherhood targets persons,
     -- Christ is divine → Mary is the Mother of God AND of the whole person.
-    (bore mary christ ∧ christ.isDivine) ∧ isMotherOf mary christ :=
-  ⟨theotokos, motherhood_targets_persons mary christ mary_bore_christ⟩</code></pre></div>
+    (bore mary christ ∧ christ.isDivine) ∧ isMotherOf mary christ</code></pre></div>
+<div class="node-desc">**THEOREM: rejecting_theotokos_implies_nestorianism** — Denying that Mary is</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="bore">bore</span><span class="dep-chip" data-target="isMotherOf">isMotherOf</span><span class="dep-chip" data-target="mary">mary</span><span class="dep-chip" data-target="mary_bore_christ">mary_bore_christ</span><span class="dep-chip" data-target="motherhood_targets_persons">motherhood_targets_persons</span><span class="dep-chip" data-target="original_sin_inherited">original_sin_inherited</span><span class="dep-chip" data-target="theotokos">theotokos</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="theotokos_tag">theotokos_tag</span></div></div>
   </div>
@@ -687,8 +788,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom original_sin_inherited :
   ∀ (p : HumanPerson), ¬preservedFromOriginalSin p → hasOriginalSin p</code></pre></div>
+<div class="node-desc">**AXIOM: original_sin_inherited** — Original sin is transmitted to every</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="hasOriginalSin">hasOriginalSin</span><span class="dep-chip" data-target="preservedFromOriginalSin">preservedFromOriginalSin</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="death_consequence_sin_tag">death_consequence_sin_tag</span><span class="dep-chip" data-target="everyone_has_original_sin_except_mary">everyone_has_original_sin_except_mary</span><span class="dep-chip" data-target="marianDenominationalScope">marianDenominationalScope</span><span class="dep-chip" data-target="mary_sinless_tag">mary_sinless_tag</span><span class="dep-chip" data-target="non_preserved_body_corrupts">non_preserved_body_corrupts</span><span class="dep-chip" data-target="rejecting_theotokos_implies_nestorianism">rejecting_theotokos_implies_nestorianism</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejecting_theotokos_implies_nestorianism">rejecting_theotokos_implies_nestorianism</span><span class="dep-chip" data-target="mary_sinless_tag">mary_sinless_tag</span><span class="dep-chip" data-target="everyone_has_original_sin_except_mary">everyone_has_original_sin_except_mary</span><span class="dep-chip" data-target="death_consequence_sin_tag">death_consequence_sin_tag</span><span class="dep-chip" data-target="non_preserved_body_corrupts">non_preserved_body_corrupts</span><span class="dep-chip" data-target="marianDenominationalScope">marianDenominationalScope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="original_sin_inherited_provenance">
@@ -708,8 +810,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def original_sin_inherited_tag : DenominationalTag :=
-  { acceptedBy := [Denomination.ecumenical], note := &quot;broadly shared; Orthodox frame differently as 'ancestral sin'&quot; }</code></pre></div>
+    <div class="node-prop"><pre><code>def original_sin_inherited_tag : DenominationalTag</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="mary_preserved">mary_preserved</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="marianDenominationalScope">marianDenominationalScope</span></div></div>
   </div>
@@ -721,9 +822,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def fittingness_tag : DenominationalTag :=
-  { acceptedBy := [Denomination.catholic]
-    note := &quot;Scotist epistemology (potuit, decuit, fecit). Fittingness principle not yet formalized — see backlog.&quot; }</code></pre></div>
+    <div class="node-prop"><pre><code>def fittingness_tag : DenominationalTag</code></pre></div>
+<div class="node-desc">The Immaculate Conception's most distinctive supporting argument is the</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="mary_preserved">mary_preserved</span></div></div>
   </div>
 </div>
@@ -736,8 +836,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom mary_preserved :
   preservedFromOriginalSin mary</code></pre></div>
+<div class="node-desc">**AXIOM: mary_preserved** — Mary was preserved from original sin.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="mary">mary</span><span class="dep-chip" data-target="preservation_excludes_sin">preservation_excludes_sin</span><span class="dep-chip" data-target="preservedFromOriginalSin">preservedFromOriginalSin</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="assumption_differs_from_normal_death">assumption_differs_from_normal_death</span><span class="dep-chip" data-target="fittingness_tag">fittingness_tag</span><span class="dep-chip" data-target="full_marian_chain">full_marian_chain</span><span class="dep-chip" data-target="ic_required_for_assumption">ic_required_for_assumption</span><span class="dep-chip" data-target="immaculate_conception_proper">immaculate_conception_proper</span><span class="dep-chip" data-target="marianDenominationalScope">marianDenominationalScope</span><span class="dep-chip" data-target="mary_bodily_assumed">mary_bodily_assumed</span><span class="dep-chip" data-target="mary_is_the_exception">mary_is_the_exception</span><span class="dep-chip" data-target="mary_sinless_tag">mary_sinless_tag</span><span class="dep-chip" data-target="original_sin_inherited_tag">original_sin_inherited_tag</span><span class="dep-chip" data-target="preservation_excludes_sin">preservation_excludes_sin</span><span class="dep-chip" data-target="sinlessness_integrity_tag">sinlessness_integrity_tag</span><span class="dep-chip" data-target="sinlessness_to_integrity">sinlessness_to_integrity</span><span class="dep-chip" data-target="theotokos_required_for_ic">theotokos_required_for_ic</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="original_sin_inherited_tag">original_sin_inherited_tag</span><span class="dep-chip" data-target="fittingness_tag">fittingness_tag</span><span class="dep-chip" data-target="preservation_excludes_sin">preservation_excludes_sin</span><span class="dep-chip" data-target="immaculate_conception_proper">immaculate_conception_proper</span><span class="dep-chip" data-target="mary_sinless_tag">mary_sinless_tag</span><span class="dep-chip" data-target="mary_is_the_exception">mary_is_the_exception</span><span class="dep-chip" data-target="sinlessness_integrity_tag">sinlessness_integrity_tag</span><span class="dep-chip" data-target="mary_bodily_assumed">mary_bodily_assumed</span><span class="dep-chip" data-target="sinlessness_to_integrity">sinlessness_to_integrity</span><span class="dep-chip" data-target="assumption_differs_from_normal_death">assumption_differs_from_normal_death</span><span class="dep-chip" data-target="theotokos_required_for_ic">theotokos_required_for_ic</span><span class="dep-chip" data-target="ic_required_for_assumption">ic_required_for_assumption</span><span class="dep-chip" data-target="full_marian_chain">full_marian_chain</span><span class="dep-chip" data-target="marianDenominationalScope">marianDenominationalScope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="preservation_excludes_sin">
@@ -749,8 +850,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom preservation_excludes_sin :
   ∀ (p : HumanPerson), preservedFromOriginalSin p → ¬hasOriginalSin p</code></pre></div>
+<div class="node-desc">**AXIOM: preservation_excludes_sin** — Being preserved from original sin</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="hasOriginalSin">hasOriginalSin</span><span class="dep-chip" data-target="mary_preserved">mary_preserved</span><span class="dep-chip" data-target="preservedFromOriginalSin">preservedFromOriginalSin</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="assumption_differs_from_normal_death">assumption_differs_from_normal_death</span><span class="dep-chip" data-target="immaculate_conception_proper">immaculate_conception_proper</span><span class="dep-chip" data-target="mary_bodily_assumed">mary_bodily_assumed</span><span class="dep-chip" data-target="mary_preserved">mary_preserved</span><span class="dep-chip" data-target="sinlessness_to_integrity">sinlessness_to_integrity</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="mary_preserved">mary_preserved</span><span class="dep-chip" data-target="immaculate_conception_proper">immaculate_conception_proper</span><span class="dep-chip" data-target="mary_bodily_assumed">mary_bodily_assumed</span><span class="dep-chip" data-target="sinlessness_to_integrity">sinlessness_to_integrity</span><span class="dep-chip" data-target="assumption_differs_from_normal_death">assumption_differs_from_normal_death</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="immaculate_conception_proper">
@@ -761,10 +863,10 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem immaculate_conception_proper :
-    ¬hasOriginalSin mary :=
-  preservation_excludes_sin mary mary_preserved</code></pre></div>
+    ¬hasOriginalSin mary</code></pre></div>
+<div class="node-desc">**THEOREM: immaculate_conception** — Mary does not have original sin.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="hasOriginalSin">hasOriginalSin</span><span class="dep-chip" data-target="mary">mary</span><span class="dep-chip" data-target="mary_preserved">mary_preserved</span><span class="dep-chip" data-target="preservation_excludes_sin">preservation_excludes_sin</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="full_marian_chain">full_marian_chain</span><span class="dep-chip" data-target="mary_is_the_exception">mary_is_the_exception</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="mary_is_the_exception">mary_is_the_exception</span><span class="dep-chip" data-target="full_marian_chain">full_marian_chain</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="immaculate_conception_tag">
@@ -774,9 +876,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def immaculate_conception_tag : DenominationalTag :=
-  { acceptedBy := [Denomination.catholic]
-    note := &quot;Catholic only; Orthodox reject Western framing; Protestants reject entirely&quot; }</code></pre></div>
+    <div class="node-prop"><pre><code>def immaculate_conception_tag : DenominationalTag</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="marianDenominationalScope">marianDenominationalScope</span></div></div>
   </div>
 </div>
@@ -789,8 +889,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom mary_sinless :
   ¬committedPersonalSin mary</code></pre></div>
+<div class="node-desc">Mary never committed personal sin either.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="committedPersonalSin">committedPersonalSin</span><span class="dep-chip" data-target="mary">mary</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="assumption_differs_from_normal_death">assumption_differs_from_normal_death</span><span class="dep-chip" data-target="ic_required_for_assumption">ic_required_for_assumption</span><span class="dep-chip" data-target="mary_bodily_assumed">mary_bodily_assumed</span><span class="dep-chip" data-target="sinlessness_integrity_tag">sinlessness_integrity_tag</span><span class="dep-chip" data-target="sinlessness_to_integrity">sinlessness_to_integrity</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="sinlessness_integrity_tag">sinlessness_integrity_tag</span><span class="dep-chip" data-target="mary_bodily_assumed">mary_bodily_assumed</span><span class="dep-chip" data-target="sinlessness_to_integrity">sinlessness_to_integrity</span><span class="dep-chip" data-target="assumption_differs_from_normal_death">assumption_differs_from_normal_death</span><span class="dep-chip" data-target="ic_required_for_assumption">ic_required_for_assumption</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="mary_sinless_provenance">
@@ -810,7 +911,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def mary_sinless_tag : DenominationalTag := catholicOnly</code></pre></div>
+    <div class="node-prop"><pre><code>def mary_sinless_tag : DenominationalTag := catholicOnly
+</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="everyone_has_original_sin_except_mary">everyone_has_original_sin_except_mary</span><span class="dep-chip" data-target="mary_preserved">mary_preserved</span><span class="dep-chip" data-target="original_sin_inherited">original_sin_inherited</span></div></div>
   </div>
 </div>
@@ -824,8 +926,8 @@ h1 {
     <div class="node-prop"><pre><code>theorem everyone_has_original_sin_except_mary
     (p : HumanPerson) (h_not_preserved : ¬preservedFromOriginalSin p) :
     -- If you weren't preserved, you have original sin
-    hasOriginalSin p :=
-  original_sin_inherited p h_not_preserved</code></pre></div>
+    hasOriginalSin p</code></pre></div>
+<div class="node-desc">**THEOREM: everyone_has_original_sin_except_mary** — Every person who was</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="hasOriginalSin">hasOriginalSin</span><span class="dep-chip" data-target="original_sin_inherited">original_sin_inherited</span><span class="dep-chip" data-target="preservedFromOriginalSin">preservedFromOriginalSin</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="mary_sinless_tag">mary_sinless_tag</span></div></div>
   </div>
@@ -838,8 +940,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem mary_is_the_exception :
-    preservedFromOriginalSin mary ∧ ¬hasOriginalSin mary :=
-  ⟨mary_preserved, immaculate_conception_proper⟩</code></pre></div>
+    preservedFromOriginalSin mary ∧ ¬hasOriginalSin mary</code></pre></div>
+<div class="node-desc">The converse: Mary WAS preserved, so she does NOT have it.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="death_is_consequence_of_sin">death_is_consequence_of_sin</span><span class="dep-chip" data-target="hasOriginalSin">hasOriginalSin</span><span class="dep-chip" data-target="immaculate_conception_proper">immaculate_conception_proper</span><span class="dep-chip" data-target="mary">mary</span><span class="dep-chip" data-target="mary_preserved">mary_preserved</span><span class="dep-chip" data-target="preservedFromOriginalSin">preservedFromOriginalSin</span></div></div>
   </div>
 </div>
@@ -854,8 +956,9 @@ h1 {
   ∀ (p : HumanPerson),
     (hasOriginalSin p ∨ committedPersonalSin p) →
     bodySubjectToCorruption p</code></pre></div>
+<div class="node-desc">**AXIOM: death_is_consequence_of_sin** — Death and bodily corruption</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="bodySubjectToCorruption">bodySubjectToCorruption</span><span class="dep-chip" data-target="committedPersonalSin">committedPersonalSin</span><span class="dep-chip" data-target="hasOriginalSin">hasOriginalSin</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="death_consequence_sin_tag">death_consequence_sin_tag</span><span class="dep-chip" data-target="marianDenominationalScope">marianDenominationalScope</span><span class="dep-chip" data-target="mary_is_the_exception">mary_is_the_exception</span><span class="dep-chip" data-target="non_preserved_body_corrupts">non_preserved_body_corrupts</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="mary_is_the_exception">mary_is_the_exception</span><span class="dep-chip" data-target="death_consequence_sin_tag">death_consequence_sin_tag</span><span class="dep-chip" data-target="non_preserved_body_corrupts">non_preserved_body_corrupts</span><span class="dep-chip" data-target="marianDenominationalScope">marianDenominationalScope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="death_consequence_sin_provenance">
@@ -875,8 +978,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def death_consequence_sin_tag : DenominationalTag :=
-  { acceptedBy := [Denomination.ecumenical], note := &quot;broadly shared; interpretations vary&quot; }</code></pre></div>
+    <div class="node-prop"><pre><code>def death_consequence_sin_tag : DenominationalTag</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="death_is_consequence_of_sin">death_is_consequence_of_sin</span><span class="dep-chip" data-target="original_sin_inherited">original_sin_inherited</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="marianDenominationalScope">marianDenominationalScope</span></div></div>
   </div>
@@ -890,9 +992,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem non_preserved_body_corrupts
     (p : HumanPerson) (h_not_preserved : ¬preservedFromOriginalSin p) :
-    bodySubjectToCorruption p :=
-  death_is_consequence_of_sin p
-    (Or.inl (original_sin_inherited p h_not_preserved))</code></pre></div>
+    bodySubjectToCorruption p</code></pre></div>
+<div class="node-desc">**THEOREM: Every non-preserved person's body is subject to corruption.**</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="bodySubjectToCorruption">bodySubjectToCorruption</span><span class="dep-chip" data-target="death_is_consequence_of_sin">death_is_consequence_of_sin</span><span class="dep-chip" data-target="original_sin_inherited">original_sin_inherited</span><span class="dep-chip" data-target="preservedFromOriginalSin">preservedFromOriginalSin</span><span class="dep-chip" data-target="sinlessness_implies_bodily_integrity">sinlessness_implies_bodily_integrity</span></div></div>
   </div>
 </div>
@@ -908,8 +1009,9 @@ h1 {
     ¬hasOriginalSin p →
     ¬committedPersonalSin p →
     ¬bodySubjectToCorruption p</code></pre></div>
+<div class="node-desc">**AXIOM: sinlessness_implies_bodily_integrity** — If a person never</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="bodySubjectToCorruption">bodySubjectToCorruption</span><span class="dep-chip" data-target="committedPersonalSin">committedPersonalSin</span><span class="dep-chip" data-target="hasOriginalSin">hasOriginalSin</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="assumption_differs_from_normal_death">assumption_differs_from_normal_death</span><span class="dep-chip" data-target="marianDenominationalScope">marianDenominationalScope</span><span class="dep-chip" data-target="mary_bodily_assumed">mary_bodily_assumed</span><span class="dep-chip" data-target="non_preserved_body_corrupts">non_preserved_body_corrupts</span><span class="dep-chip" data-target="sinlessness_to_integrity">sinlessness_to_integrity</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="non_preserved_body_corrupts">non_preserved_body_corrupts</span><span class="dep-chip" data-target="mary_bodily_assumed">mary_bodily_assumed</span><span class="dep-chip" data-target="sinlessness_to_integrity">sinlessness_to_integrity</span><span class="dep-chip" data-target="assumption_differs_from_normal_death">assumption_differs_from_normal_death</span><span class="dep-chip" data-target="marianDenominationalScope">marianDenominationalScope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="sinlessness_integrity_provenance">
@@ -919,8 +1021,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def sinlessness_integrity_provenance : Provenance :=
-  Provenance.tradition &quot;theological reasoning; CCC §966, §974&quot;</code></pre></div>
+    <div class="node-prop"><pre><code>def sinlessness_integrity_provenance : Provenance</code></pre></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="sinlessness_integrity_tag">
@@ -930,7 +1031,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def sinlessness_integrity_tag : DenominationalTag := catholicOnly</code></pre></div>
+    <div class="node-prop"><pre><code>def sinlessness_integrity_tag : DenominationalTag := catholicOnly
+</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="mary_bodily_assumed">mary_bodily_assumed</span><span class="dep-chip" data-target="mary_preserved">mary_preserved</span><span class="dep-chip" data-target="mary_sinless">mary_sinless</span><span class="dep-chip" data-target="sinlessness_to_integrity">sinlessness_to_integrity</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="marianDenominationalScope">marianDenominationalScope</span></div></div>
   </div>
@@ -944,8 +1046,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom mary_bodily_assumed :
   bodilyAssumed mary</code></pre></div>
+<div class="node-desc">**AXIOM: mary_bodily_assumed** — Mary was assumed body and soul into heaven.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="bodilyAssumed">bodilyAssumed</span><span class="dep-chip" data-target="mary">mary</span><span class="dep-chip" data-target="mary_preserved">mary_preserved</span><span class="dep-chip" data-target="mary_sinless">mary_sinless</span><span class="dep-chip" data-target="preservation_excludes_sin">preservation_excludes_sin</span><span class="dep-chip" data-target="sinlessness_implies_bodily_integrity">sinlessness_implies_bodily_integrity</span><span class="dep-chip" data-target="sinlessness_to_integrity">sinlessness_to_integrity</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="assumption_differs_from_normal_death">assumption_differs_from_normal_death</span><span class="dep-chip" data-target="assumption_follows_from_ic">assumption_follows_from_ic</span><span class="dep-chip" data-target="assumption_means_complete_person">assumption_means_complete_person</span><span class="dep-chip" data-target="full_marian_chain">full_marian_chain</span><span class="dep-chip" data-target="ic_required_for_assumption">ic_required_for_assumption</span><span class="dep-chip" data-target="mary_is_complete_in_heaven">mary_is_complete_in_heaven</span><span class="dep-chip" data-target="sinlessness_integrity_tag">sinlessness_integrity_tag</span><span class="dep-chip" data-target="sinlessness_to_integrity">sinlessness_to_integrity</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="sinlessness_integrity_tag">sinlessness_integrity_tag</span><span class="dep-chip" data-target="sinlessness_to_integrity">sinlessness_to_integrity</span><span class="dep-chip" data-target="assumption_follows_from_ic">assumption_follows_from_ic</span><span class="dep-chip" data-target="assumption_means_complete_person">assumption_means_complete_person</span><span class="dep-chip" data-target="mary_is_complete_in_heaven">mary_is_complete_in_heaven</span><span class="dep-chip" data-target="assumption_differs_from_normal_death">assumption_differs_from_normal_death</span><span class="dep-chip" data-target="ic_required_for_assumption">ic_required_for_assumption</span><span class="dep-chip" data-target="full_marian_chain">full_marian_chain</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="sinlessness_to_integrity">
@@ -956,12 +1059,10 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem sinlessness_to_integrity :
-    ¬bodySubjectToCorruption mary :=
-  sinlessness_implies_bodily_integrity mary
-    (preservation_excludes_sin mary mary_preserved)
-    mary_sinless</code></pre></div>
+    ¬bodySubjectToCorruption mary</code></pre></div>
+<div class="node-desc">**THEOREM: sinlessness_to_integrity** — From sinlessness to bodily</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="assumption_follows_from_ic">assumption_follows_from_ic</span><span class="dep-chip" data-target="bodilyAssumed">bodilyAssumed</span><span class="dep-chip" data-target="bodySubjectToCorruption">bodySubjectToCorruption</span><span class="dep-chip" data-target="mary">mary</span><span class="dep-chip" data-target="mary_bodily_assumed">mary_bodily_assumed</span><span class="dep-chip" data-target="mary_preserved">mary_preserved</span><span class="dep-chip" data-target="mary_sinless">mary_sinless</span><span class="dep-chip" data-target="preservation_excludes_sin">preservation_excludes_sin</span><span class="dep-chip" data-target="sinlessness_implies_bodily_integrity">sinlessness_implies_bodily_integrity</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="mary_bodily_assumed">mary_bodily_assumed</span><span class="dep-chip" data-target="sinlessness_integrity_tag">sinlessness_integrity_tag</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="sinlessness_integrity_tag">sinlessness_integrity_tag</span><span class="dep-chip" data-target="mary_bodily_assumed">mary_bodily_assumed</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="assumption_follows_from_ic">
@@ -972,8 +1073,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem assumption_follows_from_ic :
-    bodilyAssumed mary :=
-  mary_bodily_assumed</code></pre></div>
+    bodilyAssumed mary</code></pre></div>
+<div class="node-desc">**THEOREM: assumption_follows_from_ic** — Mary was bodily assumed.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="bodilyAssumed">bodilyAssumed</span><span class="dep-chip" data-target="mary">mary</span><span class="dep-chip" data-target="mary_bodily_assumed">mary_bodily_assumed</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="sinlessness_to_integrity">sinlessness_to_integrity</span></div></div>
   </div>
@@ -986,8 +1087,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem assumption_is_full_communion :
-    heavenState.sustained ∧ heavenState.choseGod ∧ heavenState.purified := by
-  exact ⟨trivial, trivial, trivial⟩</code></pre></div>
+    heavenState.sustained ∧ heavenState.choseGod ∧ heavenState.purified</code></pre></div>
+<div class="node-desc">The Assumption connects to DivineModes: Mary enters the heavenState</div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="assumption_tag">
@@ -997,9 +1098,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def assumption_tag : DenominationalTag :=
-  { acceptedBy := [Denomination.catholic]
-    note := &quot;Catholic (defined 1950); Orthodox accept 'Dormition' with different framing; Protestants reject&quot; }</code></pre></div>
+    <div class="node-prop"><pre><code>def assumption_tag : DenominationalTag</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="bodilyAssumed">bodilyAssumed</span><span class="dep-chip" data-target="bodySubjectToCorruption">bodySubjectToCorruption</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="marianDenominationalScope">marianDenominationalScope</span></div></div>
   </div>
@@ -1013,8 +1112,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem assumption_means_complete_person
     (h : bodilyAssumed mary) :
-    hasCorporealAspect mary ∧ hasSpiritualAspect mary :=
-  ⟨h.1, h.2.1⟩</code></pre></div>
+    hasCorporealAspect mary ∧ hasSpiritualAspect mary</code></pre></div>
+<div class="node-desc">The Assumption implies Mary is a complete person — both aspects present.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="bodilyAssumed">bodilyAssumed</span><span class="dep-chip" data-target="mary">mary</span><span class="dep-chip" data-target="mary_bodily_assumed">mary_bodily_assumed</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="mary_is_complete_in_heaven">mary_is_complete_in_heaven</span></div></div>
   </div>
@@ -1027,8 +1126,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem mary_is_complete_in_heaven :
-    hasCorporealAspect mary ∧ hasSpiritualAspect mary :=
-  assumption_means_complete_person mary_bodily_assumed</code></pre></div>
+    hasCorporealAspect mary ∧ hasSpiritualAspect mary</code></pre></div>
+<div class="node-desc">THEOREM: Mary is a complete person in heaven.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="assumption_means_complete_person">assumption_means_complete_person</span><span class="dep-chip" data-target="mary">mary</span><span class="dep-chip" data-target="mary_bodily_assumed">mary_bodily_assumed</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="assumption_differs_from_normal_death">assumption_differs_from_normal_death</span></div></div>
   </div>
@@ -1046,8 +1145,8 @@ h1 {
     -- A dead saint is incomplete: soul yes, body no
     (¬hasCorporealAspect saint) ∧
     -- But Mary is complete: both yes
-    (hasCorporealAspect mary ∧ hasSpiritualAspect mary) :=
-  ⟨(death_separates saint h_saint_dead).1, mary_is_complete_in_heaven⟩</code></pre></div>
+    (hasCorporealAspect mary ∧ hasSpiritualAspect mary)</code></pre></div>
+<div class="node-desc">THEOREM: Mary's state in heaven differs from other dead saints.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="mary">mary</span><span class="dep-chip" data-target="mary_bodily_assumed">mary_bodily_assumed</span><span class="dep-chip" data-target="mary_bore_christ">mary_bore_christ</span><span class="dep-chip" data-target="mary_is_complete_in_heaven">mary_is_complete_in_heaven</span><span class="dep-chip" data-target="mary_preserved">mary_preserved</span><span class="dep-chip" data-target="mary_sinless">mary_sinless</span><span class="dep-chip" data-target="preservation_excludes_sin">preservation_excludes_sin</span><span class="dep-chip" data-target="sinlessness_implies_bodily_integrity">sinlessness_implies_bodily_integrity</span><span class="dep-chip" data-target="theotokos_required_for_ic">theotokos_required_for_ic</span></div></div>
   </div>
 </div>
@@ -1060,8 +1159,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem theotokos_required_for_ic :
     -- Both Theotokos AND Immaculate Conception hold together
-    (bore mary christ ∧ christ.isDivine) ∧ preservedFromOriginalSin mary :=
-  ⟨theotokos, mary_preserved⟩</code></pre></div>
+    (bore mary christ ∧ christ.isDivine) ∧ preservedFromOriginalSin mary</code></pre></div>
+<div class="node-desc">**THEOREM: theotokos_required_for_ic** — The Immaculate Conception</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="bore">bore</span><span class="dep-chip" data-target="ic_required_for_assumption">ic_required_for_assumption</span><span class="dep-chip" data-target="mary">mary</span><span class="dep-chip" data-target="mary_preserved">mary_preserved</span><span class="dep-chip" data-target="preservedFromOriginalSin">preservedFromOriginalSin</span><span class="dep-chip" data-target="theotokos">theotokos</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="assumption_differs_from_normal_death">assumption_differs_from_normal_death</span></div></div>
   </div>
@@ -1076,8 +1175,8 @@ h1 {
     <div class="node-prop"><pre><code>theorem ic_required_for_assumption :
     -- IC + sinlessness + assumption all hold
     preservedFromOriginalSin mary ∧ ¬committedPersonalSin mary ∧
-    bodilyAssumed mary :=
-  ⟨mary_preserved, mary_sinless, mary_bodily_assumed⟩</code></pre></div>
+    bodilyAssumed mary</code></pre></div>
+<div class="node-desc">**THEOREM: ic_required_for_assumption** — The Assumption presupposes</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="bodilyAssumed">bodilyAssumed</span><span class="dep-chip" data-target="committedPersonalSin">committedPersonalSin</span><span class="dep-chip" data-target="full_marian_chain">full_marian_chain</span><span class="dep-chip" data-target="mary">mary</span><span class="dep-chip" data-target="mary_bodily_assumed">mary_bodily_assumed</span><span class="dep-chip" data-target="mary_preserved">mary_preserved</span><span class="dep-chip" data-target="mary_sinless">mary_sinless</span><span class="dep-chip" data-target="preservedFromOriginalSin">preservedFromOriginalSin</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="theotokos_required_for_ic">theotokos_required_for_ic</span></div></div>
   </div>
@@ -1096,11 +1195,8 @@ h1 {
     -- 2. Immaculate Conception
     (preservedFromOriginalSin mary ∧ ¬hasOriginalSin mary) ∧
     -- 3. Assumption (body + soul, no corruption)
-    bodilyAssumed mary :=
-  ⟨ theotokos
-  , ⟨mary_preserved, immaculate_conception_proper⟩
-  , mary_bodily_assumed
-  ⟩</code></pre></div>
+    bodilyAssumed mary</code></pre></div>
+<div class="node-desc">**THEOREM: full_marian_chain** — The complete dependency chain:</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="bodilyAssumed">bodilyAssumed</span><span class="dep-chip" data-target="bore">bore</span><span class="dep-chip" data-target="chain_breaks_without_union">chain_breaks_without_union</span><span class="dep-chip" data-target="hasOriginalSin">hasOriginalSin</span><span class="dep-chip" data-target="immaculate_conception_proper">immaculate_conception_proper</span><span class="dep-chip" data-target="mary">mary</span><span class="dep-chip" data-target="mary_bodily_assumed">mary_bodily_assumed</span><span class="dep-chip" data-target="mary_preserved">mary_preserved</span><span class="dep-chip" data-target="preservedFromOriginalSin">preservedFromOriginalSin</span><span class="dep-chip" data-target="theotokos">theotokos</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ic_required_for_assumption">ic_required_for_assumption</span></div></div>
   </div>
@@ -1115,9 +1211,8 @@ h1 {
     <div class="node-prop"><pre><code>theorem chain_breaks_without_union
     (h_not_divine : ¬christ.isDivine) :
     -- Cannot conclude Theotokos (Mary as Mother of GOD)
-    ¬(bore mary christ ∧ christ.isDivine) := by
-  intro ⟨_, h_divine⟩
-  exact h_not_divine h_divine</code></pre></div>
+    ¬(bore mary christ ∧ christ.isDivine)</code></pre></div>
+<div class="node-desc">**THEOREM: chain_breaks_without_union** — Without the hypostatic union,</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="bore">bore</span><span class="dep-chip" data-target="mary">mary</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="full_marian_chain">full_marian_chain</span></div></div>
   </div>
@@ -1129,21 +1224,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def marianDenominationalScope : List (String × DenominationalTag) :=
-  [ -- Dogma 1: Theotokos (nearly ecumenical)
-    (&quot;hypostatic_union&quot;,              hypostatic_union_tag)
-  , (&quot;motherhood_targets_persons&quot;,    motherhood_targets_persons_tag)
-  , (&quot;mary_bore_christ&quot;,             mary_bore_christ_tag)
-  , (&quot;theotokos (theorem)&quot;,          theotokos_tag)
-    -- Dogma 2: Immaculate Conception (Catholic only)
-  , (&quot;original_sin_inherited&quot;,       original_sin_inherited_tag)
-  , (&quot;mary_preserved&quot;,              immaculate_conception_tag)
-  , (&quot;immaculate_conception (thm)&quot;,  immaculate_conception_tag)
-    -- Dogma 3: Assumption (Catholic only)
-  , (&quot;death_is_consequence_of_sin&quot;,  death_consequence_sin_tag)
-  , (&quot;sinlessness_implies_bodily_integrity&quot;, sinlessness_integrity_tag)
-  , (&quot;assumption (theorem)&quot;,         assumption_tag)
-  ]</code></pre></div>
+    <div class="node-prop"><pre><code>def marianDenominationalScope : List (String × DenominationalTag)</code></pre></div>
+<div class="node-desc">Denominational scope of each Marian axiom and theorem.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="assumption_tag">assumption_tag</span><span class="dep-chip" data-target="death_consequence_sin_tag">death_consequence_sin_tag</span><span class="dep-chip" data-target="death_is_consequence_of_sin">death_is_consequence_of_sin</span><span class="dep-chip" data-target="hypostatic_union_tag">hypostatic_union_tag</span><span class="dep-chip" data-target="immaculate_conception_tag">immaculate_conception_tag</span><span class="dep-chip" data-target="mary_bore_christ">mary_bore_christ</span><span class="dep-chip" data-target="mary_bore_christ_tag">mary_bore_christ_tag</span><span class="dep-chip" data-target="mary_preserved">mary_preserved</span><span class="dep-chip" data-target="motherhood_targets_persons">motherhood_targets_persons</span><span class="dep-chip" data-target="motherhood_targets_persons_tag">motherhood_targets_persons_tag</span><span class="dep-chip" data-target="original_sin_inherited">original_sin_inherited</span><span class="dep-chip" data-target="original_sin_inherited_tag">original_sin_inherited_tag</span><span class="dep-chip" data-target="sinlessness_implies_bodily_integrity">sinlessness_implies_bodily_integrity</span><span class="dep-chip" data-target="sinlessness_integrity_tag">sinlessness_integrity_tag</span><span class="dep-chip" data-target="theotokos">theotokos</span><span class="dep-chip" data-target="theotokos_tag">theotokos_tag</span></div></div>
   </div>
 </div>

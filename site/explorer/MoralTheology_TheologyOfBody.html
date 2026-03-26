@@ -523,14 +523,20 @@ h1 {
 <div class="container">
   <a href="index.html" class="back-link">&larr; All files</a>
   <h1>TheologyOfBody</h1>
-  <div class="subtitle">MoralTheology &middot; 34 declarations</div>
+  <div class="subtitle">MoralTheology &middot; 52 declarations</div>
 
-  
+  <div class="flow-summary">
+  <span class="flow-count axioms">17 axioms</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count theorems">10 theorems</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count derived">24 derived</span>
+</div>
   <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1146, &sect;1148, &sect;12, &sect;1700, &sect;1987, &sect;1999, &sect;2001, &sect;2002, &sect;2370, &sect;374, &sect;396, &sect;405</div>
 
-  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot proposition"></span>proposition</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot structure"></span>structure</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
+  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span><span class="legend-item"><span class="legend-dot instance"></span>instance</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot proposition"></span>proposition</span><span class="legend-item"><span class="legend-dot structure"></span>structure</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
 
-  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (10)</button><button class="filter-btn" data-filter="def">def (2)</button><button class="filter-btn" data-filter="proposition">proposition (3)</button><button class="filter-btn" data-filter="inductive">inductive (2)</button><button class="filter-btn" data-filter="opaque">opaque (7)</button><button class="filter-btn" data-filter="structure">structure (1)</button><button class="filter-btn" data-filter="theorem">theorem (9)</button></div>
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (10)</button><button class="filter-btn" data-filter="def">def (18)</button><button class="filter-btn" data-filter="inductive">inductive (2)</button><button class="filter-btn" data-filter="instance">instance (1)</button><button class="filter-btn" data-filter="opaque">opaque (7)</button><button class="filter-btn" data-filter="proposition">proposition (3)</button><button class="filter-btn" data-filter="structure">structure (1)</button><button class="filter-btn" data-filter="theorem">theorem (10)</button></div>
 
   <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
 
@@ -544,7 +550,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>inductive RelationKind where</code></pre></div>
 <div class="node-desc">The three possible orientations toward a person.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="RelationKind.respectsDignity">RelationKind.respectsDignity</span><span class="dep-chip" data-target="RelationKind.isInstrumental">RelationKind.isInstrumental</span><span class="dep-chip" data-target="love_is_adequate_response_to_persons">love_is_adequate_response_to_persons</span><span class="dep-chip" data-target="adequate_response_means_only_love">adequate_response_means_only_love</span><span class="dep-chip" data-target="PERSONALIST_NORM">PERSONALIST_NORM</span><span class="dep-chip" data-target="CONSENT_DOES_NOT_LEGITIMIZE_USE">CONSENT_DOES_NOT_LEGITIMIZE_USE</span><span class="dep-chip" data-target="personalist_norm_grounds_inseparability">personalist_norm_grounds_inseparability</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="RelationKind.respectsDignity">RelationKind.respectsDignity</span><span class="dep-chip" data-target="RelationKind.isInstrumental">RelationKind.isInstrumental</span><span class="dep-chip" data-target="love_is_adequate_response_to_persons">love_is_adequate_response_to_persons</span><span class="dep-chip" data-target="adequate_response_means_only_love">adequate_response_means_only_love</span><span class="dep-chip" data-target="PERSONALIST_NORM">PERSONALIST_NORM</span><span class="dep-chip" data-target="dignity_intrinsic_tag">dignity_intrinsic_tag</span><span class="dep-chip" data-target="CONSENT_DOES_NOT_LEGITIMIZE_USE">CONSENT_DOES_NOT_LEGITIMIZE_USE</span><span class="dep-chip" data-target="personalist_norm_grounds_inseparability">personalist_norm_grounds_inseparability</span><span class="dep-chip" data-target="contraception_body_lie_tag">contraception_body_lie_tag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-proposition" data-kind="proposition" data-name="RelationKind.respectsDignity">
@@ -561,7 +567,6 @@ h1 {
 </code></pre></div>
 <div class="node-desc">Whether a relational act respects the dignity of the person.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="RelationKind">RelationKind</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="RelationKind">RelationKind</span></div></div>
   </div>
 </div>
 <div class="node-card kind-proposition" data-kind="proposition" data-name="RelationKind.isInstrumental">
@@ -575,10 +580,13 @@ h1 {
   | .Love =&gt; False
   | .Use =&gt; True
   | .Indifference =&gt; False
+
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-- New foundational types for the derivation
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 </code></pre></div>
 <div class="node-desc">Whether a relational orientation involves instrumentalizing the person.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="RelationKind">RelationKind</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="RelationKind">RelationKind</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="isImageOfGod">
@@ -588,8 +596,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque isImageOfGod : Person → Prop
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque isImageOfGod : Person → Prop</code></pre></div>
 <div class="node-desc">Whether a person is an image of God. This is an ontological property:</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="imago_dei">imago_dei</span><span class="dep-chip" data-target="participation">participation</span><span class="dep-chip" data-target="DIGNITY_IS_INTRINSIC">DIGNITY_IS_INTRINSIC</span></div></div>
   </div>
@@ -601,8 +608,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque participatesInLove : Person → Prop
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque participatesInLove : Person → Prop</code></pre></div>
 <div class="node-desc">Whether a being participates in love — i.e., love is part of their</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="participation">participation</span><span class="dep-chip" data-target="humans_participate_in_love">humans_participate_in_love</span></div></div>
   </div>
@@ -614,9 +620,9 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque loveIsAdequateResponse : Person → Prop
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque loveIsAdequateResponse : Person → Prop</code></pre></div>
 <div class="node-desc">Whether love is the adequate response to a being. A being that</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target=":">:</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="participation">participation</span><span class="dep-chip" data-target="love_is_adequate_response_to_persons">love_is_adequate_response_to_persons</span><span class="dep-chip" data-target="adequate_response_means_only_love">adequate_response_means_only_love</span></div></div>
   </div>
 </div>
@@ -628,11 +634,22 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom imago_dei :
-  ∀ (p : Person), p.hasIntellect = true → isImageOfGod p
-</code></pre></div>
-<div class="node-desc">Humans are made in God's image. Every person with intellect bears the │   Source: [Scripture] Gen 1:27 (&quot;God created man in his own image&quot;). | Scope: ECUMENICAL — all Christians accept this.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isImageOfGod">isImageOfGod</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="humans_participate_in_love">humans_participate_in_love</span><span class="dep-chip" data-target="love_is_adequate_response_to_persons">love_is_adequate_response_to_persons</span><span class="dep-chip" data-target="adequate_response_means_only_love">adequate_response_means_only_love</span><span class="dep-chip" data-target="DIGNITY_IS_INTRINSIC">DIGNITY_IS_INTRINSIC</span><span class="dep-chip" data-target="isImageOfGod">isImageOfGod</span></div></div>
+  ∀ (p : Person), p.hasIntellect = true → isImageOfGod p</code></pre></div>
+<div class="node-desc">**AXIOM (Gen 1:27; CCC §1700): IMAGO DEI.**</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target=":">:</span><span class="dep-chip" data-target="isImageOfGod">isImageOfGod</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="imago_dei_tag">imago_dei_tag</span><span class="dep-chip" data-target="participation_tag">participation_tag</span><span class="dep-chip" data-target="humans_participate_in_love">humans_participate_in_love</span><span class="dep-chip" data-target="love_is_adequate_response_to_persons">love_is_adequate_response_to_persons</span><span class="dep-chip" data-target="adequate_response_means_only_love">adequate_response_means_only_love</span><span class="dep-chip" data-target="personalist_norm_tag">personalist_norm_tag</span><span class="dep-chip" data-target="DIGNITY_IS_INTRINSIC">DIGNITY_IS_INTRINSIC</span><span class="dep-chip" data-target="contraception_body_lie_tag">contraception_body_lie_tag</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="imago_dei_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">imago_dei_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def imago_dei_tag : DenominationalTag</code></pre></div>
+<div class="node-desc">Denominational tag: ecumenical. All Christians affirm Gen 1:27.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target=":">:</span><span class="dep-chip" data-target="imago_dei">imago_dei</span><span class="dep-chip" data-target="participation">participation</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="participation">
@@ -646,11 +663,22 @@ h1 {
   ∀ (p : Person),
     isImageOfGod p →
     godIsLove →
-    participatesInLove p ∧ loveIsAdequateResponse p
-</code></pre></div>
-<div class="node-desc">participation. │   Source: Aquinas, ST I q.44-45 (participation metaphysics). | Scope: Philosophical (Catholic/Thomistic).</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="godIsLove">godIsLove</span><span class="dep-chip" data-target="isImageOfGod">isImageOfGod</span><span class="dep-chip" data-target="loveIsAdequateResponse">loveIsAdequateResponse</span><span class="dep-chip" data-target="participatesInLove">participatesInLove</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="humans_participate_in_love">humans_participate_in_love</span><span class="dep-chip" data-target="love_is_adequate_response_to_persons">love_is_adequate_response_to_persons</span><span class="dep-chip" data-target="adequate_response_means_only_love">adequate_response_means_only_love</span><span class="dep-chip" data-target="isImageOfGod">isImageOfGod</span><span class="dep-chip" data-target="loveIsAdequateResponse">loveIsAdequateResponse</span><span class="dep-chip" data-target="participatesInLove">participatesInLove</span></div></div>
+    participatesInLove p ∧ loveIsAdequateResponse p</code></pre></div>
+<div class="node-desc">**AXIOM (Aquinas, ST I q.44-45): participation.**</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isImageOfGod">isImageOfGod</span><span class="dep-chip" data-target="loveIsAdequateResponse">loveIsAdequateResponse</span><span class="dep-chip" data-target="participatesInLove">participatesInLove</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="imago_dei_tag">imago_dei_tag</span><span class="dep-chip" data-target="participation_tag">participation_tag</span><span class="dep-chip" data-target="humans_participate_in_love">humans_participate_in_love</span><span class="dep-chip" data-target="love_is_adequate_response_to_persons">love_is_adequate_response_to_persons</span><span class="dep-chip" data-target="adequate_response_means_only_love">adequate_response_means_only_love</span><span class="dep-chip" data-target="contraception_body_lie_tag">contraception_body_lie_tag</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="participation_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">participation_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def participation_tag : DenominationalTag</code></pre></div>
+<div class="node-desc">Denominational tag: Catholic/Thomistic for the participation</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="imago_dei">imago_dei</span><span class="dep-chip" data-target="participation">participation</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="humans_participate_in_love">
@@ -664,9 +692,8 @@ h1 {
     (p : Person)
     (h_intellect : p.hasIntellect = true) :
     participatesInLove p</code></pre></div>
-<div class="node-desc">Lemma: Humans participate in love.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="imago_dei">imago_dei</span><span class="dep-chip" data-target="participatesInLove">participatesInLove</span><span class="dep-chip" data-target="participation">participation</span><span class="dep-chip" data-target="s1_god_is_love">s1_god_is_love</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="participatesInLove">participatesInLove</span><span class="dep-chip" data-target="imago_dei">imago_dei</span><span class="dep-chip" data-target="participation">participation</span></div></div>
+<div class="node-desc">**Lemma: Humans participate in love.**</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="imago_dei">imago_dei</span><span class="dep-chip" data-target="participatesInLove">participatesInLove</span><span class="dep-chip" data-target="participation">participation</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="love_is_adequate_response_to_persons">
@@ -680,9 +707,9 @@ h1 {
     (p : Person)
     (h_intellect : p.hasIntellect = true) :
     loveIsAdequateResponse p</code></pre></div>
-<div class="node-desc">Lemma: Love is the adequate response to any human person.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="RelationKind">RelationKind</span><span class="dep-chip" data-target="adequate_response_means_only_love">adequate_response_means_only_love</span><span class="dep-chip" data-target="imago_dei">imago_dei</span><span class="dep-chip" data-target="loveIsAdequateResponse">loveIsAdequateResponse</span><span class="dep-chip" data-target="participation">participation</span><span class="dep-chip" data-target="s1_god_is_love">s1_god_is_love</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="PERSONALIST_NORM">PERSONALIST_NORM</span><span class="dep-chip" data-target="RelationKind">RelationKind</span><span class="dep-chip" data-target="loveIsAdequateResponse">loveIsAdequateResponse</span><span class="dep-chip" data-target="imago_dei">imago_dei</span><span class="dep-chip" data-target="participation">participation</span><span class="dep-chip" data-target="adequate_response_means_only_love">adequate_response_means_only_love</span></div></div>
+<div class="node-desc">**Lemma: Love is the adequate response to any human person.**</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="RelationKind">RelationKind</span><span class="dep-chip" data-target="adequate_response_means_only_love">adequate_response_means_only_love</span><span class="dep-chip" data-target="imago_dei">imago_dei</span><span class="dep-chip" data-target="loveIsAdequateResponse">loveIsAdequateResponse</span><span class="dep-chip" data-target="participation">participation</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="PERSONALIST_NORM">PERSONALIST_NORM</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="adequate_response_means_only_love">
@@ -695,11 +722,10 @@ h1 {
     <div class="node-prop"><pre><code>axiom adequate_response_means_only_love :
   ∀ (p : Person),
     loveIsAdequateResponse p →
-    ∀ (rk : RelationKind), rk.respectsDignity → rk = RelationKind.Love
-</code></pre></div>
-<div class="node-desc">adequate_response_means_only_love. │   Scope: ECUMENICAL — if you accept that love is</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="RelationKind">RelationKind</span><span class="dep-chip" data-target="imago_dei">imago_dei</span><span class="dep-chip" data-target="loveIsAdequateResponse">loveIsAdequateResponse</span><span class="dep-chip" data-target="participation">participation</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="love_is_adequate_response_to_persons">love_is_adequate_response_to_persons</span><span class="dep-chip" data-target="PERSONALIST_NORM">PERSONALIST_NORM</span><span class="dep-chip" data-target="RelationKind">RelationKind</span><span class="dep-chip" data-target="loveIsAdequateResponse">loveIsAdequateResponse</span><span class="dep-chip" data-target="imago_dei">imago_dei</span><span class="dep-chip" data-target="participation">participation</span></div></div>
+    ∀ (rk : RelationKind), rk.respectsDignity → rk = RelationKind.Love</code></pre></div>
+<div class="node-desc">**AXIOM (bridge): adequate_response_means_only_love.**</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target=":">:</span><span class="dep-chip" data-target="RelationKind">RelationKind</span><span class="dep-chip" data-target="imago_dei">imago_dei</span><span class="dep-chip" data-target="loveIsAdequateResponse">loveIsAdequateResponse</span><span class="dep-chip" data-target="participation">participation</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="love_is_adequate_response_to_persons">love_is_adequate_response_to_persons</span><span class="dep-chip" data-target="PERSONALIST_NORM">PERSONALIST_NORM</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="PERSONALIST_NORM">
@@ -713,9 +739,21 @@ h1 {
     (p : Person)
     (h_intellect : p.hasIntellect = true) :
     ∀ (rk : RelationKind), rk.respectsDignity → rk = RelationKind.Love</code></pre></div>
-<div class="node-desc">The only adequate response to a person is love. Use violates dignity; │   Source: The conclusion matches Love and Responsibility (1960),</div>
+<div class="node-desc">**THEOREM (TOB 15:1; Love and Responsibility ch.1): THE PERSONALIST NORM.**</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="RelationKind">RelationKind</span><span class="dep-chip" data-target="adequate_response_means_only_love">adequate_response_means_only_love</span><span class="dep-chip" data-target="love_is_adequate_response_to_persons">love_is_adequate_response_to_persons</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="RelationKind">RelationKind</span><span class="dep-chip" data-target="adequate_response_means_only_love">adequate_response_means_only_love</span><span class="dep-chip" data-target="love_is_adequate_response_to_persons">love_is_adequate_response_to_persons</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="dignity_intrinsic_tag">dignity_intrinsic_tag</span><span class="dep-chip" data-target="material_mediation_tag">material_mediation_tag</span><span class="dep-chip" data-target="body_sign_sacraments_tag">body_sign_sacraments_tag</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="personalist_norm_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">personalist_norm_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def personalist_norm_tag : DenominationalTag</code></pre></div>
+<div class="node-desc">Denominational tag: broadly ecumenical for the norm itself.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target=":">:</span><span class="dep-chip" data-target="imago_dei">imago_dei</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="DIGNITY_IS_INTRINSIC">
@@ -735,9 +773,21 @@ h1 {
       -- The proof: Imago Dei gives us isImageOfGod p, which is
       -- ontological and independent of these external conditions.
       isImageOfGod p</code></pre></div>
-<div class="node-desc">Person dignity does not depend on consent, capability, or social │   Source: Gen 1:27 (created in God's image); CCC §1700</div>
+<div class="node-desc">**THEOREM (TOB 13:2; CCC §1700): DIGNITY IS INTRINSIC.**</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="imago_dei">imago_dei</span><span class="dep-chip" data-target="isImageOfGod">isImageOfGod</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="isImageOfGod">isImageOfGod</span><span class="dep-chip" data-target="imago_dei">imago_dei</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="dignity_intrinsic_tag">dignity_intrinsic_tag</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="dignity_intrinsic_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">dignity_intrinsic_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def dignity_intrinsic_tag : DenominationalTag</code></pre></div>
+<div class="node-desc">Denominational tag: ecumenical. All Christian traditions affirm</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target=":">:</span><span class="dep-chip" data-target="DIGNITY_IS_INTRINSIC">DIGNITY_IS_INTRINSIC</span><span class="dep-chip" data-target="PERSONALIST_NORM">PERSONALIST_NORM</span><span class="dep-chip" data-target="RelationKind">RelationKind</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="CONSENT_DOES_NOT_LEGITIMIZE_USE">
@@ -755,9 +805,19 @@ h1 {
     -- Use.respectsDignity is definitionally False, so any assumption
     -- of it leads to a contradiction — consent is irrelevant.
     RelationKind.Use.respectsDignity → False</code></pre></div>
-<div class="node-desc">Even mutual bilateral consent to instrumental treatment remains a │   Source: Natural law reasoning (Love and Responsibility, 1960);</div>
+<div class="node-desc">**THEOREM (Love and Responsibility ch.1; TOB 32:3):</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="RelationKind">RelationKind</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="RelationKind">RelationKind</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="consent_use_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">consent_use_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def consent_use_tag : DenominationalTag</code></pre></div>
+<div class="node-desc">Denominational tag: Catholic for the strong version. Many Protestant</div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="personalist_norm_grounds_inseparability">
@@ -776,9 +836,20 @@ h1 {
     (_h_blocking_is_use : ¬act.procreativeIntact → RelationKind.Use.isInstrumental) :
     -- Then the act cannot have both meanings intact
     ¬act.bothMeaningsIntact</code></pre></div>
-<div class="node-desc">Theorem: The personalist norm grounds the inseparability principle.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ConjugalAct">ConjugalAct</span><span class="dep-chip" data-target="RelationKind">RelationKind</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="RelationKind">RelationKind</span></div></div>
+<div class="node-desc">**Theorem: The personalist norm grounds the inseparability principle.**</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="RelationKind">RelationKind</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="personalist_grounds_inseparability_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">personalist_grounds_inseparability_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def personalist_grounds_inseparability_tag : DenominationalTag</code></pre></div>
+<div class="node-desc">Denominational tag: Catholic for the derivation; the personalist</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="redemption_is_progressive">redemption_is_progressive</span></div></div>
   </div>
 </div>
 <div class="node-card kind-inductive" data-kind="inductive" data-name="AnthropologicalState">
@@ -790,7 +861,6 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>inductive AnthropologicalState where</code></pre></div>
 <div class="node-desc">The three anthropological states in salvation history.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="FreedomDegree">FreedomDegree</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="stateCapacity">stateCapacity</span></div></div>
   </div>
 </div>
@@ -803,7 +873,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>structure NuptialCapacity where</code></pre></div>
 <div class="node-desc">The capacity for authentic self-gift — what TOB calls the</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="NuptialCapacity.maximum">NuptialCapacity.maximum</span><span class="dep-chip" data-target="NuptialCapacity.zero">NuptialCapacity.zero</span><span class="dep-chip" data-target="concupiscence_diminishes_not_destroys">concupiscence_diminishes_not_destroys</span><span class="dep-chip" data-target="stateCapacity">stateCapacity</span><span class="dep-chip" data-target="redemption_is_progressive">redemption_is_progressive</span><span class="dep-chip" data-target="cooperation_required">cooperation_required</span><span class="dep-chip" data-target="fallen_not_total_depravity">fallen_not_total_depravity</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="NuptialCapacity.maximum">NuptialCapacity.maximum</span><span class="dep-chip" data-target="NuptialCapacity.zero">NuptialCapacity.zero</span><span class="dep-chip" data-target="concupiscence_diminishes_not_destroys">concupiscence_diminishes_not_destroys</span><span class="dep-chip" data-target="concupiscence_tag">concupiscence_tag</span><span class="dep-chip" data-target=":">:</span><span class="dep-chip" data-target="stateCapacity">stateCapacity</span><span class="dep-chip" data-target="redemption_is_progressive">redemption_is_progressive</span><span class="dep-chip" data-target="cooperation_required">cooperation_required</span><span class="dep-chip" data-target="cooperation_is_genuinely_free">cooperation_is_genuinely_free</span><span class="dep-chip" data-target="fallen_not_total_depravity">fallen_not_total_depravity</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="NuptialCapacity.maximum">
@@ -816,7 +886,7 @@ h1 {
     <div class="node-prop"><pre><code>def NuptialCapacity.maximum : NuptialCapacity</code></pre></div>
 <div class="node-desc">A maximum nuptial capacity — the state of Original Integrity.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="NuptialCapacity">NuptialCapacity</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="fallen_not_total_depravity">fallen_not_total_depravity</span><span class="dep-chip" data-target="NuptialCapacity">NuptialCapacity</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="fallen_not_total_depravity">fallen_not_total_depravity</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="NuptialCapacity.zero">
@@ -828,8 +898,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def NuptialCapacity.zero : NuptialCapacity</code></pre></div>
 <div class="node-desc">A zero nuptial capacity — what total depravity would look like</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="NuptialCapacity">NuptialCapacity</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="NuptialCapacity">NuptialCapacity</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target=":">:</span><span class="dep-chip" data-target="NuptialCapacity">NuptialCapacity</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="concupiscence_diminishes_not_destroys">
@@ -844,11 +913,35 @@ h1 {
     -- In the Fallen state, capacity is diminished...
     nc.level &gt; 0 →
     -- ...but the ability to choose self-gift remains
-    nc.canChooseSelfGift
-</code></pre></div>
-<div class="node-desc">CONCUPISCENCE DIMINISHES, │   Source: TOB audiences 26, 29 (1980); CCC §405 (&quot;human nature</div>
+    nc.canChooseSelfGift</code></pre></div>
+<div class="node-desc">**AXIOM (TOB 26:5, 29:4; CCC §405): CONCUPISCENCE DIMINISHES,</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="NuptialCapacity">NuptialCapacity</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="stateCapacity">stateCapacity</span><span class="dep-chip" data-target="NuptialCapacity">NuptialCapacity</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="stateCapacity">stateCapacity</span><span class="dep-chip" data-target="cooperation_is_genuinely_free">cooperation_is_genuinely_free</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="concupiscence_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">concupiscence_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def concupiscence_tag : DenominationalTag</code></pre></div>
+<div class="node-desc">Denominational tag: Catholic for the precise calibration. The</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="NuptialCapacity">NuptialCapacity</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-instance" data-kind="instance" data-name=":">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">instance</span>
+    <span class="node-name">:</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>instance : Inhabited NuptialCapacity</code></pre></div>
+<div class="node-desc">Default NuptialCapacity instance, needed for the opaque declaration.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="NuptialCapacity">NuptialCapacity</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="loveIsAdequateResponse">loveIsAdequateResponse</span><span class="dep-chip" data-target="imago_dei">imago_dei</span><span class="dep-chip" data-target="imago_dei_tag">imago_dei_tag</span><span class="dep-chip" data-target="adequate_response_means_only_love">adequate_response_means_only_love</span><span class="dep-chip" data-target="personalist_norm_tag">personalist_norm_tag</span><span class="dep-chip" data-target="dignity_intrinsic_tag">dignity_intrinsic_tag</span><span class="dep-chip" data-target="NuptialCapacity.zero">NuptialCapacity.zero</span><span class="dep-chip" data-target="three_state_tag">three_state_tag</span><span class="dep-chip" data-target="redemption_progressive_tag">redemption_progressive_tag</span><span class="dep-chip" data-target="fallen_not_total_depravity_tag">fallen_not_total_depravity_tag</span><span class="dep-chip" data-target="contradictsInherentMeaning">contradictsInherentMeaning</span><span class="dep-chip" data-target="body_as_sign_tag">body_as_sign_tag</span><span class="dep-chip" data-target="material_mediation_tag">material_mediation_tag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="stateCapacity">
@@ -858,11 +951,10 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque stateCapacity : AnthropologicalState → NuptialCapacity
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque stateCapacity : AnthropologicalState → NuptialCapacity</code></pre></div>
 <div class="node-desc">The nuptial capacity characteristic of each anthropological state.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="AnthropologicalState">AnthropologicalState</span><span class="dep-chip" data-target="FreedomDegree">FreedomDegree</span><span class="dep-chip" data-target="NuptialCapacity">NuptialCapacity</span><span class="dep-chip" data-target="concupiscence_diminishes_not_destroys">concupiscence_diminishes_not_destroys</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="three_state_anthropology">three_state_anthropology</span><span class="dep-chip" data-target="AnthropologicalState">AnthropologicalState</span><span class="dep-chip" data-target="NuptialCapacity">NuptialCapacity</span><span class="dep-chip" data-target="concupiscence_diminishes_not_destroys">concupiscence_diminishes_not_destroys</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="AnthropologicalState">AnthropologicalState</span><span class="dep-chip" data-target="NuptialCapacity">NuptialCapacity</span><span class="dep-chip" data-target="concupiscence_diminishes_not_destroys">concupiscence_diminishes_not_destroys</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="three_state_anthropology">three_state_anthropology</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="three_state_anthropology">
@@ -880,11 +972,21 @@ h1 {
   (stateCapacity .Fallen).level &gt; 0 ∧
   (stateCapacity .Fallen).canChooseSelfGift ∧
   -- Redeemed: grace restores capacity beyond the Fallen level
-  (stateCapacity .Redeemed).level &gt; (stateCapacity .Fallen).level
-</code></pre></div>
-<div class="node-desc">THREE-STATE ANTHROPOLOGY. │   Source: Scripture (Gen 1-3 for creation and fall; Rom 5-8 for</div>
+  (stateCapacity .Redeemed).level &gt; (stateCapacity .Fallen).level</code></pre></div>
+<div class="node-desc">**AXIOM (TOB 1-4; CCC §374-379, 396-409, 1987-1995):</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="stateCapacity">stateCapacity</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="stateCapacity">stateCapacity</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="three_state_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">three_state_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def three_state_tag : DenominationalTag</code></pre></div>
+<div class="node-desc">Denominational tag: the three-state structure is ecumenical.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target=":">:</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="redemption_is_progressive">
@@ -901,11 +1003,22 @@ h1 {
     -- ...it happens through a process (not instantaneously)
     -- Modeled as: intermediate levels exist
     ∃ (nc_mid : NuptialCapacity),
-      nc1.level &lt; nc_mid.level ∧ nc_mid.level &lt; nc2.level
-</code></pre></div>
-<div class="node-desc">Grace restores nuptial capacity incrementally, not instantaneously. │   Source: CCC §2001 (&quot;The preparation of man for the reception of</div>
+      nc1.level &lt; nc_mid.level ∧ nc_mid.level &lt; nc2.level</code></pre></div>
+<div class="node-desc">**AXIOM (TOB 49:3; CCC §1999, §2001): REDEMPTION IS PROGRESSIVE.**</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="NuptialCapacity">NuptialCapacity</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="NuptialCapacity">NuptialCapacity</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="personalist_grounds_inseparability_tag">personalist_grounds_inseparability_tag</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="redemption_progressive_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">redemption_progressive_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def redemption_progressive_tag : DenominationalTag</code></pre></div>
+<div class="node-desc">Denominational tag: Catholic (transformative grace is progressive).</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target=":">:</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="cooperation_required">
@@ -920,11 +1033,41 @@ h1 {
     -- Grace is given and the person has some capacity...
     graceGiven p g → nc.level &gt; 0 →
     -- ...but restoration requires free cooperation
-    cooperatesWithGrace p g → nc.canChooseSelfGift
-</code></pre></div>
-<div class="node-desc">Restoration of nuptial capacity requires the person's free │   Source: CCC §2002 (&quot;God's free initiative demands man's free</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="NuptialCapacity">NuptialCapacity</span><span class="dep-chip" data-target="cooperatesWithGrace">cooperatesWithGrace</span><span class="dep-chip" data-target="graceGiven">graceGiven</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="NuptialCapacity">NuptialCapacity</span></div></div>
+    cooperatesWithGrace p g → nc.canChooseSelfGift</code></pre></div>
+<div class="node-desc">**AXIOM (TOB 49:3; CCC §2002; cf. T2): COOPERATION REQUIRED.**</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="NuptialCapacity">NuptialCapacity</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="cooperation_required_tag">cooperation_required_tag</span><span class="dep-chip" data-target="cooperation_is_genuinely_free">cooperation_is_genuinely_free</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="cooperation_required_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">cooperation_required_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def cooperation_required_tag : DenominationalTag</code></pre></div>
+<div class="node-desc">Denominational tag: Catholic (synergism).</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="cooperation_required">cooperation_required</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-theorem" data-kind="theorem" data-name="cooperation_is_genuinely_free">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">theorem</span>
+    <span class="node-name">cooperation_is_genuinely_free</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>theorem cooperation_is_genuinely_free
+    (p : Person) (g : Grace) (nc : NuptialCapacity)
+    (h_grace : graceGiven p g) (h_cap : nc.level &gt; 0)
+    (h_coop : cooperatesWithGrace p g) :
+    -- Cooperation restores nuptial capacity...
+    nc.canChooseSelfGift
+    -- ...AND the person could have chosen otherwise (T2)
+    ∧ couldChooseOtherwise p</code></pre></div>
+<div class="node-desc">**Bridge: cooperation_required + T2 = synergism preserves freedom.**</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="NuptialCapacity">NuptialCapacity</span><span class="dep-chip" data-target="concupiscence_diminishes_not_destroys">concupiscence_diminishes_not_destroys</span><span class="dep-chip" data-target="cooperation_required">cooperation_required</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="fallen_not_total_depravity">
@@ -942,9 +1085,20 @@ h1 {
     nc.level &gt; 0
     -- ...AND less than maximum (against Pelagianism)
     ∧ nc.level &lt; 100</code></pre></div>
-<div class="node-desc">Theorem: The Fallen state is BETWEEN Pelagianism and total depravity.</div>
+<div class="node-desc">**Theorem: The Fallen state is BETWEEN Pelagianism and total depravity.**</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="NuptialCapacity">NuptialCapacity</span><span class="dep-chip" data-target="NuptialCapacity.maximum">NuptialCapacity.maximum</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="NuptialCapacity">NuptialCapacity</span><span class="dep-chip" data-target="NuptialCapacity.maximum">NuptialCapacity.maximum</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="fallen_not_total_depravity_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">fallen_not_total_depravity_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def fallen_not_total_depravity_tag : DenominationalTag</code></pre></div>
+<div class="node-desc">Denominational tag: Catholic for the calibration.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target=":">:</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="isSign">
@@ -954,8 +1108,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque isSign : Prop → Prop
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque isSign : Prop → Prop</code></pre></div>
 <div class="node-desc">Whether a bodily act bears meaning that refers beyond itself</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="body_as_sign">body_as_sign</span><span class="dep-chip" data-target="material_mediation">material_mediation</span><span class="dep-chip" data-target="body_sign_grounds_sacraments">body_sign_grounds_sacraments</span></div></div>
   </div>
@@ -967,10 +1120,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque makesAccessible : Prop → Prop → Prop
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque makesAccessible : Prop → Prop → Prop</code></pre></div>
 <div class="node-desc">Whether a material sign makes a spiritual reality accessible</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="signifies">signifies</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="material_mediation">material_mediation</span><span class="dep-chip" data-target="body_sign_grounds_sacraments">body_sign_grounds_sacraments</span></div></div>
   </div>
 </div>
@@ -981,8 +1132,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque inherentMeaning : Prop → Prop
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque inherentMeaning : Prop → Prop</code></pre></div>
 <div class="node-desc">The inherent meaning of a bodily act — what it signifies by</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="contradictsInherentMeaning">contradictsInherentMeaning</span><span class="dep-chip" data-target="contraception_is_body_lie">contraception_is_body_lie</span></div></div>
   </div>
@@ -996,8 +1146,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def contradictsInherentMeaning (bodilyAct : Prop) (agentAction : Prop) : Prop</code></pre></div>
 <div class="node-desc">Whether a bodily act contradicts its inherent meaning.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="inherentMeaning">inherentMeaning</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="sign_truthfulness">sign_truthfulness</span><span class="dep-chip" data-target="contraception_is_body_lie">contraception_is_body_lie</span><span class="dep-chip" data-target="inherentMeaning">inherentMeaning</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target=":">:</span><span class="dep-chip" data-target="inherentMeaning">inherentMeaning</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="sign_truthfulness">sign_truthfulness</span><span class="dep-chip" data-target="contraception_is_body_lie">contraception_is_body_lie</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="body_as_sign">
@@ -1008,11 +1158,22 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom body_as_sign :
-  ∀ (bodilyAct : Prop), isSign bodilyAct
-</code></pre></div>
-<div class="node-desc">The body is a sign — it bears meaning that refers beyond itself │   Source: TOB audience 19 (1980); Rom 1:20 (&quot;his invisible</div>
+  ∀ (bodilyAct : Prop), isSign bodilyAct</code></pre></div>
+<div class="node-desc">**AXIOM (TOB 19:4): BODY AS SIGN.**</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isSign">isSign</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="isSign">isSign</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="sign_truthfulness_tag">sign_truthfulness_tag</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="body_as_sign_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">body_as_sign_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def body_as_sign_tag : DenominationalTag</code></pre></div>
+<div class="node-desc">Denominational tag: ecumenical for the general principle that</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target=":">:</span><span class="dep-chip" data-target="body_sign_grounds_sacraments">body_sign_grounds_sacraments</span><span class="dep-chip" data-target="material_mediation">material_mediation</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="material_mediation">
@@ -1027,11 +1188,22 @@ h1 {
     -- If a spiritual reality is made accessible...
     (∃ (materialSign : Prop), makesAccessible materialSign spiritualReality) →
     -- ...it is accessible ONLY through material signs
-    ∀ (channel : Prop), makesAccessible channel spiritualReality → isSign channel
-</code></pre></div>
-<div class="node-desc">In the created order, spiritual realities are accessible ONLY │   Source: TOB audience 19 (1980); CCC §1146 (&quot;In human life,</div>
+    ∀ (channel : Prop), makesAccessible channel spiritualReality → isSign channel</code></pre></div>
+<div class="node-desc">**AXIOM (TOB 19:4; CCC §1146-1148): MATERIAL MEDIATION.**</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isSign">isSign</span><span class="dep-chip" data-target="makesAccessible">makesAccessible</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="isSign">isSign</span><span class="dep-chip" data-target="makesAccessible">makesAccessible</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="body_as_sign_tag">body_as_sign_tag</span><span class="dep-chip" data-target="sign_truthfulness_tag">sign_truthfulness_tag</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="material_mediation_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">material_mediation_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def material_mediation_tag : DenominationalTag</code></pre></div>
+<div class="node-desc">Denominational tag: Catholic + Orthodox for the strong version.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target=":">:</span><span class="dep-chip" data-target="PERSONALIST_NORM">PERSONALIST_NORM</span><span class="dep-chip" data-target="contraception_is_body_lie">contraception_is_body_lie</span><span class="dep-chip" data-target="sign_truthfulness">sign_truthfulness</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="sign_truthfulness">
@@ -1046,11 +1218,22 @@ h1 {
     -- If the body's inherent meaning is contradicted by the agent's action...
     contradictsInherentMeaning bodilyAct agentAction →
     -- ...the act is a lie told with the body (morally disordered)
-    isEvil (contradictsInherentMeaning bodilyAct agentAction)
-</code></pre></div>
-<div class="node-desc">A bodily act that contradicts its inherent meaning is a &quot;lie told │   Source: TOB audience 32 (1980); Love and Responsibility ch.3;</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="contradictsInherentMeaning">contradictsInherentMeaning</span><span class="dep-chip" data-target="isEvil">isEvil</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="contraception_is_body_lie">contraception_is_body_lie</span><span class="dep-chip" data-target="contradictsInherentMeaning">contradictsInherentMeaning</span></div></div>
+    isEvil (contradictsInherentMeaning bodilyAct agentAction)</code></pre></div>
+<div class="node-desc">**AXIOM (TOB 32:3; Love and Responsibility ch.3): SIGN TRUTHFULNESS.**</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="contradictsInherentMeaning">contradictsInherentMeaning</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="material_mediation_tag">material_mediation_tag</span><span class="dep-chip" data-target="body_sign_sacraments_tag">body_sign_sacraments_tag</span><span class="dep-chip" data-target="contraception_is_body_lie">contraception_is_body_lie</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="sign_truthfulness_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">sign_truthfulness_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def sign_truthfulness_tag : DenominationalTag</code></pre></div>
+<div class="node-desc">Denominational tag: Catholic + Orthodox for the strong version.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="body_as_sign">body_as_sign</span><span class="dep-chip" data-target="material_mediation">material_mediation</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="body_sign_grounds_sacraments">
@@ -1068,9 +1251,21 @@ h1 {
       ∀ (channel : Prop), makesAccessible channel spiritualReality → isSign channel) :
     -- Any channel conveying this spiritual reality must be a sign
     isSign materialSign</code></pre></div>
-<div class="node-desc">Theorem: The body-as-sign principle grounds sacramental efficacy.</div>
+<div class="node-desc">**Theorem: The body-as-sign principle grounds sacramental efficacy.**</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="isSign">isSign</span><span class="dep-chip" data-target="makesAccessible">makesAccessible</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="isSign">isSign</span><span class="dep-chip" data-target="makesAccessible">makesAccessible</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="body_as_sign_tag">body_as_sign_tag</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="body_sign_sacraments_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">body_sign_sacraments_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def body_sign_sacraments_tag : DenominationalTag</code></pre></div>
+<div class="node-desc">Denominational tag: Catholic for the derivation of sacramental</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="PERSONALIST_NORM">PERSONALIST_NORM</span><span class="dep-chip" data-target="sign_truthfulness">sign_truthfulness</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="contraception_is_body_lie">
@@ -1088,9 +1283,21 @@ h1 {
     (h_contradicts : contradictsInherentMeaning conjugalActMeaning contraceptiveAction) :
     -- Contraception is morally disordered (a body-lie)
     isEvil (contradictsInherentMeaning conjugalActMeaning contraceptiveAction)</code></pre></div>
-<div class="node-desc">Theorem: Contraception is a lie told with the body.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="contradictsInherentMeaning">contradictsInherentMeaning</span><span class="dep-chip" data-target="inherentMeaning">inherentMeaning</span><span class="dep-chip" data-target="isEvil">isEvil</span><span class="dep-chip" data-target="sign_truthfulness">sign_truthfulness</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="inherentMeaning">inherentMeaning</span><span class="dep-chip" data-target="contradictsInherentMeaning">contradictsInherentMeaning</span><span class="dep-chip" data-target="sign_truthfulness">sign_truthfulness</span></div></div>
+<div class="node-desc">**Theorem: Contraception is a lie told with the body.**</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="contradictsInherentMeaning">contradictsInherentMeaning</span><span class="dep-chip" data-target="inherentMeaning">inherentMeaning</span><span class="dep-chip" data-target="sign_truthfulness">sign_truthfulness</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="material_mediation_tag">material_mediation_tag</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-def" data-kind="def" data-name="contraception_body_lie_tag">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">def</span>
+    <span class="node-name">contraception_body_lie_tag</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>def contraception_body_lie_tag : DenominationalTag</code></pre></div>
+<div class="node-desc">Denominational tag: Catholic.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="RelationKind">RelationKind</span><span class="dep-chip" data-target="imago_dei">imago_dei</span><span class="dep-chip" data-target="participation">participation</span></div></div>
   </div>
 </div>
   </div>

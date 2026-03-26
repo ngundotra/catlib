@@ -143,7 +143,7 @@ h1 {
   line-height: 1.6;
 }
 
-/* -- Search -- */
+/* ── Search ── */
 .search-box {
   width: 100%;
   padding: 0.8rem 1rem;
@@ -167,7 +167,91 @@ h1 {
   font-style: italic;
 }
 
-/* -- Node cards -- */
+/* ── Category sections ── */
+.category-header {
+  font-family: Cinzel, Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-variant: small-caps;
+  margin: 1.8rem 0 0.8rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── File cards ── */
+.file-card {
+  display: block;
+  padding: 1rem 1.1rem;
+  margin-bottom: 0.5rem;
+  background: var(--bg-parchment);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  text-decoration: none;
+  color: var(--text);
+  transition: background 0.15s, border-color 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.file-card:hover, .file-card:active {
+  background: var(--bg-vellum);
+  border-color: var(--accent-gold);
+  text-decoration: none;
+}
+
+.file-card-name {
+  font-family: Cinzel, Georgia, serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.3rem;
+}
+
+.file-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  font-size: 0.82rem;
+  color: var(--text-light);
+}
+
+.file-card-meta .tag {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.75rem;
+  font-family: Cinzel, Georgia, serif;
+  letter-spacing: 0.03em;
+}
+
+.tag-axiom { background: var(--axiom-bg); color: var(--axiom-dot); border: 1px solid var(--axiom-border); }
+.tag-theorem { background: var(--theorem-bg); color: var(--theorem-dot); border: 1px solid var(--theorem-border); }
+.tag-def { background: var(--def-bg); color: var(--def-dot); border: 1px solid var(--def-border); }
+.tag-proposition { background: var(--proposition-bg); color: var(--proposition-dot); border: 1px solid var(--proposition-border); }
+
+.file-card-ccc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 0.3rem;
+}
+
+/* ── Summary stats ── */
+.stats-bar {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--text-light);
+  font-style: italic;
+}
+
+.stats-bar span { white-space: nowrap; }
+
+/* ── Node cards (per-file page) ── */
 .node-card {
   margin-bottom: 0.4rem;
   border: 1px solid var(--border);
@@ -321,7 +405,7 @@ h1 {
   color: var(--text-muted);
 }
 
-/* -- Flow diagram header -- */
+/* ── Flow diagram header ── */
 .flow-summary {
   display: flex;
   justify-content: center;
@@ -347,7 +431,7 @@ h1 {
 .flow-count.theorems { background: var(--theorem-bg); color: var(--theorem-dot); }
 .flow-count.derived { background: var(--def-bg); color: var(--def-dot); }
 
-/* -- Legend -- */
+/* ── Legend ── */
 .legend {
   display: flex;
   flex-wrap: wrap;
@@ -379,7 +463,7 @@ h1 {
 .legend-dot.inductive { background: var(--inductive-dot); }
 .legend-dot.proposition { background: var(--proposition-dot); }
 
-/* -- Filter buttons -- */
+/* ── Filter buttons ── */
 .filter-bar {
   display: flex;
   flex-wrap: wrap;
@@ -408,7 +492,7 @@ h1 {
   border-color: var(--accent);
 }
 
-/* -- Back link -- */
+/* ── Back link ── */
 .back-link {
   display: inline-block;
   margin-bottom: 1rem;
@@ -417,7 +501,7 @@ h1 {
   letter-spacing: 0.04em;
 }
 
-/* -- Footer -- */
+/* ── Footer ── */
 .footer {
   text-align: center;
   padding-top: 2rem;
@@ -426,7 +510,7 @@ h1 {
   font-style: italic;
 }
 
-/* -- Responsive -- */
+/* ── Responsive ── */
 @media (max-width: 500px) {
   html { font-size: 16px; }
   .container { padding: 1rem 0.75rem 2rem; }
@@ -441,8 +525,15 @@ h1 {
   <h1>MarksOfChurch</h1>
   <div class="subtitle">Creed &middot; 53 declarations</div>
 
-  
-  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;2, &sect;8, &sect;20, &sect;811, &sect;813, &sect;815, &sect;819, &sect;823, &sect;824, &sect;827, &sect;830, &sect;831 (+4 more)</div>
+  <div class="flow-summary">
+  <span class="flow-count axioms">26 axioms</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count theorems">7 theorems</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count derived">20 derived</span>
+</div>
+  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1396, &sect;2, &sect;20, &sect;8, &sect;811, &sect;813, &sect;815, &sect;819, &sect;823, &sect;824, &sect;827, &sect;830, &sect;831, &sect;838, &sect;857 +1 more</div>
+
   <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot structure"></span>structure</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
 
   <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (12)</button><button class="filter-btn" data-filter="def">def (19)</button><button class="filter-btn" data-filter="opaque">opaque (14)</button><button class="filter-btn" data-filter="structure">structure (1)</button><button class="filter-btn" data-filter="theorem">theorem (7)</button></div>
@@ -458,7 +549,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom Communion : Type</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="FourMarks">FourMarks</span><span class="dep-chip" data-target="apostolicity_requires_succession">apostolicity_requires_succession</span><span class="dep-chip" data-target="catholicChurch">catholicChurch</span><span class="dep-chip" data-target="catholicity_is_twofold">catholicity_is_twofold</span><span class="dep-chip" data-target="hasApostolicity">hasApostolicity</span><span class="dep-chip" data-target="hasCatholicity">hasCatholicity</span><span class="dep-chip" data-target="hasFullDeposit">hasFullDeposit</span><span class="dep-chip" data-target="hasHoliness">hasHoliness</span><span class="dep-chip" data-target="hasMissionToAllPeoples">hasMissionToAllPeoples</span><span class="dep-chip" data-target="hasUnbrokenSuccession">hasUnbrokenSuccession</span><span class="dep-chip" data-target="hasUnity">hasUnity</span><span class="dep-chip" data-target="holinessFromChristSanctification">holinessFromChristSanctification</span><span class="dep-chip" data-target="holiness_requires_sacramental_means">holiness_requires_sacramental_means</span><span class="dep-chip" data-target="marksFormPackage">marksFormPackage</span><span class="dep-chip" data-target="marks_have_grounds">marks_have_grounds</span><span class="dep-chip" data-target="marks_interlock">marks_interlock</span><span class="dep-chip" data-target="orthodoxChurch">orthodoxChurch</span><span class="dep-chip" data-target="preservesApostolicTeaching">preservesApostolicTeaching</span><span class="dep-chip" data-target="protestant_invisible_church">protestant_invisible_church</span><span class="dep-chip" data-target="protestant_marks_dissolve_uniqueness">protestant_marks_dissolve_uniqueness</span><span class="dep-chip" data-target="unityGroundedInTrinity">unityGroundedInTrinity</span><span class="dep-chip" data-target="unityMaintainedByCharity">unityMaintainedByCharity</span><span class="dep-chip" data-target="unity_requires_visible_bond">unity_requires_visible_bond</span></div></div>
+<div class="node-desc">A Christian communion — a body of Christians with shared worship, governance,</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hasUnity">hasUnity</span><span class="dep-chip" data-target="hasHoliness">hasHoliness</span><span class="dep-chip" data-target="hasCatholicity">hasCatholicity</span><span class="dep-chip" data-target="hasApostolicity">hasApostolicity</span><span class="dep-chip" data-target="FourMarks">FourMarks</span><span class="dep-chip" data-target="unityGroundedInTrinity">unityGroundedInTrinity</span><span class="dep-chip" data-target="unityMaintainedByCharity">unityMaintainedByCharity</span><span class="dep-chip" data-target="holinessFromChristSanctification">holinessFromChristSanctification</span><span class="dep-chip" data-target="hasFullDeposit">hasFullDeposit</span><span class="dep-chip" data-target="hasMissionToAllPeoples">hasMissionToAllPeoples</span><span class="dep-chip" data-target="hasUnbrokenSuccession">hasUnbrokenSuccession</span><span class="dep-chip" data-target="preservesApostolicTeaching">preservesApostolicTeaching</span><span class="dep-chip" data-target="unity_requires_visible_bond">unity_requires_visible_bond</span><span class="dep-chip" data-target="holiness_requires_sacramental_means">holiness_requires_sacramental_means</span><span class="dep-chip" data-target="catholicity_is_twofold">catholicity_is_twofold</span><span class="dep-chip" data-target="apostolicity_requires_succession">apostolicity_requires_succession</span><span class="dep-chip" data-target="catholicChurch">catholicChurch</span><span class="dep-chip" data-target="orthodoxChurch">orthodoxChurch</span><span class="dep-chip" data-target="marks_have_grounds">marks_have_grounds</span><span class="dep-chip" data-target="marksFormPackage">marksFormPackage</span><span class="dep-chip" data-target="marks_interlock">marks_interlock</span><span class="dep-chip" data-target="protestant_invisible_church">protestant_invisible_church</span><span class="dep-chip" data-target="protestant_marks_dissolve_uniqueness">protestant_marks_dissolve_uniqueness</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="hasUnity">
@@ -469,6 +561,7 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque hasUnity : Communion → Prop</code></pre></div>
+<div class="node-desc">Whether a communion possesses the mark of UNITY.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Communion">Communion</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="FourMarks">FourMarks</span><span class="dep-chip" data-target="unity_requires_visible_bond">unity_requires_visible_bond</span></div></div>
   </div>
@@ -481,6 +574,7 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque hasHoliness : Communion → Prop</code></pre></div>
+<div class="node-desc">Whether a communion possesses the mark of HOLINESS.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Communion">Communion</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="FourMarks">FourMarks</span><span class="dep-chip" data-target="holiness_requires_sacramental_means">holiness_requires_sacramental_means</span></div></div>
   </div>
@@ -493,6 +587,7 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque hasCatholicity : Communion → Prop</code></pre></div>
+<div class="node-desc">Whether a communion possesses the mark of CATHOLICITY.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Communion">Communion</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="FourMarks">FourMarks</span><span class="dep-chip" data-target="catholicity_is_twofold">catholicity_is_twofold</span></div></div>
   </div>
@@ -505,6 +600,7 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque hasApostolicity : Communion → Prop</code></pre></div>
+<div class="node-desc">Whether a communion possesses the mark of APOSTOLICITY.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Communion">Communion</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="FourMarks">FourMarks</span><span class="dep-chip" data-target="apostolicity_requires_succession">apostolicity_requires_succession</span></div></div>
   </div>
@@ -517,8 +613,9 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>structure FourMarks where</code></pre></div>
+<div class="node-desc">The four marks of the Church — the Nicene-Constantinopolitan Creed's</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Communion">Communion</span><span class="dep-chip" data-target="hasApostolicity">hasApostolicity</span><span class="dep-chip" data-target="hasCatholicity">hasCatholicity</span><span class="dep-chip" data-target="hasHoliness">hasHoliness</span><span class="dep-chip" data-target="hasUnity">hasUnity</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="both_claim_marks">both_claim_marks</span><span class="dep-chip" data-target="catholic_church_has_four_marks">catholic_church_has_four_marks</span><span class="dep-chip" data-target="catholic_orthodox_split_is_about_primacy">catholic_orthodox_split_is_about_primacy</span><span class="dep-chip" data-target="mark_interpretation_depends_on_priors">mark_interpretation_depends_on_priors</span><span class="dep-chip" data-target="marksOfChurchDenominationalScope">marksOfChurchDenominationalScope</span><span class="dep-chip" data-target="marks_have_grounds">marks_have_grounds</span><span class="dep-chip" data-target="marks_interlock">marks_interlock</span><span class="dep-chip" data-target="orthodox_claim_four_marks">orthodox_claim_four_marks</span><span class="dep-chip" data-target="protestant_invisible_church">protestant_invisible_church</span><span class="dep-chip" data-target="protestant_marks_dissolve_uniqueness">protestant_marks_dissolve_uniqueness</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="catholic_church_has_four_marks">catholic_church_has_four_marks</span><span class="dep-chip" data-target="orthodox_claim_four_marks">orthodox_claim_four_marks</span><span class="dep-chip" data-target="marks_have_grounds">marks_have_grounds</span><span class="dep-chip" data-target="both_claim_marks">both_claim_marks</span><span class="dep-chip" data-target="mark_interpretation_depends_on_priors">mark_interpretation_depends_on_priors</span><span class="dep-chip" data-target="marks_interlock">marks_interlock</span><span class="dep-chip" data-target="protestant_invisible_church">protestant_invisible_church</span><span class="dep-chip" data-target="protestant_marks_dissolve_uniqueness">protestant_marks_dissolve_uniqueness</span><span class="dep-chip" data-target="catholic_orthodox_split_is_about_primacy">catholic_orthodox_split_is_about_primacy</span><span class="dep-chip" data-target="marksOfChurchDenominationalScope">marksOfChurchDenominationalScope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="unityGroundedInTrinity">
@@ -529,8 +626,9 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque unityGroundedInTrinity : Communion → Prop</code></pre></div>
+<div class="node-desc">Whether a communion's unity is grounded in the Trinity.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Communion">Communion</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="marksOfChurchDenominationalScope">marksOfChurchDenominationalScope</span><span class="dep-chip" data-target="marks_have_grounds">marks_have_grounds</span><span class="dep-chip" data-target="orthodox_same_grounds">orthodox_same_grounds</span><span class="dep-chip" data-target="unity_requires_visible_bond">unity_requires_visible_bond</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="unity_requires_visible_bond">unity_requires_visible_bond</span><span class="dep-chip" data-target="marks_have_grounds">marks_have_grounds</span><span class="dep-chip" data-target="orthodox_same_grounds">orthodox_same_grounds</span><span class="dep-chip" data-target="marksOfChurchDenominationalScope">marksOfChurchDenominationalScope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="unityMaintainedByCharity">
@@ -541,8 +639,9 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque unityMaintainedByCharity : Communion → Prop</code></pre></div>
+<div class="node-desc">Whether a communion's unity is maintained through charity/Eucharist.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Communion">Communion</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="marks_have_grounds">marks_have_grounds</span><span class="dep-chip" data-target="orthodox_same_grounds">orthodox_same_grounds</span><span class="dep-chip" data-target="unity_requires_visible_bond">unity_requires_visible_bond</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="unity_requires_visible_bond">unity_requires_visible_bond</span><span class="dep-chip" data-target="marks_have_grounds">marks_have_grounds</span><span class="dep-chip" data-target="orthodox_same_grounds">orthodox_same_grounds</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="holinessFromChristSanctification">
@@ -553,6 +652,7 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque holinessFromChristSanctification : Communion → Prop</code></pre></div>
+<div class="node-desc">Whether a communion's holiness comes from Christ's sanctification.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Communion">Communion</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="holiness_requires_sacramental_means">holiness_requires_sacramental_means</span><span class="dep-chip" data-target="marks_have_grounds">marks_have_grounds</span><span class="dep-chip" data-target="orthodox_same_grounds">orthodox_same_grounds</span></div></div>
   </div>
@@ -565,8 +665,9 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque hasFullDeposit : Communion → Prop</code></pre></div>
+<div class="node-desc">Whether a communion possesses the FULL deposit of faith.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Communion">Communion</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="catholicity_is_twofold">catholicity_is_twofold</span><span class="dep-chip" data-target="marksOfChurchDenominationalScope">marksOfChurchDenominationalScope</span><span class="dep-chip" data-target="marks_have_grounds">marks_have_grounds</span><span class="dep-chip" data-target="orthodox_same_grounds">orthodox_same_grounds</span><span class="dep-chip" data-target="protestant_invisible_church">protestant_invisible_church</span><span class="dep-chip" data-target="protestant_marks_dissolve_uniqueness">protestant_marks_dissolve_uniqueness</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="catholicity_is_twofold">catholicity_is_twofold</span><span class="dep-chip" data-target="marks_have_grounds">marks_have_grounds</span><span class="dep-chip" data-target="protestant_invisible_church">protestant_invisible_church</span><span class="dep-chip" data-target="protestant_marks_dissolve_uniqueness">protestant_marks_dissolve_uniqueness</span><span class="dep-chip" data-target="orthodox_same_grounds">orthodox_same_grounds</span><span class="dep-chip" data-target="marksOfChurchDenominationalScope">marksOfChurchDenominationalScope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="hasMissionToAllPeoples">
@@ -577,6 +678,7 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque hasMissionToAllPeoples : Communion → Prop</code></pre></div>
+<div class="node-desc">Whether a communion has the mission to ALL peoples (extensive catholicity).</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Communion">Communion</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="catholicity_is_twofold">catholicity_is_twofold</span><span class="dep-chip" data-target="marks_have_grounds">marks_have_grounds</span><span class="dep-chip" data-target="orthodox_same_grounds">orthodox_same_grounds</span></div></div>
   </div>
@@ -589,8 +691,9 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque hasUnbrokenSuccession : Communion → Prop</code></pre></div>
+<div class="node-desc">Whether a communion has UNBROKEN apostolic succession.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Communion">Communion</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="apostolicity_requires_succession">apostolicity_requires_succession</span><span class="dep-chip" data-target="marksOfChurchDenominationalScope">marksOfChurchDenominationalScope</span><span class="dep-chip" data-target="marks_have_grounds">marks_have_grounds</span><span class="dep-chip" data-target="orthodox_same_grounds">orthodox_same_grounds</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="apostolicity_requires_succession">apostolicity_requires_succession</span><span class="dep-chip" data-target="marks_have_grounds">marks_have_grounds</span><span class="dep-chip" data-target="orthodox_same_grounds">orthodox_same_grounds</span><span class="dep-chip" data-target="marksOfChurchDenominationalScope">marksOfChurchDenominationalScope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="preservesApostolicTeaching">
@@ -601,8 +704,9 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque preservesApostolicTeaching : Communion → Prop</code></pre></div>
+<div class="node-desc">Whether a communion preserves apostolic TEACHING faithfully.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Communion">Communion</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="apostolicity_requires_succession">apostolicity_requires_succession</span><span class="dep-chip" data-target="marks_have_grounds">marks_have_grounds</span><span class="dep-chip" data-target="orthodox_same_grounds">orthodox_same_grounds</span><span class="dep-chip" data-target="protestant_invisible_church">protestant_invisible_church</span><span class="dep-chip" data-target="protestant_marks_dissolve_uniqueness">protestant_marks_dissolve_uniqueness</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="apostolicity_requires_succession">apostolicity_requires_succession</span><span class="dep-chip" data-target="marks_have_grounds">marks_have_grounds</span><span class="dep-chip" data-target="protestant_invisible_church">protestant_invisible_church</span><span class="dep-chip" data-target="protestant_marks_dissolve_uniqueness">protestant_marks_dissolve_uniqueness</span><span class="dep-chip" data-target="orthodox_same_grounds">orthodox_same_grounds</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="unity_requires_visible_bond">
@@ -616,8 +720,9 @@ h1 {
   ∀ (c : Communion),
     hasUnity c →
     unityGroundedInTrinity c ∧ unityMaintainedByCharity c</code></pre></div>
+<div class="node-desc">**AXIOM (UNITY_REQUIRES_VISIBLE_BOND)**: Full ecclesial unity requires</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Communion">Communion</span><span class="dep-chip" data-target="hasUnity">hasUnity</span><span class="dep-chip" data-target="unityGroundedInTrinity">unityGroundedInTrinity</span><span class="dep-chip" data-target="unityMaintainedByCharity">unityMaintainedByCharity</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="marksOfChurchDenominationalScope">marksOfChurchDenominationalScope</span><span class="dep-chip" data-target="marks_have_grounds">marks_have_grounds</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="marks_have_grounds">marks_have_grounds</span><span class="dep-chip" data-target="marksOfChurchDenominationalScope">marksOfChurchDenominationalScope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="unity_requires_visible_bond_provenance">
@@ -627,8 +732,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def unity_requires_visible_bond_provenance : Provenance :=
-  Provenance.tradition &quot;CCC §815-816; Vatican II Unitatis Redintegratio §2-3&quot;</code></pre></div>
+    <div class="node-prop"><pre><code>def unity_requires_visible_bond_provenance : Provenance</code></pre></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="unity_requires_visible_bond_tag">
@@ -638,7 +742,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def unity_requires_visible_bond_tag : DenominationalTag := catholicOnly</code></pre></div>
+    <div class="node-prop"><pre><code>def unity_requires_visible_bond_tag : DenominationalTag := catholicOnly
+</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="marksOfChurchDenominationalScope">marksOfChurchDenominationalScope</span></div></div>
   </div>
 </div>
@@ -653,8 +758,9 @@ h1 {
   ∀ (c : Communion),
     hasHoliness c →
     holinessFromChristSanctification c</code></pre></div>
+<div class="node-desc">**AXIOM (HOLINESS_REQUIRES_SACRAMENTAL_MEANS)**: The mark of holiness</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Communion">Communion</span><span class="dep-chip" data-target="hasHoliness">hasHoliness</span><span class="dep-chip" data-target="holinessFromChristSanctification">holinessFromChristSanctification</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="marksOfChurchDenominationalScope">marksOfChurchDenominationalScope</span><span class="dep-chip" data-target="marks_have_grounds">marks_have_grounds</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="marks_have_grounds">marks_have_grounds</span><span class="dep-chip" data-target="marksOfChurchDenominationalScope">marksOfChurchDenominationalScope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="holiness_requires_sacramental_means_provenance">
@@ -664,8 +770,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def holiness_requires_sacramental_means_provenance : Provenance :=
-  Provenance.tradition &quot;CCC §824, §827; Trent Session VII&quot;</code></pre></div>
+    <div class="node-prop"><pre><code>def holiness_requires_sacramental_means_provenance : Provenance</code></pre></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="holiness_requires_sacramental_means_tag">
@@ -675,9 +780,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def holiness_requires_sacramental_means_tag : DenominationalTag :=
-  { acceptedBy := [Denomination.catholic]
-    note := &quot;Catholic + Orthodox; Protestants ground holiness differently&quot; }</code></pre></div>
+    <div class="node-prop"><pre><code>def holiness_requires_sacramental_means_tag : DenominationalTag</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="marksOfChurchDenominationalScope">marksOfChurchDenominationalScope</span></div></div>
   </div>
 </div>
@@ -692,8 +795,9 @@ h1 {
   ∀ (c : Communion),
     hasCatholicity c →
     hasFullDeposit c ∧ hasMissionToAllPeoples c</code></pre></div>
+<div class="node-desc">**AXIOM (CATHOLICITY_IS_TWOFOLD)**: True catholicity requires BOTH</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Communion">Communion</span><span class="dep-chip" data-target="hasCatholicity">hasCatholicity</span><span class="dep-chip" data-target="hasFullDeposit">hasFullDeposit</span><span class="dep-chip" data-target="hasMissionToAllPeoples">hasMissionToAllPeoples</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="marksOfChurchDenominationalScope">marksOfChurchDenominationalScope</span><span class="dep-chip" data-target="marks_have_grounds">marks_have_grounds</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="marks_have_grounds">marks_have_grounds</span><span class="dep-chip" data-target="marksOfChurchDenominationalScope">marksOfChurchDenominationalScope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="catholicity_is_twofold_provenance">
@@ -703,8 +807,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def catholicity_is_twofold_provenance : Provenance :=
-  Provenance.tradition &quot;CCC §830-831&quot;</code></pre></div>
+    <div class="node-prop"><pre><code>def catholicity_is_twofold_provenance : Provenance</code></pre></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="catholicity_is_twofold_tag">
@@ -714,7 +817,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def catholicity_is_twofold_tag : DenominationalTag := catholicOnly</code></pre></div>
+    <div class="node-prop"><pre><code>def catholicity_is_twofold_tag : DenominationalTag := catholicOnly
+</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="marksOfChurchDenominationalScope">marksOfChurchDenominationalScope</span></div></div>
   </div>
 </div>
@@ -729,8 +833,9 @@ h1 {
   ∀ (c : Communion),
     hasApostolicity c →
     hasUnbrokenSuccession c ∧ preservesApostolicTeaching c</code></pre></div>
+<div class="node-desc">**AXIOM (APOSTOLICITY_REQUIRES_SUCCESSION)**: Full apostolicity requires</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Communion">Communion</span><span class="dep-chip" data-target="hasApostolicity">hasApostolicity</span><span class="dep-chip" data-target="hasUnbrokenSuccession">hasUnbrokenSuccession</span><span class="dep-chip" data-target="preservesApostolicTeaching">preservesApostolicTeaching</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="marksOfChurchDenominationalScope">marksOfChurchDenominationalScope</span><span class="dep-chip" data-target="marks_have_grounds">marks_have_grounds</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="marks_have_grounds">marks_have_grounds</span><span class="dep-chip" data-target="marksOfChurchDenominationalScope">marksOfChurchDenominationalScope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="apostolicity_requires_succession_provenance">
@@ -740,8 +845,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def apostolicity_requires_succession_provenance : Provenance :=
-  Provenance.tradition &quot;CCC §857, §862; Vatican II Lumen Gentium §20&quot;</code></pre></div>
+    <div class="node-prop"><pre><code>def apostolicity_requires_succession_provenance : Provenance</code></pre></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="apostolicity_requires_succession_tag">
@@ -751,9 +855,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def apostolicity_requires_succession_tag : DenominationalTag :=
-  { acceptedBy := [Denomination.catholic]
-    note := &quot;Catholic + Orthodox; Protestants define apostolicity through teaching alone&quot; }</code></pre></div>
+    <div class="node-prop"><pre><code>def apostolicity_requires_succession_tag : DenominationalTag</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="marksOfChurchDenominationalScope">marksOfChurchDenominationalScope</span></div></div>
   </div>
 </div>
@@ -765,8 +867,9 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom catholicChurch : Communion</code></pre></div>
+<div class="node-desc">The Catholic Church — modeled as a specific communion.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Communion">Communion</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="both_claim_marks">both_claim_marks</span><span class="dep-chip" data-target="catholic_church_has_four_marks">catholic_church_has_four_marks</span><span class="dep-chip" data-target="catholic_marks_form_package">catholic_marks_form_package</span><span class="dep-chip" data-target="catholic_orthodox_split_is_about_primacy">catholic_orthodox_split_is_about_primacy</span><span class="dep-chip" data-target="mark_interpretation_depends_on_priors">mark_interpretation_depends_on_priors</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="catholic_church_has_four_marks">catholic_church_has_four_marks</span><span class="dep-chip" data-target="both_claim_marks">both_claim_marks</span><span class="dep-chip" data-target="mark_interpretation_depends_on_priors">mark_interpretation_depends_on_priors</span><span class="dep-chip" data-target="catholic_marks_form_package">catholic_marks_form_package</span><span class="dep-chip" data-target="catholic_orthodox_split_is_about_primacy">catholic_orthodox_split_is_about_primacy</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="catholic_church_has_four_marks">
@@ -778,8 +881,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom catholic_church_has_four_marks :
   FourMarks catholicChurch</code></pre></div>
+<div class="node-desc">**AXIOM (CATHOLIC_CHURCH_HAS_FOUR_MARKS)**: The Catholic Church possesses</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="FourMarks">FourMarks</span><span class="dep-chip" data-target="catholicChurch">catholicChurch</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="both_claim_marks">both_claim_marks</span><span class="dep-chip" data-target="catholic_marks_form_package">catholic_marks_form_package</span><span class="dep-chip" data-target="catholic_orthodox_split_is_about_primacy">catholic_orthodox_split_is_about_primacy</span><span class="dep-chip" data-target="marksOfChurchDenominationalScope">marksOfChurchDenominationalScope</span><span class="dep-chip" data-target="marks_not_self_authenticating">marks_not_self_authenticating</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="both_claim_marks">both_claim_marks</span><span class="dep-chip" data-target="marks_not_self_authenticating">marks_not_self_authenticating</span><span class="dep-chip" data-target="catholic_marks_form_package">catholic_marks_form_package</span><span class="dep-chip" data-target="catholic_orthodox_split_is_about_primacy">catholic_orthodox_split_is_about_primacy</span><span class="dep-chip" data-target="marksOfChurchDenominationalScope">marksOfChurchDenominationalScope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="catholic_church_has_four_marks_provenance">
@@ -789,8 +893,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def catholic_church_has_four_marks_provenance : Provenance :=
-  Provenance.tradition &quot;CCC §811; Nicaea-Constantinople 381; Vatican II Lumen Gentium §8&quot;</code></pre></div>
+    <div class="node-prop"><pre><code>def catholic_church_has_four_marks_provenance : Provenance</code></pre></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="catholic_church_has_four_marks_tag">
@@ -800,7 +903,12 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def catholic_church_has_four_marks_tag : DenominationalTag := catholicOnly</code></pre></div>
+    <div class="node-prop"><pre><code>def catholic_church_has_four_marks_tag : DenominationalTag := catholicOnly
+
+-- ============================================================================
+-- THE DISCRIMINATION PROBLEM: Do the marks distinguish communions?
+-- ============================================================================
+</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="marksOfChurchDenominationalScope">marksOfChurchDenominationalScope</span></div></div>
   </div>
 </div>
@@ -812,8 +920,9 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom orthodoxChurch : Communion</code></pre></div>
+<div class="node-desc">The Orthodox Church — another communion that claims all four marks.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Communion">Communion</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="both_claim_marks">both_claim_marks</span><span class="dep-chip" data-target="catholic_orthodox_split_is_about_primacy">catholic_orthodox_split_is_about_primacy</span><span class="dep-chip" data-target="mark_interpretation_depends_on_priors">mark_interpretation_depends_on_priors</span><span class="dep-chip" data-target="orthodox_claim_four_marks">orthodox_claim_four_marks</span><span class="dep-chip" data-target="orthodox_same_grounds">orthodox_same_grounds</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="orthodox_claim_four_marks">orthodox_claim_four_marks</span><span class="dep-chip" data-target="both_claim_marks">both_claim_marks</span><span class="dep-chip" data-target="mark_interpretation_depends_on_priors">mark_interpretation_depends_on_priors</span><span class="dep-chip" data-target="orthodox_same_grounds">orthodox_same_grounds</span><span class="dep-chip" data-target="catholic_orthodox_split_is_about_primacy">catholic_orthodox_split_is_about_primacy</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="orthodox_claim_four_marks">
@@ -825,8 +934,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom orthodox_claim_four_marks :
   FourMarks orthodoxChurch</code></pre></div>
+<div class="node-desc">**AXIOM (ORTHODOX_CLAIM_FOUR_MARKS)**: The Orthodox Church also claims</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="FourMarks">FourMarks</span><span class="dep-chip" data-target="orthodoxChurch">orthodoxChurch</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="both_claim_marks">both_claim_marks</span><span class="dep-chip" data-target="catholic_orthodox_split_is_about_primacy">catholic_orthodox_split_is_about_primacy</span><span class="dep-chip" data-target="marksOfChurchDenominationalScope">marksOfChurchDenominationalScope</span><span class="dep-chip" data-target="marks_not_self_authenticating">marks_not_self_authenticating</span><span class="dep-chip" data-target="orthodox_same_grounds">orthodox_same_grounds</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="both_claim_marks">both_claim_marks</span><span class="dep-chip" data-target="marks_not_self_authenticating">marks_not_self_authenticating</span><span class="dep-chip" data-target="orthodox_same_grounds">orthodox_same_grounds</span><span class="dep-chip" data-target="catholic_orthodox_split_is_about_primacy">catholic_orthodox_split_is_about_primacy</span><span class="dep-chip" data-target="marksOfChurchDenominationalScope">marksOfChurchDenominationalScope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="orthodox_claim_four_marks_provenance">
@@ -836,8 +946,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def orthodox_claim_four_marks_provenance : Provenance :=
-  Provenance.tradition &quot;Nicene Creed (shared); Orthodox ecclesiology&quot;</code></pre></div>
+    <div class="node-prop"><pre><code>def orthodox_claim_four_marks_provenance : Provenance</code></pre></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="orthodox_claim_four_marks_tag">
@@ -847,9 +956,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def orthodox_claim_four_marks_tag : DenominationalTag :=
-  { acceptedBy := [Denomination.catholic]
-    note := &quot;Orthodox position — they claim the same marks; modeled to show the discrimination problem&quot; }</code></pre></div>
+    <div class="node-prop"><pre><code>def orthodox_claim_four_marks_tag : DenominationalTag</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="marks_have_grounds">marks_have_grounds</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="marksOfChurchDenominationalScope">marksOfChurchDenominationalScope</span></div></div>
   </div>
@@ -869,12 +976,8 @@ h1 {
     -- Catholicity = fullness + universality
     (hasFullDeposit c ∧ hasMissionToAllPeoples c) ∧
     -- Apostolicity = succession + teaching
-    (hasUnbrokenSuccession c ∧ preservesApostolicTeaching c) := by
-  exact ⟨ unity_requires_visible_bond c h.one
-        , holiness_requires_sacramental_means c h.holy
-        , catholicity_is_twofold c h.catholic
-        , apostolicity_requires_succession c h.apostolic
-        ⟩</code></pre></div>
+    (hasUnbrokenSuccession c ∧ preservesApostolicTeaching c)</code></pre></div>
+<div class="node-desc">**THEOREM: marks_have_grounds** — Under Catholic axioms, possessing</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Communion">Communion</span><span class="dep-chip" data-target="FourMarks">FourMarks</span><span class="dep-chip" data-target="apostolicity_requires_succession">apostolicity_requires_succession</span><span class="dep-chip" data-target="both_claim_marks">both_claim_marks</span><span class="dep-chip" data-target="catholicity_is_twofold">catholicity_is_twofold</span><span class="dep-chip" data-target="hasFullDeposit">hasFullDeposit</span><span class="dep-chip" data-target="hasMissionToAllPeoples">hasMissionToAllPeoples</span><span class="dep-chip" data-target="hasUnbrokenSuccession">hasUnbrokenSuccession</span><span class="dep-chip" data-target="holinessFromChristSanctification">holinessFromChristSanctification</span><span class="dep-chip" data-target="holiness_requires_sacramental_means">holiness_requires_sacramental_means</span><span class="dep-chip" data-target="preservesApostolicTeaching">preservesApostolicTeaching</span><span class="dep-chip" data-target="unityGroundedInTrinity">unityGroundedInTrinity</span><span class="dep-chip" data-target="unityMaintainedByCharity">unityMaintainedByCharity</span><span class="dep-chip" data-target="unity_requires_visible_bond">unity_requires_visible_bond</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="orthodox_claim_four_marks_tag">orthodox_claim_four_marks_tag</span><span class="dep-chip" data-target="orthodox_same_grounds">orthodox_same_grounds</span></div></div>
   </div>
@@ -887,8 +990,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem both_claim_marks :
-    FourMarks catholicChurch ∧ FourMarks orthodoxChurch :=
-  ⟨catholic_church_has_four_marks, orthodox_claim_four_marks⟩</code></pre></div>
+    FourMarks catholicChurch ∧ FourMarks orthodoxChurch</code></pre></div>
+<div class="node-desc">**THEOREM: both_claim_marks** — Both Catholic and Orthodox communions</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="FourMarks">FourMarks</span><span class="dep-chip" data-target="catholicChurch">catholicChurch</span><span class="dep-chip" data-target="catholic_church_has_four_marks">catholic_church_has_four_marks</span><span class="dep-chip" data-target="orthodoxChurch">orthodoxChurch</span><span class="dep-chip" data-target="orthodox_claim_four_marks">orthodox_claim_four_marks</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="marks_have_grounds">marks_have_grounds</span></div></div>
   </div>
@@ -901,7 +1004,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque disagreementReducesToPriorAxioms : Prop</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="catholic_orthodox_split_is_about_primacy">catholic_orthodox_split_is_about_primacy</span><span class="dep-chip" data-target="mark_interpretation_depends_on_priors">mark_interpretation_depends_on_priors</span><span class="dep-chip" data-target="marks_not_self_authenticating">marks_not_self_authenticating</span></div></div>
+<div class="node-desc">Whether the disagreement about a mark reduces to prior axiom disagreements.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="mark_interpretation_depends_on_priors">mark_interpretation_depends_on_priors</span><span class="dep-chip" data-target="marks_not_self_authenticating">marks_not_self_authenticating</span><span class="dep-chip" data-target="catholic_orthodox_split_is_about_primacy">catholic_orthodox_split_is_about_primacy</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="mark_interpretation_depends_on_priors">
@@ -915,8 +1019,9 @@ h1 {
   FourMarks catholicChurch →
   FourMarks orthodoxChurch →
   disagreementReducesToPriorAxioms</code></pre></div>
+<div class="node-desc">**AXIOM (MARK_INTERPRETATION_DEPENDS_ON_PRIORS)**: The interpretation</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="FourMarks">FourMarks</span><span class="dep-chip" data-target="catholicChurch">catholicChurch</span><span class="dep-chip" data-target="disagreementReducesToPriorAxioms">disagreementReducesToPriorAxioms</span><span class="dep-chip" data-target="orthodoxChurch">orthodoxChurch</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="marksOfChurchDenominationalScope">marksOfChurchDenominationalScope</span><span class="dep-chip" data-target="marks_not_self_authenticating">marks_not_self_authenticating</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="marks_not_self_authenticating">marks_not_self_authenticating</span><span class="dep-chip" data-target="marksOfChurchDenominationalScope">marksOfChurchDenominationalScope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="mark_interpretation_depends_on_priors_provenance">
@@ -926,8 +1031,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def mark_interpretation_depends_on_priors_provenance : Provenance :=
-  Provenance.tradition &quot;CCC §811-870 (structural observation)&quot;</code></pre></div>
+    <div class="node-prop"><pre><code>def mark_interpretation_depends_on_priors_provenance : Provenance</code></pre></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="mark_interpretation_depends_on_priors_tag">
@@ -937,9 +1041,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def mark_interpretation_depends_on_priors_tag : DenominationalTag :=
-  { acceptedBy := [Denomination.ecumenical]
-    note := &quot;Meta-observation — all traditions can agree the debate is about interpretation, not marks&quot; }</code></pre></div>
+    <div class="node-prop"><pre><code>def mark_interpretation_depends_on_priors_tag : DenominationalTag</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="marks_not_self_authenticating">marks_not_self_authenticating</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="marksOfChurchDenominationalScope">marksOfChurchDenominationalScope</span></div></div>
   </div>
@@ -952,12 +1054,10 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem marks_not_self_authenticating :
-    disagreementReducesToPriorAxioms := by
-  exact mark_interpretation_depends_on_priors
-    catholic_church_has_four_marks
-    orthodox_claim_four_marks</code></pre></div>
+    disagreementReducesToPriorAxioms</code></pre></div>
+<div class="node-desc">**THEOREM: marks_not_self_authenticating** — The four marks cannot serve</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="catholic_church_has_four_marks">catholic_church_has_four_marks</span><span class="dep-chip" data-target="disagreementReducesToPriorAxioms">disagreementReducesToPriorAxioms</span><span class="dep-chip" data-target="mark_interpretation_depends_on_priors">mark_interpretation_depends_on_priors</span><span class="dep-chip" data-target="orthodox_claim_four_marks">orthodox_claim_four_marks</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="catholic_orthodox_split_is_about_primacy">catholic_orthodox_split_is_about_primacy</span><span class="dep-chip" data-target="mark_interpretation_depends_on_priors_tag">mark_interpretation_depends_on_priors_tag</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="mark_interpretation_depends_on_priors_tag">mark_interpretation_depends_on_priors_tag</span><span class="dep-chip" data-target="catholic_orthodox_split_is_about_primacy">catholic_orthodox_split_is_about_primacy</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="marksFormPackage">
@@ -968,8 +1068,9 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque marksFormPackage : Communion → Prop</code></pre></div>
+<div class="node-desc">Whether the four marks are mutually entailing under a given interpretation.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Communion">Communion</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="catholic_marks_form_package">catholic_marks_form_package</span><span class="dep-chip" data-target="marks_interlock">marks_interlock</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="marks_interlock">marks_interlock</span><span class="dep-chip" data-target="catholic_marks_form_package">catholic_marks_form_package</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="marks_interlock">
@@ -983,6 +1084,7 @@ h1 {
   ∀ (c : Communion),
     FourMarks c →
     marksFormPackage c</code></pre></div>
+<div class="node-desc">**AXIOM (MARKS_INTERLOCK)**: Under the Catholic axiom set, the four marks</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Communion">Communion</span><span class="dep-chip" data-target="FourMarks">FourMarks</span><span class="dep-chip" data-target="marksFormPackage">marksFormPackage</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="catholic_marks_form_package">catholic_marks_form_package</span><span class="dep-chip" data-target="marksOfChurchDenominationalScope">marksOfChurchDenominationalScope</span></div></div>
   </div>
@@ -994,8 +1096,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def marks_interlock_provenance : Provenance :=
-  Provenance.tradition &quot;CCC §811-870 (structural observation on mark interdependence)&quot;</code></pre></div>
+    <div class="node-prop"><pre><code>def marks_interlock_provenance : Provenance</code></pre></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="marks_interlock_tag">
@@ -1005,7 +1106,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def marks_interlock_tag : DenominationalTag := catholicOnly</code></pre></div>
+    <div class="node-prop"><pre><code>def marks_interlock_tag : DenominationalTag := catholicOnly
+</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="catholic_marks_form_package">catholic_marks_form_package</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="marksOfChurchDenominationalScope">marksOfChurchDenominationalScope</span></div></div>
   </div>
@@ -1018,8 +1120,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem catholic_marks_form_package :
-    marksFormPackage catholicChurch :=
-  marks_interlock catholicChurch catholic_church_has_four_marks</code></pre></div>
+    marksFormPackage catholicChurch</code></pre></div>
+<div class="node-desc">**THEOREM: catholic_marks_form_package** — The Catholic Church's four</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="catholicChurch">catholicChurch</span><span class="dep-chip" data-target="catholic_church_has_four_marks">catholic_church_has_four_marks</span><span class="dep-chip" data-target="marksFormPackage">marksFormPackage</span><span class="dep-chip" data-target="marks_interlock">marks_interlock</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="marks_interlock_tag">marks_interlock_tag</span></div></div>
   </div>
@@ -1032,6 +1134,7 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>opaque marksApplyToInvisibleChurch : Prop</code></pre></div>
+<div class="node-desc">Whether the marks apply to an invisible church of all believers</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="protestant_invisible_church">protestant_invisible_church</span><span class="dep-chip" data-target="protestant_marks_dissolve_uniqueness">protestant_marks_dissolve_uniqueness</span></div></div>
   </div>
 </div>
@@ -1047,8 +1150,9 @@ h1 {
   -- If marks apply to the invisible church, then no visible communion
   -- can uniquely claim them
   ∀ (c : Communion), FourMarks c → hasFullDeposit c → preservesApostolicTeaching c</code></pre></div>
+<div class="node-desc">**AXIOM (PROTESTANT_INVISIBLE_CHURCH)**: The four marks identify the</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Communion">Communion</span><span class="dep-chip" data-target="FourMarks">FourMarks</span><span class="dep-chip" data-target="hasFullDeposit">hasFullDeposit</span><span class="dep-chip" data-target="marksApplyToInvisibleChurch">marksApplyToInvisibleChurch</span><span class="dep-chip" data-target="preservesApostolicTeaching">preservesApostolicTeaching</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="marksOfChurchDenominationalScope">marksOfChurchDenominationalScope</span><span class="dep-chip" data-target="protestant_marks_dissolve_uniqueness">protestant_marks_dissolve_uniqueness</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="protestant_marks_dissolve_uniqueness">protestant_marks_dissolve_uniqueness</span><span class="dep-chip" data-target="marksOfChurchDenominationalScope">marksOfChurchDenominationalScope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="protestant_invisible_church_provenance">
@@ -1058,8 +1162,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def protestant_invisible_church_provenance : Provenance :=
-  Provenance.tradition &quot;Westminster Confession Ch.25; Augsburg Confession Art.VII&quot;</code></pre></div>
+    <div class="node-prop"><pre><code>def protestant_invisible_church_provenance : Provenance</code></pre></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="protestant_invisible_church_tag">
@@ -1069,9 +1172,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def protestant_invisible_church_tag : DenominationalTag :=
-  { acceptedBy := [Denomination.reformed, Denomination.lutheran]
-    note := &quot;Protestant position — marks apply to invisible church of all believers&quot; }</code></pre></div>
+    <div class="node-prop"><pre><code>def protestant_invisible_church_tag : DenominationalTag</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="protestant_marks_dissolve_uniqueness">protestant_marks_dissolve_uniqueness</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="marksOfChurchDenominationalScope">marksOfChurchDenominationalScope</span></div></div>
   </div>
@@ -1085,8 +1186,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem protestant_marks_dissolve_uniqueness
     (h_invisible : marksApplyToInvisibleChurch) :
-    ∀ (c : Communion), FourMarks c → hasFullDeposit c → preservesApostolicTeaching c :=
-  protestant_invisible_church h_invisible</code></pre></div>
+    ∀ (c : Communion), FourMarks c → hasFullDeposit c → preservesApostolicTeaching c</code></pre></div>
+<div class="node-desc">**THEOREM: protestant_marks_dissolve_uniqueness** — Under the Protestant</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Communion">Communion</span><span class="dep-chip" data-target="FourMarks">FourMarks</span><span class="dep-chip" data-target="hasFullDeposit">hasFullDeposit</span><span class="dep-chip" data-target="marksApplyToInvisibleChurch">marksApplyToInvisibleChurch</span><span class="dep-chip" data-target="orthodox_same_grounds">orthodox_same_grounds</span><span class="dep-chip" data-target="preservesApostolicTeaching">preservesApostolicTeaching</span><span class="dep-chip" data-target="protestant_invisible_church">protestant_invisible_church</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="protestant_invisible_church_tag">protestant_invisible_church_tag</span></div></div>
   </div>
@@ -1106,8 +1207,8 @@ h1 {
     -- Catholicity = fullness + universality
     (hasFullDeposit orthodoxChurch ∧ hasMissionToAllPeoples orthodoxChurch) ∧
     -- Apostolicity = succession + teaching
-    (hasUnbrokenSuccession orthodoxChurch ∧ preservesApostolicTeaching orthodoxChurch) := by
-  exact marks_have_grounds orthodoxChurch orthodox_claim_four_marks</code></pre></div>
+    (hasUnbrokenSuccession orthodoxChurch ∧ preservesApostolicTeaching orthodoxChurch)</code></pre></div>
+<div class="node-desc">**THEOREM: orthodox_same_grounds** — The Orthodox communion satisfies</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="catholic_orthodox_split_is_about_primacy">catholic_orthodox_split_is_about_primacy</span><span class="dep-chip" data-target="hasFullDeposit">hasFullDeposit</span><span class="dep-chip" data-target="hasMissionToAllPeoples">hasMissionToAllPeoples</span><span class="dep-chip" data-target="hasUnbrokenSuccession">hasUnbrokenSuccession</span><span class="dep-chip" data-target="holinessFromChristSanctification">holinessFromChristSanctification</span><span class="dep-chip" data-target="marks_have_grounds">marks_have_grounds</span><span class="dep-chip" data-target="orthodoxChurch">orthodoxChurch</span><span class="dep-chip" data-target="orthodox_claim_four_marks">orthodox_claim_four_marks</span><span class="dep-chip" data-target="preservesApostolicTeaching">preservesApostolicTeaching</span><span class="dep-chip" data-target="unityGroundedInTrinity">unityGroundedInTrinity</span><span class="dep-chip" data-target="unityMaintainedByCharity">unityMaintainedByCharity</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="protestant_marks_dissolve_uniqueness">protestant_marks_dissolve_uniqueness</span></div></div>
   </div>
@@ -1121,11 +1222,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem catholic_orthodox_split_is_about_primacy :
     FourMarks catholicChurch ∧ FourMarks orthodoxChurch ∧
-    disagreementReducesToPriorAxioms := by
-  exact ⟨ catholic_church_has_four_marks
-        , orthodox_claim_four_marks
-        , marks_not_self_authenticating
-        ⟩</code></pre></div>
+    disagreementReducesToPriorAxioms</code></pre></div>
+<div class="node-desc">**THEOREM: catholic_orthodox_split_is_about_primacy** — The Catholic and</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="FourMarks">FourMarks</span><span class="dep-chip" data-target="catholicChurch">catholicChurch</span><span class="dep-chip" data-target="catholic_church_has_four_marks">catholic_church_has_four_marks</span><span class="dep-chip" data-target="disagreementReducesToPriorAxioms">disagreementReducesToPriorAxioms</span><span class="dep-chip" data-target="marks_not_self_authenticating">marks_not_self_authenticating</span><span class="dep-chip" data-target="orthodoxChurch">orthodoxChurch</span><span class="dep-chip" data-target="orthodox_claim_four_marks">orthodox_claim_four_marks</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="orthodox_same_grounds">orthodox_same_grounds</span></div></div>
   </div>
@@ -1137,17 +1235,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>def marksOfChurchDenominationalScope : List (String × DenominationalTag) :=
-  [ (&quot;unity_requires_visible_bond&quot;,             unity_requires_visible_bond_tag)
-  , (&quot;holiness_requires_sacramental_means&quot;,     holiness_requires_sacramental_means_tag)
-  , (&quot;catholicity_is_twofold&quot;,                  catholicity_is_twofold_tag)
-  , (&quot;apostolicity_requires_succession&quot;,        apostolicity_requires_succession_tag)
-  , (&quot;catholic_church_has_four_marks&quot;,          catholic_church_has_four_marks_tag)
-  , (&quot;orthodox_claim_four_marks&quot;,               orthodox_claim_four_marks_tag)
-  , (&quot;mark_interpretation_depends_on_priors&quot;,   mark_interpretation_depends_on_priors_tag)
-  , (&quot;marks_interlock&quot;,                         marks_interlock_tag)
-  , (&quot;protestant_invisible_church&quot;,             protestant_invisible_church_tag)
-  ]</code></pre></div>
+    <div class="node-prop"><pre><code>def marksOfChurchDenominationalScope : List (String × DenominationalTag)</code></pre></div>
+<div class="node-desc">Denominational scope of each axiom in the Marks of the Church formalization.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="FourMarks">FourMarks</span><span class="dep-chip" data-target="apostolicity_requires_succession">apostolicity_requires_succession</span><span class="dep-chip" data-target="apostolicity_requires_succession_tag">apostolicity_requires_succession_tag</span><span class="dep-chip" data-target="catholic_church_has_four_marks">catholic_church_has_four_marks</span><span class="dep-chip" data-target="catholic_church_has_four_marks_tag">catholic_church_has_four_marks_tag</span><span class="dep-chip" data-target="catholicity_is_twofold">catholicity_is_twofold</span><span class="dep-chip" data-target="catholicity_is_twofold_tag">catholicity_is_twofold_tag</span><span class="dep-chip" data-target="hasFullDeposit">hasFullDeposit</span><span class="dep-chip" data-target="hasUnbrokenSuccession">hasUnbrokenSuccession</span><span class="dep-chip" data-target="holiness_requires_sacramental_means">holiness_requires_sacramental_means</span><span class="dep-chip" data-target="holiness_requires_sacramental_means_tag">holiness_requires_sacramental_means_tag</span><span class="dep-chip" data-target="mark_interpretation_depends_on_priors">mark_interpretation_depends_on_priors</span><span class="dep-chip" data-target="mark_interpretation_depends_on_priors_tag">mark_interpretation_depends_on_priors_tag</span><span class="dep-chip" data-target="marks_interlock">marks_interlock</span><span class="dep-chip" data-target="marks_interlock_tag">marks_interlock_tag</span><span class="dep-chip" data-target="orthodox_claim_four_marks">orthodox_claim_four_marks</span><span class="dep-chip" data-target="orthodox_claim_four_marks_tag">orthodox_claim_four_marks_tag</span><span class="dep-chip" data-target="protestant_invisible_church">protestant_invisible_church</span><span class="dep-chip" data-target="protestant_invisible_church_tag">protestant_invisible_church_tag</span><span class="dep-chip" data-target="unityGroundedInTrinity">unityGroundedInTrinity</span><span class="dep-chip" data-target="unity_requires_visible_bond">unity_requires_visible_bond</span><span class="dep-chip" data-target="unity_requires_visible_bond_tag">unity_requires_visible_bond_tag</span></div></div>
   </div>
 </div>

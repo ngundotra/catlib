@@ -267,8 +267,6 @@ h1 {
 .node-card.kind-structure { border-left-color: var(--structure-dot); }
 .node-card.kind-inductive { border-left-color: var(--inductive-dot); }
 .node-card.kind-proposition { border-left-color: var(--proposition-dot); }
-.node-card.kind-instance { border-left-color: var(--def-dot); }
-.node-card.kind-abbrev { border-left-color: var(--def-dot); }
 
 .node-header {
   display: flex;
@@ -304,8 +302,6 @@ h1 {
 .kind-structure .node-kind-badge { background: var(--structure-bg); color: var(--structure-dot); }
 .kind-inductive .node-kind-badge { background: var(--inductive-bg); color: var(--inductive-dot); }
 .kind-proposition .node-kind-badge { background: var(--proposition-bg); color: var(--proposition-dot); }
-.kind-instance .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
-.kind-abbrev .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
 
 .node-name {
   flex: 1;
@@ -466,8 +462,6 @@ h1 {
 .legend-dot.structure { background: var(--structure-dot); }
 .legend-dot.inductive { background: var(--inductive-dot); }
 .legend-dot.proposition { background: var(--proposition-dot); }
-.legend-dot.instance { background: var(--def-dot); }
-.legend-dot.abbrev { background: var(--def-dot); }
 
 /* ── Filter buttons ── */
 .filter-bar {
@@ -530,12 +524,19 @@ h1 {
   <a href="index.html" class="back-link">&larr; All files</a>
   <h1>Love</h1>
   <div class="subtitle">Foundations &middot; 23 declarations</div>
-  
-  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;3, &sect;1264, &sect;1822, &sect;1827, &sect;1855, &sect;2264</div>
 
-  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot structure"></span>structure</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span></div>
+  <div class="flow-summary">
+  <span class="flow-count axioms">8 axioms</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count theorems">7 theorems</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count derived">8 derived</span>
+</div>
+  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1, &sect;1264, &sect;1822, &sect;1827, &sect;1855, &sect;2264, &sect;3, &sect;6</div>
 
-  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (8)</button><button class="filter-btn" data-filter="theorem">theorem (7)</button><button class="filter-btn" data-filter="def">def (5)</button><button class="filter-btn" data-filter="structure">structure (1)</button><button class="filter-btn" data-filter="inductive">inductive (2)</button></div>
+  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span><span class="legend-item"><span class="legend-dot structure"></span>structure</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
+
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (8)</button><button class="filter-btn" data-filter="def">def (5)</button><button class="filter-btn" data-filter="inductive">inductive (2)</button><button class="filter-btn" data-filter="structure">structure (1)</button><button class="filter-btn" data-filter="theorem">theorem (7)</button></div>
 
   <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
 
@@ -549,9 +550,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>inductive LoveKind where</code></pre></div>
 <div class="node-desc">The four kinds of love the Catechism distinguishes (often implicitly).</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="agape_not_symmetric">agape_not_symmetric</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="TypedLove">TypedLove</span><span class="dep-chip" data-target="agape_not_symmetric_witness">agape_not_symmetric_witness</span><span class="dep-chip" data-target="philia_symmetric">philia_symmetric</span><span class="dep-chip" data-target="self_love_reflexive">self_love_reflexive</span><span class="dep-chip" data-target="agape_requires_freedom">agape_requires_freedom</span><span class="dep-chip" data-target="eros_does_not_require_freedom">eros_does_not_require_freedom</span><span class="dep-chip" data-target="charity_can_increase">charity_can_increase</span><span class="dep-chip" data-target="mortal_sin_can_destroy_charity">mortal_sin_can_destroy_charity</span><span class="dep-chip" data-target="mortal_sin_preserves_eros">mortal_sin_preserves_eros</span><span class="dep-chip" data-target="mortal_sin_preserves_philia">mortal_sin_preserves_philia</span><span class="dep-chip" data-target="ordo_amoris_god_over_neighbor">ordo_amoris_god_over_neighbor</span><span class="dep-chip" data-target="ordo_amoris_neighbor_over_self">ordo_amoris_neighbor_over_self</span><span class="dep-chip" data-target="ordo_amoris_tag">ordo_amoris_tag</span><span class="dep-chip" data-target="self_love_grounds_self_defense">self_love_grounds_self_defense</span><span class="dep-chip" data-target="mortal_sin_destroys_charity_not_eros">mortal_sin_destroys_charity_not_eros</span><span class="dep-chip" data-target="agape_not_symmetric">agape_not_symmetric</span><span class="dep-chip" data-target="love_requires_freedom_only_agape">love_requires_freedom_only_agape</span></div></div>
   </div>
 </div>
 <div class="node-card kind-structure" data-kind="structure" data-name="TypedLove">
@@ -563,9 +562,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>structure TypedLove where</code></pre></div>
 <div class="node-desc">A typed love relation — specifying WHICH kind of love.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="agape_not_symmetric">agape_not_symmetric</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="LoveKind">LoveKind</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="agape_not_symmetric_witness">agape_not_symmetric_witness</span><span class="dep-chip" data-target="philia_symmetric">philia_symmetric</span><span class="dep-chip" data-target="self_love_reflexive">self_love_reflexive</span><span class="dep-chip" data-target="agape_requires_freedom">agape_requires_freedom</span><span class="dep-chip" data-target="eros_does_not_require_freedom">eros_does_not_require_freedom</span><span class="dep-chip" data-target="charity_can_increase">charity_can_increase</span><span class="dep-chip" data-target="mortal_sin_can_destroy_charity">mortal_sin_can_destroy_charity</span><span class="dep-chip" data-target="mortal_sin_preserves_eros">mortal_sin_preserves_eros</span><span class="dep-chip" data-target="mortal_sin_preserves_philia">mortal_sin_preserves_philia</span><span class="dep-chip" data-target="ordo_amoris_god_over_neighbor">ordo_amoris_god_over_neighbor</span><span class="dep-chip" data-target="ordo_amoris_neighbor_over_self">ordo_amoris_neighbor_over_self</span><span class="dep-chip" data-target="self_love_grounds_self_defense">self_love_grounds_self_defense</span><span class="dep-chip" data-target="mortal_sin_destroys_charity_not_eros">mortal_sin_destroys_charity_not_eros</span><span class="dep-chip" data-target="agape_not_symmetric">agape_not_symmetric</span><span class="dep-chip" data-target="love_requires_freedom_only_agape">love_requires_freedom_only_agape</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="agape_not_symmetric_witness">
@@ -580,12 +578,13 @@ h1 {
     tl.kind = LoveKind.agape ∧
     tl.degree &gt; 0 ∧
     -- There is no reciprocal agape from beloved to lover
-    ∀ (tl&#x27; : TypedLove),
-      tl&#x27;.kind = LoveKind.agape →
-      tl&#x27;.lover = tl.beloved →
-      tl&#x27;.beloved = tl.lover →
-      tl&#x27;.degree = 0</code></pre></div>
+    ∀ (tl' : TypedLove),
+      tl'.kind = LoveKind.agape →
+      tl'.lover = tl.beloved →
+      tl'.beloved = tl.lover →
+      tl'.degree = 0</code></pre></div>
 <div class="node-desc">Agape is not symmetric: there exist pairs where one loves the other</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="LoveKind">LoveKind</span><span class="dep-chip" data-target="TypedLove">TypedLove</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="philia_symmetric">
@@ -598,12 +597,13 @@ h1 {
     <div class="node-prop"><pre><code>axiom philia_symmetric :
   ∀ (tl : TypedLove),
     tl.kind = LoveKind.philia →
-    ∃ (tl&#x27; : TypedLove),
-      tl&#x27;.kind = LoveKind.philia ∧
-      tl&#x27;.lover = tl.beloved ∧
-      tl&#x27;.beloved = tl.lover ∧
-      tl&#x27;.degree &gt; 0</code></pre></div>
+    ∃ (tl' : TypedLove),
+      tl'.kind = LoveKind.philia ∧
+      tl'.lover = tl.beloved ∧
+      tl'.beloved = tl.lover ∧
+      tl'.degree &gt; 0</code></pre></div>
 <div class="node-desc">Philia (friendship) is symmetric: if A has philia toward B, then B</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="LoveKind">LoveKind</span><span class="dep-chip" data-target="TypedLove">TypedLove</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="self_love_reflexive">
@@ -618,9 +618,8 @@ h1 {
     tl.kind = LoveKind.selfLove →
     tl.lover = tl.beloved</code></pre></div>
 <div class="node-desc">Self-love is reflexive: lover = beloved.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="self_love_grounds_self_defense">self_love_grounds_self_defense</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="LoveKind">LoveKind</span><span class="dep-chip" data-target="TypedLove">TypedLove</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ordo_amoris_tag">ordo_amoris_tag</span><span class="dep-chip" data-target="self_love_grounds_self_defense">self_love_grounds_self_defense</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="agape_requires_freedom">
@@ -636,9 +635,8 @@ h1 {
     tl.degree &gt; 0 →
     tl.lover.hasFreeWill = true</code></pre></div>
 <div class="node-desc">Agape (charity) requires freedom of the will.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="love_requires_freedom_only_agape">love_requires_freedom_only_agape</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="LoveKind">LoveKind</span><span class="dep-chip" data-target="TypedLove">TypedLove</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="agape_not_symmetric">agape_not_symmetric</span><span class="dep-chip" data-target="love_requires_freedom_only_agape">love_requires_freedom_only_agape</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="eros_does_not_require_freedom">
@@ -654,9 +652,8 @@ h1 {
     tl.degree &gt; 0 ∧
     tl.lover.hasFreeWill = false</code></pre></div>
 <div class="node-desc">Eros does NOT require freedom. Involuntary attraction is possible</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="love_requires_freedom_only_agape">love_requires_freedom_only_agape</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="LoveKind">LoveKind</span><span class="dep-chip" data-target="TypedLove">TypedLove</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="agape_not_symmetric">agape_not_symmetric</span><span class="dep-chip" data-target="love_requires_freedom_only_agape">love_requires_freedom_only_agape</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="charity_can_increase">
@@ -670,12 +667,13 @@ h1 {
   ∀ (tl : TypedLove),
     tl.kind = LoveKind.agape →
     tl.lover.hasFreeWill = true →
-    ∃ (tl&#x27; : TypedLove),
-      tl&#x27;.kind = LoveKind.agape ∧
-      tl&#x27;.lover = tl.lover ∧
-      tl&#x27;.beloved = tl.beloved ∧
-      tl&#x27;.degree &gt; tl.degree</code></pre></div>
+    ∃ (tl' : TypedLove),
+      tl'.kind = LoveKind.agape ∧
+      tl'.lover = tl.lover ∧
+      tl'.beloved = tl.beloved ∧
+      tl'.degree &gt; tl.degree</code></pre></div>
 <div class="node-desc">Charity can increase: virtuous acts increase the degree of agape.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="LoveKind">LoveKind</span><span class="dep-chip" data-target="TypedLove">TypedLove</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="mortal_sin_can_destroy_charity">
@@ -689,15 +687,14 @@ h1 {
   ∀ (tl : TypedLove) (s : Sin),
     tl.kind = LoveKind.agape →
     isGraveSin s →
-    ∃ (tl&#x27; : TypedLove),
-      tl&#x27;.kind = LoveKind.agape ∧
-      tl&#x27;.lover = tl.lover ∧
-      tl&#x27;.beloved = tl.beloved ∧
-      tl&#x27;.degree = 0</code></pre></div>
+    ∃ (tl' : TypedLove),
+      tl'.kind = LoveKind.agape ∧
+      tl'.lover = tl.lover ∧
+      tl'.beloved = tl.beloved ∧
+      tl'.degree = 0</code></pre></div>
 <div class="node-desc">Mortal sin can reduce charity to zero.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="mortal_sin_destroys_charity_not_eros">mortal_sin_destroys_charity_not_eros</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="LoveKind">LoveKind</span><span class="dep-chip" data-target="TypedLove">TypedLove</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="mortal_sin_destroys_charity_not_eros">mortal_sin_destroys_charity_not_eros</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="mortal_sin_preserves_eros">
@@ -713,15 +710,14 @@ h1 {
     tl.degree &gt; 0 →
     isGraveSin s →
     -- Eros is not affected: the love remains
-    ∃ (tl&#x27; : TypedLove),
-      tl&#x27;.kind = LoveKind.eros ∧
-      tl&#x27;.lover = tl.lover ∧
-      tl&#x27;.beloved = tl.beloved ∧
-      tl&#x27;.degree &gt; 0</code></pre></div>
+    ∃ (tl' : TypedLove),
+      tl'.kind = LoveKind.eros ∧
+      tl'.lover = tl.lover ∧
+      tl'.beloved = tl.beloved ∧
+      tl'.degree &gt; 0</code></pre></div>
 <div class="node-desc">Mortal sin does NOT destroy eros.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="mortal_sin_destroys_charity_not_eros">mortal_sin_destroys_charity_not_eros</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="LoveKind">LoveKind</span><span class="dep-chip" data-target="TypedLove">TypedLove</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="mortal_sin_destroys_charity_not_eros">mortal_sin_destroys_charity_not_eros</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="mortal_sin_preserves_philia">
@@ -736,12 +732,13 @@ h1 {
     tl.kind = LoveKind.philia →
     tl.degree &gt; 0 →
     isGraveSin s →
-    ∃ (tl&#x27; : TypedLove),
-      tl&#x27;.kind = LoveKind.philia ∧
-      tl&#x27;.lover = tl.lover ∧
-      tl&#x27;.beloved = tl.beloved ∧
-      tl&#x27;.degree &gt; 0</code></pre></div>
+    ∃ (tl' : TypedLove),
+      tl'.kind = LoveKind.philia ∧
+      tl'.lover = tl.lover ∧
+      tl'.beloved = tl.beloved ∧
+      tl'.degree &gt; 0</code></pre></div>
 <div class="node-desc">Mortal sin does NOT destroy philia.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="LoveKind">LoveKind</span><span class="dep-chip" data-target="TypedLove">TypedLove</span></div></div>
   </div>
 </div>
 <div class="node-card kind-inductive" data-kind="inductive" data-name="LoveTarget">
@@ -772,6 +769,7 @@ h1 {
     tl_god.degree &gt; tl_neighbor.degree →
     True  -- This ordering is the NORM, not always the actuality</code></pre></div>
 <div class="node-desc">The ordo amoris: a strict ordering on love targets.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="LoveKind">LoveKind</span><span class="dep-chip" data-target="TypedLove">TypedLove</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="ordo_amoris_neighbor_over_self">
@@ -790,6 +788,7 @@ h1 {
     -- Neighbor should be loved more than self
     tl_neighbor.degree &gt; tl_self.degree →
     True</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="LoveKind">LoveKind</span><span class="dep-chip" data-target="TypedLove">TypedLove</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="ordo_amoris_tag">
@@ -801,6 +800,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def ordo_amoris_tag : DenominationalTag</code></pre></div>
 <div class="node-desc">Denominational tag for the ordo amoris.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="LoveKind">LoveKind</span><span class="dep-chip" data-target="self_love_reflexive">self_love_reflexive</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="self_love_grounds_self_defense">
@@ -817,9 +817,7 @@ h1 {
     -- Self-love implies lover = beloved (reflexivity)
     tl.lover = tl.beloved</code></pre></div>
 <div class="node-desc">Self-love provides the moral basis for legitimate defense.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="self_love_reflexive">self_love_reflexive</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="LoveKind">LoveKind</span><span class="dep-chip" data-target="TypedLove">TypedLove</span><span class="dep-chip" data-target="self_love_reflexive">self_love_reflexive</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="mortal_sin_destroys_charity_not_eros">
@@ -836,22 +834,19 @@ h1 {
   (h_eros_pos : tl_eros.degree &gt; 0)
   (h_grave : isGraveSin s) :
   -- Agape CAN be destroyed...
-  (∃ (tl&#x27; : TypedLove),
-    tl&#x27;.kind = LoveKind.agape ∧
-    tl&#x27;.lover = tl_agape.lover ∧
-    tl&#x27;.beloved = tl_agape.beloved ∧
-    tl&#x27;.degree = 0) ∧
+  (∃ (tl' : TypedLove),
+    tl'.kind = LoveKind.agape ∧
+    tl'.lover = tl_agape.lover ∧
+    tl'.beloved = tl_agape.beloved ∧
+    tl'.degree = 0) ∧
   -- ...but eros SURVIVES
-  (∃ (tl&#x27; : TypedLove),
-    tl&#x27;.kind = LoveKind.eros ∧
-    tl&#x27;.lover = tl_eros.lover ∧
-    tl&#x27;.beloved = tl_eros.beloved ∧
-    tl&#x27;.degree &gt; 0)</code></pre></div>
+  (∃ (tl' : TypedLove),
+    tl'.kind = LoveKind.eros ∧
+    tl'.lover = tl_eros.lover ∧
+    tl'.beloved = tl_eros.beloved ∧
+    tl'.degree &gt; 0)</code></pre></div>
 <div class="node-desc">Mortal sin destroys agape but leaves eros intact.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="mortal_sin_can_destroy_charity">mortal_sin_can_destroy_charity</span>
-<span class="dep-chip" data-target="mortal_sin_preserves_eros">mortal_sin_preserves_eros</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="LoveKind">LoveKind</span><span class="dep-chip" data-target="TypedLove">TypedLove</span><span class="dep-chip" data-target="mortal_sin_can_destroy_charity">mortal_sin_can_destroy_charity</span><span class="dep-chip" data-target="mortal_sin_preserves_eros">mortal_sin_preserves_eros</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="agape_not_symmetric">
@@ -876,16 +871,13 @@ h1 {
   ¬(∀ (tl : TypedLove),
       tl.kind = LoveKind.agape →
       tl.degree &gt; 0 →
-      ∃ (tl&#x27; : TypedLove),
-        tl&#x27;.kind = LoveKind.agape ∧
-        tl&#x27;.lover = tl.beloved ∧
-        tl&#x27;.beloved = tl.lover ∧
-        tl&#x27;.degree &gt; 0)</code></pre></div>
+      ∃ (tl' : TypedLove),
+        tl'.kind = LoveKind.agape ∧
+        tl'.lover = tl.beloved ∧
+        tl'.beloved = tl.lover ∧
+        tl'.degree &gt; 0)</code></pre></div>
 <div class="node-desc">Agape is not symmetric: one can love (agape) someone who does not</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="TypedLove">TypedLove</span>
-<span class="dep-chip" data-target="LoveKind">LoveKind</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="LoveKind">LoveKind</span><span class="dep-chip" data-target="TypedLove">TypedLove</span><span class="dep-chip" data-target="agape_requires_freedom">agape_requires_freedom</span><span class="dep-chip" data-target="eros_does_not_require_freedom">eros_does_not_require_freedom</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="love_requires_freedom_only_agape">
@@ -907,10 +899,7 @@ h1 {
     tl.degree &gt; 0 →
     tl.lover.hasFreeWill = true)</code></pre></div>
 <div class="node-desc">Love-requires-freedom applies to agape but not eros.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="eros_does_not_require_freedom">eros_does_not_require_freedom</span>
-<span class="dep-chip" data-target="agape_requires_freedom">agape_requires_freedom</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="LoveKind">LoveKind</span><span class="dep-chip" data-target="TypedLove">TypedLove</span><span class="dep-chip" data-target="agape_requires_freedom">agape_requires_freedom</span><span class="dep-chip" data-target="eros_does_not_require_freedom">eros_does_not_require_freedom</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="love_kinds_tag">

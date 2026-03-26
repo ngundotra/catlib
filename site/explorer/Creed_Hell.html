@@ -526,11 +526,11 @@ h1 {
   <div class="subtitle">Creed &middot; 20 declarations</div>
 
   <div class="flow-summary">
-  <span class="flow-count axioms">13 axioms</span>
+  <span class="flow-count axioms">5 axioms</span>
   <span class="flow-arrow">&#10142;</span>
-  <span class="flow-count theorems">5 theorems</span>
+  <span class="flow-count theorems">12 theorems</span>
   <span class="flow-arrow">&#10142;</span>
-  <span class="flow-count derived">2 derived</span>
+  <span class="flow-count derived">3 derived</span>
 </div>
   <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1033, &sect;1037, &sect;1038, &sect;1855, &sect;366, &sect;997</div>
 
@@ -549,7 +549,7 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>inductive DeathState where</code></pre></div>
-<div class="node-desc">The state of a soul at death. The Catechism treats death as a hard │   ⚠ HIDDEN ASSUMPTION: Why is death final? This is asserted, not argued.</div>
+<div class="node-desc">The state of a soul at death. The Catechism treats death as a hard</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="death_is_final">death_is_final</span><span class="dep-chip" data-target="mortal_sin_at_death_implies_separation">mortal_sin_at_death_implies_separation</span><span class="dep-chip" data-target="libertarian_implies_compatibilist">libertarian_implies_compatibilist</span></div></div>
   </div>
 </div>
@@ -562,7 +562,6 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>inductive EternalDestiny where</code></pre></div>
 <div class="node-desc">The eternal destiny of a soul.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="godIsLove">godIsLove</span><span class="dep-chip" data-target="loveRequiresFreedom">loveRequiresFreedom</span><span class="dep-chip" data-target="s1_god_is_love">s1_god_is_love</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="no_predestination_to_hell">no_predestination_to_hell</span><span class="dep-chip" data-target="mortal_sin_at_death_implies_separation">mortal_sin_at_death_implies_separation</span></div></div>
   </div>
 </div>
@@ -575,10 +574,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom love_requires_freedom :
   ∀ (p : Person), p.hasFreeWill = false →
-    ¬ inCommunion (.person p) .god
-</code></pre></div>
-<div class="node-desc">1 (§1033): Union with God requires freely choosing to love him. │   Source: [Definition] CCC §1033 │   ⚠ HIDDEN ASSUMPTION: Love requires freedom. Why? The Catechism asserts</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Communion">Communion</span><span class="dep-chip" data-target="inCommunion">inCommunion</span></div></div>
+    ¬ inCommunion (.person p) .god</code></pre></div>
+<div class="node-desc">AXIOM 1 (§1033): Union with God requires freely choosing to love him.</div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="grave_sin_prevents_love">
@@ -590,10 +587,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom grave_sin_prevents_love :
   ∀ (p : Person),
-    inCommunion (.person p) .god → ¬ (∃ (s : Sin), isGraveSin s ∧ s.action.agent = p)
-</code></pre></div>
-<div class="node-desc">2 (§1033): Communion with God implies being in a state of grace. │   Source: [Definition] CCC §1033, §1855</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="inCommunion">inCommunion</span><span class="dep-chip" data-target="isGraveSin">isGraveSin</span></div></div>
+    inCommunion (.person p) .god → ¬ (∃ (s : Sin), isGraveSin s ∧ s.action.agent = p)</code></pre></div>
+<div class="node-desc">AXIOM 2 (§1033): Communion with God implies being in a state of grace.</div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="death_is_final">
@@ -606,11 +601,10 @@ h1 {
     <div class="node-prop"><pre><code>axiom death_is_final :
   ∀ (d : DeathState),
     d = DeathState.inMortalSin →
-    ¬(∃ (d' : DeathState), d' = DeathState.repentant)
-</code></pre></div>
-<div class="node-desc">3: Death is final — no post-mortem change of state. │   Source: [Tradition] — not explicitly argued in §1033, assumed. │   ⚠ HIDDEN ASSUMPTION: This is a brute axiom. The Catechism doesn't</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DeathState">DeathState</span><span class="dep-chip" data-target="couldChooseOtherwise">couldChooseOtherwise</span><span class="dep-chip" data-target="godWillsSalvation">godWillsSalvation</span><span class="dep-chip" data-target="s2_universal_salvific_will">s2_universal_salvific_will</span><span class="dep-chip" data-target="t1_libertarian_free_will">t1_libertarian_free_will</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hell_dead_person_is_incomplete">hell_dead_person_is_incomplete</span><span class="dep-chip" data-target="DeathState">DeathState</span></div></div>
+    ¬(∃ (d' : DeathState), d' = DeathState.repentant)</code></pre></div>
+<div class="node-desc">AXIOM 3: Death is final — no post-mortem change of state.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DeathState">DeathState</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hell_dead_person_is_incomplete">hell_dead_person_is_incomplete</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="no_predestination_to_hell">
@@ -624,11 +618,10 @@ h1 {
   ∀ (p : Person) (dest : EternalDestiny),
     dest = EternalDestiny.separatedFromGod →
     -- The person must have had free will AND chosen to turn away
-    p.hasFreeWill = true
-</code></pre></div>
-<div class="node-desc">4 (§1037): God predestines no one to hell. │   Source: [Definition] CCC §1037</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EternalDestiny">EternalDestiny</span><span class="dep-chip" data-target="agape_requires_freedom">agape_requires_freedom</span><span class="dep-chip" data-target="loveRequiresFreedom">loveRequiresFreedom</span><span class="dep-chip" data-target="s1_god_is_love">s1_god_is_love</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="love_freedom_from_s1">love_freedom_from_s1</span><span class="dep-chip" data-target="EternalDestiny">EternalDestiny</span></div></div>
+    p.hasFreeWill = true</code></pre></div>
+<div class="node-desc">AXIOM 4 (§1037): God predestines no one to hell.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EternalDestiny">EternalDestiny</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="love_freedom_from_s1">love_freedom_from_s1</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="love_freedom_from_s1">
@@ -640,8 +633,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem love_freedom_from_s1 : loveRequiresFreedom</code></pre></div>
 <div class="node-desc">Bridge to base axiom S1: love requires freedom (from s1_god_is_love).</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="loveRequiresFreedom">loveRequiresFreedom</span><span class="dep-chip" data-target="no_predestination_to_hell">no_predestination_to_hell</span><span class="dep-chip" data-target="s1_god_is_love">s1_god_is_love</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="no_predestination_to_hell">no_predestination_to_hell</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="no_predestination_to_hell">no_predestination_to_hell</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="god_wills_all_saved">
@@ -653,7 +645,6 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem god_wills_all_saved (p : Person) : godWillsSalvation p</code></pre></div>
 <div class="node-desc">Bridge to base axiom S2: God desires all to be saved.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="godWillsSalvation">godWillsSalvation</span><span class="dep-chip" data-target="s2_universal_salvific_will">s2_universal_salvific_will</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="could_choose_otherwise">
@@ -665,7 +656,6 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem could_choose_otherwise (a : Person) : couldChooseOtherwise a</code></pre></div>
 <div class="node-desc">Bridge to base axiom T1: libertarian free will.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="couldChooseOtherwise">couldChooseOtherwise</span><span class="dep-chip" data-target="t1_libertarian_free_will">t1_libertarian_free_will</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="freedom_is_libertarian">
@@ -678,9 +668,8 @@ h1 {
     <div class="node-prop"><pre><code>axiom freedom_is_libertarian :
   ∀ (p : Person) (choice : FreeChoice Prop),
     p.hasFreeWill = true →
-    choice.alternativesExist
-</code></pre></div>
-<div class="node-desc">5 (implicit): The freedom model is libertarian. │   Source: [Tradition] — assumed but never stated │   ⚠ HIDDEN ASSUMPTION: For &quot;self-exclusion&quot; to carry moral weight,</div>
+    choice.alternativesExist</code></pre></div>
+<div class="node-desc">AXIOM 5 (implicit): The freedom model is libertarian.</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="self_exclusion_requires_libertarian_freedom">self_exclusion_requires_libertarian_freedom</span></div></div>
   </div>
 </div>
@@ -703,7 +692,6 @@ h1 {
     ∃ (dest : EternalDestiny), dest = EternalDestiny.separatedFromGod</code></pre></div>
 <div class="node-desc">The Catechism's conclusion: dying in mortal sin leads to separation.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DeathState">DeathState</span><span class="dep-chip" data-target="EternalDestiny">EternalDestiny</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="DeathState">DeathState</span><span class="dep-chip" data-target="EternalDestiny">EternalDestiny</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="self_exclusion_requires_libertarian_freedom">
@@ -721,7 +709,6 @@ h1 {
     choice.alternativesExist</code></pre></div>
 <div class="node-desc">Key structural result: &quot;self-exclusion&quot; requires libertarian free will.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="freedom_is_libertarian">freedom_is_libertarian</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="freedom_is_libertarian">freedom_is_libertarian</span></div></div>
   </div>
 </div>
 <div class="node-card kind-proposition" data-kind="proposition" data-name="compatibilist_freedom">
@@ -749,8 +736,7 @@ h1 {
     (h_uncoerced : choice.uncoerced) :
     compatibilist_freedom choice</code></pre></div>
 <div class="node-desc">The gap: compatibilist freedom is strictly weaker than libertarian.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DeathState">DeathState</span><span class="dep-chip" data-target="compatibilist_freedom">compatibilist_freedom</span><span class="dep-chip" data-target="isDead">isDead</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="DeathState">DeathState</span><span class="dep-chip" data-target="compatibilist_freedom">compatibilist_freedom</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="DeathState">DeathState</span><span class="dep-chip" data-target="compatibilist_freedom">compatibilist_freedom</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="hell_dead_person_is_incomplete">
@@ -764,8 +750,7 @@ h1 {
     (h_dead : isDead p) :
     hasSpiritualAspect p ∧ ¬hasCorporealAspect p</code></pre></div>
 <div class="node-desc">Bridge: a dead person (Soul.lean's sense) has their spiritual aspect</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="death_is_final">death_is_final</span><span class="dep-chip" data-target="death_separates">death_separates</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="soul_is_immortal">soul_is_immortal</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="death_is_final">death_is_final</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="death_is_final">death_is_final</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="damned_soul_persists">
@@ -779,7 +764,6 @@ h1 {
     (_h_dead : isDead p) :
     hasSpiritualAspect p</code></pre></div>
 <div class="node-desc">Bridge: death_is_final (Hell.lean) concerns the irrevocability of the</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="soul_is_immortal">soul_is_immortal</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="hell_is_incomplete_existence">
@@ -798,7 +782,6 @@ h1 {
     -- Body always requires soul (no &quot;zombie&quot; state)
     (∀ (q : HumanPerson), hasCorporealAspect q → hasSpiritualAspect q)</code></pre></div>
 <div class="node-desc">Bridge: a person in hell is isDead (incomplete person) — the soul</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="SinProfile">SinProfile</span><span class="dep-chip" data-target="corporeal_requires_spiritual">corporeal_requires_spiritual</span><span class="dep-chip" data-target="death_separates">death_separates</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="soul_is_immortal">soul_is_immortal</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="hell_from_sin_profile">
@@ -813,7 +796,6 @@ h1 {
     afterlifeFromProfile sp = AfterlifeOutcome.hell ∨
     afterlifeFromProfile sp = AfterlifeOutcome.knownToGodAlone</code></pre></div>
 <div class="node-desc">Bridge: a person goes to hell because their sin profile has</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="AfterlifeOutcome">AfterlifeOutcome</span><span class="dep-chip" data-target="EffectState">EffectState</span><span class="dep-chip" data-target="SinProfile">SinProfile</span><span class="dep-chip" data-target="afterlifeFromProfile">afterlifeFromProfile</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="determinate_guilt_means_hell">
@@ -830,7 +812,6 @@ h1 {
     (h_no_unk_a : sp.attachment ≠ EffectState.unknownToUs) :
     afterlifeFromProfile sp = AfterlifeOutcome.hell</code></pre></div>
 <div class="node-desc">When the full sin profile is determinate (no unknowns) and guilt</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="AfterlifeOutcome">AfterlifeOutcome</span><span class="dep-chip" data-target="EffectState">EffectState</span><span class="dep-chip" data-target="SinProfile">SinProfile</span><span class="dep-chip" data-target="afterlifeFromProfile">afterlifeFromProfile</span><span class="dep-chip" data-target="mortal_sin_goes_to_hell">mortal_sin_goes_to_hell</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="baptized_mortal_sin_is_hell">
@@ -843,7 +824,6 @@ h1 {
     <div class="node-prop"><pre><code>theorem baptized_mortal_sin_is_hell :
     afterlifeFromProfile baptizedInMortalSin = AfterlifeOutcome.hell</code></pre></div>
 <div class="node-desc">The standard mortal-sin profile (baptized person who committed</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="AfterlifeOutcome">AfterlifeOutcome</span><span class="dep-chip" data-target="afterlifeFromProfile">afterlifeFromProfile</span><span class="dep-chip" data-target="baptizedInMortalSin">baptizedInMortalSin</span><span class="dep-chip" data-target="mortal_sin_goes_to_hell">mortal_sin_goes_to_hell</span></div></div>
   </div>
 </div>
   </div>

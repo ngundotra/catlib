@@ -525,7 +525,13 @@ h1 {
   <h1>Veneration</h1>
   <div class="subtitle">MoralTheology &middot; 18 declarations</div>
 
-  
+  <div class="flow-summary">
+  <span class="flow-count axioms">9 axioms</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count theorems">8 theorems</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count derived">1 derived</span>
+</div>
   <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;2096, &sect;2097, &sect;2112, &sect;2113, &sect;2132, &sect;828, &sect;971</div>
 
   <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
@@ -543,7 +549,7 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>inductive HonorLevel where</code></pre></div>
-<div class="node-desc">The three levels of religious honor in Catholic theology. │   Source: [Tradition] Aquinas ST II-II q.84, q.103; Council of Nicaea II | Scope: CATHOLIC + ORTHODOX.</div>
+<div class="node-desc">The three levels of religious honor in Catholic theology.</div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="hasUltimateStatus">
@@ -553,8 +559,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque hasUltimateStatus : Person → Prop
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque hasUltimateStatus : Person → Prop</code></pre></div>
 <div class="node-desc">Whether the one honored has ultimate metaphysical status — that is,</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="god_has_ultimate_status">god_has_ultimate_status</span><span class="dep-chip" data-target="idolatry_is_misplaced_latria">idolatry_is_misplaced_latria</span><span class="dep-chip" data-target="grace_participation_not_ultimate">grace_participation_not_ultimate</span><span class="dep-chip" data-target="worship_has_unique_object">worship_has_unique_object</span><span class="dep-chip" data-target="veneration_worship_distinction">veneration_worship_distinction</span></div></div>
   </div>
@@ -566,9 +571,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque participatesInGrace : Person → Prop
-</code></pre></div>
-<div class="node-desc">Whether a person participates in divine grace — their excellence │   ⚠ HIDDEN ASSUMPTION: Grace is TRANSFORMATIVE (S8) — it actually MAKES</div>
+    <div class="node-prop"><pre><code>opaque participatesInGrace : Person → Prop</code></pre></div>
+<div class="node-desc">Whether a person participates in divine grace — their excellence</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="honor_passes_through_participants">honor_passes_through_participants</span><span class="dep-chip" data-target="grace_participation_not_ultimate">grace_participation_not_ultimate</span><span class="dep-chip" data-target="dulia_does_not_acknowledge_ultimate">dulia_does_not_acknowledge_ultimate</span><span class="dep-chip" data-target="dulia_is_not_idolatry">dulia_is_not_idolatry</span><span class="dep-chip" data-target="veneration_honors_god">veneration_honors_god</span><span class="dep-chip" data-target="no_latria_for_participants">no_latria_for_participants</span><span class="dep-chip" data-target="veneration_worship_distinction">veneration_worship_distinction</span></div></div>
   </div>
 </div>
@@ -579,10 +583,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque acknowledgesAsUltimate : Person → Person → Prop
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque acknowledgesAsUltimate : Person → Person → Prop</code></pre></div>
 <div class="node-desc">Whether an act of honor acknowledges the honoree as ultimate.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="participation">participation</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="idolatry_is_misplaced_latria">idolatry_is_misplaced_latria</span><span class="dep-chip" data-target="dulia_does_not_acknowledge_ultimate">dulia_does_not_acknowledge_ultimate</span><span class="dep-chip" data-target="dulia_is_not_idolatry">dulia_is_not_idolatry</span><span class="dep-chip" data-target="no_latria_for_participants">no_latria_for_participants</span><span class="dep-chip" data-target="veneration_worship_distinction">veneration_worship_distinction</span></div></div>
   </div>
 </div>
@@ -593,9 +595,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque honorPassesToSource : Person → Prop
-</code></pre></div>
-<div class="node-desc">Whether honor given to a participant passes to its source. │   ⚠ HIDDEN ASSUMPTION: The participation relation is TRANSPARENT —</div>
+    <div class="node-prop"><pre><code>opaque honorPassesToSource : Person → Prop</code></pre></div>
+<div class="node-desc">Whether honor given to a participant passes to its source.</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="honor_passes_through_participants">honor_passes_through_participants</span><span class="dep-chip" data-target="veneration_honors_god">veneration_honors_god</span><span class="dep-chip" data-target="veneration_worship_distinction">veneration_worship_distinction</span></div></div>
   </div>
 </div>
@@ -608,11 +609,10 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom god_has_ultimate_status :
   ∀ (p : Person), hasUltimateStatus p →
-    ∀ (q : Person), hasUltimateStatus q → p = q
-</code></pre></div>
-<div class="node-desc">1 (§2096): God has ultimate metaphysical status — and God alone. │   Source: [Scripture] Is 44:6 (&quot;I am the first and I am the last; | Scope: ECUMENICAL. | [Definition]</div>
+    ∀ (q : Person), hasUltimateStatus q → p = q</code></pre></div>
+<div class="node-desc">AXIOM 1 (§2096): God has ultimate metaphysical status — and God alone.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="hasUltimateStatus">hasUltimateStatus</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="no_latria_for_participants">no_latria_for_participants</span><span class="dep-chip" data-target="worship_has_unique_object">worship_has_unique_object</span><span class="dep-chip" data-target="intercession_and_veneration_compatible">intercession_and_veneration_compatible</span><span class="dep-chip" data-target="hasUltimateStatus">hasUltimateStatus</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="no_latria_for_participants">no_latria_for_participants</span><span class="dep-chip" data-target="worship_has_unique_object">worship_has_unique_object</span><span class="dep-chip" data-target="intercession_and_veneration_compatible">intercession_and_veneration_compatible</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="idolatry_is_misplaced_latria">
@@ -626,11 +626,10 @@ h1 {
   ∀ (honorer honoree : Person),
     ¬ hasUltimateStatus honoree →
     acknowledgesAsUltimate honorer honoree →
-    False  -- contradiction: this cannot legitimately occur
-</code></pre></div>
-<div class="node-desc">2 (§2112-2114): Idolatry is giving latria to a creature. │   Source: [Scripture] Ex 20:4-5; [Definition] CCC §2112-2114. | Scope: ECUMENICAL — all Christians condemn idolatry.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="acknowledgesAsUltimate">acknowledgesAsUltimate</span><span class="dep-chip" data-target="hasUltimateStatus">hasUltimateStatus</span><span class="dep-chip" data-target="participation">participation</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="veneration_honors_god">veneration_honors_god</span><span class="dep-chip" data-target="no_latria_for_participants">no_latria_for_participants</span><span class="dep-chip" data-target="intercession_and_veneration_compatible">intercession_and_veneration_compatible</span><span class="dep-chip" data-target="acknowledgesAsUltimate">acknowledgesAsUltimate</span><span class="dep-chip" data-target="hasUltimateStatus">hasUltimateStatus</span></div></div>
+    False  -- contradiction: this cannot legitimately occur</code></pre></div>
+<div class="node-desc">AXIOM 2 (§2112-2114): Idolatry is giving latria to a creature.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="acknowledgesAsUltimate">acknowledgesAsUltimate</span><span class="dep-chip" data-target="hasUltimateStatus">hasUltimateStatus</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="veneration_honors_god">veneration_honors_god</span><span class="dep-chip" data-target="no_latria_for_participants">no_latria_for_participants</span><span class="dep-chip" data-target="intercession_and_veneration_compatible">intercession_and_veneration_compatible</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="honor_passes_through_participants">
@@ -643,11 +642,10 @@ h1 {
     <div class="node-prop"><pre><code>axiom honor_passes_through_participants :
   ∀ (p : Person),
     participatesInGrace p →
-    honorPassesToSource p
-</code></pre></div>
-<div class="node-desc">3 (§2132, Nicaea II): Honor to participants passes to the source. │   Source: [Tradition] Council of Nicaea II (787); CCC §2132. | Scope: CATHOLIC + ORTHODOX. Protestants who reject │   ⚠ HIDDEN ASSUMPTION: Participation in grace is a REAL metaphysical</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="honorPassesToSource">honorPassesToSource</span><span class="dep-chip" data-target="participatesInGrace">participatesInGrace</span><span class="dep-chip" data-target="participation">participation</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="dulia_is_not_idolatry">dulia_is_not_idolatry</span><span class="dep-chip" data-target="veneration_honors_god">veneration_honors_god</span><span class="dep-chip" data-target="worship_has_unique_object">worship_has_unique_object</span><span class="dep-chip" data-target="veneration_worship_distinction">veneration_worship_distinction</span><span class="dep-chip" data-target="intercession_and_veneration_compatible">intercession_and_veneration_compatible</span><span class="dep-chip" data-target="honorPassesToSource">honorPassesToSource</span><span class="dep-chip" data-target="participatesInGrace">participatesInGrace</span></div></div>
+    honorPassesToSource p</code></pre></div>
+<div class="node-desc">AXIOM 3 (§2132, Nicaea II): Honor to participants passes to the source.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="honorPassesToSource">honorPassesToSource</span><span class="dep-chip" data-target="participatesInGrace">participatesInGrace</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="dulia_is_not_idolatry">dulia_is_not_idolatry</span><span class="dep-chip" data-target="veneration_honors_god">veneration_honors_god</span><span class="dep-chip" data-target="worship_has_unique_object">worship_has_unique_object</span><span class="dep-chip" data-target="veneration_worship_distinction">veneration_worship_distinction</span><span class="dep-chip" data-target="intercession_and_veneration_compatible">intercession_and_veneration_compatible</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="grace_participation_not_ultimate">
@@ -660,11 +658,10 @@ h1 {
     <div class="node-prop"><pre><code>axiom grace_participation_not_ultimate :
   ∀ (p : Person),
     participatesInGrace p →
-    ¬ hasUltimateStatus p
-</code></pre></div>
-<div class="node-desc">4 (§971 + S8): Creatures who participate in grace have real │   Source: [Scripture] 2 Cor 3:18 (&quot;being transformed into the same | Scope: CATHOLIC + ORTHODOX (transformative grace)....</div>
+    ¬ hasUltimateStatus p</code></pre></div>
+<div class="node-desc">AXIOM 4 (§971 + S8): Creatures who participate in grace have real</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="hasUltimateStatus">hasUltimateStatus</span><span class="dep-chip" data-target="participatesInGrace">participatesInGrace</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="veneration_honors_god">veneration_honors_god</span><span class="dep-chip" data-target="no_latria_for_participants">no_latria_for_participants</span><span class="dep-chip" data-target="worship_has_unique_object">worship_has_unique_object</span><span class="dep-chip" data-target="veneration_worship_distinction">veneration_worship_distinction</span><span class="dep-chip" data-target="intercession_and_veneration_compatible">intercession_and_veneration_compatible</span><span class="dep-chip" data-target="hasUltimateStatus">hasUltimateStatus</span><span class="dep-chip" data-target="participatesInGrace">participatesInGrace</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="veneration_honors_god">veneration_honors_god</span><span class="dep-chip" data-target="no_latria_for_participants">no_latria_for_participants</span><span class="dep-chip" data-target="worship_has_unique_object">worship_has_unique_object</span><span class="dep-chip" data-target="veneration_worship_distinction">veneration_worship_distinction</span><span class="dep-chip" data-target="intercession_and_veneration_compatible">intercession_and_veneration_compatible</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="dulia_does_not_acknowledge_ultimate">
@@ -677,11 +674,10 @@ h1 {
     <div class="node-prop"><pre><code>axiom dulia_does_not_acknowledge_ultimate :
   ∀ (honorer honoree : Person),
     participatesInGrace honoree →
-    ¬ acknowledgesAsUltimate honorer honoree
-</code></pre></div>
-<div class="node-desc">5: Dulia acknowledges the honoree as participant, not ultimate. │   Source: [Definition] Aquinas ST II-II q.103 a.3; CCC §971. | Scope: CATHOLIC + ORTHODOX.</div>
+    ¬ acknowledgesAsUltimate honorer honoree</code></pre></div>
+<div class="node-desc">AXIOM 5: Dulia acknowledges the honoree as participant, not ultimate.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="acknowledgesAsUltimate">acknowledgesAsUltimate</span><span class="dep-chip" data-target="participatesInGrace">participatesInGrace</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="dulia_is_not_idolatry">dulia_is_not_idolatry</span><span class="dep-chip" data-target="worship_has_unique_object">worship_has_unique_object</span><span class="dep-chip" data-target="veneration_worship_distinction">veneration_worship_distinction</span><span class="dep-chip" data-target="intercession_and_veneration_compatible">intercession_and_veneration_compatible</span><span class="dep-chip" data-target="acknowledgesAsUltimate">acknowledgesAsUltimate</span><span class="dep-chip" data-target="participatesInGrace">participatesInGrace</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="dulia_is_not_idolatry">dulia_is_not_idolatry</span><span class="dep-chip" data-target="worship_has_unique_object">worship_has_unique_object</span><span class="dep-chip" data-target="veneration_worship_distinction">veneration_worship_distinction</span><span class="dep-chip" data-target="intercession_and_veneration_compatible">intercession_and_veneration_compatible</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="dulia_is_not_idolatry">
@@ -695,9 +691,9 @@ h1 {
     (honorer honoree : Person)
     (h_participates : participatesInGrace honoree) :
     ¬ acknowledgesAsUltimate honorer honoree</code></pre></div>
-<div class="node-desc">Dulia (veneration of a grace-participant) is not idolatry.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="acknowledgesAsUltimate">acknowledgesAsUltimate</span><span class="dep-chip" data-target="dulia_does_not_acknowledge_ultimate">dulia_does_not_acknowledge_ultimate</span><span class="dep-chip" data-target="honor_passes_through_participants">honor_passes_through_participants</span><span class="dep-chip" data-target="participatesInGrace">participatesInGrace</span><span class="dep-chip" data-target="participation">participation</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="intercession_and_veneration_compatible">intercession_and_veneration_compatible</span><span class="dep-chip" data-target="acknowledgesAsUltimate">acknowledgesAsUltimate</span><span class="dep-chip" data-target="participatesInGrace">participatesInGrace</span><span class="dep-chip" data-target="dulia_does_not_acknowledge_ultimate">dulia_does_not_acknowledge_ultimate</span><span class="dep-chip" data-target="honor_passes_through_participants">honor_passes_through_participants</span></div></div>
+<div class="node-desc">THEOREM: Dulia (veneration of a grace-participant) is not idolatry.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="acknowledgesAsUltimate">acknowledgesAsUltimate</span><span class="dep-chip" data-target="dulia_does_not_acknowledge_ultimate">dulia_does_not_acknowledge_ultimate</span><span class="dep-chip" data-target="honor_passes_through_participants">honor_passes_through_participants</span><span class="dep-chip" data-target="participatesInGrace">participatesInGrace</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="intercession_and_veneration_compatible">intercession_and_veneration_compatible</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="veneration_honors_god">
@@ -711,9 +707,9 @@ h1 {
     (honoree : Person)
     (h_participates : participatesInGrace honoree) :
     honorPassesToSource honoree</code></pre></div>
-<div class="node-desc">Veneration of saints honors God (through participation).</div>
+<div class="node-desc">THEOREM: Veneration of saints honors God (through participation).</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="grace_participation_not_ultimate">grace_participation_not_ultimate</span><span class="dep-chip" data-target="honorPassesToSource">honorPassesToSource</span><span class="dep-chip" data-target="honor_passes_through_participants">honor_passes_through_participants</span><span class="dep-chip" data-target="idolatry_is_misplaced_latria">idolatry_is_misplaced_latria</span><span class="dep-chip" data-target="participatesInGrace">participatesInGrace</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="intercession_and_veneration_compatible">intercession_and_veneration_compatible</span><span class="dep-chip" data-target="honorPassesToSource">honorPassesToSource</span><span class="dep-chip" data-target="participatesInGrace">participatesInGrace</span><span class="dep-chip" data-target="grace_participation_not_ultimate">grace_participation_not_ultimate</span><span class="dep-chip" data-target="honor_passes_through_participants">honor_passes_through_participants</span><span class="dep-chip" data-target="idolatry_is_misplaced_latria">idolatry_is_misplaced_latria</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="intercession_and_veneration_compatible">intercession_and_veneration_compatible</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="no_latria_for_participants">
@@ -728,9 +724,9 @@ h1 {
     (h_participates : participatesInGrace honoree)
     (h_ack : acknowledgesAsUltimate honorer honoree) :
     False</code></pre></div>
-<div class="node-desc">Grace participants cannot be legitimate objects of latria.</div>
+<div class="node-desc">THEOREM: Grace participants cannot be legitimate objects of latria.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="acknowledgesAsUltimate">acknowledgesAsUltimate</span><span class="dep-chip" data-target="god_has_ultimate_status">god_has_ultimate_status</span><span class="dep-chip" data-target="grace_participation_not_ultimate">grace_participation_not_ultimate</span><span class="dep-chip" data-target="idolatry_is_misplaced_latria">idolatry_is_misplaced_latria</span><span class="dep-chip" data-target="participatesInGrace">participatesInGrace</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="intercession_and_veneration_compatible">intercession_and_veneration_compatible</span><span class="dep-chip" data-target="acknowledgesAsUltimate">acknowledgesAsUltimate</span><span class="dep-chip" data-target="participatesInGrace">participatesInGrace</span><span class="dep-chip" data-target="god_has_ultimate_status">god_has_ultimate_status</span><span class="dep-chip" data-target="grace_participation_not_ultimate">grace_participation_not_ultimate</span><span class="dep-chip" data-target="idolatry_is_misplaced_latria">idolatry_is_misplaced_latria</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="intercession_and_veneration_compatible">intercession_and_veneration_compatible</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="worship_has_unique_object">
@@ -745,9 +741,9 @@ h1 {
     (hp : hasUltimateStatus p)
     (hq : hasUltimateStatus q) :
     p = q</code></pre></div>
-<div class="node-desc">Worship has a unique proper object.</div>
+<div class="node-desc">THEOREM: Worship has a unique proper object.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="dulia_does_not_acknowledge_ultimate">dulia_does_not_acknowledge_ultimate</span><span class="dep-chip" data-target="god_has_ultimate_status">god_has_ultimate_status</span><span class="dep-chip" data-target="grace_participation_not_ultimate">grace_participation_not_ultimate</span><span class="dep-chip" data-target="hasUltimateStatus">hasUltimateStatus</span><span class="dep-chip" data-target="honor_passes_through_participants">honor_passes_through_participants</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="intercession_and_veneration_compatible">intercession_and_veneration_compatible</span><span class="dep-chip" data-target="hasUltimateStatus">hasUltimateStatus</span><span class="dep-chip" data-target="dulia_does_not_acknowledge_ultimate">dulia_does_not_acknowledge_ultimate</span><span class="dep-chip" data-target="god_has_ultimate_status">god_has_ultimate_status</span><span class="dep-chip" data-target="grace_participation_not_ultimate">grace_participation_not_ultimate</span><span class="dep-chip" data-target="honor_passes_through_participants">honor_passes_through_participants</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="intercession_and_veneration_compatible">intercession_and_veneration_compatible</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="veneration_worship_distinction">
@@ -766,9 +762,9 @@ h1 {
     ∧ honorPassesToSource honoree
     -- (c) The saint lacks ultimate status (Creator/creature boundary)
     ∧ ¬ hasUltimateStatus honoree</code></pre></div>
-<div class="node-desc">The veneration-worship distinction is principled.</div>
+<div class="node-desc">THEOREM (Main): The veneration-worship distinction is principled.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="acknowledgesAsUltimate">acknowledgesAsUltimate</span><span class="dep-chip" data-target="dulia_does_not_acknowledge_ultimate">dulia_does_not_acknowledge_ultimate</span><span class="dep-chip" data-target="grace_participation_not_ultimate">grace_participation_not_ultimate</span><span class="dep-chip" data-target="hasUltimateStatus">hasUltimateStatus</span><span class="dep-chip" data-target="honorPassesToSource">honorPassesToSource</span><span class="dep-chip" data-target="honor_passes_through_participants">honor_passes_through_participants</span><span class="dep-chip" data-target="participatesInGrace">participatesInGrace</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="intercession_and_veneration_compatible">intercession_and_veneration_compatible</span><span class="dep-chip" data-target="acknowledgesAsUltimate">acknowledgesAsUltimate</span><span class="dep-chip" data-target="hasUltimateStatus">hasUltimateStatus</span><span class="dep-chip" data-target="honorPassesToSource">honorPassesToSource</span><span class="dep-chip" data-target="participatesInGrace">participatesInGrace</span><span class="dep-chip" data-target="dulia_does_not_acknowledge_ultimate">dulia_does_not_acknowledge_ultimate</span><span class="dep-chip" data-target="grace_participation_not_ultimate">grace_participation_not_ultimate</span><span class="dep-chip" data-target="honor_passes_through_participants">honor_passes_through_participants</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="intercession_and_veneration_compatible">intercession_and_veneration_compatible</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="p2_non_competition_bridge">
@@ -782,7 +778,6 @@ h1 {
     (p : PrimaryCause) (s : SecondaryCause) :
     ¬ causesCompete p s</code></pre></div>
 <div class="node-desc">Bridge to P2: primary and secondary causes don't compete.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="PrimaryCause">PrimaryCause</span><span class="dep-chip" data-target="SecondaryCause">SecondaryCause</span><span class="dep-chip" data-target="causesCompete">causesCompete</span><span class="dep-chip" data-target="p2_two_tier_causation">p2_two_tier_causation</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="intercession_and_veneration_compatible">intercession_and_veneration_compatible</span></div></div>
   </div>
 </div>
@@ -798,7 +793,6 @@ h1 {
     (h_given : graceGiven p g) :
     graceTransforms g p</code></pre></div>
 <div class="node-desc">Bridge to S8: grace is transformative.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="graceGiven">graceGiven</span><span class="dep-chip" data-target="graceTransforms">graceTransforms</span><span class="dep-chip" data-target="s8_grace_necessary_and_transformative">s8_grace_necessary_and_transformative</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="intercession_and_veneration_compatible">intercession_and_veneration_compatible</span></div></div>
   </div>
 </div>
@@ -815,8 +809,7 @@ h1 {
     intercedesFor (Person.human) beneficiary
     ∧ participatesInMediation (Person.human)</code></pre></div>
 <div class="node-desc">Bridge to intercession: veneration and intercession are complementary.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="Person.human">Person.human</span><span class="dep-chip" data-target="PrimaryCause">PrimaryCause</span><span class="dep-chip" data-target="SecondaryCause">SecondaryCause</span><span class="dep-chip" data-target="causesCompete">causesCompete</span><span class="dep-chip" data-target="dulia_does_not_acknowledge_ultimate">dulia_does_not_acknowledge_ultimate</span><span class="dep-chip" data-target="dulia_is_not_idolatry">dulia_is_not_idolatry</span><span class="dep-chip" data-target="god_has_ultimate_status">god_has_ultimate_status</span><span class="dep-chip" data-target="graceGiven">graceGiven</span><span class="dep-chip" data-target="graceTransforms">graceTransforms</span><span class="dep-chip" data-target="grace_participation_not_ultimate">grace_participation_not_ultimate</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="honor_passes_through_participants">honor_passes_through_participants</span><span class="dep-chip" data-target="idolatry_is_misplaced_latria">idolatry_is_misplaced_latria</span><span class="dep-chip" data-target="intercedesFor">intercedesFor</span><span class="dep-chip" data-target="intercession_is_participatory">intercession_is_participatory</span><span class="dep-chip" data-target="isGlorifiedSaint">isGlorifiedSaint</span><span class="dep-chip" data-target="no_latria_for_participants">no_latria_for_participants</span><span class="dep-chip" data-target="p2_non_competition_bridge">p2_non_competition_bridge</span><span class="dep-chip" data-target="p2_two_tier_causation">p2_two_tier_causation</span><span class="dep-chip" data-target="participatesInMediation">participatesInMediation</span><span class="dep-chip" data-target="participation">participation</span><span class="dep-chip" data-target="s8_bridge">s8_bridge</span><span class="dep-chip" data-target="s8_grace_necessary_and_transformative">s8_grace_necessary_and_transformative</span><span class="dep-chip" data-target="veneration_honors_god">veneration_honors_god</span><span class="dep-chip" data-target="veneration_worship_distinction">veneration_worship_distinction</span><span class="dep-chip" data-target="worship_has_unique_object">worship_has_unique_object</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="p2_non_competition_bridge">p2_non_competition_bridge</span><span class="dep-chip" data-target="s8_bridge">s8_bridge</span><span class="dep-chip" data-target="dulia_does_not_acknowledge_ultimate">dulia_does_not_acknowledge_ultimate</span><span class="dep-chip" data-target="god_has_ultimate_status">god_has_ultimate_status</span><span class="dep-chip" data-target="grace_participation_not_ultimate">grace_participation_not_ultimate</span><span class="dep-chip" data-target="honor_passes_through_participants">honor_passes_through_participants</span><span class="dep-chip" data-target="idolatry_is_misplaced_latria">idolatry_is_misplaced_latria</span><span class="dep-chip" data-target="dulia_is_not_idolatry">dulia_is_not_idolatry</span><span class="dep-chip" data-target="no_latria_for_participants">no_latria_for_participants</span><span class="dep-chip" data-target="veneration_honors_god">veneration_honors_god</span><span class="dep-chip" data-target="veneration_worship_distinction">veneration_worship_distinction</span><span class="dep-chip" data-target="worship_has_unique_object">worship_has_unique_object</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="dulia_does_not_acknowledge_ultimate">dulia_does_not_acknowledge_ultimate</span><span class="dep-chip" data-target="dulia_is_not_idolatry">dulia_is_not_idolatry</span><span class="dep-chip" data-target="god_has_ultimate_status">god_has_ultimate_status</span><span class="dep-chip" data-target="grace_participation_not_ultimate">grace_participation_not_ultimate</span><span class="dep-chip" data-target="honor_passes_through_participants">honor_passes_through_participants</span><span class="dep-chip" data-target="idolatry_is_misplaced_latria">idolatry_is_misplaced_latria</span><span class="dep-chip" data-target="no_latria_for_participants">no_latria_for_participants</span><span class="dep-chip" data-target="p2_non_competition_bridge">p2_non_competition_bridge</span><span class="dep-chip" data-target="s8_bridge">s8_bridge</span><span class="dep-chip" data-target="veneration_honors_god">veneration_honors_god</span><span class="dep-chip" data-target="veneration_worship_distinction">veneration_worship_distinction</span><span class="dep-chip" data-target="worship_has_unique_object">worship_has_unique_object</span></div></div>
   </div>
 </div>
   </div>

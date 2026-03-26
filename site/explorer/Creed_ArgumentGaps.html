@@ -526,11 +526,11 @@ h1 {
   <div class="subtitle">Creed &middot; 17 declarations</div>
 
   <div class="flow-summary">
-  <span class="flow-count axioms">8 axioms</span>
+  <span class="flow-count axioms">0 axioms</span>
   <span class="flow-arrow">&#10142;</span>
-  <span class="flow-count theorems">6 theorems</span>
+  <span class="flow-count theorems">8 theorems</span>
   <span class="flow-arrow">&#10142;</span>
-  <span class="flow-count derived">3 derived</span>
+  <span class="flow-count derived">9 derived</span>
 </div>
   <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1374, &sect;1376, &sect;230, &sect;302, &sect;311, &sect;491, &sect;74, &sect;80</div>
 
@@ -550,7 +550,6 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>inductive EvidentialRelation where</code></pre></div>
 <div class="node-desc">Whether a scriptural text ENTAILS a doctrinal conclusion (deductive</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="mary_preserved">mary_preserved</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ic_scriptural_basis_is_compatibility">ic_scriptural_basis_is_compatibility</span></div></div>
   </div>
 </div>
@@ -565,7 +564,6 @@ h1 {
     EvidentialRelation.compatibleWith ≠ EvidentialRelation.entails</code></pre></div>
 <div class="node-desc">The CCC's scripture citation for the IC is a case of compatibility,</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EvidentialRelation">EvidentialRelation</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="EvidentialRelation">EvidentialRelation</span></div></div>
   </div>
 </div>
 <div class="node-card kind-structure" data-kind="structure" data-name="ICClosingAxioms">
@@ -577,7 +575,6 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>structure ICClosingAxioms where</code></pre></div>
 <div class="node-desc">The additional axioms needed to close the gap from Scripture to the IC.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="mary">mary</span><span class="dep-chip" data-target="mary_preserved">mary_preserved</span><span class="dep-chip" data-target="omnipotence">omnipotence</span><span class="dep-chip" data-target="preservedFromOriginalSin">preservedFromOriginalSin</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="ic_gap_documented">
@@ -592,8 +589,7 @@ h1 {
     -- This hypothesis is ONLY satisfiable via the mary_preserved axiom.
     -- No scriptural base axiom produces it.
     ¬hasOriginalSin mary</code></pre></div>
-<div class="node-desc">From Scripture alone (without the closing axioms), we cannot</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EucharisticPresence">EucharisticPresence</span><span class="dep-chip" data-target="hasOriginalSin">hasOriginalSin</span><span class="dep-chip" data-target="mary">mary</span><span class="dep-chip" data-target="mary_preserved">mary_preserved</span><span class="dep-chip" data-target="preservation_excludes_sin">preservation_excludes_sin</span><span class="dep-chip" data-target="preservedFromOriginalSin">preservedFromOriginalSin</span><span class="dep-chip" data-target="real_presence">real_presence</span><span class="dep-chip" data-target="signifies">signifies</span></div></div>
+<div class="node-desc">THEOREM: From Scripture alone (without the closing axioms), we cannot</div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="this_is_my_body_underdetermines">
@@ -607,7 +603,6 @@ h1 {
     Catlib.Sacraments.Eucharist.EucharisticPresence.transubstantiation ≠
     Catlib.Sacraments.Eucharist.EucharisticPresence.memorialOnly</code></pre></div>
 <div class="node-desc">The scriptural text &quot;this is my body&quot; is compatible with multiple</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="EucharisticPresence">EucharisticPresence</span></div></div>
   </div>
 </div>
 <div class="node-card kind-structure" data-kind="structure" data-name="RealPresenceClosingAxioms">
@@ -618,8 +613,7 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>structure RealPresenceClosingAxioms where</code></pre></div>
-<div class="node-desc">The additional axioms needed to close the gap from &quot;this is my body</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="real_presence">real_presence</span></div></div>
+<div class="node-desc">The additional axioms needed to close the gap from &quot;this is my body&quot;</div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="real_presence_gap_documented">
@@ -635,8 +629,7 @@ h1 {
     -- constructed from scriptural premises. The entire chain is axiomatic.
     Catlib.Sacraments.Eucharist.isConsecratedEucharist →
     Catlib.Creed.Christology.wholeChristPresent</code></pre></div>
-<div class="node-desc">From scriptural text alone, we cannot determine which │   [Tradition]</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="foreknowledge_compatible_with_freedom">foreknowledge_compatible_with_freedom</span><span class="dep-chip" data-target="isConsecratedEucharist">isConsecratedEucharist</span><span class="dep-chip" data-target="real_presence">real_presence</span><span class="dep-chip" data-target="wholeChristPresent">wholeChristPresent</span></div></div>
+<div class="node-desc">THEOREM: From scriptural text alone, we cannot determine which</div>
   </div>
 </div>
 <div class="node-card kind-inductive" data-kind="inductive" data-name="ForeknowledgeResolution">
@@ -648,7 +641,6 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>inductive ForeknowledgeResolution where</code></pre></div>
 <div class="node-desc">Major philosophical approaches to the foreknowledge-freedom problem.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="couldChooseOtherwise">couldChooseOtherwise</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ccc_compatible">ccc_compatible</span></div></div>
   </div>
 </div>
@@ -662,7 +654,7 @@ h1 {
     <div class="node-prop"><pre><code>def ccc_compatible (r : ForeknowledgeResolution) : Prop</code></pre></div>
 <div class="node-desc">Whether a resolution is compatible with CCC teaching.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ForeknowledgeResolution">ForeknowledgeResolution</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="open_theism_rejected">open_theism_rejected</span><span class="dep-chip" data-target="compatibilism_rejected">compatibilism_rejected</span><span class="dep-chip" data-target="multiple_resolutions_available">multiple_resolutions_available</span><span class="dep-chip" data-target="ForeknowledgeResolution">ForeknowledgeResolution</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="open_theism_rejected">open_theism_rejected</span><span class="dep-chip" data-target="compatibilism_rejected">compatibilism_rejected</span><span class="dep-chip" data-target="multiple_resolutions_available">multiple_resolutions_available</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="open_theism_rejected">
@@ -673,9 +665,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem open_theism_rejected : ¬ ccc_compatible .openTheist</code></pre></div>
-<div class="node-desc">Open theism is incompatible with CCC §302.</div>
+<div class="node-desc">THEOREM: Open theism is incompatible with CCC §302.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ccc_compatible">ccc_compatible</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ccc_compatible">ccc_compatible</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="compatibilism_rejected">
@@ -686,9 +677,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem compatibilism_rejected : ¬ ccc_compatible .compatibilist</code></pre></div>
-<div class="node-desc">Compatibilism is incompatible with T1.</div>
+<div class="node-desc">THEOREM: Compatibilism is incompatible with T1.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ccc_compatible">ccc_compatible</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ccc_compatible">ccc_compatible</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="multiple_resolutions_available">
@@ -702,9 +692,8 @@ h1 {
     ccc_compatible .boethian ∧
     ccc_compatible .ockhamist ∧
     ccc_compatible .molinist</code></pre></div>
-<div class="node-desc">Multiple resolutions remain available.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ccc_compatible">ccc_compatible</span><span class="dep-chip" data-target="couldChooseOtherwise">couldChooseOtherwise</span><span class="dep-chip" data-target="divinelyGoverned">divinelyGoverned</span><span class="dep-chip" data-target="foreknowledge_compatible_with_freedom">foreknowledge_compatible_with_freedom</span><span class="dep-chip" data-target="omniscience">omniscience</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ccc_compatible">ccc_compatible</span></div></div>
+<div class="node-desc">THEOREM: Multiple resolutions remain available.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ccc_compatible">ccc_compatible</span></div></div>
   </div>
 </div>
 <div class="node-card kind-inductive" data-kind="inductive" data-name="GapClosure">
@@ -729,7 +718,6 @@ h1 {
     <div class="node-prop"><pre><code>def ic_gap_closure : GapClosure := .tradition</code></pre></div>
 <div class="node-desc">Each of our three gaps has a primary closure type.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="GapClosure">GapClosure</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="GapClosure">GapClosure</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="real_presence_gap_closure">
@@ -741,7 +729,6 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def real_presence_gap_closure : GapClosure := .philosophy</code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="GapClosure">GapClosure</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="GapClosure">GapClosure</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="foreknowledge_gap_closure">
@@ -754,7 +741,6 @@ h1 {
     <div class="node-prop"><pre><code>def foreknowledge_gap_closure : GapClosure := .mystery
 </code></pre></div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="GapClosure">GapClosure</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="GapClosure">GapClosure</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="closure_types_distinct">
@@ -768,9 +754,8 @@ h1 {
     GapClosure.tradition ≠ GapClosure.philosophy ∧
     GapClosure.philosophy ≠ GapClosure.mystery ∧
     GapClosure.tradition ≠ GapClosure.mystery</code></pre></div>
-<div class="node-desc">All three closure types are distinct.</div>
+<div class="node-desc">THEOREM: All three closure types are distinct.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="GapClosure">GapClosure</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="GapClosure">GapClosure</span></div></div>
   </div>
 </div>
   </div>

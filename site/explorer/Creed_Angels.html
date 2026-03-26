@@ -525,7 +525,13 @@ h1 {
   <h1>Angels</h1>
   <div class="subtitle">Creed &middot; 28 declarations</div>
 
-  
+  <div class="flow-summary">
+  <span class="flow-count axioms">15 axioms</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count theorems">11 theorems</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count derived">2 derived</span>
+</div>
   <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1033, &sect;1705, &sect;325, &sect;328, &sect;329, &sect;330, &sect;335, &sect;350, &sect;362, &sect;365, &sect;391, &sect;392, &sect;393</div>
 
   <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot proposition"></span>proposition</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
@@ -542,8 +548,7 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque Angel : Type
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque Angel : Type</code></pre></div>
 <div class="node-desc">An angel — a purely spiritual, non-corporeal creature with intellect</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="angelHasIntellect">angelHasIntellect</span><span class="dep-chip" data-target="angelHasWill">angelHasWill</span><span class="dep-chip" data-target="angelIsImmortal">angelIsImmortal</span><span class="dep-chip" data-target="angelHasBody">angelHasBody</span><span class="dep-chip" data-target="hasMadeDefinitiveChoice">hasMadeDefinitiveChoice</span><span class="dep-chip" data-target="choseGod">choseGod</span><span class="dep-chip" data-target="canRepent">canRepent</span><span class="dep-chip" data-target="isFallenAngel">isFallenAngel</span><span class="dep-chip" data-target="angels_exist">angels_exist</span><span class="dep-chip" data-target="angels_have_intellect_and_will">angels_have_intellect_and_will</span><span class="dep-chip" data-target="angels_are_immortal">angels_are_immortal</span><span class="dep-chip" data-target="angels_have_no_body">angels_have_no_body</span><span class="dep-chip" data-target="all_angels_have_chosen">all_angels_have_chosen</span><span class="dep-chip" data-target="angelic_choice_is_irrevocable">angelic_choice_is_irrevocable</span><span class="dep-chip" data-target="satan_was_originally_good">satan_was_originally_good</span><span class="dep-chip" data-target="universalHylomorphism">universalHylomorphism</span><span class="dep-chip" data-target="hylomorphism_is_human_specific">hylomorphism_is_human_specific</span><span class="dep-chip" data-target="every_angel_faithful_or_fallen">every_angel_faithful_or_fallen</span><span class="dep-chip" data-target="fallen_angel_cannot_repent">fallen_angel_cannot_repent</span><span class="dep-chip" data-target="fallen_angel_rejected_god">fallen_angel_rejected_god</span><span class="dep-chip" data-target="some_angel_permanently_fallen">some_angel_permanently_fallen</span><span class="dep-chip" data-target="human_angelic_freedom_contrast">human_angelic_freedom_contrast</span><span class="dep-chip" data-target="fallen_angels_are_demons">fallen_angels_are_demons</span><span class="dep-chip" data-target="angelic_vs_human_bodiless_cognition">angelic_vs_human_bodiless_cognition</span><span class="dep-chip" data-target="rejects_manichean_dualism">rejects_manichean_dualism</span><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span></div></div>
   </div>
@@ -555,11 +560,10 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque angelHasIntellect : Angel → Prop
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque angelHasIntellect : Angel → Prop</code></pre></div>
 <div class="node-desc">Whether an angel has intellect. Always true per §330:</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="angels_exist">angels_exist</span><span class="dep-chip" data-target="angels_have_intellect_and_will">angels_have_intellect_and_will</span><span class="dep-chip" data-target="universalHylomorphism">universalHylomorphism</span><span class="dep-chip" data-target="hylomorphism_is_human_specific">hylomorphism_is_human_specific</span><span class="dep-chip" data-target="angelic_vs_human_bodiless_cognition">angelic_vs_human_bodiless_cognition</span><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span><span class="dep-chip" data-target="Angel">Angel</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="angels_exist">angels_exist</span><span class="dep-chip" data-target="angels_have_intellect_and_will">angels_have_intellect_and_will</span><span class="dep-chip" data-target="universalHylomorphism">universalHylomorphism</span><span class="dep-chip" data-target="hylomorphism_is_human_specific">hylomorphism_is_human_specific</span><span class="dep-chip" data-target="angelic_vs_human_bodiless_cognition">angelic_vs_human_bodiless_cognition</span><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="angelHasWill">
@@ -569,11 +573,10 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque angelHasWill : Angel → Prop
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque angelHasWill : Angel → Prop</code></pre></div>
 <div class="node-desc">Whether an angel has will. Always true per §330.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="angels_exist">angels_exist</span><span class="dep-chip" data-target="angels_have_intellect_and_will">angels_have_intellect_and_will</span><span class="dep-chip" data-target="hylomorphism_is_human_specific">hylomorphism_is_human_specific</span><span class="dep-chip" data-target="angelic_vs_human_bodiless_cognition">angelic_vs_human_bodiless_cognition</span><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span><span class="dep-chip" data-target="Angel">Angel</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="angels_exist">angels_exist</span><span class="dep-chip" data-target="angels_have_intellect_and_will">angels_have_intellect_and_will</span><span class="dep-chip" data-target="hylomorphism_is_human_specific">hylomorphism_is_human_specific</span><span class="dep-chip" data-target="angelic_vs_human_bodiless_cognition">angelic_vs_human_bodiless_cognition</span><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="angelIsImmortal">
@@ -583,11 +586,10 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque angelIsImmortal : Angel → Prop
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque angelIsImmortal : Angel → Prop</code></pre></div>
 <div class="node-desc">Whether an angel is immortal. Always true per §330:</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="angels_exist">angels_exist</span><span class="dep-chip" data-target="angels_are_immortal">angels_are_immortal</span><span class="dep-chip" data-target="hylomorphism_is_human_specific">hylomorphism_is_human_specific</span><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span><span class="dep-chip" data-target="Angel">Angel</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="angels_exist">angels_exist</span><span class="dep-chip" data-target="angels_are_immortal">angels_are_immortal</span><span class="dep-chip" data-target="hylomorphism_is_human_specific">hylomorphism_is_human_specific</span><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="angelHasBody">
@@ -597,11 +599,10 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque angelHasBody : Angel → Prop
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque angelHasBody : Angel → Prop</code></pre></div>
 <div class="node-desc">Whether an angel has a body (corporeal aspect). Always FALSE per</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="angels_have_no_body">angels_have_no_body</span><span class="dep-chip" data-target="universalHylomorphism">universalHylomorphism</span><span class="dep-chip" data-target="hylomorphism_is_human_specific">hylomorphism_is_human_specific</span><span class="dep-chip" data-target="angelic_vs_human_bodiless_cognition">angelic_vs_human_bodiless_cognition</span><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span><span class="dep-chip" data-target="Angel">Angel</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="angels_have_no_body">angels_have_no_body</span><span class="dep-chip" data-target="universalHylomorphism">universalHylomorphism</span><span class="dep-chip" data-target="hylomorphism_is_human_specific">hylomorphism_is_human_specific</span><span class="dep-chip" data-target="angelic_vs_human_bodiless_cognition">angelic_vs_human_bodiless_cognition</span><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="hasMadeDefinitiveChoice">
@@ -611,11 +612,10 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque hasMadeDefinitiveChoice : Angel → Prop
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque hasMadeDefinitiveChoice : Angel → Prop</code></pre></div>
 <div class="node-desc">Whether an angel has made its definitive choice for or against God.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="isFallenAngel">isFallenAngel</span><span class="dep-chip" data-target="all_angels_have_chosen">all_angels_have_chosen</span><span class="dep-chip" data-target="every_angel_faithful_or_fallen">every_angel_faithful_or_fallen</span><span class="dep-chip" data-target="rejects_manichean_dualism">rejects_manichean_dualism</span><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span><span class="dep-chip" data-target="Angel">Angel</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="isFallenAngel">isFallenAngel</span><span class="dep-chip" data-target="all_angels_have_chosen">all_angels_have_chosen</span><span class="dep-chip" data-target="every_angel_faithful_or_fallen">every_angel_faithful_or_fallen</span><span class="dep-chip" data-target="rejects_manichean_dualism">rejects_manichean_dualism</span><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="choseGod">
@@ -625,11 +625,10 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque choseGod : Angel → Prop
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque choseGod : Angel → Prop</code></pre></div>
 <div class="node-desc">Whether an angel chose God (remained faithful).</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="isFallenAngel">isFallenAngel</span><span class="dep-chip" data-target="every_angel_faithful_or_fallen">every_angel_faithful_or_fallen</span><span class="dep-chip" data-target="fallen_angel_rejected_god">fallen_angel_rejected_god</span><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span><span class="dep-chip" data-target="Angel">Angel</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="isFallenAngel">isFallenAngel</span><span class="dep-chip" data-target="every_angel_faithful_or_fallen">every_angel_faithful_or_fallen</span><span class="dep-chip" data-target="fallen_angel_rejected_god">fallen_angel_rejected_god</span><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="canRepent">
@@ -639,11 +638,10 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque canRepent : Angel → Prop
-</code></pre></div>
+    <div class="node-prop"><pre><code>opaque canRepent : Angel → Prop</code></pre></div>
 <div class="node-desc">Whether a fallen angel can repent — reverse its choice against God.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="angelic_choice_is_irrevocable">angelic_choice_is_irrevocable</span><span class="dep-chip" data-target="fallen_angel_cannot_repent">fallen_angel_cannot_repent</span><span class="dep-chip" data-target="some_angel_permanently_fallen">some_angel_permanently_fallen</span><span class="dep-chip" data-target="human_angelic_freedom_contrast">human_angelic_freedom_contrast</span><span class="dep-chip" data-target="fallen_angels_are_demons">fallen_angels_are_demons</span><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span><span class="dep-chip" data-target="Angel">Angel</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="angelic_choice_is_irrevocable">angelic_choice_is_irrevocable</span><span class="dep-chip" data-target="fallen_angel_cannot_repent">fallen_angel_cannot_repent</span><span class="dep-chip" data-target="some_angel_permanently_fallen">some_angel_permanently_fallen</span><span class="dep-chip" data-target="human_angelic_freedom_contrast">human_angelic_freedom_contrast</span><span class="dep-chip" data-target="fallen_angels_are_demons">fallen_angels_are_demons</span><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-proposition" data-kind="proposition" data-name="isFallenAngel">
@@ -656,7 +654,7 @@ h1 {
     <div class="node-prop"><pre><code>def isFallenAngel (a : Angel) : Prop</code></pre></div>
 <div class="node-desc">Whether an angel is fallen — a demon.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="choseGod">choseGod</span><span class="dep-chip" data-target="hasMadeDefinitiveChoice">hasMadeDefinitiveChoice</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="angelic_choice_is_irrevocable">angelic_choice_is_irrevocable</span><span class="dep-chip" data-target="satan_was_originally_good">satan_was_originally_good</span><span class="dep-chip" data-target="every_angel_faithful_or_fallen">every_angel_faithful_or_fallen</span><span class="dep-chip" data-target="fallen_angel_cannot_repent">fallen_angel_cannot_repent</span><span class="dep-chip" data-target="fallen_angel_rejected_god">fallen_angel_rejected_god</span><span class="dep-chip" data-target="some_angel_permanently_fallen">some_angel_permanently_fallen</span><span class="dep-chip" data-target="human_angelic_freedom_contrast">human_angelic_freedom_contrast</span><span class="dep-chip" data-target="fallen_angels_are_demons">fallen_angels_are_demons</span><span class="dep-chip" data-target="rejects_manichean_dualism">rejects_manichean_dualism</span><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="choseGod">choseGod</span><span class="dep-chip" data-target="hasMadeDefinitiveChoice">hasMadeDefinitiveChoice</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="angelic_choice_is_irrevocable">angelic_choice_is_irrevocable</span><span class="dep-chip" data-target="satan_was_originally_good">satan_was_originally_good</span><span class="dep-chip" data-target="every_angel_faithful_or_fallen">every_angel_faithful_or_fallen</span><span class="dep-chip" data-target="fallen_angel_cannot_repent">fallen_angel_cannot_repent</span><span class="dep-chip" data-target="fallen_angel_rejected_god">fallen_angel_rejected_god</span><span class="dep-chip" data-target="some_angel_permanently_fallen">some_angel_permanently_fallen</span><span class="dep-chip" data-target="human_angelic_freedom_contrast">human_angelic_freedom_contrast</span><span class="dep-chip" data-target="fallen_angels_are_demons">fallen_angels_are_demons</span><span class="dep-chip" data-target="rejects_manichean_dualism">rejects_manichean_dualism</span><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="angels_exist">
@@ -667,11 +665,10 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom angels_exist :
-  ∃ (a : Angel), angelHasIntellect a ∧ angelHasWill a ∧ angelIsImmortal a
-</code></pre></div>
-<div class="node-desc">1 (§328): Angels exist as real spiritual beings. │   Source: [Definition] CCC §328; [Scripture] implied throughout | Scope: Ecumenical.</div>
+  ∃ (a : Angel), angelHasIntellect a ∧ angelHasWill a ∧ angelIsImmortal a</code></pre></div>
+<div class="node-desc">AXIOM 1 (§328): Angels exist as real spiritual beings.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="angelHasIntellect">angelHasIntellect</span><span class="dep-chip" data-target="angelHasWill">angelHasWill</span><span class="dep-chip" data-target="angelIsImmortal">angelIsImmortal</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="angels_refute_universal_hylomorphism">angels_refute_universal_hylomorphism</span><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="angelHasIntellect">angelHasIntellect</span><span class="dep-chip" data-target="angelHasWill">angelHasWill</span><span class="dep-chip" data-target="angelIsImmortal">angelIsImmortal</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="angels_refute_universal_hylomorphism">angels_refute_universal_hylomorphism</span><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="angels_have_intellect_and_will">
@@ -682,11 +679,10 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom angels_have_intellect_and_will :
-  ∀ (a : Angel), angelHasIntellect a ∧ angelHasWill a
-</code></pre></div>
-<div class="node-desc">2 (§330): Every angel has intellect and will. │   Source: [Definition] CCC §330. | Scope: Ecumenical.</div>
+  ∀ (a : Angel), angelHasIntellect a ∧ angelHasWill a</code></pre></div>
+<div class="node-desc">AXIOM 2 (§330): Every angel has intellect and will.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="angelHasIntellect">angelHasIntellect</span><span class="dep-chip" data-target="angelHasWill">angelHasWill</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="universalHylomorphism">universalHylomorphism</span><span class="dep-chip" data-target="angels_refute_universal_hylomorphism">angels_refute_universal_hylomorphism</span><span class="dep-chip" data-target="hylomorphism_is_human_specific">hylomorphism_is_human_specific</span><span class="dep-chip" data-target="fallen_angels_are_demons">fallen_angels_are_demons</span><span class="dep-chip" data-target="angelic_vs_human_bodiless_cognition">angelic_vs_human_bodiless_cognition</span><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="angelHasIntellect">angelHasIntellect</span><span class="dep-chip" data-target="angelHasWill">angelHasWill</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="universalHylomorphism">universalHylomorphism</span><span class="dep-chip" data-target="angels_refute_universal_hylomorphism">angels_refute_universal_hylomorphism</span><span class="dep-chip" data-target="hylomorphism_is_human_specific">hylomorphism_is_human_specific</span><span class="dep-chip" data-target="fallen_angels_are_demons">fallen_angels_are_demons</span><span class="dep-chip" data-target="angelic_vs_human_bodiless_cognition">angelic_vs_human_bodiless_cognition</span><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="angels_are_immortal">
@@ -697,11 +693,10 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom angels_are_immortal :
-  ∀ (a : Angel), angelIsImmortal a
-</code></pre></div>
-<div class="node-desc">3 (§330): Angels are immortal. │   Source: [Definition] CCC §330. | Scope: Ecumenical.</div>
+  ∀ (a : Angel), angelIsImmortal a</code></pre></div>
+<div class="node-desc">AXIOM 3 (§330): Angels are immortal.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="angelIsImmortal">angelIsImmortal</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="angels_refute_universal_hylomorphism">angels_refute_universal_hylomorphism</span><span class="dep-chip" data-target="hylomorphism_is_human_specific">hylomorphism_is_human_specific</span><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="angelIsImmortal">angelIsImmortal</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="angels_refute_universal_hylomorphism">angels_refute_universal_hylomorphism</span><span class="dep-chip" data-target="hylomorphism_is_human_specific">hylomorphism_is_human_specific</span><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="angels_have_no_body">
@@ -712,11 +707,10 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom angels_have_no_body :
-  ∀ (a : Angel), ¬angelHasBody a
-</code></pre></div>
-<div class="node-desc">4 (§328, §330): Angels have NO body — they are purely spiritual. │   Source: [Definition] CCC §328 (&quot;non-corporeal beings&quot;), §330 | Scope: Ecumenical.</div>
+  ∀ (a : Angel), ¬angelHasBody a</code></pre></div>
+<div class="node-desc">AXIOM 4 (§328, §330): Angels have NO body — they are purely spiritual.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="angelHasBody">angelHasBody</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="universalHylomorphism">universalHylomorphism</span><span class="dep-chip" data-target="angels_refute_universal_hylomorphism">angels_refute_universal_hylomorphism</span><span class="dep-chip" data-target="hylomorphism_is_human_specific">hylomorphism_is_human_specific</span><span class="dep-chip" data-target="fallen_angels_are_demons">fallen_angels_are_demons</span><span class="dep-chip" data-target="angelic_vs_human_bodiless_cognition">angelic_vs_human_bodiless_cognition</span><span class="dep-chip" data-target="rejects_manichean_dualism">rejects_manichean_dualism</span><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="angelHasBody">angelHasBody</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="universalHylomorphism">universalHylomorphism</span><span class="dep-chip" data-target="angels_refute_universal_hylomorphism">angels_refute_universal_hylomorphism</span><span class="dep-chip" data-target="hylomorphism_is_human_specific">hylomorphism_is_human_specific</span><span class="dep-chip" data-target="fallen_angels_are_demons">fallen_angels_are_demons</span><span class="dep-chip" data-target="angelic_vs_human_bodiless_cognition">angelic_vs_human_bodiless_cognition</span><span class="dep-chip" data-target="rejects_manichean_dualism">rejects_manichean_dualism</span><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="all_angels_have_chosen">
@@ -727,11 +721,10 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom all_angels_have_chosen :
-  ∀ (a : Angel), hasMadeDefinitiveChoice a
-</code></pre></div>
-<div class="node-desc">5 (§392): All angels have made their definitive choice. │   Source: [Definition] CCC §392; [Tradition] Fourth Lateran Council | Scope: Ecumenical (broadly).</div>
+  ∀ (a : Angel), hasMadeDefinitiveChoice a</code></pre></div>
+<div class="node-desc">AXIOM 5 (§392): All angels have made their definitive choice.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="hasMadeDefinitiveChoice">hasMadeDefinitiveChoice</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hylomorphism_is_human_specific">hylomorphism_is_human_specific</span><span class="dep-chip" data-target="every_angel_faithful_or_fallen">every_angel_faithful_or_fallen</span><span class="dep-chip" data-target="angelic_vs_human_bodiless_cognition">angelic_vs_human_bodiless_cognition</span><span class="dep-chip" data-target="rejects_manichean_dualism">rejects_manichean_dualism</span><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="hasMadeDefinitiveChoice">hasMadeDefinitiveChoice</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hylomorphism_is_human_specific">hylomorphism_is_human_specific</span><span class="dep-chip" data-target="every_angel_faithful_or_fallen">every_angel_faithful_or_fallen</span><span class="dep-chip" data-target="angelic_vs_human_bodiless_cognition">angelic_vs_human_bodiless_cognition</span><span class="dep-chip" data-target="rejects_manichean_dualism">rejects_manichean_dualism</span><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="angelic_choice_is_irrevocable">
@@ -743,11 +736,10 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom angelic_choice_is_irrevocable :
   ∀ (a : Angel),
-    isFallenAngel a → ¬canRepent a
-</code></pre></div>
-<div class="node-desc">6 (§393): Fallen angels cannot repent — their choice is │   Source: [Definition] CCC §393; [Philosophical] Aquinas ST I q.64 a.2. | Scope: Catholic distinctive (Thomistic mechan... │   ⚠ HIDDEN ASSUMPTION: WHY is angelic choice irrevocable? The CCC asserts</div>
+    isFallenAngel a → ¬canRepent a</code></pre></div>
+<div class="node-desc">AXIOM 6 (§393): Fallen angels cannot repent — their choice is</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="canRepent">canRepent</span><span class="dep-chip" data-target="isFallenAngel">isFallenAngel</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="every_angel_faithful_or_fallen">every_angel_faithful_or_fallen</span><span class="dep-chip" data-target="fallen_angel_cannot_repent">fallen_angel_cannot_repent</span><span class="dep-chip" data-target="fallen_angel_rejected_god">fallen_angel_rejected_god</span><span class="dep-chip" data-target="some_angel_permanently_fallen">some_angel_permanently_fallen</span><span class="dep-chip" data-target="human_angelic_freedom_contrast">human_angelic_freedom_contrast</span><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="canRepent">canRepent</span><span class="dep-chip" data-target="isFallenAngel">isFallenAngel</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="every_angel_faithful_or_fallen">every_angel_faithful_or_fallen</span><span class="dep-chip" data-target="fallen_angel_cannot_repent">fallen_angel_cannot_repent</span><span class="dep-chip" data-target="fallen_angel_rejected_god">fallen_angel_rejected_god</span><span class="dep-chip" data-target="some_angel_permanently_fallen">some_angel_permanently_fallen</span><span class="dep-chip" data-target="human_angelic_freedom_contrast">human_angelic_freedom_contrast</span><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="satan_was_originally_good">
@@ -758,11 +750,10 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom satan_was_originally_good :
-  ∃ (a : Angel), isFallenAngel a
-</code></pre></div>
-<div class="node-desc">7 (§392): Satan was originally good — created by God as a │   Source: [Definition] CCC §391-392; [Scripture] Jn 8:44 (&quot;he was a | Scope: Ecumenical.</div>
+  ∃ (a : Angel), isFallenAngel a</code></pre></div>
+<div class="node-desc">AXIOM 7 (§392): Satan was originally good — created by God as a</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="isFallenAngel">isFallenAngel</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="every_angel_faithful_or_fallen">every_angel_faithful_or_fallen</span><span class="dep-chip" data-target="fallen_angel_rejected_god">fallen_angel_rejected_god</span><span class="dep-chip" data-target="some_angel_permanently_fallen">some_angel_permanently_fallen</span><span class="dep-chip" data-target="angelic_vs_human_bodiless_cognition">angelic_vs_human_bodiless_cognition</span><span class="dep-chip" data-target="rejects_manichean_dualism">rejects_manichean_dualism</span><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="isFallenAngel">isFallenAngel</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="every_angel_faithful_or_fallen">every_angel_faithful_or_fallen</span><span class="dep-chip" data-target="fallen_angel_rejected_god">fallen_angel_rejected_god</span><span class="dep-chip" data-target="some_angel_permanently_fallen">some_angel_permanently_fallen</span><span class="dep-chip" data-target="angelic_vs_human_bodiless_cognition">angelic_vs_human_bodiless_cognition</span><span class="dep-chip" data-target="rejects_manichean_dualism">rejects_manichean_dualism</span><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-proposition" data-kind="proposition" data-name="universalHylomorphism">
@@ -775,7 +766,7 @@ h1 {
     <div class="node-prop"><pre><code>def universalHylomorphism : Prop</code></pre></div>
 <div class="node-desc">Universal hylomorphism: the thesis that EVERY intellectual being</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="angelHasBody">angelHasBody</span><span class="dep-chip" data-target="angelHasIntellect">angelHasIntellect</span><span class="dep-chip" data-target="angels_have_intellect_and_will">angels_have_intellect_and_will</span><span class="dep-chip" data-target="angels_have_no_body">angels_have_no_body</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="angels_refute_universal_hylomorphism">angels_refute_universal_hylomorphism</span><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="angelHasBody">angelHasBody</span><span class="dep-chip" data-target="angelHasIntellect">angelHasIntellect</span><span class="dep-chip" data-target="angels_have_intellect_and_will">angels_have_intellect_and_will</span><span class="dep-chip" data-target="angels_have_no_body">angels_have_no_body</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="angels_refute_universal_hylomorphism">angels_refute_universal_hylomorphism</span><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="angels_refute_universal_hylomorphism">
@@ -788,8 +779,8 @@ h1 {
     <div class="node-prop"><pre><code>theorem angels_refute_universal_hylomorphism :
     ¬universalHylomorphism</code></pre></div>
 <div class="node-desc">Angels falsify universal hylomorphism: they have intellect but no body.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="angels_are_immortal">angels_are_immortal</span><span class="dep-chip" data-target="angels_exist">angels_exist</span><span class="dep-chip" data-target="angels_have_intellect_and_will">angels_have_intellect_and_will</span><span class="dep-chip" data-target="angels_have_no_body">angels_have_no_body</span><span class="dep-chip" data-target="both_aspects_in_life">both_aspects_in_life</span><span class="dep-chip" data-target="separated_soul_is_incomplete">separated_soul_is_incomplete</span><span class="dep-chip" data-target="universalHylomorphism">universalHylomorphism</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span><span class="dep-chip" data-target="angels_are_immortal">angels_are_immortal</span><span class="dep-chip" data-target="angels_exist">angels_exist</span><span class="dep-chip" data-target="angels_have_intellect_and_will">angels_have_intellect_and_will</span><span class="dep-chip" data-target="angels_have_no_body">angels_have_no_body</span><span class="dep-chip" data-target="universalHylomorphism">universalHylomorphism</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="angels_are_immortal">angels_are_immortal</span><span class="dep-chip" data-target="angels_exist">angels_exist</span><span class="dep-chip" data-target="angels_have_intellect_and_will">angels_have_intellect_and_will</span><span class="dep-chip" data-target="angels_have_no_body">angels_have_no_body</span><span class="dep-chip" data-target="universalHylomorphism">universalHylomorphism</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="hylomorphism_is_human_specific">
@@ -806,8 +797,8 @@ h1 {
     -- For angels: no body, yet fully equipped with intellect, will, and immortality
     (∀ (a : Angel), angelHasIntellect a ∧ angelHasWill a ∧ angelIsImmortal a ∧ ¬angelHasBody a)</code></pre></div>
 <div class="node-desc">The CCC's resolution: hylomorphism is specific to HUMAN nature.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="all_angels_have_chosen">all_angels_have_chosen</span><span class="dep-chip" data-target="angelHasBody">angelHasBody</span><span class="dep-chip" data-target="angelHasIntellect">angelHasIntellect</span><span class="dep-chip" data-target="angelHasWill">angelHasWill</span><span class="dep-chip" data-target="angelIsImmortal">angelIsImmortal</span><span class="dep-chip" data-target="angels_are_immortal">angels_are_immortal</span><span class="dep-chip" data-target="angels_have_intellect_and_will">angels_have_intellect_and_will</span><span class="dep-chip" data-target="angels_have_no_body">angels_have_no_body</span><span class="dep-chip" data-target="both_aspects_in_life">both_aspects_in_life</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="isRisen">isRisen</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="angelHasBody">angelHasBody</span><span class="dep-chip" data-target="angelHasIntellect">angelHasIntellect</span><span class="dep-chip" data-target="angelHasWill">angelHasWill</span><span class="dep-chip" data-target="angelIsImmortal">angelIsImmortal</span><span class="dep-chip" data-target="all_angels_have_chosen">all_angels_have_chosen</span><span class="dep-chip" data-target="angels_are_immortal">angels_are_immortal</span><span class="dep-chip" data-target="angels_have_intellect_and_will">angels_have_intellect_and_will</span><span class="dep-chip" data-target="angels_have_no_body">angels_have_no_body</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="all_angels_have_chosen">all_angels_have_chosen</span><span class="dep-chip" data-target="angelHasBody">angelHasBody</span><span class="dep-chip" data-target="angelHasIntellect">angelHasIntellect</span><span class="dep-chip" data-target="angelHasWill">angelHasWill</span><span class="dep-chip" data-target="angelIsImmortal">angelIsImmortal</span><span class="dep-chip" data-target="angels_are_immortal">angels_are_immortal</span><span class="dep-chip" data-target="angels_have_intellect_and_will">angels_have_intellect_and_will</span><span class="dep-chip" data-target="angels_have_no_body">angels_have_no_body</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="every_angel_faithful_or_fallen">
@@ -821,7 +812,7 @@ h1 {
     (hasMadeDefinitiveChoice a ∧ choseGod a) ∨ isFallenAngel a</code></pre></div>
 <div class="node-desc">Every angel is either faithful or fallen — there is no middle ground.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="all_angels_have_chosen">all_angels_have_chosen</span><span class="dep-chip" data-target="angelic_choice_is_irrevocable">angelic_choice_is_irrevocable</span><span class="dep-chip" data-target="choseGod">choseGod</span><span class="dep-chip" data-target="hasMadeDefinitiveChoice">hasMadeDefinitiveChoice</span><span class="dep-chip" data-target="isFallenAngel">isFallenAngel</span><span class="dep-chip" data-target="satan_was_originally_good">satan_was_originally_good</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="choseGod">choseGod</span><span class="dep-chip" data-target="hasMadeDefinitiveChoice">hasMadeDefinitiveChoice</span><span class="dep-chip" data-target="all_angels_have_chosen">all_angels_have_chosen</span><span class="dep-chip" data-target="isFallenAngel">isFallenAngel</span><span class="dep-chip" data-target="angelic_choice_is_irrevocable">angelic_choice_is_irrevocable</span><span class="dep-chip" data-target="satan_was_originally_good">satan_was_originally_good</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="fallen_angel_cannot_repent">
@@ -836,7 +827,7 @@ h1 {
     ¬canRepent a</code></pre></div>
 <div class="node-desc">A fallen angel cannot repent — its rejection of God is permanent.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="angelic_choice_is_irrevocable">angelic_choice_is_irrevocable</span><span class="dep-chip" data-target="canRepent">canRepent</span><span class="dep-chip" data-target="isFallenAngel">isFallenAngel</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="canRepent">canRepent</span><span class="dep-chip" data-target="isFallenAngel">isFallenAngel</span><span class="dep-chip" data-target="angelic_choice_is_irrevocable">angelic_choice_is_irrevocable</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="fallen_angel_rejected_god">
@@ -851,7 +842,7 @@ h1 {
     ¬choseGod a</code></pre></div>
 <div class="node-desc">A fallen angel did not choose God — derived from the definition.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="angelic_choice_is_irrevocable">angelic_choice_is_irrevocable</span><span class="dep-chip" data-target="choseGod">choseGod</span><span class="dep-chip" data-target="isFallenAngel">isFallenAngel</span><span class="dep-chip" data-target="satan_was_originally_good">satan_was_originally_good</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="choseGod">choseGod</span><span class="dep-chip" data-target="isFallenAngel">isFallenAngel</span><span class="dep-chip" data-target="angelic_choice_is_irrevocable">angelic_choice_is_irrevocable</span><span class="dep-chip" data-target="satan_was_originally_good">satan_was_originally_good</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="some_angel_permanently_fallen">
@@ -865,7 +856,7 @@ h1 {
     ∃ (a : Angel), isFallenAngel a ∧ ¬canRepent a</code></pre></div>
 <div class="node-desc">There exists at least one fallen angel who cannot repent.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="angelic_choice_is_irrevocable">angelic_choice_is_irrevocable</span><span class="dep-chip" data-target="canRepent">canRepent</span><span class="dep-chip" data-target="isFallenAngel">isFallenAngel</span><span class="dep-chip" data-target="satan_was_originally_good">satan_was_originally_good</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="human_angelic_freedom_contrast">human_angelic_freedom_contrast</span><span class="dep-chip" data-target="fallen_angels_are_demons">fallen_angels_are_demons</span><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="canRepent">canRepent</span><span class="dep-chip" data-target="isFallenAngel">isFallenAngel</span><span class="dep-chip" data-target="angelic_choice_is_irrevocable">angelic_choice_is_irrevocable</span><span class="dep-chip" data-target="satan_was_originally_good">satan_was_originally_good</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="human_angelic_freedom_contrast">human_angelic_freedom_contrast</span><span class="dep-chip" data-target="fallen_angels_are_demons">fallen_angels_are_demons</span><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="human_angelic_freedom_contrast">
@@ -880,9 +871,9 @@ h1 {
     (∀ (a : Angel), isFallenAngel a → ¬canRepent a) ∧
     -- There exist such permanently fallen angels
     (∃ (a : Angel), isFallenAngel a ∧ ¬canRepent a)</code></pre></div>
-<div class="node-desc">Human and angelic freedom contrast: humans can repent (before death), │   ⚠ HIDDEN ASSUMPTION: The contrast between discursive (human) and</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="Demon">Demon</span><span class="dep-chip" data-target="angelic_choice_is_irrevocable">angelic_choice_is_irrevocable</span><span class="dep-chip" data-target="canRepent">canRepent</span><span class="dep-chip" data-target="isFallenAngel">isFallenAngel</span><span class="dep-chip" data-target="some_angel_permanently_fallen">some_angel_permanently_fallen</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="canRepent">canRepent</span><span class="dep-chip" data-target="isFallenAngel">isFallenAngel</span><span class="dep-chip" data-target="angelic_choice_is_irrevocable">angelic_choice_is_irrevocable</span><span class="dep-chip" data-target="some_angel_permanently_fallen">some_angel_permanently_fallen</span></div></div>
+<div class="node-desc">Human and angelic freedom contrast: humans can repent (before death),</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="angelic_choice_is_irrevocable">angelic_choice_is_irrevocable</span><span class="dep-chip" data-target="canRepent">canRepent</span><span class="dep-chip" data-target="isFallenAngel">isFallenAngel</span><span class="dep-chip" data-target="some_angel_permanently_fallen">some_angel_permanently_fallen</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="fallen_angels_are_demons">
@@ -897,9 +888,9 @@ h1 {
     (∃ (a : Angel), isFallenAngel a ∧ ¬canRepent a) ∧
     -- There exist demons (Exorcism.lean)
     (∃ (d : Sacraments.Demon), d.isPersonal ∧ d.isFinite ∧ d.respondsToAuthority)</code></pre></div>
-<div class="node-desc">The connection between fallen angels and demons: the `Demon` type │   Source: [Definition] CCC §391-395; [Scripture] 2 Pet 2:4</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="CognitionMode">CognitionMode</span><span class="dep-chip" data-target="Demon">Demon</span><span class="dep-chip" data-target="angels_have_intellect_and_will">angels_have_intellect_and_will</span><span class="dep-chip" data-target="angels_have_no_body">angels_have_no_body</span><span class="dep-chip" data-target="canRepent">canRepent</span><span class="dep-chip" data-target="demons_exist">demons_exist</span><span class="dep-chip" data-target="isFallenAngel">isFallenAngel</span><span class="dep-chip" data-target="separated_soul_is_incomplete">separated_soul_is_incomplete</span><span class="dep-chip" data-target="some_angel_permanently_fallen">some_angel_permanently_fallen</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="canRepent">canRepent</span><span class="dep-chip" data-target="angels_have_intellect_and_will">angels_have_intellect_and_will</span><span class="dep-chip" data-target="angels_have_no_body">angels_have_no_body</span><span class="dep-chip" data-target="isFallenAngel">isFallenAngel</span><span class="dep-chip" data-target="some_angel_permanently_fallen">some_angel_permanently_fallen</span></div></div>
+<div class="node-desc">The connection between fallen angels and demons: the `Demon` type</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="angels_have_intellect_and_will">angels_have_intellect_and_will</span><span class="dep-chip" data-target="angels_have_no_body">angels_have_no_body</span><span class="dep-chip" data-target="canRepent">canRepent</span><span class="dep-chip" data-target="isFallenAngel">isFallenAngel</span><span class="dep-chip" data-target="some_angel_permanently_fallen">some_angel_permanently_fallen</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="angelic_vs_human_bodiless_cognition">
@@ -915,8 +906,8 @@ h1 {
     -- Humans: a dead human is INCOMPLETE without body
     (∀ (p : HumanPerson), isDead p → ¬isCompletePerson p)</code></pre></div>
 <div class="node-desc">Angels cognize naturally without bodies; separated human souls do so</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="all_angels_have_chosen">all_angels_have_chosen</span><span class="dep-chip" data-target="angelHasBody">angelHasBody</span><span class="dep-chip" data-target="angelHasIntellect">angelHasIntellect</span><span class="dep-chip" data-target="angelHasWill">angelHasWill</span><span class="dep-chip" data-target="angels_have_intellect_and_will">angels_have_intellect_and_will</span><span class="dep-chip" data-target="angels_have_no_body">angels_have_no_body</span><span class="dep-chip" data-target="isCompletePerson">isCompletePerson</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="satan_was_originally_good">satan_was_originally_good</span><span class="dep-chip" data-target="separated_soul_is_incomplete">separated_soul_is_incomplete</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="angelHasBody">angelHasBody</span><span class="dep-chip" data-target="angelHasIntellect">angelHasIntellect</span><span class="dep-chip" data-target="angelHasWill">angelHasWill</span><span class="dep-chip" data-target="all_angels_have_chosen">all_angels_have_chosen</span><span class="dep-chip" data-target="angels_have_intellect_and_will">angels_have_intellect_and_will</span><span class="dep-chip" data-target="angels_have_no_body">angels_have_no_body</span><span class="dep-chip" data-target="satan_was_originally_good">satan_was_originally_good</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="all_angels_have_chosen">all_angels_have_chosen</span><span class="dep-chip" data-target="angelHasBody">angelHasBody</span><span class="dep-chip" data-target="angelHasIntellect">angelHasIntellect</span><span class="dep-chip" data-target="angelHasWill">angelHasWill</span><span class="dep-chip" data-target="angels_have_intellect_and_will">angels_have_intellect_and_will</span><span class="dep-chip" data-target="angels_have_no_body">angels_have_no_body</span><span class="dep-chip" data-target="satan_was_originally_good">satan_was_originally_good</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="rejects_manichean_dualism">
@@ -933,8 +924,8 @@ h1 {
     -- not an uncreated co-eternal principle
     (∀ (a : Angel), hasMadeDefinitiveChoice a)</code></pre></div>
 <div class="node-desc">Manichean dualism: evil as a co-eternal principle opposed to God.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="all_angels_have_chosen">all_angels_have_chosen</span><span class="dep-chip" data-target="angels_have_no_body">angels_have_no_body</span><span class="dep-chip" data-target="both_aspects_in_life">both_aspects_in_life</span><span class="dep-chip" data-target="hasMadeDefinitiveChoice">hasMadeDefinitiveChoice</span><span class="dep-chip" data-target="isFallenAngel">isFallenAngel</span><span class="dep-chip" data-target="satan_was_originally_good">satan_was_originally_good</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="hasMadeDefinitiveChoice">hasMadeDefinitiveChoice</span><span class="dep-chip" data-target="all_angels_have_chosen">all_angels_have_chosen</span><span class="dep-chip" data-target="angels_have_no_body">angels_have_no_body</span><span class="dep-chip" data-target="isFallenAngel">isFallenAngel</span><span class="dep-chip" data-target="satan_was_originally_good">satan_was_originally_good</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="all_angels_have_chosen">all_angels_have_chosen</span><span class="dep-chip" data-target="angels_have_no_body">angels_have_no_body</span><span class="dep-chip" data-target="hasMadeDefinitiveChoice">hasMadeDefinitiveChoice</span><span class="dep-chip" data-target="isFallenAngel">isFallenAngel</span><span class="dep-chip" data-target="satan_was_originally_good">satan_was_originally_good</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="rejects_angelism">rejects_angelism</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="rejects_angelism">
@@ -951,8 +942,7 @@ h1 {
     -- Angels: no body at all
     (∀ (a : Angel), ¬angelHasBody a)</code></pre></div>
 <div class="node-desc">Angelism: the error that humans are really just angels trapped in</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="CognitionMode">CognitionMode</span><span class="dep-chip" data-target="DeathState">DeathState</span><span class="dep-chip" data-target="Demon">Demon</span><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="all_angels_have_chosen">all_angels_have_chosen</span><span class="dep-chip" data-target="angelHasBody">angelHasBody</span><span class="dep-chip" data-target="angelHasIntellect">angelHasIntellect</span><span class="dep-chip" data-target="angelHasWill">angelHasWill</span><span class="dep-chip" data-target="angelIsImmortal">angelIsImmortal</span><span class="dep-chip" data-target="angelic_choice_is_irrevocable">angelic_choice_is_irrevocable</span><span class="dep-chip" data-target="angelic_vs_human_bodiless_cognition">angelic_vs_human_bodiless_cognition</span><span class="dep-chip" data-target="angels_are_immortal">angels_are_immortal</span><span class="dep-chip" data-target="angels_exist">angels_exist</span><span class="dep-chip" data-target="angels_have_intellect_and_will">angels_have_intellect_and_will</span><span class="dep-chip" data-target="angels_have_no_body">angels_have_no_body</span><span class="dep-chip" data-target="angels_refute_universal_hylomorphism">angels_refute_universal_hylomorphism</span><span class="dep-chip" data-target="both_aspects_in_life">both_aspects_in_life</span><span class="dep-chip" data-target="canRepent">canRepent</span><span class="dep-chip" data-target="choseGod">choseGod</span><span class="dep-chip" data-target="demons_exist">demons_exist</span><span class="dep-chip" data-target="every_angel_faithful_or_fallen">every_angel_faithful_or_fallen</span><span class="dep-chip" data-target="fallen_angel_cannot_repent">fallen_angel_cannot_repent</span><span class="dep-chip" data-target="fallen_angel_rejected_god">fallen_angel_rejected_god</span><span class="dep-chip" data-target="fallen_angels_are_demons">fallen_angels_are_demons</span><span class="dep-chip" data-target="hasCorporealAspect">hasCorporealAspect</span><span class="dep-chip" data-target="hasMadeDefinitiveChoice">hasMadeDefinitiveChoice</span><span class="dep-chip" data-target="hasSpiritualAspect">hasSpiritualAspect</span><span class="dep-chip" data-target="human_angelic_freedom_contrast">human_angelic_freedom_contrast</span><span class="dep-chip" data-target="hylomorphism_is_human_specific">hylomorphism_is_human_specific</span><span class="dep-chip" data-target="isCompletePerson">isCompletePerson</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="isFallenAngel">isFallenAngel</span><span class="dep-chip" data-target="isRisen">isRisen</span><span class="dep-chip" data-target="rejects_manichean_dualism">rejects_manichean_dualism</span><span class="dep-chip" data-target="satan_was_originally_good">satan_was_originally_good</span><span class="dep-chip" data-target="separated_soul_is_incomplete">separated_soul_is_incomplete</span><span class="dep-chip" data-target="some_angel_permanently_fallen">some_angel_permanently_fallen</span><span class="dep-chip" data-target="universalHylomorphism">universalHylomorphism</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="angelHasBody">angelHasBody</span><span class="dep-chip" data-target="angelHasIntellect">angelHasIntellect</span><span class="dep-chip" data-target="angelHasWill">angelHasWill</span><span class="dep-chip" data-target="angelIsImmortal">angelIsImmortal</span><span class="dep-chip" data-target="canRepent">canRepent</span><span class="dep-chip" data-target="choseGod">choseGod</span><span class="dep-chip" data-target="hasMadeDefinitiveChoice">hasMadeDefinitiveChoice</span><span class="dep-chip" data-target="all_angels_have_chosen">all_angels_have_chosen</span><span class="dep-chip" data-target="angels_are_immortal">angels_are_immortal</span><span class="dep-chip" data-target="angels_exist">angels_exist</span><span class="dep-chip" data-target="angels_have_intellect_and_will">angels_have_intellect_and_will</span><span class="dep-chip" data-target="angels_have_no_body">angels_have_no_body</span><span class="dep-chip" data-target="isFallenAngel">isFallenAngel</span><span class="dep-chip" data-target="angelic_choice_is_irrevocable">angelic_choice_is_irrevocable</span><span class="dep-chip" data-target="hylomorphism_is_human_specific">hylomorphism_is_human_specific</span><span class="dep-chip" data-target="satan_was_originally_good">satan_was_originally_good</span><span class="dep-chip" data-target="universalHylomorphism">universalHylomorphism</span><span class="dep-chip" data-target="angelic_vs_human_bodiless_cognition">angelic_vs_human_bodiless_cognition</span><span class="dep-chip" data-target="angels_refute_universal_hylomorphism">angels_refute_universal_hylomorphism</span><span class="dep-chip" data-target="every_angel_faithful_or_fallen">every_angel_faithful_or_fallen</span><span class="dep-chip" data-target="fallen_angel_cannot_repent">fallen_angel_cannot_repent</span><span class="dep-chip" data-target="fallen_angel_rejected_god">fallen_angel_rejected_god</span><span class="dep-chip" data-target="rejects_manichean_dualism">rejects_manichean_dualism</span><span class="dep-chip" data-target="some_angel_permanently_fallen">some_angel_permanently_fallen</span><span class="dep-chip" data-target="fallen_angels_are_demons">fallen_angels_are_demons</span><span class="dep-chip" data-target="human_angelic_freedom_contrast">human_angelic_freedom_contrast</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="all_angels_have_chosen">all_angels_have_chosen</span><span class="dep-chip" data-target="angelHasBody">angelHasBody</span><span class="dep-chip" data-target="angelHasIntellect">angelHasIntellect</span><span class="dep-chip" data-target="angelHasWill">angelHasWill</span><span class="dep-chip" data-target="angelIsImmortal">angelIsImmortal</span><span class="dep-chip" data-target="angelic_choice_is_irrevocable">angelic_choice_is_irrevocable</span><span class="dep-chip" data-target="angelic_vs_human_bodiless_cognition">angelic_vs_human_bodiless_cognition</span><span class="dep-chip" data-target="angels_are_immortal">angels_are_immortal</span><span class="dep-chip" data-target="angels_exist">angels_exist</span><span class="dep-chip" data-target="angels_have_intellect_and_will">angels_have_intellect_and_will</span><span class="dep-chip" data-target="angels_have_no_body">angels_have_no_body</span><span class="dep-chip" data-target="angels_refute_universal_hylomorphism">angels_refute_universal_hylomorphism</span><span class="dep-chip" data-target="canRepent">canRepent</span><span class="dep-chip" data-target="choseGod">choseGod</span><span class="dep-chip" data-target="every_angel_faithful_or_fallen">every_angel_faithful_or_fallen</span><span class="dep-chip" data-target="fallen_angel_cannot_repent">fallen_angel_cannot_repent</span><span class="dep-chip" data-target="fallen_angel_rejected_god">fallen_angel_rejected_god</span><span class="dep-chip" data-target="fallen_angels_are_demons">fallen_angels_are_demons</span><span class="dep-chip" data-target="hasMadeDefinitiveChoice">hasMadeDefinitiveChoice</span><span class="dep-chip" data-target="human_angelic_freedom_contrast">human_angelic_freedom_contrast</span><span class="dep-chip" data-target="hylomorphism_is_human_specific">hylomorphism_is_human_specific</span><span class="dep-chip" data-target="isFallenAngel">isFallenAngel</span><span class="dep-chip" data-target="rejects_manichean_dualism">rejects_manichean_dualism</span><span class="dep-chip" data-target="satan_was_originally_good">satan_was_originally_good</span><span class="dep-chip" data-target="some_angel_permanently_fallen">some_angel_permanently_fallen</span><span class="dep-chip" data-target="universalHylomorphism">universalHylomorphism</span></div></div>
   </div>
 </div>
   </div>

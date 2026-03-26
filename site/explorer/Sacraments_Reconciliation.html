@@ -267,8 +267,6 @@ h1 {
 .node-card.kind-structure { border-left-color: var(--structure-dot); }
 .node-card.kind-inductive { border-left-color: var(--inductive-dot); }
 .node-card.kind-proposition { border-left-color: var(--proposition-dot); }
-.node-card.kind-instance { border-left-color: var(--def-dot); }
-.node-card.kind-abbrev { border-left-color: var(--def-dot); }
 
 .node-header {
   display: flex;
@@ -304,8 +302,6 @@ h1 {
 .kind-structure .node-kind-badge { background: var(--structure-bg); color: var(--structure-dot); }
 .kind-inductive .node-kind-badge { background: var(--inductive-bg); color: var(--inductive-dot); }
 .kind-proposition .node-kind-badge { background: var(--proposition-bg); color: var(--proposition-dot); }
-.kind-instance .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
-.kind-abbrev .node-kind-badge { background: var(--def-bg); color: var(--def-dot); }
 
 .node-name {
   flex: 1;
@@ -466,8 +462,6 @@ h1 {
 .legend-dot.structure { background: var(--structure-dot); }
 .legend-dot.inductive { background: var(--inductive-dot); }
 .legend-dot.proposition { background: var(--proposition-dot); }
-.legend-dot.instance { background: var(--def-dot); }
-.legend-dot.abbrev { background: var(--def-dot); }
 
 /* ── Filter buttons ── */
 .filter-bar {
@@ -530,12 +524,19 @@ h1 {
   <a href="index.html" class="back-link">&larr; All files</a>
   <h1>Reconciliation</h1>
   <div class="subtitle">Sacraments &middot; 30 declarations</div>
-  
-  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1451, &sect;1456, &sect;1459, &sect;1461, &sect;1468, &sect;1472, &sect;1473, &sect;1489, &sect;1491, &sect;2001</div>
 
-  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot structure"></span>structure</span></div>
+  <div class="flow-summary">
+  <span class="flow-count axioms">8 axioms</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count theorems">12 theorems</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count derived">10 derived</span>
+</div>
+  <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1422, &sect;1423, &sect;1424, &sect;1450, &sect;1451, &sect;1455, &sect;1456, &sect;1459, &sect;1461, &sect;1468, &sect;1472, &sect;1473, &sect;1489, &sect;1491, &sect;2001</div>
 
-  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (6)</button><button class="filter-btn" data-filter="theorem">theorem (12)</button><button class="filter-btn" data-filter="def">def (5)</button><button class="filter-btn" data-filter="opaque">opaque (2)</button><button class="filter-btn" data-filter="structure">structure (5)</button></div>
+  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot structure"></span>structure</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
+
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (6)</button><button class="filter-btn" data-filter="def">def (5)</button><button class="filter-btn" data-filter="opaque">opaque (2)</button><button class="filter-btn" data-filter="structure">structure (5)</button><button class="filter-btn" data-filter="theorem">theorem (12)</button></div>
 
   <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
 
@@ -549,9 +550,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>structure Contrition where</code></pre></div>
 <div class="node-desc">Contrition — genuine sorrow for sin with a firm purpose of amendment.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="contrition_requires_prevenient_grace">contrition_requires_prevenient_grace</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Confession">Confession</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="ReconciliationAct">ReconciliationAct</span><span class="dep-chip" data-target="eternalPunishmentRemitted">eternalPunishmentRemitted</span><span class="dep-chip" data-target="contrition_requires_sincerity">contrition_requires_sincerity</span><span class="dep-chip" data-target="absolution_remits_eternal_not_temporal">absolution_remits_eternal_not_temporal</span><span class="dep-chip" data-target="contrition_requires_prevenient_grace">contrition_requires_prevenient_grace</span><span class="dep-chip" data-target="reconciliation_restores_communion">reconciliation_restores_communion</span></div></div>
   </div>
 </div>
 <div class="node-card kind-structure" data-kind="structure" data-name="Confession">
@@ -563,6 +563,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>structure Confession where</code></pre></div>
 <div class="node-desc">Confession — the disclosure of sins to a priest.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Satisfaction">Satisfaction</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="Contrition">Contrition</span><span class="dep-chip" data-target="ReconciliationAct">ReconciliationAct</span></div></div>
   </div>
 </div>
 <div class="node-card kind-structure" data-kind="structure" data-name="Satisfaction">
@@ -574,6 +576,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>structure Satisfaction where</code></pre></div>
 <div class="node-desc">Satisfaction — the penance assigned by the priest.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Absolution">Absolution</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="Confession">Confession</span><span class="dep-chip" data-target="ReconciliationAct">ReconciliationAct</span><span class="dep-chip" data-target="reconciliation_restores_agape">reconciliation_restores_agape</span></div></div>
   </div>
 </div>
 <div class="node-card kind-structure" data-kind="structure" data-name="Absolution">
@@ -584,7 +588,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>structure Absolution where</code></pre></div>
-<div class="node-desc">Absolution — the priest&#x27;s act of forgiving sins in persona Christi.</div>
+<div class="node-desc">Absolution — the priest's act of forgiving sins in persona Christi.</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="Satisfaction">Satisfaction</span><span class="dep-chip" data-target="ReconciliationAct">ReconciliationAct</span><span class="dep-chip" data-target="absolution_requires_authority">absolution_requires_authority</span><span class="dep-chip" data-target="grace_bootstrapping_in_reconciliation">grace_bootstrapping_in_reconciliation</span><span class="dep-chip" data-target="three_acts_tag">three_acts_tag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-structure" data-kind="structure" data-name="ReconciliationAct">
@@ -596,6 +601,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>structure ReconciliationAct where</code></pre></div>
 <div class="node-desc">The complete sacramental act of Reconciliation, comprising all four</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Absolution">Absolution</span><span class="dep-chip" data-target="Confession">Confession</span><span class="dep-chip" data-target="Contrition">Contrition</span><span class="dep-chip" data-target="Satisfaction">Satisfaction</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="reconciliation_restores_grace">reconciliation_restores_grace</span><span class="dep-chip" data-target="reconciliation_restores_agape">reconciliation_restores_agape</span><span class="dep-chip" data-target="absolution_remits_eternal_not_temporal">absolution_remits_eternal_not_temporal</span><span class="dep-chip" data-target="sincere_contrition_enables_reconciliation">sincere_contrition_enables_reconciliation</span><span class="dep-chip" data-target="reconciliation_restores_charity">reconciliation_restores_charity</span><span class="dep-chip" data-target="reconciliation_restores_communion">reconciliation_restores_communion</span><span class="dep-chip" data-target="temporal_punishment_survives_absolution">temporal_punishment_survives_absolution</span><span class="dep-chip" data-target="destruction_asymmetric_to_restoration">destruction_asymmetric_to_restoration</span><span class="dep-chip" data-target="reconciliation_requires_authority">reconciliation_requires_authority</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="hasTemporalPunishment">
@@ -616,12 +623,10 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque eternalPunishmentRemitted : Person → Prop
-
--- ============================================================================
--- § 3. Axioms
--- ============================================================================</code></pre></div>
-<div class="node-desc">Whether a person&#x27;s eternal punishment (guilt) has been removed.</div>
+    <div class="node-prop"><pre><code>opaque eternalPunishmentRemitted : Person → Prop</code></pre></div>
+<div class="node-desc">Whether a person's eternal punishment (guilt) has been removed.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Contrition">Contrition</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="absolution_remits_eternal_not_temporal">absolution_remits_eternal_not_temporal</span><span class="dep-chip" data-target="temporal_punishment_survives_absolution">temporal_punishment_survives_absolution</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="contrition_requires_sincerity">
@@ -633,10 +638,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom contrition_requires_sincerity :
   ∀ (c : Contrition), c.genuineSorrow ∧ c.firmPurpose → c.isFree</code></pre></div>
-<div class="node-desc">Genuine contrition is a free act of the will.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="sincere_contrition_enables_reconciliation">sincere_contrition_enables_reconciliation</span>
-</div></div>
+<div class="node-desc">AXIOM (§1451): Genuine contrition is a free act of the will.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Contrition">Contrition</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="contrition_requires_prevenient_grace">contrition_requires_prevenient_grace</span><span class="dep-chip" data-target="sincere_contrition_enables_reconciliation">sincere_contrition_enables_reconciliation</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="absolution_requires_authority">
@@ -648,10 +652,9 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom absolution_requires_authority :
   ∀ (a : Absolution), a.isPronounced → a.hasAuthority</code></pre></div>
-<div class="node-desc">Valid absolution requires the delegation chain.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="reconciliation_requires_authority">reconciliation_requires_authority</span>
-</div></div>
+<div class="node-desc">AXIOM (§1461, Jn 20:23): Valid absolution requires the delegation chain.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Absolution">Absolution</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="reconciliation_requires_authority">reconciliation_requires_authority</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="reconciliation_restores_grace">
@@ -675,11 +678,9 @@ h1 {
     ∃ (newState : SpiritualState),
       newState.person = state.person ∧
       newState.graceState = GraceState.inGrace</code></pre></div>
-<div class="node-desc">Valid reconciliation restores the state of grace.</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="sincere_contrition_enables_reconciliation">sincere_contrition_enables_reconciliation</span>
-<span class="dep-chip" data-target="destruction_asymmetric_to_restoration">destruction_asymmetric_to_restoration</span>
-</div></div>
+<div class="node-desc">AXIOM (§1468): Valid reconciliation restores the state of grace.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ReconciliationAct">ReconciliationAct</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="contrition_requires_prevenient_grace">contrition_requires_prevenient_grace</span><span class="dep-chip" data-target="sincere_contrition_enables_reconciliation">sincere_contrition_enables_reconciliation</span><span class="dep-chip" data-target="destruction_asymmetric_to_restoration">destruction_asymmetric_to_restoration</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="reconciliation_restores_agape">
@@ -698,15 +699,14 @@ h1 {
     tl.kind = LoveKind.agape →
     tl.lover = r.contrition.penitent →
     tl.degree = 0 →
-    ∃ (tl&#x27; : TypedLove),
-      tl&#x27;.kind = LoveKind.agape ∧
-      tl&#x27;.lover = tl.lover ∧
-      tl&#x27;.beloved = tl.beloved ∧
-      tl&#x27;.degree &gt; 0</code></pre></div>
-<div class="node-desc">Reconciliation restores charity (agape).</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="reconciliation_restores_charity">reconciliation_restores_charity</span>
-</div></div>
+    ∃ (tl' : TypedLove),
+      tl'.kind = LoveKind.agape ∧
+      tl'.lover = tl.lover ∧
+      tl'.beloved = tl.beloved ∧
+      tl'.degree &gt; 0</code></pre></div>
+<div class="node-desc">AXIOM (§1468): Reconciliation restores charity (agape).</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ReconciliationAct">ReconciliationAct</span><span class="dep-chip" data-target="Satisfaction">Satisfaction</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="sincere_contrition_enables_reconciliation">sincere_contrition_enables_reconciliation</span><span class="dep-chip" data-target="reconciliation_restores_charity">reconciliation_restores_charity</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="absolution_remits_eternal_not_temporal">
@@ -725,11 +725,10 @@ h1 {
     eternalPunishmentRemitted r.contrition.penitent ∧
     -- Temporal punishment MAY remain
     -- (satisfaction/penance partially addresses it, but may not fully resolve it)
-    True  -- temporal punishment&#x27;s persistence is possible, not guaranteed</code></pre></div>
-<div class="node-desc">Eternal punishment is remitted by absolution, but</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="temporal_punishment_survives_absolution">temporal_punishment_survives_absolution</span>
-</div></div>
+    True  -- temporal punishment's persistence is possible, not guaranteed</code></pre></div>
+<div class="node-desc">AXIOM (§1473): Eternal punishment is remitted by absolution, but</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Contrition">Contrition</span><span class="dep-chip" data-target="ReconciliationAct">ReconciliationAct</span><span class="dep-chip" data-target="eternalPunishmentRemitted">eternalPunishmentRemitted</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="temporal_punishment_survives_absolution">temporal_punishment_survives_absolution</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="contrition_requires_prevenient_grace">
@@ -749,9 +748,7 @@ h1 {
       g.recipient = c.penitent ∧
       g.isFree</code></pre></div>
 <div class="node-desc">THEOREM (§1489): Contrition requires prevenient grace.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="Contrition">Contrition</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Contrition">Contrition</span><span class="dep-chip" data-target="contrition_requires_sincerity">contrition_requires_sincerity</span><span class="dep-chip" data-target="reconciliation_restores_grace">reconciliation_restores_grace</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="sincere_contrition_enables_reconciliation">
@@ -775,10 +772,7 @@ h1 {
       newState.person = state.person ∧
       newState.graceState = GraceState.inGrace</code></pre></div>
 <div class="node-desc">Sincere contrition satisfies the freedom condition for valid reconciliation.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="reconciliation_restores_grace">reconciliation_restores_grace</span>
-<span class="dep-chip" data-target="contrition_requires_sincerity">contrition_requires_sincerity</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ReconciliationAct">ReconciliationAct</span><span class="dep-chip" data-target="contrition_requires_sincerity">contrition_requires_sincerity</span><span class="dep-chip" data-target="reconciliation_restores_agape">reconciliation_restores_agape</span><span class="dep-chip" data-target="reconciliation_restores_grace">reconciliation_restores_grace</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="reconciliation_restores_charity">
@@ -797,18 +791,14 @@ h1 {
     (h_agape : tl.kind = LoveKind.agape)
     (h_lover : tl.lover = r.contrition.penitent)
     (h_destroyed : tl.degree = 0) :
-    ∃ (tl&#x27; : TypedLove),
-      tl&#x27;.kind = LoveKind.agape ∧
-      tl&#x27;.lover = tl.lover ∧
-      tl&#x27;.beloved = tl.beloved ∧
-      tl&#x27;.degree &gt; 0</code></pre></div>
+    ∃ (tl' : TypedLove),
+      tl'.kind = LoveKind.agape ∧
+      tl'.lover = tl.lover ∧
+      tl'.beloved = tl.beloved ∧
+      tl'.degree &gt; 0</code></pre></div>
 <div class="node-desc">Reconciliation restores charity (agape) from zero to positive.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="reconciliation_restores_agape">reconciliation_restores_agape</span>
-</div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="reconciliation_restores_communion">reconciliation_restores_communion</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ReconciliationAct">ReconciliationAct</span><span class="dep-chip" data-target="charity_implies_communion">charity_implies_communion</span><span class="dep-chip" data-target="reconciliation_restores_agape">reconciliation_restores_agape</span><span class="dep-chip" data-target="reconciliation_restores_communion">reconciliation_restores_communion</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="reconciliation_restores_communion">reconciliation_restores_communion</span><span class="dep-chip" data-target="asymmetry_tag">asymmetry_tag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="charity_implies_communion">
@@ -824,9 +814,8 @@ h1 {
     tl.lover = p →
     tl.degree &gt; 0 →
     ∃ (s : SoulState), s.sustained ∧ s.choseGod</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list">
-<span class="dep-chip" data-target="reconciliation_restores_communion">reconciliation_restores_communion</span>
-</div></div>
+<div class="node-desc">Restoring charity implies restoring the beatifying mode of divine</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="reconciliation_restores_charity">reconciliation_restores_charity</span><span class="dep-chip" data-target="reconciliation_restores_communion">reconciliation_restores_communion</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="reconciliation_restores_communion">
@@ -846,10 +835,8 @@ h1 {
     (h_lover : tl.lover = r.contrition.penitent)
     (h_destroyed : tl.degree = 0) :
     ∃ (s : SoulState), s.sustained ∧ s.choseGod</code></pre></div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="reconciliation_restores_charity">reconciliation_restores_charity</span>
-<span class="dep-chip" data-target="charity_implies_communion">charity_implies_communion</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Contrition">Contrition</span><span class="dep-chip" data-target="ReconciliationAct">ReconciliationAct</span><span class="dep-chip" data-target="charity_implies_communion">charity_implies_communion</span><span class="dep-chip" data-target="reconciliation_restores_charity">reconciliation_restores_charity</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="reconciliation_restores_charity">reconciliation_restores_charity</span><span class="dep-chip" data-target="asymmetry_tag">asymmetry_tag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="grace_bootstrapping_in_reconciliation">
@@ -867,6 +854,8 @@ h1 {
       g.recipient = p ∧
       g.isFree</code></pre></div>
 <div class="node-desc">The grace bootstrapping problem appears in reconciliation:</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Absolution">Absolution</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="asymmetry_tag">asymmetry_tag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="temporal_punishment_survives_absolution">
@@ -884,9 +873,8 @@ h1 {
     -- Eternal punishment is remitted
     eternalPunishmentRemitted r.contrition.penitent</code></pre></div>
 <div class="node-desc">Temporal punishment survives absolution. Guilt (eternal punishment)</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="absolution_remits_eternal_not_temporal">absolution_remits_eternal_not_temporal</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ReconciliationAct">ReconciliationAct</span><span class="dep-chip" data-target="absolution_remits_eternal_not_temporal">absolution_remits_eternal_not_temporal</span><span class="dep-chip" data-target="eternalPunishmentRemitted">eternalPunishmentRemitted</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="asymmetry_tag">asymmetry_tag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="destruction_asymmetric_to_restoration">
@@ -921,9 +909,8 @@ h1 {
         restoredState.person = state.person ∧
         restoredState.graceState = GraceState.inGrace)</code></pre></div>
 <div class="node-desc">The asymmetry between destruction and restoration.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="reconciliation_restores_grace">reconciliation_restores_grace</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ReconciliationAct">ReconciliationAct</span><span class="dep-chip" data-target="reconciliation_restores_grace">reconciliation_restores_grace</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="asymmetry_tag">asymmetry_tag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="reconciliation_requires_authority">
@@ -938,9 +925,8 @@ h1 {
     (h_pronounced : r.absolution.isPronounced) :
     r.absolution.hasAuthority</code></pre></div>
 <div class="node-desc">Reconciliation requires the authority chain.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list">
-<span class="dep-chip" data-target="absolution_requires_authority">absolution_requires_authority</span>
-</div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="ReconciliationAct">ReconciliationAct</span><span class="dep-chip" data-target="absolution_requires_authority">absolution_requires_authority</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="asymmetry_tag">asymmetry_tag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="absolution_has_delegation_chain">
@@ -952,7 +938,8 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>theorem absolution_has_delegation_chain :
     absolutionDomain.christHasIt ∧ absolutionDomain.christDelegatedIt</code></pre></div>
-<div class="node-desc">The absolution authority is specifically grounded in Christ&#x27;s</div>
+<div class="node-desc">The absolution authority is specifically grounded in Christ's</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="asymmetry_tag">asymmetry_tag</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="sin_separates_bridge">
@@ -1001,6 +988,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def three_acts_tag : DenominationalTag</code></pre></div>
 <div class="node-desc">The three acts of the penitent: Catholic + Orthodox.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Absolution">Absolution</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="absolution_tag">
@@ -1045,6 +1033,7 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>def asymmetry_tag : DenominationalTag</code></pre></div>
 <div class="node-desc">The asymmetry (destruction easier than restoration): broadly shared.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="absolution_has_delegation_chain">absolution_has_delegation_chain</span><span class="dep-chip" data-target="destruction_asymmetric_to_restoration">destruction_asymmetric_to_restoration</span><span class="dep-chip" data-target="grace_bootstrapping_in_reconciliation">grace_bootstrapping_in_reconciliation</span><span class="dep-chip" data-target="reconciliation_requires_authority">reconciliation_requires_authority</span><span class="dep-chip" data-target="reconciliation_restores_charity">reconciliation_restores_charity</span><span class="dep-chip" data-target="reconciliation_restores_communion">reconciliation_restores_communion</span><span class="dep-chip" data-target="temporal_punishment_survives_absolution">temporal_punishment_survives_absolution</span></div></div>
   </div>
 </div>
   </div>

@@ -523,14 +523,20 @@ h1 {
 <div class="container">
   <a href="index.html" class="back-link">&larr; All files</a>
   <h1>AngelicNature</h1>
-  <div class="subtitle">Creed &middot; 21 declarations</div>
+  <div class="subtitle">Creed &middot; 23 declarations</div>
 
-  
+  <div class="flow-summary">
+  <span class="flow-count axioms">11 axioms</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count theorems">6 theorems</span>
+  <span class="flow-arrow">&#10142;</span>
+  <span class="flow-count derived">4 derived</span>
+</div>
   <div style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;font-style:italic;">CCC &sect;1700, &sect;328, &sect;330, &sect;335, &sect;336, &sect;40</div>
 
-  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
+  <div class="legend"><span class="legend-item"><span class="legend-dot axiom"></span>axiom</span><span class="legend-item"><span class="legend-dot def"></span>def</span><span class="legend-item"><span class="legend-dot inductive"></span>inductive</span><span class="legend-item"><span class="legend-dot instance"></span>instance</span><span class="legend-item"><span class="legend-dot opaque"></span>opaque</span><span class="legend-item"><span class="legend-dot theorem"></span>theorem</span></div>
 
-  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (5)</button><button class="filter-btn" data-filter="def">def (2)</button><button class="filter-btn" data-filter="inductive">inductive (2)</button><button class="filter-btn" data-filter="opaque">opaque (6)</button><button class="filter-btn" data-filter="theorem">theorem (6)</button></div>
+  <div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="axiom">axiom (5)</button><button class="filter-btn" data-filter="def">def (2)</button><button class="filter-btn" data-filter="inductive">inductive (2)</button><button class="filter-btn" data-filter="instance">instance (2)</button><button class="filter-btn" data-filter="opaque">opaque (6)</button><button class="filter-btn" data-filter="theorem">theorem (6)</button></div>
 
   <input type="text" class="search-box" placeholder="Search declarations..." id="nodeSearch">
 
@@ -542,10 +548,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque angelicSpecies : Angel → Type
-</code></pre></div>
-<div class="node-desc">The species (nature) of an angel. Since angels have no matter, │   Source: [Aquinas] ST I q.50 a.4.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="CognitionMode">CognitionMode</span></div></div>
+    <div class="node-prop"><pre><code>opaque angelicSpecies : Angel → Type</code></pre></div>
+<div class="node-desc">The species (nature) of an angel. Since angels have no matter,</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="each_angel_unique_species">each_angel_unique_species</span><span class="dep-chip" data-target="person_is_analogical_for_angels_and_humans">person_is_analogical_for_angels_and_humans</span><span class="dep-chip" data-target="angelicNature_denominational_scope">angelicNature_denominational_scope</span></div></div>
   </div>
 </div>
@@ -557,8 +561,22 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>inductive KnowledgeMode where</code></pre></div>
-<div class="node-desc">How an intellect acquires knowledge. │   Source: [Aquinas] ST I q.55 a.2 (infused), q.84 a.7 (abstraction).</div>
+<div class="node-desc">How an intellect acquires knowledge.</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="angelKnowledgeMode">angelKnowledgeMode</span><span class="dep-chip" data-target="angels_know_by_infusion">angels_know_by_infusion</span><span class="dep-chip" data-target="knowledge_mode_determines_sin_type">knowledge_mode_determines_sin_type</span><span class="dep-chip" data-target="angelic_vs_human_knowledge">angelic_vs_human_knowledge</span><span class="dep-chip" data-target="angelicNature_denominational_scope">angelicNature_denominational_scope</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-instance" data-kind="instance" data-name=":">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">instance</span>
+    <span class="node-name">:</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>instance : Inhabited AngelicChoir := ⟨AngelicChoir.angels⟩
+</code></pre></div>
+<div class="node-desc">The knowledge mode proper to a given angel. Always `infused` per axiom.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="AngelicChoir">AngelicChoir</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="sinFromIgnorance">sinFromIgnorance</span><span class="dep-chip" data-target="angels_have_full_moral_knowledge">angels_have_full_moral_knowledge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="angelKnowledgeMode">
@@ -568,11 +586,9 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque angelKnowledgeMode : Angel → KnowledgeMode
-</code></pre></div>
-<div class="node-desc">The knowledge mode proper to a given angel. Always `infused` per axiom. │   Source: [Aquinas] ST I q.55 a.2.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="KnowledgeMode">KnowledgeMode</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="angels_know_by_infusion">angels_know_by_infusion</span><span class="dep-chip" data-target="knowledge_mode_determines_sin_type">knowledge_mode_determines_sin_type</span><span class="dep-chip" data-target="angelic_vs_human_knowledge">angelic_vs_human_knowledge</span><span class="dep-chip" data-target="angelicNature_denominational_scope">angelicNature_denominational_scope</span><span class="dep-chip" data-target="KnowledgeMode">KnowledgeMode</span></div></div>
+    <div class="node-prop"><pre><code>opaque angelKnowledgeMode : Angel → KnowledgeMode</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="KnowledgeMode">KnowledgeMode</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="angels_know_by_infusion">angels_know_by_infusion</span><span class="dep-chip" data-target="knowledge_mode_determines_sin_type">knowledge_mode_determines_sin_type</span><span class="dep-chip" data-target="angelic_vs_human_knowledge">angelic_vs_human_knowledge</span><span class="dep-chip" data-target="angelicNature_denominational_scope">angelicNature_denominational_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="hasFullMoralKnowledge">
@@ -582,10 +598,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque hasFullMoralKnowledge : Angel → Prop
-</code></pre></div>
-<div class="node-desc">Whether an angel has full knowledge of morally relevant facts. │   Source: [Aquinas] ST I q.63 a.1.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span></div></div>
+    <div class="node-prop"><pre><code>opaque hasFullMoralKnowledge : Angel → Prop</code></pre></div>
+<div class="node-desc">Whether an angel has full knowledge of morally relevant facts.</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="angels_have_full_moral_knowledge">angels_have_full_moral_knowledge</span><span class="dep-chip" data-target="angelic_sin_only_from_pride">angelic_sin_only_from_pride</span><span class="dep-chip" data-target="knowledge_mode_determines_sin_type">knowledge_mode_determines_sin_type</span><span class="dep-chip" data-target="angelicNature_denominational_scope">angelicNature_denominational_scope</span></div></div>
   </div>
 </div>
@@ -596,10 +610,9 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque sinFromIgnorance : Angel → Prop
-</code></pre></div>
-<div class="node-desc">Whether a sin arises from ignorance (not seeing the full picture) │   Source: [Aquinas] ST I q.63 a.1.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span></div></div>
+    <div class="node-prop"><pre><code>opaque sinFromIgnorance : Angel → Prop</code></pre></div>
+<div class="node-desc">Whether a sin arises from ignorance (not seeing the full picture)</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target=":">:</span></div></div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="angelic_sin_only_from_pride">angelic_sin_only_from_pride</span><span class="dep-chip" data-target="fallen_angel_sinned_by_pride">fallen_angel_sinned_by_pride</span><span class="dep-chip" data-target="angelicNature_denominational_scope">angelicNature_denominational_scope</span></div></div>
   </div>
 </div>
@@ -610,10 +623,8 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque sinFromPride : Angel → Prop
-</code></pre></div>
-<div class="node-desc">Whether a sin arises from pride — the disordered will choosing │   Source: [Aquinas] ST I q.63 a.2: &quot;the first sin of the angel</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span></div></div>
+    <div class="node-prop"><pre><code>opaque sinFromPride : Angel → Prop</code></pre></div>
+<div class="node-desc">Whether a sin arises from pride — the disordered will choosing</div>
 <div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="angelic_sin_only_from_pride">angelic_sin_only_from_pride</span><span class="dep-chip" data-target="fallen_angel_sinned_by_pride">fallen_angel_sinned_by_pride</span><span class="dep-chip" data-target="knowledge_mode_determines_sin_type">knowledge_mode_determines_sin_type</span><span class="dep-chip" data-target="angelic_fall_is_prideful_and_irrevocable">angelic_fall_is_prideful_and_irrevocable</span><span class="dep-chip" data-target="angelicNature_denominational_scope">angelicNature_denominational_scope</span></div></div>
   </div>
 </div>
@@ -625,8 +636,22 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>inductive AngelicChoir where</code></pre></div>
-<div class="node-desc">The nine choirs of the angelic hierarchy, ordered by proximity │   Source: [Aquinas] ST I q.108; [Tradition] Pseudo-Dionysius,</div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="angelChoir">angelChoir</span><span class="dep-chip" data-target="choirProximity">choirProximity</span><span class="dep-chip" data-target="angelicNature_denominational_scope">angelicNature_denominational_scope</span></div></div>
+<div class="node-desc">The nine choirs of the angelic hierarchy, ordered by proximity</div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target=":">:</span><span class="dep-chip" data-target=":">:</span><span class="dep-chip" data-target="angelChoir">angelChoir</span><span class="dep-chip" data-target="choirProximity">choirProximity</span><span class="dep-chip" data-target="angelicNature_denominational_scope">angelicNature_denominational_scope</span></div></div>
+  </div>
+</div>
+<div class="node-card kind-instance" data-kind="instance" data-name=":">
+  <div class="node-header" onclick="toggleNode(this)">
+    <span class="node-kind-badge">instance</span>
+    <span class="node-name">:</span>
+    <span class="node-chevron">&#9654;</span>
+  </div>
+  <div class="node-details">
+    <div class="node-prop"><pre><code>instance : Inhabited AngelicChoir := ⟨AngelicChoir.angels⟩
+</code></pre></div>
+<div class="node-desc">Which choir an angel belongs to.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="AngelicChoir">AngelicChoir</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="sinFromIgnorance">sinFromIgnorance</span><span class="dep-chip" data-target="angels_have_full_moral_knowledge">angels_have_full_moral_knowledge</span></div></div>
   </div>
 </div>
 <div class="node-card kind-opaque" data-kind="opaque" data-name="angelChoir">
@@ -636,11 +661,9 @@ h1 {
     <span class="node-chevron">&#9654;</span>
   </div>
   <div class="node-details">
-    <div class="node-prop"><pre><code>opaque angelChoir : Angel → AngelicChoir
-</code></pre></div>
-<div class="node-desc">Which choir an angel belongs to. │   Source: [Aquinas] ST I q.108.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="AngelicChoir">AngelicChoir</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hierarchy_reflects_proximity">hierarchy_reflects_proximity</span><span class="dep-chip" data-target="higher_choir_means_different_choir">higher_choir_means_different_choir</span><span class="dep-chip" data-target="angelicNature_denominational_scope">angelicNature_denominational_scope</span><span class="dep-chip" data-target="AngelicChoir">AngelicChoir</span></div></div>
+    <div class="node-prop"><pre><code>opaque angelChoir : Angel → AngelicChoir</code></pre></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="AngelicChoir">AngelicChoir</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hierarchy_reflects_proximity">hierarchy_reflects_proximity</span><span class="dep-chip" data-target="higher_choir_means_different_choir">higher_choir_means_different_choir</span><span class="dep-chip" data-target="angelicNature_denominational_scope">angelicNature_denominational_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="choirProximity">
@@ -660,10 +683,14 @@ h1 {
   | .principalities =&gt; 3
   | .archangels     =&gt; 2
   | .angels         =&gt; 1
+
+-- ============================================================================
+-- § 2. Axioms
+-- ============================================================================
 </code></pre></div>
-<div class="node-desc">A numerical measure of proximity to God for a given choir. │   Source: [Aquinas] ST I q.108 a.6: the higher the angel, the</div>
+<div class="node-desc">A numerical measure of proximity to God for a given choir.</div>
 <div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="AngelicChoir">AngelicChoir</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hierarchy_reflects_proximity">hierarchy_reflects_proximity</span><span class="dep-chip" data-target="higher_choir_means_different_choir">higher_choir_means_different_choir</span><span class="dep-chip" data-target="angelicNature_denominational_scope">angelicNature_denominational_scope</span><span class="dep-chip" data-target="AngelicChoir">AngelicChoir</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hierarchy_reflects_proximity">hierarchy_reflects_proximity</span><span class="dep-chip" data-target="higher_choir_means_different_choir">higher_choir_means_different_choir</span><span class="dep-chip" data-target="angelicNature_denominational_scope">angelicNature_denominational_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="each_angel_unique_species">
@@ -675,11 +702,10 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom each_angel_unique_species :
   ∀ (a b : Angel),
-    angelicSpecies a = angelicSpecies b → a = b
-</code></pre></div>
-<div class="node-desc">1 (ST I q.50 a.4): Each angel is its own species. │   Source: [Aquinas] ST I q.50 a.4; [Philosophical] Aristotelian | Scope: Catholic distinctive (Thomistic). │   ⚠ HIDDEN ASSUMPTION: Matter is the principle of individuation.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="CognitionMode">CognitionMode</span><span class="dep-chip" data-target="angelicSpecies">angelicSpecies</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="angelic_vs_human_knowledge">angelic_vs_human_knowledge</span><span class="dep-chip" data-target="person_is_analogical_for_angels_and_humans">person_is_analogical_for_angels_and_humans</span><span class="dep-chip" data-target="angelicNature_denominational_scope">angelicNature_denominational_scope</span><span class="dep-chip" data-target="angelicSpecies">angelicSpecies</span></div></div>
+    angelicSpecies a = angelicSpecies b → a = b</code></pre></div>
+<div class="node-desc">AXIOM 1 (ST I q.50 a.4): Each angel is its own species.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="angelicSpecies">angelicSpecies</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="angelic_vs_human_knowledge">angelic_vs_human_knowledge</span><span class="dep-chip" data-target="person_is_analogical_for_angels_and_humans">person_is_analogical_for_angels_and_humans</span><span class="dep-chip" data-target="angelicNature_denominational_scope">angelicNature_denominational_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="angels_know_by_infusion">
@@ -691,11 +717,10 @@ h1 {
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom angels_know_by_infusion :
   ∀ (a : Angel),
-    angelKnowledgeMode a = KnowledgeMode.infused
-</code></pre></div>
-<div class="node-desc">2 (ST I q.55 a.2): Angels know by infused species, │   Source: [Aquinas] ST I q.55 a.2. | Scope: Catholic distinctive (Thomistic epistemology). │   ⚠ HIDDEN ASSUMPTION: All intellectual knowledge requires a</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="KnowledgeMode">KnowledgeMode</span><span class="dep-chip" data-target="angelKnowledgeMode">angelKnowledgeMode</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="fallen_angel_sinned_by_pride">fallen_angel_sinned_by_pride</span><span class="dep-chip" data-target="knowledge_mode_determines_sin_type">knowledge_mode_determines_sin_type</span><span class="dep-chip" data-target="angelic_vs_human_knowledge">angelic_vs_human_knowledge</span><span class="dep-chip" data-target="angelicNature_denominational_scope">angelicNature_denominational_scope</span><span class="dep-chip" data-target="KnowledgeMode">KnowledgeMode</span><span class="dep-chip" data-target="angelKnowledgeMode">angelKnowledgeMode</span></div></div>
+    angelKnowledgeMode a = KnowledgeMode.infused</code></pre></div>
+<div class="node-desc">AXIOM 2 (ST I q.55 a.2): Angels know by infused species,</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="KnowledgeMode">KnowledgeMode</span><span class="dep-chip" data-target="angelKnowledgeMode">angelKnowledgeMode</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="fallen_angel_sinned_by_pride">fallen_angel_sinned_by_pride</span><span class="dep-chip" data-target="knowledge_mode_determines_sin_type">knowledge_mode_determines_sin_type</span><span class="dep-chip" data-target="angelic_vs_human_knowledge">angelic_vs_human_knowledge</span><span class="dep-chip" data-target="angelicNature_denominational_scope">angelicNature_denominational_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="angels_have_full_moral_knowledge">
@@ -706,11 +731,10 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>axiom angels_have_full_moral_knowledge :
-  ∀ (a : Angel), hasFullMoralKnowledge a
-</code></pre></div>
-<div class="node-desc">3 (ST I q.63 a.1): Angels have full knowledge of │   Source: [Aquinas] ST I q.63 a.1; [Philosophical] connection | Scope: Catholic distinctive (Thomistic). │   ⚠ HIDDEN ASSUMPTION: Full moral knowledge excludes ignorance-based</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="hasFullMoralKnowledge">hasFullMoralKnowledge</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hierarchy_reflects_proximity">hierarchy_reflects_proximity</span><span class="dep-chip" data-target="fallen_angel_sinned_by_pride">fallen_angel_sinned_by_pride</span><span class="dep-chip" data-target="knowledge_mode_determines_sin_type">knowledge_mode_determines_sin_type</span><span class="dep-chip" data-target="angelicNature_denominational_scope">angelicNature_denominational_scope</span><span class="dep-chip" data-target="hasFullMoralKnowledge">hasFullMoralKnowledge</span></div></div>
+  ∀ (a : Angel), hasFullMoralKnowledge a</code></pre></div>
+<div class="node-desc">AXIOM 3 (ST I q.63 a.1): Angels have full knowledge of</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target=":">:</span><span class="dep-chip" data-target="hasFullMoralKnowledge">hasFullMoralKnowledge</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hierarchy_reflects_proximity">hierarchy_reflects_proximity</span><span class="dep-chip" data-target="fallen_angel_sinned_by_pride">fallen_angel_sinned_by_pride</span><span class="dep-chip" data-target="knowledge_mode_determines_sin_type">knowledge_mode_determines_sin_type</span><span class="dep-chip" data-target="angelicNature_denominational_scope">angelicNature_denominational_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="angelic_sin_only_from_pride">
@@ -724,11 +748,10 @@ h1 {
   ∀ (a : Angel),
     isFallenAngel a →
     hasFullMoralKnowledge a →
-    ¬sinFromIgnorance a ∧ sinFromPride a
-</code></pre></div>
-<div class="node-desc">4 (ST I q.63 a.1-2): An angel with full moral knowledge │   Source: [Aquinas] ST I q.63 a.1-2. | Scope: Broadly ecumenical (the association of</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="hasFullMoralKnowledge">hasFullMoralKnowledge</span><span class="dep-chip" data-target="isFallenAngel">isFallenAngel</span><span class="dep-chip" data-target="sinFromIgnorance">sinFromIgnorance</span><span class="dep-chip" data-target="sinFromPride">sinFromPride</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hierarchy_reflects_proximity">hierarchy_reflects_proximity</span><span class="dep-chip" data-target="fallen_angel_sinned_by_pride">fallen_angel_sinned_by_pride</span><span class="dep-chip" data-target="angelicNature_denominational_scope">angelicNature_denominational_scope</span><span class="dep-chip" data-target="hasFullMoralKnowledge">hasFullMoralKnowledge</span><span class="dep-chip" data-target="sinFromIgnorance">sinFromIgnorance</span><span class="dep-chip" data-target="sinFromPride">sinFromPride</span></div></div>
+    ¬sinFromIgnorance a ∧ sinFromPride a</code></pre></div>
+<div class="node-desc">AXIOM 4 (ST I q.63 a.1-2): An angel with full moral knowledge</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="hasFullMoralKnowledge">hasFullMoralKnowledge</span><span class="dep-chip" data-target="sinFromIgnorance">sinFromIgnorance</span><span class="dep-chip" data-target="sinFromPride">sinFromPride</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="hierarchy_reflects_proximity">hierarchy_reflects_proximity</span><span class="dep-chip" data-target="fallen_angel_sinned_by_pride">fallen_angel_sinned_by_pride</span><span class="dep-chip" data-target="angelicNature_denominational_scope">angelicNature_denominational_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-axiom" data-kind="axiom" data-name="hierarchy_reflects_proximity">
@@ -744,11 +767,10 @@ h1 {
     -- Higher choir means closer to God (we don't formalize
     -- &quot;closer to God&quot; fully — this is the structural claim
     -- that the hierarchy is non-arbitrary)
-    angelChoir a ≠ angelChoir b
-</code></pre></div>
-<div class="node-desc">5 (ST I q.108; CCC §335): The angelic hierarchy reflects │   Source: [Aquinas] ST I q.108; [Tradition] Pseudo-Dionysius, | Scope: Catholic and Orthodox (shared Dionysian</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="angelChoir">angelChoir</span><span class="dep-chip" data-target="angelic_sin_only_from_pride">angelic_sin_only_from_pride</span><span class="dep-chip" data-target="angels_have_full_moral_knowledge">angels_have_full_moral_knowledge</span><span class="dep-chip" data-target="choirProximity">choirProximity</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="person_is_analogical_for_angels_and_humans">person_is_analogical_for_angels_and_humans</span><span class="dep-chip" data-target="higher_choir_means_different_choir">higher_choir_means_different_choir</span><span class="dep-chip" data-target="angelicNature_denominational_scope">angelicNature_denominational_scope</span><span class="dep-chip" data-target="angelChoir">angelChoir</span><span class="dep-chip" data-target="angelic_sin_only_from_pride">angelic_sin_only_from_pride</span><span class="dep-chip" data-target="angels_have_full_moral_knowledge">angels_have_full_moral_knowledge</span><span class="dep-chip" data-target="choirProximity">choirProximity</span></div></div>
+    angelChoir a ≠ angelChoir b</code></pre></div>
+<div class="node-desc">AXIOM 5 (ST I q.108; CCC §335): The angelic hierarchy reflects</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="angelChoir">angelChoir</span><span class="dep-chip" data-target="angelic_sin_only_from_pride">angelic_sin_only_from_pride</span><span class="dep-chip" data-target="angels_have_full_moral_knowledge">angels_have_full_moral_knowledge</span><span class="dep-chip" data-target="choirProximity">choirProximity</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="person_is_analogical_for_angels_and_humans">person_is_analogical_for_angels_and_humans</span><span class="dep-chip" data-target="higher_choir_means_different_choir">higher_choir_means_different_choir</span><span class="dep-chip" data-target="angelicNature_denominational_scope">angelicNature_denominational_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="fallen_angel_sinned_by_pride">
@@ -762,8 +784,8 @@ h1 {
     (h_fallen : isFallenAngel a) :
     ¬sinFromIgnorance a ∧ sinFromPride a</code></pre></div>
 <div class="node-desc">Angels are never ignorant of moral facts — their knowledge mode</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="angelic_sin_only_from_pride">angelic_sin_only_from_pride</span><span class="dep-chip" data-target="angels_have_full_moral_knowledge">angels_have_full_moral_knowledge</span><span class="dep-chip" data-target="angels_know_by_infusion">angels_know_by_infusion</span><span class="dep-chip" data-target="isFallenAngel">isFallenAngel</span><span class="dep-chip" data-target="sinFromIgnorance">sinFromIgnorance</span><span class="dep-chip" data-target="sinFromPride">sinFromPride</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="knowledge_mode_determines_sin_type">knowledge_mode_determines_sin_type</span><span class="dep-chip" data-target="higher_choir_means_different_choir">higher_choir_means_different_choir</span><span class="dep-chip" data-target="angelic_fall_is_prideful_and_irrevocable">angelic_fall_is_prideful_and_irrevocable</span><span class="dep-chip" data-target="angelicNature_denominational_scope">angelicNature_denominational_scope</span><span class="dep-chip" data-target="sinFromIgnorance">sinFromIgnorance</span><span class="dep-chip" data-target="sinFromPride">sinFromPride</span><span class="dep-chip" data-target="angelic_sin_only_from_pride">angelic_sin_only_from_pride</span><span class="dep-chip" data-target="angels_have_full_moral_knowledge">angels_have_full_moral_knowledge</span><span class="dep-chip" data-target="angels_know_by_infusion">angels_know_by_infusion</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="angelic_sin_only_from_pride">angelic_sin_only_from_pride</span><span class="dep-chip" data-target="angels_have_full_moral_knowledge">angels_have_full_moral_knowledge</span><span class="dep-chip" data-target="angels_know_by_infusion">angels_know_by_infusion</span><span class="dep-chip" data-target="sinFromIgnorance">sinFromIgnorance</span><span class="dep-chip" data-target="sinFromPride">sinFromPride</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="knowledge_mode_determines_sin_type">knowledge_mode_determines_sin_type</span><span class="dep-chip" data-target="higher_choir_means_different_choir">higher_choir_means_different_choir</span><span class="dep-chip" data-target="angelic_fall_is_prideful_and_irrevocable">angelic_fall_is_prideful_and_irrevocable</span><span class="dep-chip" data-target="angelicNature_denominational_scope">angelicNature_denominational_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="knowledge_mode_determines_sin_type">
@@ -779,8 +801,8 @@ h1 {
     hasFullMoralKnowledge a ∧
     sinFromPride a</code></pre></div>
 <div class="node-desc">The connection between knowledge mode and sin type:</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="KnowledgeMode">KnowledgeMode</span><span class="dep-chip" data-target="angelKnowledgeMode">angelKnowledgeMode</span><span class="dep-chip" data-target="angels_have_full_moral_knowledge">angels_have_full_moral_knowledge</span><span class="dep-chip" data-target="angels_know_by_infusion">angels_know_by_infusion</span><span class="dep-chip" data-target="fallen_angel_sinned_by_pride">fallen_angel_sinned_by_pride</span><span class="dep-chip" data-target="hasFullMoralKnowledge">hasFullMoralKnowledge</span><span class="dep-chip" data-target="isFallenAngel">isFallenAngel</span><span class="dep-chip" data-target="living_person_cognition_is_embodied">living_person_cognition_is_embodied</span><span class="dep-chip" data-target="separated_soul_cognition_mode">separated_soul_cognition_mode</span><span class="dep-chip" data-target="sinFromPride">sinFromPride</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="angelicNature_denominational_scope">angelicNature_denominational_scope</span><span class="dep-chip" data-target="KnowledgeMode">KnowledgeMode</span><span class="dep-chip" data-target="hasFullMoralKnowledge">hasFullMoralKnowledge</span><span class="dep-chip" data-target="sinFromPride">sinFromPride</span><span class="dep-chip" data-target="angelKnowledgeMode">angelKnowledgeMode</span><span class="dep-chip" data-target="angels_have_full_moral_knowledge">angels_have_full_moral_knowledge</span><span class="dep-chip" data-target="angels_know_by_infusion">angels_know_by_infusion</span><span class="dep-chip" data-target="fallen_angel_sinned_by_pride">fallen_angel_sinned_by_pride</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="KnowledgeMode">KnowledgeMode</span><span class="dep-chip" data-target="angelKnowledgeMode">angelKnowledgeMode</span><span class="dep-chip" data-target="angels_have_full_moral_knowledge">angels_have_full_moral_knowledge</span><span class="dep-chip" data-target="angels_know_by_infusion">angels_know_by_infusion</span><span class="dep-chip" data-target="fallen_angel_sinned_by_pride">fallen_angel_sinned_by_pride</span><span class="dep-chip" data-target="hasFullMoralKnowledge">hasFullMoralKnowledge</span><span class="dep-chip" data-target="sinFromPride">sinFromPride</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="angelicNature_denominational_scope">angelicNature_denominational_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="angelic_vs_human_knowledge">
@@ -798,8 +820,8 @@ h1 {
     -- Humans in life: embodied cognition (abstraction from senses)
     cognitionModeOf p = CognitionMode.embodied</code></pre></div>
 <div class="node-desc">Angelic vs. human knowledge: angels know by infusion (natural),</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="CognitionMode">CognitionMode</span><span class="dep-chip" data-target="HumanPerson">HumanPerson</span><span class="dep-chip" data-target="KnowledgeMode">KnowledgeMode</span><span class="dep-chip" data-target="PredicationMode">PredicationMode</span><span class="dep-chip" data-target="angelKnowledgeMode">angelKnowledgeMode</span><span class="dep-chip" data-target="angels_know_by_infusion">angels_know_by_infusion</span><span class="dep-chip" data-target="cognitionModeOf">cognitionModeOf</span><span class="dep-chip" data-target="each_angel_unique_species">each_angel_unique_species</span><span class="dep-chip" data-target="isDead">isDead</span><span class="dep-chip" data-target="isRisen">isRisen</span><span class="dep-chip" data-target="living_person_cognition_is_embodied">living_person_cognition_is_embodied</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="angelicNature_denominational_scope">angelicNature_denominational_scope</span><span class="dep-chip" data-target="KnowledgeMode">KnowledgeMode</span><span class="dep-chip" data-target="angelKnowledgeMode">angelKnowledgeMode</span><span class="dep-chip" data-target="each_angel_unique_species">each_angel_unique_species</span><span class="dep-chip" data-target="angels_know_by_infusion">angels_know_by_infusion</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="KnowledgeMode">KnowledgeMode</span><span class="dep-chip" data-target="angelKnowledgeMode">angelKnowledgeMode</span><span class="dep-chip" data-target="angels_know_by_infusion">angels_know_by_infusion</span><span class="dep-chip" data-target="each_angel_unique_species">each_angel_unique_species</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="angelicNature_denominational_scope">angelicNature_denominational_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="person_is_analogical_for_angels_and_humans">
@@ -816,9 +838,9 @@ h1 {
     -- fundamentally different kinds of intellectual beings
     (∀ (pred : TheologicalPredicate),
       predicationMode pred = PredicationMode.analogical)</code></pre></div>
-<div class="node-desc">THE KEY FINDING: &quot;Person&quot; is analogical between angels and humans. │   ⚠ HIDDEN ASSUMPTION: The concept of &quot;person&quot; used in dignity</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="PredicationMode">PredicationMode</span><span class="dep-chip" data-target="TheologicalPredicate">TheologicalPredicate</span><span class="dep-chip" data-target="angelicSpecies">angelicSpecies</span><span class="dep-chip" data-target="each_angel_unique_species">each_angel_unique_species</span><span class="dep-chip" data-target="god_talk_is_analogical">god_talk_is_analogical</span><span class="dep-chip" data-target="hierarchy_reflects_proximity">hierarchy_reflects_proximity</span><span class="dep-chip" data-target="predicationMode">predicationMode</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="angelicNature_denominational_scope">angelicNature_denominational_scope</span><span class="dep-chip" data-target="angelicSpecies">angelicSpecies</span><span class="dep-chip" data-target="each_angel_unique_species">each_angel_unique_species</span><span class="dep-chip" data-target="hierarchy_reflects_proximity">hierarchy_reflects_proximity</span></div></div>
+<div class="node-desc">THE KEY FINDING: &quot;Person&quot; is analogical between angels and humans.</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="angelicSpecies">angelicSpecies</span><span class="dep-chip" data-target="each_angel_unique_species">each_angel_unique_species</span><span class="dep-chip" data-target="hierarchy_reflects_proximity">hierarchy_reflects_proximity</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="angelicNature_denominational_scope">angelicNature_denominational_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="higher_choir_means_different_choir">
@@ -832,8 +854,7 @@ h1 {
     (h : choirProximity (angelChoir a) &gt; choirProximity (angelChoir b)) :
     angelChoir a ≠ angelChoir b</code></pre></div>
 <div class="node-desc">Angels in different choirs are in genuinely distinct choirs.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="angelChoir">angelChoir</span><span class="dep-chip" data-target="angelic_choice_is_irrevocable">angelic_choice_is_irrevocable</span><span class="dep-chip" data-target="choirProximity">choirProximity</span><span class="dep-chip" data-target="fallen_angel_sinned_by_pride">fallen_angel_sinned_by_pride</span><span class="dep-chip" data-target="hierarchy_reflects_proximity">hierarchy_reflects_proximity</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="angelChoir">angelChoir</span><span class="dep-chip" data-target="choirProximity">choirProximity</span><span class="dep-chip" data-target="hierarchy_reflects_proximity">hierarchy_reflects_proximity</span><span class="dep-chip" data-target="fallen_angel_sinned_by_pride">fallen_angel_sinned_by_pride</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="angelChoir">angelChoir</span><span class="dep-chip" data-target="choirProximity">choirProximity</span><span class="dep-chip" data-target="fallen_angel_sinned_by_pride">fallen_angel_sinned_by_pride</span><span class="dep-chip" data-target="hierarchy_reflects_proximity">hierarchy_reflects_proximity</span></div></div>
   </div>
 </div>
 <div class="node-card kind-theorem" data-kind="theorem" data-name="angelic_fall_is_prideful_and_irrevocable">
@@ -847,8 +868,8 @@ h1 {
     (h_fallen : isFallenAngel a) :
     sinFromPride a ∧ ¬canRepent a</code></pre></div>
 <div class="node-desc">Every fallen angel sinned by pride AND cannot repent.</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="angelic_choice_is_irrevocable">angelic_choice_is_irrevocable</span><span class="dep-chip" data-target="canRepent">canRepent</span><span class="dep-chip" data-target="fallen_angel_sinned_by_pride">fallen_angel_sinned_by_pride</span><span class="dep-chip" data-target="isFallenAngel">isFallenAngel</span><span class="dep-chip" data-target="sinFromPride">sinFromPride</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="angelicNature_denominational_scope">angelicNature_denominational_scope</span><span class="dep-chip" data-target="sinFromPride">sinFromPride</span><span class="dep-chip" data-target="fallen_angel_sinned_by_pride">fallen_angel_sinned_by_pride</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="fallen_angel_sinned_by_pride">fallen_angel_sinned_by_pride</span><span class="dep-chip" data-target="sinFromPride">sinFromPride</span></div></div>
+<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="angelicNature_denominational_scope">angelicNature_denominational_scope</span></div></div>
   </div>
 </div>
 <div class="node-card kind-def" data-kind="def" data-name="angelicNature_denominational_scope">
@@ -859,9 +880,8 @@ h1 {
   </div>
   <div class="node-details">
     <div class="node-prop"><pre><code>def angelicNature_denominational_scope : DenominationalTag</code></pre></div>
-<div class="node-desc">but specific elements are more broadly shared. Scope: Thomistic angelology is Catholic distinctive,</div>
-<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="Angel">Angel</span><span class="dep-chip" data-target="AngelicChoir">AngelicChoir</span><span class="dep-chip" data-target="CognitionMode">CognitionMode</span><span class="dep-chip" data-target="KnowledgeMode">KnowledgeMode</span><span class="dep-chip" data-target="PredicationMode">PredicationMode</span><span class="dep-chip" data-target="angelChoir">angelChoir</span><span class="dep-chip" data-target="angelKnowledgeMode">angelKnowledgeMode</span><span class="dep-chip" data-target="angelicSpecies">angelicSpecies</span><span class="dep-chip" data-target="angelic_choice_is_irrevocable">angelic_choice_is_irrevocable</span><span class="dep-chip" data-target="angelic_fall_is_prideful_and_irrevocable">angelic_fall_is_prideful_and_irrevocable</span><span class="dep-chip" data-target="angelic_sin_only_from_pride">angelic_sin_only_from_pride</span><span class="dep-chip" data-target="angelic_vs_human_knowledge">angelic_vs_human_knowledge</span><span class="dep-chip" data-target="angels_have_full_moral_knowledge">angels_have_full_moral_knowledge</span><span class="dep-chip" data-target="angels_know_by_infusion">angels_know_by_infusion</span><span class="dep-chip" data-target="canRepent">canRepent</span><span class="dep-chip" data-target="choirProximity">choirProximity</span><span class="dep-chip" data-target="cognitionModeOf">cognitionModeOf</span><span class="dep-chip" data-target="each_angel_unique_species">each_angel_unique_species</span><span class="dep-chip" data-target="fallen_angel_sinned_by_pride">fallen_angel_sinned_by_pride</span><span class="dep-chip" data-target="god_talk_is_analogical">god_talk_is_analogical</span><span class="dep-chip" data-target="hasFullMoralKnowledge">hasFullMoralKnowledge</span><span class="dep-chip" data-target="hierarchy_reflects_proximity">hierarchy_reflects_proximity</span><span class="dep-chip" data-target="isFallenAngel">isFallenAngel</span><span class="dep-chip" data-target="knowledge_mode_determines_sin_type">knowledge_mode_determines_sin_type</span><span class="dep-chip" data-target="living_person_cognition_is_embodied">living_person_cognition_is_embodied</span><span class="dep-chip" data-target="person_is_analogical_for_angels_and_humans">person_is_analogical_for_angels_and_humans</span><span class="dep-chip" data-target="separated_soul_cognition_mode">separated_soul_cognition_mode</span><span class="dep-chip" data-target="sinFromIgnorance">sinFromIgnorance</span><span class="dep-chip" data-target="sinFromPride">sinFromPride</span></div></div>
-<div class="node-dep-section"><div class="node-dep-label">Used by</div><div class="node-dep-list"><span class="dep-chip" data-target="AngelicChoir">AngelicChoir</span><span class="dep-chip" data-target="KnowledgeMode">KnowledgeMode</span><span class="dep-chip" data-target="angelicSpecies">angelicSpecies</span><span class="dep-chip" data-target="hasFullMoralKnowledge">hasFullMoralKnowledge</span><span class="dep-chip" data-target="sinFromIgnorance">sinFromIgnorance</span><span class="dep-chip" data-target="sinFromPride">sinFromPride</span><span class="dep-chip" data-target="angelChoir">angelChoir</span><span class="dep-chip" data-target="angelKnowledgeMode">angelKnowledgeMode</span><span class="dep-chip" data-target="angelic_sin_only_from_pride">angelic_sin_only_from_pride</span><span class="dep-chip" data-target="angels_have_full_moral_knowledge">angels_have_full_moral_knowledge</span><span class="dep-chip" data-target="choirProximity">choirProximity</span><span class="dep-chip" data-target="each_angel_unique_species">each_angel_unique_species</span><span class="dep-chip" data-target="angels_know_by_infusion">angels_know_by_infusion</span><span class="dep-chip" data-target="hierarchy_reflects_proximity">hierarchy_reflects_proximity</span><span class="dep-chip" data-target="angelic_vs_human_knowledge">angelic_vs_human_knowledge</span><span class="dep-chip" data-target="fallen_angel_sinned_by_pride">fallen_angel_sinned_by_pride</span><span class="dep-chip" data-target="person_is_analogical_for_angels_and_humans">person_is_analogical_for_angels_and_humans</span><span class="dep-chip" data-target="angelic_fall_is_prideful_and_irrevocable">angelic_fall_is_prideful_and_irrevocable</span><span class="dep-chip" data-target="knowledge_mode_determines_sin_type">knowledge_mode_determines_sin_type</span></div></div>
+<div class="node-desc">Denominational scope: Thomistic angelology is Catholic distinctive,</div>
+<div class="node-dep-section"><div class="node-dep-label">Depends on</div><div class="node-dep-list"><span class="dep-chip" data-target="AngelicChoir">AngelicChoir</span><span class="dep-chip" data-target="KnowledgeMode">KnowledgeMode</span><span class="dep-chip" data-target="angelChoir">angelChoir</span><span class="dep-chip" data-target="angelKnowledgeMode">angelKnowledgeMode</span><span class="dep-chip" data-target="angelicSpecies">angelicSpecies</span><span class="dep-chip" data-target="angelic_fall_is_prideful_and_irrevocable">angelic_fall_is_prideful_and_irrevocable</span><span class="dep-chip" data-target="angelic_sin_only_from_pride">angelic_sin_only_from_pride</span><span class="dep-chip" data-target="angelic_vs_human_knowledge">angelic_vs_human_knowledge</span><span class="dep-chip" data-target="angels_have_full_moral_knowledge">angels_have_full_moral_knowledge</span><span class="dep-chip" data-target="angels_know_by_infusion">angels_know_by_infusion</span><span class="dep-chip" data-target="choirProximity">choirProximity</span><span class="dep-chip" data-target="each_angel_unique_species">each_angel_unique_species</span><span class="dep-chip" data-target="fallen_angel_sinned_by_pride">fallen_angel_sinned_by_pride</span><span class="dep-chip" data-target="hasFullMoralKnowledge">hasFullMoralKnowledge</span><span class="dep-chip" data-target="hierarchy_reflects_proximity">hierarchy_reflects_proximity</span><span class="dep-chip" data-target="knowledge_mode_determines_sin_type">knowledge_mode_determines_sin_type</span><span class="dep-chip" data-target="person_is_analogical_for_angels_and_humans">person_is_analogical_for_angels_and_humans</span><span class="dep-chip" data-target="sinFromIgnorance">sinFromIgnorance</span><span class="dep-chip" data-target="sinFromPride">sinFromPride</span></div></div>
   </div>
 </div>
   </div>
